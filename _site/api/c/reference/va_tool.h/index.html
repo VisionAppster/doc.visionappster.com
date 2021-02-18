@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_tool.h &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_types.h" href="../va_types.h/" />
+    <link rel="prev" title="va_tensor" href="../va_tensor/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_tool.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-tool-h">
+<h1>va_tool.h<a class="headerlink" href="#va-tool-h" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_tool.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_IMPLEMENT_PLUGIN">
+<span class="target" id="VA_IMPLEMENT_PLUGIN"></span><code class="sig-name descname"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code><span class="sig-paren">(</span><em><span class="pre">COMPONENT_ID</span></em>, <em><span class="pre">COMPONENT_VERSION</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_IMPLEMENT_PLUGIN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Generates code for a plugin entry point function, <code class="docutils literal notranslate"><span class="pre">va_get_plugin_info</span></code>. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code>: A globally unique identifier for the component the plugin will be placed into. If a component contains many plugins, the same component ID must be used in all of them. The component ID is used as a namespace for the tools that are defined within the component. The fully-qualified name for a tool will be composed of the component ID, its major version number and the name of the tool, for example <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPONENT_VERSION</span></code>: The version number of the component. The version number has three parts: major.minor.patch. If a change in the plugin breaks existing functionality, the major version number must be incremented. Features can be added but not removed when changing the minor version number. If a release does not add new functionality but just improves or fixes the implementation, patch must be incremented. Version numbering can be started at any number, but usually 1.0.0 marks the first release. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_IMPLEMENT_LICENSED_PLUGIN">
+<span class="target" id="VA_IMPLEMENT_LICENSED_PLUGIN"></span><code class="sig-name descname"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code><span class="sig-paren">(</span><em><span class="pre">COMPONENT_ID</span></em>, <em><span class="pre">COMPONENT_VERSION</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_IMPLEMENT_LICENSED_PLUGIN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Generates code for a plugin entry point function, <code class="docutils literal notranslate"><span class="pre">va_get_plugin_info</span></code>. </p>
+<p>This macro works the same way as VA_IMPLEMENT_PLUGIN, but it also generates a piece of code that checks the component ID when the plugin is being loaded. This makes it hard to load the plugin without a valid license. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv420va_registration_func">
+<span id="_CPPv320va_registration_func"></span><span id="_CPPv220va_registration_func"></span><span id="va_registration_func"></span><span class="target" id="*,...)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_registration_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span><span class="pre">*</span>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_registration_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of the registration function that will be passed as a function pointer to a plugin initialization function when a plugin is loaded. </p>
+<p>The initialization function uses the registration function to register tool instances to the VisionAppster platform. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv417va_construct_func">
+<span id="_CPPv317va_construct_func"></span><span id="_CPPv217va_construct_func"></span><span id="va_construct_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">*</span><span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_construct_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_construct_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a tool instance constructor function. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv416va_destruct_func">
+<span id="_CPPv316va_destruct_func"></span><span id="_CPPv216va_destruct_func"></span><span id="va_destruct_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_destruct_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_destruct_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a tool instance destructor function. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv415va_process_func">
+<span id="_CPPv315va_process_func"></span><span id="_CPPv215va_process_func"></span><span id="va_process_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_process_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_process_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a processing function that actually performs the job of a registered tool. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv414va_notify_func">
+<span id="_CPPv314va_notify_func"></span><span id="_CPPv214va_notify_func"></span><span id="va_notify_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_notify_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span>, <a class="reference internal" href="#_CPPv413va_event_type" title="va_event_type"><span class="pre">va_event_type</span></a>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_notify_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a notification function that receives event notifications. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv416va_strerror_func">
+<span id="_CPPv316va_strerror_func"></span><span id="_CPPv216va_strerror_func"></span><span id="va_strerror_func"></span><span class="target" id="**)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_strerror_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">int32_t</span>, <a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a><span class="pre">*</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_strerror_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a function that fetches an error message for a status code. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv417va_get_value_func">
+<span id="_CPPv317va_get_value_func"></span><span id="_CPPv217va_get_value_func"></span><span id="va_get_value_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_get_value_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span><span class="pre">*</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_get_value_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a function that is used to retrieve default parameter values and values of meta-data entries. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv419va_plugin_init_func">
+<span id="_CPPv319va_plugin_init_func"></span><span id="_CPPv219va_plugin_init_func"></span><span id="va_plugin_init_func"></span><span class="target" id="(va_registration_func)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_plugin_init_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420va_registration_func" title="va_registration_func"><span class="pre">va_registration_func</span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_plugin_init_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a function that registers tools in a plug-in. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv419va_plugin_info_func">
+<span id="_CPPv319va_plugin_info_func"></span><span id="_CPPv219va_plugin_info_func"></span><span id="va_plugin_info_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">va_plugin_status</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_plugin_info_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">va_plugin_info</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_plugin_info_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a function that returns basic information about a plug-in. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Enums</p>
+<dl class="cpp enum">
+<dt id="_CPPv417va_tool_info_type">
+<span id="_CPPv317va_tool_info_type"></span><span id="_CPPv217va_tool_info_type"></span><span class="target" id="va_tool_info_type"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_tool_info_type</span></code><a class="headerlink" href="#_CPPv417va_tool_info_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Data identifiers for a tool registration call. </p>
+<p>There is usually no need to manually enter these values because the registration macros automatically use them where needed. They may be needed as a work-around if the number of variable arguments in a registration macro call grows larger than a particular C preprocessor implementation can handle. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type19va_tool_end_of_dataE">
+<span id="_CPPv3N17va_tool_info_type19va_tool_end_of_dataE"></span><span id="_CPPv2N17va_tool_info_type19va_tool_end_of_dataE"></span><span class="target" id="va_tool_info_type::va_tool_end_of_data"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_end_of_data</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type19va_tool_end_of_dataE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type12va_tool_nameE">
+<span id="_CPPv3N17va_tool_info_type12va_tool_nameE"></span><span id="_CPPv2N17va_tool_info_type12va_tool_nameE"></span><span class="target" id="va_tool_info_type::va_tool_name"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_name</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type12va_tool_nameE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type13va_tool_groupE">
+<span id="_CPPv3N17va_tool_info_type13va_tool_groupE"></span><span id="_CPPv2N17va_tool_info_type13va_tool_groupE"></span><span class="target" id="va_tool_info_type::va_tool_group"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_group</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type13va_tool_groupE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type11va_tool_tagE">
+<span id="_CPPv3N17va_tool_info_type11va_tool_tagE"></span><span id="_CPPv2N17va_tool_info_type11va_tool_tagE"></span><span class="target" id="va_tool_info_type::va_tool_tag"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_tag</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type11va_tool_tagE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type17va_tool_constructE">
+<span id="_CPPv3N17va_tool_info_type17va_tool_constructE"></span><span id="_CPPv2N17va_tool_info_type17va_tool_constructE"></span><span class="target" id="va_tool_info_type::va_tool_construct"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_construct</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type17va_tool_constructE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type16va_tool_destructE">
+<span id="_CPPv3N17va_tool_info_type16va_tool_destructE"></span><span id="_CPPv2N17va_tool_info_type16va_tool_destructE"></span><span class="target" id="va_tool_info_type::va_tool_destruct"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_destruct</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type16va_tool_destructE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type15va_tool_processE">
+<span id="_CPPv3N17va_tool_info_type15va_tool_processE"></span><span id="_CPPv2N17va_tool_info_type15va_tool_processE"></span><span class="target" id="va_tool_info_type::va_tool_process"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_process</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type15va_tool_processE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type14va_tool_notifyE">
+<span id="_CPPv3N17va_tool_info_type14va_tool_notifyE"></span><span id="_CPPv2N17va_tool_info_type14va_tool_notifyE"></span><span class="target" id="va_tool_info_type::va_tool_notify"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_notify</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type14va_tool_notifyE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type22va_tool_required_inputE">
+<span id="_CPPv3N17va_tool_info_type22va_tool_required_inputE"></span><span id="_CPPv2N17va_tool_info_type22va_tool_required_inputE"></span><span class="target" id="va_tool_info_type::va_tool_required_input"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_required_input</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type22va_tool_required_inputE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type22va_tool_optional_inputE">
+<span id="_CPPv3N17va_tool_info_type22va_tool_optional_inputE"></span><span id="_CPPv2N17va_tool_info_type22va_tool_optional_inputE"></span><span class="target" id="va_tool_info_type::va_tool_optional_input"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_optional_input</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type22va_tool_optional_inputE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type19va_tool_fixed_inputE">
+<span id="_CPPv3N17va_tool_info_type19va_tool_fixed_inputE"></span><span id="_CPPv2N17va_tool_info_type19va_tool_fixed_inputE"></span><span class="target" id="va_tool_info_type::va_tool_fixed_input"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_fixed_input</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type19va_tool_fixed_inputE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type14va_tool_outputE">
+<span id="_CPPv3N17va_tool_info_type14va_tool_outputE"></span><span id="_CPPv2N17va_tool_info_type14va_tool_outputE"></span><span class="target" id="va_tool_info_type::va_tool_output"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_output</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type14va_tool_outputE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type19va_tool_static_metaE">
+<span id="_CPPv3N17va_tool_info_type19va_tool_static_metaE"></span><span id="_CPPv2N17va_tool_info_type19va_tool_static_metaE"></span><span class="target" id="va_tool_info_type::va_tool_static_meta"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_static_meta</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type19va_tool_static_metaE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type20va_tool_dynamic_metaE">
+<span id="_CPPv3N17va_tool_info_type20va_tool_dynamic_metaE"></span><span id="_CPPv2N17va_tool_info_type20va_tool_dynamic_metaE"></span><span class="target" id="va_tool_info_type::va_tool_dynamic_meta"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_dynamic_meta</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type20va_tool_dynamic_metaE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type15va_tool_exemodeE">
+<span id="_CPPv3N17va_tool_info_type15va_tool_exemodeE"></span><span id="_CPPv2N17va_tool_info_type15va_tool_exemodeE"></span><span class="target" id="va_tool_info_type::va_tool_exemode"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_exemode</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type15va_tool_exemodeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type16va_tool_strerrorE">
+<span id="_CPPv3N17va_tool_info_type16va_tool_strerrorE"></span><span id="_CPPv2N17va_tool_info_type16va_tool_strerrorE"></span><span class="target" id="va_tool_info_type::va_tool_strerror"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_strerror</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type16va_tool_strerrorE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_tool_info_type22va_tool_last_info_typeE">
+<span id="_CPPv3N17va_tool_info_type22va_tool_last_info_typeE"></span><span id="_CPPv2N17va_tool_info_type22va_tool_last_info_typeE"></span><span class="target" id="va_tool_info_type::va_tool_last_info_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tool_last_info_type</span></code><a class="headerlink" href="#_CPPv4N17va_tool_info_type22va_tool_last_info_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv413va_event_type">
+<span id="_CPPv313va_event_type"></span><span id="_CPPv213va_event_type"></span><span class="target" id="va_event_type"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_event_type</span></code><a class="headerlink" href="#_CPPv413va_event_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Event types. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_event_type16va_event_startedE">
+<span id="_CPPv3N13va_event_type16va_event_startedE"></span><span id="_CPPv2N13va_event_type16va_event_startedE"></span><span class="target" id="va_event_type::va_event_started"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_event_started</span></code><a class="headerlink" href="#_CPPv4N13va_event_type16va_event_startedE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The processing graph containing the tool was just started. </p>
+<p>This event happens before the first call to <code class="docutils literal notranslate"><span class="pre">process</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_event_type16va_event_stoppedE">
+<span id="_CPPv3N13va_event_type16va_event_stoppedE"></span><span id="_CPPv2N13va_event_type16va_event_stoppedE"></span><span class="target" id="va_event_type::va_event_stopped"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_event_stopped</span></code><a class="headerlink" href="#_CPPv4N13va_event_type16va_event_stoppedE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The processing graph containing the tool was just stopped. </p>
+<p>This event happens after the last call to <code class="docutils literal notranslate"><span class="pre">process</span></code>. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv417va_execution_mode">
+<span id="_CPPv317va_execution_mode"></span><span id="_CPPv217va_execution_mode"></span><span class="target" id="va_execution_mode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_execution_mode</span></code><a class="headerlink" href="#_CPPv417va_execution_mode" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Execution modes. </p>
+<p>A tool can specify a single execution mode or a bitwise OR of supported modes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_execution_mode22va_execute_nonthreadedE">
+<span id="_CPPv3N17va_execution_mode22va_execute_nonthreadedE"></span><span id="_CPPv2N17va_execution_mode22va_execute_nonthreadedE"></span><span class="target" id="va_execution_mode::va_execute_nonthreaded"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_execute_nonthreaded</span></code><a class="headerlink" href="#_CPPv4N17va_execution_mode22va_execute_nonthreadedE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The tool will be executed immediately when input data is available in the context of the thread that produced the last missing parameter. </p>
+<p>The thread may be different from time to time, but no concurrent calls will happen. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_execution_mode25va_execute_singlethreadedE">
+<span id="_CPPv3N17va_execution_mode25va_execute_singlethreadedE"></span><span id="_CPPv2N17va_execution_mode25va_execute_singlethreadedE"></span><span class="target" id="va_execution_mode::va_execute_singlethreaded"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_execute_singlethreaded</span></code><a class="headerlink" href="#_CPPv4N17va_execution_mode25va_execute_singlethreadedE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The tool will be executed in a dedicated processing thread. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_execution_mode24va_execute_multithreadedE">
+<span id="_CPPv3N17va_execution_mode24va_execute_multithreadedE"></span><span id="_CPPv2N17va_execution_mode24va_execute_multithreadedE"></span><span class="target" id="va_execution_mode::va_execute_multithreaded"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_execute_multithreaded</span></code><a class="headerlink" href="#_CPPv4N17va_execution_mode24va_execute_multithreadedE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The tool will be executed by an arbitrary processing thread from a thread pool. </p>
+<p>Many calls may be active simultaneously. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N17va_execution_mode14va_execute_anyE">
+<span id="_CPPv3N17va_execution_mode14va_execute_anyE"></span><span id="_CPPv2N17va_execution_mode14va_execute_anyE"></span><span class="target" id="va_execution_mode::va_execute_any"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_execute_any</span></code><a class="headerlink" href="#_CPPv4N17va_execution_mode14va_execute_anyE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>All execution modes are supported. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_types.h/" class="btn btn-neutral float-right" title="va_types.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_tensor/" class="btn btn-neutral float-left" title="va_tensor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

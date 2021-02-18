@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Contour matching &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Manual Calibration" href="../manual-calibration/" />
+    <link rel="prev" title="Binarize" href="../binarize/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contour matching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matching">Matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyzing-results">Analyzing results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>Contour matching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contour-matching">
+<h1>Contour matching<a class="headerlink" href="#contour-matching" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>The contour matching recipe shows how to accurately find locations,
+sizes and orientations of objects in an image based on the shape of
+their contour. The contours of objects are detected in a binary image.
+Hence, it is essential that the objects of interest can be separated
+from the background.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/c20c79b1bb758a9673c4823bb3234c80/CookbookContourMatching.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>The recipe consist of three phases: preprocessing, matching and
+analyzing results. We’ll walk through these from top to bottom.</p>
+<div class="medium figure align-default" id="id1">
+<img alt="The processing graph of the contour matching demo." src="../../_images/contour-matching-1.png" />
+<p class="caption"><span class="caption-text">The processing graph of the contour matching demo.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="section" id="preprocessing">
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">🔗</a></h3>
+<ul class="simple">
+<li><p>The images originate from a virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/SeparateColorChannelsTool/"><span class="doc">Separate Color Channels</span></a> splits
+color images into RGB color channels. In this application, we choose
+the blue channel as it gives the best separation of the objects
+against the dark background.</p></li>
+<li><p><a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> calculates a histogram of the
+intensities of the pixels in the 8-bit grayscale input image.</p></li>
+<li><p><a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find Threshold</span></a> analyzes the histogram
+and suggests an optimal threshold for binarization.</p></li>
+<li><p><a class="reference internal" href="../../tools/BinarizeTool/"><span class="doc">Binarize</span></a> binarizes the image using the
+suggested threshold.</p></li>
+<li><p><a class="reference internal" href="../../tools/BinaryMorphologyTool/"><span class="doc">Binary Morphology</span></a> fills the holes
+possibly left over from the binarization process. The reasons why
+there might be holes are for instance random noise and reflections.
+This gives us relatively good-quality binary blobs from which
+contours can be reliably extracted. The mask size is 5-by-5 pixels.</p></li>
+</ul>
+</div>
+<div class="section" id="matching">
+<h3>Matching<a class="headerlink" href="#matching" title="Permalink to this headline">🔗</a></h3>
+<p><a class="reference internal" href="../../tools/MatchContoursTool/"><span class="doc">Match Countours</span></a> is the crux of this
+recipe. It takes a binarized image as input, identifies the boundaries
+of the objects and compares them with the objects the matcher has been
+trained with.</p>
+<p>The matcher is trained using binary images of the objects of interest.
+You can enter the training mode by clicking on the cogwheel icon of the
+Match Contours tool. In the training mode, you can add and remove models
+and change the parameters of the matcher.</p>
+<p>Changes to the model database of the Match Contours tool instance are
+applied by pressing the “Build Database” button. The button is active if
+there are pending changes. Training mode can be closed by clicking on
+the “X” icon at the top-right corner of the window.</p>
+<div class="medium figure align-default" id="id2">
+<img alt="The matcher makes use of key points on the contour of a model image." src="../../_images/contour-matching-2.png" />
+<p class="caption"><span class="caption-text">The matcher makes use of key points on the contour of a model image.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="analyzing-results">
+<h3>Analyzing results<a class="headerlink" href="#analyzing-results" title="Permalink to this headline">🔗</a></h3>
+<p>The sizes, orientations and locations of the found objects are given in
+the <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> outputs of the matcher. The class names of
+the recognized objects are given in the <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Name</span></code> output. Assume
+that the matcher finds four objects. This means that</p>
+<ul class="simple">
+<li><p>the frames are presented as a 16-by-4 matrix (i.e. four 4x4-frames
+stacked up),</p></li>
+<li><p>the sizes are presented as a 4-by-2 matrix (four 1-by-2 sizes stacked
+up) and</p></li>
+<li><p>the class names as a 4-by-1 table of strings.</p></li>
+</ul>
+<p>A <a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate tool</span></a> has been configured
+to input the three connected outputs from the contour matcher
+(i.e. <code class="docutils literal notranslate"><span class="pre">Frame</span></code>, <code class="docutils literal notranslate"><span class="pre">Size</span></code> and <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Name</span></code>). It splits the frame, size
+and class name matrices to single entities:</p>
+<ul class="simple">
+<li><p>the 16-by-4 frame matrix becomes four 4-by-4 matrices,</p></li>
+<li><p>the 4-by-2 size matrix becomes four 1-by-2 matrices,</p></li>
+<li><p>the 4-by-1 table of class names becomes four strings.</p></li>
+</ul>
+<p>Now all tools connected to the corresponding outputs (named as
+<code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2</span></code>) can process the matches one by one instead of all
+at once. Click on the names of the outputs to see where they are
+connected.</p>
+<ul>
+<li><p><a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">Project to Virtual View</span></a>
+receives the original image and a frame/size-pair which frames a
+found object. The output image contains nothing but the found object.</p></li>
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> (for spitting the image)
+receives the image of the found object as well as the class name of
+the object. The names of the outputs of the script tool have been
+configured so that they are identical to the class names. Hence, the
+script code that routes the input image to the output corresponding
+to the class name becomes very simple:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$o</span><span class="p">[</span><span class="nx">$i</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">image</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The symbol <code class="docutils literal notranslate"><span class="pre">$o</span></code> stands for output, <code class="docutils literal notranslate"><span class="pre">$i</span></code> is the input and
+<code class="docutils literal notranslate"><span class="pre">$i.className.entry(i,</span> <span class="pre">j)</span></code> returns the value at index [i, j] in the
+input matrix called <code class="docutils literal notranslate"><span class="pre">className</span></code>.</p>
+<p>During the development of a script, it is often essential to print
+values of the variables. For instance:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">print</span><span class="p">(</span><span class="s2">&quot;The object is &quot;</span> <span class="o">+</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Input and output configuration of the script is shown below.</p>
+</li>
+</ul>
+<div class="medium figure align-default" id="id3">
+<img alt="Inputs and outputs of the “split image” script" src="../../_images/contour-matching-script-1.png" />
+<p class="caption"><span class="caption-text">Inputs and outputs of the “split image” script</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<ul>
+<li><p>Another instance of <a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> calculates
+the histogram of intensities of segmented objects. The intensity of
+an RGB pixel is the average of the color channels.</p></li>
+<li><p><a class="reference internal" href="../../tools/AnalyzeHistogramTool/"><span class="doc">Analyze Histogram</span></a> calculates
+statistical features such as mean, variance, median and many more. In
+this case, only <code class="docutils literal notranslate"><span class="pre">mean</span></code> output is connected.</p></li>
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> (for combining name and mean
+of an object) receives the name of a found object and mean intensity
+and combines them into a 1-by-2 table which is sent to <code class="docutils literal notranslate"><span class="pre">info</span></code>
+output. Again, the script code is very simple:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// reserve space for the output</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">info</span> <span class="o">=</span> <span class="nx">Kuvio</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Write data to the output table</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">mean</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Input and output configuration of the script as well as connection to
+<code class="docutils literal notranslate"><span class="pre">End</span> <span class="pre">Iterate</span></code> tool are shown below.</p>
+</li>
+</ul>
+<div class="medium figure align-default" id="id4">
+<img alt="Inputs and outputs of the “name + mean” script" src="../../_images/contour-matching-script-2.png" />
+<p class="caption"><span class="caption-text">Inputs and outputs of the “name + mean” script</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tools/EndIterateTool/"><span class="doc">End Iterate</span></a> is a counterpart of the
+<code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span></code> tool described above. It stacks up entries received
+at its inputs to matrices or tables. In this example, the entries
+received at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0</span></code> input are 1-by-2 tables with one row and
+two columns. If there are, say, four object matches in the original
+input image, the output at <code class="docutils literal notranslate"><span class="pre">Result</span> <span class="pre">0</span></code> will be a 4-by-2 table.
+Notice that <code class="docutils literal notranslate"><span class="pre">Sync</span></code> input of <code class="docutils literal notranslate"><span class="pre">End</span> <span class="pre">Iterate</span></code> is connected to the
+corresponding output of <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span></code>.</p></li>
+</ul>
+<p>Finally, an example showing how the app identifies and separates four
+kinds of tools (two kinds of pliers, a screwdriver and a spanner.)</p>
+<div class="medium figure align-default" id="id5">
+<img alt="Four different kinds of tools are correctly indentified." src="../../_images/contour-matching-3.png" />
+<p class="caption"><span class="caption-text">Four different kinds of tools are correctly indentified.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../manual-calibration/" class="btn btn-neutral float-right" title="Manual Calibration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../binarize/" class="btn btn-neutral float-left" title="Binarize" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

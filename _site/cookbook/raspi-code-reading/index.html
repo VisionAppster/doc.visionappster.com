@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Code reading for Raspberry Pi &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Code reading" href="../code-reading/" />
+    <link rel="prev" title="Web app" href="../web-app/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code reading for Raspberry Pi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>Code reading for Raspberry Pi</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="code-reading-for-raspberry-pi">
+<h1>Code reading for Raspberry Pi<a class="headerlink" href="#code-reading-for-raspberry-pi" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>This recipe shows how to make an app that reads QR codes and barcodes.</p>
+<p>The application targeted at Raspberry Pi, which has rather limited
+processing power. The standard camera produces 5 MPx images which are
+too large to be processed in real time as such. Therefore, some speed
+optimization techniques are introduced.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/bf6e4577fbc3083d730659b1535b7606/CookbookRaspiCodeReading.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>The processing graph is too large to fit one page, which is why we’ll
+walk through it from top to bottom in smaller pieces.</p>
+<ul class="simple">
+<li><p>The images originate from the default webcam as configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>. Notice that the default camera is
+selected automatically by setting the <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Id</span></code> as <code class="docutils literal notranslate"><span class="pre">/^webcam/</span></code>,
+a regular expression that finds the first webcam connected to the
+computer.</p></li>
+<li><p>The frame rate is reduced by a factor of 3 with
+<a class="reference internal" href="../../tools/CountTool/"><span class="doc">Count</span></a> and <a class="reference internal" href="../../tools/GateTool/"><span class="doc">Gate</span></a> tools.
+The counter counts from zero to 2 and sets <code class="docutils literal notranslate"><span class="pre">Reset</span></code> output as
+<code class="docutils literal notranslate"><span class="pre">True</span></code> when it wraps around to zero. <code class="docutils literal notranslate"><span class="pre">Reset</span></code> output is connected
+to <code class="docutils literal notranslate"><span class="pre">Enabled</span></code> input of the Gate tool. Gate lets an image pass
+through from input to output only when <code class="docutils literal notranslate"><span class="pre">Enabled</span></code> is true. That is,
+only one out of every three images makes it through.
+<code class="docutils literal notranslate"><span class="pre">Input</span> <span class="pre">parameters</span></code> table in Gate tool has the name of the output
+socket (here <code class="docutils literal notranslate"><span class="pre">image</span></code>) in the first column and the type of the
+output (here <code class="docutils literal notranslate"><span class="pre">Image</span></code>) in the second column. The output is connected
+to three tools as we will see later.</p></li>
+</ul>
+<div class="small figure align-default" id="id1">
+<img alt="A counter and a gate are used to reduce frame rate." src="../../_images/raspi-1.png" />
+<p class="caption"><span class="caption-text">A counter and a gate are used to reduce frame rate.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> has been configured to
+convert the image from color to grayscale. This will speed up the
+processing downstream because grayscale image has only a quarter of
+the bytes compared to ordinary RGB color image.</p></li>
+<li><p>We speed up the processing further by cropping the original image to
+a quarter of its original size. The cropped area will be taken from
+the center of the original image.
+<a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> controls the size and position
+of the cropped image by calculating <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>
+accordingly. They are passed on to <a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop
+Image</span></a>. The downside of cropping is that the
+barcodes and QR codes will be read only if they are close to the
+center of the image.</p></li>
+</ul>
+<div class="medium figure align-default" id="id2">
+<img alt="Extracting the center portion of an image with a script and the crop tool." src="../../_images/raspi-2.png" />
+<p class="caption"><span class="caption-text">Extracting the center portion of an image with a script and the crop
+tool.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Now the processing path is split into three branches. The right one
+detects and reads barcodes, whereas the left one detects and reads QR
+codes. The middle branch measures histogram from the cropped grayscale
+image and analyzes the histogram to find the optimal intensity threshold
+between dark and bright bars or modules in the code. See the
+<a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and <a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find
+Threshold</span></a> tools for details. The user can
+enable and disable the code reading branches by toggling the <code class="docutils literal notranslate"><span class="pre">enabled</span></code>
+input parameters of two <a class="reference internal" href="../../tools/GateTool/"><span class="doc">gates</span></a>.</p>
+<div class="small figure align-default" id="id3">
+<img alt="Gates are used to selectively enable/disable code reading branches." src="../../_images/raspi-3.png" />
+<p class="caption"><span class="caption-text">Gates are used to selectively enable/disable code reading branches.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The branches for finding and reading barcodes and QR codes are
+identical. Let us walk through the one for barcodes.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tools/FindBarcodeTool/"><span class="doc">Find Barcode</span></a> finds the positions of
+barcodes in the customary <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> format. The
+intensity threshold between the bars and the background comes from
+the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Threshold</span></code> tool. You can limit the maximum number of
+codes the detector tries to find with the <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Detections</span></code> input
+parameter. The tool outputs sets of <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices
+which locate the positions and orientations of the found codes.</p></li>
+<li><p><a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate</span></a> has been configured to
+input the sets of frames and sizes from the detector. It splits frame
+and size matrix sets back to single entities. For instance, assume
+that there are four barcodes in the image. In this case Iterate Tool
+splits the 16-by-4 frame matrix into four individual 4-by-4 matrices
+and the 4-by-2 size matrix into four 1-by-2 matrices.</p></li>
+<li><p><a class="reference internal" href="../../tools/ReadBarcodeTool/"><span class="doc">Read Barcode</span></a> inputs the image and a
+<code class="docutils literal notranslate"><span class="pre">Frame</span></code>/<code class="docutils literal notranslate"><span class="pre">Size</span></code>-locator and reads the code bounded by the box
+defined by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. If you know the code type in
+advance (e.g. EAN-13, Code128 etc), you can configure it with the
+<code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">Type</span></code> input parameter. This makes the reading faster and more
+reliable. If you don’t know the code type, set the value to
+<code class="docutils literal notranslate"><span class="pre">Auto-detect</span></code> which is the default.</p></li>
+</ul>
+<div class="small figure align-default" id="id4">
+<img alt="The Read Barcode tool will be invoked for each barcode found." src="../../_images/raspi-4.png" />
+<p class="caption"><span class="caption-text">The Read Barcode tool will be invoked for each barcode found.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tools/EndIterateTool/"><span class="doc">End Iterate</span></a> is a counterpart to
+<code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span></code> described above. It stacks up entries received in
+its inputs, producing either matrices or tables as output. In this
+example, the entries received at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0</span></code> input are the code
+strings and the entries at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">1</span></code> are the code types. If there
+are, say, four codes found in the original input image, the output at
+<code class="docutils literal notranslate"><span class="pre">Result</span> <span class="pre">0</span></code> will be a 4-by-2 table. Notice that <code class="docutils literal notranslate"><span class="pre">Sync</span></code> input has
+to be connected to the corresponding <code class="docutils literal notranslate"><span class="pre">Sync</span></code> output in
+<code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span> <span class="pre">Tool</span></code>.</p></li>
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript Tool</span></a> runs a simple script that
+takes the table of strings and filters out empty ones. This is
+necessary because sometimes the barcode is easier to find than it is
+to read. If the reading fails, the reader produces an empty string
+that is filtered out by the script.</p></li>
+</ul>
+<div class="medium figure align-default" id="id5">
+<img alt="A script is used to filter out failed readings." src="../../_images/raspi-5.png" />
+<p class="caption"><span class="caption-text">A script is used to filter out failed readings.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The processing sequence for the QR code branch is nearly identical.
+Notice, however, that the code type is set as <code class="docutils literal notranslate"><span class="pre">QR</span></code>, not
+<code class="docutils literal notranslate"><span class="pre">Auto-detect</span></code> like it was in the barcode branch.</p>
+<div class="small figure align-default" id="id6">
+<img alt="QR codes are read the same way as barcodes." src="../../_images/raspi-7.png" />
+<p class="caption"><span class="caption-text">QR codes are read the same way as barcodes.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>When both analysis branches are enabled, the app reads QR codes and bar
+codes simultaneously. The picture below shows a typical result.</p>
+<div class="medium figure align-default" id="id7">
+<img alt="Simultaneous reading of perspective-distorted codes." src="../../_images/raspi-6.png" />
+<p class="caption"><span class="caption-text">Simultaneous reading of perspective-distorted codes.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../code-reading/" class="btn btn-neutral float-right" title="Code reading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../web-app/" class="btn btn-neutral float-left" title="Web app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

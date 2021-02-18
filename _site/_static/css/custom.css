@@ -1,0 +1,40 @@
+div.figure.small {
+  position: relative;
+  text-align: center;
+}
+
+div.figure.small img {
+  width: 50%;
+  min-width: 200px;
+}
+
+div.figure > .caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #f1f1f1;
+  transition: .5s ease;
+  opacity: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+div.figure:hover .caption {
+  opacity: 1;
+}
+
+div.figure .caption a {
+  color: inherit;
+}
+
+/* Hides Doxygen-generated C++ class inheritance stuff
+div#outputs .cpp.class code.descname ~ * {
+  display: none;
+}*/
+
+/* Hide everything in footer after copyrights. */
+footer > div.contentinfo ~ * {
+  display: none;
+}

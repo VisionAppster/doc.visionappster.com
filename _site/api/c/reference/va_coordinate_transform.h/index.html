@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_coordinate_transform.h &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_image" href="../va_image/" />
+    <link rel="prev" title="va_coordinate_frame" href="../va_coordinate_frame/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_coordinate_transform.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-coordinate-transform-h">
+<h1>va_coordinate_transform.h<a class="headerlink" href="#va-coordinate-transform-h" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_coordinate_transform.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv415va_distort_func">
+<span id="_CPPv315va_distort_func"></span><span id="_CPPv215va_distort_func"></span><span id="va_distort_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_distort_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a><span class="pre">*</span>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span><span class="pre">*</span>, <span class="pre">double</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_distort_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A non-linear distortion function used in conversions between world and pixel coordinates. </p>
+<p>Maps given coordinates to target coordinates. <dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_world_to_pixel_3d"><span class="std std-ref">va_world_to_pixel_3d()</span></a> </p>
+</dd>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_pixel_to_world_3d"><span class="std std-ref">va_pixel_to_world_3d()</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv413va_from_framePK19va_coordinate_framePKdiPd">
+<span id="_CPPv313va_from_framePK19va_coordinate_framePKdiPd"></span><span id="_CPPv213va_from_framePK19va_coordinate_framePKdiPd"></span><span id="va_from_frame__va_coordinate_frameCP.doubleCP.i.doubleP"></span><span class="target" id="va_from_frame"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">va_from_frame</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413va_from_framePK19va_coordinate_framePKdiPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts the coordinates of a point in a coordinate <em>frame</em> to coordinates in the enclosing frame. </p>
+<p>This function can be used for example to convert a point in world coordinates to the camera reference frame using the world frame as a parameter.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">world_point</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="n">double</span> <span class="n">camera_point</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="n">va_from_frame</span><span class="p">(</span><span class="n">img</span><span class="o">-&gt;</span><span class="n">world_frame</span><span class="p">,</span> <span class="n">world_point</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">camera_point</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the z coordinate of the output point.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: the coordinate frame that contains the <em>input</em> point</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: coordinates of the point in <em>frame</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code>: the number of dimensions in input and output (either 2 or 3). If <em>dimensions</em> is two, the input z is assumed to be zero, and output z will not be stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: an array of at least <em>dimensions</em> elements for storing the result. If the three-dimensional homogeneous input point (1-by-4 column vector) is denoted by X and the frame (4-by-4 matrix) by F, the result is FX. The function supports in-place transformation: <em>input</em> and <em>output</em> can be the same array.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv411va_to_framePK19va_coordinate_framePKdiPd">
+<span id="_CPPv311va_to_framePK19va_coordinate_framePKdiPd"></span><span id="_CPPv211va_to_framePK19va_coordinate_framePKdiPd"></span><span id="va_to_frame__va_coordinate_frameCP.doubleCP.i.doubleP"></span><span class="target" id="va_to_frame"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">va_to_frame</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411va_to_framePK19va_coordinate_framePKdiPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts coordinates in a coordinate to an inner coordinate frame. </p>
+<p>The function works as if <em>frame</em> was first inverted using va_invert_frame and then passed to va_from_frame. If you need to convert many points at once, it is more efficient to first invert <em>frame</em> with <a class="reference internal" href="#va_invert_frame"><span class="std std-ref">va_invert_frame()</span></a> and then call <a class="reference internal" href="#va_from_frame"><span class="std std-ref">va_from_frame()</span></a>.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the z coordinate of the output point or NAN if the transformation fails. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: the frame to which the coordinates are to be moved. This frame must be in the same coordinate system as the <em>input</em> point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: the coordinates of a point outside of the frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code>: the number of dimensions in input and output (either 2 or 3). If <em>dimensions</em> is two, the input z is assumed to be zero, and output z will not be stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: an array of at least <em>dimensions</em> elements for storing the result. If the three-dimensional homogeneous input point (1-by-4 column vector) is denoted by X and the frame (4-by-4 matrix) by F, the result is inv(F)X. The function supports in-place transformation: <em>input</em> and <em>output</em> can be the same array.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_invert_framePK19va_coordinate_frameP19va_coordinate_frame">
+<span id="_CPPv315va_invert_framePK19va_coordinate_frameP19va_coordinate_frame"></span><span id="_CPPv215va_invert_framePK19va_coordinate_frameP19va_coordinate_frame"></span><span id="va_invert_frame__va_coordinate_frameCP.va_coordinate_frameP"></span><span class="target" id="va_invert_frame"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_invert_frame</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_invert_framePK19va_coordinate_frameP19va_coordinate_frame" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates an inverse of a coordinate frame. </p>
+<p>The original coordinate frame transforms points in it to its enclosing frame whereas the inverse does the opposite. Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_NOT_INVERTIBLE</span></code> if <em>input</em> cannot be inverted. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_preserves_shapePK19va_coordinate_frame">
+<span id="_CPPv318va_preserves_shapePK19va_coordinate_frame"></span><span id="_CPPv218va_preserves_shapePK19va_coordinate_frame"></span><span id="va_preserves_shape__va_coordinate_frameCP"></span><span class="target" id="va_preserves_shape"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_preserves_shape</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_preserves_shapePK19va_coordinate_frame" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if <em>frame</em> is a 2-D rotation or scaling transformation that preserves the shape of an object. </p>
+<p>If <em>frame</em> contains shearing, non-uniform scaling or 3-D terms, returns 0. This function can be used to test if the shape of an object is the same in the world and on the image plane. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_world_to_pixelPK19va_coordinate_framePK20va_camera_parametersPKdiiPd">
+<span id="_CPPv317va_world_to_pixelPK19va_coordinate_framePK20va_camera_parametersPKdiiPd"></span><span id="_CPPv217va_world_to_pixelPK19va_coordinate_framePK20va_camera_parametersPKdiiPd"></span><span id="va_world_to_pixel__va_coordinate_frameCP.va_camera_parametersCP.doubleCP.i.i.doubleP"></span><span class="target" id="va_world_to_pixel"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_world_to_pixel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">int</span> <em><span class="pre">count</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_world_to_pixelPK19va_coordinate_framePK20va_camera_parametersPKdiiPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts coordinates in the world coordinate system to pixel coordinates. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>The number of points transformed successfully. If a transformation fails, the corresponding coordinates in the output array will be set to NAN. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">world_frame</span></code>: the location and orientation of the world coordinate system in the camera reference frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera</span></code>: camera calibration parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: a pointer to world coordinates. This array contains <em>count</em> (x, y) or (x, y, z) coordinates. If <em>dimensions</em> is two, the points are assumed to be on the xy plane of the input coordinate system (z = 0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>: the number of (x, y) coordinates in <em>input</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code>: the number of dimensions in <em>input</em> coordinates (2 or 3). If the number of dimensions is two, z is assumed to be zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: an array of at least 2 times <em>count</em> numbers to store the pixel coordinates.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_pixel_to_worldPK19va_coordinate_framePK20va_camera_parametersPKdiiPd">
+<span id="_CPPv317va_pixel_to_worldPK19va_coordinate_framePK20va_camera_parametersPKdiiPd"></span><span id="_CPPv217va_pixel_to_worldPK19va_coordinate_framePK20va_camera_parametersPKdiiPd"></span><span id="va_pixel_to_world__va_coordinate_frameCP.va_camera_parametersCP.doubleCP.i.i.doubleP"></span><span class="target" id="va_pixel_to_world"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_pixel_to_world</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">camera_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">int</span> <em><span class="pre">count</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_pixel_to_worldPK19va_coordinate_framePK20va_camera_parametersPKdiiPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts pixel coordinates to the world coordinate system. </p>
+<p>In general, there is no unique solution. This function assumes that the target object is planar and forms the xy plane of the world coordinate system. Consequently, the z coordinate of the result will always be zero and does not need to be calculated.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>The number of points transformed successfully. If a transformation fails, the corresponding coordinates in the output array will be set to NAN. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">camera_frame</span></code>: the location and orientation of the camera reference frame in world coordinates. This is the inverse of the world frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera</span></code>: camera calibration parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: a pointer to pixel coordinates. This array contains <em>count</em> pairs of (x, y) coordinates so that the total number is 2 times <em>count</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>: the number of (x, y) coordinates in <em>input</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code>: the number of dimensions in the output array (2 or 3). If the number of dimensions is three, the z coordinate will be set to zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: an array of at least <em>dimensions</em> times <em>count</em> numbers to store the world coordinates.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv424va_frame_scaling_factorsPK19va_coordinate_framePdPd">
+<span id="_CPPv324va_frame_scaling_factorsPK19va_coordinate_framePdPd"></span><span id="_CPPv224va_frame_scaling_factorsPK19va_coordinate_framePdPd"></span><span id="va_frame_scaling_factors__va_coordinate_frameCP.doubleP.doubleP"></span><span class="target" id="va_frame_scaling_factors"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_frame_scaling_factors</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">x_factor</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">y_factor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424va_frame_scaling_factorsPK19va_coordinate_framePdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Extracts horizontal and vertical scaling factors from a coordinate frame, provided that the frame represents a 2D scaling. </p>
+<p>The rationale for this function is that when a coordinate frame represents scaling and no rotation or other affine deformations, it is often much faster to just scale the coordinates than to apply the full transformation.</p>
+<p>Note that this function does not take a possible scaling of the z coordinate into account. Thus, the returned scaling factors are only valid if z = 0. In other cases, the scaling factors must be adjusted according to perspective projection.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> if <em>frame</em> represents 2D scaling, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> otherwise. Nothing is written in <em>x_factor</em> or <em>y_factor</em> in the error case. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: the coordinate frame from which scaling factors are to be extracted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x_factor</span></code>: horizontal scaling factor. Accurate only if <em>frame</em> is a 2D scaling transformation. If it is not, an approximate scaling factor at the principal point (where optical axis intersects world xy plane) will be stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_factor</span></code>: vertical scaling factor.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv425va_to_pixel_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd">
+<span id="_CPPv325va_to_pixel_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd"></span><span id="_CPPv225va_to_pixel_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd"></span><span id="va_to_pixel_scaling_terms__va_coordinate_frameCP.va_camera_parametersCP.doubleP.doubleP.doubleP.doubleP"></span><span class="target" id="va_to_pixel_scaling_terms"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_to_pixel_scaling_terms</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">x_factor</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">y_factor</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">x_translation</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">y_translation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425va_to_pixel_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Calculates scaling and translation terms that can be used to transform world coordinates to pixel coordinates directly. </p>
+<p>World coordinates can be transformed to pixel coordinates directly by scaling and translation if <em>world_frame</em> represents a 2D scaling (see va_frame_scaling_factors) and there are no non-linear terms in <em>camera</em>.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> if world coordinates can be transformed to pixels using scaling and translation, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> otherwise. Nothing is written in the output parameters in the error case. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv422va_to_pixel_scaling_atPK19va_coordinate_framePK20va_camera_parametersddd">
+<span id="_CPPv322va_to_pixel_scaling_atPK19va_coordinate_framePK20va_camera_parametersddd"></span><span id="_CPPv222va_to_pixel_scaling_atPK19va_coordinate_framePK20va_camera_parametersddd"></span><span id="va_to_pixel_scaling_at__va_coordinate_frameCP.va_camera_parametersCP.double.double.double"></span><span class="target" id="va_to_pixel_scaling_at"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">va_to_pixel_scaling_at</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <span class="pre">double</span> <em><span class="pre">world_x</span></em>, <span class="pre">double</span> <em><span class="pre">world_y</span></em>, <span class="pre">double</span> <em><span class="pre">world_z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_to_pixel_scaling_atPK19va_coordinate_framePK20va_camera_parametersddd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns an approximate scaling factor from world to pixel coordinates around the given point. </p>
+<p>The result is accurate if the camera is linear and the world frame only represents scaling and/or translation. Returns NAN on failure. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv425va_to_world_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd">
+<span id="_CPPv325va_to_world_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd"></span><span id="_CPPv225va_to_world_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd"></span><span id="va_to_world_scaling_terms__va_coordinate_frameCP.va_camera_parametersCP.doubleP.doubleP.doubleP.doubleP"></span><span class="target" id="va_to_world_scaling_terms"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_to_world_scaling_terms</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">camera_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">x_factor</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">y_factor</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">x_translation</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">y_translation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425va_to_world_scaling_termsPK19va_coordinate_framePK20va_camera_parametersPdPdPdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Calculates scaling and translation terms that can be used to transform pixel coordinates to world coordinates directly. </p>
+<p>Scaling and translation are accurate over the whole image if the camera is linear and the camera frame only represents scaling and/or translation. Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> if either <code class="docutils literal notranslate"><span class="pre">va_is_linear_camera(camera)</span></code> or <code class="docutils literal notranslate"><span class="pre">va_frame_scaling_factors(camera_frame)</span></code> returns an error. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv422va_to_world_scaling_atPK19va_coordinate_framePK20va_camera_parametersdd">
+<span id="_CPPv322va_to_world_scaling_atPK19va_coordinate_framePK20va_camera_parametersdd"></span><span id="_CPPv222va_to_world_scaling_atPK19va_coordinate_framePK20va_camera_parametersdd"></span><span id="va_to_world_scaling_at__va_coordinate_frameCP.va_camera_parametersCP.double.double"></span><span class="target" id="va_to_world_scaling_at"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">va_to_world_scaling_at</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">camera_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <span class="pre">double</span> <em><span class="pre">pixel_x</span></em>, <span class="pre">double</span> <em><span class="pre">pixel_y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_to_world_scaling_atPK19va_coordinate_framePK20va_camera_parametersdd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns an approximate scaling factor from pixel to world coordinates around the given point. </p>
+<p>The result is accurate if the camera is linear and the camera frame only represents scaling and/or translation. Returns NAN on failure. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_world_to_pixel_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdiPd">
+<span id="_CPPv320va_world_to_pixel_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdiPd"></span><span id="_CPPv220va_world_to_pixel_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdiPd"></span><span id="va_world_to_pixel_3d__va_coordinate_frameCP.va_camera_parametersCP.va_distort_func.doubleCP.i.doubleP"></span><span class="target" id="va_world_to_pixel_3d"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_world_to_pixel_3d</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <a class="reference internal" href="#_CPPv415va_distort_func" title="va_distort_func"><span class="pre">va_distort_func</span></a> <em><span class="pre">distort</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_world_to_pixel_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdiPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts a point in world coordinates to pixel coordinates. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> on failure. The conversion fails if the input point is not in front of the camera. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">world_frame</span></code>: The position of the world coordinate system with respect to the camera.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera</span></code>: Camera calibration data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distort</span></code>: A non-linear distortion function that models the effect of a lens. Maps normalized image coordinates to distorted pixel coordinates. May be a null pointer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: World coordinates. The input array must contain <em>dimensions</em> entries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code>: Either 2 or 3. If <em>dimensions</em> is two, the z coordinate is assumed to be zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: An array for storing the resulting pixel coordinates. Must be able to hold at least two numbers.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_pixel_to_world_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdPd">
+<span id="_CPPv320va_pixel_to_world_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdPd"></span><span id="_CPPv220va_pixel_to_world_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdPd"></span><span id="va_pixel_to_world_3d__va_coordinate_frameCP.va_camera_parametersCP.va_distort_func.doubleCP.doubleP"></span><span class="target" id="va_pixel_to_world_3d"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_pixel_to_world_3d</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">camera_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <a class="reference internal" href="#_CPPv415va_distort_func" title="va_distort_func"><span class="pre">va_distort_func</span></a> <em><span class="pre">undistort</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_pixel_to_world_3dPK19va_coordinate_framePK20va_camera_parameters15va_distort_funcPKdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts a point in pixel coordinates to world coordinates. </p>
+<p>This function assumes that the z coordinate of the pixel in the world coordinate system is zero.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> on failure. The conversion fails if the resulting point would not be in front of the camera. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">camera_frame</span></code>: The position of the camera in world coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera</span></code>: Camera calibration data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">undistort</span></code>: A non-linear undistortion function that maps coordinates distorted by the lens back to normalized image coordinates. May be a null pointer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: The pixel coordinates (x, y) of an input pixel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: An array for storing the resulting world coordinates. Must be able to hold at least two numbers. Since the z coordinate is assumed to be zero, no space for it is needed.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_pixel_distancePK19va_coordinate_framePK20va_camera_parametersPKdPKdi">
+<span id="_CPPv317va_pixel_distancePK19va_coordinate_framePK20va_camera_parametersPKdPKdi"></span><span id="_CPPv217va_pixel_distancePK19va_coordinate_framePK20va_camera_parametersPKdPKdi"></span><span id="va_pixel_distance__va_coordinate_frameCP.va_camera_parametersCP.doubleCP.doubleCP.i"></span><span class="target" id="va_pixel_distance"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">va_pixel_distance</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">start_point</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">end_point</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_pixel_distancePK19va_coordinate_framePK20va_camera_parametersPKdPKdi" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Given two points, <em>start_point</em> and <em>end_point</em> in the specified world frame and camera set-up, returns the distance between the points in pixels. </p>
+<p>If the distance cannot be calculated, returns NAN. If <em>start_point</em> and <em>end_point</em> are the same, returns 0. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_sample_countPK19va_coordinate_framePK19va_coordinate_framePK20va_camera_parametersPKdPKdiPdPd">
+<span id="_CPPv315va_sample_countPK19va_coordinate_framePK19va_coordinate_framePK20va_camera_parametersPKdPKdiPdPd"></span><span id="_CPPv215va_sample_countPK19va_coordinate_framePK19va_coordinate_framePK20va_camera_parametersPKdPKdiPdPd"></span><span id="va_sample_count__va_coordinate_frameCP.va_coordinate_frameCP.va_camera_parametersCP.doubleCP.doubleCP.i.doubleP.doubleP"></span><span class="target" id="va_sample_count"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_sample_count</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">camera_frame</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">start_point_world</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">end_point_world</span></em>, <span class="pre">int</span> <em><span class="pre">dimensions</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">start_point_pixel</span></em> <span class="pre">=</span> <span class="pre">0</span>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">end_point_pixel</span></em> <span class="pre">=</span> <span class="pre">0</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_sample_countPK19va_coordinate_framePK19va_coordinate_framePK20va_camera_parametersPKdPKdiPdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Given two points, <em>start_point</em> and <em>end_point</em> in the specified world frame and camera set-up, returns the minimum number of equally spaced samples that must be taken along the line connecting <em>start_point</em> and <em>end_point</em> to guarantee that each pixel is sampled at least once. </p>
+<p>Pixel coordinates of start and end points are stored in <em>start_point_pixel</em> and <em>end_point_pixel</em> unless they are null pointers. If coordinate transform does not succeed, returns 0 and does not write anything to <em>start_point_pixel</em> and <em>end_point_pixel</em>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_is_translationPK19va_coordinate_frame">
+<span id="_CPPv317va_is_translationPK19va_coordinate_frame"></span><span id="_CPPv217va_is_translationPK19va_coordinate_frame"></span><span id="va_is_translation__va_coordinate_frameCP"></span><span class="target" id="va_is_translation"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_is_translation</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">world_frame</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_is_translationPK19va_coordinate_frame" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if <em>world_frame</em> is pure translation (i.e. </p>
+<p>3x3 identity matrix) and 0 otherwise. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv410va_distortPK20va_camera_parametersPKdPd">
+<span id="_CPPv310va_distortPK20va_camera_parametersPKdPd"></span><span id="_CPPv210va_distortPK20va_camera_parametersPKdPd"></span><span id="va_distort__va_camera_parametersCP.doubleCP.doubleP"></span><span class="target" id="va_distort"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_distort</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410va_distortPK20va_camera_parametersPKdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts a point in normalized image coordinates to pixel coordinates by applying a lens distortion model. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">camera</span></code>: Camera calibration data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: The normalized image coordinates (x, y).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: Pixel coordinates (x, y). </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv412va_undistortPK20va_camera_parametersPKdPd">
+<span id="_CPPv312va_undistortPK20va_camera_parametersPKdPd"></span><span id="_CPPv212va_undistortPK20va_camera_parametersPKdPd"></span><span id="va_undistort__va_camera_parametersCP.doubleCP.doubleP"></span><span class="target" id="va_undistort"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_undistort</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <span class="pre">*</span><em><span class="pre">camera</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412va_undistortPK20va_camera_parametersPKdPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts a point in pixel coordinates to normalized image coordinates by applying an inverse lens distortion model. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">camera</span></code>: Camera calibration data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: Pixel coordinates (x, y).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: Normalized image coordinates (x, y). </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_image/" class="btn btn-neutral float-right" title="va_image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_coordinate_frame/" class="btn btn-neutral float-left" title="va_coordinate_frame" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

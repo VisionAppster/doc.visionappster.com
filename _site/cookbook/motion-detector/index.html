@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Motion detector &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Image classifier" href="../image-classifier/" />
+    <link rel="prev" title="Cookbook" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Motion detector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>Motion detector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="motion-detector">
+<h1>Motion detector<a class="headerlink" href="#motion-detector" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>This recipe shows how to make an app that detects motion by monitoring
+changes in successive input images and raises an alarm if an object of
+the specified type (e.g. a person, a dog or a car) is seen in the image.
+Furthermore, the image which triggered the alarm can be saved to a file.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/363014173812eb2032c8ce11809de513/CookbookMotionDetector.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>The big picture of the motion detector app is given below. The
+processing graph is too large to fit on one page, which is why we’ll
+walk it through in smaller pieces.</p>
+<div class="medium figure align-default" id="id1">
+<img alt="Big picture of the motion detector" src="../../_images/detectMotion-1.png" />
+<p class="caption"><span class="caption-text">Big picture of the motion detector</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>The images originate from the default webcam as configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>. Notice that the default camera is
+selected automatically by setting the <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Id</span></code> as <code class="docutils literal notranslate"><span class="pre">/^webcam/</span></code>,
+a regular expression that finds the first webcam connected to the
+computer.</p></li>
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> converts possibly
+encoded or compressed images to RGB format. This block is actually
+not needed as long as the images come from <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">Source</span></code> which
+decodes the images automatically. However, <code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">Colors</span></code> serves
+as a convenient entry point in case you later want to use the app as
+an API to which a client can send compressed images for analysis.</p></li>
+<li><p><a class="reference internal" href="../../tools/DetectMotionTool/"><span class="doc">Detect Motion</span></a> compares the input image
+to the background image which is a weighted average of all previous
+images. If more than 1% of the pixels (i.e. <code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Threshold</span></code> =
+0.01) differ from the background by more than 10 intensity levels
+(i.e. <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> = 10), it declares that motion has been detected
+by setting output <code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Detected</span></code> as <code class="docutils literal notranslate"><span class="pre">true</span></code>. Parameters
+<code class="docutils literal notranslate"><span class="pre">Alpha1</span></code> and <code class="docutils literal notranslate"><span class="pre">Alpha2</span></code> control how fast the background image
+adapts to changes in input images.</p></li>
+<li><p><a class="reference internal" href="../../tools/GateTool/"><span class="doc">Gate</span></a> passes through the input image and
+<code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Detected</span></code> flag only if motion has been detected-</p></li>
+</ul>
+<div class="small figure align-default" id="id2">
+<img alt="Gate passes through only images in which motion has been detected." src="../../_images/detectMotion-2.png" />
+<p class="caption"><span class="caption-text">Gate passes through only images in which motion has been detected.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>YOLO ONNX model tries to recognize objects in the image. The
+processing path from <code class="docutils literal notranslate"><span class="pre">Scale</span> <span class="pre">Image</span></code> to <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">YOLO</span> <span class="pre">Result</span></code> is
+identical to the <a class="reference internal" href="../yolo-classifier/"><span class="doc">YOLO Classifier
+recipe</span></a>. The output is a list of
+bounding boxes of found objects as pairs of <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>
+matrices, and a corresponding list of object classes as integers
+between 0 and 19.</p></li>
+</ul>
+<div class="small figure align-default" id="id3">
+<img alt="YOLO recognizes an object in the image." src="../../_images/detectMotion-yolo.png" />
+<p class="caption"><span class="caption-text">YOLO recognizes an object in the image.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<ul>
+<li><p>Information about detected motion, classes of objects which possibly
+caused the motion, as well as locations of the objects are passed to
+<a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> which makes the final decision
+on whether to raise an alarm. Inputs, outputs and the code for the
+script are given below.</p>
+<p>YOLO recognizes 20 object classes. The name of the class can be
+configured using the <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Type</span></code> parameter. The class names are
+listed in the script below. If the <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Type</span></code> parameter is left
+empty, the alarm is raised whenever any motion is detected.</p>
+</li>
+</ul>
+<div class="medium figure align-default" id="id4">
+<img alt="A script decides if an alarm should be raised." src="../../_images/detectMotion-3.png" />
+<p class="caption"><span class="caption-text">A script decides if an alarm should be raised.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Default values for frame &amp; size</span>
+<span class="kd">var</span> <span class="nx">outFrame</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">identity</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">outSize</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">outSize</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nx">outSize</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">yoloClasses</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;aeroplane&quot;</span><span class="p">,</span> <span class="s2">&quot;bicycle&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;boat&quot;</span><span class="p">,</span> <span class="s2">&quot;bottle&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;bus&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span> <span class="s2">&quot;cow&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;motorbike&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;pottedplant&quot;</span><span class="p">,</span> <span class="s2">&quot;sheep&quot;</span><span class="p">,</span> <span class="s2">&quot;sofa&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;tv&quot;</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">classId</span> <span class="o">=</span> <span class="nx">yoloClasses</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">objectType</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">classIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">classIndex</span><span class="p">.</span><span class="nx">rows</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">classIndex</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="nx">classId</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="nx">classIndex</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">classIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">motionDetected</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">outFrame</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">frame</span><span class="p">.</span><span class="nx">sub</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="nx">classIndex</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="nx">outSize</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size</span><span class="p">.</span><span class="nx">sub</span><span class="p">(</span><span class="nx">classIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">objectDetected</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">classId</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">motionDetected</span><span class="p">)</span>
+  <span class="nx">$o</span><span class="p">.</span><span class="nx">objectDetected</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="k">else</span>
+  <span class="nx">$o</span><span class="p">.</span><span class="nx">objectDetected</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="nx">$o</span><span class="p">.</span><span class="nx">frame</span> <span class="o">=</span> <span class="nx">outFrame</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="nx">outSize</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If a motion has been detected and the image contains an object of
+interest, <code class="docutils literal notranslate"><span class="pre">ObjectDetected</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Remember however
+that the alarm may have been triggered also by motion of something else
+than the recognized object.</p>
+<p>In this example the frame and size outputs (i.e. the bounding box
+information) are not used. You can use them for example by dragging and
+dropping <a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop Image</span></a> tool on the canvas and
+connecting the output of <code class="docutils literal notranslate"><span class="pre">Gate:</span> <span class="pre">Motion</span></code> tool to <code class="docutils literal notranslate"><span class="pre">Image</span></code> input of
+<code class="docutils literal notranslate"><span class="pre">Crop</span> <span class="pre">Image</span></code>. Then connect <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> outputs of the
+script to the corresponding input of <code class="docutils literal notranslate"><span class="pre">Crop</span> <span class="pre">Image</span></code> tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Detected</span></code> flag is connected to yet another script. The script
+controls where the interesting images will be saved. The file path where
+images will be saved is given in parameter <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Path</span></code>. The image
+format will be jpg and files are named as <code class="docutils literal notranslate"><span class="pre">image1.jpg</span></code>,
+<code class="docutils literal notranslate"><span class="pre">image2.jpg</span></code>, <code class="docutils literal notranslate"><span class="pre">image3.jpg</span></code> and so on. The numbering will wrap around
+after <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">File</span> <span class="pre">Count</span></code> have been saved and old images will be
+overwritten. No images will be saved if <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">File</span> <span class="pre">Count</span></code> is set as
+zero.</p>
+<div class="medium figure align-default" id="id5">
+<img alt="A script controls if and where the image should be saved," src="../../_images/detectMotion-4.png" />
+<p class="caption"><span class="caption-text">A script controls if and where the image should be saved,</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">$s</span><span class="p">.</span><span class="nx">fileCount</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$s</span><span class="p">.</span><span class="nx">fileCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">maxFileCount</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">objectDetected</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$s</span><span class="p">.</span><span class="nx">fileCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$s</span><span class="p">.</span><span class="nx">fileCount</span> <span class="o">&gt;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">maxFileCount</span><span class="p">)</span>
+      <span class="nx">$s</span><span class="p">.</span><span class="nx">fileCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">filePath</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">filePath</span> <span class="o">+</span> <span class="s2">&quot;/image&quot;</span> <span class="o">+</span> <span class="nx">$s</span><span class="p">.</span><span class="nx">fileCount</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">;</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">writeEnabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="k">else</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">filePath</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">writeEnabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../tools/GateTool/"><span class="doc">A gate</span></a> gets the <code class="docutils literal notranslate"><span class="pre">Write</span> <span class="pre">Enabled</span></code> flag from the
+script and uses it to decide whether to pass the image and file path to
+<a class="reference internal" href="../../tools/SaveImageTool/"><span class="doc">Save Image</span></a>.</p>
+<div class="small figure align-default" id="id6">
+<img alt="Images of interest are saved to jpg files," src="../../_images/detectMotion-5.png" />
+<p class="caption"><span class="caption-text">Images of interest are saved to jpg files,</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Finally, an example of the app in action. The object of interest has
+been configured as a dog. The app has detected both motion and a dog, so
+an alarm has been raised (i.e. <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Detected</span></code> output is <code class="docutils literal notranslate"><span class="pre">True</span></code>)
+and the image has been saved to a file.</p>
+<div class="medium figure align-default" id="id7">
+<img alt="An example of dog detection cam." src="../../_images/detectMotion-dog.png" />
+<p class="caption"><span class="caption-text">An example of dog detection cam.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../image-classifier/" class="btn btn-neutral float-right" title="Image classifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Cookbook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

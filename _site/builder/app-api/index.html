@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>App API &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Compound tools" href="../compounds/" />
+    <link rel="prev" title="Builder" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Builder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#first-steps">First steps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signals">Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-input-functions">Single input functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-functions">Tool functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-editor">API editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#designing-an-api">Designing an API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../compounds/">Compound tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../creating-components/">Creating components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Builder</a> &raquo;</li>
+        
+      <li>App API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="app-api">
+<h1>App API<a class="headerlink" href="#app-api" title="Permalink to this headline">🔗</a></h1>
+<p>While you build an app with the Builder, it automatically creates an API
+object that will be published as a <a class="reference internal" href="../../engine/remote-object-system/"><span class="doc">remote
+object</span></a> when the app is run.</p>
+<p>The structure of the API object can be manually managed to an extent,
+but the Builder also makes some automatic changes. Whenever you open an
+UI component to display or edit a parameter, the Builder will add an API
+entry to it to make sure the UI component will also work when run
+remotely.</p>
+<p>When designing an API it is important to understand the difference
+between things that are shared by all clients and those that are not.
+When an app is started, it will run exactly one instance of the
+processing graph and publish exactly one instance of the API object,
+which is therefore shared by all clients. Any change made to the state
+of that object will be seen by them all and any signal sent can be
+captured by any of the clients.</p>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">🔗</a></h2>
+<p>Properties are used to parameterize the execution of the processing
+graph and thus alter the state of the graph. Once a parameter is set,
+the effect will be seen by all clients.</p>
+<p>When you drop a non-required input parameter on an UI, the Builder will
+add a property to the API object. This property will be used by the UI
+component to change the value of the dropped parameter. There will also
+be a signal that lets other clients to listen to changes of the
+property.</p>
+<p>It is also possible to manually add an input parameter as a property to
+the API by right-clicking it and selecting “Publish app API property”
+from the context menu.</p>
+<p>Once you have the app with a published property running, setting the
+value of the property in a JavaScript client is straightforward:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">va</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">apiCtrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">va</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/apis/com.test/1&#39;</span><span class="p">);</span>
+<span class="nx">apiCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">api</span> <span class="p">=&gt;</span> <span class="nx">api</span><span class="p">.</span><span class="nx">propertyName</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mi">123</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>The same can be done on the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT -d <span class="m">123</span> http://localhost:2015/apis/com.test/1/properties/propertyName
+</pre></div>
+</div>
+</div>
+<div class="section" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Permalink to this headline">🔗</a></h2>
+<p>Each output parameter dropped on the UI will create a signal in the API
+object. This signal can be connected to by anybody, and all clients will
+receive the same value. The UI component will update its contents
+whenever a new value is received through the signal.</p>
+<p>To manually add an output as a signal to the API object, right-click the
+parameter and select “Publish app API signal” from the context menu.</p>
+<p>In JavaScript, one can connect a handler function (here,
+<code class="docutils literal notranslate"><span class="pre">console.log</span></code>) to published signals:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">va</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">apiCtrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">va</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/apis/com.test/1&#39;</span><span class="p">);</span>
+<span class="nx">apiCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">api</span> <span class="p">=&gt;</span> <span class="nx">api</span><span class="p">.</span><span class="nx">$signalName</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>There is no easy way to listen to signals on the command line as a
+WebSocket client is required.</p>
+</div>
+<div class="section" id="single-input-functions">
+<h2>Single input functions<a class="headerlink" href="#single-input-functions" title="Permalink to this headline">🔗</a></h2>
+<p>Connectable inputs can be individually published as functions in the
+API. When such a function is called, the function’s input argument will
+be sent to the tool’s input as if it was connected to another tool. Any
+client can call the function, and everybody will also be able to observe
+the processing results.</p>
+<p>It is rarely useful to publish inputs in intermediate tools this way.
+Doing so is an easy way of locking up the processing graph. Single input
+functions may however come in handy in situations where you want to
+provide an external trigger to a processing pipeline by publishing the
+very first input as a function.</p>
+<p>To publish an input parameter as a function, select “Publish app API
+function” from its context menu.</p>
+<p>Single input functions take a single input parameter and return no
+value. Calling them from JavaScript is easy:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">va</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">apiCtrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">va</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/apis/com.test/1&#39;</span><span class="p">);</span>
+<span class="nx">apiCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">api</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">api</span><span class="p">.</span><span class="nx">singleInputFunction</span><span class="p">(</span><span class="mf">3.14</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>If the input parameter requires no special encoding, a simple GET
+request does the same thing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl http://localhost:2015/apis/com.test/1/functions/singeInputFunction?3.14
+</pre></div>
+</div>
+</div>
+<div class="section" id="tool-functions">
+<h2>Tool functions<a class="headerlink" href="#tool-functions" title="Permalink to this headline">🔗</a></h2>
+<p>In applications where the data to be analyzed is sent by the client one
+usually wants the results to be delivered to the sending client only. In
+this case, signals are not the correct way of sending the results as
+they can be connected to by anybody.</p>
+<p><strong>If you intend to run an app in VisionAppster Cloud, the public API of
+the app must consist of 1-N tool functions and nothing else.</strong></p>
+<p>It is possible to make any tool in the analysis graph callable as an API
+function. Such functions differ from single input functions in two
+important ways:</p>
+<ol class="arabic simple">
+<li><p>All input parameters are passed in one call.</p></li>
+<li><p>The results are delivered using callback functions supplied by the
+client to the calling client only.</p></li>
+</ol>
+<p>Any tool can be exposed as a function by simply checking the “Publish
+tool function API” box in the tool’s properties (opens from context
+menu). The dialog lets you to choose which inputs and outputs of the
+tool are actually published.</p>
+<p>When a tool is published to the API, the Builder creates two overloaded
+versions of the function:</p>
+<ol class="arabic">
+<li><p>An asynchronous version that will push results back using callback
+functions via the client’s return channel. The created API function
+will take three arguments at a minimum:</p>
+<ul class="simple">
+<li><p>Tool input arguments, one for each published input. There needs to
+be at least one published input.</p></li>
+<li><p>Success callback function. If the call succeeds, this function
+will be passed the values of the published outputs.</p></li>
+<li><p>Failure callback function. If the call fails, this function will
+be passed a string describing the error.</p></li>
+</ul>
+<p>The signature of the function is
+<code class="docutils literal notranslate"><span class="pre">(inputs...,</span> <span class="pre">success(outputs...),</span> <span class="pre">error(message))</span></code>.</p>
+</li>
+<li><p>A synchronous version that blocks until a result has been received
+and encodes the output values (if any) to the response body. If there
+is only one output, it will be written to the response body as such.
+If there are many outputs, they will be encoded as an array. In both
+cases, the response will be encoded according to the “Accept” request
+header.</p>
+<p>The signature of the function is either <code class="docutils literal notranslate"><span class="pre">(inputs...)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">(inputs...)</span> <span class="pre">-&gt;</span> <span class="pre">output</span></code> or <code class="docutils literal notranslate"><span class="pre">(inputs...)</span> <span class="pre">-&gt;</span> <span class="pre">(outputs...)</span></code>,
+depending on the number of output parameters.</p>
+</li>
+</ol>
+<p>For example, if the <a class="reference internal" href="../../tools/BinarizeTool/"><span class="doc">binarize tool</span></a> was
+published as a function, the signatures of the two function overloads
+would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binarize</span><span class="p">:</span> <span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span>
+           <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+           <span class="n">invert</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+           <span class="n">success</span><span class="p">:</span> <span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">),</span>
+           <span class="n">failure</span><span class="p">:</span> <span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">String</span><span class="p">))</span>
+
+<span class="n">binarize</span><span class="p">:</span> <span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span>
+           <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+           <span class="n">invert</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+</pre></div>
+</div>
+<p>In the first overload, the first three parameters are the inputs of the
+binarize tool. The fourth parameter is the success callback function
+that will be passed an image, which is the output of the tool. The last
+parameter is the failure callback that will be called with a reason
+phrase if the call fails. The function returns immediately and calls
+either <code class="docutils literal notranslate"><span class="pre">success</span></code> or <code class="docutils literal notranslate"><span class="pre">failure</span></code> later through the client’s return
+channel.</p>
+<p>In JavaScript, calling such a function would happen like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">va</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">apiCtrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">va</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/apis/com.test/1&#39;</span><span class="p">);</span>
+<span class="nx">apiCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">api</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">api</span><span class="p">.</span><span class="nx">binarize</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="k">new</span> <span class="nx">va</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">va</span><span class="p">.</span><span class="nx">Image</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Gray8</span><span class="p">),</span>
+                     <span class="mi">127</span><span class="p">,</span>
+                     <span class="kc">true</span><span class="p">,</span>
+                     <span class="nx">image</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Success&#39;</span><span class="p">,</span> <span class="nx">image</span><span class="p">),</span>
+                     <span class="nx">error</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The example doesn’t do anything useful with the result, it just writes
+either the result image or the error message to the console.</p>
+<p>The synchronous version of the function is easier to use from
+programming languages that don’t yet have VisionAppster client API
+libraries. For example, the function could be called using <code class="docutils literal notranslate"><span class="pre">curl</span></code> as
+follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST -H <span class="s2">&quot;Content-Type: image/jpeg&quot;</span> -H <span class="s2">&quot;Accept: image/jpeg&quot;</span> <span class="se">\</span>
+  --data-binary @input.jpeg <span class="se">\</span>
+  http://localhost:2015/apis/com.test/1/functions/binarize <span class="se">\</span>
+  &gt; output.jpeg
+</pre></div>
+</div>
+<p>Note however that this only works for a subset of possible API
+functions. For example, if the function requires multiple images as
+input or returns a tensor, you need to resort to a custom encoding
+scheme that is supported by the client API library only.</p>
+<p>Note that although we used a singe tool as an example here, native tools
+aren’t usually published as API functions by themselves. Instead, one
+usually wants to <a class="reference internal" href="../compounds/"><span class="doc">create a compound</span></a> that bundles many
+tools into one and publish that as an API function.</p>
+</div>
+<div class="section" id="api-editor">
+<h2>API editor<a class="headerlink" href="#api-editor" title="Permalink to this headline">🔗</a></h2>
+<p>The properties, functions and signals of the API object are shown in the
+API editor that opens by clicking the small API icon at the upper right
+corner of the Builder’s workspace. The API editor lets you change the
+names of the published API entries and to see which parameters or tools
+are linked to which entries. Try clicking the names to see where they
+are linked to.</p>
+</div>
+<div class="section" id="designing-an-api">
+<h2>Designing an API<a class="headerlink" href="#designing-an-api" title="Permalink to this headline">🔗</a></h2>
+<p>To make your API consistent and usable for the widest possible range of
+client software you should adhere to the following guidelines. The
+VisionAppster client API library will work with all types of APIs, but
+all of the required protocols and encoding schemes aren’t widely
+available elsewhere.</p>
+<ol class="arabic simple">
+<li><p>Avoid types that are not natively supported by JSON in the interface.
+Data types such as tables, tensors, matrices or 16-bit floats cannot
+be directly represented as JSON and require custom en/decoders. For
+data type conversions, you can use conversion tools such as <a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to
+Tensor</span></a> or <a href="#id1"><span class="problematic" id="id2">`Tensor to
+Image &lt;/tools/TensorToImageTool&gt;:doc:`__</span></a>. In
+<cite>JavaScript &lt;/tools/JavaScriptTool&gt;</cite>, you can convert matrices and
+tensors to JS arrays, for example. Returning a JS object is also a
+good idea.</p></li>
+<li><p>If an API function takes an image as input, make it the first input
+argument. This will let client software to easily send the image as a
+POST request body.</p></li>
+<li><p>If an API function produces an image as output, do not provide other
+outputs. Multiple return values need to be always encoded in special
+ways, making them more difficult to parse at the receiving end.</p></li>
+<li><p>Start API entry (function, property, signal) names with a lowercase
+letter. Capitalize all other words. Use verbs for functions.
+Examples:</p>
+<ul class="simple">
+<li><p>Property: <code class="docutils literal notranslate"><span class="pre">inputParameter</span></code></p></li>
+<li><p>Function: <code class="docutils literal notranslate"><span class="pre">sendImage</span></code></p></li>
+<li><p>Signal: <code class="docutils literal notranslate"><span class="pre">analyzed</span></code></p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../compounds/" class="btn btn-neutral float-right" title="Compound tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Builder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

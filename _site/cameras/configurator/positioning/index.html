@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Positioning &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Camera drivers" href="../../drivers/" />
+    <link rel="prev" title="Calibration" href="../calibration/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Cameras</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../">Camera Configurator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../#parameter-sets">Parameter sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#image-source">Image source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameters/">Camera driver parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calibration/">Calibration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Positioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#positioning-view">Positioning view</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../drivers/">Camera drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">Cameras</a> &raquo;</li>
+        
+          <li><a href="../">Camera Configurator</a> &raquo;</li>
+        
+      <li>Positioning</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="positioning">
+<h1>Positioning<a class="headerlink" href="#positioning" title="Permalink to this headline">🔗</a></h1>
+<p>Positioning a camera serves two purposes: to aid in placing a camera to
+its correct position and to calculate the exact position of the camera
+with respect to a world coordinate system. Sometimes, the parameters
+defining the position of a camera are called the <em>extrinsic</em> parameters
+of a camera.</p>
+<div class="section" id="positioning-view">
+<h2>Positioning view<a class="headerlink" href="#positioning-view" title="Permalink to this headline">🔗</a></h2>
+<p>Before calculating the camera position parameters, the previously saved
+<code class="docutils literal notranslate"><span class="pre">Calibration</span></code> parameter set must be associated with the camera.
+Otherwise, a warning is shown in the <em>Positioning</em> view:</p>
+<div class="figure align-default" id="id1">
+<img alt="Associated calibration parameters missing." src="../../../_images/cc-associated-calibration-parameters-missing.png" />
+<p class="caption"><span class="caption-text">Associated calibration parameters missing.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<p>In this case, you should go back to the <em>Calibration</em> view and associate
+the calibration parameters by editing the <code class="docutils literal notranslate"><span class="pre">Associated</span> <span class="pre">parameters</span></code>
+setting value. Note that the same setting in <em>Positioning</em> view means
+associating the position parameters.</p>
+<p>The positioning procedure starts with selecting the correct value in the
+<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">type</span></code> setting. For an <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">scan</span></code> camera, the required input
+parameters are explained in <a class="reference internal" href="../../../tools/PositionCameraTool/"><span class="doc">Position
+camera</span></a> and for a <code class="docutils literal notranslate"><span class="pre">Line</span> <span class="pre">scan</span></code> camera, in
+<a class="reference internal" href="../../../tools/PositionLinescanCameraTool/"><span class="doc">Position line-scan camera</span></a>.</p>
+<p>Exactly one image of the standard calibration target is needed for
+positioning. It can be either a live image or a recorded image, which
+can be toggled with the corresponding buttons.</p>
+<p>Many matrix cameras can be positioned to the same world coordinate
+system. In such a case, one of the corners or the center of the
+calibration target must be visible in every image.</p>
+<div class="figure align-default" id="id2">
+<img alt="Buttons to switch between live and recorded images." src="../../../_images/cc-positioning-image-source.png" />
+<p class="caption"><span class="caption-text">Buttons to switch between live and recorded images.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<p>With the live image option, the positioning procedure is done for each
+image captured using either the <em>single shot</em> (<img alt="image0" src="../../../_images/cc-capture-one-button.png" />) button or the
+<em>continuous capture</em> (<img alt="image1" src="../../../_images/cc-capture-button.png" />) button. With the recorded image option,
+you need to select an image from the list of the recorded images shown
+at the bottom of the view. If multiple recorded images are selected, the
+one being shown in the image display is used.</p>
+<p>The <em>Positioning</em> view applies the calibration parameters associated
+with the camera when the images are displayed in the image display on
+the right side of the view. This means the image pixels can be mapped to
+the world coordinates. To see the image in world coordinate frame,
+change <code class="docutils literal notranslate"><span class="pre">Coordinate</span> <span class="pre">frame</span></code> to <code class="docutils literal notranslate"><span class="pre">World</span></code> in the context menu of the
+image display. Note that displaying a camera image in the world
+coordinate frame is possible only in the <em>Positioning</em> view. In the
+other views, images will always look the same in <code class="docutils literal notranslate"><span class="pre">Image</span></code> and <code class="docutils literal notranslate"><span class="pre">World</span></code>
+coordinate frames. The image display also shows the calculated center
+position with a frame widget. That should be at the center of the center
+marker of the calibration plate.</p>
+<div class="figure align-default" id="id3">
+<img alt="Successful camera positioning." src="../../../_images/cc-positioning-frame.png" />
+<p class="caption"><span class="caption-text">Successful camera positioning.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>You can have a closer look on the exact position by placing the cursor
+on top of the widget and then zooming closer by holding down the
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> key and scrolling up with the mouse’s middle button.</p>
+<div class="figure align-default" id="id4">
+<img alt="Successful camera positioning - center zoomed in." src="../../../_images/cc-positioning-frame-closeup.png" />
+<p class="caption"><span class="caption-text">Successful camera positioning - center zoomed in.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code> value shows how successful the positioning
+procedure was. The smaller the value, the better. The scale is the same
+as in the <em>Calibration</em> view.</p>
+<p>Once you are satisfied with the positioning results, they can be saved
+as a position parameter set and associated with the camera by editing
+the <code class="docutils literal notranslate"><span class="pre">Associated</span> <span class="pre">parameters</span></code> setting in the <em>Positioning</em> view.</p>
+<p>That’s all! Now an <a class="reference internal" href="../../../tools/ImageSource/"><span class="doc">Image Source</span></a> using the
+camera can be configured to <a class="reference internal" href="../#image-source"><span class="std std-ref">use the associated parameter
+sets</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../drivers/" class="btn btn-neutral float-right" title="Camera drivers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../calibration/" class="btn btn-neutral float-left" title="Calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

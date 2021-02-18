@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Raspberry Pi installation &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Linux installation" href="../linux/" />
+    <link rel="prev" title="Windows installation" href="../windows/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/">Windows installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Raspberry Pi installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#graphically">Graphically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-command-line">On command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting">Connecting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/">Linux installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Installation</a> &raquo;</li>
+        
+      <li>Raspberry Pi installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="raspberry-pi-installation">
+<h1>Raspberry Pi installation<a class="headerlink" href="#raspberry-pi-installation" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="graphically">
+<h2>Graphically<a class="headerlink" href="#graphically" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p>Download the <a class="reference external" href="https://download.visionappster.com/raspberrypi/va-rpi-img-latest.zip">VisionAppster Raspberry Pi SD card
+image</a>.</p></li>
+<li><p>Download and install <a class="reference external" href="https://www.balena.io/etcher/">Etcher</a>.
+Linux installation instructions can be found
+<a class="reference external" href="https://github.com/balena-io/etcher">here</a>.</p></li>
+<li><p>Find an empty SD card and connect it to your computer (you may need
+an external SD card reader).</p></li>
+<li><p>Open Etcher and select the disk image file (va-rpi-img-latest.zip)
+you just downloaded.</p></li>
+<li><p>Select the SD card you wish to write your image to.</p></li>
+<li><p>Click “Flash!”.</p></li>
+<li><p>Insert the SD card into your Raspberry Pi.</p></li>
+<li><p>Connect the power cable.</p></li>
+</ul>
+</div>
+<div class="section" id="on-command-line">
+<h2>On command line<a class="headerlink" href="#on-command-line" title="Permalink to this headline">🔗</a></h2>
+<p>The downloaded SD card image file is just a zipped disk image that you
+can also flash with command-line tools. The following instructions are
+for Linux.</p>
+<p>To begin, you need to find out the name of your SD card device. It is
+crucial to get this part right; you may wipe out your own hard drive
+otherwise. Open a terminal and type <code class="docutils literal notranslate"><span class="pre">lsblk</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda           8:0    0   477G  0 disk
+├─sda1        8:1    0   512M  0 part /boot/efi
+└─sda2        8:2    0 476,4G  0 part /
+mmcblk0     179:0    0   7,5G  0 disk
+├─mmcblk0p1 179:1    0  43,9M  0 part
+└─mmcblk0p2 179:2    0   7,5G  0 part
+</pre></div>
+</div>
+<p>This computer has a hard drive (<code class="docutils literal notranslate"><span class="pre">sda</span></code>) and an integrated SD card
+reader, which shows up as <code class="docutils literal notranslate"><span class="pre">mmcblk0</span></code>. The inserted SD card has two
+partitions (<code class="docutils literal notranslate"><span class="pre">mmcblk0p1</span></code> and <code class="docutils literal notranslate"><span class="pre">mmcblk0p2</span></code>), which are going to be
+overwritten. If the same SD card is inserted using a USB card reader,
+the output will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   477G  0 disk
+├─sda1   8:1    0   512M  0 part /boot/efi
+└─sda2   8:2    0 476,4G  0 part /
+sdb      8:16   1   7,5G  0 disk
+├─sdb1   8:17   1  43,9M  0 part
+└─sdb2   8:18   1   7,5G  0 part
+</pre></div>
+</div>
+<p>In this case, the card is accessed through a different bus and hence
+gets <code class="docutils literal notranslate"><span class="pre">sdb</span></code> as its name. The two partitions are now <code class="docutils literal notranslate"><span class="pre">sdb1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">sdb2</span></code>.</p>
+<p>To flash an SD card image, you just need to write the image file into
+the correct device (as root):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -s
+unzip -p va-rpi-img-latest.zip &gt; /dev/mmcblk0
+</pre></div>
+</div>
+<p>The name of the device will be <code class="docutils literal notranslate"><span class="pre">/dev/mmcblk0</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code> or
+something similar. If unsure, use Etcher.</p>
+</div>
+<div class="section" id="connecting">
+<h2>Connecting<a class="headerlink" href="#connecting" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster Rpi image is based on <a class="reference external" href="https://archlinuxarm.org/">Arch Linux
+ARM</a>. The default username and password
+are <strong>alarm</strong> and <strong>alarm</strong>, respectively. The system has SSH enabled.
+The <strong>root</strong> password is <strong>root</strong>.</p>
+<p>Finding out the IP address of the RPi may be a bit tricky. If you have
+display and keyboard connected to the RPi, open a terminal and type the
+following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ip a
+</pre></div>
+</div>
+<p>In the output, look for lines like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inet</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.92</span><span class="o">/</span><span class="mi">24</span> <span class="n">brd</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.255</span> <span class="n">scope</span> <span class="k">global</span> <span class="n">eth0</span>
+</pre></div>
+</div>
+<p>Here, 192.168.1.92 is the IP address. <code class="docutils literal notranslate"><span class="pre">eth0</span></code> identifies a wired
+interface. You can modify the network configuration on the RPi using
+<code class="docutils literal notranslate"><span class="pre">raspi-config</span></code>. If you do and connect using WiFi, look for <code class="docutils literal notranslate"><span class="pre">wlan0</span></code>
+in the output of the <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> command.</p>
+<p>If you are running the RPi headless, you need to have a look at your
+DHCP server’s log files to find out which IP address was assigned to the
+RPi.</p>
+<p>If you can’t access the DHCP log file but you know the network segment
+to which you attached the RPi, you may try <a class="reference external" href="https://nmap.org/">nmap</a>.
+On Linux, you can usually install it using your system’s package manager
+(e.g. apt or yum). A Windows installer is available on the <a class="reference external" href="https://nmap.org/download">nmap
+site</a>.</p>
+<p>On Linux, give the following command (<code class="docutils literal notranslate"><span class="pre">sudo</span></code> is needed to display MAC
+addresses, which reveal the network card manufacturer):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo nmap -sn <span class="m">192</span>.168.1.0/24
+</pre></div>
+</div>
+<p>On Windows, open a command prompt as administrator and type:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>nmap -sn 192.168.1.0/24
+</pre></div>
+</div>
+<p>Here, 192.168.1.0/24 is your network segment, which you need to find out
+e.g. by using <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> or by opening the IPv4 properties of your network
+interface in a graphical environment.</p>
+<p>Once you have found the IP address, you can test the installation by
+pointing your browser to <a class="reference external" href="http://ip-address-of-rpi:2015/">http://ip-address-of-rpi:2015/</a>. You can also
+add the RPi as a remote in VisionAppster Builder. This makes it possible
+to use the camera of the RPi as an image source in the Builder and to
+export packages directly to it.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../linux/" class="btn btn-neutral float-right" title="Linux installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../windows/" class="btn btn-neutral float-left" title="Windows installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

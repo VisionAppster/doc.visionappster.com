@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Creating tools with Python &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Python API reference" href="../reference/" />
+    <link rel="prev" title="Python API" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">Python API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#python-environment">Python environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#reloading-python-code">Reloading Python code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#caveats">Caveats</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating tools with Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimal-example">Minimal example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#describing-a-tools-interface">Describing a tool’s interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-type-conversions">Data type conversions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#runtime-errors">Runtime errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-state">Tool state</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/">Python API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../c/">C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../">Python API</a> &raquo;</li>
+        
+      <li>Creating tools with Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-tools-with-python">
+<h1>Creating tools with Python<a class="headerlink" href="#creating-tools-with-python" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="minimal-example">
+<h2>Minimal example<a class="headerlink" href="#minimal-example" title="Permalink to this headline">🔗</a></h2>
+<p>The following code snippet provides a minimal implementation of a Python
+tool plugin. It implements a tool that passes an input image to its
+output and registers it to the VisionAppster runtime. If you save this
+code to <code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/plugins/tool/mytoolplugin.py</span></code>, you will
+find the tool in the Builder’s tool box as “PassImage”.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="kn">as</span> <span class="nn">va</span>
+
+<span class="k">class</span> <span class="nc">PassImage</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">())],</span>
+                <span class="n">outputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">)]):</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">image</span>
+
+<span class="n">va</span><span class="o">.</span><span class="n">Tool</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s1">&#39;com.acme.python/0&#39;</span><span class="p">,</span> <span class="n">PassImage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To be able to use the VisionAppster Python interface, the code imports
+the <code class="docutils literal notranslate"><span class="pre">visionappster</span></code> package. This package is built into the
+VisionAppster runtime.</p>
+<p>Every tool is represented as a Python class. When a tool is added to a
+processing graph, an instance of it will be created. The simple example
+tool here has no constructor function (<code class="docutils literal notranslate"><span class="pre">__init__</span></code>) should it need to
+initialize instance variables. The name of the class will be shows as
+the name of the tool in the Builder.</p>
+<p>The tool class must define an instance method called <code class="docutils literal notranslate"><span class="pre">process</span></code>. The
+first argument to the method is <code class="docutils literal notranslate"><span class="pre">self</span></code> as per Python’s conventions.
+The next two arguments declare the input and output parameters of the
+tool. Python’s type annotations are used to provide a rich description
+of the interface. The example tool has a single input parameter called
+“image” whose type is <code class="docutils literal notranslate"><span class="pre">Image</span></code>. The parameter has a default value: an
+empty image. The single output parameter is declared the same way except
+that it has no default value.</p>
+<p>The body of the <code class="docutils literal notranslate"><span class="pre">process</span></code> function simply copies the value of the
+<code class="docutils literal notranslate"><span class="pre">image</span></code> input parameter to the output. In a more realistic situation,
+the tool would make calls to e.g. NumPy and OpenCV functions.</p>
+<p>Finally, the VisionAppster runtime must be made aware of the existence
+of the tool. This happens by calling the <code class="docutils literal notranslate"><span class="pre">Tool.publish</span></code> function. The
+first argument is the <a class="reference internal" href="../../../components/#full-component-id"><span class="std std-ref">full component
+ID</span></a> of the tool plugin. The rest
+are the names of the Python classes to be registered in that plugin.</p>
+</div>
+<div class="section" id="describing-a-tools-interface">
+<h2>Describing a tool’s interface<a class="headerlink" href="#describing-a-tools-interface" title="Permalink to this headline">🔗</a></h2>
+<p>In essence, each tool in a VisionAppster processing graph is a function
+that will be called by the runtime when needed. At a minimum, the
+runtime only needs to know the names and types of input and output
+parameters as shown in the simple example above. A richer description of
+the interface however makes using the tool more convenient as it allows
+the Builder to automatically provide suitable UI components for editing
+the tool’s parameters, for example.</p>
+<p>The example below shows how meta-data can be used to provide a the
+Builder hints on how to best handle each parameter.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RichMetaData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Tool with Rich Meta-Data</span>
+
+<span class="sd">       The first line of the documentation comment is used as the</span>
+<span class="sd">       default user-visible name of the tool. If there is no</span>
+<span class="sd">       documentation comment, the class name will be used.</span>
+
+<span class="sd">       The rest of the documentation comment will be shown</span>
+<span class="sd">       as in-line help in the Builder.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Tags can be used to categorize tools in the tool box.</span>
+    <span class="n">__va_tags__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pass&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}),</span>
+                         <span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>
+                          <span class="p">{</span><span class="s1">&#39;choices&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Value 1&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                                       <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Value 2&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]}),</span>
+                         <span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+                         <span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;ABC&#39;</span><span class="p">),</span>
+                         <span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+                         <span class="p">(</span><span class="s1">&#39;tensor&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Tensor</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])),</span>
+                         <span class="p">(</span><span class="s1">&#39;intMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Int32</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Int32</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                          <span class="p">{</span><span class="s1">&#39;minRows&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+                         <span class="p">(</span><span class="s1">&#39;floatMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Float</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                         <span class="p">(</span><span class="s1">&#39;doubleMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Double</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+                          <span class="p">{</span><span class="s1">&#39;typeName&#39;</span><span class="p">:</span> <span class="s1">&#39;Matrix&lt;double&gt;/frame&#39;</span><span class="p">}),</span>
+                         <span class="p">(</span><span class="s1">&#39;boolMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                         <span class="p">(</span><span class="s1">&#39;floatComplexMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">FloatComplex</span><span class="p">,</span>
+                          <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">FloatComplex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                         <span class="p">(</span><span class="s1">&#39;doubleComplexMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">DoubleComplex</span><span class="p">,</span>
+                          <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">DoubleComplex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                         <span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="p">[]),</span>
+                         <span class="p">(</span><span class="s1">&#39;dict&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">})],</span>
+                <span class="n">outputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">,</span> <span class="nb">bool</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;tensor&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Tensor</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;intMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Int32</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;floatMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Float</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;doubleMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span>
+                           <span class="p">{</span><span class="s1">&#39;typeName&#39;</span><span class="p">:</span> <span class="s1">&#39;Matrix&lt;double&gt;/frame&#39;</span><span class="p">}),</span>
+                          <span class="p">(</span><span class="s1">&#39;boolMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Bool</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;floatComplexMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">FloatComplex</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;doubleComplexMatrix&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">DoubleComplex</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;dict&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">           Copies every attribute from the input object to the</span>
+<span class="sd">           corresponding attribute in the output object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The type annotations for <code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs</span></code> are provided as an
+array of tuples. Semi-formally, each input declaration is a tuple
+<code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">type,</span> <span class="pre">default?,</span> <span class="pre">meta?)</span></code>, where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> is the name of the input, which must be unique among inputs.
+The name must be a python <code class="docutils literal notranslate"><span class="pre">str</span></code> object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> is a Python type class that defines the type of the
+parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code> is optional. If it is given and not <code class="docutils literal notranslate"><span class="pre">None</span></code>, the input
+is optional. The default value will be passed to the function if the
+input is not connected in the processing graph. The value must be an
+instance of the Python type class given as the <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meta</span></code> is an optional <code class="docutils literal notranslate"><span class="pre">dict</span></code> instance defining
+<a class="reference internal" href="../../tool/#recognized-meta-data-keys"><span class="std std-ref">meta-data</span></a> for the input. If
+you want to define meta-data but no default value, give <code class="docutils literal notranslate"><span class="pre">None</span></code> as
+the <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p></li>
+</ul>
+<p>Output declarations are otherwise similar, but they cannot contain a
+default value.</p>
+<p>When a tool is invoked, the runtime passes the <code class="docutils literal notranslate"><span class="pre">process</span></code> function
+<code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs</span></code> objects that have attributes matching the
+declared input and output names. The value of an input comes either from
+an earlier function in the processing graph or from the default value,
+if the input is unconnected. The function implementation must write a
+value to all outputs.</p>
+</div>
+<div class="section" id="data-type-conversions">
+<h2>Data type conversions<a class="headerlink" href="#data-type-conversions" title="Permalink to this headline">🔗</a></h2>
+<p>Compared to C, Python provides fewer built-in data types. The following
+table lists the supported conversions between Python data types and
+VisionAppster C types.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Python type</p></th>
+<th class="head"><p>C type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int64_t</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_string</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_array</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_object</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">va.Array</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_array</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">va.Object</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_object</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">va.Image</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_image</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">va.Tensor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_tensor</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">va.Matrix.Int32</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_imatrix</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">va.Matrix.Float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_fmatrix</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">va.Matrix.Double</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_dmatrix</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">va.Matrix.Bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_bmatrix</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">va.Matrix.FloatComplex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_fcmatrix</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">va.Matrix.DoubleComplex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">va_dcmatrix</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">int</span></code> is a variable-length, signed integer type. If you
+specify it as the type of a parameter, the C type used will be
+<code class="docutils literal notranslate"><span class="pre">int64_t</span></code>. Communication with JavaScript code and subsequently some
+user interfaces further limits the available range to 53 bits. Unless
+you really need larger numbers, please make sure your integers occupy no
+more than 53 binary digits.</p>
+<p>When a <code class="docutils literal notranslate"><span class="pre">va_array</span></code> is passed to a Python tool, the VisionAppster
+runtime uses a special <code class="docutils literal notranslate"><span class="pre">Array</span></code> class that works like a Python <code class="docutils literal notranslate"><span class="pre">list</span></code>
+object. Similarly, an input parameter of type <code class="docutils literal notranslate"><span class="pre">va_object</span></code> will be
+represented by an instance of <code class="docutils literal notranslate"><span class="pre">Object</span></code>, which works like a Python
+<code class="docutils literal notranslate"><span class="pre">dict</span></code>. These classes are thin wrappers that hold a reference to the
+original data to avoid copying it. When writing data to outputs, it is
+OK to use the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">dict</span></code> types. In parameter type
+definitions, <code class="docutils literal notranslate"><span class="pre">dict</span></code> and <code class="docutils literal notranslate"><span class="pre">va.Object</span></code> are interchangeable and work the
+same way. Similarly, you can use either <code class="docutils literal notranslate"><span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">va.Array</span></code> for the
+same effect.</p>
+<p>Matrices are special in that every matrix type is represented by a
+different Python type class. Matrices can be created by constructing a
+typed instance directly or by passing a type id to the generic factory
+function <code class="docutils literal notranslate"><span class="pre">va.Matrix</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">visionappster</span> <span class="kn">import</span> <span class="n">Matrix</span>
+<span class="c1"># These are equivalent</span>
+<span class="n">mat1</span> <span class="o">=</span> <span class="n">Matrix</span><span class="o">.</span><span class="n">Int32</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">Matrix</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Multi-dimensional array-like types (<code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Matrix</span></code>) implement the Python buffer protocol. This means that their
+data buffers can be directly used as NumPy arrays, for example. This
+makes passing data between the VisionAppster runtime and Python code
+efficient. The following code snippet illustrates how the <code class="docutils literal notranslate"><span class="pre">Image</span></code> type
+can be used as an input and output argument to NumPy calls.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="kn">as</span> <span class="nn">va</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">ImageProcessing</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">()),</span>
+                         <span class="p">(</span><span class="s1">&#39;threshold&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">127</span><span class="p">)],</span>
+                <span class="n">outputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;binarized&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;negated&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">)]):</span>
+        <span class="c1"># Shallow reference to input image</span>
+        <span class="n">in_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+        <span class="c1"># Convert RGB to gray by taking average of three channels</span>
+        <span class="n">gray</span> <span class="o">=</span> <span class="n">in_arr</span> <span class="k">if</span> <span class="n">in_arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">in_arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Initialize an image with cloned header ...</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">binarized</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">uninitialized</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+        <span class="c1"># ... and use it as an output array (shallow reference).</span>
+        <span class="c1"># This is the most efficient and thus preferred way.</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">binarized</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">binarized</span><span class="o">.</span><span class="n">channel_max</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Construct a new Image out of an existing Numpy array. The ownership</span>
+        <span class="c1"># of the array cannot be transferred. Thus, this requires copying every</span>
+        <span class="c1"># pixel.</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">negated</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="n">in_arr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="runtime-errors">
+<h2>Runtime errors<a class="headerlink" href="#runtime-errors" title="Permalink to this headline">🔗</a></h2>
+<p>If the tool received inputs it cannot process, it needs to cause a
+runtime error. This happens by simply raising a Python <code class="docutils literal notranslate"><span class="pre">Exception</span></code> as
+shown by the example below:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Error</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Error</span>
+
+<span class="sd">       This tool does nothing by default but causes a runtime error</span>
+<span class="sd">       if the input string is non-empty.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;This is an error&#39;</span><span class="p">)],</span>
+                <span class="n">outputs</span><span class="p">:</span> <span class="p">[]):</span>
+        <span class="k">if</span> <span class="n">inputs</span><span class="o">.</span><span class="n">message</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tool-state">
+<h2>Tool state<a class="headerlink" href="#tool-state" title="Permalink to this headline">🔗</a></h2>
+<p>As described in <a class="reference internal" href="../../tool/#execution-modes"><span class="std std-ref">Execution modes</span></a>, the
+VisionAppster runtime automatically runs tools in parallel. This also
+applies to Python tools. The evaluation of Python bytecode is currently
+serialized, but native extension calls from Python code open up
+parallelization possibilities. This has the consequence that Python
+tools should be made reentrant just like C tools. That is, the outcome
+of the <code class="docutils literal notranslate"><span class="pre">process</span></code> function should depend on its input parameters only.</p>
+<p>Sometimes, the tool may need to one-time initialization that would be
+too costly to do each time the <code class="docutils literal notranslate"><span class="pre">process</span></code> function is called. Such
+initialization made in the constructor (<code class="docutils literal notranslate"><span class="pre">__init__</span></code> function) of the
+tool class do not necessarily render the tool instance non-reentrant. If
+the <code class="docutils literal notranslate"><span class="pre">process</span></code> function only reads the values of instance variables,
+you are on the safe side. In the same vein, referring to immutable
+global variables is OK.</p>
+<p>It may however be necessary to maintain modifiable state in the tool. In
+such a case the order of <code class="docutils literal notranslate"><span class="pre">process</span></code> calls makes a difference and the
+calls cannot be parallelized. To make the runtime aware of this
+restriction, the tool class must list the allowed execution modes in a
+static class attribute called <code class="docutils literal notranslate"><span class="pre">__va_execution_mode__</span></code>. Its value may
+be one of the constants defined in <code class="docutils literal notranslate"><span class="pre">va.Tool.ExecutionMode</span></code> or a
+<code class="docutils literal notranslate"><span class="pre">list</span></code> containing one or more of them.</p>
+<p>If the tool maintains internal state, it may need to know when the
+processing graph starts and stops. If the tool class defines a function
+called <code class="docutils literal notranslate"><span class="pre">notify</span></code>, it will be called by the runtime whenever the state
+of the tool changes.</p>
+<p>Finally, the tool class can be derived from <code class="docutils literal notranslate"><span class="pre">va.Tool</span></code>. This will give
+the code access to <code class="docutils literal notranslate"><span class="pre">self.inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">self.outputs</span></code>. These objects
+reflect the statuses of the tool’s inputs and outputs in the processing
+graph. For example, <code class="docutils literal notranslate"><span class="pre">self.inputs.trigger.connected</span></code> is a Boolean flag
+that indicates whether the input parameter called <code class="docutils literal notranslate"><span class="pre">trigger</span></code> is
+connected in the graph.</p>
+<p>The tool below illustrates how to manage internal state in a tool
+implementation:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="kn">as</span> <span class="nn">va</span>
+
+<span class="k">class</span> <span class="nc">StateChanger</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Tool</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;State Changer</span>
+
+<span class="sd">       Counts the number of times the tool instance has been started,</span>
+<span class="sd">       stopped and invoked. Also inspects connection statuses and</span>
+<span class="sd">       default values.</span>
+
+<span class="sd">       The StateChanger class derives from va.Tool to gain super</span>
+<span class="sd">       powers, a.k.a access to self.inputs and self.outputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># This is not necessary as the existence of `notify` will make</span>
+    <span class="c1"># the tool non-threaded by default. The default value is</span>
+    <span class="c1"># [Tool.NON_THREADED, Tool.SINGLE_THREADED, Tool.MULTI_THREADED]</span>
+    <span class="n">__va_execution_mode__</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Tool</span><span class="o">.</span><span class="n">NON_THREADED</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># NOTE: Superclass constructor must be called explicitly!</span>
+        <span class="n">va</span><span class="o">.</span><span class="n">Tool</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="c1"># Initialize instance variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connected_inputs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function is called by the runtime when the</span>
+<span class="sd">           processing graph is started or stopped. `event` is</span>
+<span class="sd">           either Tool.STOPPED or Tool.STARTED.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">va</span><span class="o">.</span><span class="n">Tool</span><span class="o">.</span><span class="n">STOPPED</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stop_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">va</span><span class="o">.</span><span class="n">Tool</span><span class="o">.</span><span class="n">STARTED</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connected_inputs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Count the number of connected inputs by iterating</span>
+        <span class="c1"># the `inputs` object.</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">connected_inputs</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;trigger&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+                         <span class="p">(</span><span class="s1">&#39;another&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">123</span><span class="p">)],</span>
+                <span class="n">outputs</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;starts&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;stops&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;calls&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;connectedInputs&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;defaultValue&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)]):</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">starts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_count</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">stops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_count</span>
+        <span class="c1"># This makes the tool stateful and botches parallelization.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">calls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_count</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">connectedInputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connected_inputs</span>
+        <span class="c1"># This reads the current default value of `another`,</span>
+        <span class="c1"># which may be different from `inputs.another` if</span>
+        <span class="c1"># the input is connected.</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">defaultValue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">another</span><span class="o">.</span><span class="n">default_value</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../reference/" class="btn btn-neutral float-right" title="Python API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Python API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Cross-compilation &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Documentation" href="../documentation/" />
+    <link rel="prev" title="Building component packages" href="../building/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#component-id">Component ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#component-version">Component version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#full-component-id">Full component ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#external-dependencies">External dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#uuid-and-name">UUID and name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/">Building component packages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cross-compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-image-contents">Docker image contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#project-setup">Project setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cmake">CMake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gnu-make">GNU make</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-build-systems">Other build systems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-profiles-and-optimization">Hardware profiles and optimization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#optimizing-invidual-functions">Optimizing invidual functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimizing-all-code">Optimizing all code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-differently-optimized-binaries">Installing differently optimized binaries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installing/">Installing and uninstalling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/">Package file format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Components</a> &raquo;</li>
+        
+      <li>Cross-compilation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cross-compilation">
+<h1>Cross-compilation<a class="headerlink" href="#cross-compilation" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster Engine runs on a variety of different hardware
+platforms and operating systems. Since image analysis code is often
+performance-critical, not just the <a class="reference internal" href="../../engine/"><span class="doc">Engine</span></a> but also
+the algorithms must be compiled to native code. To prevent
+fragmentation, we expect all publicly sold native code extensions to run
+on all supported platforms. It should however be noted that code running
+in VisionAppster Cloud only needs to support Linux on x86_64.</p>
+<p>The officially supported platforms for VisionAppster Engine are:</p>
+<ul class="simple">
+<li><p>linux-x86_64</p></li>
+<li><p>linux-arm_64</p></li>
+<li><p>linux-arm_32</p></li>
+<li><p>windows-x86_64</p></li>
+</ul>
+<p>Compiling for multiple different platforms is a major chore. For this
+reason, we provide Docker images that contain a fully working SDK for
+each supported platform. The images are built on
+<a class="reference external" href="https://github.com/dockcross/dockcross">Dockcross</a>.</p>
+<p>The cross-compilation build process is controlled by a command-line tool
+called <code class="docutils literal notranslate"><span class="pre">va-cross</span></code>, which comes with the VisionAppster installation.
+<code class="docutils literal notranslate"><span class="pre">va-cross</span></code> is a compiler and build tool front-end that runs
+compilation commands in multiple different cross-build environments in
+sequence. It allows compiling binaries for multiple target architectures
+simultaneously without special preparations for cross-compilation.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">🔗</a></h2>
+<p>Since <code class="docutils literal notranslate"><span class="pre">va-cross</span></code> uses Docker images to set up the cross-compilation
+environments, you need to install Docker first:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">Ubuntu</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/engine/install/fedora/">Fedora</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/engine/install/debian/">Debian</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/engine/install/centos/">CentOS</a></p></li>
+<li><p><a class="reference external" href="https://wiki.archlinux.org/index.php/docker">Arch</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/docker-for-windows/install/">Windows</a></p></li>
+</ul>
+<p>On Linux, make sure to add your user ID to the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group
+(<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-aG</span> <span class="pre">docker</span> <span class="pre">$USER</span></code>). Otherwise, you’ll need to run
+<code class="docutils literal notranslate"><span class="pre">va-cross</span></code> as <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+<p>On Windows, the cross-compiler front-end, <code class="docutils literal notranslate"><span class="pre">va-cross</span></code> is in the <code class="docutils literal notranslate"><span class="pre">bin</span></code>
+directory of the VisionAppster installation. In a user-scope Linux
+installation, it is placed in <code class="docutils literal notranslate"><span class="pre">$HOME/bin</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>. If
+this directory is in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, this command will give you basic
+usage instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-cross --help
+</pre></div>
+</div>
+<p>If you installed the VisionAppster Flatpak to system scope, you need to
+install the VisionAppster SDK locally first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-install --sdk
+</pre></div>
+</div>
+<p>This will place <code class="docutils literal notranslate"><span class="pre">va-cross</span></code> to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory under your local
+SDK installation (by default <code class="docutils literal notranslate"><span class="pre">~/VisionAppster/sdk/bin</span></code>).</p>
+<p>To test the installation, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On Linux</span>
+va-cross <span class="nb">echo</span> <span class="s1">&#39;$VA_ARCH&#39;</span>
+<span class="c1"># On Windows command prompt</span>
+va-cross <span class="nb">echo</span> <span class="nv">$VA_ARCH</span>
+</pre></div>
+</div>
+<p>This will run one Docker container for each supported target
+architecture and run <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$VA_ARCH</span></code> inside it. The command should
+print out the four currently supported architecture identifiers.</p>
+<p>At first run, <code class="docutils literal notranslate"><span class="pre">va-cross</span></code> will download multiple large Docker images,
+which means the command will take time. Afterwards, startup is much
+faster.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">🔗</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">va-cross</span></code> starts one or more Docker containers and runs a
+user-specified command in each. For example, <code class="docutils literal notranslate"><span class="pre">va-cross</span> <span class="pre">make</span></code> will run
+<code class="docutils literal notranslate"><span class="pre">make</span></code> four times in different cross-compilation environments. One can
+select the target architectures by giving one or more <code class="docutils literal notranslate"><span class="pre">--arch</span></code> options
+on the command line.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build the Makefile in the current directory</span>
+<span class="c1"># for a specific architecture (cloud).</span>
+va-cross --arch<span class="o">=</span>linux-x86_64 make
+<span class="c1"># Same for a cmake based project</span>
+va-cross --arch<span class="o">=</span>linux-x86_64 cmake -S . -B build
+
+<span class="c1"># Build for all architectures at once</span>
+va-cross make install
+<span class="c1"># Same for a cmake based project</span>
+va-cross cmake -S . -B <span class="s1">&#39;${VA_ARCH_PREFIX}build&#39;</span>
+</pre></div>
+</div>
+<p>Command-line arguments are passed to the command verbatim, with the
+exception of environment variables that are expanded before the command
+is invoked. In the last example above, the value of the
+<code class="docutils literal notranslate"><span class="pre">VA_ARCH_PREFIX</span></code> environment variable will be expanded to the command
+line inside the container.</p>
+<p>Note that Windows and Linux handle command lines very differently. On
+the Windows command prompt, the ‘$’ character has no special meaning and
+does not need to be quoted. Arguments (such as path names) containing
+spaces need to be quoted, but using double quotes.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate VAR outside the container (Linux)</span>
+va-cross <span class="nb">echo</span> <span class="nv">$VAR</span>
+<span class="c1"># Evaluate VAR outside the container (Windows)</span>
+va-cross <span class="nb">echo</span> %VAR%
+<span class="c1"># Evaluate VAR inside the container (Linux)</span>
+va-cross <span class="nb">echo</span> <span class="s1">&#39;$VAR&#39;</span>
+<span class="c1"># Evaluate VAR inside the container (Windows)</span>
+va-cross <span class="nb">echo</span> <span class="nv">$VAR</span>
+<span class="c1"># An argument contains spaces (both operating systems)</span>
+va-cross <span class="nb">echo</span> <span class="s2">&quot;Argument with spaces&quot;</span>
+</pre></div>
+</div>
+<p>To run many commands at once, you can pass <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">-c</span></code> as the command,
+followed by any valid shell script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-cross bash -c <span class="s1">&#39;mkdir $VA_ARCH &amp;&amp; cd $VA_ARCH&#39;</span>
+</pre></div>
+</div>
+<p>An important thing to note is that absolute paths to files are different
+inside the container. Always prefer relative paths if possible. If not,
+prefix absolute paths with <code class="docutils literal notranslate"><span class="pre">/work</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Go to root directory</span>
+<span class="nb">cd</span> /
+<span class="c1"># Print working directory inside container.</span>
+<span class="c1"># Single quotes are not needed in Windows command prompt.</span>
+va-cross --arch<span class="o">=</span>linux-arm_32 <span class="nb">echo</span> <span class="s1">&#39;$PWD&#39;</span>
+<span class="c1"># Prints /work</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="docker-image-contents">
+<h2>Docker image contents<a class="headerlink" href="#docker-image-contents" title="Permalink to this headline">🔗</a></h2>
+<p>The Docker images come with autotools, GNU make, CMake and Ninja, gcc,
+g++ and all standard build utilities. There is a caveat though: the
+version numbers of these tools are not equal in all images. You must
+prepare for the oldest version, listed in the following table:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>gcc/g++</p></td>
+<td><p>4.9.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>make</p></td>
+<td><p>4.1</p></td>
+</tr>
+<tr class="row-even"><td><p>cmake</p></td>
+<td><p>3.13.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>ninja</p></td>
+<td><p>1.7.2</p></td>
+</tr>
+</tbody>
+</table>
+<p>Currently, the ARM images contain an old version of gcc. The practical
+consequence of this is that <strong>you cannot use C++17 features</strong> in your
+native code yet. We are working on this issue.</p>
+<p>In the build environment, the following variables are always set:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH</span></code> - Architecture identifier, e.g. “linux-x86_64”. Matches
+the name of the Docker image and the <code class="docutils literal notranslate"><span class="pre">--arch</span></code> command-line option
+without the optional hardware profile suffix. (More on hardware
+profiles <a class="reference external" href="#hardware-profiles-and-optimization">below</a>.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH_PREFIX</span></code> - Architecture identifier optionally followed by a
+hardware profile suffix, and a dash, e.g. “linux-x86_64-”. This is
+useful when the architecture identifier is used as a prefix e.g. for
+a directory name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_SDK_PATH</span></code> - Absolute path to the VisionAppster SDK.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CROSS_COMPILE</span></code> - Architecture identifier and a dash. Makes it easy
+to integrate projects that already support cross-compilation. Note
+that this will be different from <code class="docutils literal notranslate"><span class="pre">VA_ARCH_PREFIX</span></code> if a non-default
+hardware profile is selected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CC</span></code> - Path to C compiler.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CXX</span></code> - Path to C++ compiler.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CPP</span></code> - Path to C preprocessor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LD</span></code> - Path to linker.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> - Default C compiler flags. Contains an include path to
+the VisionAppster SDK.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code> - Default C++ compiler flags. Contains an include path
+to the VisionAppster SDK.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> - Default linker flags. Contains a linker search path to
+the VisionAppster SDK.</p></li>
+</ul>
+<p>In addition, paths to various other tools (<code class="docutils literal notranslate"><span class="pre">ar</span></code>, <code class="docutils literal notranslate"><span class="pre">as</span></code> etc.) are
+defined as environment variables (<code class="docutils literal notranslate"><span class="pre">AR</span></code>, <code class="docutils literal notranslate"><span class="pre">AS</span></code> etc.). To inspect the
+environment of each Docker image, give the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-cross env
+</pre></div>
+</div>
+</div>
+<div class="section" id="project-setup">
+<h2>Project setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">🔗</a></h2>
+<p>If you have followed best practices when setting up your build system,
+there is not much to do. Commands such as <code class="docutils literal notranslate"><span class="pre">gcc</span></code>, <code class="docutils literal notranslate"><span class="pre">g++</span></code> and
+<code class="docutils literal notranslate"><span class="pre">objcopy</span></code> in the Docker containers directly invoke the corresponding
+cross-compilation toolchain commands for each architecture, and the
+environment variables <code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> provide
+default compiler/linker flags. Usually, the only thing you may need to
+worry about is that each build puts its object files and output binaries
+to different directories.</p>
+<p>The following examples assume that your source code is in a directory
+called <code class="docutils literal notranslate"><span class="pre">src/</span></code> under the project’s root directory. Build artifacts will
+be placed in the project root in architecture-specific build
+directories.</p>
+<div class="section" id="cmake">
+<h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">🔗</a></h3>
+<p>CMake generates out-of-source (shadow) builds by default. It also
+respects the standard environment variables. You need to place a file
+called <code class="docutils literal notranslate"><span class="pre">CMakeList.txt</span></code> in your project’s root directory. Here’s a
+template:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># CMakeLists.txt</span>
+<span class="c"># A template for cross-building tool plugins.</span>
+<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.10</span><span class="p">)</span>
+
+<span class="c"># Project name</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">Test</span><span class="p">)</span>
+<span class="c"># Tool plugin name</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">TARGET</span> <span class="s">test</span><span class="p">)</span>
+<span class="c"># List sources here, separated with spaces. If you use wildcards,</span>
+<span class="c"># you need to run cmake again to regenerate the build files every</span>
+<span class="c"># time you add/remove sources.</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">SOURCES</span> <span class="s">src/test.cc</span><span class="p">)</span>
+
+<span class="c"># Set a default build type if none was specified</span>
+<span class="c"># https://blog.kitware.com/cmake-and-the-default-build-type/</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">default_build_type</span> <span class="s2">&quot;Release&quot;</span><span class="p">)</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">NOT</span> <span class="s">CMAKE_BUILD_TYPE</span> <span class="s">AND</span> <span class="s">NOT</span> <span class="s">CMAKE_CONFIGURATION_TYPES</span><span class="p">)</span>
+  <span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span> <span class="s2">&quot;Setting build type to &#39;${default_build_type}&#39; as none was specified.&quot;</span><span class="p">)</span>
+  <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_BUILD_TYPE</span> <span class="s2">&quot;${default_build_type}&quot;</span> <span class="s">CACHE</span>
+      <span class="s">STRING</span> <span class="s2">&quot;Choose the type of build.&quot;</span> <span class="s">FORCE</span><span class="p">)</span>
+  <span class="c"># Set the possible values of build type for cmake-gui</span>
+  <span class="nb">set_property</span><span class="p">(</span><span class="s">CACHE</span> <span class="s">CMAKE_BUILD_TYPE</span> <span class="s">PROPERTY</span> <span class="s">STRINGS</span>
+    <span class="s2">&quot;Debug&quot;</span> <span class="s2">&quot;Release&quot;</span> <span class="s2">&quot;MinSizeRel&quot;</span> <span class="s2">&quot;RelWithDebInfo&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="c"># Enable automatic vectorization</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">RELEASE_FLAGS</span> <span class="s">-O3</span><span class="p">)</span>
+
+<span class="c"># Compile a plugin (MODULE) out of the given sources.</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="o">${</span><span class="nv">TARGET</span><span class="o">}</span> <span class="s">MODULE</span> <span class="o">${</span><span class="nv">SOURCES</span><span class="o">}</span><span class="p">)</span>
+
+<span class="c"># The output needs to have a &quot;.toolplugin&quot; suffix and no &quot;lib&quot; prefix.</span>
+<span class="nb">set_target_properties</span><span class="p">(</span><span class="o">${</span><span class="nv">TARGET</span><span class="o">}</span> <span class="s">PROPERTIES</span> <span class="s">PREFIX</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">set_target_properties</span><span class="p">(</span><span class="o">${</span><span class="nv">TARGET</span><span class="o">}</span> <span class="s">PROPERTIES</span> <span class="s">SUFFIX</span> <span class="s2">&quot;.toolplugin&quot;</span><span class="p">)</span>
+<span class="nb">target_compile_options</span><span class="p">(</span><span class="o">${</span><span class="nv">TARGET</span><span class="o">}</span> <span class="s">PUBLIC</span> <span class="s2">&quot;$&lt;$&lt;CONFIG:RELEASE&gt;:${RELEASE_FLAGS}&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To generate build files, pass an architecture-specific build directory
+to <code class="docutils literal notranslate"><span class="pre">cmake</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># From Linux shell</span>
+va-cross cmake -S . -B <span class="s1">&#39;${VA_ARCH_PREFIX}build&#39;</span>
+<span class="c1"># Alternatively, for optimized builds</span>
+va-cross cmake -S . -B <span class="s1">&#39;build/${VA_ARCH}${VA_ARCH_PROFILE_DIR}&#39;</span>
+<span class="c1"># From Windows command prompt: no quotes</span>
+va-cross cmake -S . -B <span class="si">${</span><span class="nv">VA_ARCH_PREFIX</span><span class="si">}</span>build
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">VA_ARCH_PREFIX</span></code> variable is expanded in the build environment,
+yielding a different build directory for each architecture.</p>
+<p>To build for all supported architectures:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># From Linux shell</span>
+va-cross cmake --build <span class="s1">&#39;${VA_ARCH_PREFIX}build&#39;</span>
+<span class="c1"># Alternatively, for optimized builds</span>
+va-cross cmake --build <span class="s1">&#39;build/${VA_ARCH}${VA_ARCH_PROFILE_DIR}&#39;</span>
+<span class="c1"># From Windows command prompt</span>
+va-cross cmake --build <span class="si">${</span><span class="nv">VA_ARCH_PREFIX</span><span class="si">}</span>build
+</pre></div>
+</div>
+</div>
+<div class="section" id="gnu-make">
+<h3>GNU make<a class="headerlink" href="#gnu-make" title="Permalink to this headline">🔗</a></h3>
+<p>If you are using GNU make, the following Makefile template demonstrates
+standard conventions. Place this file in your project’s root directory.</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Makefile</span>
+<span class="c"># A template for cross-building tool plugins.</span>
+
+<span class="c"># Some cross-platform preparation</span>
+<span class="cp">ifeq ($(VA_ARCH),windows-x86_64)</span>
+<span class="nv">DEFINES</span>  <span class="o">+=</span> -D_USE_MATH_DEFINES
+<span class="cp">endif</span>
+
+<span class="c"># Set compiler if it doesn&#39;t come from the environment.</span>
+<span class="nv">CXX</span>      <span class="o">?=</span> g++
+<span class="c"># The compiler also works as a linker.</span>
+<span class="nv">LINK</span>     <span class="o">=</span> <span class="k">$(</span>CXX<span class="k">)</span>
+<span class="c"># Append to flags inherited from environment.</span>
+<span class="nv">CXXFLAGS</span> <span class="o">+=</span> -std<span class="o">=</span>c++11 -pipe -O3 -fvisibility<span class="o">=</span>hidden -Wall <span class="se">\</span>
+            -W -D_REENTRANT -fPIC <span class="k">$(</span>DEFINES<span class="k">)</span>
+<span class="nv">LDFLAGS</span>  <span class="o">+=</span> -shared
+<span class="c"># Additional compiler and linker options.</span>
+<span class="nv">INCPATH</span>  <span class="o">=</span>
+<span class="nv">DEFINES</span>  <span class="o">=</span>
+<span class="nv">LIBS</span>     <span class="o">=</span>
+<span class="c"># Use a different build directory for each architecture and profile</span>
+<span class="nv">BUILDDIR</span> <span class="o">=</span> build/<span class="k">$(</span>VA_ARCH<span class="k">)$(</span>VA_ARCH_PROFILE_DIR<span class="k">)</span>
+<span class="c"># Compile all .cc files under &quot;src&quot;.</span>
+<span class="nv">SRCDIR</span>   <span class="o">=</span> src
+<span class="nv">SOURCES</span>  <span class="o">=</span> <span class="k">$(</span>wildcard <span class="k">$(</span>SRCDIR<span class="k">)</span>/*.cc<span class="k">)</span>
+<span class="c"># Put objects in BUILDDIR.</span>
+<span class="nv">OBJECTS</span>  <span class="o">=</span> <span class="k">$(</span>patsubst <span class="k">$(</span>SRCDIR<span class="k">)</span>/%.cc,<span class="k">$(</span>BUILDDIR<span class="k">)</span>/%.o,<span class="k">$(</span>SOURCES<span class="k">))</span>
+<span class="c"># Same for the final output binary.</span>
+<span class="nv">TARGET</span>   <span class="o">=</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>/test.toolplugin
+
+<span class="c"># Let make know &quot;all&quot; and &quot;clean&quot; are not a files.</span>
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">all</span> <span class="n">clean</span>
+
+<span class="nf">all</span><span class="o">:</span> <span class="k">$(</span><span class="nv">TARGET</span><span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+    rm -f <span class="k">$(</span>OBJECTS<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>
+
+<span class="nf">$(BUILDDIR)</span><span class="o">:</span>
+    mkdir -p <span class="k">$(</span>BUILDDIR<span class="k">)</span>
+
+<span class="c"># Generic compilation rule</span>
+<span class="nf">$(OBJECTS)</span><span class="o">:</span> <span class="k">$(</span><span class="nv">BUILDDIR</span><span class="k">)</span>/%.<span class="n">o</span>: <span class="k">$(</span><span class="nv">SRCDIR</span><span class="k">)</span>/%.<span class="n">cc</span>
+    <span class="k">$(</span>CXX<span class="k">)</span> -c <span class="k">$(</span>CXXFLAGS<span class="k">)</span> <span class="k">$(</span>INCPATH<span class="k">)</span> -o <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span> <span class="s2">&quot;</span>$<span class="s2">&lt;&quot;</span>
+
+<span class="c"># Target linking rule</span>
+<span class="nf">$(TARGET)</span><span class="o">:</span> <span class="k">$(</span><span class="nv">BUILDDIR</span><span class="k">)</span> <span class="k">$(</span><span class="nv">OBJECTS</span><span class="k">)</span> <span class="n">Makefile</span>
+    rm -f <span class="k">$(</span>TARGET<span class="k">)</span>
+    <span class="k">$(</span>LINK<span class="k">)</span> <span class="k">$(</span>LDFLAGS<span class="k">)</span> -o <span class="k">$(</span>TARGET<span class="k">)</span> <span class="k">$(</span>OBJECTS<span class="k">)</span> <span class="k">$(</span>LIBS<span class="k">)</span>
+
+<span class="c"># No install target. The target binary will be placed in a .vapkg.</span>
+</pre></div>
+</div>
+<p>To build for all supported architectures:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-cross make
+</pre></div>
+</div>
+<p>If your already set up your project for cross-compilation using the
+standard convention of prepending the value of the <code class="docutils literal notranslate"><span class="pre">CROSS_COMPILE</span></code>
+environment variable to compilation commands (e.g.
+<code class="docutils literal notranslate"><span class="pre">$(CROSS_COMPILE)gcc</span></code>), you are good to go. In the Docker container,
+the value of the <code class="docutils literal notranslate"><span class="pre">CROSS_COMPILE</span></code> environment variable is equal to
+<code class="docutils literal notranslate"><span class="pre">${VA_ARCH}-</span></code>, and prefixed toolchain commands are also available.</p>
+</div>
+<div class="section" id="other-build-systems">
+<h3>Other build systems<a class="headerlink" href="#other-build-systems" title="Permalink to this headline">🔗</a></h3>
+<p>The examples above assume that the whole build is run inside the
+container, but it is also possible to invoke the cross-compilers
+directly. This is useful if you use a build system that is not included
+in the Docker images. The problem with this approach is that it slows
+down the build by a significant amount as every compiler invocation must
+bring up a container. Nevertheless, you may experiment with this by
+configuring your build system to use <code class="docutils literal notranslate"><span class="pre">va-cross</span></code> as a cross-compiler.
+For example, setting the compiler to
+<code class="docutils literal notranslate"><span class="pre">va-cross</span> <span class="pre">--arch=linux-arm_32</span> <span class="pre">g++</span></code> would compile C++ source code for
+the <code class="docutils literal notranslate"><span class="pre">linux-arm_32</span></code> target architecture.</p>
+</div>
+</div>
+<div class="section" id="hardware-profiles-and-optimization">
+<h2>Hardware profiles and optimization<a class="headerlink" href="#hardware-profiles-and-optimization" title="Permalink to this headline">🔗</a></h2>
+<p>Many image processing and learning algorithms can be significantly
+boosted up by CPU instruction set extensions such as SSE and AVX.
+Unfortunately, not all processors support such extensions, and compiling
+the platform or the algorithms to all possible permutations of operating
+systems, CPU architectures and instruction set extensions is not
+feasible.</p>
+<p>To ensure maximum performance while still supporting a wide variety of
+different execution hardware we have defined <em>hardware profiles</em>. The
+<em>Level 0</em> profile specifies the minimum requirements for each processor
+architecture. Each higher-level profile supports everything that is
+available in lower-level profiles plus some additional capabilities.</p>
+<p>The relevant instruction set extensions available in each profile are
+listed below. Each level has a name that is used as an architecture
+sub-type on the command line, in directory names, in preprocessor macros
+etc.</p>
+<ul class="simple">
+<li><p>x86_64</p>
+<ul>
+<li><p>Level 0 (<code class="docutils literal notranslate"><span class="pre">default</span></code>): MMX, SSE, SSE2, SSE3, SSSE3, SSE4.1</p></li>
+<li><p>Level 1 (<code class="docutils literal notranslate"><span class="pre">avx</span></code>): SSE4.2, AVX</p></li>
+<li><p>Level 2 (<code class="docutils literal notranslate"><span class="pre">avx2</span></code>): AVX2</p></li>
+</ul>
+</li>
+<li><p>arm_32</p>
+<ul>
+<li><p>Level 0 (<code class="docutils literal notranslate"><span class="pre">default</span></code>): ARMv7-A, NEON</p></li>
+</ul>
+</li>
+<li><p>arm_64</p>
+<ul>
+<li><p>Level 0 (<code class="docutils literal notranslate"><span class="pre">default</span></code>): ARMv8.1-A</p></li>
+</ul>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">va-cross</span></code> enforces the <code class="docutils literal notranslate"><span class="pre">default</span></code> profile by default. If you pass
+machine-dependent (<code class="docutils literal notranslate"><span class="pre">-m</span></code>) options to the compiler, an error will be
+raised. This ensures that the compiled code is always runnable on
+hardware that meets the minimum requirements.</p>
+<p>Now that everything is compiled with conservative optimization settings
+by default, code that would benefit from automatic vectorization
+optimizations made by the compiler and code that is explicitly written
+to make use of vectorization instructions via inline assembly or
+compiler intrinsics needs special treatment. There are two ways to do
+this.</p>
+<div class="section" id="optimizing-invidual-functions">
+<h3>Optimizing invidual functions<a class="headerlink" href="#optimizing-invidual-functions" title="Permalink to this headline">🔗</a></h3>
+<p>Function-level optimization is built on indirect functions whose target
+is resolved at run time based on hardware capabilities. This feature is
+<strong>only available on linux-x86_64</strong>. On other platforms, the easiest
+option is to compile the whole binary for all supported hardware
+profiles. Alternatively, you may implement run-time implementation
+selection yourself, but this is tedious if started from scratch.</p>
+<p>If you don’t already know which functions in your code would benefit
+from automatic vectorization, you can ask the compiler. Let’s assume you
+have the following C99 source code:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// vectorization.c</span>
+
+<span class="c1">// &quot;restrict&quot; tells the compiler that the pointed-to arrays won&#39;t overlap</span>
+<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">c</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Vectorizable loop</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">256</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">256</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+  <span class="c1">// Initialize somehow</span>
+  <span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Compile with <code class="docutils literal notranslate"><span class="pre">-O3</span> <span class="pre">-fopt-info-vec</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-cross --arch<span class="o">=</span>linux-x86_64 gcc -std<span class="o">=</span>c99 -O3 -fopt-info-vec <span class="se">\</span>
+  -o vectorization vectorization.c
+</pre></div>
+</div>
+<p>You’ll get the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vectorization</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">loop</span> <span class="n">vectorized</span>
+</pre></div>
+</div>
+<p>This indicates that <code class="docutils literal notranslate"><span class="pre">sum</span></code> will benefit from vectorization. To make use
+of optimizations not available on the default profile, you should
+annotate the function:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VA_OPTIMIZED</span>
+<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">c</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">VA_OPTIMIZED</span></code> is a macro that expands to architecture-specific
+function attributes that instruct the compiler to generate a differently
+optimized version for each hardware profile. At run time, the
+implementation for the highest possible hardware profile will be
+selected automatically based on the capabilities of the underlying
+hardware. If the target platform does not support function
+multi-versioning or if a hardware profile is explicitly selected, the
+macro is empty.</p>
+<p>If you have written an inline assembly version that targets a specific
+instruction set, you must also provide a generic version that works on
+the default profile and on other processor architectures. You must use
+the preprocessor to select which versions actually get compiled. The
+alternatives are:</p>
+<ol class="arabic simple">
+<li><p>Multi-versioning is enabled. Compile both versions at once.</p></li>
+<li><p>The AVX2 profile is enabled. Compile AVX2 version only.</p></li>
+<li><p>Otherwise, compile generic version only.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_global.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#if defined(VA_ARCH_PROFILE_MULTI)    </span><span class="c1">// Case 1: multi-versioning</span>
+<span class="cp">#  define AVX2_SUM_ATTR    VA_OPTIMIZED_FOR(VA_ARCH_PROFILE_AVX2)</span>
+<span class="cp">#  define DEFAULT_SUM_ATTR VA_OPTIMIZED_FOR(VA_ARCH_PROFILE_DEFAULT)</span>
+<span class="cp">#elif defined(VA_ARCH_PROFILE_AVX2)   </span><span class="c1">// Case 2: building for AVX2</span>
+<span class="cp">#  define AVX2_SUM_ATTR</span>
+<span class="cp">#else                                 </span><span class="c1">// Case 3: default version only</span>
+<span class="cp">#  define DEFAULT_SUM_ATTR</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef AVX2_SUM_ATTR</span>
+<span class="n">AVX2_SUM_ATTR</span>
+<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">a</span><span class="p">,</span>
+         <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">b</span><span class="p">,</span>
+         <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">c</span><span class="p">,</span>
+         <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+  <span class="c1">// optimized implementation that uses AVX2</span>
+  <span class="k">asm</span> <span class="p">(...);</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef DEFAULT_SUM_ATTR</span>
+<span class="n">DEFAULT_SUM_ATTR</span>
+<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">a</span><span class="p">,</span>
+         <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">b</span><span class="p">,</span>
+         <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">c</span><span class="p">,</span>
+         <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+  <span class="c1">// generic implementation</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>Note that this requires that you compile the source as C++ because C
+does not allow multiple definitions of a function with the same name.
+Since C++ doesn’t have <code class="docutils literal notranslate"><span class="pre">restrict</span></code>, we used a non-standard compiler
+extension <code class="docutils literal notranslate"><span class="pre">__restrict</span></code> instead. Furthermore, the functions are now
+marked as <code class="docutils literal notranslate"><span class="pre">noexcept</span></code> because the C++ exception handling mechanism does
+not tolerate indirect functions. It is safe to throw and catch
+exceptions within multi-versioned functions, but catching exceptions
+outside of the function would not work.</p>
+</div>
+<div class="section" id="optimizing-all-code">
+<h3>Optimizing all code<a class="headerlink" href="#optimizing-all-code" title="Permalink to this headline">🔗</a></h3>
+<p>Since most code will be compiled to the same assembly independent of
+optimization possibilities, individual function optimization should be
+used whenever possible. This makes building faster and the overall size
+of the resulting binaries smaller.</p>
+<p>On Windows this is not an option. For profile levels one and up, the
+complete binary must be recompiled with different architecture flags.
+While this makes building a bit more cumbersome and multiplies the size
+of the final product, the run-time performance (memory consumption or
+processing time) is not negatively affected. This technique also works
+on Linux.</p>
+<p>Unlike versions for different operating systems and processor
+architectures, versions for different instruction set extensions are not
+built by default. To produce optimized binaries you need to pass the
+<code class="docutils literal notranslate"><span class="pre">--arch</span></code> flag to <code class="docutils literal notranslate"><span class="pre">va-cross</span></code> explicitly, adding <code class="docutils literal notranslate"><span class="pre">+profile</span></code> to the
+architecture ID. For example, to build for the <code class="docutils literal notranslate"><span class="pre">avx2</span></code> profile:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable AVX2 instructions on Windows.</span>
+va-cross --arch<span class="o">=</span>windows-x86_64+avx2 make
+</pre></div>
+</div>
+<p>This will set the following environment variables in the container:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH_PROFILE=avx2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH_PROFILE_DIR=/avx2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH_PREFIX=windows-x86_64+avx2-</span></code></p></li>
+</ul>
+<p>You can use wildcards to build specific optimized versions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build using AVX instructions on all platforms that support AVX.</span>
+va-cross <span class="s2">&quot;--arch=*+avx&quot;</span> make
+<span class="c1"># Create a multi-versioned build on Linux and a separate binary for</span>
+<span class="c1"># each profile on Windows.</span>
+va-cross -a linux-x86_64 -a linux-arm_32 -a linux-arm_64 <span class="se">\</span>
+  -a <span class="s2">&quot;windows-*&quot;</span> make
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-differently-optimized-binaries">
+<h3>Installing differently optimized binaries<a class="headerlink" href="#installing-differently-optimized-binaries" title="Permalink to this headline">🔗</a></h3>
+<p>If you want to ship optimized binaries that are compiled for
+higher-level profiles, you always need to include one for the
+<code class="docutils literal notranslate"><span class="pre">default</span></code> profile as well. In <code class="docutils literal notranslate"><span class="pre">component.json</span></code>, only the version
+compiled using the <code class="docutils literal notranslate"><span class="pre">default</span></code> profile will have its <code class="docutils literal notranslate"><span class="pre">type</span></code> key set to
+<code class="docutils literal notranslate"><span class="pre">toolplugin</span></code>. Optimized versions must be placed in sub-directories
+named according to the hardware profile. For more information on the
+file format, see <a class="reference internal" href="../packages/#general-configuration"><span class="std std-ref">General
+configuration</span></a>.</p>
+<p>When creating a package, you need to set the <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">arch</span></code> keys
+of each file correctly. :doc:<code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">update</span> <span class="pre">--scan</span></code> (<cite>more
+here &lt;building&gt;</cite>) does this for you you place the tool plugins in a
+directory whose name matches a known architecture ID. Therefore, it is a
+good idea to follow the conventions and always use <code class="docutils literal notranslate"><span class="pre">$VA_ARCH</span></code> or
+<code class="docutils literal notranslate"><span class="pre">$VA_ARCH/$VA_ARCH_PROFILE</span></code> as the directory name for tool plugins.</p>
+<p>Let us assume you have built a multi-versioned binary for Linux and a
+separate binary for each x86_64 profile for Windows. To <a class="reference internal" href="../building/"><span class="doc">build a .vapkg
+file</span></a> you need to compose a directory structure such as
+this one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mycomponent</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">windows</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">windows</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">windows</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">avx</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">windows</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">avx</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">windows</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">avx2</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">windows</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">avx2</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">arm_32</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">arm_32</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">arm_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">arm_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+</pre></div>
+</div>
+<p>When this package is installed, all files specific to the current
+architecture, say <code class="docutils literal notranslate"><span class="pre">windows-x86_64</span></code>, will be copied to the system. When
+the component is loaded, the platform will select the highest profile
+the CPU can execute, for example <code class="docutils literal notranslate"><span class="pre">avx2/mycooltools.toolplugin</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../documentation/" class="btn btn-neutral float-right" title="Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../building/" class="btn btn-neutral float-left" title="Building component packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

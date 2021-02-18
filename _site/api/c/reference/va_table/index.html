@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_table &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_tensor" href="../va_tensor/" />
+    <link rel="prev" title="va_string" href="../va_string/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_table</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-table">
+<h1>va_table<a class="headerlink" href="#va-table" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_table.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv48va_table">
+<span id="_CPPv38va_table"></span><span id="_CPPv28va_table"></span><span id="va_table"></span><span class="target" id="va_table"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_table</span></code><a class="headerlink" href="#_CPPv48va_table" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A table. </p>
+<p>Tables can contain a variable number of cells with dynamically typed elements. Dynamic typing comes with a performance penalty, which is why va_matrix is the de facto way of handling numeric data. Through the C interface, arrays are passed as opaque pointers that can be manipulated using the <code class="docutils literal notranslate"><span class="pre">va_table_*</span></code> functions. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv420va_table_alloc_emptyv">
+<span id="_CPPv320va_table_alloc_emptyv"></span><span id="_CPPv220va_table_alloc_emptyv"></span><span id="va_table_alloc_empty"></span><span class="target" id="va_table_alloc_empty"></span><a class="reference internal" href="#_CPPv48va_table" title="va_table"><span class="pre">va_table</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_table_alloc_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_table_alloc_emptyv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a newly allocated empty table or NULL if memory allocation fails. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_table_clonePK8va_table">
+<span id="_CPPv314va_table_clonePK8va_table"></span><span id="_CPPv214va_table_clonePK8va_table"></span><span id="va_table_clone__va_tableCP"></span><span class="target" id="va_table_clone"></span><a class="reference internal" href="#_CPPv48va_table" title="va_table"><span class="pre">va_table</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_table_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_table" title="va_table"><span class="pre">va_table</span></a> <span class="pre">*</span><em><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_table_clonePK8va_table" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a deep copy of <em>table</em> or NULL if memory allocation fails. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv413va_table_freeP8va_table">
+<span id="_CPPv313va_table_freeP8va_table"></span><span id="_CPPv213va_table_freeP8va_table"></span><span id="va_table_free__va_tableP"></span><span class="target" id="va_table_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_table_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_table" title="va_table"><span class="pre">va_table</span></a> <span class="pre">*</span><em><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413va_table_freeP8va_table" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Releases the memory allocated by <em>table</em>. </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_tensor/" class="btn btn-neutral float-right" title="va_tensor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_string/" class="btn btn-neutral float-left" title="va_string" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

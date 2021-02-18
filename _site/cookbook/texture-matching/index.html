@@ -1,0 +1,685 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Texture matching &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="OpenCv Tools" href="../opencv-tools/" />
+    <link rel="prev" title="Super-resolution with OpenCV and Python" href="../python-superresolution/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Texture matching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image-input">Image input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#match-with-a-trained-model">Match with a trained model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-into-a-constant-sized-image">Project into a constant sized image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#split-the-logo-into-blobs">Split the logo into blobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyze-the-results">Analyze the results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#matcher-configuration">Matcher configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detector-parameters">Detector parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matcher-parameters">Matcher parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>Texture matching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="texture-matching">
+<h1>Texture matching<a class="headerlink" href="#texture-matching" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>The texture matching recipe shows how to accurately find objects in an
+image based on the texture in the neighborhood of keypoints. The
+keypoints are automatically attached to locations with salient features
+like corners and edges.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/61bac410442f226445d6ee05d77704ac/CookbookTextureMatching.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>Our mission is to inspect print quality of a logo reminiscent of a fruit
+produced by <em>Malus domestica</em> and give Pass or Fail verdict for the logo
+in each image.</p>
+<p>The top-level processing graph is shown here. We’ll walk it through from
+top to bottom.</p>
+<div class="medium figure align-default" id="id1">
+<img alt="The processing graph of the texture matching demo." src="../../_images/texture-matching-1.png" />
+<p class="caption"><span class="caption-text">The processing graph of the texture matching demo.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="section" id="image-input">
+<h3>Image input<a class="headerlink" href="#image-input" title="Permalink to this headline">🔗</a></h3>
+<ul class="simple">
+<li><p>The images originate from a live or virtual camera configured in
+<a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> converts the input
+images from RGB to grayscale. This step is actually not mandatory
+because all processing blocks downstream can input also color images.
+However, because matching is based on grayscale texture, the image is
+converted once for all processing blocks. Furthermore, this block is
+an excellent place to set a breakpoint by clicking on the red dot.
+The breakpoint stops the processing after each image so you can
+examine the outputs of the other blocks.</p></li>
+</ul>
+<div class="small figure align-default" id="id2">
+<img alt="Image input from a camera" src="../../_images/texture-matching-2.png" />
+<p class="caption"><span class="caption-text">Image input from a camera</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="match-with-a-trained-model">
+<h3>Match with a trained model<a class="headerlink" href="#match-with-a-trained-model" title="Permalink to this headline">🔗</a></h3>
+<ul>
+<li><p><a class="reference internal" href="../../tools/LinearFilterTool/"><span class="doc">Linear filter</span></a> removes noise and
+possible artefacts like sharpening. The filter size is small so very
+few details are lost.</p></li>
+<li><p><a class="reference internal" href="../../tools/MatchContoursTool/"><span class="doc">Match Textures</span></a> is the crux of this
+recipe. It identifies keypoints from the input image, calculates LBP
+descriptors using the texture around the keypoints and compares them
+with the descriptors of the objects the matcher has been trained
+with. More on the matcher training later in this recipe.</p></li>
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the frame and size
+(i.e. the bounding box) of the found object (if any) and enlarges the
+bounding box so that the height and the width are extended by 10% on
+each side of the box and the original box resides in the middle of
+the new box. Boolean output <code class="docutils literal notranslate"><span class="pre">Found</span></code> is either true or false
+depending whether <code class="docutils literal notranslate"><span class="pre">Match</span> <span class="pre">Textures</span></code> found the object or not.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">frame</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">frame</span><span class="p">;</span>
+<span class="nx">size</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">found</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">expandFactor</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">4</span> <span class="o">||</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">columns</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">frame</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+      <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="k">else</span>
+  <span class="p">{</span>
+    <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="nx">expandFactor</span> <span class="o">*</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)));</span>
+    <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="nx">expandFactor</span> <span class="o">*</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)));</span>
+  <span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">size</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">||</span> <span class="nx">size</span><span class="p">.</span><span class="nx">columns</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">size</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="k">else</span>
+  <span class="p">{</span>
+    <span class="nx">size</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">expandFactor</span><span class="p">));</span>
+    <span class="nx">size</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">expandFactor</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="nx">$o</span><span class="p">.</span><span class="nx">frame</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="nx">size</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="small figure align-default" id="id3">
+<img alt="Match with the trained model" src="../../_images/texture-matching-3.png" />
+<p class="caption"><span class="caption-text">Match with the trained model</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="project-into-a-constant-sized-image">
+<h3>Project into a constant sized image<a class="headerlink" href="#project-into-a-constant-sized-image" title="Permalink to this headline">🔗</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">Project To Virtual View</span></a> crops
+and resizes the bounding box into a size proportional to the size of
+the template model. That is, the image which has been used in model
+training. The output image now looks the same regardless of the size
+and the orientation of the input image.</p></li>
+<li><p><a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">Replace Coordinate Frame</span></a>
+replaces the existing coordinate system with a new coordinate system
+such that the origin is at the center of the cropped image and the
+coordinate axes are orthonormal.</p></li>
+</ul>
+<div class="medium figure align-default" id="id4">
+<img alt="Extract the object and set standard coordinate system" src="../../_images/texture-matching-4.png" />
+<p class="caption"><span class="caption-text">Extract the object and set standard coordinate system</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="split-the-logo-into-blobs">
+<h3>Split the logo into blobs<a class="headerlink" href="#split-the-logo-into-blobs" title="Permalink to this headline">🔗</a></h3>
+<p>The image contains now only the logo and some margin. The logo should
+contain two dark blobs (the stalk and the apple) and the background
+should be a single connected bright area. The threshold for blob
+detectors is calculated with <a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and
+<a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find Threshold</span></a> tools. The blobs are
+detected with <a class="reference internal" href="../../tools/DetectBlobsTool/"><span class="doc">Detect Blobs</span></a> tools and the
+shapes and sizes of the blobs are analyzed in <a class="reference internal" href="../../tools/AnalyzeBlobGeometryTool/"><span class="doc">Analyze Blob
+Geometry</span></a> tools. There are two
+instances of both tools, one for dark and the other for bright blobs.</p>
+<div class="medium figure align-default" id="id5">
+<img alt="Split the logo into blobs" src="../../_images/texture-matching-5.png" />
+<p class="caption"><span class="caption-text">Split the logo into blobs</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="analyze-the-results">
+<h3>Analyze the results<a class="headerlink" href="#analyze-the-results" title="Permalink to this headline">🔗</a></h3>
+<p>The final judgement on whether the quality of the logo is good enough is
+done in an instance of <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> tool.</p>
+<div class="medium figure align-default" id="id6">
+<img alt="Analyze the results in a script" src="../../_images/texture-matching-6.png" />
+<p class="caption"><span class="caption-text">Analyze the results in a script</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>It inputs the areas, sizes of bounding boxes and ratios of the lengths
+of the orientation axes of the blobs. The bigger the ratio, the more
+oblong the blob is. For instance, the stalk should about twice as high
+as it is wide whereas the height and width of the apple should be about
+the same.</p>
+<p>The script makes several checks on the number of detected blobs as well
+as their shapes and sizes before passing a verdict on the print quality.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$o</span><span class="p">.</span><span class="nx">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Unspecified defect detected&quot;</span><span class="p">;</span>
+
+<span class="c1">// No pattern found</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$i</span><span class="p">.</span><span class="nx">found</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Logo not found&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// There should be 2 white-on-black blobs and one black-on-while blob</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">2</span> <span class="o">||</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size2</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Part of the logo missing&quot;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Black fragments detected&quot;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size2</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Possible hole(s) detected&quot;</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Blob count mismatch&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// Ratios of areas of the big and small blobs should be within limits.</span>
+<span class="kd">var</span> <span class="nx">smallBlobIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">bigBlobIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="nx">bigBlobIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">smallBlobIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="kd">var</span> <span class="nx">smallArea</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">bigArea</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">areaRatio</span> <span class="o">=</span> <span class="nx">bigArea</span> <span class="o">/</span> <span class="nx">smallArea</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">areaRatio</span> <span class="o">&lt;</span> <span class="mi">16</span> <span class="o">||</span> <span class="nx">areaRatio</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Size ratio of the stalk and the apple is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// Axis ratios of small and big blobs should be within limits.</span>
+<span class="c1">// The stalk of the apple is oblong</span>
+<span class="kd">var</span> <span class="nx">axisRatioSmall</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">ratio1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">axisRatioSmall</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">||</span> <span class="nx">axisRatioSmall</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the stalk is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// The apple is nearly round,</span>
+<span class="kd">var</span> <span class="nx">axisRatioBig</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">ratio1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">axisRatioBig</span> <span class="o">&lt;</span> <span class="mf">0.95</span> <span class="o">||</span> <span class="nx">axisRatioBig</span> <span class="o">&gt;</span> <span class="mf">1.15</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the apple is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// The sizes of the bounding boxes of both blobs should be within limits.</span>
+<span class="kd">var</span> <span class="nx">sizeRatioSmall</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sizeRatioBig</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">sizeRatioSmall</span> <span class="o">&lt;</span> <span class="mf">0.80</span> <span class="o">||</span> <span class="nx">sizeRatioSmall</span> <span class="o">&gt;</span> <span class="mf">1.08</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the stalk&#39;s bounding box is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">sizeRatioBig</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="nx">sizeRatioBig</span> <span class="o">&gt;</span> <span class="mf">1.12</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the apple&#39;s bounding box is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="nx">$o</span><span class="p">.</span><span class="nx">result</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;No problems&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Here are a few examples on passed (green) and failed (red) cases.</p>
+<div class="medium figure align-default" id="id7">
+<img alt="Print quality is good" src="../../_images/texture-matching-pass-1.png" />
+<p class="caption"><span class="caption-text">Print quality is good</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="medium figure align-default" id="id8">
+<img alt="Print quality is good" src="../../_images/texture-matching-pass-2.png" />
+<p class="caption"><span class="caption-text">Print quality is good</span><a class="headerlink" href="#id8" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="medium figure align-default" id="id9">
+<img alt="Print quality fails" src="../../_images/texture-matching-fail-1.png" />
+<p class="caption"><span class="caption-text">Print quality fails</span><a class="headerlink" href="#id9" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="medium figure align-default" id="id10">
+<img alt="Print quality fails" src="../../_images/texture-matching-fail-2.png" />
+<p class="caption"><span class="caption-text">Print quality fails</span><a class="headerlink" href="#id10" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="medium figure align-default" id="id11">
+<img alt="Print quality fails" src="../../_images/texture-matching-fail-3.png" />
+<p class="caption"><span class="caption-text">Print quality fails</span><a class="headerlink" href="#id11" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="medium figure align-default" id="id12">
+<img alt="Print quality fails" src="../../_images/texture-matching-fail-4.png" />
+<p class="caption"><span class="caption-text">Print quality fails</span><a class="headerlink" href="#id12" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="matcher-configuration">
+<h2>Matcher configuration<a class="headerlink" href="#matcher-configuration" title="Permalink to this headline">🔗</a></h2>
+<p>The matcher configuration mode is activated by clicking on the cogwheel
+icon on the matcher tool.</p>
+<div class="medium figure align-default" id="id13">
+<img alt="Matcher configuration mode" src="../../_images/matcher-1.png" />
+<p class="caption"><span class="caption-text">Matcher configuration mode</span><a class="headerlink" href="#id13" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The first step is to add one or many model images. In general the
+matcher can contain several classes of objects and there can be several
+model images in each class. In this case we use only one class and need
+only one image of the logo.</p>
+<div class="medium figure align-default" id="id14">
+<img alt="Add model image" src="../../_images/matcher-2.png" />
+<p class="caption"><span class="caption-text">Add model image</span><a class="headerlink" href="#id14" title="Permalink to this image">🔗</a></p>
+</div>
+<p>There are several parameters which affect the probability of correct
+matching. The set of values shown below work reasonably well in this use
+case.</p>
+<div class="medium figure align-default" id="id15">
+<img alt="Configure parameters" src="../../_images/matcher-3.png" />
+<p class="caption"><span class="caption-text">Configure parameters</span><a class="headerlink" href="#id15" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Let us walk through each parameter and describe their function.</p>
+<div class="section" id="detector-parameters">
+<h3>Detector parameters<a class="headerlink" href="#detector-parameters" title="Permalink to this headline">🔗</a></h3>
+<p>The detector is based on <img alt="Local Binary Pattern" src="https://en.wikipedia.org/wiki/Local_binary_patterns" /> (LBP) algorithm. First
+the keypoints are placed at locations which appear have some distinct,
+salient features. The keypoints are shown as orange dots in the above
+picture. Then a histogram of LBP values in a neighborhood of each
+keypoint is calculated and stored in a database. Matching is based on
+the similarity of the histogram at the keypoints found in the model
+images and in the image under inspection.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">noiseThreshold</span></code> sets the expected noise level in terms of
+intensity levels. The higher the threshold, the less the locations of
+keypoints are affected by noise but also more potentially interesting
+keypoints are missed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code> affects the maximum number of keypoints the algorithm tries
+to set. The value is relative to a default setting so you should try
+<code class="docutils literal notranslate"><span class="pre">scale</span> <span class="pre">=</span> <span class="pre">1</span></code> first. If it looks like there are clearly too few
+keypoints, try 0.5 or if there are too many, try 2. Iterate until the
+number of keypoints looks good.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">roiRadius</span></code> indicates the radius of the neighborhood in which the
+LBP histogram is calculated. The optimal value depends on the model
+images. The neighborhood should be large enough to capture enough
+details which sets the keypoint apart from other keypoints but small
+enough so that it does not overlap too much with the neighborhoods of
+other keypoints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> determines how heavily keypoint candidates are
+filtered. The smaller the sensitivity, the sharper edge or corner it
+takes for a keypoint to stick to it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> selects the variant of LBP algorithm. The variant affects
+the number of bins in LBP histogram. The fewer bins there are, the
+faster the matching will be. On the other hand more bins generally
+means more reliable object detection. The options are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Standard</span></code> - Default histogram of length 256. Gives the most
+reliable detection but is not invariant to rotation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Uniform</span></code> - Otherwise similar to the standard mode but uses a
+reduced number of histogram bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RotationInvariant</span></code> - Algorithm that is insensitive to rotation
+of the detectable objects. It is slightly less reliable than the
+Standard mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Uniform</span> <span class="pre">Rotation</span> <span class="pre">Invariant</span></code> - the combination of the above two
+algorithms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Symmetric</span></code> - An algorithm that compares the intensities of
+opposing neighbors around each pixel in the region of interest.
+Produces a short 16-bin histogram.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keypointAlgorithm</span></code> - Algorithm for finding interesting keypoints.
+The options are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Corners</span></code> - Place keypoints at sharp corners. The required
+sharpness is determined by <code class="docutils literal notranslate"><span class="pre">sensitivity</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Grid</span></code> - The keypoints will originate from an equally spaced
+grid. The grid points are filtered so that only the points near
+sharp edges will remain. The densitity of the initial grid is
+determined by <code class="docutils literal notranslate"><span class="pre">scale</span></code> and the required sharpness by
+<code class="docutils literal notranslate"><span class="pre">sensitivity</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="matcher-parameters">
+<h3>Matcher parameters<a class="headerlink" href="#matcher-parameters" title="Permalink to this headline">🔗</a></h3>
+<p>Matcher parameters control how the matching keypoints are combined into
+a detected object.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">matchingMode</span></code> - Tells the matcher if the same model can occur in
+the image just once or several times. If it can occur only once, the
+matching will be faster.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxMatches</span></code> - The maximum number of objects belonging to any
+class. Zero means an unlimited number of objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">closestMatchCount</span></code> - The number of closest matches against which
+each keypoint in the input image will be compared. The more match
+candidates are used, the more accurate but also slower the detection
+will be.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxEvaluations</span></code> - The maximum number of evaluations when searching
+the database for matching feature vectors. This is another way for
+trading speed for accuracy. The default value is <code class="docutils literal notranslate"><span class="pre">Unlimited</span></code>,
+meaning maximal accuracy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotationInvariant</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, allows detected objects
+be rotated compared to the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxRotationAngle</span></code> - The maximum allowed rotation angle in degrees.
+If set to 180, all rotations will be accepted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scaleInvariant</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the matcher will allow a relative
+scale change between <em>minScale</em> and <em>maxScale</em>. Otherwise, scale
+changes will not be allowed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minScale</span></code> - The minimum accepted scaling factor. If the size of a
+detected object is less than <em>minScale</em> times that of the matched
+model, no match will be reported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxScale</span></code> - The maximum accepted scaling factor. If the size of a
+detected object is greater than <em>maxScale</em> times that of the matched
+model, no match will be reported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minimizeGeometricError</span></code> - Enables geometric refinement of the
+location and rotation of matched objects. Generally this should be
+<code class="docutils literal notranslate"><span class="pre">true</span></code>. Setting it <code class="docutils literal notranslate"><span class="pre">false</span></code> makes the algorithm a bit faster but
+also less accurate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mergeNearbyMatches</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the matcher will merge
+detections whose scale, angle and location are close enough to each
+other. This is usually the right thing to do because the same model
+can often be found several times with slightly different sizes and
+shapes. The next three parameters control the merging process.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scaleTolerance</span></code> - The maximum allowed relative scale change in
+merging nearby detections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angleTolerance</span></code> - The maximum allowed angle change in merging
+nearby detections, in degrees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distanceTolerance</span></code> - The maximum allowed distance between origins
+of models to be merged.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selectionProbability</span></code> - The probability of choosing a model that
+fits the data well enough. The higher the probability, the more
+effort the algorithm makes to find a match.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxIterations</span></code> - The maximum number of iterations the algorithm
+will run while trying to find a match regardless of the setting of
+<code class="docutils literal notranslate"><span class="pre">selectionProbability</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxSamplings</span></code> - The maximum number of keypoint pairs the algorithm
+will try while finding a model candidate. The more keypoints there
+are in the input image which don’t belong to any object the matcher
+is trying to find, the bigger this number should be.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxPointMatchDistance</span></code> - A keypoint is accepted into an existing
+match candidate if its distance from a keypoint in the match does not
+exceed this value. Otherwise, the point will be considered an outlier
+and rejected. If the value is too big, outliers may get accepted into
+a match and the accuracy of the match is deteriorated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minMatchedPoints</span></code> - The minimum number of matched keypoints that
+are required for an accepted match. Increasing this value makes
+spurious detections less likely but also increases the probability
+that the object is not found at all.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../opencv-tools/" class="btn btn-neutral float-right" title="OpenCv Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../python-superresolution/" class="btn btn-neutral float-left" title="Super-resolution with OpenCV and Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

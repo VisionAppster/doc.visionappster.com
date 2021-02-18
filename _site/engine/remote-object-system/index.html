@@ -1,0 +1,980 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Remote object system &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="VisionAppster Engine services" href="../services/" />
+    <link rel="prev" title="Management interface" href="../management-interface/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#supported-platforms">Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph-executor/">Graph executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware-devices/">Hardware devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../management-interface/">Management interface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Remote object system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#objects">Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#post-requests">POST requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-requests">GET requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asynchronous-calls">Asynchronous calls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#signals">Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callback-functions">Callback functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pushable-sources-and-return-channels">Pushable sources and return channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-parameters">Source parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#receiving-signals-and-callbacks">Receiving signals and callbacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callbacks-as-function-arguments">Callbacks as function arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-return-channels">Sharing return channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extended-headers">Extended headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bash-client">Bash client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/">VisionAppster Engine services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start-stop/">Starting and stopping the Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing-apis/">Testing HTTP APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-apps/">Web apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../world-coordinates/">World coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Engine</a> &raquo;</li>
+        
+      <li>Remote object system</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="remote-object-system">
+<h1>Remote object system<a class="headerlink" href="#remote-object-system" title="Permalink to this headline">🔗</a></h1>
+<p>The VisionAppster Engine provides a built-in HTTP server that makes
+objects accessible through HTTP requests. The remote object API is
+modeled after REST principles as far as possible. Function calls (RPC)
+and signals don’t however naturally fit into the REST model and are
+handled in a different manner. Standard protocols and data formats are
+however used for all communication.</p>
+<p>The remote object system supports a few different encoding schemes. In
+many cases, the most convenient way of encoding request and response
+bodies is JSON. When submitting a JSON request, the client will specify
+“application/json” as the “Content-Type” header. A JSON response is
+requested by also setting the “Accept” header to “application/json”.
+When calling functions or setting properties, the platform automatically
+performs safe type conversions (such as integer to double).</p>
+<p>The applications of the VisionAppster platform usually require complex
+data types such as images and tensors to be transferred over the
+network. For these, JSON is not the best possible encoding. Therefore,
+the default encoding used for example by the JS client is
+“application/vnd.va-bin”, a high-performance binary serialization format
+that closely matches the actual memory layout of the complex data types.</p>
+<p>To get the most out of this document you should make sure you have the
+VisionAppster Engine running on your computer. The embedded links can
+then be used to inspect and control it.</p>
+<div class="section" id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">🔗</a></h2>
+<p>VisionAppster apps are composed of <em>objects</em>. Each object may have an
+arbitrary number of <em>properties</em>, <em>functions</em> and <em>signals</em>. These
+concepts can be found in many programming languages in a form or another
+and are assumed to be familiar to the reader.</p>
+<p>In the HTTP interface, each object has a base URI relative to the
+server’s root. For example, an instance of an Application Manager object
+is mapped to <a class="reference external" href="http://localhost:2015/manager/">/manager/</a>. A GET
+request to this URI will produce a “directory” listing that shows the
+structure of a remote object.</p>
+<p>Each object <em>instance</em> has a globally unique
+<a class="reference external" href="http://localhost:2015/manager/id">ID</a> that can be retrieved by a GET
+request. The ID will change if a server goes down and the object is
+recreated.</p>
+<p>The <a class="reference external" href="http://localhost:2015/manager/ping">ping</a> URI is for
+application-level connectivity checking and for keeping a dynamically
+created temporary object instance alive if no other requests are made.</p>
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">🔗</a></h2>
+<p>Properties are variables that control the behavior or appearance of an
+object. Generally, properties describe the object’s current state, and
+they can be thought of as the member variables or fields of an object.
+Property values are specific to a single object <em>instance</em>.</p>
+<p>Although properties are similar to member variables, they are
+technically implemented in a different way. The value of a property is
+set through a setter function that may validate the value before
+accepting it. Therefore, it is not guaranteed that a property actually
+assumes the value one sets to it. Properties also usually have a change
+notifier signal, which lets one to conveniently and efficiently detect
+changes.</p>
+<p>While changing the value of a property may seemingly cause an action
+(such as an animation in a user interface), properties aren’t used for
+invoking functionality. That is what functions are for.</p>
+<p>Submitting a GET request to
+<a class="reference external" href="http://localhost:2015/manager/properties/">properties/</a> will list
+properties. Each property declaration contains optional qualifier flags
+such as <code class="docutils literal notranslate"><span class="pre">const</span></code> and <code class="docutils literal notranslate"><span class="pre">volatile</span></code>, a type name, a unique property name
+and optionally a change signal. A property may be <code class="docutils literal notranslate"><span class="pre">const</span></code> and thus
+non-settable but still change value and emit a change signal.</p>
+<p>The current value of a property can be read by sending a GET request to
+<code class="docutils literal notranslate"><span class="pre">properties/propertyname</span></code>. For example, a GET request to
+<a class="reference external" href="http://localhost:2015/manager/properties/allApps">properties/allApps</a>
+will return a list of all installed applications.</p>
+<p>Submitting a PUT request to a property’s URI will change the value of
+the property. The new value is sent in the request body, usually as
+JSON. When the value of a property changes, a change notification signal
+will be sent to all registered clients.</p>
+<p>Each property is accompanied with a serial number that is incremented
+each time the value changes. The serial number is a 32-bit unsigned
+integer that will be initialized to a random value when a remote object
+instance is created. In HTTP communication, the serial number is encoded
+as a hexadecimal string and passed in the
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag">ETag</a>
+header. It can also be attached to property change signals as an
+<a class="reference external" href="#extended-headers">extended header</a>.</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">🔗</a></h2>
+<p>Functions provide a way to invoke actions on an object. A function can
+take an arbitrary number of input parameters and optionally return a
+value.</p>
+<p>The functions of a remote object are listed at
+<a class="reference external" href="http://localhost:2015/manager/functions/">functions/</a>. Each
+declaration consists of an optional return type, a name and a (possibly
+empty) list of parameter types. There may be multiple overloaded
+versions of the same function, each taking a different set of
+parameters. When an overloaded function is called, the server uses
+passed parameter types to find a matching overload.</p>
+<div class="section" id="post-requests">
+<h3>POST requests<a class="headerlink" href="#post-requests" title="Permalink to this headline">🔗</a></h3>
+<p>When a function is called, its arguments are passed as an array in a
+POST request body. If the function takes only a single argument, the
+array around the arguments can be omitted. As specified by the HTTP
+standard, the “Content-Type” header is used as a way to tell the server
+how to decode the arguments.</p>
+<p>If a function returns no value, the server responds with an empty “200
+OK” message or an appropriate error code. If there is a return value, it
+will be encoded as specified by the “Accept” header. Let’s assume the
+server provides a remote function <code class="docutils literal notranslate"><span class="pre">pass(str:</span> <span class="pre">String)</span> <span class="pre">-&gt;</span> <span class="pre">String</span></code> that
+just returns a string it is given as an argument. Calling the function
+would be a POST request:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/pass</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">15</span>
+
+<span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<p>The server’s response would be something like this:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">15</span>
+
+<span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<p>Since the function declares a name for its argument, it can be called
+with an object that contains named arguments:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/pass</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">24</span>
+
+<span class="p">{</span><span class="nt">&quot;str&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If a function has many parameters that cannot be encoded in the same way
+(e.g. JSON), the arguments can be passed as a MIME multipart message.
+Let us assume the server provides a function with the signature
+<code class="docutils literal notranslate"><span class="pre">binarize(image:</span> <span class="pre">Image,</span> <span class="pre">threshold:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">Image</span></code>. This function could
+be called with a MIME multipart message as follows:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/binarize</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/mixed; boundary=boundary_marker</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">image/png</span>
+
+--boundary_marker
+Content-Type: image/png
+Content-Length: 12345
+
+... image data here ...
+
+--boundary_marker
+Content-Type: application/json
+Content-Length: 3
+
+127
+--boundary_marker
+</pre></div>
+</div>
+<p>Creating multipart messages may be a bit of an overkill if only one of
+the arguments would actually require special encoding. In this case, it
+is possible to pass some of the arguments as query parameters in the
+URL. This would produce the same result:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/binarize?127</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">image/png</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">image/png</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">12345</span>
+
+... image data here ...
+</pre></div>
+</div>
+<p>If query parameters are not given names, they will be passed to the
+function in the order they appear in the call. In this case the response
+body becomes the first parameter. Function arguments that have default
+values can be omitted.</p>
+<p>Finally, if the function declaration provides names for its arguments,
+they can be used to pass parameters in any order. One cannot however mix
+ordered and named arguments. The special <code class="docutils literal notranslate"><span class="pre">&#64;body</span></code> query parameter
+specifies the name of the function argument to which the request body
+should be passed. Thus, the same call could be rewritten in yet another
+form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /myobject/functions/binarize?threshold=127&amp;@body=image HTTP/1.1
+Host: localhost:2015
+Content-Type: image/png
+Accept: image/png
+Content-Length: 12345
+
+... image data here ...
+</pre></div>
+</div>
+<p>This would tell the server to use 127 as <code class="docutils literal notranslate"><span class="pre">threshold</span></code> and the decoded
+body of the request as the <code class="docutils literal notranslate"><span class="pre">image</span></code> argument. You can do this using
+<code class="docutils literal notranslate"><span class="pre">curl</span></code> as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST -H <span class="s2">&quot;Content-Type: image/png&quot;</span> -H <span class="s2">&quot;Accept: image/png&quot;</span> <span class="se">\</span>
+  --data-binary @input.png <span class="se">\</span>
+  <span class="s2">&quot;http://localhost:2015/myobject/functions/binarize?threshold=127&amp;@body=image&quot;</span> <span class="se">\</span>
+  &gt; output.jpeg
+</pre></div>
+</div>
+<p>If the query string is used to pass function arguments, the server will
+try to automatically determine the types. It recognizes integers,
+decimal numbers and hexadecimal color codes in addition to the keywords
+<code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">nan</span></code>, <code class="docutils literal notranslate"><span class="pre">inf</span></code> and <code class="docutils literal notranslate"><span class="pre">-inf</span></code>. Everything else is
+treated as a string. If you need to pass a string that matches one of
+the keywords, you can enclose it in double quotes, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>.</p>
+<p>For example, consider the following query string:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?123&amp;true&amp;%22true%22&amp;-2.1e5&amp;inf&amp;abc&amp;%23ff0000
+</pre></div>
+</div>
+<p>After splitting at ampersands (&amp;), undoing URL encoding (percent codes)
+and auto-detecting types this would result in the following argument
+list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>123     -&gt; int(123)
+true    -&gt; bool(true)
+&quot;true&quot;  -&gt; String(&quot;true&quot;)
+-2.1e5  -&gt; double(-210000)
+inf     -&gt; double(∞)
+abc     -&gt; String(&quot;abc&quot;)
+#ff0000 -&gt; Color32(255, 0, 0)
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-requests">
+<h3>GET requests<a class="headerlink" href="#get-requests" title="Permalink to this headline">🔗</a></h3>
+<p>If a function takes no parameters or all of them can be encoded to the
+query string as shown above, it is possible to call a function using a
+GET request. For example, the parameterless
+<a class="reference external" href="http://localhost:2015/manager/functions/hasError">hasError()</a> and
+<a class="reference external" href="http://localhost:2015/manager/functions/clearError">clearError()</a>
+functions can be called with GET.</p>
+</div>
+<div class="section" id="asynchronous-calls">
+<h3>Asynchronous calls<a class="headerlink" href="#asynchronous-calls" title="Permalink to this headline">🔗</a></h3>
+<p>It is possible to call a remote function asynchronously. In this case
+the server won’t wait for the function to complete before responding to
+the client. Instead, the call will be put to a queue and executed later.
+The results of the function will be pushed to the client’s <a class="reference external" href="#pushable-sources-and-return-channels">return
+channel</a> once the function is
+done. The format of the response is specified by the <code class="docutils literal notranslate"><span class="pre">Media-Type</span></code>
+header. The client needs to give a source ID for the call so that it can
+recognize the return value when it appears in the return channel.</p>
+<p>To asynchronously call the function above:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/pass</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Media-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Client-ID</span><span class="o">:</span> <span class="l">S3cR3t</span>
+<span class="na">Source-ID</span><span class="o">:</span> <span class="l">29</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">15</span>
+
+<span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<p>The server would return with “200 OK” and put the call into a call
+queue. Once done, the return value would be pushed to the client’s
+(<code class="docutils literal notranslate"><span class="pre">S3cR3t</span></code>) return channel with source ID 29.</p>
+</div>
+</div>
+<div class="section" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Permalink to this headline">🔗</a></h2>
+<p>Signals are used as a way to notify listeners about changes in an
+object’s state or to emit the results of an asynchronous function call.
+A signal may pass any number of (including zero) values, and it can be
+connected to any number of functions with a matching parameter set.</p>
+<p>Most programming languages do not provide signals as a built-in concept.
+The same functionality can be achieved for example with Java-style
+listener interfaces. Signals are however conceptually cleaner and easier
+to use in practice.</p>
+<p>Submitting a GET request to
+<a class="reference external" href="http://localhost:2015/manager/signals/">signals/</a> will produce a
+list of signals. Signal declarations are similar to functions, but there
+is no return value.</p>
+<p>Property change signals are a special kind of a signal that will be
+emitted whenever the value of a property changes. If there is a change
+signal associated with a property, the signature of the signal will
+appear in the <code class="docutils literal notranslate"><span class="pre">notifier</span></code> field of the property description.</p>
+</div>
+<div class="section" id="callback-functions">
+<h2>Callback functions<a class="headerlink" href="#callback-functions" title="Permalink to this headline">🔗</a></h2>
+<p>Callback functions provide another way for the remote object to push
+data to clients. They also make it possible to request data from the
+client. There are two types of callbacks: permanent ones and callback
+function arguments.</p>
+<p>Permanent callbacks can be used to implement a “listener” design
+pattern. Any client can register itself as a listener to a callback
+function and receive the arguments of the callback function through the
+return channel (<a class="reference external" href="#pushable-sources-and-return-channels">see below</a>).
+The delivery mechanism is the same as with signals, but only one
+listener is allowed per function.</p>
+<p>Unlike signals, callbacks may return a value, which will be passed back
+to the server through the return channel. Even if a callback function
+returns no value, the server receives an acknowledgement once the
+function call finishes. Permanent callbacks are listed at
+<a class="reference external" href="http://localhost:2015/manager/callbacks/">callbacks/</a>.</p>
+<p>In addition to permanent callbacks, a remote function may have callback
+arguments. Again, the delivery mechanism is the same as with signals,
+but the arguments of the callback function will only be delivered to the
+client that made the request. This makes it possible to implement for
+example asynchronous functions that have no return value but push their
+results to the calling client after a processing delay.</p>
+</div>
+<div class="section" id="pushable-sources-and-return-channels">
+<h2>Pushable sources and return channels<a class="headerlink" href="#pushable-sources-and-return-channels" title="Permalink to this headline">🔗</a></h2>
+<p>The remote object system has a concept of a <em>pushable source</em> that lets
+the programmer to define many different types of data that be sent to
+the client from the server side. Pushable sources are identified by
+their relative URIs on the server and may present many different kinds
+of data sources. Signals are the most commonly used type of a pushable
+source.</p>
+<p>To be able to receive push notifications, the client must first open a
+<em>return channel</em>. This happens by establishing a WebSocket connection to
+<code class="docutils literal notranslate"><span class="pre">channels/&lt;client-id&gt;</span></code>. The WebSocket URL will be, for example,
+<code class="docutils literal notranslate"><span class="pre">ws://localhost:2015/manager/channels/3dcbff79-3f15-4a80-b7ca-b669cc0b3209</span></code>.
+The opened socket will then be used whenever a notification needs to be
+sent for the client.</p>
+<p>The client ID should be a cryptographically strong UUID. A different ID
+should be used for different servers. This makes it unlikely that
+anybody else will be able to steal or modify the return channel.</p>
+<p>Each return channel is dedicated to a single client. If you make a new
+request to the same channel URL, the old connection will break. This is
+seldom needed, but makes it possible to transfer the end point of the
+channel to another client.</p>
+<p>Once a channel has been established, the client can select which
+notifications to receive by issuing PUT requests to
+<code class="docutils literal notranslate"><span class="pre">channels/&lt;client-id&gt;/sources/&lt;source-id&gt;</span></code>. For example, a PUT request
+to <code class="docutils literal notranslate"><span class="pre">/manager/channels/3dcbff79-3f15-4a80-b7ca-b669cc0b3209/sources/0</span></code>
+with the JSON request body
+<code class="docutils literal notranslate"><span class="pre">{&quot;sourceUri&quot;:</span> <span class="pre">&quot;signals/runningAppsChanged&quot;}</span></code> would tell the server to
+notify the client whenever the <code class="docutils literal notranslate"><span class="pre">runningAppsChanged</span></code> signal is emitted.</p>
+<p>If the WebSocket request contains a <code class="docutils literal notranslate"><span class="pre">Media-Type</span></code> header or a
+<code class="docutils literal notranslate"><span class="pre">mediaType</span></code> URL parameter, its value will be used as the default
+encoding for data pushed through the channel. For example, to request
+responses as JSON, you can do this:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/manager/channels/s3cr3t?mediaType=application/json</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+</pre></div>
+</div>
+<p>Note that just like with functions, there may be multiple overloaded
+versions of a signal. In such a case the client must give the full
+signature of the signal as the <code class="docutils literal notranslate"><span class="pre">sourceUri</span></code> parameter. For example:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/&lt;client-id&gt;/sources/0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">44</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;signals/booleanChanged(bool)&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The client is responsible for picking a unique, non-negative 32-bit
+integer (0-2147483647) as a source ID that identifies the signal. In the
+example, the source ID is zero. The server will send the source ID when
+it pushes data to the channel so that the client can identify the
+signal. A DELETE request to
+<code class="docutils literal notranslate"><span class="pre">/manager/channels/3dcbff79-3f15-4a80-b7ca-b669cc0b3209/sources/0</span></code>
+will tell the server to stop pushing that signal.</p>
+<p>Connecting to multiple signals happens by giving each signal a unique ID
+number in the context of the channel. For example, to subscribe to the
+<code class="docutils literal notranslate"><span class="pre">barCode</span></code> and <code class="docutils literal notranslate"><span class="pre">image</span></code> signals, one can issue the following requests
+(client ID is “d351a1612998” for illustration):</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/d351a1612998/sources/0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">31</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;signals/barCode&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/d351a1612998/sources/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">56</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;signals/image&quot;</span><span class="p">,</span><span class="nt">&quot;mediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter specifies how the parameters of the signal
+should be encoded by the server. See details
+<a class="reference external" href="#receiving-signals-and-callbacks">below</a>. If <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> is not
+specified, the channel’s default encoding will be used.</p>
+<p>Connected sources can be listed by sending a GET request to
+<code class="docutils literal notranslate"><span class="pre">channels/&lt;client-id&gt;/sources/</span></code>. A channel is killed by sending a
+DELETE request to <code class="docutils literal notranslate"><span class="pre">channels/&lt;client-id&gt;</span></code>. Finally, a broken connection
+can be re-established by initiating a WebSocket connection to
+<code class="docutils literal notranslate"><span class="pre">channels/&lt;client-id&gt;</span></code>. The server will automatically delete the
+channel if a broken connection isn’t re-established within a
+“reasonable” time.</p>
+</div>
+<div class="section" id="source-parameters">
+<h2>Source parameters<a class="headerlink" href="#source-parameters" title="Permalink to this headline">🔗</a></h2>
+<p>Each pushable source can be individually parameterized. In the examples
+above, the <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter was used to specify encoding for data
+pushed back from the server. Other configurable parameters are:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">qos</span></code></dt><dd><p>Quality of service level. QoS is specified as a numeric value in the
+range [-1,3].</p>
+<dl class="simple">
+<dt>Unspecified (-1)</dt><dd><p>Use the channel’s default.</p>
+</dd>
+<dt>At most once (0)</dt><dd><p>A.k.a fire and forget. Send the message at most once and don’t
+expect an acknowledgment.</p>
+</dd>
+<dt>Last at most once (1)</dt><dd><p>Same as 0, but new messages from the same source are allowed to
+overwrite an older message if it hasn’t been sent yet. The last
+message will be sent once.</p>
+</dd>
+<dt>At least once (2)</dt><dd><p>Make sure receiver gets the message. Resend after a while if the
+client fails to acknowledge.</p>
+</dd>
+<dt>Last at least once (3)</dt><dd><p>Make sure receiver gets the last message from a source. Same as 2,
+but his mode allows the server to update message content until it
+has been acknowledged.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">maxAge</span></code></dt><dd><p>The maximum number of milliseconds the message will be kept in the
+outgoing message queue. 0 means unlimited, -1 uses channel default.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="receiving-signals-and-callbacks">
+<h2>Receiving signals and callbacks<a class="headerlink" href="#receiving-signals-and-callbacks" title="Permalink to this headline">🔗</a></h2>
+<p>The server supports a few different transport protocols for
+notifications. This section describes the WebSocket implementation.</p>
+<p>Messages between the client and the server are sent as WebSocket binary
+frames. The payload of each WebSocket frame starts with an eight-byte
+message header that has the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">0</span>               <span class="mi">1</span>               <span class="mi">2</span>               <span class="mi">3</span>
+ <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span>
+<span class="o">+---------------+-+-+-----------+-------------------------------+</span>
+<span class="o">|</span> <span class="n">message</span> <span class="nb">type</span>  <span class="o">|</span><span class="n">A</span><span class="o">|</span><span class="n">E</span><span class="o">|</span>  <span class="n">flags</span>    <span class="o">|</span>      <span class="n">source</span> <span class="n">ID</span> <span class="p">(</span><span class="mi">2</span> <span class="n">LSBs</span><span class="p">)</span>       <span class="o">|</span>
+<span class="o">|</span>               <span class="o">|</span><span class="n">C</span><span class="o">|</span><span class="n">X</span><span class="o">|</span>           <span class="o">|</span>                               <span class="o">|</span>
+<span class="o">|</span>               <span class="o">|</span><span class="n">K</span><span class="o">|</span><span class="n">T</span><span class="o">|</span>           <span class="o">|</span>                               <span class="o">|</span>
+<span class="o">+---------------+-+-+---------+-+-------------------------------+</span>
+<span class="o">|</span>     <span class="n">source</span> <span class="n">ID</span> <span class="p">(</span><span class="mi">2</span> <span class="n">MSBs</span><span class="p">)</span>      <span class="o">|</span><span class="n">R</span><span class="o">|</span>        <span class="n">message</span> <span class="n">index</span>          <span class="o">|</span>
+<span class="o">|</span>                             <span class="o">|</span><span class="n">E</span><span class="o">|</span>                               <span class="o">|</span>
+<span class="o">|</span>                             <span class="o">|</span><span class="n">S</span><span class="o">|</span>                               <span class="o">|</span>
+<span class="o">+-----------------------------+-+-------------------------------+</span>
+<span class="o">...</span> <span class="n">optional</span> <span class="n">extended</span> <span class="n">headers</span> <span class="o">...</span>
+<span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span> <span class="n">header</span> <span class="nb">type</span>   <span class="o">|</span> <span class="n">header</span> <span class="n">data</span> <span class="o">...</span>
+<span class="o">+---------------+</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The first byte contains a message type that describes how the rest of
+the message should be interpreted:</p>
+<ol class="arabic simple" start="0">
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code>: The message contains a part of a sequence. One or
+more parts will follow. A “sequence” can be for example an array
+of signal arguments. A part of a sequence is a single,
+individually encoded element in the array.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">final</span></code>: The message contains the final part of a sequence. If a
+sequence contains only one part, the first message will be
+<code class="docutils literal notranslate"><span class="pre">final</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">complete</span></code>: The message contains a complete sequence of
+messages, all encoded in a single message. For example, a JSON
+encoded array of signal parameters is a complete message.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The message contains an error. Errors are objects with
+at least a <code class="docutils literal notranslate"><span class="pre">message</span></code> field.</p></li>
+</ol>
+</li>
+<li><p>The next eight bits contain control flags. Bit 0 indicates whether
+the server expects the client to acknowledge the message or not. If
+the <code class="docutils literal notranslate"><span class="pre">ACK</span></code> bit is set, the client must send a reply, optionally with
+return data. If the <code class="docutils literal notranslate"><span class="pre">EXT</span></code> bit (1) is set, <a class="reference external" href="#extended-headers">extended
+headers</a> follow.</p></li>
+<li><p>The next four bytes contain the source ID the client gave when
+registering a source as a 32-bit little-endian integer. The most
+significant bit (31) is reserved and must be zero.</p></li>
+<li><p>The last field is an unsigned 16-bit little-endian sequence number.
+This lets the client to detect dropped messages in case the server
+runs out of bandwidth.</p></li>
+<li><p>The rest of the payload is data that is interpreted according to
+<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">type</span></code>.</p></li>
+</ul>
+<p>Note that the header does not contain a length field since the WebSocket
+frame already has one.</p>
+<p>Usually, the arguments of a signal or a callback function are encoded as
+a JSON array in the order they appear in the signal’s or callback’s
+declaration and sent as a <code class="docutils literal notranslate"><span class="pre">complete</span></code> message in a single WebSocket
+frame (which may get fragmented in transport). When registering a
+pushable source to a channel, the client can however request splitting
+arguments to successive frames by giving a preferred encoding scheme for
+each argument with the <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter. For example:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/&lt;client-id&gt;/sources/0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">54</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;signals/image&quot;</span><span class="p">,</span><span class="nt">&quot;mediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>This will tell the server to connect to a signal called “image” and to
+encode the signal’s single parameter as a JPEG in a single <code class="docutils literal notranslate"><span class="pre">final</span></code>
+message. When the signal is received, the client can decode the body of
+the WebSocket frame (after skipping the eight header bytes) as a JPEG
+image.</p>
+<p>If a signal has many parameters, they will be sent in successive
+WebSocket frames in the order the parameters appear in the declaration
+of the signal. The messages will be <code class="docutils literal notranslate"><span class="pre">partial</span></code> up to the last one,
+which will be <code class="docutils literal notranslate"><span class="pre">final</span></code>.</p>
+<p>It should be noted that <code class="docutils literal notranslate"><span class="pre">&quot;image/jpeg&quot;</span></code> requests encoding the whole
+parameter array as an image (which is not possible) whereas
+<code class="docutils literal notranslate"><span class="pre">[&quot;image/jpeg&quot;]</span></code> causes the image parameter itself to encoded and sent
+as a separate message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter can also be used to selectively pick signal
+parameters. Let’s assume the object has a signal with the signature
+<code class="docutils literal notranslate"><span class="pre">foobar:</span> <span class="pre">(v1:</span> <span class="pre">int32,</span> <span class="pre">v2:</span> <span class="pre">Image)</span> <span class="pre">-&gt;</span> <span class="pre">void</span></code>. To receive only the image
+one can give <code class="docutils literal notranslate"><span class="pre">null</span></code> as the media type for the first parameter:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/&lt;client-id&gt;/sources/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">61</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;signals/foobar&quot;</span><span class="p">,</span><span class="nt">&quot;mediaType&quot;</span><span class="p">:[</span><span class="kc">null</span><span class="p">,</span><span class="s2">&quot;image/png&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>Specifying a <code class="docutils literal notranslate"><span class="pre">null</span></code> media type for all parameters makes the server to
+send the signal with an empty body. This may be useful if you want to
+e.g. observe property changes but retrieve the latest value only on
+explicit request.</p>
+<p>Callbacks are connected to in a similar manner, but the <code class="docutils literal notranslate"><span class="pre">sourceUri</span></code> is
+“callbacks/callbackName”. Unlike signals, callbacks may return a value
+to the server. The encoding of the return value is specified by a
+<code class="docutils literal notranslate"><span class="pre">replyMediaType</span></code> parameter when registering a connection. For example:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/&lt;client-id&gt;/sources/2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">65</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;callbacks/getImage&quot;</span><span class="p">,</span><span class="nt">&quot;replyMediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;image/png&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>This would tell the server that the return value of the <code class="docutils literal notranslate"><span class="pre">getImage</span></code>
+callback will be encoded as a PNG. If <code class="docutils literal notranslate"><span class="pre">replyMediaType</span></code> is not
+specified, the channel’s default will be used.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">ACK</span></code> bit of the <code class="docutils literal notranslate"><span class="pre">flags</span></code> field is set, the client must
+respond to a message. If there is no data to be sent back, an empty
+<code class="docutils literal notranslate"><span class="pre">complete</span></code> message will acknowledge the reception. If there is data to
+be sent back, it must be encoded as specified by <code class="docutils literal notranslate"><span class="pre">replyMediaType</span></code>.</p>
+<p>The semantics of the <code class="docutils literal notranslate"><span class="pre">replyMediaType</span></code> parameter are the same as those
+of the <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter: a single value specifies the encoding
+for a complete sequence, and an array of values specifies the encoding
+for each individual element. Currently, the server does not support
+<code class="docutils literal notranslate"><span class="pre">partial</span></code> responses. Therefore, <code class="docutils literal notranslate"><span class="pre">replyMediaType</span></code> must be either a
+single string or an array containing a single string.</p>
+</div>
+<div class="section" id="callbacks-as-function-arguments">
+<h2>Callbacks as function arguments<a class="headerlink" href="#callbacks-as-function-arguments" title="Permalink to this headline">🔗</a></h2>
+<p>Let us assume a server object provides a function that calculates the
+sum of two integer arguments and pushes the result back using a callback
+function. The signature of the function can be written as
+<code class="docutils literal notranslate"><span class="pre">sum:</span> <span class="pre">(callback:</span> <span class="pre">(int)</span> <span class="pre">-&gt;</span> <span class="pre">void,</span> <span class="pre">a:</span> <span class="pre">int,</span> <span class="pre">b:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">void</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">callback</span></code> is a function that will be invoked once the computation of
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> is ready. The <code class="docutils literal notranslate"><span class="pre">sum</span></code> function itself returns no value.</p>
+<p>To be able to receive the asynchronous reply one needs to first set up a
+return channel as described
+<a class="reference external" href="#pushable-sources-and-return-channels">above</a>. The generated client
+ID must then be passed to the <code class="docutils literal notranslate"><span class="pre">sum</span></code> function call so that the server
+knows which channel to use when calling back. This happens by adding a
+<code class="docutils literal notranslate"><span class="pre">Client-ID</span></code> header to the request. Callback function arguments are
+replaced with the numeric source ID that will be used when pushing that
+callback’s data back to the return channel. An example:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/sum</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Client-ID</span><span class="o">:</span> <span class="l">R4Nd0M</span>
+<span class="na">Source-ID</span><span class="o">:</span> <span class="l">30</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">9</span>
+
+<span class="p">[</span><span class="mi">314</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This tells the server to calculate <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> and push the result back to
+the return channel of client <code class="docutils literal notranslate"><span class="pre">R4Nd0M</span></code> using <code class="docutils literal notranslate"><span class="pre">314</span></code> as the source ID.
+No other configuration has been given, so the server will encode the
+arguments of the callback function using the channel’s default encoding.
+Since the request contains a <code class="docutils literal notranslate"><span class="pre">Source-ID</span></code> header, the call to <code class="docutils literal notranslate"><span class="pre">sum</span></code>
+itself is asynchronous, and the server won’t wait for the function to
+complete. When it is done, an empty <code class="docutils literal notranslate"><span class="pre">complete</span></code> message with the given
+source ID (30) will be pushed to the client through the return channel.</p>
+<p>If there is a need to receive the callback’s arguments in a non-default
+format, it is possible to register and configure the source ID
+beforehand just like with signals:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/R4Nd0M/sources/314</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">34</span>
+
+<span class="p">{</span><span class="nt">&quot;mediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;application/json&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>This would cause the result to be sent as an individual integer (<code class="docutils literal notranslate"><span class="pre">3</span></code>)
+instead of a one-element array (<code class="docutils literal notranslate"><span class="pre">[3]</span></code>). Unlike signals and permanent
+callbacks, function argument callbacks don’t require a <code class="docutils literal notranslate"><span class="pre">sourceUri</span></code>
+parameter. The client identifies the callback solely based on the
+numeric source ID.</p>
+<p>Permanent configuration is useful when the same parameters are used for
+all callback invocations. Temporary parameters that only apply during a
+single function call (which may cause multiple invocations of the
+callback) can be passed as an object type argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">myobject</span><span class="o">/</span><span class="n">functions</span><span class="o">/</span><span class="nb">sum</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">2015</span>
+<span class="n">Client</span><span class="o">-</span><span class="n">ID</span><span class="p">:</span> <span class="n">R4Nd0M</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">49</span>
+
+<span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">315</span><span class="p">,</span><span class="s2">&quot;mediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;application/json&quot;</span><span class="p">]},</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This would cause an individual integer to be pushed back to the channel
+with 315 as the source ID. Since the <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter only
+applies to this call, further calls to <code class="docutils literal notranslate"><span class="pre">sum</span></code> without the parameter
+object would use default encoding.</p>
+</div>
+<div class="section" id="sharing-return-channels">
+<h2>Sharing return channels<a class="headerlink" href="#sharing-return-channels" title="Permalink to this headline">🔗</a></h2>
+<p>If a server hosts multiple remote objects, it is possible to group them
+so that many or even all of them push data to the client through a
+single return channel. Unless the there is a huge amount of data flowing
+from the server, bundling return channels is usually the right thing to
+do as it eases error recovery on the client side and makes the server
+consume slightly fewer resources.</p>
+<p>To share a return channel, request the first channel just as you
+normally would. When attaching to another object, first open the channel
+normally on one object:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/object1/channels/s3cr3t</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+</pre></div>
+</div>
+<p>Then PUT the existing client ID under <code class="docutils literal notranslate"><span class="pre">channels</span></code> on another object:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/object2/channels/s3cr3t</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+</pre></div>
+</div>
+<p>The first request will open a WebSocket connection that will be used as
+the return channel for <code class="docutils literal notranslate"><span class="pre">object1</span></code>. The second one informs <code class="docutils literal notranslate"><span class="pre">object2</span></code>
+to reuse the existing return channel.</p>
+<p>It is safe to PUT the same client ID multiple times, but the request
+will fail if no channel has been opened with GET. If the second request
+was also a GET, the first connection would be transferred to a new
+WebSocket client, but the channel would still remain in use by both
+objects until DELETEd.</p>
+</div>
+<div class="section" id="extended-headers">
+<h2>Extended headers<a class="headerlink" href="#extended-headers" title="Permalink to this headline">🔗</a></h2>
+<p>Extended headers provide a way to attach additional information to each
+message passed through the return channel much like the way headers are
+used in standard HTTP communication. The client must however explicitly
+request headers to be added as most of the time nothing is needed.</p>
+<p>Extended headers follow the static 8-byte message header. Each extended
+header starts with a byte that specifies its type. A zero byte means end
+of headers. If the type field is non-zero, the next byte(s) are
+interpreted according to the type field.</p>
+<p>Recognized extended header types are:</p>
+<ol class="arabic simple">
+<li><p>ETag. A serial number that counts changes to property values. Can be
+attached to property change signals. This header with the standard
+HTTP ETag header lets clients to cache property values. The ETag is
+sent as a 32-bit unsigned little-endian integer.</p></li>
+<li><p>Time stamp. The time at which the message was generated in the
+server, before it was put in the output queue. Represented as a
+64-bit unsigned little-endian integer that counts the number of
+milliseconds since the Unix epoch (1970-01-01T00:00:00).</p></li>
+</ol>
+<p>To request extended headers, a client sends an array of header types in
+a PUT request when subscribing to a source. For example, to request the
+ETag header for a property change signal, the following request could be
+sent:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PUT</span> <span class="nn">/myobject/channels/d351a1612998/sources/2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">50</span>
+
+<span class="p">{</span><span class="nt">&quot;sourceUri&quot;</span><span class="p">:</span><span class="s2">&quot;signals/valueChanged&quot;</span><span class="p">,</span><span class="nt">&quot;headers&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>In partial messages, extended headers are included only in the first
+one.</p>
+</div>
+<div class="section" id="bash-client">
+<h2>Bash client<a class="headerlink" href="#bash-client" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster SDK comes with a Bash client that can be used either
+as a command-line tool or as a library of shell functions in other
+scripts. The library and the command-line tool are all included in a
+single file that is located in the Linux SDK in
+<code class="docutils literal notranslate"><span class="pre">sdk/client/bash/va-client</span></code>. Type <code class="docutils literal notranslate"><span class="pre">va-client</span></code> for command-line usage
+instructions.</p>
+<p><img alt="image0" class="youtube autoplay" src="engine/NsJuGqrmcS0" /></p>
+<p>If you want to use the functions in your scripts, the best way to do
+this is to include the <code class="docutils literal notranslate"><span class="pre">va-client</span></code> script and to call the commands
+directly as functions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+. <span class="nv">$HOME</span>/VisionAppster/sdk/client/bash/va-client
+
+<span class="c1"># The address of your Raspberry Pi running VisionAppster Engine</span>
+<span class="nv">host</span><span class="o">=</span><span class="m">192</span>.168.0.123
+<span class="nv">port</span><span class="o">=</span><span class="m">2015</span>
+<span class="nv">object</span><span class="o">=</span>/info
+
+va_property_set userDefinedName <span class="s1">&#39;&quot;New name&quot;&#39;</span>
+</pre></div>
+</div>
+<p>Note that both input and output data to the VisionAppster Engine are
+JSON-encoded by default, and you need to work with raw JSON data. The
+client makes no conversions for you. Use
+<a class="reference external" href="https://stedolan.github.io/jq/">jq</a> to en/decode JSON messages.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../services/" class="btn btn-neutral float-right" title="VisionAppster Engine services" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../management-interface/" class="btn btn-neutral float-left" title="Management interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

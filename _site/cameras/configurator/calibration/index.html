@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Calibration &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Positioning" href="../positioning/" />
+    <link rel="prev" title="Camera driver parameters" href="../parameters/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Cameras</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../">Camera Configurator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../#parameter-sets">Parameter sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#image-source">Image source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameters/">Camera driver parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Calibration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#calibration-view">Calibration view</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../positioning/">Positioning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../drivers/">Camera drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">Cameras</a> &raquo;</li>
+        
+          <li><a href="../">Camera Configurator</a> &raquo;</li>
+        
+      <li>Calibration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="calibration">
+<h1>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">🔗</a></h1>
+<p><em>Camera Calibration</em> is a somewhat vague term that can mean different
+things in different contexts. This document describes <em>geometric camera
+calibration</em>, which means finding the information necessary to map pixel
+coordinates to coordinates in the camera’s <em>reference frame</em>, modeling
+the effect of the lens. If the <em>position</em> of the camera with respect to
+the world is known, pixel coordinates can then be converted to world
+coordinates such as millimeters.</p>
+<p>The VisionAppster platform comes with built-in tools to perform <a class="reference internal" href="../../../tools/CalibrateManuallyTool/"><span class="doc">simple
+calibration</span></a> without a special
+calibration target in addition to
+<a class="reference internal" href="../../../tools/CalibrateCameraTool/"><span class="doc">calibration</span></a> and
+<a class="reference internal" href="../../../tools/PositionCameraTool/"><span class="doc">positioning</span></a> tools that make use of a
+standard calibration plate. the Camera Configurator provides an easy
+process for an accurate calibration taking also the lens distortion in
+account.</p>
+<div class="section" id="calibration-view">
+<h2>Calibration view<a class="headerlink" href="#calibration-view" title="Permalink to this headline">🔗</a></h2>
+<p>The <em>Calibration</em> view calculates the calibration factors for the
+selected camera. Calibration factors are <em>intrinsic</em> to a camera and
+don’t change depending on its position. Thus, calibration is typically
+an off-line process whereas positioning can only be done once the camera
+has been installed. An important thing to note is that the calibration
+factors are fixed only if the optical configuration of the camera stays
+fixed. If the focal length or the focus of the lens changes, the factors
+will no longer apply.</p>
+<p>The first thing to do is to select the correct value in the
+<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">type</span></code> setting. It will select the tool used for the
+calibration and the other input parameters required for it. For an
+<code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">scan</span></code> camera, the used input parameters and the resulting
+calibration factors are explained in <a class="reference internal" href="../../../tools/CalibrateCameraTool/"><span class="doc">Calibrate
+camera</span></a> and for a <code class="docutils literal notranslate"><span class="pre">Line</span> <span class="pre">scan</span></code> camera,
+in <a class="reference internal" href="../../../tools/CalibrateLinescanCameraTool/"><span class="doc">Calibrate line-scan camera</span></a>.</p>
+<p>Calculating the calibration factors requires selecting at least three
+recorded images taken from a special calibration plate (only one image
+is required when calibrating only the lens distortion factors).
+VisionAppster calibration plates can be printed out in different paper
+sizes from the following links. Note that it is important to make sure
+that the print-out has exactly the same size in millimeters as stated in
+the calibration plate.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">scan</span></code> camera calibration plate:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/4393c5387a9a460713f5b0c757e299fa/areascan-calibration-plate-a3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A3</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/468c4ced2bb5f3542292eb88edf6aa63/areascan-calibration-plate-a4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A4</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/293fe666fde20964894c187a37b830dc/areascan-calibration-plate-a5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A5</span></code></a></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Line</span> <span class="pre">scan</span></code> camera calibration plate:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/bd3778da114d1e1a0bfcc46f2e4f71c3/linescan-calibration-plate-a3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A3</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/16c81dafbdd364aedba7e8f96ade4fd8/linescan-calibration-plate-a4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A4</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/8a3facd3305668a1fbf9397ba48ebc3c/linescan-calibration-plate-a5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A5</span></code></a></p></li>
+</ul>
+<p>The calibration plates also provide values to be used as calibration
+input parameters, so make sure that they match with the values shown in
+the <em>Calibration</em> view.</p>
+<p>All the recorded images for the selected camera are shown at the bottom
+of the view. To get the most accurate results, the images used for
+calibration should be recorded in a lossless format. However, the
+default save format for recorded images is JPG, so let’s change that
+first. Click the <em>recording settings</em> (<img alt="image0" src="../../../_images/cc-recording-settings-button.png" />) button at the bottom of
+the view. Then select a lossless format such as <code class="docutils literal notranslate"><span class="pre">png</span></code> in the
+<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">format</span></code> setting and accept the dialog. Note that each camera
+has its own recording settings.</p>
+<div class="figure align-default" id="id1">
+<img alt="Changing the format of the recorded images." src="../../../_images/cc-recording-settings-image-format.png" />
+<p class="caption"><span class="caption-text">Changing the format of the recorded images.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<p>To record new images, first press the <em>record</em> (<img alt="image1" src="../../../_images/cc-record-button.png" />) button and
+then capture images using either the <em>single shot</em> (<img alt="image2" src="../../../_images/cc-capture-one-button.png" />) button or
+the <em>continuous capture</em> (<img alt="image3" src="../../../_images/cc-capture-button.png" />) button. The recorded images will
+appear at the bottom of the view. To select at least three images, hold
+down <code class="docutils literal notranslate"><span class="pre">Shift</span></code> or <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> key and click the images to be selected. The
+selected images are displayed also in the image display to the right.
+When there are multiple images selected, you can choose the one being
+shown in the display using the drop-down menu above the display.</p>
+<p>To calculate the calibration factors based on the input parameter
+settings and the selected images, click the
+<code class="docutils literal notranslate"><span class="pre">Calculate</span> <span class="pre">calibration</span> <span class="pre">factors</span></code> button. The button will show the
+calculation progress in it.</p>
+<div class="figure align-default" id="id2">
+<img alt="Calculating the calibration factors." src="../../../_images/cc-calculating-calibration-factors.png" />
+<p class="caption"><span class="caption-text">Calculating the calibration factors.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<p>If the calibration calculation is successful, the result is shown in the
+parameters in the <code class="docutils literal notranslate"><span class="pre">Calibration</span> <span class="pre">factors</span></code> section. The <code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code>
+value shows how successful the calibration procedure was. The smaller
+the value, the better. A value between 0 and 1 is good, between 1 and 2
+is fair and larger than 2 is poor. If the calibration fails completely,
+the value is infinite. In that case it is likely that the calibration
+plate was not detected at all in at least one image. The
+<code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code> value (click it to see the details) shows how
+many markers were detected in each image. For more detailed information
+of the different calibration factors, see the documentation of the used
+calibration tool.</p>
+<div class="figure align-default" id="id3">
+<img alt="Successful calibration." src="../../../_images/cc-successful-calibration.png" />
+<p class="caption"><span class="caption-text">Successful calibration.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>In the example below, two of the selected images have been replaced with
+empty images. The calibration procedure fails and the
+<code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code> value shows zero for the empty images.</p>
+<div class="figure align-default" id="id4">
+<img alt="Failed calibration." src="../../../_images/cc-failed-calibration.png" />
+<p class="caption"><span class="caption-text">Failed calibration.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Once the calibration results are satisfactory, they can be saved as a
+<code class="docutils literal notranslate"><span class="pre">Calibration</span></code> parameter set and associated with the camera by editing
+the <code class="docutils literal notranslate"><span class="pre">Associated</span> <span class="pre">parameters</span></code> setting in the <em>Calibration</em> view.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../positioning/" class="btn btn-neutral float-right" title="Positioning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../parameters/" class="btn btn-neutral float-left" title="Camera driver parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

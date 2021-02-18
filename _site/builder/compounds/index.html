@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Compound tools &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Creating components" href="../creating-components/" />
+    <link rel="prev" title="App API" href="../app-api/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Builder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#first-steps">First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-api/">App API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compound tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-compound">Creating a compound</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../creating-components/">Creating components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Builder</a> &raquo;</li>
+        
+      <li>Compound tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="compound-tools">
+<h1>Compound tools<a class="headerlink" href="#compound-tools" title="Permalink to this headline">🔗</a></h1>
+<p>In the Builder, <em>compounds</em> provide a way of grouping connected tools so
+that they together form a single tool. Compound tools serve a few
+important purposes:</p>
+<dl class="simple">
+<dt>Modularization</dt><dd><p>All well-designed software consist of independent modules that have
+clear roles and interfaces. The processing graph is not different.
+When the size of the graph increases, it soon becomes necessary to
+create a hierarchical structure. For this, (nested) compounds are a
+useful tool.</p>
+</dd>
+<dt>Reuse</dt><dd><p>If you find yourself repeating the same combination of tools, it
+makes sense to create compound that can be copied or saved as a
+custom tool to your tool library.</p>
+</dd>
+<dt>API functions</dt><dd><p>When you create API functions out of tools, each function maps to a
+single tool. Since a single native tool seldom makes up a useful
+application, the tools published as API functions are typically
+compounds. Creating a compound out of a single tool may also be
+useful if you want to change the names of the function’s input and
+output parameters.</p>
+</dd>
+</dl>
+<div class="section" id="creating-a-compound">
+<h2>Creating a compound<a class="headerlink" href="#creating-a-compound" title="Permalink to this headline">🔗</a></h2>
+<p>Let us start with the simple processing graph shown in the picture
+below. The first step is to select the tools that will make up the
+compound by holding <em>Ctrl</em> and clicking the <code class="docutils literal notranslate"><span class="pre">Binarize</span> <span class="pre">Adaptively</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Detect</span> <span class="pre">Blobs</span></code> tools. Once this is done, the “Create compound” action
+in the context menu (right-click) will be enabled. Select it.</p>
+<div class="large figure align-default" id="id1">
+<img alt="Select tools with Ctrl+click and use the context menu to create a compound." src="../../_images/compounds-1.png" />
+<p class="caption"><span class="caption-text">Select tools with Ctrl+click and use the context menu to create a
+compound.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The Builder will automatically create <em>proxies</em> for inputs and outputs
+that are connected to tools outside of the new compound. In this case, a
+proxy input will be created to the image coming from the
+<code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">Source</span></code>.</p>
+<p>To add a new input or output parameter, connect the parameter to the “+”
+symbol as shown in the picture below. The connection mode is activated
+by clicking the dot on the right side of the parameter.</p>
+<div class="large figure align-default" id="id2">
+<img alt="Add new parameters to the compound’s interface by connecting to “+”." src="../../_images/compounds-2.png" />
+<p class="caption"><span class="caption-text">Add new parameters to the compound’s interface by connecting to “+”.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<p>By default, the names of the proxied input and output parameters will be
+the same as the parameters they are connected to. You can change this
+from the context menu. If you publish the compound as an API function,
+the names of the parameters will show up in the function declaration.</p>
+<div class="large figure align-default" id="id3">
+<img alt="Compound’s input and output parameters can be renamed." src="../../_images/compounds-3.png" />
+<p class="caption"><span class="caption-text">Compound’s input and output parameters can be renamed.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Once the names of the inputs and outputs have been defined, you can
+close the compound from the context menu.</p>
+<div class="large figure align-default" id="id4">
+<img alt="Close a compound to make it appear as an ordinary tool." src="../../_images/compounds-4.png" />
+<p class="caption"><span class="caption-text">Close a compound to make it appear as an ordinary tool.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The default name of a compound is, aptly, “Compound”. You can change
+this from the tool’s properties dialog.</p>
+<div class="large figure align-default" id="id5">
+<img alt="The properties of any tool can be changed with the properties dialog that opens through the context menu." src="../../_images/compounds-5.png" />
+<p class="caption"><span class="caption-text">The properties of any tool can be changed with the properties dialog
+that opens through the context menu.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>If the compound has a well-defined functionality and interface, finding
+a good name for it is probably quite easy. If you find yourself
+struggling to find a name, you may need to revisit the structure. In
+this example, we made a blob detector that uses an adaptive binarization
+technique to separate background and foreground. “Detect blobs
+adaptively” thus quite closely tells what is happening.</p>
+<div class="large figure align-default" id="id6">
+<img alt="The final processing graph." src="../../_images/compounds-6.png" />
+<p class="caption"><span class="caption-text">The final processing graph.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../creating-components/" class="btn btn-neutral float-right" title="Creating components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../app-api/" class="btn btn-neutral float-left" title="App API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

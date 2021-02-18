@@ -1,0 +1,970 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Creating tools in C &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="C API reference" href="../reference/" />
+    <link rel="prev" title="C API" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">C API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating tools in C</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-c-compiler">Installing a C++ compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-new-tools">Implementing new tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-and-deploying-a-plugin">Building and deploying a plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meta-data">Meta-data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#member-functions">Member functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calling-conventions">Calling conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/">C API reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../">C API</a> &raquo;</li>
+        
+      <li>Creating tools in C</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-tools-in-c">
+<h1>Creating tools in C<a class="headerlink" href="#creating-tools-in-c" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster SDK comes with example projects. To get started, you
+may want to have a look at a “hello world” equivalent of a tool plugin
+at <code class="docutils literal notranslate"><span class="pre">sdk/examples/exampletoolplugin</span></code>. On Linux, you’ll find the example
+wherever you installed the SDK. On Windows, you should make a local copy
+of the <code class="docutils literal notranslate"><span class="pre">sdk</span></code> folder under your installation to
+<code class="docutils literal notranslate"><span class="pre">%USERPROFILE%\VisionAppster\sdk</span></code>.</p>
+<p>The example comes with a Visual Studio project file and a Makefile for
+the GNU compiler. If you installed the platform to a non-default
+location on Windows, you need to change the <code class="docutils literal notranslate"><span class="pre">BIN_PATH</span></code> variable in the
+Makefile. In the VS project, there is a global property called
+<code class="docutils literal notranslate"><span class="pre">VisionAppsterSDKRoot</span></code> that needs to point to your local copy of the
+<code class="docutils literal notranslate"><span class="pre">sdk</span></code> folder.</p>
+<p>This documentation describes how to build tool plugins in plain C and
+specifies the required functionality for a compatible tool plug-in.</p>
+</div>
+<div class="section" id="installing-a-c-compiler">
+<h2>Installing a C++ compiler<a class="headerlink" href="#installing-a-c-compiler" title="Permalink to this headline">🔗</a></h2>
+<p>To create a new tool you need a C compiler. The tool API is in C because
+C has a standard binary interface that lets one to link together
+binaries generated by any standards-compliant compiler. C++ (or any
+other language that is compatible with C) can be used to implement the
+tools, but there is a caveat: linking to C++ libraries that come with
+the platform SDK is only possible if you use the same compiler that was
+used to build the SDK.</p>
+<p>Linking problems may arise for example if you use the built-in OpenCv
+libraries in the SDK. On Linux, this is less of a problem as you can
+usually install a compatible <code class="docutils literal notranslate"><span class="pre">gcc</span></code> compiler from your system’s package
+manager. On Windows, things are a bit more complicated: the gcc compiler
+comes in many flavors, and not all of them are compatible.</p>
+<p>The preferred way of building native tools is to use <code class="docutils literal notranslate"><span class="pre">gcc</span></code> or <code class="docutils literal notranslate"><span class="pre">g++</span></code>
+through <a class="reference internal" href="../../../components/cross-compilation/"><span class="doc">va-cross</span></a>. This ensures that
+the build environment is compatible with the platform even when using
+C++ libraries and makes it possible to sell your components in the
+VisionAppster Store. If you plan to use the native tools only
+internally, you may use your own compiler.</p>
+<div class="section" id="bit-mingw-on-windows">
+<h3>64-bit MinGW on Windows<a class="headerlink" href="#bit-mingw-on-windows" title="Permalink to this headline">🔗</a></h3>
+<p>If you are using <a class="reference external" href="https://www.msys2.org/">MSYS2</a> the default <code class="docutils literal notranslate"><span class="pre">gcc</span></code>
+package won’t work. Instead, go to the MSYS2 terminal and install the
+<code class="docutils literal notranslate"><span class="pre">mingw-w64</span></code> version. You also need GNU make:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman -S mingw-w64-x86_64-gcc make
+</pre></div>
+</div>
+<p>MSYS2 installs three different terminals into the Windows start menu.
+Make sure to use the “MSYS2 MinGW 64-bit” version when compiling.</p>
+<p>MinGW-w64 can also be installed directly and used from the Windows
+command prompt. For this, you need gcc version 7.3.0 with Posix threads
+and structured exception handling. You may have luck with other
+versions, but this is currently the only officially supported one. The
+official download page is
+<a class="reference external" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/">here</a>,
+but it is suggested that you download the <a class="reference external" href="https://download.visionappster.com/windows/x86_64/mingw64.zip">correct
+version</a>
+directly. Unzip the file to the root of your <code class="docutils literal notranslate"><span class="pre">C:</span></code> drive and add
+<code class="docutils literal notranslate"><span class="pre">C:\mingw64\bin</span></code> to <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+</div>
+</div>
+<div class="section" id="implementing-new-tools">
+<h2>Implementing new tools<a class="headerlink" href="#implementing-new-tools" title="Permalink to this headline">🔗</a></h2>
+<p>Let’s start with a simple tool that sums two integers. For this, one
+would need a single C (or C++) source file with the following contents:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// MyPlugin.cc</span>
+<span class="cp">#include</span> <span class="cpf">&lt;va_tool.h&gt;</span><span class="cp"></span>
+
+<span class="n">VA_IMPLEMENT_PLUGIN</span><span class="p">(</span><span class="s">&quot;com.visionappster.demo&quot;</span><span class="p">,</span> <span class="s">&quot;1.0.0&quot;</span><span class="p">)</span>
+
+<span class="n">VA_REGISTER_TOOLS</span><span class="p">(</span>
+<span class="p">(</span> <span class="n">IDENTIFIER</span>     <span class="p">(</span><span class="n">MySum</span><span class="p">),</span>
+  <span class="n">NAME</span>           <span class="p">(</span><span class="s">&quot;Totally Cool Sum&quot;</span><span class="p">),</span>
+  <span class="n">PROCESS</span>        <span class="p">(</span><span class="n">MySum_process</span><span class="p">),</span>
+  <span class="n">OPTIONAL_INPUT</span> <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="n">OPTIONAL_INPUT</span> <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="n">OUTPUT</span>         <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">sum</span><span class="p">)</span>
+<span class="p">))</span>
+
+<span class="kt">int</span> <span class="n">MySum_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">arguments</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span> <span class="cm">/* ignoring, tool has no state */</span>
+  <span class="k">struct</span> <span class="n">MySum_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">MySum_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
+  <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">VA_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We’ll ignore the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro for a while and
+concentrate on the rest. The <code class="docutils literal notranslate"><span class="pre">VA_REGISTER_TOOLS</span></code> macro takes a
+comma-separated list of tool declarations, each of which is enclosed in
+parentheses.</p>
+<div class="section" id="tool-declaration">
+<h3>Tool declaration<a class="headerlink" href="#tool-declaration" title="Permalink to this headline">🔗</a></h3>
+<p>Each tool declaration contains a variable number of entries that are
+created using special declaration macros (e.g. <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code> and
+<code class="docutils literal notranslate"><span class="pre">NAME</span></code>) as shown in the example. The first macro in all declarations
+must be <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code>. In addition, the <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> member function
+must be defined. Everything else is optional.</p>
+<p><strong>Supported declaration macros:</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IDENTIFIER(ID)</span></code></dt><dd><p>Gives the tool a unique name in the context of the enclosing
+component. The tool identifier can be thought of as a class name and
+should follow the rules for naming structures in C.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NAME(NAME)</span></code></dt><dd><p>Gives the tool a user-visible name as a text string.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">TAG(TAG)</span></code></dt><dd><p>Tags can be used to give the VisionAppster engine additional hints
+about the tool. Currently, tools marked with <code class="docutils literal notranslate"><span class="pre">TAG(&quot;internal&quot;)</span></code> will
+not be shown in the Builder’s tool box. This is useful if you build
+apps or compound tools that require native functionality that is not
+intended to be used directly. The tool declaration can include any
+number of tags.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PROCESS(FUNCTION)</span></code></dt><dd><p>The name of the C function implementation. The signature of the
+function must be <code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">FUNCTION(void*,</span> <span class="pre">void*)</span></code>. To ensure
+correctness, this macro will declare the function with the correct
+signature.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">EXEMODE(MODE)</span></code></dt><dd><p>The execution mode of the tool. One of the <a class="reference internal" href="../reference/va_tool.h/#_CPPv417va_execution_mode" title="va_execution_mode"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">three</span> <span class="pre">predefined</span>
+<span class="pre">execution</span> <span class="pre">modes</span></code></a> or a bitwise OR of
+all supported modes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">REQUIRED_INPUT(TYPE,</span> <span class="pre">NAME)</span></code></dt><dd><p>Declares a required input parameter with the given type and name.
+<code class="docutils literal notranslate"><span class="pre">TYPE</span></code> must be one of the supported types, and <code class="docutils literal notranslate"><span class="pre">NAME</span></code> a valid
+variable name according to the rules of the C programming language.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">OPTIONAL_INPUT(TYPE,</span> <span class="pre">NAME,</span> <span class="pre">DEFAULT)</span></code></dt><dd><p>Declares an optional input parameter with the given type, name and
+default value. The default value can be any code that evaluates to
+the correct type. Usually, <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> is a constant value (such as
+1.23), but it can also be a function call that returns a value of
+<code class="docutils literal notranslate"><span class="pre">TYPE</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">sin(M_PI)</span></code>). Complex types can be allocated using
+functions such as <a class="reference internal" href="../reference/va_matrix/#_CPPv415va_matrix_alloc14va_matrix_typeii" title="va_matrix_alloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_matrix_alloc()</span></code></a>, or
+<a class="reference internal" href="../reference/va_image/#_CPPv414va_image_alloc13va_image_typeii" title="va_image_alloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_image_alloc()</span></code></a>. The ownership of a returned pointer
+will be transferred to the platform.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FIXED_INPUT(TYPE,</span> <span class="pre">NAME,</span> <span class="pre">DEFAULT)</span></code></dt><dd><p>Declares a fixed input parameter with the given type, name and
+default value. The values of fixed inputs can only be changed when
+the processing graph is stopped.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">OUTPUT(TYPE,</span> <span class="pre">NAME)</span></code></dt><dd><p>Declares an output parameter with the given type and name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">STATIC_META(TYPE,</span> <span class="pre">NAME,</span> <span class="pre">VALUE)</span></code></dt><dd><p>Adds a static meta-data entry. See <a class="reference internal" href="#meta-data">Meta-data</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DYNAMIC_META(TYPE,</span> <span class="pre">NAME,</span> <span class="pre">FUNCTION)</span></code></dt><dd><p>Adds a dynamic meta-data entry. See <a class="reference internal" href="#meta-data">Meta-data</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CONSTRUCT(FUNCTION)</span></code></dt><dd><p>Provides a custom constructor for allocating new instances of the
+tool. See <a class="reference internal" href="#member-functions">Member functions</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DESTRUCT(FUNCTION)</span></code></dt><dd><p>Provides a custom destructor for freeing instances of the tool. See
+<a class="reference internal" href="#member-functions">Member functions</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NOTIFY(FUNCTION)</span></code></dt><dd><p>Provides a notifier function that will receive events of tool
+instance state changes. See <a class="reference internal" href="#member-functions">Member functions</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">STRERROR(FUNCTION)</span></code></dt><dd><p>Provides a function that converts failure codes returned by the
+<code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> function to human-readable error messages. See
+<a class="reference internal" href="#member-functions">Member functions</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="tool-implementation">
+<h3>Tool implementation<a class="headerlink" href="#tool-implementation" title="Permalink to this headline">🔗</a></h3>
+<p>The VisionAppster platform requires that the actual function to be
+called has a known signature: the function should take two <code class="docutils literal notranslate"><span class="pre">void</span></code>
+pointers as input parameters and return an <code class="docutils literal notranslate"><span class="pre">int</span></code>. The first input
+parameter is a pointer to a function instance. The second parameter
+points to function call arguments. The return value is an error code.</p>
+<p>Both input arguments point to auto-generated structures. The name of the
+auto-generated function argument structure (second parameter) is formed
+by concatenating the tool’s identifier and “_args”. By default, the
+instance structure contains the default values of input arguments. Its
+name is formed by concatenating the tool’s identifier and “_in”.</p>
+<p>Usually, the function implementation casts the argument pointer to the
+correct “_args” structure type, which gives it easy access to input and
+output parameters. The names of parameters in the structure match those
+provided by the declaration macros except for “in.” and “out.” prefixes
+that separate input and output parameters.</p>
+<p>Useful tools are generally more complex than the simple sum shown in the
+example. They may also involve data types such as proprietary image
+structures that need to be converted from/to the built-in types. The
+purpose of the interface function is to parse the input parameters, make
+the necessary conversions and to allocate memory for the underlying
+operation. If everything goes fine, it writes the result to the output
+parameters in the argument structure and returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code>. Other
+possible return values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ERR_OUT_OF_MEMORY</span></code> - As the name implies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> - At least one input parameter was
+invalid. This actually sets the most significant bit of the return
+value, and more specific information can be given by <em>or</em>ing to
+this value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ERR_NOT_INVERTIBLE</span></code> - A matrix given as an input parameter is
+not invertible. This is an example of a specifically invalid input
+parameter.</p></li>
+</ul>
+<p>It is worth noting that changes made to the input arguments are not
+retained between function calls. Changes made to the instance structure
+are retained, but the function is allowed to modify only those values
+that it declares and initializes itself. An example is given below.</p>
+</div>
+</div>
+<div class="section" id="building-and-deploying-a-plugin">
+<h2>Building and deploying a plugin<a class="headerlink" href="#building-and-deploying-a-plugin" title="Permalink to this headline">🔗</a></h2>
+<p>The process of building a plugin will be different depending on the
+compiler/IDE being used. The goal is however to build a shared library
+that contains some interface functions the VisionAppster platform will
+recognize.</p>
+<p>In the simplest case, a compatible plugin consists of a single C source
+file as shown in the example above. The <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro
+takes two parameters:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code></dt><dd><p>A globally unique identifier for the component the plugin will be
+placed into. If a component contains many plugins, the same component
+ID must be used in all of them. The component ID is used as a
+namespace for the tools that are defined within the component. The
+fully-qualified name for a tool will be composed of the component ID,
+its major version number and the name of the tool, for example
+<code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></dt><dd><p>Version number of the component. The version number has three parts:
+major.minor.patch. If a change in the plugin breaks existing
+functionality, the major version number must be incremented. Features
+can be added but not removed when changing the minor version number.
+If a release does not add new functionality but just improves or
+fixes the implementation, patch must be incremented. Version
+numbering can be started at any number, but usually 1.0.0 marks the
+first release.</p>
+</dd>
+</dl>
+<p>Only the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro is strictly required for a
+plugin. Even the <code class="docutils literal notranslate"><span class="pre">VA_REGISTER_TOOLS</span></code> macro is optional, but without it
+the plugin would be quite useless.</p>
+<p>Since the interface functions are written in C, it is possible to use
+any standards-compliant C compiler to build a tool plug-in. It doesn’t
+need to be the same as that used for building the VisionAppster
+platform. However, you cannot mix and match binaries for different
+architectures. For example, a plugin compiled for a 64-bit architecture
+cannot be loaded by a 32-bit version of the platform.</p>
+<p>If the tool implementations have no external dependencies, it is
+sufficient to add <code class="docutils literal notranslate"><span class="pre">sdk/include</span></code> to include the project’s include path
+and compile the source file to a shared library. The <code class="docutils literal notranslate"><span class="pre">vatypes</span></code> library
+must be linked in if any of the built-in complex types are used. For
+this, <code class="docutils literal notranslate"><span class="pre">sdk/lib</span></code> must be in your linker’s library search path.</p>
+<p>The platform comes with example projects that support many different
+compilers. Please take a look at the <code class="docutils literal notranslate"><span class="pre">sdk/examples</span></code> directory. The
+following summarizes the required compilation and environment setup
+steps.</p>
+<div class="section" id="cross-compilation">
+<h3>Cross-compilation<a class="headerlink" href="#cross-compilation" title="Permalink to this headline">🔗</a></h3>
+<p>To be able to sell your native plugins in the VisionAppster Store, you
+must compile them for all supported target architectures. For this, we
+provide <a class="reference internal" href="../../../components/cross-compilation/"><span class="doc">va-cross</span></a>, a compiler and
+build system front-end that automates this for you. In early
+development, or if you plan to use the plugin only internally, you may
+use your own compiler and the SDK that comes with the default
+VisionAppster installation. It may also be useful in setting up your IDE
+as it cannot access the SDK header files inside the Docker container.</p>
+</div>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">🔗</a></h3>
+<p>On Linux, the VisionAppster platform runs in a sandbox and one cannot
+directly access the SDK that is inside. If you have not installed the
+SDK, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-install --sdk
+</pre></div>
+</div>
+<p>The script will ask you where to put the files. By default, the SDK will
+be installed to <code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/sdk</span></code>. You also need a compiler.
+If you don’t have one installed, use your system’s package manager to
+install the <code class="docutils literal notranslate"><span class="pre">build-essential</span></code> package. On the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu, Debian etc.</span>
+sudo apt install build-essential
+<span class="c1"># Red Hat, Fedora etc.</span>
+sudo yum install build-essential
+</pre></div>
+</div>
+<p>Once the SDK and a compiler is installed, the compilation command will
+be something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">VA</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/VisionAppster&quot;</span>
+g++ -shared -o myplugin.toolplugin MyPlugin.cc <span class="se">\</span>
+  <span class="s2">&quot;-I</span><span class="nv">$VA</span><span class="s2">/sdk/include&quot;</span> <span class="se">\</span>
+  <span class="s2">&quot;-L</span><span class="nv">$VA</span><span class="s2">/sdk/lib&quot;</span> -lvatypes
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">g++</span></code> with <code class="docutils literal notranslate"><span class="pre">clang++</span></code> if you wish. If your tool uses OpenCV
+functions, you need to include <code class="docutils literal notranslate"><span class="pre">OpenCvMat.cc</span></code> in sources:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>g++ -shared -o myplugin.toolplugin MyPlugin.cc <span class="se">\</span>
+  <span class="s2">&quot;</span><span class="nv">$VA</span><span class="s2">/sdk/src/opencv/OpenCvMat.cc&quot;</span> <span class="se">\</span>
+  <span class="s2">&quot;-I</span><span class="nv">$VA</span><span class="s2">/sdk/include&quot;</span> <span class="se">\</span>
+  <span class="s2">&quot;-L</span><span class="nv">$VA</span><span class="s2">/sdk/lib&quot;</span> -lvatypes -lopencv_core
+</pre></div>
+</div>
+<p>By default, your local VisionAppster Engine searches
+<code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/plugins/tool</span></code> for tool plugins. Thus, copying
+your plugin there and restarting the service will make your tools
+available to the Engine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p <span class="nv">$HOME</span>/VisionAppster/plugins/tool
+cp myplugin.toolplugin <span class="nv">$HOME</span>/VisionAppster/plugins/tool
+systemctl restart --user va-engine
+</pre></div>
+</div>
+<p>If your plugin depends on external shared libraries, you also need to
+make them visible to the sandbox. This is most easily done by copying
+dependent libraries to <code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/lib</span></code>. You should however
+prefer static linking as dynamic libraries may cause all kinds of
+trouble at run time.</p>
+<p>The corresponding directories for a system-wide installation are
+<code class="docutils literal notranslate"><span class="pre">/opt/visionappster/plugins/tool</span></code> and <code class="docutils literal notranslate"><span class="pre">/opt/visionappster/lib</span></code>.</p>
+<p>The default search directory can be changed by setting the
+<code class="docutils literal notranslate"><span class="pre">VA_EXTENSIONS_PATH</span></code> environment variable. Tool plugins will then be
+searched in <code class="docutils literal notranslate"><span class="pre">$VA_EXTENSIONS_PATH/plugins/tool</span></code>. System environment
+won’t however be visible inside the sandbox, so just setting
+<code class="docutils literal notranslate"><span class="pre">VA_EXTENSIONS_PATH</span></code> doesn’t help. One needs to pass the environment
+variable to the sandbox:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>flatpak run --env<span class="o">=</span><span class="nv">VA_EXTENSIONS_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/work <span class="se">\</span>
+  com.visionappster.Builder
+</pre></div>
+</div>
+<p>Environment variables inside the sandbox can also be changed in
+<code class="docutils literal notranslate"><span class="pre">$HOME/.config/VisionAppster/engine.conf</span></code>. Example contents:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[environment]</span>
+<span class="na">VA_EXTENSIONS_PATH</span><span class="o">=</span><span class="s">/home/l33tcoder/deploy</span>
+</pre></div>
+</div>
+<p>The file does not exist by default, so you need to create it.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">🔗</a></h3>
+<p>On Windows, the SDK is installed to the platform’s installation
+directory and should be copied to your home directory. To compile, you
+need to add <code class="docutils literal notranslate"><span class="pre">sdk\include</span></code> to your project’s include paths and
+<code class="docutils literal notranslate"><span class="pre">sdk\lib</span></code> to linker search paths. We’ll assume you have made a local
+copy of the SDK (typically at <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\VisionAppster\sdk</span></code> to
+your home directory (<code class="docutils literal notranslate"><span class="pre">C:\Users\YourUserName\sdk</span></code>). If you use MSYS2,
+compiling is more or less equivalent to Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">VA</span><span class="o">=</span><span class="s2">&quot;/c/Users/</span><span class="nv">$USERNAME</span><span class="s2">/VisionAppster&quot;</span>
+g++ -shared -o myplugin.toolplugin MyPlugin.cc <span class="se">\</span>
+  <span class="s2">&quot;-I</span><span class="nv">$VA</span><span class="s2">/sdk/include&quot;</span> <span class="se">\</span>
+  <span class="s2">&quot;-L</span><span class="nv">$VA</span><span class="s2">/sdk/lib&quot;</span> -lvatypes
+</pre></div>
+</div>
+<p>A typical command line for the Visual Studio compiler would look like
+this:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">VA</span><span class="p">=</span><span class="nv">%USERPROFILE%</span>\VisionAppster
+cl /I <span class="s2">&quot;</span><span class="nv">%VA%</span><span class="s2">\sdk\include&quot;</span> MyPlugin.cc vatypes.lib <span class="se">^</span>
+<span class="se"> </span> /LINK /LIBPATH <span class="s2">&quot;</span><span class="nv">%VA%</span><span class="s2">\sdk\lib&quot;</span> <span class="se">^</span>
+<span class="se"> </span> /LIBPATH <span class="s2">&quot;C:\Program Files\VisionAppster\bin&quot;</span> <span class="se">^</span>
+<span class="se"> </span> /DLL /OUT myplugin.toolplugin
+</pre></div>
+</div>
+<p>You also need <code class="docutils literal notranslate"><span class="pre">vatypes.lib</span></code> that isn’t included in the SDK. To
+generate it, give the following commands in Visual Studio command
+prompt:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> <span class="nv">%VA%</span>\sdk\lib
+lib /def:vatypes.def
+</pre></div>
+</div>
+<p>Once the plugin is compiled, you can make it available to the
+VisionAppster Engine service by copying it to the <code class="docutils literal notranslate"><span class="pre">plugins\tool</span></code>
+directory under the installation directory:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">copy</span> myplugin.toolplugin <span class="s2">&quot;</span><span class="nv">%VA%</span><span class="s2">\plugins\tool&quot;</span>
+</pre></div>
+</div>
+<p>Then, restart the VisionAppster Engine service using Windows service
+manager. To replace an existing plugin you need to stop the service
+first as Windows does not allow overwriting of libraries that are being
+used.</p>
+<p>To deploy a plugin for use in the Builder only, copy it to
+<code class="docutils literal notranslate"><span class="pre">\VisionAppster\plugins\tool</span></code> under your home directory. Typically:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">copy</span> myplugin.toolplugin <span class="nv">%USERPROFILE%</span>\VisionAppster\plugins\tool
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">VA_EXTENSIONS_PATH</span></code> can be used to change the default plugin
+search folder. If the variable is set, tool plugins will be searched in
+<code class="docutils literal notranslate"><span class="pre">%VA_EXTENSIONS_PATH%\plugins\tool</span></code>. To test your plugin in the
+Builder, you can set the environment variable in a configuration file
+that is stored at <code class="docutils literal notranslate"><span class="pre">%APPDATA%\VisionAppster\engine.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[environment]</span>
+<span class="na">VA_EXTENSIONS_PATH</span><span class="o">=</span><span class="s">C:\temp</span>
+</pre></div>
+</div>
+<p>The file does not exist by default, so you need to create it.</p>
+<p>If your plugin depends on external dynamic libraries, make sure all
+dependencies are found in <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">🔗</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">VA_EXTENSIONS_PATH</span></code> specifies the root directory of all dynamically
+loadable extension modules, not just native tool plugins. Setting it
+will change the search location of components, licenses, Python tools
+etc. as well.</p>
+</div>
+<div class="section" id="dynamic-linking">
+<h3>Dynamic linking<a class="headerlink" href="#dynamic-linking" title="Permalink to this headline">🔗</a></h3>
+<p>If your plugin depends on libraries that are not included in the
+VisionAppster SDK, we strongly recommend statically linking them. If
+that is not possible, place the dependent dynamic libraries in the same
+directory as the corresponding <code class="docutils literal notranslate"><span class="pre">.toolplugin</span></code> file. On Linux, you
+additionally need to give the <code class="docutils literal notranslate"><span class="pre">-Wl,-rpath,'$ORIGIN'</span></code> command-line flag
+when linking the plugin.</p>
+</div>
+</div>
+<div class="section" id="meta-data">
+<h2>Meta-data<a class="headerlink" href="#meta-data" title="Permalink to this headline">🔗</a></h2>
+<p>In the C interface, each meta-data entry is identified by a text string
+that is composed of the name of the parameter the entry refers to, an
+underscore (_) and a key that identifies the entry. The meta-data
+identifier may contain an “in_” or “out_” prefix. If none is provided,
+“in_” will be assumed.</p>
+<p>Note that since underscore has a special meaning as a separator, neither
+variable names nor meta-data keys can contain underscores.</p>
+<p>Let us assume the input parameters of the cool sum tool should only take
+positive values. We can achieve this either statically or dynamically:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VA_REGISTER_TOOLS</span><span class="p">(</span>
+<span class="p">(</span> <span class="n">IDENTIFIER</span>     <span class="p">(</span><span class="n">MySum</span><span class="p">),</span>
+  <span class="n">NAME</span>           <span class="p">(</span><span class="s">&quot;Totally Cool Sum&quot;</span><span class="p">),</span>
+  <span class="n">PROCESS</span>        <span class="p">(</span><span class="n">MySum_process</span><span class="p">),</span>
+  <span class="n">OPTIONAL_INPUT</span> <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="n">OPTIONAL_INPUT</span> <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="n">FIXED_INPUT</span>    <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">bMin</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="n">OUTPUT</span>         <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">sum</span><span class="p">),</span>
+  <span class="n">STATIC_META</span>    <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">a_min</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>          <span class="cm">/* constant */</span>
+  <span class="n">DYNAMIC_META</span>   <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">b_min</span><span class="p">,</span> <span class="n">MySum_b_min</span><span class="p">)</span> <span class="cm">/* varying */</span>
+<span class="p">))</span>
+
+<span class="kt">void</span> <span class="n">MySum_b_min</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">*</span><span class="p">(</span><span class="kt">int32_t</span><span class="o">*</span><span class="p">)</span><span class="n">value</span> <span class="o">=</span> <span class="p">((</span><span class="k">struct</span> <span class="n">MySum_in</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">bMin</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The need for dynamic meta-data usually arises when the meta-data depends
+on the current value of a fixed input parameter. For example, it may be
+useful to selectively hide certain parameters. In the example above, the
+minimum value for “b” is given by the current value of the fixed “bMin”
+parameter:</p>
+<ol class="arabic simple">
+<li><p>The minimum value for “b” is declared to be dynamic and fetched using
+the <code class="docutils literal notranslate"><span class="pre">MySum_b_min</span></code> function.</p></li>
+<li><p>The implementation of the <code class="docutils literal notranslate"><span class="pre">MySum_b_min</span></code> function takes two
+parameters: a pointer to a function instance structure and a pointer
+where the meta-data value should be written. The implementation
+writes the current value of the “bMin” fixed input parameter there.</p></li>
+</ol>
+<div class="section" id="structured-meta-data">
+<h3>Structured meta-data<a class="headerlink" href="#structured-meta-data" title="Permalink to this headline">🔗</a></h3>
+<p>Not all meta-data can be represented using native data types. For
+example, <em>choices</em> or <em>columnDefinitions</em> are arrays that can’t be
+easily constructed in C. To make things easier, arrays and objects can
+be created out of JSON strings. If you want to replace the default
+toggle button control used for Boolean parameters with a drop-down list,
+you can do something like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC_META</span><span class="p">(</span><span class="n">va_array</span><span class="p">,</span> <span class="n">input_choices</span><span class="p">,</span> <span class="n">va_array_from_json</span><span class="p">(</span>
+            <span class="s">&quot;[&quot;</span>
+            <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">NO!</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:false},&quot;</span>
+            <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">YES!</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:true},&quot;</span>
+            <span class="s">&quot;]&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The example may be a bit hard to read due to escaping. Since C++11, it
+has been possible to use raw string literals:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// &quot;%&quot; can be replaced with an arbitrary string.</span>
+<span class="k">static</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">choices</span> <span class="o">=</span> <span class="sa">R</span><span class="s">&quot;</span><span class="dl">%(</span><span class="s"></span>
+<span class="s">[</span>
+<span class="s">  {&quot;name&quot;: &quot;NO!&quot;,  &quot;value&quot;: false},</span>
+<span class="s">  {&quot;name&quot;: &quot;YES!&quot;, &quot;value&quot;: true},</span>
+<span class="s">]</span>
+<span class="dl">)%</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+<span class="n">STATIC_META</span><span class="p">(</span><span class="n">va_array</span><span class="p">,</span> <span class="n">input_choices</span><span class="p">,</span>
+            <span class="n">va_array_from_json</span><span class="p">(</span><span class="n">choices</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <em>columnDefinitions</em> meta key can be constructed in a similar manner.
+The meta-data entry consists of an array of objects, each of which
+provides a number of meta-data entries for a single column in a table or
+a matrix. Either <em>typeName</em> or <em>defaultValue</em> is required for table
+columns. If both are provided, the type of <em>defaultValue</em> must match the
+given <em>typeName</em>. In a matrix, the type is the same for all cells and
+does not need to be specified.</p>
+<p>The following example specifies a table that lets the user to pick the
+ingredients of her favorite juice. The table has two columns:
+“Concentration” and “Flavors”. The first one is the fruit/water ratio
+that ranges from zero to 100. The second lets the user to pick any
+number of flavors to the mixture using bit flags.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">columns</span> <span class="o">=</span> <span class="sa">R</span><span class="s">&quot;</span><span class="dl">%(</span><span class="s"></span>
+<span class="s">[</span>
+<span class="s">  {</span>
+<span class="s">    &quot;name&quot;: &quot;Concentration %&quot;,</span>
+<span class="s">    &quot;typeName&quot;: &quot;double&quot;,</span>
+<span class="s">    &quot;defaultValue&quot;: 50,</span>
+<span class="s">    &quot;min&quot;: 0,</span>
+<span class="s">    &quot;max&quot;: 100</span>
+<span class="s">  },</span>
+<span class="s">  {</span>
+<span class="s">    &quot;name&quot;: &quot;Flavors&quot;,</span>
+<span class="s">    &quot;typeName&quot;: &quot;enum/multiple&quot;,</span>
+<span class="s">    &quot;choices&quot;:</span>
+<span class="s">    [</span>
+<span class="s">      {&quot;name&quot;: &quot;Apple&quot;,  &quot;value&quot;: 1},</span>
+<span class="s">      {&quot;name&quot;: &quot;Banana&quot;, &quot;value&quot;: 2},</span>
+<span class="s">      {&quot;name&quot;: &quot;Orange&quot;, &quot;value&quot;: 4},</span>
+<span class="s">      {&quot;name&quot;: &quot;Potato&quot;, &quot;value&quot;: 8}</span>
+<span class="s">    ]</span>
+<span class="s">  }</span>
+<span class="s">]</span>
+<span class="dl">)%</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+<span class="n">STATIC_META</span><span class="p">(</span><span class="n">va_array</span><span class="p">,</span>
+            <span class="n">inputTable_columnDefinitions</span><span class="p">,</span>
+            <span class="n">va_array_from_json</span><span class="p">(</span><span class="n">columns</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="member-functions">
+<h2>Member functions<a class="headerlink" href="#member-functions" title="Permalink to this headline">🔗</a></h2>
+<p>The tool declaration may include member functions for different
+purposes. To actually perform some useful job, the <a class="reference internal" href="../reference/va_tool.h/#_CPPv415va_process_func" title="va_process_func"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">processing</span>
+<span class="pre">function</span></code></a> must always exist, and this is
+usually enough. Other functions are needed if internal state needs to be
+maintained.</p>
+<p>The first argument to member function calls is a typeless pointer
+(<code class="docutils literal notranslate"><span class="pre">void*</span></code>) that points to instance data. It serves the same role as the
+<code class="docutils literal notranslate"><span class="pre">this</span></code> pointer in C++. By default, the instance pointer points to an
+argument structure that contains the default values of input arguments,
+but this can be overridden by providing custom
+<a class="reference internal" href="../reference/va_tool.h/#_CPPv417va_construct_func" title="va_construct_func"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">constructor</span></code></a> and
+<a class="reference internal" href="../reference/va_tool.h/#_CPPv416va_destruct_func" title="va_destruct_func"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">destructor</span></code></a> functions.</p>
+<p>The VisionAppster platform assumes that the layout of the custom
+instance is the same as the auto-generated input argument structure.
+Therefore, the custom instance structure should contain the
+auto-generated input argument structure as its first member (or derive
+from it, if the code is written in C++).</p>
+<p>In addition, the tool may need to receive notifications about state
+changes. For this purpose, it is possible to add a <a class="reference internal" href="../reference/va_tool.h/#_CPPv414va_notify_func" title="va_notify_func"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">notification</span>
+<span class="pre">function</span></code></a>. In addition to the instance
+pointer, the notification function takes two parameters: the type of the
+event (one of the <a class="reference internal" href="../reference/va_tool.h/#_CPPv413va_event_type" title="va_event_type"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">predefined</span> <span class="pre">events</span></code></a>) and a
+<code class="docutils literal notranslate"><span class="pre">void</span></code> pointer to event data. The contents of the data pointer varies
+depending on the type of the event.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">STRERROR(FUNCTION)</span></code> macro makes a difference in that <code class="docutils literal notranslate"><span class="pre">FUNCTION</span></code>
+receives no instance pointer. Instead, its signature is
+<code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">FUNCTION(int32_t</span> <span class="pre">code,</span> <span class="pre">va_string**</span> <span class="pre">message)</span></code>. The function is
+used to convert an error code returned by the processing function to a
+human-readable error message. The function will be called by the
+VisionAppster runtime if the processing function returns anything else
+than <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code>. If the <code class="docutils literal notranslate"><span class="pre">code</span></code> argument is a recognized error
+code, the function should place a message (either as a <code class="docutils literal notranslate"><span class="pre">char*</span></code> or a
+<code class="docutils literal notranslate"><span class="pre">va_string*</span></code>) to the message argument and return <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code>. If
+the code is not known, the function should return
+<code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code>, which makes the runtime to use a default
+error message.</p>
+<p>Let’s add another tool that calculates a cumulative sum of past values,
+optionally negating the input if <em>negate</em> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_tool.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="n">VA_IMPLEMENT_PLUGIN</span><span class="p">(</span><span class="s">&quot;com.visionappster.demo&quot;</span><span class="p">,</span> <span class="s">&quot;1.0.0&quot;</span><span class="p">)</span>
+
+<span class="n">VA_REGISTER_TOOLS</span><span class="p">(</span><span class="cm">/*</span>
+<span class="cm">( IDENTIFIER     (MySum),</span>
+<span class="cm">  ...</span>
+<span class="cm">  The rest of MySum declaration would go here.</span>
+<span class="cm">  Omitting for brevity.</span>
+<span class="cm">),*/</span>
+<span class="p">(</span> <span class="n">IDENTIFIER</span>     <span class="p">(</span><span class="n">CmlSum</span><span class="p">),</span>
+  <span class="n">NAME</span>           <span class="p">(</span><span class="s">&quot;Cumulative Sum&quot;</span><span class="p">),</span>
+  <span class="n">PROCESS</span>        <span class="p">(</span><span class="n">CmlSum_process</span><span class="p">),</span>
+  <span class="n">CONSTRUCT</span>      <span class="p">(</span><span class="n">CmlSum_construct</span><span class="p">),</span>
+  <span class="n">DESTRUCT</span>       <span class="p">(</span><span class="n">CmlSum_destruct</span><span class="p">),</span>
+  <span class="n">NOTIFY</span>         <span class="p">(</span><span class="n">CmlSum_notify</span><span class="p">),</span>
+  <span class="n">STRERROR</span>       <span class="p">(</span><span class="n">CmlSum_strerror</span><span class="p">),</span>
+  <span class="n">REQUIRED_INPUT</span> <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span>
+  <span class="n">FIXED_INPUT</span>    <span class="p">(</span><span class="n">va_bool</span><span class="p">,</span> <span class="n">negate</span><span class="p">,</span> <span class="n">va_true</span><span class="p">),</span>
+  <span class="n">OUTPUT</span>         <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">sum</span><span class="p">)</span>
+<span class="p">))</span>
+
+<span class="cm">/* Custom structure for holding instance data. */</span>
+<span class="k">struct</span> <span class="n">CmlSum</span>
+<span class="p">{</span>
+  <span class="cm">/* This must be first to ensure correct memory layout. */</span>
+  <span class="k">struct</span> <span class="n">CmlSum_in</span> <span class="n">in</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">i_sum</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/* Constructor function.</span>
+<span class="cm">   If &quot;other&quot; is non-zero, it must be copied.</span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="o">*</span> <span class="nf">CmlSum_construct</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">other</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="cm">/* Allocate an all-zero block from the heap. */</span>
+  <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="p">));</span>
+  <span class="cm">/* If &quot;other&quot; is given, construct a copy. */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">&amp;&amp;</span> <span class="n">other</span><span class="p">)</span>
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">=</span> <span class="p">((</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">other</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">i_sum</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">CmlSum_destruct</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define WAY_TOO_MUCH_ERROR 1000</span>
+
+<span class="kt">int32_t</span> <span class="nf">CmlSum_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">arguments</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">CmlSum_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
+  <span class="cm">/* NOTE: Modifying the &quot;in&quot; structure is not allowed. */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">negate</span><span class="p">)</span>
+    <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">+=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+  <span class="k">else</span>
+    <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">-=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">WAY_TOO_MUCH_ERROR</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">VA_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">CmlSum_notify</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="n">va_event_type</span> <span class="n">event</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">data</span><span class="p">;</span> <span class="cm">/* unused */</span>
+  <span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="o">==</span> <span class="n">va_event_stopped</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Final sum = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span><span class="p">);</span>
+      <span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int32_t</span> <span class="nf">CmlSum_strerror</span><span class="p">(</span><span class="kt">int32_t</span> <span class="n">code</span><span class="p">,</span> <span class="n">va_string</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="n">WAY_TOO_MUCH_ERROR</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">va_string</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;That was already too much!&quot;</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">VA_SUCCESS</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="k">return</span> <span class="n">VA_ERR_INVALID_PARAMETER</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If a custom constructor is provided, a custom destructor must also be
+given. This is because it cannot be guaranteed that the memory allocator
+used in the plugin is compatible with the one used by the VisionAppster
+platform. They may be using separate heaps, for example. In this
+example, the constructor returns a heap-allocated pointer that can be
+safely destroyed by <code class="docutils literal notranslate"><span class="pre">free()</span></code> on the plugin side. (Using the
+VisionAppster platform’s <code class="docutils literal notranslate"><span class="pre">free()</span></code> would not be safe.)</p>
+<p>If member functions (other than <code class="docutils literal notranslate"><span class="pre">strerror</span></code>) are provided, the
+VisionAppster platform assumes they are for state management and
+therefore disables multi-threaded execution mode execution mode by
+default. This can be overridden with the <code class="docutils literal notranslate"><span class="pre">EXEMODE</span></code> macro. For example,
+the default mode can be restored by <code class="docutils literal notranslate"><span class="pre">EXEMODE(va_execute_any)</span></code>.</p>
+</div>
+<div class="section" id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">🔗</a></h2>
+<p>The C language API naturally uses the <a class="reference internal" href="../reference/"><span class="doc">built-in C
+types</span></a>. Structured types such as images and matrices
+are passed as pointers even though all type names are given without the
+asterisk (*) in the function declaration. An important thing to note is
+that all pointers in the auto-generated argument structures are owned by
+the platform, not the user. This applies to default values of optional
+and fixed input parameters, to everything that is passed in to the
+process function and to everything the process function assigns to the
+output arguments.</p>
+<p>For example, the default value for an input argument of type
+<code class="docutils literal notranslate"><span class="pre">va_imatrix</span></code> in the <code class="docutils literal notranslate"><span class="pre">OPTIONAL_INPUT</span></code> macro can be created by calling
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_imatrix_calloc()</span></code>. The ownership of the returned
+pointer is transferred to the platform. It is also safe to assign a
+newly allocated pointer to the <code class="docutils literal notranslate"><span class="pre">value</span></code> parameter in a dynamic
+meta-data function.</p>
+<p>The ownership of pointers in instance variables that are not visible to
+the platform (not listed in the tool declaration macro) remains at the
+user.</p>
+<div class="section" id="string-encoding">
+<h3>String encoding<a class="headerlink" href="#string-encoding" title="Permalink to this headline">🔗</a></h3>
+<p>Text strings can contain any data that can be encoded into a
+double-quoted string in C. If the string contains non-ASCII characters,
+things can get a bit complicated.</p>
+<p>The C standard does not specify source file encoding. Thus, strings
+containing non-ASCII characters may end up being encoded in an
+unexpected way if proper care is not taken. The VisionAppster platform
+has no way of detecting which compiler or encoding was used when
+building external plugins, and it always assumes UTF-8 encoding.</p>
+<p>If a text string appears incorrect, you may want to check that your
+compiler’s idea of the source character set matches the actual encoding
+of your source file and that UTF-8 encoding is used in the executable.
+Visual Studio, for example, provides the <code class="docutils literal notranslate"><span class="pre">/source-charset</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/utf-8</span></code> compiler options for this.</p>
+</div>
+</div>
+<div class="section" id="calling-conventions">
+<h2>Calling conventions<a class="headerlink" href="#calling-conventions" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster Tool API does not explicitly specify the calling
+convention of functions declared in user-created tool plugins. Instead,
+it is assumed that the default calling convention for each hardware
+platform is used. On x86, the default convention is <em>cdecl</em>. On ARM and
+x64, arguments are passed in registers when possible.</p>
+<p>If you encounter strange crashes when loading a tool plugin, make sure
+you haven’t specified a non-default calling convention when compiling
+the plugin. The potentially conflicting command-line options for the
+Visual Studio compiler are <code class="docutils literal notranslate"><span class="pre">/Gv</span></code> (vectorcall), <code class="docutils literal notranslate"><span class="pre">/Gz</span></code> (stdcall) and
+<code class="docutils literal notranslate"><span class="pre">/Gr</span></code> (fastcall).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../reference/" class="btn btn-neutral float-right" title="C API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="C API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

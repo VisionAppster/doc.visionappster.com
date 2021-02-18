@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Image classifier &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="YOLO classifier" href="../yolo-classifier/" />
+    <link rel="prev" title="Motion detector" href="../motion-detector/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Image classifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploying-the-application">Deploying the application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>Image classifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="image-classifier">
+<h1>Image classifier<a class="headerlink" href="#image-classifier" title="Permalink to this headline">🔗</a></h1>
+<p><img alt="image0" class="youtube medium" src="cookbook/image-classifier/D-WVceTJbGM" /></p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>Image classifier demo shows you how to identify objects which belong to
+one of 1000 <a class="reference external" href="https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a">ImageNet
+categories</a>. In
+this demo we use a deep convolutional neural network called
+<a class="reference external" href="https://github.com/onnx/models/blob/master/models/image_classification/resnet/README.md">ResNet-50</a>.
+The network is stored in ONNX format. <a class="reference external" href="https://github.com/onnx/models">Many
+more</a> classifier models are available
+in GitHub.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/31abf49b16179eee7ef2a5e67f4f23c0/CookbookImageClassifier.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+<li><p><a class="reference external" href="https://download.visionappster.com/packages/cookbook/cookbook.imageclassifier.server-1.0.0.vapkg">Server app
+package</a></p></li>
+<li><p><a class="reference external" href="https://download.visionappster.com/packages/cookbook/cookbook.imageclassifier.ui-1.0.0.vapkg">Web UI
+package</a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>Let us walk through the schema below top-down.</p>
+<div class="small figure align-default" id="id1">
+<img alt="Processing graph" src="../../_images/image-classifier-1.png" />
+<p class="caption"><span class="caption-text">Processing graph</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>The images originate from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> takes an image in any
+supported format and converts it to uncompressed RGB. This tool is
+necessary because our intent is to analyze images sent by arbitrary
+users.</p></li>
+</ul>
+<div class="small figure align-default" id="id2">
+<img alt="Converting any image type to RGB" src="../../_images/image-classifier-2.png" />
+<p class="caption"><span class="caption-text">Converting any image type to RGB</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<ul>
+<li><p><a class="reference internal" href="../../tools/ScaleImageTool/"><span class="doc">Scale Image Tool</span></a> scales the image to the
+size required by the image classifier model. In this case, the size
+is 224 x 224 pixels.</p>
+<div class="medium figure align-default" id="id3">
+<img alt="The ResNet model requires a fixed image size of 224×224 pixels." src="../../_images/image-classifier-3.png" />
+<p class="caption"><span class="caption-text">The ResNet model requires a fixed image size of 224×224 pixels.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to Tensor</span></a> converts a color image
+into a tensor of shape 1 x 3 x <code class="docutils literal notranslate"><span class="pre">height</span></code> x <code class="docutils literal notranslate"><span class="pre">width</span></code>. 1 is the
+number of images per tensor (N, batch size), 3 is the number of color
+channels (C) in an RGB image. Height (H) and width (W) are both 244
+pixels. Intensity normalization is also applied to each pixel as
+required by the classifier model.</p>
+<div class="medium figure align-default" id="id4">
+<img alt="The ResNet model requires NCHW input tensor with normalized intensity." src="../../_images/image-classifier-4.png" />
+<p class="caption"><span class="caption-text">The ResNet model requires NCHW input tensor with normalized
+intensity.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../tools/RunOnnxModelTool/"><span class="doc">Run Onnx Model</span></a> runs the ResNet-50
+model. The model file is selected with a file dialog which appears by
+clicking the <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">File</span></code> input parameter. Input and output sockets
+appear after the model file has been loaded. The output of this model
+is a tensor of shape 1 x 1000 which contains confidence levels for
+each of the 1000 ImageNet object classes. Note that in this case the
+model has been saved as a resource file and will thus be bundled with
+the app. Alternatively, you can load the model from a local disk.</p>
+<div class="small figure align-default" id="id5">
+<img alt="Parameter displays show the shapes of input and output tensors." src="../../_images/image-classifier-5.png" />
+<p class="caption"><span class="caption-text">Parameter displays show the shapes of input and output tensors.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../tools/TensorToClassificationTool/"><span class="doc">Tensor to Classification</span></a>
+inputs the tensor of confidences, selects those that exceed the given
+<code class="docutils literal notranslate"><span class="pre">Confidence</span> <span class="pre">Threshold</span></code> and sorts them into descending order. Only
+up to <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Result</span> <span class="pre">Count</span></code> elements are taken. The Onnx model used in
+this example expects calculating the softmax propability scores as a
+postprocessing step, so <code class="docutils literal notranslate"><span class="pre">Scaling</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">Softmax</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">Index</span></code> and <code class="docutils literal notranslate"><span class="pre">Confidence</span></code> outputs contain the indices of the
+selected tensor and the corresponding confidence values.</p>
+<div class="small figure align-default" id="id6">
+<img alt="Tensor to classification picks the most likely classifications." src="../../_images/image-classifier-6.png" />
+<p class="caption"><span class="caption-text">Tensor to classification picks the most likely classifications.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p>Finally, <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the selected
+indices and converts up to <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Result</span> <span class="pre">Count</span></code> most likely results
+into readable strings.</p>
+<div class="medium figure align-default" id="id7">
+<img alt="A JavaScript tool is configured to take three inputs and produce a table as an output." src="../../_images/image-classifier-7.png" />
+<p class="caption"><span class="caption-text">A JavaScript tool is configured to take three inputs and produce a
+table as an output.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+</ul>
+<p>The script code is given below. All 1000 classes in the <code class="docutils literal notranslate"><span class="pre">classNames</span></code>
+array are not shown.</p>
+<div class="medium figure align-default" id="id8">
+<img alt="The script code (int two pieces)." src="../../_images/image-classifier-8.png" />
+<p class="caption"><span class="caption-text">The script code (int two pieces).</span><a class="headerlink" href="#id8" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Here is an example of an input image and a list of 5 most likely
+results.</p>
+<div class="medium figure align-default" id="id9">
+<img alt="The result." src="../../_images/image-classifier-9.png" />
+<p class="caption"><span class="caption-text">The result.</span><a class="headerlink" href="#id9" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="deploying-the-application">
+<h2>Deploying the application<a class="headerlink" href="#deploying-the-application" title="Permalink to this headline">🔗</a></h2>
+<p>The project has an <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image Source</span></a> connected to
+the image classifier compound tool, so it can be easily tested in the
+Builder. Our target is however to build an API to which images are sent
+from clients. For this, the app doesn’t need an internal image source.</p>
+<ul class="simple">
+<li><p>Remove the image source tool by right clicking it and selecting
+“Remove tool” from the menu.</p></li>
+<li><p>Close the classifier compound tool by right-clicking the outer light
+gray box containg the other tools below the image source and by
+selecting “Close compound” from the menu.</p></li>
+</ul>
+<div class="small figure align-default" id="id10">
+<img alt="Closing a compound." src="../../_images/image-classifier-10.png" />
+<p class="caption"><span class="caption-text">Closing a compound.</span><a class="headerlink" href="#id10" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>Right-click the closed “Classify Image” compound tool and select
+“Properties…” from the menu.</p></li>
+<li><p>Check “Publish tool function API” and mark both input and output as
+published. Accept the dialog. The tool’s illustration in the
+processing graph now shows an API symbol.</p></li>
+</ul>
+<div class="small figure align-default" id="id11">
+<img alt="Publishing a tool as an API function." src="../../_images/image-classifier-11.png" />
+<p class="caption"><span class="caption-text">Publishing a tool as an API function.</span><a class="headerlink" href="#id11" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>Go to the application API editor by clicking the API button in the
+top right corner of the Builder. The tool function API should now be
+visible in the “Functions” section. The default name of the API is
+now “Compound”, change it by clicking the “Compound” text in the
+rightmost column. Change the name to “classifyImage”. This will be
+the name of the function in the published API. The name is case
+sensitive. Since the bundled web app already uses this name, it must
+be typed exactly right.</p></li>
+</ul>
+<div class="small figure align-default" id="id12">
+<img alt="Editing an app’s API." src="../../_images/image-classifier-12.png" />
+<p class="caption"><span class="caption-text">Editing an app’s API.</span><a class="headerlink" href="#id12" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>Save the modified project and select “Package this app” from the file
+menu. In the package dialog, go to the “Remote” field and upload the
+package to “localhost”.</p></li>
+</ul>
+<div class="medium figure align-default" id="id13">
+<img alt="Exporting a package to a remote." src="../../_images/image-classifier-13.png" />
+<p class="caption"><span class="caption-text">Exporting a package to a remote.</span><a class="headerlink" href="#id13" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>Browse to the <a class="reference external" href="http://localhost:2015/#components">Components</a> tab
+on the Engine Front Page and the uploaded package should be visible
+there. Mark the package and install it.</p></li>
+</ul>
+<div class="medium figure align-default" id="id14">
+<img alt="To install an uploaded package, mark it and click “Install”." src="../../_images/image-classifier-14.png" />
+<p class="caption"><span class="caption-text">To install an uploaded package, mark it and click “Install”.</span><a class="headerlink" href="#id14" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>On the <a class="reference external" href="http://localhost:2015/#apps">Apps</a> tab, click “Start” to
+start the app and publish the API. A ready-made package with these
+modifications is also available
+<a class="reference external" href="https://download.visionappster.com/packages/cookbook/cookbook.imageclassifier.server-1.0.0.vapkg">here</a>.</p></li>
+</ul>
+<div class="medium figure align-default" id="id15">
+<img alt="To start an installed app, click “Start”." src="../../_images/image-classifier-15.png" />
+<p class="caption"><span class="caption-text">To start an installed app, click “Start”.</span><a class="headerlink" href="#id15" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>Now, let us test the server application API with a web UI
+application. Download <a class="reference external" href="https://download.visionappster.com/packages/cookbook/cookbook.imageclassifier.ui-1.0.0.vapkg">Web UI
+app</a>
+and install it to the engine via the
+<a class="reference external" href="http://localhost:2015/#components">Components</a> tab. Then click it
+on the <a class="reference external" href="http://localhost:2015/#apps">Apps</a> tab.</p></li>
+</ul>
+<div class="medium figure align-default" id="id16">
+<img alt="Image classifier web application" src="../../_images/image-classifier-16.png" />
+<p class="caption"><span class="caption-text">Image classifier web application</span><a class="headerlink" href="#id16" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../yolo-classifier/" class="btn btn-neutral float-right" title="YOLO classifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../motion-detector/" class="btn btn-neutral float-left" title="Motion detector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

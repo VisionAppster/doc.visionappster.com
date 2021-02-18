@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OpenCV Integration &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="OpenCvMat" href="OpenCvMat/" />
+    <link rel="prev" title="C++ API" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/">Python API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">C++ API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OpenCV Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="OpenCvMat/">OpenCvMat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dlib/">Dlib Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../c/">C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../">C++ API</a> &raquo;</li>
+        
+      <li>OpenCV Integration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="opencv-integration">
+<h1>OpenCV Integration<a class="headerlink" href="#opencv-integration" title="Permalink to this headline">🔗</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The OpenCV integration API consists of a single
+<a class="reference internal" href="OpenCvMat/"><span class="doc">OpenCvMat</span></a> class that automatically converts the image
+and matrix types used by the VisionAppster platform to the corresponding
+OpenCV matrix and image types. It makes it possible to call OpenCV
+functions from your custom tool implementations without much boilerplate
+code.</p>
+<p>Please see the <a class="reference internal" href="../../c/tool/"><span class="doc">tool C API</span></a> for general instructions on
+how to set you your environment and build tool plugins. Since OpenCV is
+implemented in C++, it is important to understand compiler requirements.</p>
+<p>The VisionAppster SDK comes with the source code of the built-in OpenCV
+plugin. To get started, have a look at <code class="docutils literal notranslate"><span class="pre">sdk/examples/opencv</span></code> under
+your installation. Modify the supplied <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to fit your setup.
+If you installed everything to default locations, building your first
+OpenCV plugin on Linux can be as simple as this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/VisionAppster/sdk/examples/opencv
+make install
+</pre></div>
+</div>
+<p>Windows (MinGW-w64), assuming you copied the SDK to your desktop folder:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> <span class="nv">%USERPROFILE%</span>\Desktop\sdk\examples\opencv
+mingw32-make
+<span class="p">:</span><span class="c1">: This may require admin rights.</span>
+mingw32-make install
+</pre></div>
+</div>
+<p>Windows (MinGW-w64 + MSYS2), assuming you copied the SDK to your desktop
+folder:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> /c/Users/$USERNAME/Desktop/sdk/examples/opencv
+make
+# This may require admin rights.
+make install
+</pre></div>
+</div>
+<p>If you use OpenCV to implement your own tools, you are strongly
+encouraged to use the version that comes with the platform SDK. While it
+would be technically possible to use multiple different versions of
+shared libraries in a single process, it is not currently supported. If
+you absolutely need a different version, you may link the required parts
+of OpenCV statically to your tool plugin.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">🔗</a></h2>
+<p>The following example shows a complete implementation of a plugin and a
+tool that wraps the <code class="docutils literal notranslate"><span class="pre">cv::matchTemplate</span></code> function. This is how the
+built-in <code class="docutils literal notranslate"><span class="pre">MatchTemplate</span></code> tool is actually implemented. Please note
+that even though the interface is C, nothing prevents you from
+implementing the functions in C++. This however requires that you use
+the same C++ compiler the platform was built with.</p>
+<p>The SDK that comes with the VisionAppster platform contains this and
+many other OpenCV functions as examples. Please see the
+<code class="docutils literal notranslate"><span class="pre">sdk/examples/opencv</span></code> directory in your installation.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VA_IMPLEMENT_PLUGIN</span><span class="p">(</span><span class="s">&quot;com.visionappster.opencv&quot;</span><span class="p">,</span> <span class="s">&quot;1.0.0&quot;</span><span class="p">)</span>
+
+<span class="n">VA_REGISTER_TOOLS</span><span class="p">(</span>
+<span class="p">(</span> <span class="n">IDENTIFIER</span>     <span class="p">(</span><span class="n">MatchTemplate</span><span class="p">),</span>
+  <span class="n">NAME</span>           <span class="p">(</span><span class="s">&quot;Template Matching&quot;</span><span class="p">),</span>
+  <span class="n">TAG</span>            <span class="p">(</span><span class="s">&quot;matching&quot;</span><span class="p">),</span>
+  <span class="n">PROCESS</span>        <span class="p">(</span><span class="n">MatchTemplate_process</span><span class="p">),</span>
+  <span class="n">REQUIRED_INPUT</span> <span class="p">(</span><span class="n">va_image</span><span class="p">,</span> <span class="n">image</span><span class="p">),</span>
+  <span class="n">OPTIONAL_INPUT</span> <span class="p">(</span><span class="n">va_image</span><span class="p">,</span> <span class="n">templ</span><span class="p">,</span> <span class="n">va_image_alloc_empty</span><span class="p">()),</span>
+  <span class="n">OPTIONAL_INPUT</span> <span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="n">STATIC_META</span>    <span class="p">(</span><span class="n">va_array</span><span class="p">,</span> <span class="n">method_choices</span><span class="p">,</span> <span class="n">va_array_from_json</span><span class="p">(</span>
+                    <span class="s">&quot;[&quot;</span>
+                    <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">TmSqdiff</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:0},&quot;</span>
+                    <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">TmSqdiffNormed</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:1},&quot;</span>
+                    <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">TmCcorr</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:2},&quot;</span>
+                    <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">TmCcorrNormed</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:3},&quot;</span>
+                    <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">TmCcoeff</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:4},&quot;</span>
+                    <span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">TmCcoeffNormed</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">value</span><span class="se">\&quot;</span><span class="s">:5}&quot;</span>
+                    <span class="s">&quot;]&quot;</span><span class="p">)),</span>
+  <span class="n">OUTPUT</span>         <span class="p">(</span><span class="n">va_fmatrix</span><span class="p">,</span> <span class="n">result</span><span class="p">),</span>
+  <span class="n">OUTPUT</span>         <span class="p">(</span><span class="n">va_image</span><span class="p">,</span> <span class="n">map</span><span class="p">)</span>
+<span class="p">))</span>
+
+<span class="kt">int</span> <span class="n">opencv_match_template</span><span class="p">(</span><span class="k">const</span> <span class="n">va_image</span><span class="o">*</span> <span class="n">imgIn</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">va_image</span><span class="o">*</span> <span class="n">templateIn</span><span class="p">,</span>
+                          <span class="kt">int32_t</span> <span class="n">method</span><span class="p">,</span>
+                          <span class="n">va_fmatrix</span><span class="o">*</span> <span class="n">resultOut</span><span class="p">,</span>
+                          <span class="n">va_image</span><span class="o">*</span> <span class="n">mapOut</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">try</span>
+    <span class="p">{</span>
+      <span class="c1">// This is the core. The rest of the code just ensures the validity of</span>
+      <span class="c1">// input and output arguments.</span>
+      <span class="n">cv</span><span class="o">::</span><span class="n">matchTemplate</span><span class="p">(</span><span class="n">OpenCvMat</span><span class="p">(</span><span class="n">imgIn</span><span class="p">),</span>
+                        <span class="n">OpenCvMat</span><span class="p">(</span><span class="n">templateIn</span><span class="p">),</span>
+                        <span class="n">OpenCvMat</span><span class="p">(</span><span class="n">resultOut</span><span class="p">),</span>
+                        <span class="n">method</span><span class="p">);</span>
+
+      <span class="kt">double</span> <span class="n">dMin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">cv</span><span class="o">::</span><span class="n">minMaxLoc</span><span class="p">(</span><span class="n">OpenCvMat</span><span class="p">(</span><span class="n">resultOut</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">dMin</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dMax</span><span class="p">);</span>
+      <span class="c1">// Scale the map values to range 0...255</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">dMax</span> <span class="o">&gt;</span> <span class="n">dMin</span> <span class="o">&amp;&amp;</span> <span class="n">mapOut</span> <span class="o">&amp;&amp;</span> <span class="n">mapOut</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">==</span> <span class="n">va_gray8_image_type</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">double</span> <span class="n">dScaler</span> <span class="o">=</span> <span class="mf">255.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">dMax</span> <span class="o">-</span> <span class="n">dMin</span><span class="p">);</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">iRow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iRow</span> <span class="o">&lt;</span> <span class="n">mapOut</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span> <span class="o">++</span><span class="n">iRow</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">uchar</span><span class="o">*</span> <span class="n">pRowOut</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="n">uchar</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">va_image_row</span><span class="p">(</span><span class="n">mapOut</span><span class="p">,</span> <span class="n">iRow</span><span class="p">));</span>
+              <span class="kt">float</span><span class="o">*</span> <span class="n">pRowIn</span> <span class="o">=</span> <span class="n">va_fmatrix_row</span><span class="p">(</span><span class="n">resultOut</span><span class="p">,</span> <span class="n">iRow</span><span class="p">);</span>
+              <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">iCol</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iCol</span> <span class="o">&lt;</span> <span class="n">mapOut</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">;</span> <span class="o">++</span><span class="n">iCol</span><span class="p">)</span>
+                <span class="n">pRowOut</span><span class="p">[</span><span class="n">iCol</span><span class="p">]</span> <span class="o">=</span> <span class="n">round</span><span class="p">((</span><span class="n">pRowIn</span><span class="p">[</span><span class="n">iCol</span><span class="p">]</span> <span class="o">-</span> <span class="n">dMin</span><span class="p">)</span> <span class="o">*</span> <span class="n">dScaler</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="n">catch</span> <span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Exception</span><span class="o">&amp;</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// TODO: log error</span>
+      <span class="k">return</span> <span class="n">VA_ERR_INVALID_PARAMETER</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="k">return</span> <span class="n">VA_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int32_t</span> <span class="n">MatchTemplate_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">arguments</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">MatchTemplate_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">MatchTemplate_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
+  <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span> <span class="c1">// unused</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">image</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">!=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">templ</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">VA_ERR_INVALID_PARAMETER</span><span class="p">;</span>
+
+  <span class="c1">// Calculate dimensions of the result matrix and map image.</span>
+  <span class="kt">int</span> <span class="n">iWidth</span> <span class="o">=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">image</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">-</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">templ</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">iHeight</span> <span class="o">=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">image</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">-</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">templ</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iWidth</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">iHeight</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">VA_ERR_INVALID_PARAMETER</span><span class="p">;</span>
+
+  <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">va_fmatrix_alloc</span><span class="p">(</span><span class="n">iHeight</span><span class="p">,</span> <span class="n">iWidth</span><span class="p">);</span>
+  <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">va_image_alloc</span><span class="p">(</span><span class="n">va_gray8_image_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+  <span class="c1">// Copy calibration data from source image</span>
+  <span class="n">va_image_copy_fields</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">image</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">map</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="nf">opencv_match_template</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">image</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">templ</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">method</span><span class="p">,</span>
+                               <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">result</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">map</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="OpenCvMat/" class="btn btn-neutral float-right" title="OpenCvMat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="C++ API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

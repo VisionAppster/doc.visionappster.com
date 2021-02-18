@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tensor &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="Python API" href="../../../python/" />
+    <link rel="prev" title="Table" href="../Table/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">JavaScript client API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../#usage">Usage</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">JavaScript API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../CameraParameters/">CameraParameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CoordinateFrame/">CoordinateFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Image/">Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Matrix/">Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../RemoteObject/">RemoteObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Table/">Table</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Tensor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../c/">C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">JavaScript client API</a> &raquo;</li>
+        
+          <li><a href="../">JavaScript API reference</a> &raquo;</li>
+        
+      <li>Tensor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tensor">
+<h1>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">🔗</a></h1>
+<dl class="js class">
+<dt id="Tensor">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Tensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dimensions</span></em>, <em class="sig-param"><span class="pre">bufferOrType</span></em>, <em class="sig-param"><span class="pre">byteOffset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor" title="Permalink to this definition">🔗</a></dt>
+<dd><p>A tensor. Corresponds to the va_tensor C type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dimensions</strong> (<em>NumericArray</em>) – </p></li>
+<li><p><strong>bufferOrType</strong> (<em>number|ArrayBuffer|Int8Array|Uint8Array|Int16Array|Uint16Array|Int32Array|Uint32Array|Float32Array|Float64Array|DataView|BufferAndType</em>) – </p></li>
+<li><p><strong>byteOffset</strong> (<em>number</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="js attribute">
+<dt id="Tensor.data">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#Tensor.data" title="Permalink to this definition">🔗</a></dt>
+<dd><p><strong>type:</strong> TypedArray</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt id="Tensor.dimensions">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">dimensions</span></code><a class="headerlink" href="#Tensor.dimensions" title="Permalink to this definition">🔗</a></dt>
+<dd><p><strong>type:</strong> Uint32Array</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt id="Tensor.info">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">info</span></code><a class="headerlink" href="#Tensor.info" title="Permalink to this definition">🔗</a></dt>
+<dd><p><strong>type:</strong> MdArrayInfo</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt id="Tensor.Type">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">Type</span></code><a class="headerlink" href="#Tensor.Type" title="Permalink to this definition">🔗</a></dt>
+<dd><p><strong>type:</strong> Readonly&lt;AnyObject&gt;</p>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.elementCount">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">elementCount</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.elementCount" title="Permalink to this definition">🔗</a></dt>
+<dd><p>Returns the total number of elements in the array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>number</strong> –</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.entry">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">entry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...indices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.entry" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices</strong> (<em>number[]|[TypedArray]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>number</strong> –</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.equals">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">equals</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.equals" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>boolean</strong> –</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.forEach">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">forEach</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.forEach" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reflection&gt; callback</strong> (<em>&lt;TODO:</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.setEntry">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">setEntry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.setEntry" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>number[]|[TypedArray]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.toIndex">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">toIndex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">indices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.toIndex" title="Permalink to this definition">🔗</a></dt>
+<dd><p>Flattens a multi-dimensional array index to one-dimensional index
+for array look-up.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices</strong> (<em>NumericArray</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>number</strong> –</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.transform">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.transform" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reflection&gt; callback</strong> (<em>&lt;TODO:</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.write">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">write</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.write" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<em>default</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt id="Tensor.read">
+<code class="sig-prename descclassname"><span class="pre">Tensor.</span></code><code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Tensor.read" title="Permalink to this definition">🔗</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<em>default</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Tensor</strong> –</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../../python/" class="btn btn-neutral float-right" title="Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Table/" class="btn btn-neutral float-left" title="Table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

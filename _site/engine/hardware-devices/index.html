@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hardware devices &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Management interface" href="../management-interface/" />
+    <link rel="prev" title="Graph executor" href="../graph-executor/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#supported-platforms">Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph-executor/">Graph executor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardware devices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device-configuration">Device configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-ids">Device IDs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../management-interface/">Management interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-object-system/">Remote object system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/">VisionAppster Engine services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start-stop/">Starting and stopping the Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing-apis/">Testing HTTP APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-apps/">Web apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../world-coordinates/">World coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Engine</a> &raquo;</li>
+        
+      <li>Hardware devices</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hardware-devices">
+<h1>Hardware devices<a class="headerlink" href="#hardware-devices" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="device-configuration">
+<h2>Device configuration<a class="headerlink" href="#device-configuration" title="Permalink to this headline">🔗</a></h2>
+<p>An app can control a number of different hardware devices through
+various drivers. There is the camera and I/O, and probably some data
+link devices. In different applications, these devices may need to be
+configured in different ways. Perhaps the most typical example is the
+exposure time of a camera, which needs to be changed based on the
+product being inspected.</p>
+<p>VisionAppster Tools handle all hardware devices in a uniform way. The
+Application Engine maintains a device database that provides apps a way
+to store device-specific settings. The database is stored as a bunch of
+JSON files and a database index that maps <a class="reference external" href="#device-ids">device IDs</a>
+to settings.</p>
+<p>If the <em>autoConfig</em> flag in a tool is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the database index will
+be used to find the settings for a hardware device automatically.
+Alternatively, the app developer can type in the name of a configuration
+set manually using the <em>parameterSet</em> parameter.</p>
+<p>A manually assigned configuration set is a system-dependent parameter
+that can be changed in the app’s settings. The configuration set name is
+simply a file name that will be looked up in the database folder when
+the app starts up. If found, the parameters in the configuration set
+will be set to the driver.</p>
+</div>
+<div class="section" id="device-ids">
+<h2>Device IDs<a class="headerlink" href="#device-ids" title="Permalink to this headline">🔗</a></h2>
+<p>Cameras, digital I/O devices and data link devices are identified using
+device IDs. A device ID is composed of a driver ID, a colon and a device
+part that identifies the device using driver-specific syntax.</p>
+<p>The driver ID is used to pick the correct driver for the device. For
+example, “webcam” would select a webcam driver. On Linux, the webcam
+driver identifies cameras with character strings such as
+“usb-video-index0”. Thus, a fully-qualified device ID could be something
+like “webcam:usb-video-index0”.</p>
+<p>Device IDs are system-dependent. If you save an application and later
+run it in another machine, the Application Engine requires you to check
+all device IDs in the app and to save them in the app’s settings. This
+is because it is rarely possible to use the same device ID on different
+computers. For example, the order of devices on a USB bus may be
+different, and the IP addresses of remote devices may change.</p>
+<p>Device IDs can also be given as regular expressions. This is indicated
+by surrounding the ID with forward slashes. For example,
+“/^webcam:.*0$/” uses the first web camera whose id ends with “0”. The
+regular expression “/./” matches all devices and thus uses the very
+first detected device.</p>
+<p>If an application contains tools that have hardware-specific parameters
+and the values of those parameters aren’t regular expressions, the
+values must be set in the app’s settings before it can be started. This
+happens by clicking the app’s name on the front page of the Engine’s
+management web interface and selecting the appropriate values there.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../management-interface/" class="btn btn-neutral float-right" title="Management interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../graph-executor/" class="btn btn-neutral float-left" title="Graph executor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

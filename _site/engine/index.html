@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Engine &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script defer="defer" src="../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Apps" href="apps/" />
+    <link rel="prev" title="Linux installation" href="../install/linux/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#main-elements">Main elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-platforms">Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps/">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph-executor/">Graph executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-devices/">Hardware devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management-interface/">Management interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-object-system/">Remote object system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/">VisionAppster Engine services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start-stop/">Starting and stopping the Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing-apis/">Testing HTTP APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web-apps/">Web apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world-coordinates/">World coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Engine</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="engine">
+<h1>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">🔗</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The VisionAppster Engine is a cross-platform runtime for running vision
+apps. It provides <a class="reference internal" href="apps/"><span class="doc">platform-independent apps</span></a> a consistent,
+high-performance execution environment. The Engine and all running apps
+can be controlled using an <a class="reference internal" href="remote-object-system/"><span class="doc">HTTP-based RPC
+mechanism</span></a> through a built-in web server.</p>
+<div class="section" id="main-elements">
+<h2>Main elements<a class="headerlink" href="#main-elements" title="Permalink to this headline">🔗</a></h2>
+<p>The main elements of VisionAppster Engine are:</p>
+<dl class="simple">
+<dt><a class="reference internal" href="graph-executor/"><span class="doc">Graph Executor</span></a></dt><dd><p>A parallel executor for image analysis applications represented as
+data flow graphs.</p>
+</dd>
+<dt>Component Database</dt><dd><p>Manages <a class="reference internal" href="../components/"><span class="doc">components</span></a> installed from <a class="reference internal" href="../components/packages/"><span class="doc">component
+packages</span></a> (<code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> files). Provides
+facilities for installing, uninstalling and querying the database.
+The API of the component database is published at
+<a class="reference external" href="http://localhost:2015/componentdb/">/componentdb/</a> in the
+built-in web server. Uploaded <code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> files are stored under
+<a class="reference external" href="http://localhost:2015/packages/">/packages/</a>.</p>
+</dd>
+<dt>License Database</dt><dd><p>Safely stores and updates licenses. Interacts with the platform’s
+security mechanisms to prevent unauthorized use of installed
+components. The API of the license database is published at
+<a class="reference external" href="http://localhost:2015/licensedb/">/licensedb/</a>.</p>
+</dd>
+<dt>App Manager</dt><dd><p>Starts and stops installed <a class="reference internal" href="apps/"><span class="doc">apps</span></a> and manages running
+processes. Its API is available at
+<a class="reference external" href="http://localhost:2015/manager/">/manager/</a>.</p>
+</dd>
+<dt>API Manager</dt><dd><p>Lets apps publish objects as remote or local services. Provides
+facilities for locating local and remote services. The APIs published
+by running apps are listed at
+<a class="reference external" href="http://localhost:2015/apis/">/apis/</a>.</p>
+</dd>
+<dt>Driver Manager</dt><dd><p>Detects attached <a class="reference internal" href="hardware-devices/"><span class="doc">devices</span></a> such as cameras and
+I/O devices. Provides an interface for querying and accessing the
+devices. The Driver Manager itself has no public API, but found
+cameras are published at
+<a class="reference external" href="http://localhost:2015/cameras/">/cameras/</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="supported-platforms">
+<h2>Supported platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster Engine can be run on a wide variety of hardware
+platforms and operating systems. The following table lists the
+officially supported hardware and operating system combinations.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p></p></td>
+<td><p><strong>x86</strong></p></td>
+<td><p><strong>x86-64</strong></p></td>
+<td><p><strong>ARM</strong></p></td>
+<td><p><strong>ARM-64</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Linux</strong></p></td>
+<td><p>yes¹</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes²</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Windows</strong></p></td>
+<td><p>yes¹</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Docker</strong></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes²</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mac OS</strong></p></td>
+<td><p>no</p></td>
+<td><p>no³</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Supported, but we are currently not building packages routinely.</p></li>
+<li><p>Supported, but no stable official builds available yet.</p></li>
+<li><p>Our software compiles and runs fine on Mac. Apple’s SDK licensing
+terms however prevent compiling Mac software on other platforms. This
+makes it impossible for Linux and Windows developers to build native
+extensions for Mac. Mac support would therefore be fundamentally
+crippled and break our cross-platform promise.</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="apps/" class="btn btn-neutral float-right" title="Apps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../install/linux/" class="btn btn-neutral float-left" title="Linux installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

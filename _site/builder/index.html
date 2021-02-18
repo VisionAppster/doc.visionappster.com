@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Builder &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script defer="defer" src="../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="App API" href="app-api/" />
+    <link rel="prev" title="World coordinates" href="../engine/world-coordinates/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/">Engine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Builder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-steps">First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-api/">App API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compounds/">Compound tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-components/">Creating components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Builder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="builder">
+<h1>Builder<a class="headerlink" href="#builder" title="Permalink to this headline">🔗</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The VisionAppster Builder is an IDE for building <a class="reference internal" href="../engine/apps/"><span class="doc">vision
+apps</span></a> that can be run on the <a class="reference external" href="/engine/index">VisionAppster
+Engine</a> and sold in the <a class="reference external" href="https://visionappster.com">VisionAppster
+Store</a>.</p>
+<div class="section" id="first-steps">
+<h2>First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">🔗</a></h2>
+<p><img alt="image0" class="youtube medium" src="builder/1k5S1-1AHDg" /></p>
+<p>Start the VisionAppster Builder from the start menu of your desktop
+environment. The Builder will open with an new project that contains an
+empty processing graph.</p>
+<div class="figure align-default" id="id1">
+<img alt="The Builder opens with an empty workspace." src="../_images/builder-empty.png" />
+<p class="caption"><span class="caption-text">The Builder opens with an empty workspace.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<p>To create a functional processing graph you need to add some tools. The
+Tools menu at the top lists installed tools. Type in a search term to
+find tools by their name. To add a tool, drag and drop it on the
+workspace.</p>
+<div class="figure align-default" id="id2">
+<img alt="Drag and drop tools from the tool menu to the processing graph." src="../_images/builder-tools.png" />
+<p class="caption"><span class="caption-text">Drag and drop tools from the tool menu to the processing graph.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Now, find a tool called “Image Source” and drop it on the workspace.
+Click the workspace to hide the tool box. Then click the tool to reveal
+its parameters. The parameters listed above the tool are inputs and
+those below it are outputs. The parameters with a colored dots are
+connectable. The color codes are as follows:</p>
+<dl class="simple">
+<dt>Gray</dt><dd><p>Optionally connectable, currently not connected.</p>
+</dd>
+<dt>Green</dt><dd><p>Connected</p>
+</dd>
+<dt>Red</dt><dd><p>Required, but not connected.</p>
+</dd>
+</dl>
+<p>Click the dots to add and delete connections.</p>
+<div class="figure align-default" id="id3">
+<img alt="The workspace after dropping and clicking on an image source" src="../_images/builder-image-source.png" />
+<p class="caption"><span class="caption-text">The workspace after dropping and clicking on an image source</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The image source receives images from a camera and sends them to the
+processing pipeline. In this case, we are going to set up a virtual
+camera that reads images from files. Open the Virtual Camera menu and
+click the “+” button to add source images. Select “Add images” and use
+the file browser to select images from your hard drive.</p>
+<div class="figure align-default" id="id4">
+<img alt="Virtual cameras can be used to build test image sets." src="../_images/builder-virtual-camera.png" />
+<p class="caption"><span class="caption-text">Virtual cameras can be used to build test image sets.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Now that the virtual camera has been configured, we can use it as a
+source of images: click the <em>Camera Id</em> input parameter of the Image
+Source and select “Virtual Camera”.</p>
+<div class="figure align-default" id="id5">
+<img alt="Auto-detected cameras are shown in a drop-down list." src="../_images/builder-select-camera.png" />
+<p class="caption"><span class="caption-text">Auto-detected cameras are shown in a drop-down list.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The image source will automatically take a picture, which you can see by
+dragging the <em>Image</em> output parameter to the workspace.</p>
+<div class="figure align-default" id="id6">
+<img alt="Image parameters are displayed using a powerful image display." src="../_images/builder-captured-image.png" />
+<p class="caption"><span class="caption-text">Image parameters are displayed using a powerful image display.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Input and output parameters can be dragged to the workspace. This will
+publish the parameter in the API of the app. The Builder will create a
+suitable user interface component to display the value of the parameter
+and connect it to the API entry. The type of the UI component can be
+changed in the window menu.</p>
+<p>Now open the Tool menu, drag “Detect Edges” and drop it on top of the
+Image Source on the workspace.</p>
+<div class="figure align-default" id="id7">
+<img alt="Tools dropped on top of each other are automatically connected." src="../_images/builder-auto-connect.png" />
+<p class="caption"><span class="caption-text">Tools dropped on top of each other are automatically connected.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+<p>To feed a new image to the analysis pipeline, click the “next” button at
+the bottom.</p>
+<div class="small figure align-default" id="id8">
+<img alt="The buttons on the status bar are used to step execution." src="../_images/builder-next.png" />
+<p class="caption"><span class="caption-text">The buttons on the status bar are used to step execution.</span><a class="headerlink" href="#id8" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Click the Detect Edges tool and drag its <em>Image</em> output on top of the
+image display. This will add another layer on the display. Use the
+layers tab on the image display to adjust the properties of the topmost
+layer as shown in the picture below.</p>
+<div class="figure align-default" id="id9">
+<img alt="Source image and analysis result shown on top of each other" src="../_images/builder-pena-edge-detection.png" />
+<p class="caption"><span class="caption-text">Source image and analysis result shown on top of each other</span><a class="headerlink" href="#id9" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Your first app is ready. Click File, Save As… and give your project a
+name.</p>
+<div class="figure align-default" id="id10">
+<img alt="Saving a project." src="../_images/builder-save-as.png" />
+<p class="caption"><span class="caption-text">Saving a project.</span><a class="headerlink" href="#id10" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Saving a project creates a <em>directory</em> that contains the project’s
+assets. When you open a saved project, you need to select that
+directory, not the project file (<code class="docutils literal notranslate"><span class="pre">vaproject.json</span></code>) in the directory.</p>
+<p>Now, you are ready to <a class="reference internal" href="creating-components/"><span class="doc">create your first
+component</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="app-api/" class="btn btn-neutral float-right" title="App API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../engine/world-coordinates/" class="btn btn-neutral float-left" title="World coordinates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

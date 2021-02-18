@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Apps &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Configuration" href="../configuration/" />
+    <link rel="prev" title="Engine" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#supported-platforms">Supported platforms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-app-component">Main app component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structure-of-an-app">Structure of an app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-threading">On threading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph-executor/">Graph executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware-devices/">Hardware devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../management-interface/">Management interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-object-system/">Remote object system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/">VisionAppster Engine services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start-stop/">Starting and stopping the Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing-apis/">Testing HTTP APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-apps/">Web apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../world-coordinates/">World coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Engine</a> &raquo;</li>
+        
+      <li>Apps</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="apps">
+<h1>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">🔗</a></h1>
+<p>The VisionAppster Engine can be thought of as a platform-independent
+light-weight operating system that runs on top of a real operating
+system. In the operating system analogy, <em>apps</em> are platform-independent
+executables.</p>
+<p>Apps are written in <a class="reference external" href="http://doc.qt.io/qt-5/qmlapplications">QML</a>. The
+structure of the app is built using QML components while the application
+logic is written in JavaScript. QML makes it easy to create user
+interfaces to vision apps, but it is also used to build server apps that
+run in a displayless environment.</p>
+<p>Usually, apps are created with <a class="reference internal" href="../../builder/"><span class="doc">the Builder</span></a> and
+run by the Engine service. To create an app that can be run by
+<code class="docutils literal notranslate"><span class="pre">va-run</span></code> or the Engine service you just need to export the app from
+the Builder as a <code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> file.</p>
+<p>It is also possible to create apps manually yourself. This document
+gives an overview of how apps can be built and run.</p>
+<div class="section" id="main-app-component">
+<h2>Main app component<a class="headerlink" href="#main-app-component" title="Permalink to this headline">🔗</a></h2>
+<p>At a bare minimum, an app consists of a single qml file (e.g.
+<code class="docutils literal notranslate"><span class="pre">app.qml</span></code>) with the following contents:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
+
+<span class="nx">App</span>
+<span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">start</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This declares a single QML component of type <code class="docutils literal notranslate"><span class="pre">App</span></code>. The component must
+contain a <code class="docutils literal notranslate"><span class="pre">start</span></code> function, which will be invoked when the app is
+started. Unlike the <code class="docutils literal notranslate"><span class="pre">main</span></code> function in many programming languages, the
+purpose of the start function is not to run until the program ends.
+Instead, it is an event handler whose purpose is to prepare the app for
+execution.</p>
+<p>You can run this app with <code class="docutils literal notranslate"><span class="pre">va-run</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-run app.qml
+</pre></div>
+</div>
+<p>This assumes the “bin” directory under the VisionAppster installation
+directory is in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. If you installed the Flatpak version to
+the system scope on Linux, you may want to set up an alias first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>flatpak run --command<span class="o">=</span>va-run com.visionappster.Builder app.qml
+</pre></div>
+</div>
+<p>This will cause the Engine to start the app and remain listening to
+events from various sources, which you haven’t defined yet. To stop the
+Engine and hence the app, you need to press Ctrl+C or kill the process
+otherwise.</p>
+<p>If the app component defines a function called <code class="docutils literal notranslate"><span class="pre">stop</span></code>, it will be
+called before the app exits. The stop function can return <code class="docutils literal notranslate"><span class="pre">false</span></code> to
+indicate that it cannot be stopped right now. It is however always
+possible to kill an app that refuses to shut down cleanly. When shut
+down, the Engine first tries to stop all running apps and then kills
+them.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
+
+<span class="nx">App</span>
+<span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">start</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="kd">function</span> <span class="nx">stop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Stopping&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To stop an app, call <code class="docutils literal notranslate"><span class="pre">AppManager.stop(appInfo.pid)</span></code>. To abruptly stop
+execution, one can call <code class="docutils literal notranslate"><span class="pre">die()</span></code> in the app’s context. The function
+takes an optional error message as a parameter.</p>
+</div>
+<div class="section" id="structure-of-an-app">
+<h2>Structure of an app<a class="headerlink" href="#structure-of-an-app" title="Permalink to this headline">🔗</a></h2>
+<p>In addition to the main component, an app may contain any number of
+other components, JavaScript files and resources such as images and text
+files. You are free to arrange these in any directory structure as far
+as the root directory contains an app description file called
+<code class="docutils literal notranslate"><span class="pre">appconfig.json</span></code>.</p>
+<p>The app description file defines the entry point of the app and any
+other meta-data that may be used by the app itself or other apps. For
+example, the web management interface uses the <code class="docutils literal notranslate"><span class="pre">appName</span></code> meta-data
+entry as the user-visible name of an app. A minimal configuration file
+could be like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;appName&quot;</span><span class="p">:</span>       <span class="s2">&quot;My Application&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;mainComponent&quot;</span><span class="p">:</span> <span class="s2">&quot;app.qml&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;appId&quot;</span><span class="p">:</span>         <span class="s2">&quot;my.test.app/1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At run time, the contents of the app configuration file are accessible
+through a global object called <code class="docutils literal notranslate"><span class="pre">appInfo</span></code>. The object contains not only
+the contents of the configuration file but also information collected at
+start-up:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uri</span> <span class="pre">:</span> <span class="pre">string</span></code></dt><dd><p>The full URI of the app, either an absolute path with a <code class="docutils literal notranslate"><span class="pre">file://</span></code>
+schema or a HTTP URI. This field will always be set.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pid</span> <span class="pre">:</span> <span class="pre">integer</span></code></dt><dd><p>The process ID of the app.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">args</span> <span class="pre">:</span> <span class="pre">array&lt;string&gt;</span></code></dt><dd><p>Start-up (e.g. command-line) arguments.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">appId</span> <span class="pre">:</span> <span class="pre">string</span></code></dt><dd><p>The unique ID of the app. If this is not given in the configuration
+file, one will be automatically generated from the URI of the app.</p>
+</dd>
+</dl>
+<p>The following code prints out the <code class="docutils literal notranslate"><span class="pre">appName</span></code> and <code class="docutils literal notranslate"><span class="pre">pid</span></code> of the app.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
+
+<span class="nx">App</span>
+<span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">appInfo</span><span class="p">.</span><span class="nx">appName</span><span class="p">);</span> <span class="c1">// from appconfig.json</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">appInfo</span><span class="p">.</span><span class="nx">pid</span><span class="p">);</span>     <span class="c1">// generated at start-up</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="on-threading">
+<h2>On threading<a class="headerlink" href="#on-threading" title="Permalink to this headline">🔗</a></h2>
+<p>In the VisionAppster Engine, heavy processing such as image analysis is
+not done in the main thread. QML and JavaScript are however inherently
+single-threaded. Therefore, the JavaScript code defining application
+logic will always be run in a single thread. Furthermore, the design
+choice has been to execute the application logic JS code of all running
+apps in the main thread. This makes inter-app communication easier but
+has the drawback that a poorly behaving app may hang others. If an app
+runs into an eternal loop, the main thread will be blocked and no events
+will be delivered to any app.</p>
+<p>It should be noted that JS code embedded in a <a class="reference internal" href="../graph-executor/"><span class="doc">processing
+graph</span></a> can be run in parallel threads. This is
+possible because interactions between other components of the app are
+limited by the interface of the tool.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../configuration/" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

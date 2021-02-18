@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>JavaScript client API &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="JavaScript API reference" href="reference/" />
+    <link rel="prev" title="Tool APIs" href="../tool/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tool/">Tool APIs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JavaScript client API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-and-disconnecting">Connecting and disconnecting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#return-channel">Return channel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calling-functions">Calling functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-and-writing-properties">Reading and writing properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#receiving-signals">Receiving signals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#callback-functions">Callback functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-errors">Handling errors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference/">JavaScript API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">APIs</a> &raquo;</li>
+        
+      <li>JavaScript client API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="javascript-client-api">
+<h1>JavaScript client API<a class="headerlink" href="#javascript-client-api" title="Permalink to this headline">🔗</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">🔗</a></h2>
+<p>To install the VisionAppster JavaScript API to your Node.js environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm i visionappster
+</pre></div>
+</div>
+<p>To use in your script:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">VisionAppster</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;visionappster&#39;</span><span class="p">);</span>
+<span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/info&#39;</span><span class="p">).</span><span class="nx">connect</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected&#39;</span><span class="p">);</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>If you want to use the API on a web page, download
+<a class="reference external" href="http://localhost:2015/VisionAppster.js">VisionAppster.js</a> from your
+local Engine. A browser-compatible file (iife bundle) is also available
+in the Node.js package at <code class="docutils literal notranslate"><span class="pre">dist/VisionAppster.js</span></code> and in the SDK
+directory under your VisionAppster installation (<code class="docutils literal notranslate"><span class="pre">sdk/client/js</span></code>). To
+get started, insert this to your HTML document:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;VisionAppster.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+<span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/info&#39;</span><span class="p">).</span><span class="nx">connect</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected&#39;</span><span class="p">);</span> <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">🔗</a></h2>
+<p>If you have an instance of the VisionAppster Engine running locally,
+open its <a class="reference external" href="http://localhost:2015">front page</a> and inspect the source
+code for a comprehensive example.</p>
+<div class="section" id="connecting-and-disconnecting">
+<h3>Connecting and disconnecting<a class="headerlink" href="#connecting-and-disconnecting" title="Permalink to this headline">🔗</a></h3>
+<p>To connect to a remote object, create an instance of
+<code class="docutils literal notranslate"><span class="pre">VisionAppster.RemoteObject</span></code> and call its <code class="docutils literal notranslate"><span class="pre">connect</span></code> method:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">manager</span><span class="p">;</span>
+<span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">obj</span> <span class="p">=&gt;</span> <span class="nx">manager</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>All methods that need to make requests to the server are asynchronous
+and return a
+<a class="reference external" href="https://developer.mozilla.org/en-US/search?q=Promise">Promise</a>
+object. As shown in the example, you can use <code class="docutils literal notranslate"><span class="pre">Promise.then()</span></code> to fire
+a callback when the asynchronous operation is done. The <code class="docutils literal notranslate"><span class="pre">connect()</span></code>
+method returns a promise that resolves with an object that reflects the
+functions, properties and signals of the object on the server.</p>
+<p>If you need to break a connection, call the <code class="docutils literal notranslate"><span class="pre">disconnect()</span></code> method.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// isConnected() is a synchronous function</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">isConnected</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">ctrl</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;disconnected&#39;</span><span class="p">);</span> <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The interface of a remote object is split into two parts.
+<code class="docutils literal notranslate"><span class="pre">VisionAppster.RemoteObject</span></code> provides an interface that lets you to
+control the object. Upon a successful connection, a reflection object is
+created. As shown above, the <code class="docutils literal notranslate"><span class="pre">connect()</span></code> function resolves this
+object. It is also available through the <code class="docutils literal notranslate"><span class="pre">object</span></code> member of
+<code class="docutils literal notranslate"><span class="pre">RemoteObject</span></code>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">manager</span><span class="p">;</span>
+<span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">manager</span> <span class="o">=</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Instead of explicitly chaining promises, one can use the <code class="docutils literal notranslate"><span class="pre">await</span></code>
+keyword in <code class="docutils literal notranslate"><span class="pre">async</span></code> functions:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">manager</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="return-channel">
+<h3>Return channel<a class="headerlink" href="#return-channel" title="Permalink to this headline">🔗</a></h3>
+<p>The JS client uses a WebSocket connection as a return channel to push
+data from the server. The return channel is used to pass signals,
+callbacks and asynchronous function call results.</p>
+<p>Unless instructed otherwise, the JS client establishes a single
+WebSocket connection per host. Thus, if many remote objects are accessed
+on the same server, they all use a shared return channel.</p>
+<p>Return channels are identified by a client ID that is generated on the
+client side. By convention,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>
+are used. The JS client automatically generates one for each return
+channel, but it is also possible to pass a pre-generated UUID to the
+<code class="docutils literal notranslate"><span class="pre">RemoteObject</span></code> constructor. This may be useful if you want to control
+which objects share a return channel. To give one object a dedicated
+channel, generate the client ID yourself:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="nx">generateClientUuid</span><span class="p">();</span>
+<span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">({</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">,</span>
+  <span class="nx">clientId</span><span class="o">:</span> <span class="nx">clientId</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>In some cases, you may want to use a remote object without a return
+channel. For example, if you just want to set or retrieve the value of a
+property or call a function, establishing a WebSocket connection would
+be an overkill. The return channel can be disabled by explicitly passing
+<code class="docutils literal notranslate"><span class="pre">null</span></code> as the client ID:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">({</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">,</span>
+  <span class="nx">clientId</span><span class="o">:</span> <span class="kc">null</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calling-functions">
+<h3>Calling functions<a class="headerlink" href="#calling-functions" title="Permalink to this headline">🔗</a></h3>
+<p>The functions of the object on the server are mapped to methods in the
+local reflection object instance. You can call remote functions as if
+they were ordinary methods of the object instance, but instead of
+returning a value directly, the methods will return a <code class="docutils literal notranslate"><span class="pre">Promise</span></code> that
+resolves with the return value. For example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">&#39;id://my-app-id&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">pid</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Process id: </span><span class="si">${</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>A list of functions is available at
+<a class="reference external" href="http://localhost:2015/manager/functions/">functions/</a>. At a minimum,
+a function description specifies the name of the function. Optionally,
+there may be a return type and a list or parameter descriptions.</p>
+<p>Usually, the most convenient way of calling a function is to pass
+arguments as a comma-separated list in the order they appear in the
+function declaration. If the function provides names for its parameters,
+it is also possible to pack the parameters in an object. This is
+equivalent to the previous example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">({</span><span class="nx">appUri</span><span class="o">:</span> <span class="s1">&#39;id://my-app-id&#39;</span><span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">pid</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Process id: </span><span class="si">${</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Although calling functions with named arguments is handy, it comes with
+a pitfall: if the function to be called takes an object as the first
+argument, the caller must wrap the object into an array:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">remoteObject</span><span class="p">.</span><span class="nx">funcThatTakesObject</span><span class="p">([{</span><span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}]);</span>
+</pre></div>
+</div>
+<p>When a remote function is called, the server responds with the return
+value. This synchronous mode of operation has the disadvantage that it
+blocks the HTTP connection to the server: a new request can only be
+served once the previous one has finished. With simple functions this is
+usually not an issue, but may become such with functions that take time
+to complete.</p>
+<p>Asynchronous calls can be utilised to avoid blocking the HTTP
+connection. When an asynchronous request is made, the server puts the
+call in a queue, returns immediately and pushes the results back through
+the client’s return channel once the function finishes.</p>
+<p>Just like other function calls, asynchronous calls return a <code class="docutils literal notranslate"><span class="pre">Promise</span></code>
+that resolves with the return value of the called function. To call a
+function asynchronously, append <code class="docutils literal notranslate"><span class="pre">.async</span></code> to the function name:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">async</span><span class="p">({</span><span class="nx">appUri</span><span class="o">:</span> <span class="s1">&#39;id://my-app-id&#39;</span><span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">pid</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Async call returned a pid: </span><span class="si">${</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Async call failed.&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>If the server is not able to enqueue the request or if it does not
+respond in a timely manner, the returned promise will be rejected. The
+<code class="docutils literal notranslate"><span class="pre">asyncTimeout</span></code> member of the function can be used to adjust the
+timeout:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">asyncTimeout</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If the client is connected without a return channel, async functions
+will not be available.</p>
+</div>
+<div class="section" id="reading-and-writing-properties">
+<h3>Reading and writing properties<a class="headerlink" href="#reading-and-writing-properties" title="Permalink to this headline">🔗</a></h3>
+<p>The properties of an object on the server are mapped directly to
+properties on the local reflection object instance. Since reading or
+writing a property may require a remote call, property accessor
+functions return a <code class="docutils literal notranslate"><span class="pre">Promise</span></code>.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">lastError</span><span class="p">.</span><span class="nx">get</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Last error: </span><span class="si">${</span><span class="nx">e</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span> <span class="p">});</span>
+
+<span class="c1">// Trying to set a &quot;const&quot; property</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">lastError</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="p">});</span> <span class="c1">// Method Not Allowed</span>
+</pre></div>
+</div>
+<p>The last example shows how to handle remote call errors. It is a good
+practice to always catch errors, but doing so may become tedious if an
+error handler is put on each remote call separately. There is however
+another, more convenient way:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">await</span> <span class="nx">manager</span><span class="p">.</span><span class="nx">lastError</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="c1">// Method Not Allowed</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A function and a property may have the same name. In this case the
+property of the <code class="docutils literal notranslate"><span class="pre">RemoteObject</span></code> instance also works as a function. The
+properties of a remote object are listed at
+<a class="reference external" href="http://localhost:2015/manager/properties/">properties/</a>.</p>
+</div>
+<div class="section" id="receiving-signals">
+<h3>Receiving signals<a class="headerlink" href="#receiving-signals" title="Permalink to this headline">🔗</a></h3>
+<p>To invoke an action upon receiving a signal from the server one needs to
+connect a handler function to it. We’ll do this in an asynchronous
+function to illustrate how remote calls can be used in an apparently
+synchronous manner:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">signalTest</span><span class="p">(</span><span class="nx">infoCtrl</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">infoCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`VisionAppster AE version: </span><span class="si">${</span><span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">appEngineVersion</span><span class="p">.</span><span class="nx">get</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">$userDefinedNameChanged</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">name</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Name changed to </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">infoCtrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/info&#39;</span><span class="p">);</span>
+
+<span class="nx">signalTest</span><span class="p">(</span><span class="nx">infoCtrl</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">);</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Signals are separated from functions and properties by a <code class="docutils literal notranslate"><span class="pre">$</span></code> prefix.
+If a property has a change notifier signal, it will be automatically
+bound to the <code class="docutils literal notranslate"><span class="pre">$changed</span></code> member of the property. These two ways of
+connecting a signal are equivalent:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">info</span><span class="p">.</span><span class="nx">$userDefinedNameChanged</span><span class="p">.</span><span class="nx">connect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{});</span>
+<span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{});</span>
+</pre></div>
+</div>
+<p>The latter is easier as it makes it unnecessary to find out which change
+notifier signal corresponds to which property.</p>
+<p>An arbitrary number of functions can be connected to each signal, and
+connections can be also be broken:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">showName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">showFirstChar</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Connect two handler functions</span>
+  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">showName</span><span class="p">);</span>
+  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">showFirstChar</span><span class="p">);</span>
+
+  <span class="c1">// Check if a signal is connected to a specific function.</span>
+  <span class="c1">// This is a synchronous call.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">isConnected</span><span class="p">(</span><span class="nx">showFirstChar</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Yep.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Disconnect one of them</span>
+  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="nx">snowName</span><span class="p">);</span>
+  <span class="c1">// Disconnect everything</span>
+  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+
+  <span class="c1">// Check if a signal is connected to any function.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">isConnected</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;This will not happen.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By default, the remote object system will find a suitable encoding and
+data type for the signal’s parameters automatically. In some cases, the
+result may however not be what you want. A typical example is an image
+you want to just display instead of processing it on the client side. In
+such cases, it is possible to parameterize the connection:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">handleImage</span><span class="p">(</span><span class="nx">blob</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Received </span><span class="si">${</span><span class="nx">blob</span><span class="p">.</span><span class="nx">size</span><span class="si">}</span><span class="sb"> bytes of encoded image data.`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">remote</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/apis/api-id&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+  <span class="c1">// Push the image as JPEG and use Blob as the storage object type.</span>
+  <span class="nx">await</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">$image</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">handleImage</span><span class="p">,</span> <span class="p">{</span><span class="nx">mediaType</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">]});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> parameter tells the client’s preferred encoding for
+each of the signal’s parameters. Depending on the type of the signal,
+different media types are available. The list of supported encoding
+schemes evolves constantly and is beyond the scope of this document. It
+is however always safe to request images as “image/jpeg” or “image/png”.</p>
+<p>Note that there is a subtle difference between a media type and an array
+of media types. If <code class="docutils literal notranslate"><span class="pre">mediaType</span></code> is a string, it applies to the whole
+argument array, not individual elements. For example, it is not possible
+to encode a parameter array as “image/png”, but it may be possible to
+encode a single argument as an image by specifying <code class="docutils literal notranslate"><span class="pre">[&quot;image/png&quot;]</span></code> as
+the media type. On the other hand, “application/json” can be used to
+encode both the whole array and each individual argument, provided that
+all of the arguments are representable as JSON.</p>
+<p>Finally, it is possible to filter out signal parameters by giving
+<code class="docutils literal notranslate"><span class="pre">null</span></code> as the media type. This will save bandwidth if you don’t need
+all of the parameters. If all parameters are filtered out, the server
+will send an empty message.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">obj</span><span class="p">.</span><span class="nx">$imgAndParams</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;received&#39;</span><span class="p">,</span> <span class="nx">params</span><span class="p">),</span>
+  <span class="p">{</span><span class="nx">mediaType</span><span class="o">:</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;application/json&#39;</span><span class="p">]});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="callback-functions">
+<h3>Callback functions<a class="headerlink" href="#callback-functions" title="Permalink to this headline">🔗</a></h3>
+<p>The mechanism for invoking callback functions is similar to that of
+signals, with the exception that at most one handler function can be
+connected to each callback.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Let&#39;s assume there is a callback with the signature</span>
+<span class="c1">// int32 plus(int 32 a, int32 b)</span>
+<span class="c1">// This will return a + b to the server:</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">$plus</span><span class="p">.</span><span class="nx">connect</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To find out whether the member of an object is a signal or a callback,
+you can check the type:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">$plus</span> <span class="k">instanceof</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Callback&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">$plus</span> <span class="k">instanceof</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Signal</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Signal&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Callbacks also work as function call arguments. Let’s assume the server
+provides a function that has two arguments: a callback function and a
+value that will be passed to the callback. The function returns whatever
+the callback returns. The signature of the function is
+<code class="docutils literal notranslate"><span class="pre">call:</span> <span class="pre">(callback:</span> <span class="pre">(double)</span> <span class="pre">-&gt;</span> <span class="pre">double,</span> <span class="pre">value:</span> <span class="pre">double)</span> <span class="pre">-&gt;</span> <span class="pre">double</span></code>.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Returns 16</span>
+<span class="kd">let</span> <span class="nx">sixteen</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">value</span> <span class="p">=&gt;</span> <span class="nx">value</span> <span class="o">*</span> <span class="nx">value</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="handling-errors">
+<h3>Handling errors<a class="headerlink" href="#handling-errors" title="Permalink to this headline">🔗</a></h3>
+<p>Each <code class="docutils literal notranslate"><span class="pre">RemoteObject</span></code> instance provides a <code class="docutils literal notranslate"><span class="pre">$connectedChanged</span></code> signal.
+The signal has a single Boolean parameter that tells the current status
+of the connection. This signal is delivered locally and requires no
+remote call when connected or disconnected. Thus, one does not need to
+<code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">connect()</span></code>. This signal is especially useful in recovering lost
+connections:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">$connectedChanged</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">connected</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">connected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connection lost. Reconnecting in a second.&#39;</span><span class="p">);</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>If the connection breaks spontaneously, calling <code class="docutils literal notranslate"><span class="pre">connect()</span></code> will try
+to automatically re-register all pushable sources (signals and
+callbacks) to the return channel. If you call <code class="docutils literal notranslate"><span class="pre">disconnect()</span></code> yourself,
+all connections must be manually re-established after reconnecting.</p>
+<p>Other errors such as unexpected server responses and failures in
+decoding pushed data are signaled through the <code class="docutils literal notranslate"><span class="pre">$error</span></code> signal. The
+signal has one parameter that is an
+<a class="reference external" href="https://developer.mozilla.org/en-US/search?q=Error">Error</a> object.
+These errors are usually recoverable and don’t cause a connection
+failure.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">$error</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">error</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Errors in functions that are called directly must be handled by the
+caller. In the simplest case:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="reference/" class="btn btn-neutral float-right" title="JavaScript API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../tool/" class="btn btn-neutral float-left" title="Tool APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

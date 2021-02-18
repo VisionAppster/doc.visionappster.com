@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Building component packages &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Cross-compilation" href="../cross-compilation/" />
+    <link rel="prev" title="Components" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#component-id">Component ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#component-version">Component version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#full-component-id">Full component ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#external-dependencies">External dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#uuid-and-name">UUID and name</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building component packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#native-tool-plugins">Native tool plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-files">Tool files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-packages">Store packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#signing">Signing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retrieving-licenses">Retrieving licenses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cross-compilation/">Cross-compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installing/">Installing and uninstalling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/">Package file format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Components</a> &raquo;</li>
+        
+      <li>Building component packages</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-component-packages">
+<h1>Building component packages<a class="headerlink" href="#building-component-packages" title="Permalink to this headline">🔗</a></h1>
+<p>Component packages can be built either on the command line or
+<a class="reference internal" href="../../builder/creating-components/"><span class="doc">graphically in the Builder</span></a>. This
+document describes how to use the <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command-line tool to build
+packages.</p>
+<p>On Windows, the packaging tool is in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory of the
+VisionAppster installation. In a user-scope Linux installation, it is
+placed in <code class="docutils literal notranslate"><span class="pre">$HOME/bin</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>. If this directory is in
+your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, this command will give you basic usage instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg
+</pre></div>
+</div>
+<p>If you installed the Flatpak version to the system scope on Linux, type
+this first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> va-pkg<span class="o">=</span><span class="s2">&quot;flatpak run --command=va-pkg com.visionappster.Builder&quot;</span>
+</pre></div>
+</div>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">--help</span></code> after a sub-command name will show you help on that
+sub-command.</p>
+<p>Generally, the process of creating a component package has three phases:</p>
+<ol class="arabic simple">
+<li><p>Create a directory structure with all the files that will go into the
+package.</p></li>
+<li><p>Create a manifest file, <code class="docutils literal notranslate"><span class="pre">component.json</span></code>, at the root.</p></li>
+<li><p>Zip the directory.</p></li>
+</ol>
+<div class="section" id="native-tool-plugins">
+<h2>Native tool plugins<a class="headerlink" href="#native-tool-plugins" title="Permalink to this headline">🔗</a></h2>
+<p>Native tool plugins are created using the <a class="reference internal" href="../../api/c/tool/"><span class="doc">C tool API</span></a>.
+An OpenCV-based C++ project template can be found
+<a class="reference internal" href="../../api/cpp/opencv/"><span class="doc">here</span></a>. If you need the plugin only
+internally, this is all you need on any platform.</p>
+<p>If your intent is to <em>publicly</em> sell the plugin through <a class="reference external" href="https://visionappster.com">VisionAppster
+Store</a>, things become a bit more
+challenging. To prevent fragmentation of the platform, we require that
+all publicly distributed native extensions have been compiled for all
+the supported target platforms. Privately sold extensions don’t have
+this requirement. Furthermore, code that runs on VisionAppster Cloud as
+an API only needs to support Linux x86_64.</p>
+<p>To build compliant native plugins, use our <a class="reference internal" href="../cross-compilation/"><span class="doc">cross-compilation
+tools</span></a>. They can also be used for example if you
+work on Windows and want your code to run in the cloud.</p>
+<p>As a result of the build process, you’ll get one or more <code class="docutils literal notranslate"><span class="pre">.toolplugin</span></code>
+files, one for each supported architecture. These files are just shared
+libraries with a special extension.</p>
+<p>The convention is to place native tool plugins into directories that
+specify the target architecture. So, at the minimum, the directory
+structure that goes into a tool plugin package is like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mycomponent</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">mycomponent/</span></code> is the root directory that will hold the manifest
+file, <code class="docutils literal notranslate"><span class="pre">component.json</span></code>. The file doesn’t exist yet, but any <code class="docutils literal notranslate"><span class="pre">update</span></code>
+command will automatically create it. Since we followed the naming
+conventions, creating a manifest file is straightforward. Give this
+command in the parent directory of <code class="docutils literal notranslate"><span class="pre">mycomponent/</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update <span class="se">\</span>
+  --component-id com.example.tools.cool <span class="se">\</span>
+  --version <span class="m">1</span>.0.0 <span class="se">\</span>
+  --scan mycomponent
+</pre></div>
+</div>
+<p>Here, :ref:<code class="docutils literal notranslate"><span class="pre">com.example.tools.cool</span></code> is the <cite>ID of your
+component &lt;components/index:component-id&gt;</cite>. The <code class="docutils literal notranslate"><span class="pre">--scan</span></code> flag
+instructs <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> to scan the whole directory hierarchy and add all
+found files to the manifest file. Now you have what makes up a working
+package at a minimum:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mycomponent</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">component</span><span class="o">.</span><span class="n">json</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+</pre></div>
+</div>
+<p>To build the package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg build mycomponent
+</pre></div>
+</div>
+<p>This will create <code class="docutils literal notranslate"><span class="pre">com.example.tools.cool-1.0.0.vapkg</span></code> in the current
+directory. You can inspect the contents of the package with <code class="docutils literal notranslate"><span class="pre">unzip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip -l com.example.tools.cool-1.0.0.vapkg
+</pre></div>
+</div>
+<p>The output should list these files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">cool</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+<span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">cool</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">component</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tool-files">
+<h2>Tool files<a class="headerlink" href="#tool-files" title="Permalink to this headline">🔗</a></h2>
+<p>Tool files contain processing graphs created in the Builder. They
+contain no native code and are thus executable on all supported
+platforms, provided that the native extensions used by the graph have
+been installed.</p>
+<p>The processing graph and its parameters may be valuable information you
+want to protect. While the <code class="docutils literal notranslate"><span class="pre">.tool</span></code> file format isn’t designed to be
+human-readable, it isn’t too hard to figure out its contents. Obviously,
+the Builder can easily open them for introspection.</p>
+<p>To protect your IPR, <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> makes it possible to encrypt <code class="docutils literal notranslate"><span class="pre">.tool</span></code>
+files. An encrypted processing graph can be loaded and executed by the
+VisionAppster Engine only if it comes from an installed component that
+has a valid digital signature, and the full component ID of that
+component matches the ID assigned to the <code class="docutils literal notranslate"><span class="pre">.tool</span></code> file. If an encrypted
+tool file is loaded in the Builder, it will appear just like a native
+tool that cannot be opened.</p>
+<p>Since encrypted files require a valid signature, they can only be used
+if the package has been validated and signed by VisionAppster Store. You
+must register the <a class="reference internal" href="../#component-id"><span class="std std-ref">component ID</span></a>
+using your seller account and use the <a class="reference internal" href="../#full-component-id"><span class="std std-ref">full component
+ID</span></a> to encrypt files.</p>
+<p>Let’s assume you have created a processing graph, made it <a class="reference internal" href="../../builder/compounds/"><span class="doc">a
+compound</span></a> and saved it as a <code class="docutils literal notranslate"><span class="pre">.tool</span></code> file. To
+include this file in a component package you just need to copy the file
+to the package directory. The contents of the directory will look like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mycomponent</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">component</span><span class="o">.</span><span class="n">json</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">MyComplexTool</span><span class="o">.</span><span class="n">tool</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+</pre></div>
+</div>
+<p>To encrypt the file, give this command in the root directory of the
+package (<code class="docutils literal notranslate"><span class="pre">mycomponent/</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg tool encrypt <span class="se">\</span>
+  --full-component-id com.example.tools.cool/1 <span class="se">\</span>
+  MyComplexTool.tool
+</pre></div>
+</div>
+<p>This will encrypt <code class="docutils literal notranslate"><span class="pre">MyComplexTool.tool</span></code> in a way that makes it
+unloadable from any component other than one with a full component ID of
+<code class="docutils literal notranslate"><span class="pre">com.example.tools.cool/1</span></code> and a valid signature. The encrypted tool
+will be saved to <code class="docutils literal notranslate"><span class="pre">MyComplexTool.toolc</span></code>.</p>
+<p>Alternatively, you can create a new package and make the package
+containing the native tool plugin a dependency (with
+<code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">update</span> <span class="pre">--depends</span></code>). Here, we’ll incorporate everything into a
+single component. Add the encrypted file to the manifest:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update files +MyComplexTool.toolc .
+</pre></div>
+</div>
+<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">update</span> <span class="pre">--scan</span> <span class="pre">.</span></code> can be used.</p>
+<p>Now, if you build the component package again with <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">build</span></code>, it
+will contain <code class="docutils literal notranslate"><span class="pre">MyComplexTool.toolc</span></code>. When installed, this tool will
+appear among other tools in the Builder as “My Complex Tool”.</p>
+</div>
+<div class="section" id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">🔗</a></h2>
+<p>When you save a project in the Builder, the Builder creates an app that
+runs a processing graph. The app is stored in the <code class="docutils literal notranslate"><span class="pre">analysisapp/</span></code>
+directory under the project directory. Since the app is built in the
+Builder, the natural way to create a component package out of it is to
+<a class="reference internal" href="../../builder/creating-components/#packaging-apps"><span class="std std-ref">use the Builder</span></a>.</p>
+<p>It is usually a good idea to build required tools into a separate
+component and add the full component IDs of required tool plugins as
+dependencies to the app component. You can do this in the Builder’s
+graphical interface.</p>
+<p>Alternatively, you can create a self-contained app component by copying
+the app’s files from <code class="docutils literal notranslate"><span class="pre">analysisapp/</span></code> to the root directory of your tool
+plugin component:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mycomponent</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">component</span><span class="o">.</span><span class="n">json</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">qml</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">appconfig</span><span class="o">.</span><span class="n">json</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">engine</span><span class="o">.</span><span class="n">tool</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">MyComplexTool</span><span class="o">.</span><span class="n">tool</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
+</pre></div>
+</div>
+<p>The component ID of such a package would need to be changed. This
+requires a change in the native C code that implements the tool plugin.
+If you want to encrypt the <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files, the new ID must be given
+there as well:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg tool encrypt <span class="se">\</span>
+  --full-component-id com.example.apps.cool/1 engine.tool
+va-pkg tool encrypt <span class="se">\</span>
+  --full-component-id com.example.apps.cool/1 MyComplexTool.tool
+</pre></div>
+</div>
+<p>The manifest must also be updated:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update --component-id com.example.apps.cool --scan .
+</pre></div>
+</div>
+<p>Finally, the package can be built:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..
+va-pkg build mycomponent
+</pre></div>
+</div>
+<p>This will create <code class="docutils literal notranslate"><span class="pre">com.example.apps.cool-1.0.0.vapkg</span></code> that contains not
+only the app but also a native tool plugin and a tool file.</p>
+</div>
+<div class="section" id="store-packages">
+<h2>Store packages<a class="headerlink" href="#store-packages" title="Permalink to this headline">🔗</a></h2>
+<p>If you want to distribute your component through VisionAppster Store or
+run an app in VisionAppster Cloud, you must register the component ID
+using your seller account. During the registration process, your
+component will be assigned <a class="reference internal" href="../#uuid-and-name"><span class="std std-ref">a UUID and a
+name</span></a>. When you build a component
+for the Store, these need to be stored in the manifest:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update <span class="se">\</span>
+  --uuid 9ab4862d-bfd8-4d8e-a044-505b54d7f55f <span class="se">\</span>
+  --name <span class="s2">&quot;My cool component&quot;</span> mycomponent
+va-pkg build mycomponent
+</pre></div>
+</div>
+<div class="section" id="signing">
+<h3>Signing<a class="headerlink" href="#signing" title="Permalink to this headline">🔗</a></h3>
+<p>If the package contains encrypted tool files or copy-protected native
+tool plugins, you’ll be unable to use them unless the package has a
+valid signature. Packages will be signed by the cloud service once they
+have gone through validation. But this may take time and you usually
+want to test the package yourself before uploading it to validation.
+Therefore, VisionAppster Cloud provides an API for signing packages. The
+URL of the API is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">could</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">signatures</span><span class="o">/</span><span class="n">sign</span>
+</pre></div>
+</div>
+<p>The package to be signed is uploaded using HTTP POST:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --data-binary <span class="s2">&quot;@com.example.apps.cool-1.0.0.vapkg&quot;</span> <span class="se">\</span>
+  --header <span class="s2">&quot;Content-Type: application/vnd.va-pkg&quot;</span> <span class="se">\</span>
+  --header <span class="s2">&quot;Authorization: Bearer API-TOKEN&quot;</span> <span class="se">\</span>
+  --header <span class="s2">&quot;Buyer-ID: BUYER-ID-1,BUYER-ID-2...&quot;</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  https://could.visionappster.com/api/1/signatures/sign <span class="se">\</span>
+  &gt; com.example.apps.cool-1.0.0-signed.vapkg
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header tells the server how to handle the body of
+the message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header must contain an API token that can be
+generated for a seller account in the cloud service. The server inspects
+the token and verifies that it is valid and belongs to a seller account
+that owns the uploaded package.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Buyer-ID</span></code> header contains a comma-separated list of UUIDs. Each
+identifies a buyer account to which a temporary license is generated.
+The license allows 24 hours of usage for the single uploaded component.</p>
+<p>The server performs basic integrity checks to ensure that the format of
+the package is OK, generates a signature file for <code class="docutils literal notranslate"><span class="pre">component.json</span></code>
+(<code class="docutils literal notranslate"><span class="pre">component.json.crt</span></code>) and sends the signed package back in the
+response body. On error, you’ll get an appropriate HTTP error code.</p>
+</div>
+<div class="section" id="retrieving-licenses">
+<h3>Retrieving licenses<a class="headerlink" href="#retrieving-licenses" title="Permalink to this headline">🔗</a></h3>
+<p>The signing API lets you to give a short-term license to any buyer
+account. If you have installed any packages from the Store using the
+buyer account, the new license should available automatically. It is
+also possible to retrieve the licenses manually. The URL of the license
+API is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">BUYER</span><span class="o">-</span><span class="n">ID</span><span class="o">/</span><span class="n">licenses</span><span class="o">.</span><span class="n">vapkg</span>
+</pre></div>
+</div>
+<p>To retrieve the license file, give the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --header <span class="s2">&quot;Authorization: Bearer API-TOKEN&quot;</span> <span class="se">\</span>
+  https://could.visionappster.com/api/1/users/BUYER-ID/licenses.vapkg <span class="se">\</span>
+  &gt; licenses.vapkg
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">BUYER-ID</span></code> is the UUID of your buyer account, which was also
+used in the signing API call. <code class="docutils literal notranslate"><span class="pre">API-TOKEN</span></code> is an authorization key you
+can set in your buyer account.</p>
+<p>The server returns your licenses as a component package that can be
+<a class="reference internal" href="../installing/"><span class="doc">installed</span></a> just like any package.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../cross-compilation/" class="btn btn-neutral float-right" title="Cross-compilation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Camera driver parameters &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Calibration" href="../calibration/" />
+    <link rel="prev" title="Camera Configurator" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Cameras</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../">Camera Configurator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../#parameter-sets">Parameter sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#image-source">Image source</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Camera driver parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#driver-parameter-sets">Driver parameter sets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../calibration/">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../positioning/">Positioning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../drivers/">Camera drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">Cameras</a> &raquo;</li>
+        
+          <li><a href="../">Camera Configurator</a> &raquo;</li>
+        
+      <li>Camera driver parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="camera-driver-parameters">
+<h1>Camera driver parameters<a class="headerlink" href="#camera-driver-parameters" title="Permalink to this headline">🔗</a></h1>
+<p>Each camera has a set of configuration parameters that affect things
+like image format, acquisition and transmission. In Camera Configurator,
+click a camera in the list on the left side of the view and its
+parameter list appears in the <em>Parameters</em> view.</p>
+<div class="figure align-default" id="id1">
+<img alt="Camera parameter list." src="../../../_images/cc-parameter-list.png" />
+<p class="caption"><span class="caption-text">Camera parameter list.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The parameter name is shown in the first column and the current value of
+the parameter in the second column. Parameters that cannot be edited are
+shown in a cursive font. Changing a parameter value may affect also
+other parameter values, their editability or even their meanings. In
+that case, the affected parameters are shown after the parameter that is
+affecting them, with their names slightly indented. To change the value
+of a parameter, click the parameter value. The changed value is set in
+the camera immediately and you can see the effect by taking an image.
+Note that some of the parameters may be editable only when the camera is
+not capturing images.</p>
+<div class="figure align-default" id="id2">
+<img alt="Changing camera parameter value." src="../../../_images/cc-change-parameter-value.png" />
+<p class="caption"><span class="caption-text">Changing camera parameter value.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<div class="section" id="driver-parameter-sets">
+<h2>Driver parameter sets<a class="headerlink" href="#driver-parameter-sets" title="Permalink to this headline">🔗</a></h2>
+<p>To create a configuration that will be set in a camera when an app using
+it is started, a parameter set needs to be saved. After configuring the
+camera parameters to the desired values, you can save the configuration
+to a parameter set by clicking the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">as</span></code> button in the
+<em>Parameters</em> view. It saves the current values of all the camera
+parameters and loading the parameter set will set them all exactly to
+the same values. Note that if you have set up the <code class="docutils literal notranslate"><span class="pre">localhost</span></code> or any
+other remote connection in the Builder (see <code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">connections</span></code> menu)
+the save dialog has a checkbox for each remote connection. At least one
+must be checked and the parameter set is saved with the given name in
+all the checked ones.</p>
+<div class="figure align-default" id="id3">
+<img alt="Saving a parameter set." src="../../../_images/cc-save-parameter-set.png" />
+<p class="caption"><span class="caption-text">Saving a parameter set.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>If an application has an <a class="reference internal" href="../../../tools/ImageSource/"><span class="doc">Image Source</span></a> that has
+the <em>autoConfig</em> parameter set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, it will use the <code class="docutils literal notranslate"><span class="pre">Driver</span></code>
+parameter set that is associated with the camera, as explained in
+<a class="reference internal" href="../../../engine/hardware-devices/"><span class="doc">Device Configuration</span></a>. After having saved
+a new parameter set, there will be a warning shown that the currently
+viewed parameter set (<code class="docutils literal notranslate"><span class="pre">MyParameterSet2</span></code> in the picture) is not
+associated with the camera.</p>
+<div class="figure align-default" id="id4">
+<img alt="The current parameter set is not associated with the camera." src="../../../_images/cc-parameter-set-not-associated.png" />
+<p class="caption"><span class="caption-text">The current parameter set is not associated with the camera.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>To change the associated parameter set, edit the
+<code class="docutils literal notranslate"><span class="pre">Associated</span> <span class="pre">parameters</span></code> setting shown first in the camera parameter
+list.</p>
+<div class="figure align-default" id="id5">
+<img alt="Associating a parameter set with the camera." src="../../../_images/cc-associating-parameter-set.png" />
+<p class="caption"><span class="caption-text">Associating a parameter set with the camera.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>One parameter set can be associated with many cameras that share the
+same settings. Note that the associated parameter set is not
+automatically loaded in Camera Configurator when a camera is selected or
+the view is switched. Instead, the parameter set needs to be explicitly
+loaded.</p>
+<p>An existing parameter set can be loaded with the <code class="docutils literal notranslate"><span class="pre">Load</span></code> button. The
+parameter list will then show the values that were set in the camera
+based on the loaded parameter set.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Delete</span></code> button shows a list of all the saved parameter sets and
+lets you delete the ones that are not needed any more. The deleted
+parameter sets are also dissociated from all the cameras.</p>
+<p>The same parameter set control buttons are found also in
+<a class="reference internal" href="../calibration/"><span class="doc">Calibration</span></a> and
+<a class="reference internal" href="../calibration/"><span class="doc">Positioning</span></a> views, which
+both have their own parameter sets.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../calibration/" class="btn btn-neutral float-right" title="Calibration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Camera Configurator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

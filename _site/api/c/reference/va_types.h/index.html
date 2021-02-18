@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_types.h &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_util.h" href="../va_util.h/" />
+    <link rel="prev" title="va_tool.h" href="../va_tool.h/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_types.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-types-h">
+<h1>va_types.h<a class="headerlink" href="#va-types-h" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_types.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_ARG_TYPE">
+<span class="target" id="VA_ARG_TYPE"></span><code class="sig-name descname"><span class="pre">VA_ARG_TYPE</span></code><span class="sig-paren">(</span><em><span class="pre">TYPE</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_ARG_TYPE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> for types that are passed as values and <code class="docutils literal notranslate"><span class="pre">TYPE*</span></code> for those that are passed as pointers. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_TYPE_ID">
+<span class="target" id="VA_TYPE_ID"></span><code class="sig-name descname"><span class="pre">VA_TYPE_ID</span></code><span class="sig-paren">(</span><em><span class="pre">TYPE</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_TYPE_ID" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to <code class="docutils literal notranslate"><span class="pre">TYPE_id</span></code>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv47va_real">
+<span id="_CPPv37va_real"></span><span id="_CPPv27va_real"></span><span id="va_real"></span><span class="target" id="va_real"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">VA_REAL</span> <code class="sig-name descname"><span class="pre">va_real</span></code><a class="headerlink" href="#_CPPv47va_real" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Preferred real number type. </p>
+<p>This is either <code class="docutils literal notranslate"><span class="pre">double</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code> depending on target hardware and build configuration. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv411va_refcount">
+<span id="_CPPv311va_refcount"></span><span id="_CPPv211va_refcount"></span><span id="va_refcount"></span><span class="target" id="va_refcount"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_refcount</span></code><a class="headerlink" href="#_CPPv411va_refcount" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv47va_bool">
+<span id="_CPPv37va_bool"></span><span id="_CPPv27va_bool"></span><span id="va_bool"></span><span class="target" id="va_bool"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint8_t</span> <code class="sig-name descname"><span class="pre">va_bool</span></code><a class="headerlink" href="#_CPPv47va_bool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A boolean value. </p>
+<p>Either <code class="docutils literal notranslate"><span class="pre">va_false</span></code> or <code class="docutils literal notranslate"><span class="pre">va_true</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv410va_float16">
+<span id="_CPPv310va_float16"></span><span id="_CPPv210va_float16"></span><span id="va_float16"></span><span class="target" id="va_float16"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint16_t</span> <code class="sig-name descname"><span class="pre">va_float16</span></code><a class="headerlink" href="#_CPPv410va_float16" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>16-bit floating-point type. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv410va_color32">
+<span id="_CPPv310va_color32"></span><span id="_CPPv210va_color32"></span><span id="va_color32"></span><span class="target" id="va_color32"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">va_color32</span></code><a class="headerlink" href="#_CPPv410va_color32" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit color type. </p>
+<p>The memory layout is little-endian BGRX, where X is usually unused but can also be used as an alpha channel. There are 8 bits per color channel.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">va_color32</span> <span class="n">red</span> <span class="o">=</span> <span class="mh">0xff0000</span><span class="p">;</span>
+<span class="n">va_color32</span> <span class="n">green</span> <span class="o">=</span> <span class="mh">0x00ff00</span><span class="p">;</span>
+<span class="n">va_color32</span> <span class="n">blue</span> <span class="o">=</span> <span class="mh">0x0000ff</span><span class="p">;</span>
+<span class="n">va_color32</span> <span class="n">transparentWhite</span> <span class="o">=</span> <span class="mh">0x99ffffff</span><span class="p">;</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv410va_color64">
+<span id="_CPPv310va_color64"></span><span id="_CPPv210va_color64"></span><span id="va_color64"></span><span class="target" id="va_color64"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint64_t</span> <code class="sig-name descname"><span class="pre">va_color64</span></code><a class="headerlink" href="#_CPPv410va_color64" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>64-bit color type. </p>
+<p>The memory layout is little-endian BGRX, where X is usually unused but can also be used as an alpha channel. There are 16 bits per color channel. Depending on the imaging equipment, the full 16-bit range may however not be used.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">va_color64</span> <span class="n">tenBitRed</span> <span class="o">=</span> <span class="mh">0x03ff00000000</span><span class="n">ull</span><span class="p">;</span>
+<span class="n">va_color64</span> <span class="n">twelveBitGreen</span> <span class="o">=</span> <span class="mh">0x00000fff0000</span><span class="n">ull</span><span class="p">;</span>
+<span class="n">va_color64</span> <span class="n">sixteenBitBlue</span> <span class="o">=</span> <span class="mh">0x00000000ffff</span><span class="n">ull</span><span class="p">;</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv411va_datetime">
+<span id="_CPPv311va_datetime"></span><span id="_CPPv211va_datetime"></span><span id="va_datetime"></span><span class="target" id="va_datetime"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint64_t</span> <code class="sig-name descname"><span class="pre">va_datetime</span></code><a class="headerlink" href="#_CPPv411va_datetime" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A point in time, measured as the number of milliseconds since the Unix epoch (00:00:00 UTC on 1 January 1970). </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Enums</p>
+<dl class="cpp enum">
+<dt id="_CPPv4Ut1_0">
+<span id="_CPPv3Ut1_0"></span><span class="target" id="&#64;0"></span><em class="property"><span class="pre">enum</span> </em><strong><span class="pre">[anonymous]</span></strong><a class="headerlink" href="#_CPPv4Ut1_0" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Possible values of Boolean variables. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4NUt1_08va_falseE">
+<span id="_CPPv3NUt1_08va_falseE"></span><span class="target" id="&#64;0::va_false"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_false</span></code><a class="headerlink" href="#_CPPv4NUt1_08va_falseE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">false</span></code> </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4NUt1_07va_trueE">
+<span id="_CPPv3NUt1_07va_trueE"></span><span class="target" id="&#64;0::va_true"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_true</span></code><a class="headerlink" href="#_CPPv4NUt1_07va_trueE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv410va_type_id">
+<span id="_CPPv310va_type_id"></span><span id="_CPPv210va_type_id"></span><span class="target" id="va_type_id"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_type_id</span></code><a class="headerlink" href="#_CPPv410va_type_id" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Type IDs for all supported types. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_invalid_idE">
+<span id="_CPPv3N10va_type_id13va_invalid_idE"></span><span id="_CPPv2N10va_type_id13va_invalid_idE"></span><span class="target" id="va_type_id::va_invalid_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_invalid_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_invalid_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id9int8_t_idE">
+<span id="_CPPv3N10va_type_id9int8_t_idE"></span><span id="_CPPv2N10va_type_id9int8_t_idE"></span><span class="target" id="va_type_id::int8_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">int8_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id9int8_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10int16_t_idE">
+<span id="_CPPv3N10va_type_id10int16_t_idE"></span><span id="_CPPv2N10va_type_id10int16_t_idE"></span><span class="target" id="va_type_id::int16_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">int16_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10int16_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10int32_t_idE">
+<span id="_CPPv3N10va_type_id10int32_t_idE"></span><span id="_CPPv2N10va_type_id10int32_t_idE"></span><span class="target" id="va_type_id::int32_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">int32_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10int32_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10int64_t_idE">
+<span id="_CPPv3N10va_type_id10int64_t_idE"></span><span id="_CPPv2N10va_type_id10int64_t_idE"></span><span class="target" id="va_type_id::int64_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">int64_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10int64_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10uint8_t_idE">
+<span id="_CPPv3N10va_type_id10uint8_t_idE"></span><span id="_CPPv2N10va_type_id10uint8_t_idE"></span><span class="target" id="va_type_id::uint8_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">uint8_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10uint8_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id11uint16_t_idE">
+<span id="_CPPv3N10va_type_id11uint16_t_idE"></span><span id="_CPPv2N10va_type_id11uint16_t_idE"></span><span class="target" id="va_type_id::uint16_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">uint16_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id11uint16_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id11uint32_t_idE">
+<span id="_CPPv3N10va_type_id11uint32_t_idE"></span><span id="_CPPv2N10va_type_id11uint32_t_idE"></span><span class="target" id="va_type_id::uint32_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">uint32_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id11uint32_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id11uint64_t_idE">
+<span id="_CPPv3N10va_type_id11uint64_t_idE"></span><span id="_CPPv2N10va_type_id11uint64_t_idE"></span><span class="target" id="va_type_id::uint64_t_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">uint64_t_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id11uint64_t_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id8float_idE">
+<span id="_CPPv3N10va_type_id8float_idE"></span><span id="_CPPv2N10va_type_id8float_idE"></span><span class="target" id="va_type_id::float_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">float_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id8float_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id9double_idE">
+<span id="_CPPv3N10va_type_id9double_idE"></span><span id="_CPPv2N10va_type_id9double_idE"></span><span class="target" id="va_type_id::double_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">double_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id9double_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_float16_idE">
+<span id="_CPPv3N10va_type_id13va_float16_idE"></span><span id="_CPPv2N10va_type_id13va_float16_idE"></span><span class="target" id="va_type_id::va_float16_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_float16_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_float16_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10va_bool_idE">
+<span id="_CPPv3N10va_type_id10va_bool_idE"></span><span id="_CPPv2N10va_type_id10va_bool_idE"></span><span class="target" id="va_type_id::va_bool_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bool_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10va_bool_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id14va_datetime_idE">
+<span id="_CPPv3N10va_type_id14va_datetime_idE"></span><span id="_CPPv2N10va_type_id14va_datetime_idE"></span><span class="target" id="va_type_id::va_datetime_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_datetime_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id14va_datetime_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_color32_idE">
+<span id="_CPPv3N10va_type_id13va_color32_idE"></span><span id="_CPPv2N10va_type_id13va_color32_idE"></span><span class="target" id="va_type_id::va_color32_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_color32_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_color32_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_color64_idE">
+<span id="_CPPv3N10va_type_id13va_color64_idE"></span><span id="_CPPv2N10va_type_id13va_color64_idE"></span><span class="target" id="va_type_id::va_color64_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_color64_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_color64_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id20va_last_primitive_idE">
+<span id="_CPPv3N10va_type_id20va_last_primitive_idE"></span><span id="_CPPv2N10va_type_id20va_last_primitive_idE"></span><span class="target" id="va_type_id::va_last_primitive_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_last_primitive_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id20va_last_primitive_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id18va_complex_base_idE">
+<span id="_CPPv3N10va_type_id18va_complex_base_idE"></span><span id="_CPPv2N10va_type_id18va_complex_base_idE"></span><span class="target" id="va_type_id::va_complex_base_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_complex_base_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id18va_complex_base_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id14va_fcomplex_idE">
+<span id="_CPPv3N10va_type_id14va_fcomplex_idE"></span><span id="_CPPv2N10va_type_id14va_fcomplex_idE"></span><span class="target" id="va_type_id::va_fcomplex_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_fcomplex_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id14va_fcomplex_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id14va_dcomplex_idE">
+<span id="_CPPv3N10va_type_id14va_dcomplex_idE"></span><span id="_CPPv2N10va_type_id14va_dcomplex_idE"></span><span class="target" id="va_type_id::va_dcomplex_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_dcomplex_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id14va_dcomplex_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id17va_matrix_base_idE">
+<span id="_CPPv3N10va_type_id17va_matrix_base_idE"></span><span id="_CPPv2N10va_type_id17va_matrix_base_idE"></span><span class="target" id="va_type_id::va_matrix_base_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_matrix_base_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id17va_matrix_base_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_imatrix_idE">
+<span id="_CPPv3N10va_type_id13va_imatrix_idE"></span><span id="_CPPv2N10va_type_id13va_imatrix_idE"></span><span class="target" id="va_type_id::va_imatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_imatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_imatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_fmatrix_idE">
+<span id="_CPPv3N10va_type_id13va_fmatrix_idE"></span><span id="_CPPv2N10va_type_id13va_fmatrix_idE"></span><span class="target" id="va_type_id::va_fmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_fmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_fmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_dmatrix_idE">
+<span id="_CPPv3N10va_type_id13va_dmatrix_idE"></span><span id="_CPPv2N10va_type_id13va_dmatrix_idE"></span><span class="target" id="va_type_id::va_dmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_dmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_dmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_bmatrix_idE">
+<span id="_CPPv3N10va_type_id13va_bmatrix_idE"></span><span id="_CPPv2N10va_type_id13va_bmatrix_idE"></span><span class="target" id="va_type_id::va_bmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_bmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id14va_fcmatrix_idE">
+<span id="_CPPv3N10va_type_id14va_fcmatrix_idE"></span><span id="_CPPv2N10va_type_id14va_fcmatrix_idE"></span><span class="target" id="va_type_id::va_fcmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_fcmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id14va_fcmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id14va_dcmatrix_idE">
+<span id="_CPPv3N10va_type_id14va_dcmatrix_idE"></span><span id="_CPPv2N10va_type_id14va_dcmatrix_idE"></span><span class="target" id="va_type_id::va_dcmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_dcmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id14va_dcmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id11va_image_idE">
+<span id="_CPPv3N10va_type_id11va_image_idE"></span><span id="_CPPv2N10va_type_id11va_image_idE"></span><span class="target" id="va_type_id::va_image_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_image_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id11va_image_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id18va_image_stream_idE">
+<span id="_CPPv3N10va_type_id18va_image_stream_idE"></span><span id="_CPPv2N10va_type_id18va_image_stream_idE"></span><span class="target" id="va_type_id::va_image_stream_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_image_stream_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id18va_image_stream_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id11va_table_idE">
+<span id="_CPPv3N10va_type_id11va_table_idE"></span><span id="_CPPv2N10va_type_id11va_table_idE"></span><span class="target" id="va_type_id::va_table_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_table_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id11va_table_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id12va_string_idE">
+<span id="_CPPv3N10va_type_id12va_string_idE"></span><span id="_CPPv2N10va_type_id12va_string_idE"></span><span class="target" id="va_type_id::va_string_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_string_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id12va_string_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id12va_object_idE">
+<span id="_CPPv3N10va_type_id12va_object_idE"></span><span id="_CPPv2N10va_type_id12va_object_idE"></span><span class="target" id="va_type_id::va_object_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_object_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id12va_object_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id11va_array_idE">
+<span id="_CPPv3N10va_type_id11va_array_idE"></span><span id="_CPPv2N10va_type_id11va_array_idE"></span><span class="target" id="va_type_id::va_array_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_array_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id11va_array_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id12va_tensor_idE">
+<span id="_CPPv3N10va_type_id12va_tensor_idE"></span><span id="_CPPv2N10va_type_id12va_tensor_idE"></span><span class="target" id="va_type_id::va_tensor_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_tensor_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id12va_tensor_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10va_real_idE">
+<span id="_CPPv3N10va_type_id10va_real_idE"></span><span id="_CPPv2N10va_type_id10va_real_idE"></span><span class="target" id="va_type_id::va_real_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_real_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10va_real_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_rmatrix_idE">
+<span id="_CPPv3N10va_type_id13va_rmatrix_idE"></span><span id="_CPPv2N10va_type_id13va_rmatrix_idE"></span><span class="target" id="va_type_id::va_rmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_rmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_rmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id13va_cmatrix_idE">
+<span id="_CPPv3N10va_type_id13va_cmatrix_idE"></span><span id="_CPPv2N10va_type_id13va_cmatrix_idE"></span><span class="target" id="va_type_id::va_cmatrix_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_cmatrix_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id13va_cmatrix_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N10va_type_id10va_last_idE">
+<span id="_CPPv3N10va_type_id10va_last_idE"></span><span id="_CPPv2N10va_type_id10va_last_idE"></span><span class="target" id="va_type_id::va_last_id"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_last_id</span></code><a class="headerlink" href="#_CPPv4N10va_type_id10va_last_idE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv411va_align_of8uint32_t">
+<span id="_CPPv311va_align_of8uint32_t"></span><span id="_CPPv211va_align_of8uint32_t"></span><span id="va_align_of__uint32_t"></span><span class="target" id="va_align_of"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_align_of</span></code><span class="sig-paren">(</span><span class="pre">uint32_t</span> <em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411va_align_of8uint32_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the alignment, in bytes, required for an instance of a type identified by <em>id</em>. </p>
+<p>If <em>id</em> represents a type that is passed as a pointer (such as a matrix or an image), returns the alignment of a pointer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv410va_size_of8uint32_t">
+<span id="_CPPv310va_size_of8uint32_t"></span><span id="_CPPv210va_size_of8uint32_t"></span><span id="va_size_of__uint32_t"></span><span class="target" id="va_size_of"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_size_of</span></code><span class="sig-paren">(</span><span class="pre">uint32_t</span> <em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410va_size_of8uint32_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the size, in bytes, required for an instance of a type identified by <em>id</em>. </p>
+<p>If <em>id</em> represents a type that is passed as a pointer (such as a matrix or an image), returns the size of a pointer. </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_util.h/" class="btn btn-neutral float-right" title="va_util.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_tool.h/" class="btn btn-neutral float-left" title="va_tool.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

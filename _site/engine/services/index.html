@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>VisionAppster Engine services &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Starting and stopping the Engine" href="../start-stop/" />
+    <link rel="prev" title="Remote object system" href="../remote-object-system/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#supported-platforms">Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph-executor/">Graph executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware-devices/">Hardware devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../management-interface/">Management interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-object-system/">Remote object system</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VisionAppster Engine services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start-stop/">Starting and stopping the Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing-apis/">Testing HTTP APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-apps/">Web apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../world-coordinates/">World coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Engine</a> &raquo;</li>
+        
+      <li>VisionAppster Engine services</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visionappster-engine-services">
+<h1>VisionAppster Engine services<a class="headerlink" href="#visionappster-engine-services" title="Permalink to this headline">🔗</a></h1>
+<p>The services provided by the VisionAppster Engine are implemented as
+remote objects that can be accessed through an HTTP-based RPC mechanism.
+The central services of the Engine are listed below. Note that you need
+to have the VisionAppster Engine installed and running locally
+(localhost:2015) to be able to access the links.</p>
+<dl class="simple">
+<dt>Engine info</dt><dd><p>is mapped to <a class="reference external" href="http://localhost:2015/info/">/info/</a> on the server.
+It provides general information of the running Engine instance, such
+as the <a class="reference external" href="http://localhost:2015/info/properties/appEngineVersion">version
+number</a>.</p>
+</dd>
+<dt>Component database</dt><dd><p>is responsible for installing, uninstalling and querying components.
+In the remote interface, it is published at
+<a class="reference external" href="http://localhost:2015/componentdb/">/componentdb/</a>.</p>
+</dd>
+<dt>License database</dt><dd><p>maintains the user’s licenses. It is published at
+<a class="reference external" href="http://localhost:2015/licensedb/">/licensedb/</a>.</p>
+</dd>
+<dt>Application manager</dt><dd><p>is responsible for finding, starting and stopping installed apps. In
+the remote interface, it is available at
+<a class="reference external" href="http://localhost:2015/manager/">/manager/</a>.</p>
+</dd>
+<dt>Cameras</dt><dd><p>are controlled by the Engine using device-specific camera drivers.
+All found cameras are published as remote objects at
+<a class="reference external" href="http://localhost:2015/cameras/">/cameras/</a>.</p>
+</dd>
+<dt>App APIs</dt><dd><p>are published under <a class="reference external" href="http://localhost:2015/apis/">/apis/</a>. A
+VisionAppster app can publish any number of API objects, and they
+will appear under this URI. If no apps are running, the directory
+will be empty.</p>
+</dd>
+</dl>
+<p>To be able to access any of these services you need to connect your
+client to the service’s root URI.</p>
+<p>To get started with the client APIs, it is important to understand some
+central concepts and how they are mapped to the <a class="reference internal" href="../remote-object-system/"><span class="doc">remote object
+system</span></a>.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../start-stop/" class="btn btn-neutral float-right" title="Starting and stopping the Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../remote-object-system/" class="btn btn-neutral float-left" title="Remote object system" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

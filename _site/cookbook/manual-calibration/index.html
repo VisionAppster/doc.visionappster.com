@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Manual Calibration &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Positioning with QR codes" href="../qr-positioning/" />
+    <link rel="prev" title="Contour matching" href="../contour-matching/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manual Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>Manual Calibration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="manual-calibration">
+<h1>Manual Calibration<a class="headerlink" href="#manual-calibration" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>Camera calibration means finding the information necessary for mapping
+pixel coordinates to coordinates in the camera’s reference frame,
+modeling the effect of the lens. If the position of the camera with
+respect to the world is known, pixel coordinates can then be converted
+to world coordinates such as millimeters.</p>
+<p>The <a class="reference internal" href="../../tools/CalibrateManuallyTool/"><span class="doc">Calibrate Manually tool</span></a> can be
+used to quickly find approximate values of either the focal length of a
+camera or the distance between the camera and a planar surface. The tool
+requires a known planar template object (e.g. a ruler).</p>
+<ul class="simple">
+<li><p>If the distance between the camera and the template object is known,
+the tool calculates the focal length. This option is demonstrated is
+this example.</p></li>
+<li><p>If the focal length in known, the tool calculates the distance
+between the camera and the object.</p></li>
+</ul>
+<p>This procedure is not as accurate as proper calibration using the
+calibration tool in Camera Configurator. The manual calibration assumes
+perfect lens with no distortion. Camera Configurator is able to estimate
+also the distortion factors of the lens.</p>
+<p>On the other hand the manual calibration procedure does not require a
+special calibration plate. An image of a common ruler will do as we’ll
+see below.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/ccc890ee866bb0956f1b5fc5d2f91080/CookbookManualCalibration.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>Let us walk through the schema below top-down.</p>
+<div class="small figure align-default" id="id1">
+<img alt="Complete processing graph" src="../../_images/simple-calibration-1.png" />
+<p class="caption"><span class="caption-text">Complete processing graph</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>The test image originates from a virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>. At this point <code class="docutils literal notranslate"><span class="pre">Position</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Calibration</span></code> parameters are disabled by default. We will revisit
+these parameters later. The test image is shown below. Is it
+essential that the camera is positioned <strong>directly above</strong> the target
+at a known distance. That is, the optical axis must be perpendicular
+to the plane on which the target lies. If that is not the case, the
+calibration procedure must be done using the calibration plate and
+the relevant tool in Camera Configurator.</p></li>
+</ul>
+<div class="medium figure align-default" id="id2">
+<img alt="A ruler can be used as a calibration target." src="../../_images/simple-calibration-2.png" />
+<p class="caption"><span class="caption-text">A ruler can be used as a calibration target.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../tools/CalibrateManuallyTool/"><span class="doc">Calibrate Manually</span></a> needs the
+following information in order to calculate the focal length:</p>
+<ul>
+<li><p>Start and end points of a line on the image plane. The points can
+easily be positioned manually by dragging and dropping a line
+widget on the image window. The line widget is shown with an
+orange line in the above image. In this case, it spans the tick
+marks between 10 and 15 cm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Physical</span> <span class="pre">length</span></code> of the line is 50 mm (i.e. from 10 cm to 15</p>
+<ol class="lowerroman simple" start="900">
+<li></li>
+</ol>
+</li>
+<li><p>Distance between the camera’s aperture and the plane where the
+ruler lies. In this case <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Distance</span></code> = 100 mm.</p></li>
+<li><p>The tool calculates <code class="docutils literal notranslate"><span class="pre">Focal</span> <span class="pre">Length</span></code> in terms of pixels. In this
+case, the focal length is 1949 pixels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Frame</span></code> contains the distance between the plane and the camera
+as <em>Z</em>-coordinate of the last column (<code class="docutils literal notranslate"><span class="pre">origin</span></code>). The origin of
+the world coordinate system is by default at the center of the
+image (i.e. <em>X</em>- and <em>Y</em>-coordinates are zeros).</p></li>
+</ul>
+</li>
+</ul>
+<div class="medium figure align-default" id="id3">
+<img alt="If the camera distance is known, the tool can calculate the camera’s focal length." src="../../_images/simple-calibration-3.png" />
+<p class="caption"><span class="caption-text">If the camera distance is known, the tool can calculate the camera’s
+focal length.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Image</span></code> output is a copy of the input image with the newly
+calculated calibration parameters attached. Hence measurements done
+on the calibrated image will be accurate.</p></li>
+<li><p>The accuracy of the measurements is demonsrated by connecting a
+<a class="reference internal" href="../../tools/CaliperTool/"><span class="doc">Caliper</span></a> to the calibrated image. Start and
+and points of the measurement line is placed with a widget between 12
+and 13 centimeters so that it crosses three tick marks at 12, 12.5
+and 13 cm. The tool reports that the line crosses the tick marks at
+distances 1, 6 and 11 millimeters measured from the beginning of the
+line. This is the correct answer as the tick marks are clearly 5 mm
+apart. There are roughly 20 pixels / millimeter in the original image
+so the measurement error can be expected to be about 0.05 mm.</p></li>
+</ul>
+<div class="medium figure align-default" id="id4">
+<img alt="A caliper can now be used to measure gaps in millimeters." src="../../_images/simple-calibration-4.png" />
+<p class="caption"><span class="caption-text">A caliper can now be used to measure gaps in millimeters.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Now we can store the calibration parameters permanently to the parameter
+set of the <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">Source</span></code>. For this end, disconnect the image source
+from the calibration tool by clicking on the green dot in the <code class="docutils literal notranslate"><span class="pre">Image</span></code>
+input socket of the calibration tool. The Image Source moves to the side
+as seen in the following picture.</p>
+<div class="figure align-default" id="id5">
+<img alt="The image source is detached for reconnecting." src="../../_images/simple-calibration-5.png" />
+<p class="caption"><span class="caption-text">The image source is detached for reconnecting.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The image source must be configured for manual calibration. For this
+end, set <code class="docutils literal notranslate"><span class="pre">Position</span></code> to <code class="docutils literal notranslate"><span class="pre">Manual</span> <span class="pre">Position</span></code> and <code class="docutils literal notranslate"><span class="pre">Calibration</span></code> to
+<code class="docutils literal notranslate"><span class="pre">Manual</span> <span class="pre">Calibration</span></code>. You can now drag and drop</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Focal</span> <span class="pre">Length</span></code> output from Simple Calibration tool to
+<code class="docutils literal notranslate"><span class="pre">Focal</span> <span class="pre">Length</span></code> input of Image Source, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Frame</span></code> output from Simple Calibration tool to <code class="docutils literal notranslate"><span class="pre">Frame</span></code> input of
+Image Source.</p></li>
+</ul>
+<p>Now you can remove the Simple Calibration tool and connect Caliper
+directly to the image source. As seen below, the measurement results
+remain the same.</p>
+<div class="figure align-default" id="id6">
+<img alt="Once calibration parameters are stored, the manual calibration tool is no longer needed." src="../../_images/simple-calibration-6.png" />
+<p class="caption"><span class="caption-text">Once calibration parameters are stored, the manual calibration tool
+is no longer needed.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The focal length is an intrinsic property of the camera. It remains the
+same even if you move the camera with respect to the world plane.
+However, refocusing can slightly alter the focal length.</p>
+<p>The frame you stored in the image source remains valid only as long as
+the camera stays put with respect to the world plane. If the camera
+moves, the frame has to be recalculated to get a valid perspective
+correction and measurement results. You can position the camera using
+the positioning tool in Camera Configurator. The tool can calculate
+perspective correction from any angle of view, so the restriction on
+having to place the camera directly above the world plane is lifted. You
+can also use QR codes to the same effect. See the cookbook entry on
+<a class="reference internal" href="../qr-positioning/"><span class="doc">positioning with QR codes</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../qr-positioning/" class="btn btn-neutral float-right" title="Positioning with QR codes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../contour-matching/" class="btn btn-neutral float-left" title="Contour matching" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

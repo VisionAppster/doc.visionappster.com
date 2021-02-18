@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Python API reference &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Array" href="Array/" />
+    <link rel="prev" title="Creating tools with Python" href="../tool/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">Python API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#python-environment">Python environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#reloading-python-code">Reloading Python code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../#caveats">Caveats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tool/">Creating tools with Python</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Python API reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Array/">Array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Color32/">Color32</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coordinates/">coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Image/">Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logging/">logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Matrix/">Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Object/">Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Tensor/">Tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Tool/">Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../c/">C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../">Python API</a> &raquo;</li>
+        
+      <li>Python API reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-api-reference">
+<h1>Python API reference<a class="headerlink" href="#python-api-reference" title="Permalink to this headline">🔗</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The Python API provides wrappers for the <a class="reference internal" href="../../c/reference/"><span class="doc">core data
+types</span></a>. The <a class="reference internal" href="Tool/"><span class="doc">Tool class</span></a> can be used
+to add new analysis tools to the VisionAppster runtime.</p>
+<p>In addition to Python’s native types (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>,
+<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code> and <code class="docutils literal notranslate"><span class="pre">list</span></code>), the there are three buffer-like data
+types that can be used to pass data between Python and the VisionAppster
+runtime: <a class="reference internal" href="Image/"><span class="doc">Image</span></a>, <a class="reference internal" href="Matrix/"><span class="doc">Matrix</span></a> and <a class="reference internal" href="Tensor/"><span class="doc">Tensor</span></a>.
+These classes implement the Python buffer protocol and can thus be used
+wherever a <code class="docutils literal notranslate"><span class="pre">buffer</span></code> type is accepted. Most notably, the types work as
+the data buffer for a <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>.</p>
+<p>When a buffer-like type is passed from the VisionAppster runtime to
+Python, the buffer will not be copied. The most efficient way of passing
+a buffer back is to allocate one of the VisionAppster types beforehand
+and use it as an output buffer. If a buffer is created internally by a
+Python library, the VisionAppster runtime cannot take the ownership of
+the buffer and must copy data.</p>
+<p>All buffer-like types share certain properties:</p>
+<ul class="simple">
+<li><p>They have a <code class="docutils literal notranslate"><span class="pre">Type</span></code> enumerator class and a <code class="docutils literal notranslate"><span class="pre">type</span></code> property.</p></li>
+<li><p>They can be created with <code class="docutils literal notranslate"><span class="pre">T(typeId,</span> <span class="pre">shape)</span></code>, where <code class="docutils literal notranslate"><span class="pre">typeId</span></code> is
+one of the <code class="docutils literal notranslate"><span class="pre">Type</span></code> enumerator values and <code class="docutils literal notranslate"><span class="pre">shape</span></code> is a list of
+buffer dimension sizes. <code class="docutils literal notranslate"><span class="pre">T</span></code> is the name of the type class,
+e.g. <code class="docutils literal notranslate"><span class="pre">Image</span></code>.</p></li>
+<li><p>They have a <code class="docutils literal notranslate"><span class="pre">shape</span></code> property that contains the dimensions of the
+internal buffer as a <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p></li>
+<li><p>Elements can be accessed using the indexing operator, e.g.
+<code class="docutils literal notranslate"><span class="pre">matrix[2,</span> <span class="pre">3]</span></code>.</p></li>
+</ul>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="kn">as</span> <span class="nn">va</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Uniform constructor syntax</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="p">[</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">])</span>
+<span class="n">tensor</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Tensor</span><span class="o">.</span><span class="n">FLOAT16</span><span class="p">,</span> <span class="p">[</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="p">[</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">])</span>
+
+<span class="c1"># Type-specific constructors</span>
+<span class="n">matrix2</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">Double</span><span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">)</span>
+<span class="n">image2</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span> <span class="c1"># note argument order</span>
+
+<span class="c1"># Uniform access syntax</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">479</span><span class="p">,</span> <span class="mi">639</span><span class="p">]</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">[</span><span class="mi">470</span><span class="p">,</span> <span class="mi">639</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">479</span><span class="p">,</span> <span class="mi">639</span><span class="p">]</span>
+
+<span class="c1"># Image provides (x, y) access:</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="mi">639</span><span class="p">,</span> <span class="mi">479</span><span class="p">)</span>
+
+<span class="c1"># Using Images as input and output buffers to a numpy call</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
+<span class="c1"># Fill input somehow here</span>
+<span class="n">binarized</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">uninitialized</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">binarized</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Array/" class="btn btn-neutral float-right" title="Array" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../tool/" class="btn btn-neutral float-left" title="Creating tools with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

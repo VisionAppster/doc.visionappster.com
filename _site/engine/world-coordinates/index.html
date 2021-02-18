@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>World coordinates &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Builder" href="../../builder/" />
+    <link rel="prev" title="Web apps" href="../web-apps/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#supported-platforms">Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph-executor/">Graph executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware-devices/">Hardware devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../management-interface/">Management interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remote-object-system/">Remote object system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/">VisionAppster Engine services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start-stop/">Starting and stopping the Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing-apis/">Testing HTTP APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-apps/">Web apps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">World coordinates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image-display">Image display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#images-as-views-of-the-world">Images as views of the world</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pixels">Pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordinate-frames">Coordinate Frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#an-example">An example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Engine</a> &raquo;</li>
+        
+      <li>World coordinates</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="world-coordinates">
+<h1>World coordinates<a class="headerlink" href="#world-coordinates" title="Permalink to this headline">🔗</a></h1>
+<p>VisionAppster tools measure things in world units, not pixels. This
+design choice has a number of important advantages but sets
+VisionAppster apart from all image processing libraries in a way that
+may alienate people with background in image processing. Unlearning
+things may be hard, but we firmly believe using world coordinates makes
+your life easier once you grasp the concepts.</p>
+<p>If the input image to a function comes from an arbitrary file or a
+non-calibrated and non-positioned camera, the difference between world
+units and pixels is minimal. All measurements are the same in pixels and
+world units, but the origin of the world coordinate system is at the
+center of the image. If you set up an image display in the Builder to
+show world coordinates, you’ll notice that the upper left corner of an
+image has negative coordinates.</p>
+<p>Each image contains <a class="reference internal" href="../../api/c/reference/va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">camera</span>
+<span class="pre">parameters</span></code></a> and a <a class="reference external" href=":cpp:struct:va_coordinate_frame">coordinate
+frame</a>. This makes it possible to
+correct non-linear distortions caused by a lens and to uniquely
+determine the location of the image with respect to a world coordinate
+system. As a result, it is relatively easy to build multi-camera systems
+that share the same world coordinate system.</p>
+<p>Even if an application does not need to deal with physical cameras or
+lens distortion, the world coordinate system makes many things easier.
+If you scale, crop or rotate an image, the coordinates still point to
+the same location.</p>
+<p>Consider the picture below, where a rectangular portion of a large image
+is taken out for smoothing. After processing, the smoothed result is put
+back on the original image. If you were using pixel coordinates, (0, 0)
+would refer to different places in the two images. To put the processed
+portion back you would need to pass the location of the cropped image
+with respect to the original image to the Image Joining function. In the
+VisionAppster platform both the original image and the cropped one know
+their position with respect to the world coordinate system, and this
+additional information is not needed.</p>
+<div class="large figure align-default" id="id3">
+<img alt="NSFW image blurring" src="../../_images/pena-blurred.png" />
+<p class="caption"><span class="caption-text">NSFW image blurring</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The example is rather trivial, but things soon get a lot more
+complicated if other transformations are involved. Consider the setup in
+the image below. There, blurring is replaced by downscaling and the
+original image is rotated. Still, the image joining tool knows the
+correct locations and is able to place the cropped part where it
+belongs.</p>
+<div class="large figure align-default" id="id4">
+<img alt="NSFW image pixelization" src="../../_images/pena-transformed.png" />
+<p class="caption"><span class="caption-text">NSFW image pixelization</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The world coordinate system is particularly handy with machine vision
+applications. Changing or moving your camera no longer requires changes
+to code that measures things. All you need to do is to calibrate and
+position the new camera and everything else is taken care of
+automatically.</p>
+<div class="section" id="image-display">
+<h2>Image display<a class="headerlink" href="#image-display" title="Permalink to this headline">🔗</a></h2>
+<p>When an image is shown on an image display, it is by default shown in
+image coordinates. This means that the image is shown as such without
+any projection provided that there is only one layer in the image
+display. With multiple layers, all the images are projected to the image
+coordinates of the active layer.</p>
+<p>The image display however makes it possible to change the coordinate
+frame to which its images are projected. You can select world
+coordinates, which means that the images are projected to the xy plane
+of the world coordinate system. Tools that make geometric
+transformations to images (such as rotation or scaling) don’t change the
+position of the image in the world, just the arrangement of pixels in
+the memory of your computer. Therefore, in world coordinates, the output
+of <a class="reference internal" href="../../tools/RotateImageTool/"><span class="doc">RotateImageTool</span></a> will look quite exactly
+the same as its input even though the pixels are rearranged by rotating
+them around the center of the image. The tool compensates for the
+rearrangement by rotating the axes of the image’s coordinate frame by an
+equal amount.</p>
+<p>There is also a possibility to use a custom coordinate system. This
+comes in handy if you want to align a displayed image for example based
+on a detected object in the image.</p>
+<p>You can also select the coordinate system in which the location of the
+mouse cursor is shown. By default, the image display uses the
+coordinates of the selected coordinate frame: world units (e.g.
+millimeters) in a world coordinate system and pixels in image coordinate
+system. You can however select which coordinate values are displayed
+independent of the coordinate system used for projecting the image on
+the display.</p>
+</div>
+<div class="section" id="images-as-views-of-the-world">
+<h2>Images as views of the world<a class="headerlink" href="#images-as-views-of-the-world" title="Permalink to this headline">🔗</a></h2>
+<p>The same scene may be captured with multiple cameras looking from
+different viewpoints. The images produced by these cameras may be
+further transformed by rotating, scaling, cropping etc. The colors or
+gray levels of image pixels may also be processed in various ways, but
+each image still represents a view of the world and can be positioned in
+it.</p>
+<p>If your images come for example from files and have no associated
+real-world coordinates, it is perfectly fine to use the default world
+coordinate system that has its origin at the center of the image.
+Everything else still applies.</p>
+<p>Since all images are treated as views of the same world, it does not
+matter which view you use as source data to your analysis tools. If you
+measure the location of a thing in one image, it is just fine to use
+that location to crop a portion out of an image taken with another
+camera. The caveat: it is assumed that the images are on the same planar
+surface. This can be changed with
+<a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">ReplaceCoordinateFrameTool</span></a>, but
+we won’t go into details here.</p>
+<p>It is possible to create synthetic views of the world. For example, if
+you want to join images from multiple cameras into a compound view of
+the world, you can use <a class="reference internal" href="../../tools/JoinImagesTool/"><span class="doc">JoinImagesTool</span></a>. To
+create a completely new view, you can use
+<a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">VirtualWindowTool</span></a>. It lets you to
+define a window through which to look at the world. As input data, you
+can provide any other view of the world. In fact, all geometric image
+transformation tools such as rotation and scaling are just special cases
+of this tool.</p>
+</div>
+<div class="section" id="pixels">
+<h2>Pixels<a class="headerlink" href="#pixels" title="Permalink to this headline">🔗</a></h2>
+<p>Traditionally, pixels have been treated as squares whose coordinates are
+represented with respect to the upper left corner of the image. In this
+model, the first pixel covers a rectangular area from (0, 0) to (1, 1).
+This easily leads to the assumption that the values of pixels are
+averages of intensities over neighboring squares in the world. We’ll
+tell you a secret: this is not even approximately true to start with.</p>
+<p>If an image has perspective or it is rotated or otherwise transformed,
+it is easy to see that the pixel squares cannot correspond to squares in
+the real world. In the picture below, a 3×3 image is rotated about its
+center. In the rotated image (dotted), each pixel can in principle
+intersect up to six pixels of the original grid (solid), but there is no
+way to get the exact colors or intensities of the intersections. For
+example, the blue intersection only covers a fraction of a pixel in the
+original grid, but we only have the color or intensity of the whole
+pixel.</p>
+<div class="small figure align-default" id="id5">
+<img alt="When an image is rotated, assumptions about rectangular pixels can’t hold." src="../../_images/rotated-pixels.png" />
+<p class="caption"><span class="caption-text">When an image is rotated, assumptions about rectangular pixels can’t
+hold.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>For this reason, the VisionAppster platform treats pixels as point
+samples. The coordinates of a pixel are determined by its center, and
+there is no associated shape. If the image is transformed (rotated,
+scaled, sheared) digitally, the center of each pixel still refers to the
+same location in the world.</p>
+<p>Since it is not possible to know the shape of a pixel, it is not
+meaningful to measure sizes from the edge of a pixel. If required, an
+approximate location of the “edge” can however be calculated by halving
+the distance between neighboring pixels.</p>
+<p>Understanding that pixels are not squares but points and that distances
+between pixels are measured from center to center will make your life a
+lot easier especially if you need to make accurate measurements in 3D.
+It will also help you in understanding why the output image from
+cropping tool is has 4×3 pixels even though you set the size to 3×2.</p>
+<div class="small figure align-default" id="id6">
+<img alt="Distances are measured between pixel centers." src="../../_images/crop-world.png" />
+<p class="caption"><span class="caption-text">Distances are measured between pixel centers.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>So, why, actually? Well, you asked for a picture that covers 3×2 world
+units, not pixels. Consider the image above. There, a 3-by-2 portion of
+a world is represented as a red rectangle and the locations of pixel
+centers with black dots. If you haven’t calibrated the camera, there is
+a 1:1 correspondence between world units and pixels. The
+<a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">CropImageTool</span></a> must take so many pixels that
+the distance between the centers of edge pixels is three horizontally
+and two vertically. 4×3 pixels, that is.</p>
+</div>
+<div class="section" id="coordinate-frames">
+<h2>Coordinate Frames<a class="headerlink" href="#coordinate-frames" title="Permalink to this headline">🔗</a></h2>
+<p>VisionAppster Tools use coordinate frames to represent the positions and
+orientations of images and geometric objects with respect to each other.
+The coordinate frames are three-dimensional and allow arbitrary affine
+transformations and translations. In other words, a coordinate frame can
+be used to express rotation, scaling, stretching, shearing and location
+changes.</p>
+<p>Usually, a coordinate frame defines the position and orientation of an
+object in the world coordinate system. The world coordinate system is
+located – as the name implies – on the same physical world as the object
+being inspected. If the camera is calibrated, the units of the world
+coordinate system are physical units such as millimeters. Otherwise, all
+measurements are unitless and equal to pixels.</p>
+<p>By convention, a right-handed coordinate system is used for world
+coordinates. It is called right-handed because of the mnemonic: close
+your right hand, raise the thumb (x axis) and point forwards with your
+index finger (y axis). Now, straighten your middle finger to make a 90⁰
+angle with the index finger and you have the direction of the z axis. If
+you place such a frame on traditional pixel coordinates, z points
+towards the back of your monitor. Another way to think about it is to
+imagine a “normal” xy coordinate system on your desk: if y points away
+from you and x to the right, the z axis would point towards the ceiling.</p>
+<div class="small figure align-default" id="id7">
+<img alt="The axes of a right-handed coordinate system. [1]_" src="../../_images/right-hand-rule.png" />
+<p class="caption"><span class="caption-text">The axes of a right-handed coordinate system. <a class="footnote-reference brackets" href="#id2" id="id1">1</a></span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+<p>When coordinate frames are used as tool parameters, they are expressed
+as 4-by-4 matrices. The first three columns are the three base vectors
+of the frame in the enclosing coordinate system, and the fourth column
+its translation. Usually, the three base vectors are perpendicular to
+each other, with a unit length. This is not a requirement however: the
+base vectors can be used to scale and shear the coordinate system.</p>
+<p>The last row of a coordinate frame is always [0, 0, 0, 1]. This makes
+the matrix a <em>homogeneous</em> transformation matrix. This is a mathematical
+trick that is used to combine an affine transformation and a translation
+to a single matrix multiplication.</p>
+</div>
+<div class="section" id="an-example">
+<h2>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">🔗</a></h2>
+<p>Below is an example of a coordinate frame that is rotated 10 degrees
+clockwise around the z axis and translated to (19, 11, 1976).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left(\begin{array}{cccc}
+0.9848 &amp; -0.1736 &amp;  0   &amp;   19   \\
+0.1736 &amp;  0.9848 &amp;  0   &amp;   11   \\
+  0    &amp;    0    &amp;  1   &amp;  1976  \\
+  0    &amp;    0    &amp;  0   &amp;   1    \\
+\end{array}\right)\end{split}\]</div>
+<p>The rotation terms are obtained by cos(10⁰) = 0.9848 and sin(10⁰) =
+0.1736. If this was the world frame, it would mean that</p>
+<ul class="simple">
+<li><p>the distance between the camera’s aperture and the world’s xy plane
+is 1976 user-defined units.</p></li>
+<li><p>the optical axis hits world xy plane at (-19, -11) in world
+coordinates.</p></li>
+<li><p>the world coordinate system is rotated 10 degrees clockwise around
+the camera’s optical axis.</p></li>
+</ul>
+<p>Let’s assume the coordinates of a point in world coordinates are
+(-13.9610, 1.4463, 1). The z coordinate is one, meaning that the point
+is one unit below the surface of the object being inspected. To get its
+3D coordinates with respect to the camera’s aperture, one would perform
+the following matrix multiplication:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left(\begin{array}{cccc}
+0.9848 &amp; -0.1736 &amp;  0   &amp;   19   \\
+0.1736 &amp;  0.9848 &amp;  0   &amp;   11   \\
+  0    &amp;    0    &amp;  1   &amp;  1976  \\
+  0    &amp;    0    &amp;  0   &amp;   1    \\
+\end{array}
+\right)\left(
+\begin{array}{c}
+-13.9601 \\
+1.4463 \\
+1 \\
+1
+\end{array}\right) = \left(\begin{array}{c}
+5 \\
+10 \\
+1977 \\
+1
+\end{array}\right)\end{split}\]</div>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Original image courtesy of
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg">Acdx</a></p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../builder/" class="btn btn-neutral float-right" title="Builder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../web-apps/" class="btn btn-neutral float-left" title="Web apps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

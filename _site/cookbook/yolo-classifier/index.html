@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>YOLO classifier &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Web app" href="../web-app/" />
+    <link rel="prev" title="Image classifier" href="../image-classifier/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">YOLO classifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Cookbook</a> &raquo;</li>
+        
+      <li>YOLO classifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="yolo-classifier">
+<h1>YOLO classifier<a class="headerlink" href="#yolo-classifier" title="Permalink to this headline">🔗</a></h1>
+<p><img alt="image0" class="youtube medium" src="cookbook/yolo-classifier/qJEuZvhZN0I" /></p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
+<p>YOLO classification demo shows you how to identify and locate objects
+which belong to one of 20 categories identified by a <a class="reference external" href="https://github.com/onnx/models/tree/master/tiny_yolov2">Tiny YOLO
+classifier</a>.</p>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/0855b33abc139555bb69ffa964c0c1d2/CookbookYoloClassifier.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+</ul>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
+<p>Let us walk through the schema below top-down.</p>
+<div class="small figure align-default" id="id1">
+<img alt="Processing graph" src="../../_images/yolo-classifier-1.png" />
+<p class="caption"><span class="caption-text">Processing graph</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+</div>
+<ul>
+<li><p>The images originate from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/ScaleImageTool/"><span class="doc">Scale Image</span></a> scales the image to the size
+required by the YOLO classifier model. In this case, the size is 416
+x 416 pixels.</p>
+<div class="medium figure align-default" id="id2">
+<img alt="The Tiny YOLO model requires a fixed image size of 416 × 416 pixels." src="../../_images/yolo-classifier-2.png" />
+<p class="caption"><span class="caption-text">The Tiny YOLO model requires a fixed image size of 416 × 416
+pixels.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to Tensor</span></a> converts a color image
+into a tensor of shape 1 x 3 x <code class="docutils literal notranslate"><span class="pre">height</span></code> x <code class="docutils literal notranslate"><span class="pre">width</span></code>. 1 is the
+number of images per tensor (N, batch size), 3 is the number of color
+channels (C) in an RGB image. Height (H) and width (W) are both 416
+pixels.</p>
+<div class="small figure align-default" id="id3">
+<img alt="The input to the model needs to be an image tensor in NCHW layout." src="../../_images/yolo-classifier-3.png" />
+<p class="caption"><span class="caption-text">The input to the model needs to be an image tensor in NCHW layout.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../tools/RunOnnxModelTool/"><span class="doc">Run Onnx Model</span></a> runs the ONNX model. The
+model file is selected with a file dialog that appears by clicking on
+<code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">File</span></code> input parameter. Connectable input and output sockets
+appear after the model file has been loaded. The output of this model
+is a tensor of shape 1 x 125 x 13 x 13. It contains encoded
+information about identified objects and their locations.</p>
+<div class="small figure align-default" id="id4">
+<img alt="The ONNX model is stored as a resource file in the app." src="../../_images/yolo-classifier-5.png" />
+<p class="caption"><span class="caption-text">The ONNX model is stored as a resource file in the app.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../tools/ProcessYoloResultTool/"><span class="doc">Process Yolo Result</span></a> takes the
+output tensor of the ONNX tool and decodes the class and location
+data. The detection is accepted only if the probability of correct
+detection is higher than <code class="docutils literal notranslate"><span class="pre">Confidence</span> <span class="pre">Threshold</span></code>. The same object
+can typically be detected several times within a slightly different
+bounding box. These false detections can be prevented by specifying
+how much the detected bounding boxes can overlap. The maximum amount
+of overlap is determined by <code class="docutils literal notranslate"><span class="pre">Overlap</span> <span class="pre">Ratio</span> <span class="pre">Threshold</span></code>. The number
+of object classes in Tiny YOLO V2 is 20. The locations of the
+identified objects are given as <code class="docutils literal notranslate"><span class="pre">Frame</span></code>and <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices. The
+corresponding class indices and confidence levels are also given as
+matrices.</p>
+<div class="small figure align-default" id="id5">
+<img alt="The output tensor of a YOLO model needs to be decoded." src="../../_images/yolo-classifier-6.png" />
+<p class="caption"><span class="caption-text">The output tensor of a YOLO model needs to be decoded.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+<li><p>Finally, <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the selected
+indices and converts them to class names.</p>
+<div class="medium figure align-default" id="id6">
+<img alt="The script tool takes in class indices and outputs class names." src="../../_images/yolo-classifier-7.png" />
+<p class="caption"><span class="caption-text">The script tool takes in class indices and outputs class names.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+</li>
+</ul>
+<p>The script code is given in the images below.</p>
+<div class="small figure align-default" id="id7">
+<img alt="Creating a table with JavaScript is straightforward." src="../../_images/yolo-classifier-A.png" />
+<p class="caption"><span class="caption-text">Creating a table with JavaScript is straightforward.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+</div>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> outputs of the
+postprocessing tool are connected to the <code class="docutils literal notranslate"><span class="pre">Blur</span> <span class="pre">Regions</span></code> tool. It blurs
+the bounding boxes of the found objects.</p>
+<div class="small figure align-default" id="id8">
+<img alt="The blur regions tool applies a smoothing filter on image regions." src="../../_images/yolo-classifier-8.png" />
+<p class="caption"><span class="caption-text">The blur regions tool applies a smoothing filter on image regions.</span><a class="headerlink" href="#id8" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Here is an example of an input image with <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> widget
+overlays. Also the blurred image is shown.</p>
+<div class="small figure align-default" id="id9">
+<img alt="The result of smoothing the two detected objects." src="../../_images/yolo-classifier-9.png" />
+<p class="caption"><span class="caption-text">The result of smoothing the two detected objects.</span><a class="headerlink" href="#id9" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../web-app/" class="btn btn-neutral float-right" title="Web app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../image-classifier/" class="btn btn-neutral float-left" title="Image classifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

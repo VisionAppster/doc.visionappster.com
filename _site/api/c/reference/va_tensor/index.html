@@ -1,0 +1,576 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_tensor &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_tool.h" href="../va_tool.h/" />
+    <link rel="prev" title="va_table" href="../va_table/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_tensor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-tensor">
+<h1>va_tensor<a class="headerlink" href="#va-tensor" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_tensor.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv49va_tensor">
+<span id="_CPPv39va_tensor"></span><span id="_CPPv29va_tensor"></span><span id="va_tensor"></span><span class="target" id="va_tensor"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">va_tensor</span></code><a class="headerlink" href="#_CPPv49va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A tensor is an array with a variable number of dimensions. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor4typeE">
+<span id="_CPPv3N9va_tensor4typeE"></span><span id="_CPPv2N9va_tensor4typeE"></span><span id="va_tensor::type__va_tensor_type"></span><span class="target" id="va_tensor.type"></span><a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#_CPPv4N9va_tensor4typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of the tensor. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor14num_dimensionsE">
+<span id="_CPPv3N9va_tensor14num_dimensionsE"></span><span id="_CPPv2N9va_tensor14num_dimensionsE"></span><span id="va_tensor::num_dimensions__i"></span><span class="target" id="va_tensor.num_dimensions"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">num_dimensions</span></code><a class="headerlink" href="#_CPPv4N9va_tensor14num_dimensionsE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of dimensions in the tensor. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor10dimensionsE">
+<span id="_CPPv3N9va_tensor10dimensionsE"></span><span id="_CPPv2N9va_tensor10dimensionsE"></span><span id="va_tensor::dimensions__int64_tP"></span><span class="target" id="va_tensor.dimensions"></span><span class="pre">int64_t</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dimensions</span></code><a class="headerlink" href="#_CPPv4N9va_tensor10dimensionsE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pointer to an array that holds tensor dimensions. </p>
+<p>If the tensor is allocated using <a class="reference internal" href="#va_tensor_alloc"><span class="std std-ref">va_tensor_alloc()</span></a>, <em>dimensions</em> will be stored right after the header. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor9ref_countE">
+<span id="_CPPv3N9va_tensor9ref_countE"></span><span id="_CPPv2N9va_tensor9ref_countE"></span><span id="va_tensor::ref_count__va_refcount"></span><span class="target" id="va_tensor.ref_count"></span><a class="reference internal" href="../va_types.h/#_CPPv411va_refcount" title="va_refcount"><span class="pre">va_refcount</span></a> <code class="sig-name descname"><span class="pre">ref_count</span></code><a class="headerlink" href="#_CPPv4N9va_tensor9ref_countE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of references to this tensor structure. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor6sourceE">
+<span id="_CPPv3N9va_tensor6sourceE"></span><span id="_CPPv2N9va_tensor6sourceE"></span><span id="va_tensor::source__va_tensorP"></span><span class="target" id="va_tensor.source"></span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">source</span></code><a class="headerlink" href="#_CPPv4N9va_tensor6sourceE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pointer to a source tensor if data is shared. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor4dataE">
+<span id="_CPPv3N9va_tensor4dataE"></span><span id="_CPPv2N9va_tensor4dataE"></span><span id="va_tensor::data__voidP"></span><span class="target" id="va_tensor.data"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N9va_tensor4dataE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pointer to the first data element. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N9va_tensor7destroyE">
+<span id="_CPPv3N9va_tensor7destroyE"></span><span id="_CPPv2N9va_tensor7destroyE"></span><span class="target" id="*)"></span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">destroy</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9va_tensor7destroyE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Destructor function. </p>
+<p>Depending on how the tensor was originally allocated, it also needs to be deallocated differently. If <em>destroy</em> is non-null, <a class="reference internal" href="#va_tensor_free"><span class="std std-ref">va_tensor_free()</span></a> will use it instead of <a class="reference internal" href="#va_tensor_destroy"><span class="std std-ref">va_tensor_destroy()</span></a>, which is the default. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_TENSOR_DATA_ALIGN">
+<span class="target" id="VA_TENSOR_DATA_ALIGN"></span><code class="sig-name descname"><span class="pre">VA_TENSOR_DATA_ALIGN</span></code><a class="headerlink" href="#c.VA_TENSOR_DATA_ALIGN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_TENSOR_HEADER_SIZE">
+<span class="target" id="VA_TENSOR_HEADER_SIZE"></span><code class="sig-name descname"><span class="pre">VA_TENSOR_HEADER_SIZE</span></code><a class="headerlink" href="#c.VA_TENSOR_HEADER_SIZE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt>
+<span class="target" id="va_tensor"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <code class="sig-name descname"><span class="pre">va_tensor</span></code><br /></dt>
+<dd><p>A tensor is an array with a variable number of dimensions. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Enums</p>
+<dl class="cpp enum">
+<dt id="_CPPv414va_tensor_type">
+<span id="_CPPv314va_tensor_type"></span><span id="_CPPv214va_tensor_type"></span><span class="target" id="va_tensor_type"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_tensor_type</span></code><a class="headerlink" href="#_CPPv414va_tensor_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Supported tensor types. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type22va_invalid_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type22va_invalid_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type22va_invalid_tensor_typeE"></span><span class="target" id="va_tensor_type::va_invalid_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_invalid_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type22va_invalid_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Invalid tensor type. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type20va_float_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type20va_float_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type20va_float_tensor_typeE"></span><span class="target" id="va_tensor_type::va_float_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_float_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type20va_float_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit floating point. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type20va_uint8_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type20va_uint8_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type20va_uint8_tensor_typeE"></span><span class="target" id="va_tensor_type::va_uint8_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uint8_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type20va_uint8_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>8-bit unsigned integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type19va_int8_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type19va_int8_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type19va_int8_tensor_typeE"></span><span class="target" id="va_tensor_type::va_int8_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_int8_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type19va_int8_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>8-bit signed integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type21va_uint16_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type21va_uint16_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type21va_uint16_tensor_typeE"></span><span class="target" id="va_tensor_type::va_uint16_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uint16_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type21va_uint16_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>16-bit unsigned integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type20va_int16_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type20va_int16_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type20va_int16_tensor_typeE"></span><span class="target" id="va_tensor_type::va_int16_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_int16_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type20va_int16_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>16-bit signed integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type20va_int32_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type20va_int32_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type20va_int32_tensor_typeE"></span><span class="target" id="va_tensor_type::va_int32_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_int32_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type20va_int32_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit signed integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type20va_int64_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type20va_int64_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type20va_int64_tensor_typeE"></span><span class="target" id="va_tensor_type::va_int64_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_int64_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type20va_int64_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>64-bit signed integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type21va_string_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type21va_string_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type21va_string_tensor_typeE"></span><span class="target" id="va_tensor_type::va_string_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_string_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type21va_string_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>String type. </p>
+<p><strong>NOTE</strong>! This type is currently not supported! </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type19va_bool_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type19va_bool_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type19va_bool_tensor_typeE"></span><span class="target" id="va_tensor_type::va_bool_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bool_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type19va_bool_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>8-bit boolean. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type22va_float16_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type22va_float16_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type22va_float16_tensor_typeE"></span><span class="target" id="va_tensor_type::va_float16_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_float16_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type22va_float16_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>IEEE754 half-precision 16-bit floating-point format. </p>
+<p>This format has a sign bit, 5 exponent bits, and 10 mantissa bits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type21va_double_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type21va_double_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type21va_double_tensor_typeE"></span><span class="target" id="va_tensor_type::va_double_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_double_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type21va_double_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>64-bit floating point. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type21va_uint32_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type21va_uint32_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type21va_uint32_tensor_typeE"></span><span class="target" id="va_tensor_type::va_uint32_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uint32_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type21va_uint32_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit unsigned integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type21va_uint64_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type21va_uint64_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type21va_uint64_tensor_typeE"></span><span class="target" id="va_tensor_type::va_uint64_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uint64_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type21va_uint64_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>64-bit unsigned integer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type23va_fcomplex_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type23va_fcomplex_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type23va_fcomplex_tensor_typeE"></span><span class="target" id="va_tensor_type::va_fcomplex_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_fcomplex_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type23va_fcomplex_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>2 x 32-bit complex type. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type23va_dcomplex_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type23va_dcomplex_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type23va_dcomplex_tensor_typeE"></span><span class="target" id="va_tensor_type::va_dcomplex_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_dcomplex_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type23va_dcomplex_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>2 x 64-bit complex type. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14va_tensor_type23va_bfloat16_tensor_typeE">
+<span id="_CPPv3N14va_tensor_type23va_bfloat16_tensor_typeE"></span><span id="_CPPv2N14va_tensor_type23va_bfloat16_tensor_typeE"></span><span class="target" id="va_tensor_type::va_bfloat16_tensor_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bfloat16_tensor_type</span></code><a class="headerlink" href="#_CPPv4N14va_tensor_type23va_bfloat16_tensor_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>IEEE754 single-precision floating-point number truncated to 16 bits. </p>
+<p>This format is not an IEEE standard. It has a sign bit, 8 exponent bits, and 7 mantissa bits. <strong>NOTE</strong>! This type is currently not supported! </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv423va_tensor_element_bytes14va_tensor_type">
+<span id="_CPPv323va_tensor_element_bytes14va_tensor_type"></span><span id="_CPPv223va_tensor_element_bytes14va_tensor_type"></span><span id="va_tensor_element_bytes__va_tensor_type"></span><span class="target" id="va_tensor_element_bytes"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_tensor_element_bytes</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423va_tensor_element_bytes14va_tensor_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the number of bytes occupied by a single element of the given type. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv421va_tensor_alloc_empty14va_tensor_typei">
+<span id="_CPPv321va_tensor_alloc_empty14va_tensor_typei"></span><span id="_CPPv221va_tensor_alloc_empty14va_tensor_typei"></span><span id="va_tensor_alloc_empty__va_tensor_type.i"></span><span class="target" id="va_tensor_alloc_empty"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_alloc_empty</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">num_dimensions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421va_tensor_alloc_empty14va_tensor_typei" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates an empty tensor structure with no data. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">va_tensor</span><span class="o">*</span> <span class="n">t</span> <span class="o">=</span> <span class="n">va_tensor_alloc_empty</span><span class="p">(</span><span class="n">va_float_tensor_type</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">t</span><span class="o">-&gt;</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">t</span><span class="o">-&gt;</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">640</span><span class="p">;</span>
+<span class="n">t</span><span class="o">-&gt;</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">480</span><span class="p">;</span>
+<span class="n">t</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">pointer_to_tensor_data</span><span class="p">;</span>
+<span class="n">t</span><span class="o">-&gt;</span><span class="n">destroy</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_destructor_function</span><span class="p">;</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_tensor_alloc14va_tensor_typeiPK7int64_t">
+<span id="_CPPv315va_tensor_alloc14va_tensor_typeiPK7int64_t"></span><span id="_CPPv215va_tensor_alloc14va_tensor_typeiPK7int64_t"></span><span id="va_tensor_alloc__va_tensor_type.i.int64_tCP"></span><span class="target" id="va_tensor_alloc"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_alloc</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">num_dimensions</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">int64_t</span> <span class="pre">*</span><em><span class="pre">dimensions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_tensor_alloc14va_tensor_typeiPK7int64_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a tensor with uninitialized data. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416va_tensor_calloc14va_tensor_typeiPK7int64_t">
+<span id="_CPPv316va_tensor_calloc14va_tensor_typeiPK7int64_t"></span><span id="_CPPv216va_tensor_calloc14va_tensor_typeiPK7int64_t"></span><span id="va_tensor_calloc__va_tensor_type.i.int64_tCP"></span><span class="target" id="va_tensor_calloc"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_calloc</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">num_dimensions</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">int64_t</span> <span class="pre">*</span><em><span class="pre">dimensions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_tensor_calloc14va_tensor_typeiPK7int64_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a tensor with data initialized to zero. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_tensor_clonePK9va_tensor">
+<span id="_CPPv315va_tensor_clonePK9va_tensor"></span><span id="_CPPv215va_tensor_clonePK9va_tensor"></span><span id="va_tensor_clone__va_tensorCP"></span><span class="target" id="va_tensor_clone"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_tensor_clonePK9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a deep copy of <em>tensor</em>. </p>
+<p>Returns the clone or NULL if memory allocation fails. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419va_tensor_copy_dataPKvP9va_tensor">
+<span id="_CPPv319va_tensor_copy_dataPKvP9va_tensor"></span><span id="_CPPv219va_tensor_copy_dataPKvP9va_tensor"></span><span id="va_tensor_copy_data__voidCP.va_tensorP"></span><span class="target" id="va_tensor_copy_data"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_copy_data</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">source</span></em>, <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_tensor_copy_dataPKvP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Copies raw data from a buffer pointed to by <em>source</em> to the data buffer of <em>target</em> tensor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_tensor_typed_copyPK9va_tensor14va_tensor_type">
+<span id="_CPPv320va_tensor_typed_copyPK9va_tensor14va_tensor_type"></span><span id="_CPPv220va_tensor_typed_copyPK9va_tensor14va_tensor_type"></span><span id="va_tensor_typed_copy__va_tensorCP.va_tensor_type"></span><span class="target" id="va_tensor_typed_copy"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_typed_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em>, <a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_tensor_typed_copyPK9va_tensor14va_tensor_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a new tensor that is the same size as <em>tensor</em> and has the same shape. </p>
+<p>The contents will be uninitialized. Returns NULL if memory allocation fails. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_tensor_clearP9va_tensor">
+<span id="_CPPv315va_tensor_clearP9va_tensor"></span><span id="_CPPv215va_tensor_clearP9va_tensor"></span><span id="va_tensor_clear__va_tensorP"></span><span class="target" id="va_tensor_clear"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_clear</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_tensor_clearP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sets the data to zeros. </p>
+<p>Does not change the shape of the tensor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_tensor_freeP9va_tensor">
+<span id="_CPPv314va_tensor_freeP9va_tensor"></span><span id="_CPPv214va_tensor_freeP9va_tensor"></span><span id="va_tensor_free__va_tensorP"></span><span class="target" id="va_tensor_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_tensor_freeP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Releases the memory allocated by <em>tensor</em>. </p>
+<p>If there is a custom destructor function, it will be used. If not, <a class="reference internal" href="#va_tensor_destroy"><span class="std std-ref">va_tensor_destroy()</span></a> will be called. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_tensor_destroyP9va_tensor">
+<span id="_CPPv317va_tensor_destroyP9va_tensor"></span><span id="_CPPv217va_tensor_destroyP9va_tensor"></span><span id="va_tensor_destroy__va_tensorP"></span><span class="target" id="va_tensor_destroy"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_tensor_destroyP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Releases the memory allocated by <em>tensor</em> and <code class="docutils literal notranslate"><span class="pre">tensor-&gt;data</span></code> using shm_free(). </p>
+<p>This is the default destructor function that will be run if <code class="docutils literal notranslate"><span class="pre">tensor-&gt;destroy</span></code> is NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_tensor_bytesPK9va_tensor">
+<span id="_CPPv315va_tensor_bytesPK9va_tensor"></span><span id="_CPPv215va_tensor_bytesPK9va_tensor"></span><span id="va_tensor_bytes__va_tensorCP"></span><span class="target" id="va_tensor_bytes"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">va_tensor_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_tensor_bytesPK9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the total number of bytes required for the tensor’s data array. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv428va_tensor_number_of_elementsPK9va_tensor">
+<span id="_CPPv328va_tensor_number_of_elementsPK9va_tensor"></span><span id="_CPPv228va_tensor_number_of_elementsPK9va_tensor"></span><span id="va_tensor_number_of_elements__va_tensorCP"></span><span class="target" id="va_tensor_number_of_elements"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">va_tensor_number_of_elements</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428va_tensor_number_of_elementsPK9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the total number elements in a tensor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_tensor_elementPK9va_tensorPK7int64_t">
+<span id="_CPPv317va_tensor_elementPK9va_tensorPK7int64_t"></span><span id="_CPPv217va_tensor_elementPK9va_tensorPK7int64_t"></span><span id="va_tensor_element__va_tensorCP.int64_tCP"></span><span class="target" id="va_tensor_element"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_element</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">int64_t</span> <span class="pre">*</span><em><span class="pre">indices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_tensor_elementPK9va_tensorPK7int64_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a pointer to an element in the tensor. </p>
+<p>The element is identified by a list of <em>indices</em> whose length must match <code class="docutils literal notranslate"><span class="pre">tensor-&gt;num_dimensions</span></code>.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">RGB</span> <span class="n">color</span> <span class="n">planes</span> <span class="k">as</span> <span class="n">a</span> <span class="n">tensor</span><span class="o">.</span>
+<span class="n">int64_t</span> <span class="n">dims</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">};</span>
+<span class="n">va_tensor</span><span class="o">*</span> <span class="n">t</span> <span class="o">=</span> <span class="n">va_tensor_alloc</span><span class="p">(</span><span class="n">va_float_tensor_type</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dims</span><span class="p">);</span>
+<span class="n">int64_t</span> <span class="n">green_start_idx</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+<span class="nb">float</span><span class="o">*</span> <span class="n">first_green</span> <span class="o">=</span> <span class="n">va_tensor_element</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">green_start_idx</span><span class="p">);</span>
+<span class="n">int64_t</span> <span class="n">blue_end_idx</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">639</span><span class="p">,</span> <span class="mi">479</span><span class="p">};</span>
+<span class="nb">float</span><span class="o">*</span> <span class="n">last_blue</span> <span class="o">=</span> <span class="n">va_tensor_element</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">blue_end_idx</span><span class="p">);</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419va_tensor_type_name14va_tensor_type">
+<span id="_CPPv319va_tensor_type_name14va_tensor_type"></span><span id="_CPPv219va_tensor_type_name14va_tensor_type"></span><span id="va_tensor_type_name__va_tensor_type"></span><span class="target" id="va_tensor_type_name"></span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_type_name</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv414va_tensor_type" title="va_tensor_type"><span class="pre">va_tensor_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_tensor_type_name14va_tensor_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a human-readable name for the given <em>type</em>. </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_tool.h/" class="btn btn-neutral float-right" title="va_tool.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_table/" class="btn btn-neutral float-left" title="va_table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

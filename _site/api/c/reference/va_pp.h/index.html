@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_pp.h &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_string" href="../va_string/" />
+    <link rel="prev" title="va_object" href="../va_object/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_pp.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-pp-h">
+<h1>va_pp.h<a class="headerlink" href="#va-pp-h" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_pp.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_DO_STRINGIZE">
+<span class="target" id="VA_DO_STRINGIZE"></span><code class="sig-name descname"><span class="pre">VA_DO_STRINGIZE</span></code><span class="sig-paren">(</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DO_STRINGIZE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_STRINGIZE">
+<span class="target" id="VA_STRINGIZE"></span><code class="sig-name descname"><span class="pre">VA_STRINGIZE</span></code><span class="sig-paren">(</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_STRINGIZE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts the argument to a string. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">name</span> <span class="o">=</span> <span class="n">VA_STRINGIZE</span><span class="p">(</span><span class="n">ClassName</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;ClassName&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_DO_JOIN">
+<span class="target" id="VA_DO_JOIN"></span><code class="sig-name descname"><span class="pre">VA_DO_JOIN</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DO_JOIN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_JOIN">
+<span class="target" id="VA_JOIN"></span><code class="sig-name descname"><span class="pre">VA_JOIN</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_JOIN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Joins arguments a and b. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">VA_JOIN</span><span class="p">(</span><span class="n">Class</span><span class="p">,</span> <span class="n">Name</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">struct</span> <span class="n">ClassName</span><span class="o">.</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_DO_JOIN3">
+<span class="target" id="VA_DO_JOIN3"></span><code class="sig-name descname"><span class="pre">VA_DO_JOIN3</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em>, <em><span class="pre">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DO_JOIN3" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_DO_JOIN4">
+<span class="target" id="VA_DO_JOIN4"></span><code class="sig-name descname"><span class="pre">VA_DO_JOIN4</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em>, <em><span class="pre">c</span></em>, <em><span class="pre">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DO_JOIN4" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_DO_JOIN5">
+<span class="target" id="VA_DO_JOIN5"></span><code class="sig-name descname"><span class="pre">VA_DO_JOIN5</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em>, <em><span class="pre">c</span></em>, <em><span class="pre">d</span></em>, <em><span class="pre">e</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DO_JOIN5" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_JOIN3">
+<span class="target" id="VA_JOIN3"></span><code class="sig-name descname"><span class="pre">VA_JOIN3</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em>, <em><span class="pre">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_JOIN3" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Joins arguments a, b and c to form abc. </p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#VA_JOIN"><span class="std std-ref">VA_JOIN</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_JOIN4">
+<span class="target" id="VA_JOIN4"></span><code class="sig-name descname"><span class="pre">VA_JOIN4</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em>, <em><span class="pre">c</span></em>, <em><span class="pre">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_JOIN4" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Joins arguments a, b, c and d to form abcd. </p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#VA_JOIN"><span class="std std-ref">VA_JOIN</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_JOIN5">
+<span class="target" id="VA_JOIN5"></span><code class="sig-name descname"><span class="pre">VA_JOIN5</span></code><span class="sig-paren">(</span><em><span class="pre">a</span></em>, <em><span class="pre">b</span></em>, <em><span class="pre">c</span></em>, <em><span class="pre">d</span></em>, <em><span class="pre">e</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_JOIN5" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Joins arguments a, b, c, d and e to form abcde. </p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#VA_JOIN"><span class="std std-ref">VA_JOIN</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_COMMA">
+<span class="target" id="VA_COMMA"></span><code class="sig-name descname"><span class="pre">VA_COMMA</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_COMMA" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to a comma (,). </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_LPAREN">
+<span class="target" id="VA_LPAREN"></span><code class="sig-name descname"><span class="pre">VA_LPAREN</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_LPAREN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to a left parenthesis. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_RPAREN">
+<span class="target" id="VA_RPAREN"></span><code class="sig-name descname"><span class="pre">VA_RPAREN</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_RPAREN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to a right parenthesis. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EXPAND">
+<span class="target" id="VA_EXPAND"></span><code class="sig-name descname"><span class="pre">VA_EXPAND</span></code><span class="sig-paren">(</span><em><span class="pre">PARAM</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EXPAND" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to <em>PARAM</em>. </p>
+<p>This macro is useful if you need to format the arguments of a macro using another macro.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define PRINTF(FORMAT, ARG1, ARG2) printf(FORMAT, ARG1, ARG2);</span>
+
+<span class="c1">#define ARGS1 &quot;%s%d&quot;, &quot;abc&quot;</span>
+<span class="c1">#define ARGS2 1</span>
+
+<span class="c1">#define CALL(MACRO) VA_EXPAND(MACRO VA_LPAREN() ARGS1 VA_COMMA() ARGS2 VA_RPAREN())</span>
+
+<span class="n">CALL</span><span class="p">(</span><span class="n">PRINTF</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">expands</span> <span class="n">to</span>
+<span class="o">//</span> <span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_REMOVE_PARENS">
+<span class="target" id="VA_REMOVE_PARENS"></span><code class="sig-name descname"><span class="pre">VA_REMOVE_PARENS</span></code><span class="sig-paren">(</span><em><span class="pre">N</span></em>, <em><span class="pre">PARAMS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_REMOVE_PARENS" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Remove parentheses around <em>PARAMS</em>. </p>
+<p>The number of comma-separated elements in <em>PARAMS</em> must be <em>N</em>.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VA_REMOVE_PARENS</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<span class="o">//</span> <span class="n">Expands</span> <span class="n">to</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_N">
+<span class="target" id="VA_FOR_N"></span><code class="sig-name descname"><span class="pre">VA_FOR_N</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">N</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_N" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Repeats <em>MACRO</em> for each of the <em>N</em> elements in <em>ELEMENTS</em>. </p>
+<p><em>MACRO</em> will be called with two parameters: the (zero-based) index of the current element and the element.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define PRINTF(N, X) printf(#X);</span>
+
+<span class="n">VA_FOR_N</span><span class="p">(</span><span class="n">PRINTF</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<span class="o">//</span> <span class="n">Expands</span> <span class="n">to</span>
+<span class="o">//</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">);</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_N_ARG">
+<span class="target" id="VA_FOR_N_ARG"></span><code class="sig-name descname"><span class="pre">VA_FOR_N_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">ARG</span></em>, <em><span class="pre">N</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_N_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Same as [VA_FOR_N], but passes ARG(N) as the first parameter to <em>MACRO</em> instead of N. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define MYMACRO(A, B) A B;</span>
+
+<span class="n">VA_FOR_N_ARG</span><span class="p">(</span><span class="n">MYMACRO</span><span class="p">,</span> <span class="nb">int</span> <span class="n">VA_NULL</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">));</span>
+<span class="o">//</span> <span class="n">Expands</span> <span class="n">to</span>
+<span class="o">//</span> <span class="nb">int</span> <span class="n">a</span><span class="p">;</span> <span class="nb">int</span> <span class="n">b</span><span class="p">;</span> <span class="nb">int</span> <span class="n">c</span><span class="p">;</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_N_SEP">
+<span class="target" id="VA_FOR_N_SEP"></span><code class="sig-name descname"><span class="pre">VA_FOR_N_SEP</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">SEPARATOR</span></em>, <em><span class="pre">N</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_N_SEP" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Repeats <em>MACRO</em> for each of the <em>N</em> elements in <em>ELEMENTS</em>, placing <em>SEPARATOR(N)</em> between each element. </p>
+<p><em>SEPARATOR</em> will be called with one parameter: the (zero-based) index of the current element and the element itself. Use <code class="docutils literal notranslate"><span class="pre">VA_COMMA_SEP</span></code> to place a comma between elements.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define MYMACRO(N, X) i##X = N</span>
+
+<span class="nb">int</span> <span class="n">VA_FOR_N_SEP</span><span class="p">(</span><span class="n">MYMACRO</span><span class="p">,</span> <span class="n">VA_COMMA_SEP</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">));</span>
+<span class="o">//</span> <span class="n">Expands</span> <span class="n">to</span>
+<span class="o">//</span> <span class="nb">int</span> <span class="n">ia</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">ib</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span> <span class="n">ic</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_N_SEP_ARG">
+<span class="target" id="VA_FOR_N_SEP_ARG"></span><code class="sig-name descname"><span class="pre">VA_FOR_N_SEP_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">SEPARATOR</span></em>, <em><span class="pre">ARG</span></em>, <em><span class="pre">N</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_N_SEP_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Same as [VA_FOR_N_SEP], but passes ARG(N) as the first parameter to <em>MACRO</em> instead of N. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_REPEAT_N">
+<span class="target" id="VA_REPEAT_N"></span><code class="sig-name descname"><span class="pre">VA_REPEAT_N</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">N</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_REPEAT_N" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Repeats <em>MACRO</em> <em>N</em> times. </p>
+<p>The expanded result is <code class="docutils literal notranslate"><span class="pre">MACRO(0)</span> <span class="pre">MACRO(1)</span> <span class="pre">...</span> <span class="pre">MACRO(N-1)</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_NULL">
+<span class="target" id="VA_NULL"></span><code class="sig-name descname"><span class="pre">VA_NULL</span></code><span class="sig-paren">(</span><em><span class="pre">N</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_NULL" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_COMMA_SEP">
+<span class="target" id="VA_COMMA_SEP"></span><code class="sig-name descname"><span class="pre">VA_COMMA_SEP</span></code><span class="sig-paren">(</span><em><span class="pre">N</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_COMMA_SEP" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_1ST_ARG">
+<span class="target" id="VA_1ST_ARG"></span><code class="sig-name descname"><span class="pre">VA_1ST_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">_1</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_1ST_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_REST_ARGS">
+<span class="target" id="VA_REST_ARGS"></span><code class="sig-name descname"><span class="pre">VA_REST_ARGS</span></code><span class="sig-paren">(</span><em><span class="pre">_1</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_REST_ARGS" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_2ND_ARG">
+<span class="target" id="VA_2ND_ARG"></span><code class="sig-name descname"><span class="pre">VA_2ND_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">_1</span></em>, <em><span class="pre">_2</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_2ND_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_3RD_ARG">
+<span class="target" id="VA_3RD_ARG"></span><code class="sig-name descname"><span class="pre">VA_3RD_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">_1</span></em>, <em><span class="pre">_2</span></em>, <em><span class="pre">_3</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_3RD_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_INDIRECT">
+<span class="target" id="VA_INDIRECT"></span><code class="sig-name descname"><span class="pre">VA_INDIRECT</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">ARGS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_INDIRECT" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EVAL">
+<span class="target" id="VA_EVAL"></span><code class="sig-name descname"><span class="pre">VA_EVAL</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EVAL" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Evaluates up to 243 levels of deferred macros. </p>
+<p>Since the C preprocessor cannot evaluate macros recursively, one must instead defer the evaluation of a recursive macro call and then force another pass using this macro.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define A() 123</span>
+<span class="n">A</span><span class="p">()</span> <span class="o">//</span> <span class="mi">123</span>
+<span class="n">VA_DEFER</span><span class="p">(</span><span class="n">A</span><span class="p">)()</span> <span class="o">//</span> <span class="n">A</span><span class="p">()</span>
+<span class="n">VA_EVAL</span><span class="p">(</span><span class="n">VA_DEFER</span><span class="p">(</span><span class="n">A</span><span class="p">)())</span> <span class="o">//</span> <span class="mi">123</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EVAL1">
+<span class="target" id="VA_EVAL1"></span><code class="sig-name descname"><span class="pre">VA_EVAL1</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EVAL1" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EVAL2">
+<span class="target" id="VA_EVAL2"></span><code class="sig-name descname"><span class="pre">VA_EVAL2</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EVAL2" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EVAL3">
+<span class="target" id="VA_EVAL3"></span><code class="sig-name descname"><span class="pre">VA_EVAL3</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EVAL3" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EVAL4">
+<span class="target" id="VA_EVAL4"></span><code class="sig-name descname"><span class="pre">VA_EVAL4</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EVAL4" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EVAL5">
+<span class="target" id="VA_EVAL5"></span><code class="sig-name descname"><span class="pre">VA_EVAL5</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EVAL5" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_EMPTY">
+<span class="target" id="VA_EMPTY"></span><code class="sig-name descname"><span class="pre">VA_EMPTY</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_EMPTY" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_DEFER">
+<span class="target" id="VA_DEFER"></span><code class="sig-name descname"><span class="pre">VA_DEFER</span></code><span class="sig-paren">(</span><em><span class="pre">X</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DEFER" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Defers the expansion of X. </p>
+<p>Can be used with VA_EVAL to implement recursive macros. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_ARGS_EXPAND">
+<span class="target" id="VA_ARGS_EXPAND"></span><code class="sig-name descname"><span class="pre">VA_ARGS_EXPAND</span></code><span class="sig-paren">(</span><em><span class="pre">X</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_ARGS_EXPAND" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_NARGS">
+<span class="target" id="VA_NARGS"></span><code class="sig-name descname"><span class="pre">VA_NARGS</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_NARGS" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Expands to the number of variable arguments. </p>
+<p>The maximum allowed number of arguments is 64.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VA_NARGS</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    <span class="o">//</span> <span class="mi">1</span>
+<span class="n">VA_NARGS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_DO_NARGS">
+<span class="target" id="VA_DO_NARGS"></span><code class="sig-name descname"><span class="pre">VA_DO_NARGS</span></code><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_DO_NARGS" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_ARGS_N">
+<span class="target" id="VA_ARGS_N"></span><code class="sig-name descname"><span class="pre">VA_ARGS_N</span></code><span class="sig-paren">(</span><em><span class="pre">_1</span></em>, <em><span class="pre">_2</span></em>, <em><span class="pre">_3</span></em>, <em><span class="pre">_4</span></em>, <em><span class="pre">_5</span></em>, <em><span class="pre">_6</span></em>, <em><span class="pre">_7</span></em>, <em><span class="pre">_8</span></em>, <em><span class="pre">_9</span></em>, <em><span class="pre">_10</span></em>, <em><span class="pre">_11</span></em>, <em><span class="pre">_12</span></em>, <em><span class="pre">_13</span></em>, <em><span class="pre">_14</span></em>, <em><span class="pre">_15</span></em>, <em><span class="pre">_16</span></em>, <em><span class="pre">_17</span></em>, <em><span class="pre">_18</span></em>, <em><span class="pre">_19</span></em>, <em><span class="pre">_20</span></em>, <em><span class="pre">_21</span></em>, <em><span class="pre">_22</span></em>, <em><span class="pre">_23</span></em>, <em><span class="pre">_24</span></em>, <em><span class="pre">_25</span></em>, <em><span class="pre">_26</span></em>, <em><span class="pre">_27</span></em>, <em><span class="pre">_28</span></em>, <em><span class="pre">_29</span></em>, <em><span class="pre">_30</span></em>, <em><span class="pre">_31</span></em>, <em><span class="pre">_32</span></em>, <em><span class="pre">_33</span></em>, <em><span class="pre">_34</span></em>, <em><span class="pre">_35</span></em>, <em><span class="pre">_36</span></em>, <em><span class="pre">_37</span></em>, <em><span class="pre">_38</span></em>, <em><span class="pre">_39</span></em>, <em><span class="pre">_40</span></em>, <em><span class="pre">_41</span></em>, <em><span class="pre">_42</span></em>, <em><span class="pre">_43</span></em>, <em><span class="pre">_44</span></em>, <em><span class="pre">_45</span></em>, <em><span class="pre">_46</span></em>, <em><span class="pre">_47</span></em>, <em><span class="pre">_48</span></em>, <em><span class="pre">_49</span></em>, <em><span class="pre">_50</span></em>, <em><span class="pre">_51</span></em>, <em><span class="pre">_52</span></em>, <em><span class="pre">_53</span></em>, <em><span class="pre">_54</span></em>, <em><span class="pre">_55</span></em>, <em><span class="pre">_56</span></em>, <em><span class="pre">_57</span></em>, <em><span class="pre">_58</span></em>, <em><span class="pre">_59</span></em>, <em><span class="pre">_60</span></em>, <em><span class="pre">_61</span></em>, <em><span class="pre">_62</span></em>, <em><span class="pre">_63</span></em>, <em><span class="pre">N</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_ARGS_N" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_RSEQ_64">
+<span class="target" id="VA_RSEQ_64"></span><code class="sig-name descname"><span class="pre">VA_RSEQ_64</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_RSEQ_64" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR">
+<span class="target" id="VA_FOR"></span><code class="sig-name descname"><span class="pre">VA_FOR</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>For loop macros for C preprocessors that support variadic macros. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_SEP">
+<span class="target" id="VA_FOR_SEP"></span><code class="sig-name descname"><span class="pre">VA_FOR_SEP</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">SEPARATOR</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_SEP" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_ARG">
+<span class="target" id="VA_FOR_ARG"></span><code class="sig-name descname"><span class="pre">VA_FOR_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">ARG</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_FOR_SEP_ARG">
+<span class="target" id="VA_FOR_SEP_ARG"></span><code class="sig-name descname"><span class="pre">VA_FOR_SEP_ARG</span></code><span class="sig-paren">(</span><em><span class="pre">MACRO</span></em>, <em><span class="pre">SEPARATOR</span></em>, <em><span class="pre">ARG</span></em>, <em><span class="pre">ELEMENTS</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_FOR_SEP_ARG" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_string/" class="btn btn-neutral float-right" title="va_string" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_object/" class="btn btn-neutral float-left" title="va_object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

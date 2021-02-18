@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script defer="defer" src="../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Windows installation" href="windows/" />
+    <link rel="prev" title="VisionAppster Documentation" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/">Windows installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raspberrypi/">Raspberry Pi installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux/">Linux installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/">Built-in tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">🔗</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster platform installation consists of the following main
+components:</p>
+<dl class="simple">
+<dt>Engine</dt><dd><p>A runtime for running platform-independent vision apps. The Engine is
+run as a service that can be accessed through an <a class="reference internal" href="../engine/remote-object-system/"><span class="doc">HTTP
+interface</span></a>. The Engine requires no
+display and can be run on a wide variety of operating systems and
+hardware platforms.</p>
+</dd>
+<dt>Builder</dt><dd><p>A graphical development environment for building vision apps and
+components. The builder lets you to modify an app while it runs and
+see the results immediately. Apps exported by the Builder can be run
+by the Engine everywhere. The builder also provides a camera
+configurator app that can be used to set parameters to local and
+remote cameras, capture images and calibrate cameras.</p>
+</dd>
+<dt>SDK</dt><dd><p>A software development kit for building new analysis tools and client
+applications for the platform. The SDK contains a ready-to-go
+environment including all bundled 3rd party libraries such as OpenCV
+and Dlib. To compile your own tools, you also need a compiler that is
+not included.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">🔗</a></h2>
+<p>Please refer to platform-specific instructions:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="windows/"><span class="doc">Windows</span></a></p></li>
+<li><p><a class="reference internal" href="linux/"><span class="doc">Linux</span></a></p></li>
+<li><p><a class="reference internal" href="raspberrypi/"><span class="doc">Raspberry Pi</span></a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/r/visionappster/va-engine">Docker</a></p></li>
+<li><p>Mac? Sorry. Technically, we do support Mac, but Apple’s licensing
+terms prohibit people from compiling software for their operating
+systems on non-mac computers. You would be unable to use any native
+extensions and thus crippled.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="windows/" class="btn btn-neutral float-right" title="Windows installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="VisionAppster Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

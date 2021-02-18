@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tool APIs &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="JavaScript client API" href="../js/" />
+    <link rel="prev" title="APIs" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#data-types">Data types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tool APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execution-modes">Execution modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-data">Meta-data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recognized-meta-data-keys">Recognized meta-data keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#built-in-types">Built-in types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-specifiers">Type specifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-type-conversions">Data type conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-native-tools">Debugging native tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">APIs</a> &raquo;</li>
+        
+      <li>Tool APIs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tool-apis">
+<h1>Tool APIs<a class="headerlink" href="#tool-apis" title="Permalink to this headline">🔗</a></h1>
+<p>The VisionAppster platform comes with a large set of <a class="reference internal" href="../../tools/"><span class="doc">system
+tools</span></a> for many common vision tasks. Due to the high
+variability of vision apps, no prebuilt tool set can however cover
+everything. The <a class="reference external" href="https://visionappster.com/">VisionAppster Store</a>
+often helps, but sometimes you just need to resort to plain old coding.
+The existing solutions may not be fast or accurate enough, or you
+already have code that does the same thing. Or maybe you need to
+interact with some special hardware.</p>
+<p>VisionAppster Tool APIs are used for implementing new vision algorithms
+or other functionality and integrating existing code to the
+VisionAppster platform. The APIs make it easy to build dynamically
+loadable libraries containing new tools that can then be used as
+building blocks in vision applications.</p>
+<p>All native tool APIs are built on top of a <a class="reference internal" href="../c/"><span class="doc">C API</span></a>. Another
+option is to write tools in Python using the <a class="reference internal" href="../python/"><span class="doc">Python
+API</span></a>.</p>
+<p>An important (perhaps obvious) thing to note is that unlike the tools
+built into the VisionAppster platform, user-defined tools are not
+automatically available everywhere. It is the developer’s responsibility
+to build the tool plugin into a component package and install it
+everywhere is is to be used.</p>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">🔗</a></h2>
+<dl class="simple">
+<dt>Tool</dt><dd><p>A wrapper for a low-level function. Defines an arbitrary number of
+input and output parameters that work as connection points in a
+processing graph. Unlike <em>functions</em>, tools provide modifiable
+default values and rich meta-data. They may also contain instance
+variables that keep the state of the tool. In the C API, the
+structure making up a tool is automatically generated, but it is
+possible to extend it. In the Python API, each tool is a Python
+class.</p>
+</dd>
+<dt>Processing graph</dt><dd><p>A directed acyclic graph that declares dependencies between tools.</p>
+</dd>
+<dt>Tool instance</dt><dd><p>A node in the processing graph. Different instances of the same tool
+may have different ideas of default values of arguments and the
+internal state of the tool, if the tool has state variables. In the C
+API, a pointer to the tool instance is passed to the underlying
+function. In the Python API, each tool is an instance of its defining
+class.</p>
+</dd>
+<dt>Input parameter</dt><dd><p>A parameter that is passed to the tool. May come from another tool in
+the graph, from a default value or from an external source through an
+API call.</p>
+</dd>
+<dt>Fixed input parameter</dt><dd><p>An input parameter that is programmer-adjustable but not connectable
+in the processing graph. The value of a fixed parameter cannot be
+changed at run time.</p>
+</dd>
+<dt>Optional input parameter</dt><dd><p>An input parameter that has a default value but is also connectable.
+The default value may be changeable through a public API.</p>
+</dd>
+<dt>Required input parameter</dt><dd><p>An input parameter that has no default value and must be connected in
+the graph either to another tool or to an API function. Required
+input parameters are needed only if there is no logical default value
+or if generating generating such value is not feasible.</p>
+</dd>
+<dt>Output parameter</dt><dd><p>A parameter that is produced by calling the underlying function with
+the current input parameters. Output parameters can work as inputs to
+subsequent tools and/or as signals in a public API.</p>
+</dd>
+<dt>Plugin</dt><dd><p>A dynamically loadable machine code library that implements a known
+entry point function (<code class="docutils literal notranslate"><span class="pre">va_get_plugin_info</span></code>).</p>
+</dd>
+<dt>Component</dt><dd><p>A redistributable unit that may contain an arbitrary number of
+plugins. The VisionAppster platform uses components for sharing any
+content, not just plugins. The ID and the major version of a
+component (e.g. <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1</span></code>) defines a namespace for
+the tools inside it.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="execution-modes">
+<h2>Execution modes<a class="headerlink" href="#execution-modes" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster runtime uses a pool of threads to distribute work
+across processing cores. Most built-in tools in the platform are
+<em>reentrant</em>. In practical terms this means that the outcome of a tool
+invocation only depends on its input parameters and not on any static or
+global non-constant data.</p>
+<p>Whenever all input parameters required by a tool are available, the
+runtime schedules the underlying function for execution. Since the
+outcome of a reentrant function depends only on the input parameters, it
+is always possible to execute any number of invocations to the function
+simultaneously. Therefore, one should always make tools reentrant if
+possible.</p>
+<p>Sometimes, a tool must maintain mutable state variables. An example of
+such a tool is a counter that is incremented on each invocation. Such
+tools cannot be executed simultaneously unless the programmer manually
+ensures that concurrent access to the same state variables won’t break
+the program. There are also technical limitations that may make it
+impossible to implement a tool in a reentrant way. For example, it may
+be necessary to hold state in thread-local variables, which are only
+visible if the call is always made from the same thread.</p>
+<p>It is important to understand the difference between a tool
+implementation and a tool instance in a processing graph. Multiple
+instances of a tool may appear in different locations in the graph. For
+reentrant tools this makes no difference. If the tool needs mutable
+state, each of the instances has a different idea of the state of the
+tool.</p>
+<p>The underlying function may be called from different threads, but each
+thread will maintain different state data. This means that all wrapped
+functions must be <em>thread-safe</em> even though they may not be reentrant.
+In practical terms, the state of a thread-safe tool must not be kept in
+global or static variables, but only in a storage that is specific to a
+tool instance.</p>
+<p>The VisionAppster runtime makes it possible to change the threading mode
+for each individual tool separately. If the default multi-threaded
+execution mode isn’t suitable, there are two alternatives:</p>
+<dl class="simple">
+<dt>Single-threaded</dt><dd><p>Each instance of the tool will be assigned a dedicated processing
+thread. No concurrent calls <em>with the same instance</em> will be made.
+Successive calls to the same tool instance always come from the same
+thread. In other words, if your graph contains multiple instances of
+the tool, they may still be called simultaneously, but with different
+instance pointers. This mode should be avoided because it may cause a
+large number of mostly idle threads to be created. Sometimes, there
+is no choice if you use a library that insists on storing its state
+in thread-local storage.</p>
+</dd>
+<dt>Non-threaded</dt><dd><p>No concurrent calls to the tool will be made <em>with the same tool
+instance</em>, but successive calls may come from arbitrary threads. The
+difference to multi-threaded execution mode is that simultaneous
+calls with the same instance will not be made. The difference to
+single-threaded mode is that the thread making the calls may be
+different from time to time. Note that it may make sense to use the
+non-threaded mode for a reentrant tool; the tool may be so simple
+that queuing the input data and performing a context switch would
+cost more than just calling it whenever data is available. If making
+your function re-entrant is difficult or impossible, prefer
+non-thread mode to single-threaded.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="meta-data">
+<h2>Meta-data<a class="headerlink" href="#meta-data" title="Permalink to this headline">🔗</a></h2>
+<p>To be able to call a function the VisionAppster runtime only needs to
+know the types of its parameters. Therefore, other meta-data is not
+strictly required. It does however make it easier for the application
+programmer to use the tool in the Builder.</p>
+<p>Meta-data are either static or dynamic values that give the Builder and
+other GUI tools hints on how to handle the parameter. Each input and
+output parameter can have an arbitrary number of meta-data entries. Each
+meta-data entry is identified by a text string that is composed of the
+name of the parameter the entry refers to, a separator and a key that
+identifies the entry. In the <a class="reference internal" href="../c/"><span class="doc">C API</span></a>, underscore (_) is used
+as the separator. For example, the <code class="docutils literal notranslate"><span class="pre">min</span></code> meta-data for a parameter
+called <code class="docutils literal notranslate"><span class="pre">value</span></code> would be identified by <code class="docutils literal notranslate"><span class="pre">value_min</span></code>.</p>
+<p>Meta-data entries can be either static or dynamic. The need for dynamic
+meta-data usually arises when the meta-data depends on the current value
+of a fixed input parameter. For example, it may be useful to selectively
+hide certain parameters.</p>
+<p>It is important to note that meta-data entries are only hints for the
+GUI, and it may choose not to respect them. At run time there is no
+protection whatsoever: your tool implementation may receive a value that
+is larger than the declared <code class="docutils literal notranslate"><span class="pre">min</span></code>, for example. If it is important
+that this does not happen, the tool implementation must check the
+validity of its input data and return an error code if needed.</p>
+<div class="section" id="recognized-meta-data-keys">
+<h3>Recognized meta-data keys<a class="headerlink" href="#recognized-meta-data-keys" title="Permalink to this headline">🔗</a></h3>
+<p>The following list contains the meta-data keys most commonly used and
+supported by the default VisionAppster user interface components. It
+should be noted that no user interface is required to respect any of
+these and that custom components may provide additional values not
+listed here.</p>
+<dl class="simple">
+<dt>readOnly</dt><dd><p>A Boolean flag that indicates whether the value of the parameter can
+be written to or only read.</p>
+</dd>
+<dt>typeName</dt><dd><p>A <a class="reference external" href="#type-specifiers">type specifier</a> for the parameter.</p>
+</dd>
+<dt>doc</dt><dd><p>A text string containing documentation for the parameter. May contain
+HTML formatting.</p>
+</dd>
+<dt>enabled</dt><dd><p>A Boolean flag that indicates whether the parameter should be
+available or not. The user interface may hide or gray out parameters
+that are not currently enabled.</p>
+</dd>
+<dt>stored</dt><dd><p>A Boolean flag that tells whether the value of an optional or fixed
+parameter should be stored permanently when the processing graph is
+saved. By default, the current values of all optional or fixed
+read-write input parameters are stored.</p>
+</dd>
+<dt>min</dt><dd><p>Minimum allowed value. The type must be the same as that of the
+corresponding parameter.</p>
+</dd>
+<dt>max</dt><dd><p>Maximum allowed value. The type must be the same as that of the
+corresponding parameter. Alternatively, <em>max</em> can be the text string
+“GRAY_MAX”. If the user works with images that have more than eight
+bits of depth, this value changes the maximum value according to the
+depth of the images.</p>
+</dd>
+<dt>step</dt><dd><p>If the value can only take discrete values, this parameter specifies
+the step between successive values. Usually used with <em>min</em> and
+<em>max</em>. The type must be the same as that of the corresponding
+parameter.</p>
+</dd>
+<dt>suggestedMin, suggestedMax, suggestedStep</dt><dd><p>Sames as <em>min</em>, <em>max</em> and <em>step</em>, but impose no hard limits. This is
+useful for parameters that usually take a certain range but can also
+take different values in special situations.</p>
+</dd>
+<dt>choices</dt><dd><p>An array of valid choices for the parameter. Usually used for
+enumerated parameters. Each entry in the array is an object with
+<em>name</em> and <em>value</em> keys. The type of <em>value</em> must match the type of
+the parameter. See <a class="reference external" href="#structured-meta-data">structured meta-data</a>
+for details.</p>
+</dd>
+<dt>specialValues</dt><dd><p>An array of values that have a special meaning. The most common use
+for this meta-data is to provide a special meaning for <code class="docutils literal notranslate"><span class="pre">Inf</span></code> or
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code> in a <code class="docutils literal notranslate"><span class="pre">double</span></code> type parameter. The format is the same as
+that of <em>choices</em>: each value of the array is an object with <em>name</em>
+and <em>value</em> keys.</p>
+</dd>
+<dt>systemDependent</dt><dd><p>If the tool cannot work without knowing something of the underlying
+system, it can provide fixed parameters that are marked
+system-dependent. When the user deploys an application containing
+system-dependent parameters, the VisionAppster runtime makes sure
+there is a value assigned to the parameter. Typically, these
+parameters are addresses of attached hardware the application
+communicates with. The value of <em>systemDependent</em> is a Boolean flag.</p>
+</dd>
+<dt>columnNames</dt><dd><p>An array of text strings that are shown in the column header of a
+matrix or table, replacing the auto-generated header. If
+<em>columnNames</em> is given, it is assumed that the number of columns is
+fixed. For convenience, <em>columnNames</em> can also be given as a single,
+comma-separated text string. For example, a matrix representing a
+coordinate frame may define <em>columnNames</em> as “x,y,z,origin”.</p>
+</dd>
+<dt>firstColumnIndex</dt><dd><p>The index of the first column of a matrix or table, if auto-generated
+column headings are used. If <em>firstColumnIndex</em> is given, the default
+alphabetical column headings will be replaced by numbers. Must be an
+<code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+</dd>
+<dt>columns</dt><dd><p>A fixed number of columns as an <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>. Unnecessary if
+<em>columnNames</em> or <em>columnDefinitions</em> is given.</p>
+</dd>
+<dt>columnsEditable</dt><dd><p>A Boolean flag that enables or disables UI controls for changing the
+number of columns in a matrix or table.</p>
+</dd>
+<dt>minColumns</dt><dd><p>Minimum number of columns if <em>columnsEditable</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Zero by
+default. An <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+</dd>
+<dt>maxColumns</dt><dd><p>Maximum number of columns if <em>columnsEditable</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Unlimited
+by default. An <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+</dd>
+<dt>columnDefinitions</dt><dd><p>An array of object specifying meta-data for individual columns in a
+table. See <a class="reference external" href="#structured-meta-data">structured meta-data below</a>.</p>
+</dd>
+<dt>defaultValue</dt><dd><p>The value used for newly created table or matrix cells when new rows
+or columns are being added. The type of <em>defaultValue</em> can be
+anything, but it must match the <em>typeName</em> of the column definition
+object, if there is one.</p>
+</dd>
+<dt>firstRowIndex</dt><dd><p>The index of the first row of a matrix or table. Auto-numbering is
+started from one by default. Often, there is a need to change this to
+zero. Must be an <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+</dd>
+<dt>rowNames, rows, rowsEditable, minRows, maxRows</dt><dd><p>Same as the corresponding meta keys for columns.</p>
+</dd>
+<dt>imageType</dt><dd><p>An array of text strings containing supported or produced image types
+for an <code class="docutils literal notranslate"><span class="pre">Image</span></code> type parameter. The types can also be specified as a
+single (comma-separated) string. This lets a tool to specify which
+kinds of images an input accepts or which kind of image an output
+produces. Valid values are <code class="docutils literal notranslate"><span class="pre">raw</span></code>, <code class="docutils literal notranslate"><span class="pre">encoded</span></code> and <code class="docutils literal notranslate"><span class="pre">compressed</span></code>.
+The default is <code class="docutils literal notranslate"><span class="pre">raw</span></code>, which only needs to be specified if an input
+parameter accepts e.g. both raw and compressed images. In this case
+the value for the meta-data entry would be “raw,compressed”. See
+<a class="reference internal" href="../c/reference/va_image/#_CPPv413va_image_type" title="va_image_type"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">image</span> <span class="pre">types</span></code></a> for details.</p>
+</dd>
+<dt>linkedTo</dt><dd><p>Establishes a link between two associated input or output parameters.
+This makes it easier for the UI to create editor widgets such as a
+region or a line that can be draw on top of an image. Examples:</p>
+<ul class="simple">
+<li><p>Input parameter called <code class="docutils literal notranslate"><span class="pre">frame</span></code> specifies <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">frame</span></code>. A
+related input parameter called <code class="docutils literal notranslate"><span class="pre">size</span></code> specifies
+<code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">frame/region</span></code>. This tells
+makes the Builder aware that the size is related to the coordinate
+frame and that it can be edited using a “region” widget.</p></li>
+<li><p>There are two output parameters, <code class="docutils literal notranslate"><span class="pre">startPoint</span></code> and <code class="docutils literal notranslate"><span class="pre">endPoint</span></code>,
+both of which specify <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">point</span></code>. In addition,
+<code class="docutils literal notranslate"><span class="pre">endPoint</span></code> specifies <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">startPoint/line</span></code>, which tells
+the Builder that the two points are the end points of a line and
+can be displayed using a line widget.</p></li>
+</ul>
+</dd>
+<dt>blockSize</dt><dd><p>If the output of a tool is a matrix, the existence of the
+<code class="docutils literal notranslate"><span class="pre">blockSize</span></code> meta-data specifies that the matrix contains multiple
+results stacked on top of each other. Each result consists of
+<code class="docutils literal notranslate"><span class="pre">blockSize</span></code> rows. For example, if an output specifies
+<code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span>&#160;&#160; <span class="pre">frame</span></code> and <code class="docutils literal notranslate"><span class="pre">blockSize</span> <span class="pre">=</span> <span class="pre">4</span></code>, the Builder knows to
+display each block of four rows of the matrix as an individual
+coordinate frame.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">🔗</a></h2>
+<div class="section" id="built-in-types">
+<h3>Built-in types<a class="headerlink" href="#built-in-types" title="Permalink to this headline">🔗</a></h3>
+<p>To make all tools compatible with each other, the VisionAppster runtime
+defines a set of <a class="reference internal" href="../c/reference/"><span class="doc">common C types</span></a> every
+function must use when passing data. To ensure matching word lengths
+across different architectures, the <code class="docutils literal notranslate"><span class="pre">stdint</span></code> types of the C99 standard
+are used. Compatible definitions are provided for compilers that do not
+support the C99 standard. Tool API implementations for different
+programming languages use the core C types behind the scenes.</p>
+</div>
+<div class="section" id="type-specifiers">
+<h3>Type specifiers<a class="headerlink" href="#type-specifiers" title="Permalink to this headline">🔗</a></h3>
+<p>Often, semantically different types are represented by the same C data
+type by the VisionAppster runtime. For example, coordinate frames,
+points and one-dimensional time series are all represented as matrices.
+To make the Builder and possible other user interfaces aware of the
+semantics, the type of a parameter can be augmented with a <code class="docutils literal notranslate"><span class="pre">typeName</span></code>
+specifier.</p>
+<p>The following types are recognized by standard user interface
+components:</p>
+<dl class="simple">
+<dt>enum</dt><dd><p>A list of mutually exclusive choices. Each choice is an object with
+the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> keys. <code class="docutils literal notranslate"><span class="pre">name</span></code> is a <code class="docutils literal notranslate"><span class="pre">String</span></code> and
+<code class="docutils literal notranslate"><span class="pre">value</span></code> can be any data type, although “enums” are typically
+integers in programming languages. The existence of a <code class="docutils literal notranslate"><span class="pre">choices</span></code>
+meta-data entry implies <code class="docutils literal notranslate"><span class="pre">enum</span></code>.</p>
+</dd>
+<dt>enum/editable</dt><dd><p>A value that has a predefined list of choices but also allows editing
+the value manually.</p>
+</dd>
+<dt>multiline</dt><dd><p>A multi-line string.</p>
+</dd>
+<dt>frame</dt><dd><p>A 3D coordinate frame with translation (4-by-4 matrix).</p>
+</dd>
+<dt>size</dt><dd><p>Width and height relative to a coordinate frame (1-by-2 matrix).</p>
+</dd>
+<dt>point</dt><dd><p>A single point in two or three dimensions (1-by-2 or 1-by-3 matrix).</p>
+</dd>
+<dt>pointset</dt><dd><p>A set of related points in two or three dimensions (N-by-2 or N-by-3
+matrix).</p>
+</dd>
+</dl>
+<p>In the C API, a type specifier can be attached to a parameter using the
+<code class="docutils literal notranslate"><span class="pre">STATIC_META</span></code> macro. For example:
+<code class="docutils literal notranslate"><span class="pre">STATIC_META(va_string,</span> <span class="pre">frame_typeName,</span> <span class="pre">&quot;frame&quot;)</span></code>. In the Python API,
+the same effect is achieved with function argument annotations. For
+example:
+<code class="docutils literal notranslate"><span class="pre">(va.Matrix.Double,</span> <span class="pre">'frame',</span> <span class="pre">va.Matrix.Double.identity(4),</span> <span class="pre">{'typeName':</span> <span class="pre">'frame'})</span></code></p>
+</div>
+<div class="section" id="data-type-conversions">
+<h3>Data type conversions<a class="headerlink" href="#data-type-conversions" title="Permalink to this headline">🔗</a></h3>
+<p>When any 3rd party library is integrated to the VisionAppster platform,
+the need for data type conversions arises. To make this easy for the
+user, the platform comes with some built-in conversions to common types.
+Currently, <a class="reference internal" href="../cpp/opencv/OpenCvMat/"><span class="doc">OpenCV types</span></a> and <a class="reference internal" href="../cpp/dlib/DlibImage/"><span class="doc">DLIB’s
+image type</span></a> are supported in the C++ API. In
+the Python API, buffer-like data types implement the buffer protocol
+which allows them to be passed as shallow copies to functions expecting
+NumPy arrays, for example. Generally, one should avoid making deep
+copies of data whenever possible.</p>
+</div>
+</div>
+<div class="section" id="debugging-native-tools">
+<h2>Debugging native tools<a class="headerlink" href="#debugging-native-tools" title="Permalink to this headline">🔗</a></h2>
+<p>In rare cases, a carefully designed and meticulously implemented
+algorithm doesn’t work exactly as intended once it compiles. If console
+output doesn’t help, a desperate developer may reach to a debugger as a
+last resort. But there is a problem: you cannot easily start the
+VisionAppster Builder or Engine in a debugger.</p>
+<p>What you can do, however, is to compile your tool plugin with debug
+symbols, deploy it normally and attach your debugger to a running
+VisionAppster process.</p>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">🔗</a></h3>
+<p>To debug a plugin in the Builder, launch the Builder normally and then
+attach the debugger to the <code class="docutils literal notranslate"><span class="pre">va-builder</span></code> process. To debug it in a
+locally running Engine, attach the debugger to the <code class="docutils literal notranslate"><span class="pre">va-run</span></code> process.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">🔗</a></h3>
+<p>To debug a plugin in the Builder, launch the Builder normally and then
+attach the debugger to the <code class="docutils literal notranslate"><span class="pre">va-builder.exe</span></code> process.</p>
+<p>The VisionAppster Engine service runs in the LOCALSERVICE account and
+administrator rights are required to debug your tool in an Engine
+running in it. So, launch your IDE with “Run as administrator” command
+and then attach the debugger to the <code class="docutils literal notranslate"><span class="pre">appenginesrv.exe</span></code> process. You
+may need to select option “Show processes from all users” to see the
+service process.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../js/" class="btn btn-neutral float-right" title="JavaScript client API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

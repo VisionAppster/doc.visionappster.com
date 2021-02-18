@@ -1,0 +1,1299 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_image &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_matrix" href="../va_matrix/" />
+    <link rel="prev" title="va_coordinate_transform.h" href="../va_coordinate_transform.h/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../" class="icon icon-home"> VisionAppster
+          
+
+          
+            
+            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_complex/">va_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_image</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-image">
+<h1>va_image<a class="headerlink" href="#va-image" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_image.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv48va_image">
+<span id="_CPPv38va_image"></span><span id="_CPPv28va_image"></span><span id="va_image"></span><span class="target" id="va_image"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">va_image</span></code><a class="headerlink" href="#_CPPv48va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>An image. </p>
+<p>The image structure describes the format of the image and contains a pointer to the start of image data. Images are always stored in row-major order: the <em>data</em> pointer points to the upper left pixel, <em>data</em> + 1 to the pixel to the right of it and <em>data</em> + <em>stride</em> to the beginning of the row below the first one.</p>
+<p>The image structure always contains calibration data and a coordinate frame that can be used to map the image to the physical world. This makes it possible to always make measurements in world units (e.g. millimeters) and to easily relate images to each other without using side channels to pass location information. For example, the exact location of a subimage within the original is always known because both images know their location with respect to the world. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image4typeE">
+<span id="_CPPv3N8va_image4typeE"></span><span id="_CPPv2N8va_image4typeE"></span><span id="va_image::type__va_image_type"></span><span class="target" id="va_image.type"></span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#_CPPv4N8va_image4typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of the image. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image5widthE">
+<span id="_CPPv3N8va_image5widthE"></span><span id="_CPPv2N8va_image5widthE"></span><span id="va_image::width__int32_t"></span><span class="target" id="va_image.width"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">width</span></code><a class="headerlink" href="#_CPPv4N8va_image5widthE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of columns in the image. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image6heightE">
+<span id="_CPPv3N8va_image6heightE"></span><span id="_CPPv2N8va_image6heightE"></span><span id="va_image::height__int32_t"></span><span class="target" id="va_image.height"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">height</span></code><a class="headerlink" href="#_CPPv4N8va_image6heightE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of rows in the image. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image6strideE">
+<span id="_CPPv3N8va_image6strideE"></span><span id="_CPPv2N8va_image6strideE"></span><span id="va_image::stride__s"></span><span class="target" id="va_image.stride"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">stride</span></code><a class="headerlink" href="#_CPPv4N8va_image6strideE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of bytes between the starts of successive rows. </p>
+<p>If the image is compressed, <em>stride</em> tells the size of the compressed data in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image9ref_countE">
+<span id="_CPPv3N8va_image9ref_countE"></span><span id="_CPPv2N8va_image9ref_countE"></span><span id="va_image::ref_count__va_refcount"></span><span class="target" id="va_image.ref_count"></span><a class="reference internal" href="../va_types.h/#_CPPv411va_refcount" title="va_refcount"><span class="pre">va_refcount</span></a> <code class="sig-name descname"><span class="pre">ref_count</span></code><a class="headerlink" href="#_CPPv4N8va_image9ref_countE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of references to this image structure. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image4timeE">
+<span id="_CPPv3N8va_image4timeE"></span><span id="_CPPv2N8va_image4timeE"></span><span id="va_image::time__uint32_t"></span><span class="target" id="va_image.time"></span><span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">time</span></code><a class="headerlink" href="#_CPPv4N8va_image4timeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Acquisition time in user-defined format. </p>
+<p>This field can be used to store a time stamp or a sequence index for inter-camera synchronization. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image4dataE">
+<span id="_CPPv3N8va_image4dataE"></span><span id="_CPPv2N8va_image4dataE"></span><span id="va_image::data__voidP"></span><span class="target" id="va_image.data"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N8va_image4dataE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pointer to data (upper left corner). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image11channel_minE">
+<span id="_CPPv3N8va_image11channel_minE"></span><span id="_CPPv2N8va_image11channel_minE"></span><span id="va_image::channel_min__int32_t"></span><span class="target" id="va_image.channel_min"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">channel_min</span></code><a class="headerlink" href="#_CPPv4N8va_image11channel_minE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The minimum value a color channel in the image can take. </p>
+<p>With the <code class="docutils literal notranslate"><span class="pre">va_gray8_image_type</span></code>, this is always zero. With other gray-level types, <code class="docutils literal notranslate"><span class="pre">channel_min</span></code> can take a negative value.</p>
+<p>Note that the image may or may not actually contain this value. For example, a gray-level image may have no black pixels. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image11channel_maxE">
+<span id="_CPPv3N8va_image11channel_maxE"></span><span id="_CPPv2N8va_image11channel_maxE"></span><span id="va_image::channel_max__int32_t"></span><span class="target" id="va_image.channel_max"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">channel_max</span></code><a class="headerlink" href="#_CPPv4N8va_image11channel_maxE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The maximum value a color channel in the image can take. </p>
+<p>Usually, this value is 255 for <code class="docutils literal notranslate"><span class="pre">va_gray8_image_type</span></code>, but it may be less (e.g. 1 in binary images). If a 10-bit camera is used, <code class="docutils literal notranslate"><span class="pre">channel_max</span></code> is 1023 even though <code class="docutils literal notranslate"><span class="pre">va_gray16_image_type</span></code> would allow values up to 32767.</p>
+<p>Note that the image may or may not actually contain this value. For example, a binary image (<code class="docutils literal notranslate"><span class="pre">channel_max</span></code> = 1) may contain just zeros. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image11world_frameE">
+<span id="_CPPv3N8va_image11world_frameE"></span><span id="_CPPv2N8va_image11world_frameE"></span><span id="va_image::world_frame__va_coordinate_frame"></span><span class="target" id="va_image.world_frame"></span><a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <code class="sig-name descname"><span class="pre">world_frame</span></code><a class="headerlink" href="#_CPPv4N8va_image11world_frameE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>World coordinate system position with respect to camera frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image12camera_frameE">
+<span id="_CPPv3N8va_image12camera_frameE"></span><span id="_CPPv2N8va_image12camera_frameE"></span><span id="va_image::camera_frame__va_coordinate_frame"></span><span class="target" id="va_image.camera_frame"></span><a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <code class="sig-name descname"><span class="pre">camera_frame</span></code><a class="headerlink" href="#_CPPv4N8va_image12camera_frameE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Camera coordinate system position with respect to world frame. </p>
+<p>This frame is obtained by inverting world_frame. It is stored in the image to avoid inverting the world frame repeatedly. Use the <a class="reference internal" href="#va_image_set_world_frame"><span class="std std-ref">va_image_set_world_frame()</span></a> function to set both frames at once. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image16calibration_dataE">
+<span id="_CPPv3N8va_image16calibration_dataE"></span><span id="_CPPv2N8va_image16calibration_dataE"></span><span id="va_image::calibration_data__va_camera_parameters"></span><span class="target" id="va_image.calibration_data"></span><a class="reference internal" href="../va_camera_parameters/#_CPPv420va_camera_parameters" title="va_camera_parameters"><span class="pre">va_camera_parameters</span></a> <code class="sig-name descname"><span class="pre">calibration_data</span></code><a class="headerlink" href="#_CPPv4N8va_image16calibration_dataE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Camera calibration data. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image6sourceE">
+<span id="_CPPv3N8va_image6sourceE"></span><span id="_CPPv2N8va_image6sourceE"></span><span id="va_image::source__va_imageP"></span><span class="target" id="va_image.source"></span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">source</span></code><a class="headerlink" href="#_CPPv4N8va_image6sourceE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pointer to source image, if this is a subimage. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8va_image7destroyE">
+<span id="_CPPv3N8va_image7destroyE"></span><span id="_CPPv2N8va_image7destroyE"></span><span class="target" id="*)"></span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">destroy</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8va_image7destroyE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Destructor function. </p>
+<p>Depending on how the image data was originally allocated, it also needs to be deallocated differently. If <em>destroy</em> is non-null, it will be used instead of shm_free() when deallocating a va_image. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_IMAGE_ROW_ALIGN">
+<span class="target" id="VA_IMAGE_ROW_ALIGN"></span><code class="sig-name descname"><span class="pre">VA_IMAGE_ROW_ALIGN</span></code><a class="headerlink" href="#c.VA_IMAGE_ROW_ALIGN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Image rows must be aligned to be able to process them efficiently. </p>
+<p>This is a hard requirement on FPGA and significantly increases performance when using SIMD instructions on PC processors. This value is the minimum required alignment. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_IMAGE_DATA_ALIGN">
+<span class="target" id="VA_IMAGE_DATA_ALIGN"></span><code class="sig-name descname"><span class="pre">VA_IMAGE_DATA_ALIGN</span></code><a class="headerlink" href="#c.VA_IMAGE_DATA_ALIGN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Minimum alignment of image data. </p>
+<p>The start of image data must be aligned so that it can be efficiently accessed using DMA. Note that this value must not be smaller than VA_IMAGE_ROW_ALIGN. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_IMAGE_HEADER_SIZE">
+<span class="target" id="VA_IMAGE_HEADER_SIZE"></span><code class="sig-name descname"><span class="pre">VA_IMAGE_HEADER_SIZE</span></code><a class="headerlink" href="#c.VA_IMAGE_HEADER_SIZE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The number of bytes reserved by the image header. </p>
+<p>The size of the header is rounded up to a multiple of <code class="docutils literal notranslate"><span class="pre">VA_IMAGE_DATA_ALIGN</span></code> bytes. The image is stored contiguously in memory if <code class="docutils literal notranslate"><span class="pre">img</span> <span class="pre">+</span> <span class="pre">VA_IMAGE_HEADER_SIZE</span> <span class="pre">==</span> <span class="pre">img-&gt;data</span></code>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt>
+<span class="target" id="va_image"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <code class="sig-name descname"><span class="pre">va_image</span></code><br /></dt>
+<dd><p>An image. </p>
+<p>The image structure describes the format of the image and contains a pointer to the start of image data. Images are always stored in row-major order: the <em>data</em> pointer points to the upper left pixel, <em>data</em> + 1 to the pixel to the right of it and <em>data</em> + <em>stride</em> to the beginning of the row below the first one.</p>
+<p>The image structure always contains calibration data and a coordinate frame that can be used to map the image to the physical world. This makes it possible to always make measurements in world units (e.g. millimeters) and to easily relate images to each other without using side channels to pass location information. For example, the exact location of a subimage within the original is always known because both images know their location with respect to the world. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Enums</p>
+<dl class="cpp enum">
+<dt id="_CPPv413va_image_type">
+<span id="_CPPv313va_image_type"></span><span id="_CPPv213va_image_type"></span><span class="target" id="va_image_type"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_image_type</span></code><a class="headerlink" href="#_CPPv413va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Supported image types. </p>
+<p>Image types are divided into three categories: <em>raw</em>, <em>encoded</em> and <em>compressed</em>. The pixel buffer of a raw image contains either gray levels or RGB values as an array, in native byte order. Encoded images may be e.g. YUV or Bayer encoded and may have separate color planes or inverse byte order. Compressed images store their pixels in a compressed format (e.g. PNG or JPEG).</p>
+<p>Only raw images are directly processable by most image processing algorithms. Therefore, compressed an encoded images usually need to be converted to one of the raw formats before they can be used. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_invalid_image_typeE">
+<span id="_CPPv3N13va_image_type21va_invalid_image_typeE"></span><span id="_CPPv2N13va_image_type21va_invalid_image_typeE"></span><span class="target" id="va_image_type::va_invalid_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_invalid_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_invalid_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Invalid image type. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_gray8_image_typeE">
+<span id="_CPPv3N13va_image_type19va_gray8_image_typeE"></span><span id="_CPPv2N13va_image_type19va_gray8_image_typeE"></span><span class="target" id="va_image_type::va_gray8_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_gray8_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_gray8_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Gray levels with 8 bits per pixel (unsigned char). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_gray16_image_typeE">
+<span id="_CPPv3N13va_image_type20va_gray16_image_typeE"></span><span id="_CPPv2N13va_image_type20va_gray16_image_typeE"></span><span class="target" id="va_image_type::va_gray16_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_gray16_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_gray16_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Gray levels with up to 16 bits per pixel (signed short). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_gray32_image_typeE">
+<span id="_CPPv3N13va_image_type20va_gray32_image_typeE"></span><span id="_CPPv2N13va_image_type20va_gray32_image_typeE"></span><span class="target" id="va_image_type::va_gray32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_gray32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_gray32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Gray levels with up to 32 bits per pixel (signed int). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_rgb32_image_typeE">
+<span id="_CPPv3N13va_image_type19va_rgb32_image_typeE"></span><span id="_CPPv2N13va_image_type19va_rgb32_image_typeE"></span><span class="target" id="va_image_type::va_rgb32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_rgb32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_rgb32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>RGB, 8 bits per color channel. </p>
+<p>Each pixel is represented as an unsigned int in the native byte order of the machine so that 0xff0000 represents red, 0x00ff00 green and 0x0000ff blue. On little-endian hardware, <code class="docutils literal notranslate"><span class="pre">va_rgb32_image_type</span></code>. and <code class="docutils literal notranslate"><span class="pre">va_bgrx32_image_type</span></code> are equivalent. The fourth color channel is ignored. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_argb32_image_typeE">
+<span id="_CPPv3N13va_image_type20va_argb32_image_typeE"></span><span id="_CPPv2N13va_image_type20va_argb32_image_typeE"></span><span class="target" id="va_image_type::va_argb32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_argb32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_argb32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The same as <code class="docutils literal notranslate"><span class="pre">va_rgb32_image_type</span></code> but the fourth color channel (alpha) determines the opacity of the color. </p>
+<p>0xffff0000 is fully opaque red and 0x8000ff00 semi-transparent green. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type26va_argb32premul_image_typeE">
+<span id="_CPPv3N13va_image_type26va_argb32premul_image_typeE"></span><span id="_CPPv2N13va_image_type26va_argb32premul_image_typeE"></span><span class="target" id="va_image_type::va_argb32premul_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_argb32premul_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type26va_argb32premul_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The same as <code class="docutils literal notranslate"><span class="pre">va_argb32_image_type</span></code> but the alpha channel is premultiplied into the color channels. </p>
+<p>This makes some operations more efficient. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type22va_last_raw_image_typeE">
+<span id="_CPPv3N13va_image_type22va_last_raw_image_typeE"></span><span id="_CPPv2N13va_image_type22va_last_raw_image_typeE"></span><span class="target" id="va_image_type::va_last_raw_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_last_raw_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type22va_last_raw_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type27va_first_encoded_image_typeE">
+<span id="_CPPv3N13va_image_type27va_first_encoded_image_typeE"></span><span id="_CPPv2N13va_image_type27va_first_encoded_image_typeE"></span><span class="target" id="va_image_type::va_first_encoded_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_first_encoded_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type27va_first_encoded_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_bgrx32_image_typeE">
+<span id="_CPPv3N13va_image_type20va_bgrx32_image_typeE"></span><span id="_CPPv2N13va_image_type20va_bgrx32_image_typeE"></span><span class="target" id="va_image_type::va_bgrx32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bgrx32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_bgrx32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit RGB. </p>
+<p>This is a byte-based format in which the blue color channel comes first. On a little-endian machine, this format corresponds to <code class="docutils literal notranslate"><span class="pre">va_rgb32_image_type</span></code>.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+---+---+---+---+---+---+---+---+
+| B | G | R | ? | B | G | R | ? | ...
++---+---+---+---+---+---+---+---+
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_xrgb32_image_typeE">
+<span id="_CPPv3N13va_image_type20va_xrgb32_image_typeE"></span><span id="_CPPv2N13va_image_type20va_xrgb32_image_typeE"></span><span class="target" id="va_image_type::va_xrgb32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_xrgb32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_xrgb32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit RGB. </p>
+<p>This is a byte-based format in which the red color channel comes first. On a big-endian machine, this format corresponds to <code class="docutils literal notranslate"><span class="pre">va_rgb32_image_type</span></code>.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+---+---+---+---+---+---+---+---+
+| ? | R | G | B | ? | R | G | B | ...
++---+---+---+---+---+---+---+---+
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_bgr24_image_typeE">
+<span id="_CPPv3N13va_image_type19va_bgr24_image_typeE"></span><span id="_CPPv2N13va_image_type19va_bgr24_image_typeE"></span><span class="target" id="va_image_type::va_bgr24_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bgr24_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_bgr24_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Packed 24-bit RGB. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_rgb24_image_typeE">
+<span id="_CPPv3N13va_image_type19va_rgb24_image_typeE"></span><span id="_CPPv2N13va_image_type19va_rgb24_image_typeE"></span><span class="target" id="va_image_type::va_rgb24_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_rgb24_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_rgb24_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Packed 24-bit RGB. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_rggb8_image_typeE">
+<span id="_CPPv3N13va_image_type19va_rggb8_image_typeE"></span><span id="_CPPv2N13va_image_type19va_rggb8_image_typeE"></span><span class="target" id="va_image_type::va_rggb8_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_rggb8_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_rggb8_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Bayer-encoded 8-bit RGB (RG). </p>
+<p>The names of the Bayer encoding schemes encode the arrangement of color filters in a 2-by-2 neighborhood. The RGGB pattern corresponds to the following arrangement:</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_bggr8_image_typeE">
+<span id="_CPPv3N13va_image_type19va_bggr8_image_typeE"></span><span id="_CPPv2N13va_image_type19va_bggr8_image_typeE"></span><span class="target" id="va_image_type::va_bggr8_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_bggr8_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_bggr8_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Bayer-encoded 8-bit RGB (BG). </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_gbrg8_image_typeE">
+<span id="_CPPv3N13va_image_type19va_gbrg8_image_typeE"></span><span id="_CPPv2N13va_image_type19va_gbrg8_image_typeE"></span><span class="target" id="va_image_type::va_gbrg8_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_gbrg8_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_gbrg8_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Bayer-encoded 8-bit RGB (GB). </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type19va_grbg8_image_typeE">
+<span id="_CPPv3N13va_image_type19va_grbg8_image_typeE"></span><span id="_CPPv2N13va_image_type19va_grbg8_image_typeE"></span><span class="target" id="va_image_type::va_grbg8_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_grbg8_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type19va_grbg8_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Bayer-encoded 8-bit RGB (GR). </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">R</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">G</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_yuv444_image_typeE">
+<span id="_CPPv3N13va_image_type20va_yuv444_image_typeE"></span><span id="_CPPv2N13va_image_type20va_yuv444_image_typeE"></span><span class="target" id="va_image_type::va_yuv444_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yuv444_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_yuv444_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:4:4. </p>
+<p>All three color components are provided for each pixel in YUV order.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_uyv444_image_typeE">
+<span id="_CPPv3N13va_image_type20va_uyv444_image_typeE"></span><span id="_CPPv2N13va_image_type20va_uyv444_image_typeE"></span><span class="target" id="va_image_type::va_uyv444_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uyv444_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_uyv444_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:4:4. </p>
+<p>All three color components are provided for each pixel in UYV order.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_yvu444_image_typeE">
+<span id="_CPPv3N13va_image_type20va_yvu444_image_typeE"></span><span id="_CPPv2N13va_image_type20va_yvu444_image_typeE"></span><span class="target" id="va_image_type::va_yvu444_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yvu444_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_yvu444_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:4:4. </p>
+<p>All three color components are provided for each pixel in YVU order.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_uyvy422_image_typeE">
+<span id="_CPPv3N13va_image_type21va_uyvy422_image_typeE"></span><span id="_CPPv2N13va_image_type21va_uyvy422_image_typeE"></span><span class="target" id="va_image_type::va_uyvy422_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uyvy422_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_uyvy422_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:2. </p>
+<p>Y is provided for each pixel, U and V shared between two neighbors.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_yuyv422_image_typeE">
+<span id="_CPPv3N13va_image_type21va_yuyv422_image_typeE"></span><span id="_CPPv2N13va_image_type21va_yuyv422_image_typeE"></span><span class="target" id="va_image_type::va_yuyv422_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yuyv422_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_yuyv422_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:2. </p>
+<p>Y is provided for each pixel, U and V shared between two neighbors.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_vyuy422_image_typeE">
+<span id="_CPPv3N13va_image_type21va_vyuy422_image_typeE"></span><span id="_CPPv2N13va_image_type21va_vyuy422_image_typeE"></span><span class="target" id="va_image_type::va_vyuy422_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_vyuy422_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_vyuy422_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:2. </p>
+<p>Y is provided for each pixel, U and V shared between two neighbors.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_yvyu422_image_typeE">
+<span id="_CPPv3N13va_image_type21va_yvyu422_image_typeE"></span><span id="_CPPv2N13va_image_type21va_yvyu422_image_typeE"></span><span class="target" id="va_image_type::va_yvyu422_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yvyu422_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_yvyu422_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:2. </p>
+<p>Y is provided for each pixel, U and V shared between two neighbors.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type23va_uyvyyy411_image_typeE">
+<span id="_CPPv3N13va_image_type23va_uyvyyy411_image_typeE"></span><span id="_CPPv2N13va_image_type23va_uyvyyy411_image_typeE"></span><span class="target" id="va_image_type::va_uyvyyy411_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uyvyyy411_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type23va_uyvyyy411_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:1:1. </p>
+<p>Y is provided for each pixel, U and V shared between four neighbors.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type23va_uyyvyy411_image_typeE">
+<span id="_CPPv3N13va_image_type23va_uyyvyy411_image_typeE"></span><span id="_CPPv2N13va_image_type23va_uyyvyy411_image_typeE"></span><span class="target" id="va_image_type::va_uyyvyy411_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_uyyvyy411_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type23va_uyyvyy411_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:1:1. </p>
+<p>Y is provided for each pixel, U and V shared between four neighbors.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+---+---+---+---+---+---+---+---+</span>
+<span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">U</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">V</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">Y</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">+---+---+---+---+---+---+---+---+---+---+---+---+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_yuv420p_image_typeE">
+<span id="_CPPv3N13va_image_type21va_yuv420p_image_typeE"></span><span id="_CPPv2N13va_image_type21va_yuv420p_image_typeE"></span><span class="target" id="va_image_type::va_yuv420p_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yuv420p_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_yuv420p_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:0. </p>
+<p>First there are as many Y-samples as there are pixels (N), followed by N/4 consecutive U-samples, followed by N/4 consequtive V-samples. The total number of samples is hence 3*N/2.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y1a</span> <span class="o">|</span> <span class="n">Y2a</span> <span class="o">|</span> <span class="n">Y3b</span> <span class="o">|</span> <span class="n">Y4b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y5a</span> <span class="o">|</span> <span class="n">Y6a</span> <span class="o">|</span> <span class="n">Y7b</span> <span class="o">|</span> <span class="n">Y8b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y9c</span> <span class="o">|</span> <span class="n">Y10c</span><span class="o">|</span> <span class="n">Y11d</span><span class="o">|</span> <span class="n">Y12d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y13c</span><span class="o">|</span> <span class="n">Y14c</span><span class="o">|</span> <span class="n">Y15d</span><span class="o">|</span> <span class="n">Y16d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U1a</span> <span class="o">|</span> <span class="n">U2b</span> <span class="o">|</span> <span class="n">U3c</span> <span class="o">|</span> <span class="n">U4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V1a</span> <span class="o">|</span> <span class="n">V2b</span> <span class="o">|</span> <span class="n">V3c</span> <span class="o">|</span> <span class="n">V4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_yvu420p_image_typeE">
+<span id="_CPPv3N13va_image_type21va_yvu420p_image_typeE"></span><span id="_CPPv2N13va_image_type21va_yvu420p_image_typeE"></span><span class="target" id="va_image_type::va_yvu420p_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yvu420p_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_yvu420p_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:0. </p>
+<p>First there are as many Y-samples as there are pixels (N), followed by N/4 consecutive V-samples, followed by N/4 consequtive U-samples. The total number of samples is hence 3*N/2.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y1a</span> <span class="o">|</span> <span class="n">Y2a</span> <span class="o">|</span> <span class="n">Y3b</span> <span class="o">|</span> <span class="n">Y4b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y5a</span> <span class="o">|</span> <span class="n">Y6a</span> <span class="o">|</span> <span class="n">Y7b</span> <span class="o">|</span> <span class="n">Y8b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y9c</span> <span class="o">|</span> <span class="n">Y10c</span><span class="o">|</span> <span class="n">Y11d</span><span class="o">|</span> <span class="n">Y12d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y13c</span><span class="o">|</span> <span class="n">Y14c</span><span class="o">|</span> <span class="n">Y15d</span><span class="o">|</span> <span class="n">Y16d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V1a</span> <span class="o">|</span> <span class="n">V2b</span> <span class="o">|</span> <span class="n">V3c</span> <span class="o">|</span> <span class="n">V4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U1a</span> <span class="o">|</span> <span class="n">U2b</span> <span class="o">|</span> <span class="n">U3c</span> <span class="o">|</span> <span class="n">U4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type22va_yuv420sp_image_typeE">
+<span id="_CPPv3N13va_image_type22va_yuv420sp_image_typeE"></span><span id="_CPPv2N13va_image_type22va_yuv420sp_image_typeE"></span><span class="target" id="va_image_type::va_yuv420sp_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yuv420sp_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type22va_yuv420sp_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:0. </p>
+<p>First there are as many Y-samples as there are pixels (N), followed by N/2 interlaced U+V-pairs. The total number of samples is hence 3*N/2.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y1a</span> <span class="o">|</span> <span class="n">Y2a</span> <span class="o">|</span> <span class="n">Y3b</span> <span class="o">|</span> <span class="n">Y4b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y5a</span> <span class="o">|</span> <span class="n">Y6a</span> <span class="o">|</span> <span class="n">Y7b</span> <span class="o">|</span> <span class="n">Y8b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y9c</span> <span class="o">|</span> <span class="n">Y10c</span><span class="o">|</span> <span class="n">Y11d</span><span class="o">|</span> <span class="n">Y12d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y13c</span><span class="o">|</span> <span class="n">Y14c</span><span class="o">|</span> <span class="n">Y15d</span><span class="o">|</span> <span class="n">Y16d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U1a</span> <span class="o">|</span> <span class="n">V1a</span> <span class="o">|</span> <span class="n">U2b</span> <span class="o">|</span> <span class="n">V2b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U3c</span> <span class="o">|</span> <span class="n">V3c</span> <span class="o">|</span> <span class="n">U4d</span> <span class="o">|</span> <span class="n">V4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type22va_yvu420sp_image_typeE">
+<span id="_CPPv3N13va_image_type22va_yvu420sp_image_typeE"></span><span id="_CPPv2N13va_image_type22va_yvu420sp_image_typeE"></span><span class="target" id="va_image_type::va_yvu420sp_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yvu420sp_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type22va_yvu420sp_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:0. </p>
+<p>First there are as many Y-samples as there are pixels (N), followed by N/2 interlaced V+U-pairs. The total number of samples is hence 3*N/2.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y1a</span> <span class="o">|</span> <span class="n">Y2a</span> <span class="o">|</span> <span class="n">Y3b</span> <span class="o">|</span> <span class="n">Y4b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y5a</span> <span class="o">|</span> <span class="n">Y6a</span> <span class="o">|</span> <span class="n">Y7b</span> <span class="o">|</span> <span class="n">Y8b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y9c</span> <span class="o">|</span> <span class="n">Y10c</span><span class="o">|</span> <span class="n">Y11d</span><span class="o">|</span> <span class="n">Y12d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y13c</span><span class="o">|</span> <span class="n">Y14c</span><span class="o">|</span> <span class="n">Y15d</span><span class="o">|</span> <span class="n">Y16d</span><span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V1a</span> <span class="o">|</span> <span class="n">U1a</span> <span class="o">|</span> <span class="n">V2b</span> <span class="o">|</span> <span class="n">U2b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V3c</span> <span class="o">|</span> <span class="n">U3c</span> <span class="o">|</span> <span class="n">V4d</span> <span class="o">|</span> <span class="n">U4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_rgbx32_image_typeE">
+<span id="_CPPv3N13va_image_type20va_rgbx32_image_typeE"></span><span id="_CPPv2N13va_image_type20va_rgbx32_image_typeE"></span><span class="target" id="va_image_type::va_rgbx32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_rgbx32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_rgbx32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit RGB. </p>
+<p>This is a byte-based format in which the red color channel comes first and padding last.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+---+---+---+---+---+---+---+---+
+| R | G | B | ? | R | G | B | ? | ...
++---+---+---+---+---+---+---+---+
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type20va_xbgr32_image_typeE">
+<span id="_CPPv3N13va_image_type20va_xbgr32_image_typeE"></span><span id="_CPPv2N13va_image_type20va_xbgr32_image_typeE"></span><span class="target" id="va_image_type::va_xbgr32_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_xbgr32_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type20va_xbgr32_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>32-bit RGB. </p>
+<p>This is a byte-based format in which the red color channel comes last and padding first.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+---+---+---+---+---+---+---+---+
+| ? | B | G | R | ? | B | G | R | ...
++---+---+---+---+---+---+---+---+
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type26va_last_encoded_image_typeE">
+<span id="_CPPv3N13va_image_type26va_last_encoded_image_typeE"></span><span id="_CPPv2N13va_image_type26va_last_encoded_image_typeE"></span><span class="target" id="va_image_type::va_last_encoded_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_last_encoded_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type26va_last_encoded_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type24va_compressed_image_typeE">
+<span id="_CPPv3N13va_image_type24va_compressed_image_typeE"></span><span id="_CPPv2N13va_image_type24va_compressed_image_typeE"></span><span class="target" id="va_image_type::va_compressed_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_compressed_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type24va_compressed_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Compressed data, either gray levels or colors. </p>
+<p>Compressed images are special in that their size is not constant. It is not possible to obtain a pointer to the beginning of any of the scanlines, and it is not therefore safe to access pixels unless the image is decompressed first. The <em>stride</em> of a compressed image tells the length of the compressed data in bytes. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv420va_image_compositing">
+<span id="_CPPv320va_image_compositing"></span><span id="_CPPv220va_image_compositing"></span><span class="target" id="va_image_compositing"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_image_compositing</span></code><a class="headerlink" href="#_CPPv420va_image_compositing" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Compositing strategies for overlapping images. </p>
+<p>Alpha compositing is the process of overlapping images and a background to create the appearance of partial or full transparency. The different ways of alpha compositing can be expressed using compositing algebra, which gives the first five strategies listed here.</p>
+<p>Alpha compositing is always applied to an ordered pair of images: A and B. If more images are to be blended, the process is applied to the first pair of images first. The result is then used as the pair to the third image and so on.</p>
+<p>The last compositing strategy, <code class="docutils literal notranslate"><span class="pre">va_composite_average</span></code>, differs from the others in that it gives all composited images equal weight. The result is the same independent of order. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_image_compositing17va_composite_overE">
+<span id="_CPPv3N20va_image_compositing17va_composite_overE"></span><span id="_CPPv2N20va_image_compositing17va_composite_overE"></span><span class="target" id="va_image_compositing::va_composite_over"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_composite_over</span></code><a class="headerlink" href="#_CPPv4N20va_image_compositing17va_composite_overE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A and B are blended together where they overlap, B over A. </p>
+<p>Pixels outside of their intersection remain unchanged. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_image_compositing15va_composite_inE">
+<span id="_CPPv3N20va_image_compositing15va_composite_inE"></span><span id="_CPPv2N20va_image_compositing15va_composite_inE"></span><span class="target" id="va_image_compositing::va_composite_in"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_composite_in</span></code><a class="headerlink" href="#_CPPv4N20va_image_compositing15va_composite_inE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A is used as a mask that defines which part of B should be taken “in”. </p>
+<p>Only the intersection of A and B remains, with pixels taken from B. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_image_compositing16va_composite_outE">
+<span id="_CPPv3N20va_image_compositing16va_composite_outE"></span><span id="_CPPv2N20va_image_compositing16va_composite_outE"></span><span class="target" id="va_image_compositing::va_composite_out"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_composite_out</span></code><a class="headerlink" href="#_CPPv4N20va_image_compositing16va_composite_outE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A is used as a mask that defines which part of B should be left “out”. </p>
+<p>Only the part of B that is outside of the intersection of A and B remains. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_image_compositing17va_composite_atopE">
+<span id="_CPPv3N20va_image_compositing17va_composite_atopE"></span><span id="_CPPv2N20va_image_compositing17va_composite_atopE"></span><span class="target" id="va_image_compositing::va_composite_atop"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_composite_atop</span></code><a class="headerlink" href="#_CPPv4N20va_image_compositing17va_composite_atopE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A is used as a mask that defines the area that remains. </p>
+<p>A and B are blended together where they overlap, B over A. A’s pixels outside of the intersection remain unchanged, B’s are left out. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_image_compositing16va_composite_xorE">
+<span id="_CPPv3N20va_image_compositing16va_composite_xorE"></span><span id="_CPPv2N20va_image_compositing16va_composite_xorE"></span><span class="target" id="va_image_compositing::va_composite_xor"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_composite_xor</span></code><a class="headerlink" href="#_CPPv4N20va_image_compositing16va_composite_xorE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The part of input B that lies outside of input A is combined with the part of input A that lies outside of input B. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_image_compositing20va_composite_averageE">
+<span id="_CPPv3N20va_image_compositing20va_composite_averageE"></span><span id="_CPPv2N20va_image_compositing20va_composite_averageE"></span><span class="target" id="va_image_compositing::va_composite_average"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_composite_average</span></code><a class="headerlink" href="#_CPPv4N20va_image_compositing20va_composite_averageE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Calculate the average of all overlapping pixels when two or more images overlap. </p>
+<p>This strategy gives all images equal weight and ignores their order. It is useful for example in stitching together images from multiple cameras or viewpoints. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv420va_image_alloc_emptyv">
+<span id="_CPPv320va_image_alloc_emptyv"></span><span id="_CPPv220va_image_alloc_emptyv"></span><span id="va_image_alloc_empty"></span><span class="target" id="va_image_alloc_empty"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_image_alloc_emptyv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates space for a va_image from the shared heap (shm_alloc) and initializes the structure. </p>
+<p>The returned image contains no data. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_alloc13va_image_typeii">
+<span id="_CPPv314va_image_alloc13va_image_typeii"></span><span id="_CPPv214va_image_alloc13va_image_typeii"></span><span id="va_image_alloc__va_image_type.i.i"></span><span class="target" id="va_image_alloc"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_alloc13va_image_typeii" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates an uninitialized image array. </p>
+<p>If memory allocation fails or if <em>type</em> is va_compressed_image_type, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv421va_image_alloc_stride13va_image_typeii6size_t">
+<span id="_CPPv321va_image_alloc_stride13va_image_typeii6size_t"></span><span id="_CPPv221va_image_alloc_stride13va_image_typeii6size_t"></span><span id="va_image_alloc_stride__va_image_type.i.i.s"></span><span class="target" id="va_image_alloc_stride"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_stride</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em>, <span class="pre">size_t</span> <em><span class="pre">stride</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421va_image_alloc_stride13va_image_typeii6size_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates an uninitialized image array with the given <em>stride</em>. </p>
+<p>If <em>stride</em> is less than the minimum number of bytes required for each image row of the given <em>width</em> and <em>type</em>, <em>stride</em> will be automatically adjusted up.</p>
+<p>This function can be used to allocate space for a compressed image, provided that you know the size of compressed data (<em>stride</em>) in advance.</p>
+<p>If memory allocation fails, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_clonePK8va_image">
+<span id="_CPPv314va_image_clonePK8va_image"></span><span id="_CPPv214va_image_clonePK8va_image"></span><span id="va_image_clone__va_imageCP"></span><span class="target" id="va_image_clone"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_clonePK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a deep copy of <em>source</em>. </p>
+<p>Note that the rows of the result will be packed to the default alignment, which means that the stride of the copy may be different from that of <em>source</em>. Returns the clone or NULL if memory allocation fails. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv421va_image_clone_headerPK8va_image">
+<span id="_CPPv321va_image_clone_headerPK8va_image"></span><span id="_CPPv221va_image_clone_headerPK8va_image"></span><span id="va_image_clone_header__va_imageCP"></span><span class="target" id="va_image_clone_header"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_clone_header</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421va_image_clone_headerPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a copy of va_image structure pointed to by <em>source</em>. </p>
+<p>The returned image will point to the same data as <em>source</em>. If memory allocation fails, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_copy_dataPKv6size_tP8va_image">
+<span id="_CPPv318va_image_copy_dataPKv6size_tP8va_image"></span><span id="_CPPv218va_image_copy_dataPKv6size_tP8va_image"></span><span id="va_image_copy_data__voidCP.s.va_imageP"></span><span class="target" id="va_image_copy_data"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_copy_data</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">source</span></em>, <span class="pre">size_t</span> <em><span class="pre">sourceStride</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_copy_dataPKv6size_tP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Copies raw data from a buffer pointed to by <em>source</em> to the data buffer of <em>target</em>. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code>: A pointer to the beginning of the pixel buffer to copy. The buffer must be valid for at least `(target-&gt;rows - 1) * sourceStride + target-&gt;columns * va_image_pixel_bits(target-&gt;type) / 8` bytes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sourceStride</span></code>: The number of bytes between row starts in <em>source</em>. <em>sourceStride</em> must be at least <code class="docutils literal notranslate"><span class="pre">target-&gt;columns</span> <span class="pre">*</span> <span class="pre">va_image_pixel_bits(target-&gt;type)</span> <span class="pre">/</span> <span class="pre">8</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>: Target image. Data from <em>source</em> will be copied to the data buffer of this image. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_image_calloc13va_image_typeii">
+<span id="_CPPv315va_image_calloc13va_image_typeii"></span><span id="_CPPv215va_image_calloc13va_image_typeii"></span><span id="va_image_calloc__va_image_type.i.i"></span><span class="target" id="va_image_calloc"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_calloc</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_calloc13va_image_typeii" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates an image array whose every pixel is initially zero. </p>
+<p>If memory allocation fails or if <em>type</em> is va_compressed_image_type, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419va_image_alloc_copyPK8va_image">
+<span id="_CPPv319va_image_alloc_copyPK8va_image"></span><span id="_CPPv219va_image_alloc_copyPK8va_image"></span><span id="va_image_alloc_copy__va_imageCP"></span><span class="target" id="va_image_alloc_copy"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_alloc_copyPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a new image that is the same size and type as <em>source</em> and has the same world frame, calibration data and channel value range. </p>
+<p>The contents won’t be initialized. If memory allocation fails or if <em>type</em> is va_compressed_image_type, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_image_calloc_copyPK8va_image">
+<span id="_CPPv320va_image_calloc_copyPK8va_image"></span><span id="_CPPv220va_image_calloc_copyPK8va_image"></span><span id="va_image_calloc_copy__va_imageCP"></span><span class="target" id="va_image_calloc_copy"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_calloc_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_image_calloc_copyPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a new image that is the same size and type as <em>source</em> and has the same world frame, calibration data and channel value range. </p>
+<p>The contents will be initialized to zeros. If memory allocation fails or if <em>type</em> is va_compressed_image_type, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv425va_image_alloc_typed_copyPK8va_image13va_image_type">
+<span id="_CPPv325va_image_alloc_typed_copyPK8va_image13va_image_type"></span><span id="_CPPv225va_image_alloc_typed_copyPK8va_image13va_image_type"></span><span id="va_image_alloc_typed_copy__va_imageCP.va_image_type"></span><span class="target" id="va_image_alloc_typed_copy"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_typed_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425va_image_alloc_typed_copyPK8va_image13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a new image that is the same size as <em>source</em> and has the same world frame, calibration data and channel value range. </p>
+<p>The <em>type</em> of the new image may be different from that of <em>source</em>. The contents will be uninitialized. If memory allocation fails or if <em>type</em> is va_compressed_image_type, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv426va_image_calloc_typed_copyPK8va_image13va_image_type">
+<span id="_CPPv326va_image_calloc_typed_copyPK8va_image13va_image_type"></span><span id="_CPPv226va_image_calloc_typed_copyPK8va_image13va_image_type"></span><span id="va_image_calloc_typed_copy__va_imageCP.va_image_type"></span><span class="target" id="va_image_calloc_typed_copy"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_calloc_typed_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426va_image_calloc_typed_copyPK8va_image13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates a new image that is the same size as <em>source</em> and has the same world frame, calibration data and channel value range. </p>
+<p>The <em>type</em> of the new image may be different from that of <em>source</em>. The contents will be set to zero. If memory allocation fails or if <em>type</em> is va_compressed_image_type, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419va_image_alloc_moreP8va_imagei">
+<span id="_CPPv319va_image_alloc_moreP8va_imagei"></span><span id="_CPPv219va_image_alloc_moreP8va_imagei"></span><span id="va_image_alloc_more__va_imageP.i"></span><span class="target" id="va_image_alloc_more"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_more</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <span class="pre">int</span> <em><span class="pre">rows</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_alloc_moreP8va_imagei" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Appends <em>rows</em> uninitialized rows to <em>source</em> and returns either <em>source</em> or a pointer to a newly allocated image with the same contents as <em>source</em>. </p>
+<p>If memory allocation fails or if <em>source</em> is compressed, returns NULL and leaves <em>source</em> untouched. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_clearP8va_image">
+<span id="_CPPv314va_image_clearP8va_image"></span><span id="_CPPv214va_image_clearP8va_image"></span><span id="va_image_clear__va_imageP"></span><span class="target" id="va_image_clear"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_clear</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_clearP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sets all pixels in <em>source</em> to zeros. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_fill_grayP8va_imagei">
+<span id="_CPPv318va_image_fill_grayP8va_imagei"></span><span id="_CPPv218va_image_fill_grayP8va_imagei"></span><span id="va_image_fill_gray__va_imageP.i"></span><span class="target" id="va_image_fill_gray"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_fill_gray</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <span class="pre">int</span> <em><span class="pre">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_fill_grayP8va_imagei" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sets all pixels in <em>source</em> to the given gray <em>level</em>. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> if <em>source</em> is not a gray-level image. <em>source</em> is not modified in the error case.</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p>va_image_is_gray() </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_image_fill_rgbP8va_image10va_color32">
+<span id="_CPPv317va_image_fill_rgbP8va_image10va_color32"></span><span id="_CPPv217va_image_fill_rgbP8va_image10va_color32"></span><span id="va_image_fill_rgb__va_imageP.va_color32"></span><span class="target" id="va_image_fill_rgb"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_fill_rgb</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <a class="reference internal" href="../va_types.h/#_CPPv410va_color32" title="va_color32"><span class="pre">va_color32</span></a> <em><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_image_fill_rgbP8va_image10va_color32" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sets all pixels in <em>source</em> to the given <em>color</em>. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> if <em>source</em> is not an rgb image. <em>source</em> is not modified in the error case.</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p>va_image_is_rgb() </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv413va_image_freeP8va_image">
+<span id="_CPPv313va_image_freeP8va_image"></span><span id="_CPPv213va_image_freeP8va_image"></span><span id="va_image_free__va_imageP"></span><span class="target" id="va_image_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413va_image_freeP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Releases the memory allocated by <em>img</em>. </p>
+<p>If there is a custom destructor function, it will be used. If not, shm_free() will be used to release <em>img</em>. Note that if you made img-&gt;data point to an external buffer, it will not be deallocated. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416va_image_destroyP8va_image">
+<span id="_CPPv316va_image_destroyP8va_image"></span><span id="_CPPv216va_image_destroyP8va_image"></span><span id="va_image_destroy__va_imageP"></span><span class="target" id="va_image_destroy"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_destroyP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Releases the memory allocated by img and img-&gt;data using shm_free(). </p>
+<p>This function can be used as a custom destructor if you allocated an external data buffer for image data using shm_malloc(). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_type_name13va_image_type">
+<span id="_CPPv318va_image_type_name13va_image_type"></span><span id="_CPPv218va_image_type_name13va_image_type"></span><span id="va_image_type_name__va_image_type"></span><span class="target" id="va_image_type_name"></span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_type_name</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_type_name13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a human-readable name for the given <em>type</em>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv424va_image_set_world_frameP8va_imagePK19va_coordinate_frame">
+<span id="_CPPv324va_image_set_world_frameP8va_imagePK19va_coordinate_frame"></span><span id="_CPPv224va_image_set_world_frameP8va_imagePK19va_coordinate_frame"></span><span id="va_image_set_world_frame__va_imageP.va_coordinate_frameCP"></span><span class="target" id="va_image_set_world_frame"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_set_world_frame</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424va_image_set_world_frameP8va_imagePK19va_coordinate_frame" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sets <code class="docutils literal notranslate"><span class="pre">img-&gt;world_frame</span></code> to <em>frame</em> and <code class="docutils literal notranslate"><span class="pre">img-&gt;camera_frame</span></code> to its inverse. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_NOT_INVERTIBLE</span></code> if <em>frame</em> has no inverse. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv432va_image_set_default_calibrationP8va_image">
+<span id="_CPPv332va_image_set_default_calibrationP8va_image"></span><span id="_CPPv232va_image_set_default_calibrationP8va_image"></span><span id="va_image_set_default_calibration__va_imageP"></span><span class="target" id="va_image_set_default_calibration"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_set_default_calibration</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432va_image_set_default_calibrationP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Resets the calibration factors in <em>img</em> to default values. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_data_sizePK8va_image">
+<span id="_CPPv318va_image_data_sizePK8va_image"></span><span id="_CPPv218va_image_data_sizePK8va_image"></span><span id="va_image_data_size__va_imageCP"></span><span class="target" id="va_image_data_size"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_data_size</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_data_sizePK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the number of bytes needed to store all of <em>img</em>’s pixels. </p>
+<p>This is the difference between the address of the last pixel and that of the first one plus one. The actual value depends on pixel type and image stride, and may be a lot bigger than the number of pixels in the image, especially if the image is a sub-image reference. For compressed images, this function returns the size of the compressed data, i.e. <code class="docutils literal notranslate"><span class="pre">img-&gt;stride</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv412va_image_rowPK8va_imagei">
+<span id="_CPPv312va_image_rowPK8va_imagei"></span><span id="_CPPv212va_image_rowPK8va_imagei"></span><span id="va_image_row__va_imageCP.i"></span><span class="target" id="va_image_row"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_row</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <span class="pre">int</span> <em><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412va_image_rowPK8va_imagei" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a pointer to the beginning of the *y*th row. </p>
+<p>It is not safe to call this function on an empty or compressed image. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_image_copy_fieldsPK8va_imageP8va_image">
+<span id="_CPPv320va_image_copy_fieldsPK8va_imageP8va_image"></span><span id="_CPPv220va_image_copy_fieldsPK8va_imageP8va_image"></span><span id="va_image_copy_fields__va_imageCP.va_imageP"></span><span class="target" id="va_image_copy_fields"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_copy_fields</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">result</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_image_copy_fieldsPK8va_imageP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Copies channel min/max values, world and camera coordinate frames and calibration data from <em>source</em> to <em>result</em>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv421va_image_virtual_viewPK8va_imagePK10va_dmatrixdiP8va_image">
+<span id="_CPPv321va_image_virtual_viewPK8va_imagePK10va_dmatrixdiP8va_image"></span><span id="_CPPv221va_image_virtual_viewPK8va_imagePK10va_dmatrixdiP8va_image"></span><span id="va_image_virtual_view__va_imageCP.va_dmatrixCP.double.i.va_imageP"></span><span class="target" id="va_image_virtual_view"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_virtual_view</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">va_dmatrix</span> <span class="pre">*</span><em><span class="pre">transformation</span></em>, <span class="pre">double</span> <em><span class="pre">referenceDistance</span></em>, <span class="pre">int</span> <em><span class="pre">interpolation</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421va_image_virtual_viewPK8va_imagePK10va_dmatrixdiP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a view of the world out of an image and a virtual window defined by a coordinate frame and a size. </p>
+<p>This function can simultaneously perform arbitrary 3D affine transformations, perspective correction, scaling and cropping.</p>
+<p>The function is given a <em>transformation</em> matrix and an output image the specifies the size of a rectangular area in the physical world (not in the input image). The resulting image is a picture of the area as if a virtual camera were placed right on top of it at <em>referenceDistance</em>.</p>
+<p>The function can take any image as input and does not expect that the requested piece of the world is actually visible in it. If the input image does not contain the necessary data, portions of the output image (or even the whole image) may be left black.</p>
+<p>To rotate an image, one only needs to create a rotated coordinate frame. Images can be scaled by simply altering <em>referenceDistance</em>.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>VA_SUCCESS on success, VA_ERR_OUT_OF_MEMORY if there is not enough memory, VA_ERR_NOT_INVERTIBLE if the transformation matrix cannot be inverted and VA_ERR_INVALID_PARAMETER if <em>input</em> is invalid. The non-invertible transformation case is treated as if none of the requested area was visible in the input image: the whole output image will be set to zeros. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: The input image. Must be a non-encoded gray or color image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transformation</span></code>: A 4-by-4 homogeneous transformation matrix that specifies the coordinate frame of the area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">referenceDistance</span></code>: The distance between the virtual camera and the center of the area, in world coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpolation</span></code>: If <code class="docutils literal notranslate"><span class="pre">1</span></code>, improve accuracy by interpolating point samples between pixels. If <code class="docutils literal notranslate"><span class="pre">0</span></code>, round pixel coordinates to the nearest integer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A preallocated output image. The focal lengths and the size of the output image determine the world-to-pixel scaling ratio. The function calculates and stores a new world reference frame to the output image so that the resulting image can be related to the world coordinate system.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_alignPK8va_imagePK10va_dmatrixdiP8va_image">
+<span id="_CPPv314va_image_alignPK8va_imagePK10va_dmatrixdiP8va_image"></span><span id="_CPPv214va_image_alignPK8va_imagePK10va_dmatrixdiP8va_image"></span><span id="va_image_align__va_imageCP.va_dmatrixCP.double.i.va_imageP"></span><span class="target" id="va_image_align"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_align</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">va_dmatrix</span> <span class="pre">*</span><em><span class="pre">transformation</span></em>, <span class="pre">double</span> <em><span class="pre">referenceDistance</span></em>, <span class="pre">int</span> <em><span class="pre">interpolation</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_alignPK8va_imagePK10va_dmatrixdiP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv427va_image_virtual_view_framePK8va_imagePK19va_coordinate_framediP8va_image">
+<span id="_CPPv327va_image_virtual_view_framePK8va_imagePK19va_coordinate_framediP8va_image"></span><span id="_CPPv227va_image_virtual_view_framePK8va_imagePK19va_coordinate_framediP8va_image"></span><span id="va_image_virtual_view_frame__va_imageCP.va_coordinate_frameCP.double.i.va_imageP"></span><span class="target" id="va_image_virtual_view_frame"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_virtual_view_frame</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em>, <span class="pre">double</span> <em><span class="pre">referenceDistance</span></em>, <span class="pre">int</span> <em><span class="pre">interpolation</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427va_image_virtual_view_framePK8va_imagePK19va_coordinate_framediP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a view of the world out of an image and a virtual window defined by a coordinate frame and a size. </p>
+<p>This function works the same as <a class="reference internal" href="#va_image_virtual_view"><span class="std std-ref">va_image_virtual_view()</span></a>, but takes the coordinate frame as a <a class="reference internal" href="../va_coordinate_frame/#va_coordinate_frame"><span class="std std-ref">va_coordinate_frame</span></a>. This function only supports non-encoded gray and color images. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv423va_image_align_to_framePK8va_imagePK19va_coordinate_framediP8va_image">
+<span id="_CPPv323va_image_align_to_framePK8va_imagePK19va_coordinate_framediP8va_image"></span><span id="_CPPv223va_image_align_to_framePK8va_imagePK19va_coordinate_framediP8va_image"></span><span id="va_image_align_to_frame__va_imageCP.va_coordinate_frameCP.double.i.va_imageP"></span><span class="target" id="va_image_align_to_frame"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_align_to_frame</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em>, <span class="pre">double</span> <em><span class="pre">referenceDistance</span></em>, <span class="pre">int</span> <em><span class="pre">interpolation</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423va_image_align_to_framePK8va_imagePK19va_coordinate_framediP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_scalePK8va_imageP8va_image">
+<span id="_CPPv314va_image_scalePK8va_imageP8va_image"></span><span id="_CPPv214va_image_scalePK8va_imageP8va_image"></span><span id="va_image_scale__va_imageCP.va_imageP"></span><span class="target" id="va_image_scale"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_scale</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">result</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_scalePK8va_imageP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Scales the given <em>source</em> image to the given <em>result</em> image, which also specifies the target size. </p>
+<p>Bilinear filtering is used for smooth scaling result. Note that if <em>source</em> is empty, <em>result</em> won’t be modified. This function only supports non-encoded gray and color images. Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> on failure. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419va_image_align_withP8va_imagePK8va_image">
+<span id="_CPPv319va_image_align_withP8va_imagePK8va_image"></span><span id="_CPPv219va_image_align_withP8va_imagePK8va_image"></span><span id="va_image_align_with__va_imageP.va_imageCP"></span><span class="target" id="va_image_align_with"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_align_with</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">reference</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_align_withP8va_imagePK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Adjusts the world frame and calibration data of <em>img</em> so that the pixels are aligned with <em>reference</em> as if <em>img</em> was a scaled version of it. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success. If either image is empty, does not modify <em>img</em> and returns <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_image_rotatePK8va_imagediiP8va_image">
+<span id="_CPPv315va_image_rotatePK8va_imagediiP8va_image"></span><span id="_CPPv215va_image_rotatePK8va_imagediiP8va_image"></span><span id="va_image_rotate__va_imageCP.double.i.i.va_imageP"></span><span class="target" id="va_image_rotate"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_rotate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <span class="pre">double</span> <em><span class="pre">angleDeg</span></em>, <span class="pre">int</span> <em><span class="pre">interpolation</span></em>, <span class="pre">int</span> <em><span class="pre">backgroundColor</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">result</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_rotatePK8va_imagediiP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Rotates the given <em>source</em> image <em>angleDeg</em> degrees clockwise to the given <em>result</em> image. </p>
+<p>The rotation is done about the principal points. The principal point of the source image is projected to the principal point of the result image regardless of its location. This function only supports non-encoded gray and color images. Returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> otherwise. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv428va_image_create_virtual_viewPK8va_imageP10va_dmatrixPd">
+<span id="_CPPv328va_image_create_virtual_viewPK8va_imageP10va_dmatrixPd"></span><span id="_CPPv228va_image_create_virtual_viewPK8va_imageP10va_dmatrixPd"></span><span id="va_image_create_virtual_view__va_imageCP.va_dmatrixP.doubleP"></span><span class="target" id="va_image_create_virtual_view"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_create_virtual_view</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <span class="pre">va_dmatrix</span> <span class="pre">*</span><em><span class="pre">transformation</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">referenceDistance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428va_image_create_virtual_viewPK8va_imageP10va_dmatrixPd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates an empty image that is large enough to hold the input image <em>img</em> transformed to the new coordinate frame. </p>
+<p>The number of pixels in the output image is identical to the number of pixels in the input image, even though the aspect ratio can be different. This function can be used to allocate an empty image, which is passed to <code class="docutils literal notranslate"><span class="pre">va_image_virtual_view</span></code>.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>An empty image that is large enough to hold the input image <em>img</em> transformed to the new coordinate frame, or null pointer if the operation failed. This image always has unit focal lengths, the focal lengths of the original image affect <em>referenceDistance</em> and the translation set in <em>transformation</em>. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">img</span></code>: The input image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transformation</span></code>: A 4-by-4 homogeneous transformation matrix that specifies the coordinate frame of the area. The translation part of the matrix is moved so that the entire transformed image will fit in the returned image when passed to <code class="docutils literal notranslate"><span class="pre">va_image_virtual_view</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">referenceDistance</span></code>: Pointer to the distance between the virtual camera and the center of the area, in world coordinates. The distance will be scaled such that the entire transformed image will fit in the returned image when passed to <code class="docutils literal notranslate"><span class="pre">va_image_virtual_view</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv434va_image_create_virtual_view_framePK8va_imageP19va_coordinate_framePd">
+<span id="_CPPv334va_image_create_virtual_view_framePK8va_imageP19va_coordinate_framePd"></span><span id="_CPPv234va_image_create_virtual_view_framePK8va_imageP19va_coordinate_framePd"></span><span id="va_image_create_virtual_view_frame__va_imageCP.va_coordinate_frameP.doubleP"></span><span class="target" id="va_image_create_virtual_view_frame"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_create_virtual_view_frame</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <a class="reference internal" href="../va_coordinate_frame/#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em>, <span class="pre">double</span> <span class="pre">*</span><em><span class="pre">referenceDistance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434va_image_create_virtual_view_framePK8va_imageP19va_coordinate_framePd" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Allocates an image according to a new coordinate frame. </p>
+<p>This function works the same as <a class="reference internal" href="#va_image_create_virtual_view"><span class="std std-ref">va_image_create_virtual_view()</span></a>, but takes the target coordinate frame input parameter as a <a class="reference internal" href="../va_coordinate_frame/#va_coordinate_frame"><span class="std std-ref">va_coordinate_frame</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416va_image_project13va_image_list20va_image_compositingP8va_image">
+<span id="_CPPv316va_image_project13va_image_list20va_image_compositingP8va_image"></span><span id="_CPPv216va_image_project13va_image_list20va_image_compositingP8va_image"></span><span id="va_image_project__va_image_list.va_image_compositing.va_imageP"></span><span class="target" id="va_image_project"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_project</span></code><span class="sig-paren">(</span><span class="pre">va_image_list</span> <em><span class="pre">inputImages</span></em>, <a class="reference internal" href="#_CPPv420va_image_compositing" title="va_image_compositing"><span class="pre">va_image_compositing</span></a> <em><span class="pre">compositing</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_project13va_image_list20va_image_compositingP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Projects and blends multiple images to a single output image. </p>
+<p>The types of all input images and the type of the preallocated output image must be identical.</p>
+<p><p>Returns </p>
+<code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code> on success, <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code> if the parameters are not valid and <code class="docutils literal notranslate"><span class="pre">VA_OUT_OF_MEMORY</span></code> if the memory runs out. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inputImages</span></code>: A list of images to join. Must contain 1-8 images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compositing</span></code>: Specifies the strategy of handling overlapping parts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A preallocated output image to which the inputs will be projected. The output will contain all input images as if they were seen through a camera whose location and calibration data is stored in the output image.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_image_to_rgbPK8va_imageP8va_image">
+<span id="_CPPv315va_image_to_rgbPK8va_imageP8va_image"></span><span id="_CPPv215va_image_to_rgbPK8va_imageP8va_image"></span><span id="va_image_to_rgb__va_imageCP.va_imageP"></span><span class="target" id="va_image_to_rgb"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_to_rgb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_to_rgbPK8va_imageP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts <em>input</em> image into standard 32-bit RGB image which can be used by analysis tools. </p>
+<p>The type of the <em>output</em> image must be one of the supported raw RGB types and its size must match that of the <em>input</em> image.</p>
+<p>If the size of the output does not match that of the input, the type of the output is not supported or the type of the input is <code class="docutils literal notranslate"><span class="pre">va_compressed_image_type</span></code>, returns <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_roundPK8va_imagePK7va_realPi">
+<span id="_CPPv314va_image_roundPK8va_imagePK7va_realPi"></span><span id="_CPPv214va_image_roundPK8va_imagePK7va_realPi"></span><span id="va_image_round__va_imageCP.va_realCP.iP"></span><span class="target" id="va_image_round"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_round</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_types.h/#_CPPv47va_real" title="va_real"><span class="pre">va_real</span></a> <span class="pre">*</span><em><span class="pre">realCoord</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">intCoord</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_roundPK8va_imagePK7va_realPi" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Rounds real-valued pixel coordinates to the nearest value that does not confuse the color coding scheme. </p>
+<p>For gray types and ordinary 32-bit RGB type this means normal rounding. For Bayer and YUV formats the rounded coordinates are divisible by either 2 or 4.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">img</span></code>: input image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">realCoord</span></code>: Pointer to real-valued coordinates (x, y).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intCoord</span></code>: Pointer to rounded integer-valued coordinates (x, y) </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416va_image_to_grayPK8va_imageP8va_image">
+<span id="_CPPv316va_image_to_grayPK8va_imageP8va_image"></span><span id="_CPPv216va_image_to_grayPK8va_imageP8va_image"></span><span id="va_image_to_gray__va_imageCP.va_imageP"></span><span class="target" id="va_image_to_gray"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_to_gray</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_to_grayPK8va_imageP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts any encoded image type to 8-bit gray. </p>
+<p>The type of the <em>output</em> image must be <code class="docutils literal notranslate"><span class="pre">va_gray8_image_type</span></code> and its size must match that of the <em>input</em> image.</p>
+<p>If the size of the output does not match that of the input, the type of the output is not <code class="docutils literal notranslate"><span class="pre">va_gray8_image_type</span></code> or the type of the input is <code class="docutils literal notranslate"><span class="pre">va_compressed_image_type</span></code>, returns <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_image_subimageP8va_imageiiii">
+<span id="_CPPv317va_image_subimageP8va_imageiiii"></span><span id="_CPPv217va_image_subimageP8va_imageiiii"></span><span id="va_image_subimage__va_imageP.i.i.i.i"></span><span class="target" id="va_image_subimage"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_subimage</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <span class="pre">int</span> <em><span class="pre">x</span></em>, <span class="pre">int</span> <em><span class="pre">y</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_image_subimageP8va_imageiiii" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a new image that references a window within another. </p>
+<p>Modifications to the returned image will affect <em>img</em>, which must remain valid during the lifetime of the returned image.</p>
+<p>The source image must be non-planar and non-compressed, and the subimage must completely fit into it. This function does not check the preconditions, use <a class="reference internal" href="#va_image_is_valid_subimage"><span class="std std-ref">va_image_is_valid_subimage()</span></a> for that. If memory allocation fails, this function returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv426va_image_is_valid_subimagePK8va_imageiiii">
+<span id="_CPPv326va_image_is_valid_subimagePK8va_imageiiii"></span><span id="_CPPv226va_image_is_valid_subimagePK8va_imageiiii"></span><span id="va_image_is_valid_subimage__va_imageCP.i.i.i.i"></span><span class="target" id="va_image_is_valid_subimage"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_valid_subimage</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em>, <span class="pre">int</span> <em><span class="pre">x</span></em>, <span class="pre">int</span> <em><span class="pre">y</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426va_image_is_valid_subimagePK8va_imageiiii" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if it is possible to take a shared subimage reference from <em>img</em> at the given location and zero otherwise. </p>
+<p>A subimage reference can be taken if the source image is non-planar and non-compressed, and the subimage completely fits into it. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_set_color_channelPK8va_imageiPK8va_imageP8va_image">
+<span id="_CPPv320va_set_color_channelPK8va_imageiPK8va_imageP8va_image"></span><span id="_CPPv220va_set_color_channelPK8va_imageiPK8va_imageP8va_image"></span><span id="va_set_color_channel__va_imageCP.i.va_imageCP.va_imageP"></span><span class="target" id="va_set_color_channel"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_set_color_channel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">input</span></em>, <span class="pre">int</span> <em><span class="pre">channelIndex</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">channel</span></em>, <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_set_color_channelPK8va_imageiPK8va_imageP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Copies color image <em>input</em> to another color image <em>output</em> and replaces a color channel of <em>output</em> with <em>channel</em> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>VA_SUCCESS on success, VA_ERR_INVALID_PARAMETER if the sizes of <em>input</em>, <em>output</em> and <em>channel</em> and not identical or <em>input</em> or <em>output</em> are not color images. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: The input image. Must be a color image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channelIndex</span></code>: Index of the color channel which will be replaced with <em>channel</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channel</span></code>: A color or gray level image that replaces the color channel at <em>channelIndex</em>. The size of the <em>channel</em> image must match that of input and output images. If <em>channel</em> is a color image, the corresponding color channel will be copied.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A preallocated output image. Must be a color image.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv424va_replace_color_channelP8va_imageiPK8va_image">
+<span id="_CPPv324va_replace_color_channelP8va_imageiPK8va_image"></span><span id="_CPPv224va_replace_color_channelP8va_imageiPK8va_image"></span><span id="va_replace_color_channel__va_imageP.i.va_imageCP"></span><span class="target" id="va_replace_color_channel"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_replace_color_channel</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">inOut</span></em>, <span class="pre">int</span> <em><span class="pre">channelIndex</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">channel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424va_replace_color_channelP8va_imageiPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Replaces a color channel of <em>inOut</em> with <em>channel</em> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>VA_SUCCESS on success, VA_ERR_INVALID_PARAMETER if the sizes of <em>inOut</em>, and <em>channel</em> and not identical or <em>inOut</em> is not a color image. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inOut</span></code>: The image to be modified. Must be a color image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channelIndex</span></code>: Index of the color channel which will be replaced with <em>channel</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channel</span></code>: A color or gray level image that replaces the color channel at <em>channelIndex</em>. The size of the <em>channel</em> image must match that of the input image. If <em>channel</em> is a color image, the corresponding color channel will be copied.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419va_image_pixel_bits13va_image_type">
+<span id="_CPPv319va_image_pixel_bits13va_image_type"></span><span id="_CPPv219va_image_pixel_bits13va_image_type"></span><span id="va_image_pixel_bits__va_image_type"></span><span class="target" id="va_image_pixel_bits"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_pixel_bits</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_pixel_bits13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the number of bits occupied by a pixel in the given <em>type</em> of image. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_row_bytesPK8va_image">
+<span id="_CPPv318va_image_row_bytesPK8va_image"></span><span id="_CPPv218va_image_row_bytesPK8va_image"></span><span id="va_image_row_bytes__va_imageCP"></span><span class="target" id="va_image_row_bytes"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_row_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_row_bytesPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the number of bytes occupied by a row of pixels in the given image. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_bytesPK8va_image">
+<span id="_CPPv314va_image_bytesPK8va_image"></span><span id="_CPPv214va_image_bytesPK8va_image"></span><span id="va_image_bytes__va_imageCP"></span><span class="target" id="va_image_bytes"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_bytesPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the number of bytes occupied by the whole pixel array. </p>
+<p>This number includes padding between rows. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_image_stride13va_image_typei">
+<span id="_CPPv315va_image_stride13va_image_typei"></span><span id="_CPPv215va_image_stride13va_image_typei"></span><span id="va_image_stride__va_image_type.i"></span><span class="target" id="va_image_stride"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_stride</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_stride13va_image_typei" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the default stride used by a specific <em>type</em> of image with the given <em>width</em>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_is_planar13va_image_type">
+<span id="_CPPv318va_image_is_planar13va_image_type"></span><span id="_CPPv218va_image_is_planar13va_image_type"></span><span id="va_image_is_planar__va_image_type"></span><span class="target" id="va_image_is_planar"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_planar</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_is_planar13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if the image type is a variant of planar YUV. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416va_image_is_gray13va_image_type">
+<span id="_CPPv316va_image_is_gray13va_image_type"></span><span id="_CPPv216va_image_is_gray13va_image_type"></span><span id="va_image_is_gray__va_image_type"></span><span class="target" id="va_image_is_gray"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_gray</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_is_gray13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if <em>type</em> is one of the raw gray-level types. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415va_image_is_rgb13va_image_type">
+<span id="_CPPv315va_image_is_rgb13va_image_type"></span><span id="_CPPv215va_image_is_rgb13va_image_type"></span><span id="va_image_is_rgb__va_image_type"></span><span class="target" id="va_image_is_rgb"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_rgb</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_is_rgb13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if <em>type</em> is one of the raw rgb types. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418va_image_data_rows13va_image_typei">
+<span id="_CPPv318va_image_data_rows13va_image_typei"></span><span id="_CPPv218va_image_data_rows13va_image_typei"></span><span id="va_image_data_rows__va_image_type.i"></span><span class="target" id="va_image_data_rows"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_data_rows</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_data_rows13va_image_typei" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the number of data rows in an image with the given <em>type</em>. </p>
+<p>Usually, the number of data rows is equal to the <em>height</em> of the image. However, if <em>type</em> is a planar format, the number of data rows may be larger. In a compressed image, the number of data rows is one. </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_matrix/" class="btn btn-neutral float-right" title="va_matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_coordinate_transform.h/" class="btn btn-neutral float-left" title="va_coordinate_transform.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
