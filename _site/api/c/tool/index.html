@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../../">
+        
 
+        
           
-            
-            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
@@ -102,9 +101,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../python/">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../">C API</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Creating tools in C</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#getting-started">Getting started</a></li>
@@ -120,6 +116,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../reference/">C API reference</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/">Python API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
@@ -127,12 +126,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -147,7 +147,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -248,7 +248,7 @@ command prompt. For this, you need gcc version 7.3.0 with Posix threads
 and structured exception handling. You may have luck with other
 versions, but this is currently the only officially supported one. The
 official download page is
-<a class="reference external" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/">here</a>,
+<a class="reference external" href="https://sourceforge.net/projects/mingw-w64/files/ToolchainstargettingWin64/">here</a>,
 but it is suggested that you download the <a class="reference external" href="https://download.visionappster.com/windows/x86_64/mingw64.zip">correct
 version</a>
 directly. Unzip the file to the root of your <code class="docutils literal notranslate"><span class="pre">C:</span></code> drive and add
@@ -276,7 +276,7 @@ would need a single C (or C++) source file with the following contents:</p>
 <span class="kt">int</span> <span class="n">MySum_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">arguments</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span> <span class="cm">/* ignoring, tool has no state */</span>
-  <span class="k">struct</span> <span class="n">MySum_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">MySum_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">MySum_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">MySum_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
   <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
   <span class="k">return</span> <span class="n">VA_SUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
@@ -289,7 +289,7 @@ parentheses.</p>
 <div class="section" id="tool-declaration">
 <h3>Tool declaration<a class="headerlink" href="#tool-declaration" title="Permalink to this headline">🔗</a></h3>
 <p>Each tool declaration contains a variable number of entries that are
-created using special declaration macros (e.g. <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code> and
+created using special declaration macros (e.g. <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code> and
 <code class="docutils literal notranslate"><span class="pre">NAME</span></code>) as shown in the example. The first macro in all declarations
 must be <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code>. In addition, the <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> member function
 must be defined. Everything else is optional.</p>
@@ -302,11 +302,11 @@ should follow the rules for naming structures in C.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">NAME(NAME)</span></code></dt><dd><p>Gives the tool a user-visible name as a text string.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">TAG(TAG)</span></code></dt><dd><p>Tags can be used to give the VisionAppster engine additional hints
-about the tool. Currently, tools marked with <code class="docutils literal notranslate"><span class="pre">TAG(&quot;internal&quot;)</span></code> will
-not be shown in the Builder’s tool box. This is useful if you build
-apps or compound tools that require native functionality that is not
-intended to be used directly. The tool declaration can include any
-number of tags.</p>
+about the tool. Currently, tools marked with <code class="docutils literal notranslate"><span class="pre">TAG(&quot;internal&quot;)</span></code>
+will not be shown in the Builder’s tool box. This is useful if you
+build apps or compound tools that require native functionality that
+is not intended to be used directly. The tool declaration can
+include any number of tags.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PROCESS(FUNCTION)</span></code></dt><dd><p>The name of the C function implementation. The signature of the
 function must be <code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">FUNCTION(void*,</span> <span class="pre">void*)</span></code>. To ensure
@@ -325,7 +325,7 @@ variable name according to the rules of the C programming language.</p>
 default value. The default value can be any code that evaluates to
 the correct type. Usually, <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> is a constant value (such as
 1.23), but it can also be a function call that returns a value of
-<code class="docutils literal notranslate"><span class="pre">TYPE</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">sin(M_PI)</span></code>). Complex types can be allocated using
+<code class="docutils literal notranslate"><span class="pre">TYPE</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">sin(M_PI)</span></code>). Complex types can be allocated using
 functions such as <a class="reference internal" href="../reference/va_matrix/#_CPPv415va_matrix_alloc14va_matrix_typeii" title="va_matrix_alloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_matrix_alloc()</span></code></a>, or
 <a class="reference internal" href="../reference/va_image/#_CPPv414va_image_alloc13va_image_typeii" title="va_image_alloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_image_alloc()</span></code></a>. The ownership of a returned pointer
 will be transferred to the platform.</p>
@@ -407,21 +407,21 @@ file as shown in the example above. The <code class="docutils literal notranslat
 takes two parameters:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code></dt><dd><p>A globally unique identifier for the component the plugin will be
-placed into. If a component contains many plugins, the same component
-ID must be used in all of them. The component ID is used as a
-namespace for the tools that are defined within the component. The
-fully-qualified name for a tool will be composed of the component ID,
-its major version number and the name of the tool, for example
-<code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p>
+placed into. If a component contains many plugins, the same
+component ID must be used in all of them. The component ID is used
+as a namespace for the tools that are defined within the component.
+The fully-qualified name for a tool will be composed of the
+component ID, its major version number and the name of the tool, for
+example <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></dt><dd><p>Version number of the component. The version number has three parts:
 major.minor.patch. If a change in the plugin breaks existing
-functionality, the major version number must be incremented. Features
-can be added but not removed when changing the minor version number.
-If a release does not add new functionality but just improves or
-fixes the implementation, patch must be incremented. Version
-numbering can be started at any number, but usually 1.0.0 marks the
-first release.</p>
+functionality, the major version number must be incremented.
+Features can be added but not removed when changing the minor
+version number. If a release does not add new functionality but just
+improves or fixes the implementation, patch must be incremented.
+Version numbering can be started at any number, but usually 1.0.0
+marks the first release.</p>
 </dd>
 </dl>
 <p>Only the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro is strictly required for a
@@ -622,7 +622,7 @@ positive values. We can achieve this either statically or dynamically:</p>
 
 <span class="kt">void</span> <span class="n">MySum_b_min</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">value</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="o">*</span><span class="p">(</span><span class="kt">int32_t</span><span class="o">*</span><span class="p">)</span><span class="n">value</span> <span class="o">=</span> <span class="p">((</span><span class="k">struct</span> <span class="n">MySum_in</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">bMin</span><span class="p">;</span>
+  <span class="o">*</span><span class="p">(</span><span class="kt">int32_t</span><span class="o">*</span><span class="p">)</span><span class="n">value</span> <span class="o">=</span> <span class="p">((</span><span class="k">struct</span> <span class="nc">MySum_in</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">bMin</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -777,10 +777,10 @@ optionally negating the input if <em>negate</em> is set to <code class="docutils
 <span class="p">))</span>
 
 <span class="cm">/* Custom structure for holding instance data. */</span>
-<span class="k">struct</span> <span class="n">CmlSum</span>
+<span class="k">struct</span> <span class="nc">CmlSum</span>
 <span class="p">{</span>
   <span class="cm">/* This must be first to ensure correct memory layout. */</span>
-  <span class="k">struct</span> <span class="n">CmlSum_in</span> <span class="n">in</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">CmlSum_in</span> <span class="n">in</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">i_sum</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -789,12 +789,12 @@ optionally negating the input if <em>negate</em> is set to <code class="docutils
 <span class="cm">*/</span>
 <span class="kt">void</span><span class="o">*</span> <span class="nf">CmlSum_construct</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">other</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="cm">/* Allocate an all-zero block from the heap. */</span>
-  <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="p">));</span>
+  <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">CmlSum</span><span class="p">));</span>
   <span class="cm">/* If &quot;other&quot; is given, construct a copy. */</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">&amp;&amp;</span> <span class="n">other</span><span class="p">)</span>
-    <span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">=</span> <span class="p">((</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">other</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">i_sum</span><span class="p">;</span>
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">=</span> <span class="p">((</span><span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">other</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">i_sum</span><span class="p">;</span>
   <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -807,8 +807,8 @@ optionally negating the input if <em>negate</em> is set to <code class="docutils
 
 <span class="kt">int32_t</span> <span class="nf">CmlSum_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">arguments</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
-  <span class="k">struct</span> <span class="n">CmlSum_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">CmlSum_args</span><span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">CmlSum_args</span><span class="o">*</span><span class="p">)</span><span class="n">arguments</span><span class="p">;</span>
   <span class="cm">/* NOTE: Modifying the &quot;in&quot; structure is not allowed. */</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">negate</span><span class="p">)</span>
     <span class="n">args</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span> <span class="o">+=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">in</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
@@ -822,7 +822,7 @@ optionally negating the input if <em>negate</em> is set to <code class="docutils
 <span class="kt">void</span> <span class="nf">CmlSum_notify</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">instance</span><span class="p">,</span> <span class="n">va_event_type</span> <span class="n">event</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">data</span><span class="p">;</span> <span class="cm">/* unused */</span>
-  <span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">CmlSum</span><span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="o">==</span> <span class="n">va_event_stopped</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Final sum = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">i_sum</span><span class="p">);</span>
@@ -923,15 +923,7 @@ Visual Studio compiler are <code class="docutils literal notranslate"><span clas
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

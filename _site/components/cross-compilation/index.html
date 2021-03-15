@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -135,12 +134,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -155,7 +155,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -366,13 +366,13 @@ consequence of this is that <strong>you cannot use C++17 features</strong> in yo
 native code yet. We are working on this issue.</p>
 <p>In the build environment, the following variables are always set:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH</span></code> - Architecture identifier, e.g. “linux-x86_64”. Matches
+<li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH</span></code> - Architecture identifier, e.g. “linux-x86_64”. Matches
 the name of the Docker image and the <code class="docutils literal notranslate"><span class="pre">--arch</span></code> command-line option
 without the optional hardware profile suffix. (More on hardware
 profiles <a class="reference external" href="#hardware-profiles-and-optimization">below</a>.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH_PREFIX</span></code> - Architecture identifier optionally followed by a
-hardware profile suffix, and a dash, e.g. “linux-x86_64-”. This is
-useful when the architecture identifier is used as a prefix e.g. for
+hardware profile suffix, and a dash, e.g. “linux-x86_64-“. This is
+useful when the architecture identifier is used as a prefix e.g. for
 a directory name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">VA_SDK_PATH</span></code> - Absolute path to the VisionAppster SDK.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CROSS_COMPILE</span></code> - Architecture identifier and a dash. Makes it easy
@@ -646,7 +646,7 @@ have the following C99 source code:</p>
 of optimizations not available on the default profile, you should
 annotate the function:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VA_OPTIMIZED</span>
-<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">c</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span>
+<span class="kt">void</span> <span class="n">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">c</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -683,7 +683,7 @@ alternatives are:</p>
 
 <span class="cp">#ifdef AVX2_SUM_ATTR</span>
 <span class="n">AVX2_SUM_ATTR</span>
-<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">a</span><span class="p">,</span>
+<span class="kt">void</span> <span class="n">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">a</span><span class="p">,</span>
          <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">b</span><span class="p">,</span>
          <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">c</span><span class="p">,</span>
          <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span>
@@ -695,7 +695,7 @@ alternatives are:</p>
 
 <span class="cp">#ifdef DEFAULT_SUM_ATTR</span>
 <span class="n">DEFAULT_SUM_ATTR</span>
-<span class="kt">void</span> <span class="nf">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">a</span><span class="p">,</span>
+<span class="kt">void</span> <span class="n">sum</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">a</span><span class="p">,</span>
          <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">b</span><span class="p">,</span>
          <span class="kt">int</span><span class="o">*</span> <span class="n">__restrict</span> <span class="n">c</span><span class="p">,</span>
          <span class="kt">unsigned</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span>
@@ -811,15 +811,7 @@ the CPU can execute, for example <code class="docutils literal notranslate"><spa
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

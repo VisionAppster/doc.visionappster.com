@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -46,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
     <link rel="next" title="JavaScript API reference" href="reference/" />
-    <link rel="prev" title="Tool APIs" href="../tool/" /> 
+    <link rel="prev" title="OpenCvMat" href="../cpp/opencv/OpenCvMat/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -102,6 +101,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../">APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../#data-types">Data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">JavaScript client API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
@@ -118,8 +119,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../python/">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
@@ -127,12 +126,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -147,7 +147,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -231,7 +231,7 @@ code for a comprehensive example.</p>
 <h3>Connecting and disconnecting<a class="headerlink" href="#connecting-and-disconnecting" title="Permalink to this headline">🔗</a></h3>
 <p>To connect to a remote object, create an instance of
 <code class="docutils literal notranslate"><span class="pre">VisionAppster.RemoteObject</span></code> and call its <code class="docutils literal notranslate"><span class="pre">connect</span></code> method:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">manager</span><span class="p">;</span>
 <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">obj</span> <span class="p">=&gt;</span> <span class="nx">manager</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">);</span>
 </pre></div>
@@ -256,16 +256,16 @@ control the object. Upon a successful connection, a reflection object is
 created. As shown above, the <code class="docutils literal notranslate"><span class="pre">connect()</span></code> function resolves this
 object. It is also available through the <code class="docutils literal notranslate"><span class="pre">object</span></code> member of
 <code class="docutils literal notranslate"><span class="pre">RemoteObject</span></code>:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">manager</span><span class="p">;</span>
 <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">manager</span> <span class="o">=</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Instead of explicitly chaining promises, one can use the <code class="docutils literal notranslate"><span class="pre">await</span></code>
 keyword in <code class="docutils literal notranslate"><span class="pre">async</span></code> functions:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">manager</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -286,8 +286,8 @@ channel, but it is also possible to pass a pre-generated UUID to the
 <code class="docutils literal notranslate"><span class="pre">RemoteObject</span></code> constructor. This may be useful if you want to control
 which objects share a return channel. To give one object a dedicated
 channel, generate the client ID yourself:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="nx">generateClientUuid</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">({</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="nx">generateClientUuid</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">({</span>
   <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">,</span>
   <span class="nx">clientId</span><span class="o">:</span> <span class="nx">clientId</span>
 <span class="p">});</span>
@@ -298,7 +298,7 @@ channel. For example, if you just want to set or retrieve the value of a
 property or call a function, establishing a WebSocket connection would
 be an overkill. The return channel can be disabled by explicitly passing
 <code class="docutils literal notranslate"><span class="pre">null</span></code> as the client ID:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">({</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">({</span>
   <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:2015/manager&#39;</span><span class="p">,</span>
   <span class="nx">clientId</span><span class="o">:</span> <span class="kc">null</span>
 <span class="p">});</span>
@@ -348,7 +348,7 @@ the client’s return channel once the function finishes.</p>
 <p>Just like other function calls, asynchronous calls return a <code class="docutils literal notranslate"><span class="pre">Promise</span></code>
 that resolves with the return value of the called function. To call a
 function asynchronously, append <code class="docutils literal notranslate"><span class="pre">.async</span></code> to the function name:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">async</span><span class="p">({</span><span class="nx">appUri</span><span class="o">:</span> <span class="s1">&#39;id://my-app-id&#39;</span><span class="p">})</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="k">async</span><span class="p">({</span><span class="nx">appUri</span><span class="o">:</span> <span class="s1">&#39;id://my-app-id&#39;</span><span class="p">})</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">pid</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Async call returned a pid: </span><span class="si">${</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">))</span>
   <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Async call failed.&#39;</span><span class="p">));</span>
 </pre></div>
@@ -357,7 +357,7 @@ function asynchronously, append <code class="docutils literal notranslate"><span
 respond in a timely manner, the returned promise will be rejected. The
 <code class="docutils literal notranslate"><span class="pre">asyncTimeout</span></code> member of the function can be used to adjust the
 timeout:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">asyncTimeout</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">manager</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">asyncTimeout</span> <span class="o">=</span> <span class="mf">10000</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>If the client is connected without a return channel, async functions
@@ -381,9 +381,9 @@ functions return a <code class="docutils literal notranslate"><span class="pre">
 practice to always catch errors, but doing so may become tedious if an
 error handler is put on each remote call separately. There is however
 another, more convenient way:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="nx">await</span> <span class="nx">manager</span><span class="p">.</span><span class="nx">lastError</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">manager</span><span class="p">.</span><span class="nx">lastError</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="c1">// Method Not Allowed</span>
   <span class="p">}</span>
@@ -401,10 +401,10 @@ properties of a remote object are listed at
 connect a handler function to it. We’ll do this in an asynchronous
 function to illustrate how remote calls can be used in an apparently
 synchronous manner:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">signalTest</span><span class="p">(</span><span class="nx">infoCtrl</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="kd">function</span> <span class="nx">signalTest</span><span class="p">(</span><span class="nx">infoCtrl</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">infoCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`VisionAppster AE version: </span><span class="si">${</span><span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">appEngineVersion</span><span class="p">.</span><span class="nx">get</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">infoCtrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`VisionAppster AE version: </span><span class="si">${</span><span class="k">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">appEngineVersion</span><span class="p">.</span><span class="nx">get</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
     <span class="nx">info</span><span class="p">.</span><span class="nx">$userDefinedNameChanged</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">name</span> <span class="p">=&gt;</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Name changed to </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
     <span class="p">});</span>
@@ -436,13 +436,13 @@ connections can be also be broken:</p>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">showFirstChar</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
 <span class="p">}</span>
 
-<span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// Connect two handler functions</span>
-  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">showName</span><span class="p">);</span>
-  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">showFirstChar</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">showName</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">showFirstChar</span><span class="p">);</span>
 
   <span class="c1">// Check if a signal is connected to a specific function.</span>
   <span class="c1">// This is a synchronous call.</span>
@@ -451,9 +451,9 @@ connections can be also be broken:</p>
   <span class="p">}</span>
 
   <span class="c1">// Disconnect one of them</span>
-  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="nx">snowName</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="nx">snowName</span><span class="p">);</span>
   <span class="c1">// Disconnect everything</span>
-  <span class="nx">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+  <span class="k">await</span> <span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 
   <span class="c1">// Check if a signal is connected to any function.</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">userDefinedName</span><span class="p">.</span><span class="nx">$changed</span><span class="p">.</span><span class="nx">isConnected</span><span class="p">())</span> <span class="p">{</span>
@@ -471,11 +471,11 @@ such cases, it is possible to parameterize the connection:</p>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Received </span><span class="si">${</span><span class="nx">blob</span><span class="p">.</span><span class="nx">size</span><span class="si">}</span><span class="sb"> bytes of encoded image data.`</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">remote</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">RemoteObject</span><span class="p">(</span><span class="s1">&#39;http://localhost:2015/apis/api-id&#39;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
   <span class="c1">// Push the image as JPEG and use Blob as the storage object type.</span>
-  <span class="nx">await</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">$image</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">handleImage</span><span class="p">,</span> <span class="p">{</span><span class="nx">mediaType</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">]});</span>
+  <span class="k">await</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">$image</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">handleImage</span><span class="p">,</span> <span class="p">{</span><span class="nx">mediaType</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">]});</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -528,7 +528,7 @@ value that will be passed to the callback. The function returns whatever
 the callback returns. The signature of the function is
 <code class="docutils literal notranslate"><span class="pre">call:</span> <span class="pre">(callback:</span> <span class="pre">(double)</span> <span class="pre">-&gt;</span> <span class="pre">double,</span> <span class="pre">value:</span> <span class="pre">double)</span> <span class="pre">-&gt;</span> <span class="pre">double</span></code>.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Returns 16</span>
-<span class="kd">let</span> <span class="nx">sixteen</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">value</span> <span class="p">=&gt;</span> <span class="nx">value</span> <span class="o">*</span> <span class="nx">value</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">sixteen</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">value</span> <span class="p">=&gt;</span> <span class="nx">value</span> <span class="o">*</span> <span class="nx">value</span><span class="p">,</span> <span class="mf">4</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -543,7 +543,7 @@ connections:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">$connectedChanged</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">connected</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">connected</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connection lost. Reconnecting in a second.&#39;</span><span class="p">);</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">ctrl</span><span class="p">.</span><span class="nx">connect</span><span class="p">(),</span> <span class="mf">1000</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
@@ -577,7 +577,7 @@ caller. In the simplest case:</p>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="reference/" class="btn btn-neutral float-right" title="JavaScript API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../tool/" class="btn btn-neutral float-left" title="Tool APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../cpp/opencv/OpenCvMat/" class="btn btn-neutral float-left" title="OpenCvMat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -587,15 +587,7 @@ caller. In the simplest case:</p>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

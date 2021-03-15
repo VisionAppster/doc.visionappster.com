@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -130,12 +129,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -150,7 +150,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -368,7 +368,7 @@ and version number of the referred component.</p>
 <p>For example, if a component references
 <code class="docutils literal notranslate"><span class="pre">res://com.example.foobar/1/model.onnx</span></code>, the Engine determines where
 components are installed in the system and inserts the absolute root
-path to the beginning. resulting e.g. in
+path to the beginning. resulting e.g. in
 <code class="docutils literal notranslate"><span class="pre">/opt/visionappster/components/com.example.foobar/1/model.onnx</span></code>.</p>
 </div>
 <div class="section" id="apps">
@@ -492,7 +492,7 @@ an <code class="docutils literal notranslate"><span class="pre">arch</span></cod
 operating system. When creating a component package in the Builder,
 <code class="docutils literal notranslate"><span class="pre">type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code> for any files with the
 extension <code class="docutils literal notranslate"><span class="pre">.gentl</span></code> or <code class="docutils literal notranslate"><span class="pre">.cti</span></code>.</p>
-<p>To enable camera driver plugin support, you need to install the <a class="reference external" href="http://todo_insert_store_link">GenTL
+<p>To enable camera driver plugin support, you need to install the <a class="reference external" href="https://visionappster.com">GenTL
 camera driver</a> component.</p>
 </div>
 <div class="section" id="checksums">
@@ -542,10 +542,10 @@ copying of licensed files. Currently, tools (<code class="docutils literal notra
 plugins (<code class="docutils literal notranslate"><span class="pre">.toolplugin</span></code>) can be protected.</p>
 <p>To protect a binary tool plugin all one needs to do is to use the
 <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code> macro (details
-<a class="reference external" href="https://doc.visionappster.com/latest/api/tool/c/va_tool.h">here</a>)
-and pass it the component’s ID and version. This embeds a component ID
-check to the auto-generated plugin code. The platform verifies the
-integrity of the plugin binary and the validity of its license.</p>
+<a class="reference internal" href="../../api/c/reference/va_tool.h/"><span class="doc">here</span></a>) and pass it the component’s ID
+and version. This embeds a component ID check to the auto-generated
+plugin code. The platform verifies the integrity of the plugin binary
+and the validity of its license.</p>
 <p>To protect a tool saved in the Builder one does not need to do anything.
 The Builder automatically encrypts all <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files when a component
 is being created for the cloud. This will transform the (about
@@ -571,15 +571,7 @@ opened once they have been signed by the cloud service.</p>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

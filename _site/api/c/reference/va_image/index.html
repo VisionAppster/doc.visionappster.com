@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../../../">
+        
 
+        
           
-            
-            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
@@ -102,9 +101,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
@@ -127,6 +123,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
@@ -134,12 +133,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -154,7 +154,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -1184,50 +1184,50 @@
 
 <dl class="cpp function">
 <dt id="_CPPv419va_image_pixel_bits13va_image_type">
-<span id="_CPPv319va_image_pixel_bits13va_image_type"></span><span id="_CPPv219va_image_pixel_bits13va_image_type"></span><span id="va_image_pixel_bits__va_image_type"></span><span class="target" id="va_image_pixel_bits"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_pixel_bits</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_pixel_bits13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv319va_image_pixel_bits13va_image_type"></span><span id="_CPPv219va_image_pixel_bits13va_image_type"></span><span id="va_image_pixel_bits__va_image_type"></span><span class="target" id="va_image_pixel_bits"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_pixel_bits</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_pixel_bits13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns the number of bits occupied by a pixel in the given <em>type</em> of image. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv418va_image_row_bytesPK8va_image">
-<span id="_CPPv318va_image_row_bytesPK8va_image"></span><span id="_CPPv218va_image_row_bytesPK8va_image"></span><span id="va_image_row_bytes__va_imageCP"></span><span class="target" id="va_image_row_bytes"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_row_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_row_bytesPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv318va_image_row_bytesPK8va_image"></span><span id="_CPPv218va_image_row_bytesPK8va_image"></span><span id="va_image_row_bytes__va_imageCP"></span><span class="target" id="va_image_row_bytes"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_row_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_row_bytesPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns the number of bytes occupied by a row of pixels in the given image. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv414va_image_bytesPK8va_image">
-<span id="_CPPv314va_image_bytesPK8va_image"></span><span id="_CPPv214va_image_bytesPK8va_image"></span><span id="va_image_bytes__va_imageCP"></span><span class="target" id="va_image_bytes"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_bytesPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv314va_image_bytesPK8va_image"></span><span id="_CPPv214va_image_bytesPK8va_image"></span><span id="va_image_bytes__va_imageCP"></span><span class="target" id="va_image_bytes"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_bytesPK8va_image" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns the number of bytes occupied by the whole pixel array. </p>
 <p>This number includes padding between rows. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv415va_image_stride13va_image_typei">
-<span id="_CPPv315va_image_stride13va_image_typei"></span><span id="_CPPv215va_image_stride13va_image_typei"></span><span id="va_image_stride__va_image_type.i"></span><span class="target" id="va_image_stride"></span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_stride</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_stride13va_image_typei" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv315va_image_stride13va_image_typei"></span><span id="_CPPv215va_image_stride13va_image_typei"></span><span id="va_image_stride__va_image_type.i"></span><span class="target" id="va_image_stride"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">va_image_stride</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_stride13va_image_typei" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns the default stride used by a specific <em>type</em> of image with the given <em>width</em>. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv418va_image_is_planar13va_image_type">
-<span id="_CPPv318va_image_is_planar13va_image_type"></span><span id="_CPPv218va_image_is_planar13va_image_type"></span><span id="va_image_is_planar__va_image_type"></span><span class="target" id="va_image_is_planar"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_planar</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_is_planar13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv318va_image_is_planar13va_image_type"></span><span id="_CPPv218va_image_is_planar13va_image_type"></span><span id="va_image_is_planar__va_image_type"></span><span class="target" id="va_image_is_planar"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_planar</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_is_planar13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns a non-zero value if the image type is a variant of planar YUV. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv416va_image_is_gray13va_image_type">
-<span id="_CPPv316va_image_is_gray13va_image_type"></span><span id="_CPPv216va_image_is_gray13va_image_type"></span><span id="va_image_is_gray__va_image_type"></span><span class="target" id="va_image_is_gray"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_gray</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_is_gray13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv316va_image_is_gray13va_image_type"></span><span id="_CPPv216va_image_is_gray13va_image_type"></span><span id="va_image_is_gray__va_image_type"></span><span class="target" id="va_image_is_gray"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_gray</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_is_gray13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns a non-zero value if <em>type</em> is one of the raw gray-level types. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv415va_image_is_rgb13va_image_type">
-<span id="_CPPv315va_image_is_rgb13va_image_type"></span><span id="_CPPv215va_image_is_rgb13va_image_type"></span><span id="va_image_is_rgb__va_image_type"></span><span class="target" id="va_image_is_rgb"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_rgb</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_is_rgb13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv315va_image_is_rgb13va_image_type"></span><span id="_CPPv215va_image_is_rgb13va_image_type"></span><span id="va_image_is_rgb__va_image_type"></span><span class="target" id="va_image_is_rgb"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_is_rgb</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_is_rgb13va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns a non-zero value if <em>type</em> is one of the raw rgb types. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv418va_image_data_rows13va_image_typei">
-<span id="_CPPv318va_image_data_rows13va_image_typei"></span><span id="_CPPv218va_image_data_rows13va_image_typei"></span><span id="va_image_data_rows__va_image_type.i"></span><span class="target" id="va_image_data_rows"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_data_rows</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_data_rows13va_image_typei" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv318va_image_data_rows13va_image_typei"></span><span id="_CPPv218va_image_data_rows13va_image_typei"></span><span id="va_image_data_rows__va_image_type.i"></span><span class="target" id="va_image_data_rows"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">inline</span></em> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_image_data_rows</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418va_image_data_rows13va_image_typei" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns the number of data rows in an image with the given <em>type</em>. </p>
 <p>Usually, the number of data rows is equal to the <em>height</em> of the image. However, if <em>type</em> is a planar format, the number of data rows may be larger. In a compressed image, the number of data rows is one. </p>
 </dd></dl>
@@ -1252,15 +1252,7 @@
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

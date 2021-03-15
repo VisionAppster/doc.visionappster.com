@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../../../">
+        
 
+        
           
-            
-            <img src="../../../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
@@ -102,9 +101,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
@@ -127,6 +123,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
@@ -134,12 +133,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -154,7 +154,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -240,7 +240,7 @@
 <span id="_CPPv315va_string_clonePK9va_string"></span><span id="_CPPv215va_string_clonePK9va_string"></span><span id="va_string_clone__va_stringCP"></span><span class="target" id="va_string_clone"></span><a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_string_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_string_clonePK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Returns a copy of <em>string</em> or NULL if memory allocation fails. </p>
 <p>NULL will also be returned if <em>string</em> is NULL.</p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">va_string</span><span class="o">*</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">va_string_clone</span><span class="p">(</span><span class="s2">&quot;Mämmi on hyvää.&quot;</span><span class="p">);</span>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">va_string</span><span class="o">*</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">va_string_clone</span><span class="p">(</span><span class="s2">&quot;MÃ¤mmi on hyvÃ¤Ã¤.&quot;</span><span class="p">);</span>
 <span class="n">va_string</span><span class="o">*</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">va_string_clone</span><span class="p">(</span><span class="n">str2</span><span class="p">);</span>
 <span class="n">va_string_free</span><span class="p">(</span><span class="nb">str</span><span class="p">);</span>
 <span class="n">va_string_free</span><span class="p">(</span><span class="n">str2</span><span class="p">);</span>
@@ -261,7 +261,7 @@
 <dt id="_CPPv422va_string_from_pointerPK9va_string">
 <span id="_CPPv322va_string_from_pointerPK9va_string"></span><span id="_CPPv222va_string_from_pointerPK9va_string"></span><span id="va_string_from_pointer__va_stringCP"></span><span class="target" id="va_string_from_pointer"></span><a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_string_from_pointer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_string_from_pointerPK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>If <em>string</em> points to a va_string, returns <em>string</em>. </p>
-<p>Otherwise assumes that <em>string</em> points to a sequence of characters and returns <code class="docutils literal notranslate"><span class="pre">va_string_clone(data)</span></code>. </p>
+<p>Otherwise assumes that <em>string</em> points to a sequence of characters and returns <code class="docutils literal notranslate"><span class="pre">va_string_clone(string)</span></code>. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -290,8 +290,8 @@
 <dd><p>Converts <em>string</em> to a zero-terminated UTF-8 character sequence. </p>
 <p>The given <em>buffer</em> needs to be able to hold at least <em>length</em> bytes.</p>
 <p>The function returns the actual length of the UTF-8-encoded byte sequence, including the trailing zero byte. Note that the returned value may be larger than <em>length</em>, in which case the buffer wasn’t big enough. In this case the contents of <em>buffer</em> will be unspecified. Use va_string_utf8_length to count the required number of bytes in advance.</p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>const va_string* str = va_string_from_utf8(&quot;Töytäisemättäköhän?&quot;);
-// ×2 is usually enough, use ×4 to be sure
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>const va_string* str = va_string_from_utf8(&quot;TÃ¶ytÃ¤isemÃ¤ttÃ¤kÃ¶hÃ¤n?&quot;);
+// Ã—2 is usually enough, use Ã—4 to be sure
 size_t estimatedLength = va_string_length(str) * 2;
 char* buffer = (char*)malloc(estimatedLength);
 size_t length = va_string_to_utf8(str, buffer, estimatedLength);
@@ -349,15 +349,7 @@ va_string_free(str);
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

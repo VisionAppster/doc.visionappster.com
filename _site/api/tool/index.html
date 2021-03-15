@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -45,7 +43,7 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="JavaScript client API" href="../js/" />
+    <link rel="next" title="C API" href="../c/" />
     <link rel="prev" title="APIs" href="../" /> 
 </head>
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -121,10 +120,10 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../js/">JavaScript client API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
@@ -132,12 +131,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -152,7 +152,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -215,11 +215,11 @@ building blocks in vision applications.</p>
 <p>All native tool APIs are built on top of a <a class="reference internal" href="../c/"><span class="doc">C API</span></a>. Another
 option is to write tools in Python using the <a class="reference internal" href="../python/"><span class="doc">Python
 API</span></a>.</p>
-<p>An important (perhaps obvious) thing to note is that unlike the tools
-built into the VisionAppster platform, user-defined tools are not
-automatically available everywhere. It is the developer’s responsibility
-to build the tool plugin into a component package and install it
-everywhere is is to be used.</p>
+<p>An important (perhaps obvious) thing to note is that unlike the system
+tools that come with the VisionAppster runtime, user-defined tools are
+not automatically available everywhere. It is the developer’s
+responsibility to build the tool plugin into a component package and
+install it where needed.</p>
 <div class="section" id="terminology">
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">🔗</a></h2>
 <dl class="simple">
@@ -236,14 +236,14 @@ class.</p>
 </dd>
 <dt>Tool instance</dt><dd><p>A node in the processing graph. Different instances of the same tool
 may have different ideas of default values of arguments and the
-internal state of the tool, if the tool has state variables. In the C
-API, a pointer to the tool instance is passed to the underlying
-function. In the Python API, each tool is an instance of its defining
-class.</p>
+internal state of the tool, if the tool has state variables. In the
+C API, a pointer to the tool instance is passed to the underlying
+function. In the Python API, each tool is an instance of its
+defining class.</p>
 </dd>
-<dt>Input parameter</dt><dd><p>A parameter that is passed to the tool. May come from another tool in
-the graph, from a default value or from an external source through an
-API call.</p>
+<dt>Input parameter</dt><dd><p>A parameter that is passed to the tool. May come from another tool
+in the graph, from a default value or from an external source
+through an API call.</p>
 </dd>
 <dt>Fixed input parameter</dt><dd><p>An input parameter that is programmer-adjustable but not connectable
 in the processing graph. The value of a fixed parameter cannot be
@@ -252,23 +252,23 @@ changed at run time.</p>
 <dt>Optional input parameter</dt><dd><p>An input parameter that has a default value but is also connectable.
 The default value may be changeable through a public API.</p>
 </dd>
-<dt>Required input parameter</dt><dd><p>An input parameter that has no default value and must be connected in
-the graph either to another tool or to an API function. Required
-input parameters are needed only if there is no logical default value
-or if generating generating such value is not feasible.</p>
+<dt>Required input parameter</dt><dd><p>An input parameter that has no default value and must be connected
+in the graph either to another tool or to an API function. Required
+input parameters are needed only if there is no logical default
+value or if generating generating such value is not feasible.</p>
 </dd>
 <dt>Output parameter</dt><dd><p>A parameter that is produced by calling the underlying function with
-the current input parameters. Output parameters can work as inputs to
-subsequent tools and/or as signals in a public API.</p>
+the current input parameters. Output parameters can work as inputs
+to subsequent tools and/or as signals in a public API.</p>
 </dd>
 <dt>Plugin</dt><dd><p>A dynamically loadable machine code library that implements a known
 entry point function (<code class="docutils literal notranslate"><span class="pre">va_get_plugin_info</span></code>).</p>
 </dd>
 <dt>Component</dt><dd><p>A redistributable unit that may contain an arbitrary number of
-plugins. The VisionAppster platform uses components for sharing any
+plugins. The VisionAppster platform uses components for sharing all
 content, not just plugins. The ID and the major version of a
-component (e.g. <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1</span></code>) defines a namespace for
-the tools inside it.</p>
+component (e.g. <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1</span></code>) defines a namespace
+for the tools inside it.</p>
 </dd>
 </dl>
 </div>
@@ -313,11 +313,11 @@ execution mode isn’t suitable, there are two alternatives:</p>
 thread. No concurrent calls <em>with the same instance</em> will be made.
 Successive calls to the same tool instance always come from the same
 thread. In other words, if your graph contains multiple instances of
-the tool, they may still be called simultaneously, but with different
-instance pointers. This mode should be avoided because it may cause a
-large number of mostly idle threads to be created. Sometimes, there
-is no choice if you use a library that insists on storing its state
-in thread-local storage.</p>
+the tool, they may still be called simultaneously, but with
+different instance pointers. This mode should be avoided because it
+may cause a large number of mostly idle threads to be created.
+Sometimes, there is no choice if you use a library that insists on
+storing its state in thread-local storage.</p>
 </dd>
 <dt>Non-threaded</dt><dd><p>No concurrent calls to the tool will be made <em>with the same tool
 instance</em>, but successive calls may come from arbitrary threads. The
@@ -344,9 +344,9 @@ other GUI tools hints on how to handle the parameter. Each input and
 output parameter can have an arbitrary number of meta-data entries. Each
 meta-data entry is identified by a text string that is composed of the
 name of the parameter the entry refers to, a separator and a key that
-identifies the entry. In the <a class="reference internal" href="../c/"><span class="doc">C API</span></a>, underscore (_) is used
-as the separator. For example, the <code class="docutils literal notranslate"><span class="pre">min</span></code> meta-data for a parameter
-called <code class="docutils literal notranslate"><span class="pre">value</span></code> would be identified by <code class="docutils literal notranslate"><span class="pre">value_min</span></code>.</p>
+identifies the entry. In the <a class="reference internal" href="../c/"><span class="doc">C API</span></a>, underscore (_) is
+used as the separator. For example, the <code class="docutils literal notranslate"><span class="pre">min</span></code> meta-data for a
+parameter called <code class="docutils literal notranslate"><span class="pre">value</span></code> would be identified by <code class="docutils literal notranslate"><span class="pre">value_min</span></code>.</p>
 <p>Meta-data entries can be either static or dynamic. The need for dynamic
 meta-data usually arises when the meta-data depends on the current value
 of a fixed input parameter. For example, it may be useful to selectively
@@ -370,8 +370,8 @@ be written to or only read.</p>
 </dd>
 <dt>typeName</dt><dd><p>A <a class="reference external" href="#type-specifiers">type specifier</a> for the parameter.</p>
 </dd>
-<dt>doc</dt><dd><p>A text string containing documentation for the parameter. May contain
-HTML formatting.</p>
+<dt>doc</dt><dd><p>A text string containing documentation for the parameter. May
+contain HTML formatting.</p>
 </dd>
 <dt>enabled</dt><dd><p>A Boolean flag that indicates whether the parameter should be
 available or not. The user interface may hide or gray out parameters
@@ -427,10 +427,10 @@ fixed. For convenience, <em>columnNames</em> can also be given as a single,
 comma-separated text string. For example, a matrix representing a
 coordinate frame may define <em>columnNames</em> as “x,y,z,origin”.</p>
 </dd>
-<dt>firstColumnIndex</dt><dd><p>The index of the first column of a matrix or table, if auto-generated
-column headings are used. If <em>firstColumnIndex</em> is given, the default
-alphabetical column headings will be replaced by numbers. Must be an
-<code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+<dt>firstColumnIndex</dt><dd><p>The index of the first column of a matrix or table, if
+auto-generated column headings are used. If <em>firstColumnIndex</em> is
+given, the default alphabetical column headings will be replaced by
+numbers. Must be an <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
 </dd>
 <dt>columns</dt><dd><p>A fixed number of columns as an <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>. Unnecessary if
 <em>columnNames</em> or <em>columnDefinitions</em> is given.</p>
@@ -441,8 +441,8 @@ number of columns in a matrix or table.</p>
 <dt>minColumns</dt><dd><p>Minimum number of columns if <em>columnsEditable</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Zero by
 default. An <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
 </dd>
-<dt>maxColumns</dt><dd><p>Maximum number of columns if <em>columnsEditable</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Unlimited
-by default. An <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+<dt>maxColumns</dt><dd><p>Maximum number of columns if <em>columnsEditable</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+Unlimited by default. An <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
 </dd>
 <dt>columnDefinitions</dt><dd><p>An array of object specifying meta-data for individual columns in a
 table. See <a class="reference external" href="#structured-meta-data">structured meta-data below</a>.</p>
@@ -453,35 +453,38 @@ anything, but it must match the <em>typeName</em> of the column definition
 object, if there is one.</p>
 </dd>
 <dt>firstRowIndex</dt><dd><p>The index of the first row of a matrix or table. Auto-numbering is
-started from one by default. Often, there is a need to change this to
-zero. Must be an <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
+started from one by default. Often, there is a need to change this
+to zero. Must be an <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
 </dd>
 <dt>rowNames, rows, rowsEditable, minRows, maxRows</dt><dd><p>Same as the corresponding meta keys for columns.</p>
 </dd>
-<dt>imageType</dt><dd><p>An array of text strings containing supported or produced image types
-for an <code class="docutils literal notranslate"><span class="pre">Image</span></code> type parameter. The types can also be specified as a
-single (comma-separated) string. This lets a tool to specify which
-kinds of images an input accepts or which kind of image an output
-produces. Valid values are <code class="docutils literal notranslate"><span class="pre">raw</span></code>, <code class="docutils literal notranslate"><span class="pre">encoded</span></code> and <code class="docutils literal notranslate"><span class="pre">compressed</span></code>.
-The default is <code class="docutils literal notranslate"><span class="pre">raw</span></code>, which only needs to be specified if an input
-parameter accepts e.g. both raw and compressed images. In this case
-the value for the meta-data entry would be “raw,compressed”. See
-<a class="reference internal" href="../c/reference/va_image/#_CPPv413va_image_type" title="va_image_type"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">image</span> <span class="pre">types</span></code></a> for details.</p>
+<dt>imageType</dt><dd><p>An array of text strings containing supported or produced image
+types for an <code class="docutils literal notranslate"><span class="pre">Image</span></code> type parameter. The types can also be
+specified as a single (comma-separated) string. This lets a tool to
+specify which kinds of images an input accepts or which kind of
+image an output produces. Valid values are <code class="docutils literal notranslate"><span class="pre">raw</span></code>, <code class="docutils literal notranslate"><span class="pre">encoded</span></code> and
+<code class="docutils literal notranslate"><span class="pre">compressed</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">raw</span></code>, which only needs to be
+specified if an input parameter accepts e.g. both raw and compressed
+images. In this case the value for the meta-data entry would be
+“raw,compressed”. See <a class="reference internal" href="../c/reference/va_image/#_CPPv413va_image_type" title="va_image_type"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">image</span> <span class="pre">types</span></code></a> for
+details.</p>
 </dd>
-<dt>linkedTo</dt><dd><p>Establishes a link between two associated input or output parameters.
-This makes it easier for the UI to create editor widgets such as a
-region or a line that can be draw on top of an image. Examples:</p>
+<dt>linkedTo</dt><dd><p>Establishes a link between two associated input or output
+parameters. This makes it easier for the UI to create editor widgets
+such as a region or a line that can be draw on top of an image.
+Examples:</p>
 <ul class="simple">
-<li><p>Input parameter called <code class="docutils literal notranslate"><span class="pre">frame</span></code> specifies <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">frame</span></code>. A
-related input parameter called <code class="docutils literal notranslate"><span class="pre">size</span></code> specifies
-<code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">frame/region</span></code>. This tells
-makes the Builder aware that the size is related to the coordinate
-frame and that it can be edited using a “region” widget.</p></li>
+<li><p>Input parameter called <code class="docutils literal notranslate"><span class="pre">frame</span></code> specifies <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">frame</span></code>.
+A related input parameter called <code class="docutils literal notranslate"><span class="pre">size</span></code> specifies
+<code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span>&#160;&#160; <span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">frame/region</span></code>. This tells
+makes the Builder aware that the size is related to the
+coordinate frame and that it can be edited using a “region”
+widget.</p></li>
 <li><p>There are two output parameters, <code class="docutils literal notranslate"><span class="pre">startPoint</span></code> and <code class="docutils literal notranslate"><span class="pre">endPoint</span></code>,
 both of which specify <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">point</span></code>. In addition,
-<code class="docutils literal notranslate"><span class="pre">endPoint</span></code> specifies <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">startPoint/line</span></code>, which tells
-the Builder that the two points are the end points of a line and
-can be displayed using a line widget.</p></li>
+<code class="docutils literal notranslate"><span class="pre">endPoint</span></code> specifies <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">startPoint/line</span></code>, which
+tells the Builder that the two points are the end points of a
+line and can be displayed using a line widget.</p></li>
 </ul>
 </dd>
 <dt>blockSize</dt><dd><p>If the output of a tool is a matrix, the existence of the
@@ -524,8 +527,8 @@ the <code class="docutils literal notranslate"><span class="pre">name</span></co
 integers in programming languages. The existence of a <code class="docutils literal notranslate"><span class="pre">choices</span></code>
 meta-data entry implies <code class="docutils literal notranslate"><span class="pre">enum</span></code>.</p>
 </dd>
-<dt>enum/editable</dt><dd><p>A value that has a predefined list of choices but also allows editing
-the value manually.</p>
+<dt>enum/editable</dt><dd><p>A value that has a predefined list of choices but also allows
+editing the value manually.</p>
 </dd>
 <dt>multiline</dt><dd><p>A multi-line string.</p>
 </dd>
@@ -595,7 +598,7 @@ service process.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../js/" class="btn btn-neutral float-right" title="JavaScript client API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../c/" class="btn btn-neutral float-right" title="C API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../" class="btn btn-neutral float-left" title="APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
@@ -606,15 +609,7 @@ service process.</p>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

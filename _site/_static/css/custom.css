@@ -1,4 +1,4 @@
-div.figure.small {
+div.figure {
   position: relative;
   text-align: center;
 }
@@ -29,12 +29,46 @@ div.figure .caption a {
   color: inherit;
 }
 
-/* Hides Doxygen-generated C++ class inheritance stuff
-div#outputs .cpp.class code.descname ~ * {
-  display: none;
-}*/
+.wy-nav-side {
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
 
-/* Hide everything in footer after copyrights. */
-footer > div.contentinfo ~ * {
-  display: none;
+.wy-nav-side-inner {
+  position: static;
+  width: 100%;
+  min-height: auto;
+  overflow: hidden;
+}
+
+.wy-side-nav-search {
+  width: 100%;
+  margin-bottom: 0;
+  overflow: visible;
+  border-bottom: 1px solid #443e33;
+  background-color: transparent;
+  padding-bottom: 1em;
+}
+
+.algolia-autocomplete {
+  width: 100%;
+}
+
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 500px;
+  max-width: calc(100vw - 1.6em);
+}
+
+iframe.youtube {
+  width: 100%;
+  min-height: 350px;
+  border: none;
+}
+
+@media screen and (max-width:768px) {
+  iframe.youtube {
+    min-height: 230px;
+  }
 }

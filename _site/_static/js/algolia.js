@@ -11,3 +11,8 @@ docsearch({
     hitsPerPage: 8,
   }
 });
+
+// Close search popup on hamburger menu click (on mobile)
+document.querySelector('.wy-nav-top [data-toggle=wy-nav-top]').addEventListener('click', () => {
+  document.getElementById('algolia-autocomplete-listbox-0').style.display = 'none';
+});

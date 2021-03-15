@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -45,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Detect Blobs" href="../detect-blobs/" />
-    <link rel="prev" title="Blurring" href="../blurring/" /> 
+    <link rel="next" title="Positioning with QR codes" href="../qr-positioning/" />
+    <link rel="prev" title="Super-resolution with OpenCV and Python" href="../python-superresolution/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -103,14 +102,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Yolo V4 object detection with OpenCV and Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
@@ -122,27 +125,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
 </ul>
 </li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -157,7 +157,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -220,7 +220,7 @@ names</a></p></li>
 <li><p><a class="reference external" href="https://github.com/AlexeyAB/darknet/blob/master/cfg/yolov4.cfg">Yolo V4 configuration
 file</a></p></li>
 <li><p><a class="reference external" href="https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights">Yolo V4 weights (258
-MiB)</a></p></li>
+MB)</a></p></li>
 </ul>
 </div>
 <div class="section" id="detailed-description">
@@ -231,8 +231,8 @@ MiB)</a></p></li>
 execute all Python modules whose name ends with <code class="docutils literal notranslate"><span class="pre">*toolplugin.py</span></code> in
 <code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/plugins/tool/</span></code>. If these modules register tools,
 they will appear in Builder’s tool box. In this example, the Python
-module will be <a class="reference download internal" download="" href="../../_downloads/2e215e414c157a3e78e89b592b355fb4/yolo_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">yolo_toolplugin.py</span></code></a> and
-the name of the tool in the plugin is <code class="docutils literal notranslate"><span class="pre">Yolo</span></code>.</p>
+module will be <a class="reference download internal" download="" href="../../_downloads/2e215e414c157a3e78e89b592b355fb4/yolo_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">yolo_toolplugin.py</span></code></a>
+and the name of the tool in the plugin is <code class="docutils literal notranslate"><span class="pre">Yolo</span></code>.</p>
 <p>The Yolo tool needs three files that contain class names
 (<code class="docutils literal notranslate"><span class="pre">coco.names</span></code>), Yolo V4 configuration (<code class="docutils literal notranslate"><span class="pre">yolov4.cfg</span></code>) and the weights
 of the neural network (<code class="docutils literal notranslate"><span class="pre">yolov4.weights</span></code>). To set up the environment,
@@ -244,16 +244,16 @@ download the files and place them in
 </div>
 <p>Use the <a class="reference internal" href="../../components/installing/"><span class="doc">va-pkg command-line tool</span></a> to install
 the required NumPy and OpenCV packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install py:numpy py:opencv-python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install python:numpy python:opencv-python
 </pre></div>
 </div>
 </div>
 <div class="section" id="python-code-walk-through">
 <h3>Python code walk-through<a class="headerlink" href="#python-code-walk-through" title="Permalink to this headline">🔗</a></h3>
 <p>Let us walk through <a class="reference download internal" download="" href="../../_downloads/2e215e414c157a3e78e89b592b355fb4/yolo_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">python</span> <span class="pre">code</span></code></a>.</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="kn">as</span> <span class="nn">va</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="k">as</span> <span class="nn">va</span>
 <span class="kn">from</span> <span class="nn">visionappster.coordinates</span> <span class="kn">import</span> <span class="n">pixel_to_world</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
@@ -263,7 +263,7 @@ Python tool, <code class="docutils literal notranslate"><span class="pre">numpy<
 OpenCV module. <code class="docutils literal notranslate"><span class="pre">os</span></code> is needed for path manipulation.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Yolo</span><span class="p">:</span>
     <span class="c1"># Shared by all instances of this class</span>
-    <span class="n">_dnn_model</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_dnn_model</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_class_names</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="nd">@staticmethod</span>
@@ -273,12 +273,12 @@ OpenCV module. <code class="docutils literal notranslate"><span class="pre">os</
         <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dnn_DetectionModel</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;yolov4.cfg&#39;</span><span class="p">,</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;yolov4.weights&#39;</span><span class="p">)</span>
         <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span><span class="o">.</span><span class="n">setInputSize</span><span class="p">(</span><span class="mi">704</span><span class="p">,</span> <span class="mi">704</span><span class="p">)</span>
         <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span><span class="o">.</span><span class="n">setInputScale</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span>
-        <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span><span class="o">.</span><span class="n">setInputSwapRB</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span><span class="o">.</span><span class="n">setInputSwapRB</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;coco.names&#39;</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">Yolo</span><span class="o">.</span><span class="n">_class_names</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">Yolo</span><span class="o">.</span><span class="n">_load_yolo_model</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -319,7 +319,7 @@ separate objects. The value range is 0…1.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">className</span></code> is an array containing the names of the detected
 objects.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">classId</span></code> is an N-by-1 matrix of class identifiers (i.e. integers
+<li><p><code class="docutils literal notranslate"><span class="pre">classId</span></code> is an N-by-1 matrix of class identifiers (i.e. integers
 on range 0…79).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> is an N-by-1 matrix storing the likelihood of correct
 detection for each detected object.</p></li>
@@ -347,7 +347,7 @@ whose shape is (704, 704, 3). That is a fancy way to describe a
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the detection using the given confidence + non-maximum</span>
 <span class="c1"># suppression thresholds</span>
 <span class="n">classes</span><span class="p">,</span> <span class="n">confidences</span><span class="p">,</span> <span class="n">boxes</span> <span class="o">=</span>
-    <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="n">Yolo</span><span class="o">.</span><span class="n">_dnn_model</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
                            <span class="n">confThreshold</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">confidenceThreshold</span><span class="p">,</span>
                            <span class="n">nmsThreshold</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">suppressionThreshold</span><span class="p">)</span>
 </pre></div>
@@ -454,8 +454,8 @@ regions in the expected locations.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../detect-blobs/" class="btn btn-neutral float-right" title="Detect Blobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../blurring/" class="btn btn-neutral float-left" title="Blurring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../qr-positioning/" class="btn btn-neutral float-right" title="Positioning with QR codes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../python-superresolution/" class="btn btn-neutral float-left" title="Super-resolution with OpenCV and Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -465,15 +465,7 @@ regions in the expected locations.</p>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

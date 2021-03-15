@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -37,6 +35,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
         <script defer="defer" src="../../_static/js/algolia.js"></script>
     
@@ -45,8 +44,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="OpenCv Tools" href="../opencv-tools/" />
-    <link rel="prev" title="Super-resolution with OpenCV and Python" href="../python-superresolution/" /> 
+    <link rel="next" title="Unsharp Masking" href="../unsharp-masking/" />
+    <link rel="prev" title="Code reading for Raspberry Pi" href="../raspi-code-reading/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,27 +53,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +81,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -103,24 +103,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-reading/">Code reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Texture matching</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
@@ -139,17 +136,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
 </ul>
 </li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -164,7 +165,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -239,8 +240,8 @@ top to bottom.</p>
 <h3>Image input<a class="headerlink" href="#image-input" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
 <li><p>The images originate from a live or virtual camera configured in
-<a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image Source</span></a>.</p></li>
-<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> converts the input
+<span class="xref std std-doc">Image Source</span>.</p></li>
+<li><p><span class="xref std std-doc">Convert Colors</span> converts the input
 images from RGB to grayscale. This step is actually not mandatory
 because all processing blocks downstream can input also color images.
 However, because matching is based on grayscale texture, the image is
@@ -257,16 +258,16 @@ examine the outputs of the other blocks.</p></li>
 <div class="section" id="match-with-a-trained-model">
 <h3>Match with a trained model<a class="headerlink" href="#match-with-a-trained-model" title="Permalink to this headline">🔗</a></h3>
 <ul>
-<li><p><a class="reference internal" href="../../tools/LinearFilterTool/"><span class="doc">Linear filter</span></a> removes noise and
+<li><p><span class="xref std std-doc">Linear filter</span> removes noise and
 possible artefacts like sharpening. The filter size is small so very
 few details are lost.</p></li>
-<li><p><a class="reference internal" href="../../tools/MatchContoursTool/"><span class="doc">Match Textures</span></a> is the crux of this
+<li><p><span class="xref std std-doc">Match Textures</span> is the crux of this
 recipe. It identifies keypoints from the input image, calculates LBP
 descriptors using the texture around the keypoints and compares them
 with the descriptors of the objects the matcher has been trained
 with. More on the matcher training later in this recipe.</p></li>
-<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the frame and size
-(i.e. the bounding box) of the found object (if any) and enlarges the
+<li><p><span class="xref std std-doc">JavaScript</span> inputs the frame and size
+(i.e. the bounding box) of the found object (if any) and enlarges the
 bounding box so that the height and the width are extended by 10% on
 each side of the box and the original box resides in the middle of
 the new box. Boolean output <code class="docutils literal notranslate"><span class="pre">Found</span></code> is either true or false
@@ -277,28 +278,28 @@ depending whether <code class="docutils literal notranslate"><span class="pre">M
 
 <span class="kd">var</span> <span class="nx">expandFactor</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">4</span> <span class="o">||</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">columns</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mf">4</span> <span class="o">||</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">columns</span> <span class="o">!=</span> <span class="mf">4</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="nx">$o</span><span class="p">.</span><span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="nx">frame</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span>
-      <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">frame</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span> <span class="mf">4</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mf">4</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+      <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="mf">1</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="k">else</span>
   <span class="p">{</span>
-    <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="nx">expandFactor</span> <span class="o">*</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)));</span>
-    <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="nx">expandFactor</span> <span class="o">*</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)));</span>
+    <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">3</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">3</span><span class="p">)</span> <span class="o">-</span> <span class="nx">expandFactor</span> <span class="o">*</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">)));</span>
+    <span class="nx">frame</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">3</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">3</span><span class="p">)</span> <span class="o">-</span> <span class="nx">expandFactor</span> <span class="o">*</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">)));</span>
   <span class="p">}</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">size</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">||</span> <span class="nx">size</span><span class="p">.</span><span class="nx">columns</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">size</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mf">1</span> <span class="o">||</span> <span class="nx">size</span><span class="p">.</span><span class="nx">columns</span> <span class="o">!=</span> <span class="mf">2</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="nx">$o</span><span class="p">.</span><span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="nx">size</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="nx">size</span> <span class="o">=</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">doubleMatrix</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="k">else</span>
   <span class="p">{</span>
-    <span class="nx">size</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">expandFactor</span><span class="p">));</span>
-    <span class="nx">size</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">expandFactor</span><span class="p">));</span>
+    <span class="nx">size</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1</span> <span class="o">+</span> <span class="mf">2</span> <span class="o">*</span> <span class="nx">expandFactor</span><span class="p">));</span>
+    <span class="nx">size</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="nx">size</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1</span> <span class="o">+</span> <span class="mf">2</span> <span class="o">*</span> <span class="nx">expandFactor</span><span class="p">));</span>
   <span class="p">}</span>
 
 <span class="nx">$o</span><span class="p">.</span><span class="nx">frame</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">;</span>
@@ -315,12 +316,12 @@ depending whether <code class="docutils literal notranslate"><span class="pre">M
 <div class="section" id="project-into-a-constant-sized-image">
 <h3>Project into a constant sized image<a class="headerlink" href="#project-into-a-constant-sized-image" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">Project To Virtual View</span></a> crops
+<li><p><span class="xref std std-doc">Project To Virtual View</span> crops
 and resizes the bounding box into a size proportional to the size of
 the template model. That is, the image which has been used in model
 training. The output image now looks the same regardless of the size
 and the orientation of the input image.</p></li>
-<li><p><a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">Replace Coordinate Frame</span></a>
+<li><p><span class="xref std std-doc">Replace Coordinate Frame</span>
 replaces the existing coordinate system with a new coordinate system
 such that the origin is at the center of the cropped image and the
 coordinate axes are orthonormal.</p></li>
@@ -335,11 +336,11 @@ coordinate axes are orthonormal.</p></li>
 <p>The image contains now only the logo and some margin. The logo should
 contain two dark blobs (the stalk and the apple) and the background
 should be a single connected bright area. The threshold for blob
-detectors is calculated with <a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and
-<a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find Threshold</span></a> tools. The blobs are
-detected with <a class="reference internal" href="../../tools/DetectBlobsTool/"><span class="doc">Detect Blobs</span></a> tools and the
-shapes and sizes of the blobs are analyzed in <a class="reference internal" href="../../tools/AnalyzeBlobGeometryTool/"><span class="doc">Analyze Blob
-Geometry</span></a> tools. There are two
+detectors is calculated with <span class="xref std std-doc">Histogram</span> and
+<span class="xref std std-doc">Find Threshold</span> tools. The blobs are
+detected with <span class="xref std std-doc">Detect Blobs</span> tools and the
+shapes and sizes of the blobs are analyzed in <span class="xref std std-doc">Analyze Blob
+Geometry</span> tools. There are two
 instances of both tools, one for dark and the other for bright blobs.</p>
 <div class="medium figure align-default" id="id5">
 <img alt="Split the logo into blobs" src="../../_images/texture-matching-5.png" />
@@ -349,7 +350,7 @@ instances of both tools, one for dark and the other for bright blobs.</p>
 <div class="section" id="analyze-the-results">
 <h3>Analyze the results<a class="headerlink" href="#analyze-the-results" title="Permalink to this headline">🔗</a></h3>
 <p>The final judgement on whether the quality of the logo is good enough is
-done in an instance of <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> tool.</p>
+done in an instance of <span class="xref std std-doc">JavaScript</span> tool.</p>
 <div class="medium figure align-default" id="id6">
 <img alt="Analyze the results in a script" src="../../_images/texture-matching-6.png" />
 <p class="caption"><span class="caption-text">Analyze the results in a script</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
@@ -361,84 +362,43 @@ as it is wide whereas the height and width of the apple should be about
 the same.</p>
 <p>The script makes several checks on the number of detected blobs as well
 as their shapes and sizes before passing a verdict on the print quality.</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$o</span><span class="p">.</span><span class="nx">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Unspecified defect detected&quot;</span><span class="p">;</span>
-
-<span class="c1">// No pattern found</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$i</span><span class="p">.</span><span class="nx">found</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Logo not found&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="c1">// There should be 2 white-on-black blobs and one black-on-while blob</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">2</span> <span class="o">||</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size2</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
-      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Part of the logo missing&quot;</span><span class="p">;</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
-      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Black fragments detected&quot;</span><span class="p">;</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size2</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Possible hole(s) detected&quot;</span><span class="p">;</span>
-    <span class="k">else</span>
-      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Blob count mismatch&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="c1">// Ratios of areas of the big and small blobs should be within limits.</span>
-<span class="kd">var</span> <span class="nx">smallBlobIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">bigBlobIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-  <span class="p">{</span>
-    <span class="nx">bigBlobIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">smallBlobIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">smallArea</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">bigArea</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">areaRatio</span> <span class="o">=</span> <span class="nx">bigArea</span> <span class="o">/</span> <span class="nx">smallArea</span><span class="p">;</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nx">areaRatio</span> <span class="o">&lt;</span> <span class="mi">16</span> <span class="o">||</span> <span class="nx">areaRatio</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Size ratio of the stalk and the apple is out of limits&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="c1">// Axis ratios of small and big blobs should be within limits.</span>
-<span class="c1">// The stalk of the apple is oblong</span>
-<span class="kd">var</span> <span class="nx">axisRatioSmall</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">ratio1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">axisRatioSmall</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">||</span> <span class="nx">axisRatioSmall</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the stalk is out of limits&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="c1">// The apple is nearly round,</span>
-<span class="kd">var</span> <span class="nx">axisRatioBig</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">ratio1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">axisRatioBig</span> <span class="o">&lt;</span> <span class="mf">0.95</span> <span class="o">||</span> <span class="nx">axisRatioBig</span> <span class="o">&gt;</span> <span class="mf">1.15</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the apple is out of limits&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="c1">// The sizes of the bounding boxes of both blobs should be within limits.</span>
-<span class="kd">var</span> <span class="nx">sizeRatioSmall</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">sizeRatioBig</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nx">sizeRatioSmall</span> <span class="o">&lt;</span> <span class="mf">0.80</span> <span class="o">||</span> <span class="nx">sizeRatioSmall</span> <span class="o">&gt;</span> <span class="mf">1.08</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the stalk&#39;s bounding box is out of limits&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nx">sizeRatioBig</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="nx">sizeRatioBig</span> <span class="o">&gt;</span> <span class="mf">1.12</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the apple&#39;s bounding box is out of limits&quot;</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-<span class="nx">$o</span><span class="p">.</span><span class="nx">result</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;No problems&quot;</span><span class="p">;</span>
-</pre></div>
-</div>
+<p><sub>~</sub>{.js} $o.result = false; $o.problem = “Unspecified defect
+detected”;</p>
+<p>// No pattern found if (!$i.found) { $o.problem = “Logo not found”;
+return; }</p>
+<p>// There should be 2 white-on-black blobs and one black-on-while blob if
+($i.size1.rows != 2 ||
+<span class="math notranslate nohighlight">\(i.size2.rows != 1)  {  if (\)</span>i.size1.rows &lt; 2)
+<span class="math notranslate nohighlight">\(o.problem = &quot;Part of the logo missing&quot;;  else if (\)</span>i.size1.rows
+&gt; 2)
+<span class="math notranslate nohighlight">\(o.problem = &quot;Black fragments detected&quot;;  else if (\)</span>i.size2.rows
+&gt; 1) $o.problem = “Possible hole(s) detected”; else $o.problem = “Blob
+count mismatch”; return; }</p>
+<p>// Ratios of areas of the big and small blobs should be within limits.
+var smallBlobIndex = 0, bigBlobIndex = 1; if ($i.area1.entry(0,0) &gt;
+$i.area1.entry(1,0)) { bigBlobIndex = 0; smallBlobIndex = 1; } var
+smallArea = $i.area1.entry(smallBlobIndex,0); var bigArea =
+$i.area1.entry(bigBlobIndex,0); var areaRatio = bigArea / smallArea;</p>
+<p>if (areaRatio &lt; 16 || areaRatio &gt; 20) { $o.problem = “Size ratio of
+the stalk and the apple is out of limits”; return; }</p>
+<p>// Axis ratios of small and big blobs should be within limits. // The
+stalk of the apple is oblong var axisRatioSmall =
+$i.ratio1.entry(smallBlobIndex, 0); if (axisRatioSmall &lt; 2 ||
+axisRatioSmall &gt; 2.5) { $o.problem = “Shape of the stalk is out of
+limits”; return; }</p>
+<p>// The apple is nearly round, var axisRatioBig =
+$i.ratio1.entry(bigBlobIndex, 0); if (axisRatioBig &lt; 0.95 ||
+axisRatioBig &gt; 1.15) { $o.problem = “Shape of the apple is out of
+limits”; return; }</p>
+<p>// The sizes of the bounding boxes of both blobs should be within
+limits. var sizeRatioSmall = $i.size1.entry(smallBlobIndex, 0) /
+$i.size1.entry(smallBlobIndex, 1); var sizeRatioBig =
+$i.size1.entry(bigBlobIndex, 0) / $i.size1.entry(bigBlobIndex, 1);</p>
+<p>if (sizeRatioSmall &lt; 0.80 || sizeRatioSmall &gt; 1.08) { $o.problem =
+“Shape of the stalk’s bounding box is out of limits”; return; }</p>
+<p>if (sizeRatioBig &lt; 1 || sizeRatioBig &gt; 1.12) { $o.problem = “Shape of
+the apple’s bounding box is out of limits”; return; }</p>
+<p>$o.result = true; $o.problem = “No problems”; <sub>~</sub></p>
 <p>Here are a few examples on passed (green) and failed (red) cases.</p>
 <div class="medium figure align-default" id="id7">
 <img alt="Print quality is good" src="../../_images/texture-matching-pass-1.png" />
@@ -627,8 +587,8 @@ that the object is not found at all.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../opencv-tools/" class="btn btn-neutral float-right" title="OpenCv Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../python-superresolution/" class="btn btn-neutral float-left" title="Super-resolution with OpenCV and Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../unsharp-masking/" class="btn btn-neutral float-right" title="Unsharp Masking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../raspi-code-reading/" class="btn btn-neutral float-left" title="Code reading for Raspberry Pi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -638,15 +598,7 @@ that the object is not found at all.</p></li>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

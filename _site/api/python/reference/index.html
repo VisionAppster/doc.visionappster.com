@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../../">
+        
 
+        
           
-            
-            <img src="../../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
@@ -102,6 +101,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../c/">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../">Python API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../#overview">Overview</a></li>
@@ -123,8 +124,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../c/">C API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
@@ -132,12 +131,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -152,7 +152,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -224,15 +224,15 @@ the buffer and must copy data.</p>
 <li><p>They have a <code class="docutils literal notranslate"><span class="pre">Type</span></code> enumerator class and a <code class="docutils literal notranslate"><span class="pre">type</span></code> property.</p></li>
 <li><p>They can be created with <code class="docutils literal notranslate"><span class="pre">T(typeId,</span> <span class="pre">shape)</span></code>, where <code class="docutils literal notranslate"><span class="pre">typeId</span></code> is
 one of the <code class="docutils literal notranslate"><span class="pre">Type</span></code> enumerator values and <code class="docutils literal notranslate"><span class="pre">shape</span></code> is a list of
-buffer dimension sizes. <code class="docutils literal notranslate"><span class="pre">T</span></code> is the name of the type class,
-e.g. <code class="docutils literal notranslate"><span class="pre">Image</span></code>.</p></li>
+buffer dimension sizes. <code class="docutils literal notranslate"><span class="pre">T</span></code> is the name of the type class, e.g.
+<code class="docutils literal notranslate"><span class="pre">Image</span></code>.</p></li>
 <li><p>They have a <code class="docutils literal notranslate"><span class="pre">shape</span></code> property that contains the dimensions of the
 internal buffer as a <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p></li>
 <li><p>Elements can be accessed using the indexing operator, e.g.
 <code class="docutils literal notranslate"><span class="pre">matrix[2,</span> <span class="pre">3]</span></code>.</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="kn">as</span> <span class="nn">va</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="k">as</span> <span class="nn">va</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Uniform constructor syntax</span>
 <span class="n">matrix</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="p">[</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">])</span>
@@ -255,7 +255,7 @@ internal buffer as a <code class="docutils literal notranslate"><span class="pre
 <span class="nb">input</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
 <span class="c1"># Fill input somehow here</span>
 <span class="n">binarized</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">uninitialized</span><span class="p">(</span><span class="n">va</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">binarized</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">binarized</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -277,15 +277,7 @@ internal buffer as a <code class="docutils literal notranslate"><span class="pre
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

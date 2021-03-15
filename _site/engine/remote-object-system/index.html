@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
@@ -139,12 +138,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -159,7 +159,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -340,14 +340,14 @@ with an object that contains named arguments:</p>
 </pre></div>
 </div>
 <p>If a function has many parameters that cannot be encoded in the same way
-(e.g. JSON), the arguments can be passed as a MIME multipart message.
+(e.g. JSON), the arguments can be passed as a MIME multipart message.
 Let us assume the server provides a function with the signature
 <code class="docutils literal notranslate"><span class="pre">binarize(image:</span> <span class="pre">Image,</span> <span class="pre">threshold:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">Image</span></code>. This function could
 be called with a MIME multipart message as follows:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/binarize</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/mixed; boundary=boundary_marker</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">image/png</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /myobject/functions/binarize HTTP/1.1
+Host: localhost:2015
+Content-Type: multipart/mixed; boundary=boundary_marker
+Accept: image/png
 
 --boundary_marker
 Content-Type: image/png
@@ -386,11 +386,11 @@ ordered and named arguments. The special <code class="docutils literal notransla
 specifies the name of the function argument to which the request body
 should be passed. Thus, the same call could be rewritten in yet another
 form:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /myobject/functions/binarize?threshold=127&amp;@body=image HTTP/1.1
-Host: localhost:2015
-Content-Type: image/png
-Accept: image/png
-Content-Length: 12345
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/binarize?threshold=127&amp;@body=image</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">image/png</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">image/png</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">12345</span>
 
 ... image data here ...
 </pre></div>
@@ -409,7 +409,7 @@ try to automatically determine the types. It recognizes integers,
 decimal numbers and hexadecimal color codes in addition to the keywords
 <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">nan</span></code>, <code class="docutils literal notranslate"><span class="pre">inf</span></code> and <code class="docutils literal notranslate"><span class="pre">-inf</span></code>. Everything else is
 treated as a string. If you need to pass a string that matches one of
-the keywords, you can enclose it in double quotes, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>.</p>
+the keywords, you can enclose it in double quotes, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>.</p>
 <p>For example, consider the following query string:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?123&amp;true&amp;%22true%22&amp;-2.1e5&amp;inf&amp;abc&amp;%23ff0000
 </pre></div>
@@ -613,9 +613,9 @@ message will be sent once.</p>
 <dt>At least once (2)</dt><dd><p>Make sure receiver gets the message. Resend after a while if the
 client fails to acknowledge.</p>
 </dd>
-<dt>Last at least once (3)</dt><dd><p>Make sure receiver gets the last message from a source. Same as 2,
-but his mode allows the server to update message content until it
-has been acknowledged.</p>
+<dt>Last at least once (3)</dt><dd><p>Make sure receiver gets the last message from a source. Same as
+2, but his mode allows the server to update message content
+until it has been acknowledged.</p>
 </dd>
 </dl>
 </dd>
@@ -724,7 +724,7 @@ one can give <code class="docutils literal notranslate"><span class="pre">null</
 </div>
 <p>Specifying a <code class="docutils literal notranslate"><span class="pre">null</span></code> media type for all parameters makes the server to
 send the signal with an empty body. This may be useful if you want to
-e.g. observe property changes but retrieve the latest value only on
+e.g. observe property changes but retrieve the latest value only on
 explicit request.</p>
 <p>Callbacks are connected to in a similar manner, but the <code class="docutils literal notranslate"><span class="pre">sourceUri</span></code> is
 “callbacks/callbackName”. Unlike signals, callbacks may return a value
@@ -806,13 +806,13 @@ numeric source ID.</p>
 all callback invocations. Temporary parameters that only apply during a
 single function call (which may cause multiple invocations of the
 callback) can be passed as an object type argument:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">myobject</span><span class="o">/</span><span class="n">functions</span><span class="o">/</span><span class="nb">sum</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">2015</span>
-<span class="n">Client</span><span class="o">-</span><span class="n">ID</span><span class="p">:</span> <span class="n">R4Nd0M</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">49</span>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/myobject/functions/sum</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">localhost:2015</span>
+<span class="na">Client-ID</span><span class="o">:</span> <span class="l">R4Nd0M</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">49</span>
 
-<span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">315</span><span class="p">,</span><span class="s2">&quot;mediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;application/json&quot;</span><span class="p">]},</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">315</span><span class="p">,</span><span class="nt">&quot;mediaType&quot;</span><span class="p">:[</span><span class="s2">&quot;application/json&quot;</span><span class="p">]},</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>This would cause an individual integer to be pushed back to the channel
@@ -893,8 +893,7 @@ scripts. The library and the command-line tool are all included in a
 single file that is located in the Linux SDK in
 <code class="docutils literal notranslate"><span class="pre">sdk/client/bash/va-client</span></code>. Type <code class="docutils literal notranslate"><span class="pre">va-client</span></code> for command-line usage
 instructions.</p>
-<p><img alt="image0" class="youtube autoplay" src="engine/NsJuGqrmcS0" /></p>
-<p>If you want to use the functions in your scripts, the best way to do
+<iframe class="youtube" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/NsJuGqrmcS0?rel=0"></iframe><p>If you want to use the functions in your scripts, the best way to do
 this is to include the <code class="docutils literal notranslate"><span class="pre">va-client</span></code> script and to call the commands
 directly as functions:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -933,15 +932,7 @@ client makes no conversions for you. Use
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

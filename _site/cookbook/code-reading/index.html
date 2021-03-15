@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -45,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="White Balance Correction" href="../white-balance/" />
-    <link rel="prev" title="Code reading for Raspberry Pi" href="../raspi-code-reading/" /> 
+    <link rel="next" title="Contour matching" href="../contour-matching/" />
+    <link rel="prev" title="Caliper" href="../caliper/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
@@ -103,41 +102,42 @@
 <li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Cookbook</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Code reading</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../blurring/">Blurring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../caliper/">Caliper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../binarize/">Binarize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contour-matching/">Contour matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detect-blobs/">Detect Blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../analyze-blob-geometry/">Analyze Blob Geometry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python-yolov4/">Yolo V4 object detection with OpenCV and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qr-positioning/">Positioning with QR codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raspi-code-reading/">Code reading for Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texture-matching/">Texture matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsharp-masking/">Unsharp Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web-app/">Web app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo-classifier/">YOLO classifier</a></li>
 </ul>
 </li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -152,7 +152,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -199,8 +199,7 @@
             
   <div class="section" id="code-reading">
 <h1>Code reading<a class="headerlink" href="#code-reading" title="Permalink to this headline">🔗</a></h1>
-<p><img alt="image0" class="youtube medium" src="cookbook/code-reading/ULA4sWa4voc" /></p>
-<div class="section" id="summary">
+<iframe class="youtube" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/ULA4sWa4voc?rel=0"></iframe><div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
 <p>The code reading demo shows how to detect and decode QR codes and bar
 codes.</p>
@@ -219,13 +218,13 @@ codes.</p>
 <p class="caption"><span class="caption-text">The processing graph of the code reading demo.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The images originate from a virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
-Source</span></a>.</p></li>
-<li><p><a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop Image</span></a> can be used for selecting a
+<li><p>The images originate from a virtual camera configured in <span class="xref std std-doc">Image
+Source</span>.</p></li>
+<li><p><span class="xref std std-doc">Crop Image</span> can be used for selecting a
 part of the image for analysis. By default, <code class="docutils literal notranslate"><span class="pre">Size</span></code> is set to
 <code class="docutils literal notranslate"><span class="pre">Whole</span> <span class="pre">Image</span></code> so the tool is in pass-through mode.</p></li>
-<li><p><a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and <a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find
-Threshold</span></a> tools determine the threshold
+<li><p><span class="xref std std-doc">Histogram</span> and <span class="xref std std-doc">Find
+Threshold</span> tools determine the threshold
 between white background and dark bars and modules in the code.</p></li>
 </ul>
 <p>Now the processing path is split into two branches. The rightmost one
@@ -233,29 +232,29 @@ detects and reads QR codes, whereas the left one detects and reads
 barcodes. Otherwise the paths are symmetrical. Let’s start with
 barcodes.</p>
 <ul>
-<li><p><a class="reference internal" href="../../tools/FindBarcodeTool/"><span class="doc">Find Barcode</span></a> finds the positions of
+<li><p><span class="xref std std-doc">Find Barcode</span> finds the positions of
 barcodes in customary <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> format. The intensity
 threshold between the bars and the background comes from
-<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Threshold</span></code> tool. You can limit the maximum number of codes
+<code class="docutils literal notranslate"><span class="pre">Find</span>&#160;&#160; <span class="pre">Threshold</span></code> tool. You can limit the maximum number of codes
 the detector tries to find with the <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Detections</span></code> input
 parameter.</p>
 <p>There is always some white space around the first and the last bars
 of the barcode. This space is called a <em>quiet zone</em>. If you roughly
 know how wide the quiet zone is in terms of world coordinates (or
 pixels in case of uncalibrated camera), you can help the code finder
-by setting the estimate in parameter <code class="docutils literal notranslate"><span class="pre">Quiet</span> <span class="pre">Zone</span> <span class="pre">Width</span></code>. If the
+by setting the estimate in parameter <code class="docutils literal notranslate"><span class="pre">Quiet</span> <span class="pre">Zone</span>&#160;&#160; <span class="pre">Width</span></code>. If the
 width is set as <code class="docutils literal notranslate"><span class="pre">Automatic</span></code>, the tool tries to guess it but does
 not always get it right. The tool outputs sets of <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and
 <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices which locate the positions and orientations of the
 found codes.</p>
 </li>
-<li><p><a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate Tool</span></a> has been configured
+<li><p><span class="xref std std-doc">Begin Iterate Tool</span> has been configured
 to input the sets of frames and sizes from the detector. It splits
 frame and size matrix sets back to single entities. For instance,
 assume that there are four barcodes in the image. In this case
 Iterate Tool splits the 16-by-4 frame matrix into four individual
 4-by-4 matrices and the 4-by-2 size matrix into four 1-by-2 matrices.</p></li>
-<li><p><a class="reference internal" href="../../tools/ReadBarcodeTool/"><span class="doc">Read Barcode Tool</span></a> inputs the image and a
+<li><p><span class="xref std std-doc">Read Barcode Tool</span> inputs the image and a
 <code class="docutils literal notranslate"><span class="pre">Frame</span></code>/<code class="docutils literal notranslate"><span class="pre">Size</span></code>-locator and reads the code bounded by the box
 defined by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. Notice that the tool has two
 different input methods for the code location. The method is chosen
@@ -264,17 +263,17 @@ with the <code class="docutils literal notranslate"><span class="pre">Reading</s
 <dt>Single Line</dt><dd><p>the barcode is read along a line specified by start and end
 points.</p>
 </dd>
-<dt>Area</dt><dd><p>the location of the barcode is set by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. This
-method is used in this example.</p>
+<dt>Area</dt><dd><p>the location of the barcode is set by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>.
+This method is used in this example.</p>
 </dd>
 </dl>
-<p>If you know the code type in advance (e.g. EAN-13, Code128 etc), you
+<p>If you know the code type in advance (e.g. EAN-13, Code128 etc), you
 can configure it with the <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">Type</span></code> input parameter. This makes
 the reading faster and more reliable. If you don’t know the code
 type, set the value to <code class="docutils literal notranslate"><span class="pre">Auto-detect</span></code> which is the default.</p>
 <p>The code contents and the detected code type are given as outputs.</p>
 </li>
-<li><p><a class="reference internal" href="../../tools/EndIterateTool/"><span class="doc">End Iterate Tool</span></a> is a counterpart to
+<li><p><span class="xref std std-doc">End Iterate Tool</span> is a counterpart to
 <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span> <span class="pre">Tool</span></code> described above. It stacks up entries received
 in its inputs, producing either matrices or tables as output. In this
 example, the entries received at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0</span></code> input are the code
@@ -290,7 +289,7 @@ to be connected to the corresponding <code class="docutils literal notranslate">
 repeated.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript Tool</span></a> runs a simple script that
+<li><p><span class="xref std std-doc">JavaScript Tool</span> runs a simple script that
 takes the table of strings and filters out the empty one. This is
 necessary because sometimes the barcode is easier to find than it is
 to read. If the reading fails, the reader produces an empty string
@@ -298,10 +297,10 @@ that is filtered out by the script.</p></li>
 </ul>
 <p>The processing sequence for QR code reading is nearly identical.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../tools/FindMatrixCodeTool/"><span class="doc">Find Matrix Code</span></a> inputs the image and
+<li><p><span class="xref std std-doc">Find Matrix Code</span> inputs the image and
 the intensity threshold as before. Again, you can limit the maximum
 number of codes the detector tries to find with the
-<code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Detections</span></code> parameter.</p></li>
+<code class="docutils literal notranslate"><span class="pre">Max</span>&#160;&#160; <span class="pre">Detections</span></code> parameter.</p></li>
 </ul>
 <p>The found position candidates are now iterated over just as they were in
 barcode reading. The healthy codes are filtered by the script. The same
@@ -320,8 +319,8 @@ script is used by both QR and barcode readers. <img alt="Script which filters ou
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../white-balance/" class="btn btn-neutral float-right" title="White Balance Correction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../raspi-code-reading/" class="btn btn-neutral float-left" title="Code reading for Raspberry Pi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../contour-matching/" class="btn btn-neutral float-right" title="Contour matching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../caliper/" class="btn btn-neutral float-left" title="Caliper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -331,15 +330,7 @@ script is used by both QR and barcode readers. <img alt="Script which filters ou
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

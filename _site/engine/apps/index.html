@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,18 +80,20 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Engine</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../#main-elements">Main elements</a></li>
@@ -125,12 +124,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -145,7 +145,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -196,11 +196,12 @@
 light-weight operating system that runs on top of a real operating
 system. In the operating system analogy, <em>apps</em> are platform-independent
 executables.</p>
-<p>Apps are written in <a class="reference external" href="http://doc.qt.io/qt-5/qmlapplications">QML</a>. The
-structure of the app is built using QML components while the application
-logic is written in JavaScript. QML makes it easy to create user
-interfaces to vision apps, but it is also used to build server apps that
-run in a displayless environment.</p>
+<p>Apps are written in
+<a class="reference external" href="http://doc.qt.io/qt-5/qmlapplications.html">QML</a>. The structure of
+the app is built using QML components while the application logic is
+written in JavaScript. QML makes it easy to create user interfaces to
+vision apps, but it is also used to build server apps that run in a
+displayless environment.</p>
 <p>Usually, apps are created with <a class="reference internal" href="../../builder/"><span class="doc">the Builder</span></a> and
 run by the Engine service. To create an app that can be run by
 <code class="docutils literal notranslate"><span class="pre">va-run</span></code> or the Engine service you just need to export the app from
@@ -211,7 +212,7 @@ gives an overview of how apps can be built and run.</p>
 <h2>Main app component<a class="headerlink" href="#main-app-component" title="Permalink to this headline">🔗</a></h2>
 <p>At a bare minimum, an app consists of a single qml file (e.g.
 <code class="docutils literal notranslate"><span class="pre">app.qml</span></code>) with the following contents:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
 
 <span class="nx">App</span>
 <span class="p">{</span>
@@ -245,7 +246,7 @@ indicate that it cannot be stopped right now. It is however always
 possible to kill an app that refuses to shut down cleanly. When shut
 down, the Engine first tries to stop all running apps and then kills
 them.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
 
 <span class="nx">App</span>
 <span class="p">{</span>
@@ -289,14 +290,14 @@ schema or a HTTP URI. This field will always be set.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">pid</span> <span class="pre">:</span> <span class="pre">integer</span></code></dt><dd><p>The process ID of the app.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">args</span> <span class="pre">:</span> <span class="pre">array&lt;string&gt;</span></code></dt><dd><p>Start-up (e.g. command-line) arguments.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">args</span> <span class="pre">:</span> <span class="pre">array&lt;string&gt;</span></code></dt><dd><p>Start-up (e.g. command-line) arguments.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">appId</span> <span class="pre">:</span> <span class="pre">string</span></code></dt><dd><p>The unique ID of the app. If this is not given in the configuration
 file, one will be automatically generated from the URI of the app.</p>
 </dd>
 </dl>
 <p>The following code prints out the <code class="docutils literal notranslate"><span class="pre">appName</span></code> and <code class="docutils literal notranslate"><span class="pre">pid</span></code> of the app.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">VisionAppster</span><span class="p">.</span><span class="nx">Core</span> <span class="mf">1.0</span>
 
 <span class="nx">App</span>
 <span class="p">{</span>
@@ -343,15 +344,7 @@ limited by the interface of the tool.</p>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>

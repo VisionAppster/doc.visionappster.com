@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -13,7 +12,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/algolia.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
@@ -45,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Linux installation" href="../linux/" />
-    <link rel="prev" title="Windows installation" href="../windows/" /> 
+    <link rel="next" title="Windows installation" href="../windows/" />
+    <link rel="prev" title="Linux installation" href="../linux/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,27 +52,26 @@
    
   <div class="wy-grid-for-nav">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
 
-          
-            <a href="../../" class="icon icon-home"> VisionAppster
-          
+        
+          <a href="../../">
+        
 
+        
           
-            
-            <img src="../../_static/v.png" class="logo" alt="Logo"/>
-          
-          </a>
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
 
+        
           
-            
-            
           
+        
 
-          
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -83,29 +80,31 @@
   </form>
 </div>
 
-          
-        </div>
-
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
           
-            
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
             
               
-            
-            
-              <ul class="current">
+              
+                
+              
+              
+                <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../">Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#instructions">Instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../windows/">Windows installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/">Linux installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Raspberry Pi installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#graphically">Graphically</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#on-command-line">On command line</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting">Connecting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../linux/">Linux installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../windows/">Windows installation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
@@ -117,12 +116,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
 </ul>
 
+              
             
+          </div>
           
         </div>
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
@@ -137,7 +137,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -273,7 +273,7 @@ RPi.</p>
 <p>If you can’t access the DHCP log file but you know the network segment
 to which you attached the RPi, you may try <a class="reference external" href="https://nmap.org/">nmap</a>.
 On Linux, you can usually install it using your system’s package manager
-(e.g. apt or yum). A Windows installer is available on the <a class="reference external" href="https://nmap.org/download">nmap
+(e.g. apt or yum). A Windows installer is available on the <a class="reference external" href="https://nmap.org/download">nmap
 site</a>.</p>
 <p>On Linux, give the following command (<code class="docutils literal notranslate"><span class="pre">sudo</span></code> is needed to display MAC
 addresses, which reveal the network card manufacturer):</p>
@@ -285,7 +285,7 @@ addresses, which reveal the network card manufacturer):</p>
 </pre></div>
 </div>
 <p>Here, 192.168.1.0/24 is your network segment, which you need to find out
-e.g. by using <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> or by opening the IPv4 properties of your network
+e.g. by using <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> or by opening the IPv4 properties of your network
 interface in a graphical environment.</p>
 <p>Once you have found the IP address, you can test the installation by
 pointing your browser to <a class="reference external" href="http://ip-address-of-rpi:2015/">http://ip-address-of-rpi:2015/</a>. You can also
@@ -301,8 +301,8 @@ export packages directly to it.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../linux/" class="btn btn-neutral float-right" title="Linux installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../windows/" class="btn btn-neutral float-left" title="Windows installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../windows/" class="btn btn-neutral float-right" title="Windows installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../linux/" class="btn btn-neutral float-left" title="Linux installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -312,15 +312,7 @@ export packages directly to it.</p>
         &#169; Copyright 2021, VisionAppster.
 
     </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
         </div>
