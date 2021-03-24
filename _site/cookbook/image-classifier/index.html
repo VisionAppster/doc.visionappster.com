@@ -229,9 +229,9 @@ package</a></p></li>
 <p class="caption"><span class="caption-text">Processing graph</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The images originate from the virtual camera configured in <span class="xref std std-doc">Image
-Source</span>.</p></li>
-<li><p><span class="xref std std-doc">Convert Colors</span> takes an image in any
+<li><p>The images originate from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> takes an image in any
 supported format and converts it to uncompressed RGB. This tool is
 necessary because our intent is to analyze images sent by arbitrary
 users.</p></li>
@@ -241,7 +241,7 @@ users.</p></li>
 <p class="caption"><span class="caption-text">Converting any image type to RGB</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Scale Image Tool</span> scales the image to the
+<li><p><a class="reference internal" href="../../tools/ScaleImageTool/"><span class="doc">Scale Image Tool</span></a> scales the image to the
 size required by the image classifier model. In this case, the size
 is 224 x 224 pixels.</p></li>
 </ul>
@@ -250,7 +250,7 @@ is 224 x 224 pixels.</p></li>
 <p class="caption"><span class="caption-text">The ResNet model requires a fixed image size of 224×224 pixels.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Image to Tensor</span> converts a color image
+<li><p><a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to Tensor</span></a> converts a color image
 into a tensor of shape 1 x 3 x <code class="docutils literal notranslate"><span class="pre">height</span></code> x <code class="docutils literal notranslate"><span class="pre">width</span></code>. 1 is the
 number of images per tensor (N, batch size), 3 is the number of color
 channels (C) in an RGB image. Height (H) and width (W) are both 244
@@ -263,7 +263,7 @@ required by the classifier model.</p></li>
 intensity.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Run Onnx Model</span> runs the ResNet-50
+<li><p><a class="reference internal" href="../../tools/RunOnnxModelTool/"><span class="doc">Run Onnx Model</span></a> runs the ResNet-50
 model. The model file is selected with a file dialog which appears by
 clicking the <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">File</span></code> input parameter. Input and output sockets
 appear after the model file has been loaded. The output of this model
@@ -277,7 +277,7 @@ the app. Alternatively, you can load the model from a local disk.</p></li>
 <p class="caption"><span class="caption-text">Parameter displays show the shapes of input and output tensors.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Tensor to Classification</span>
+<li><p><a class="reference internal" href="../../tools/TensorToClassificationTool/"><span class="doc">Tensor to Classification</span></a>
 inputs the tensor of confidences, selects those that exceed the given
 <code class="docutils literal notranslate"><span class="pre">Confidence</span> <span class="pre">Threshold</span></code> and sorts them into descending order. Only
 up to <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Result</span> <span class="pre">Count</span></code> elements are taken. The Onnx model used in
@@ -291,7 +291,7 @@ selected tensor and the corresponding confidence values.</p></li>
 <p class="caption"><span class="caption-text">Tensor to classification picks the most likely classifications.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>Finally, <span class="xref std std-doc">JavaScript</span> inputs the selected
+<li><p>Finally, <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the selected
 indices and converts up to <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Result</span> <span class="pre">Count</span></code> most likely results
 into readable strings.</p></li>
 </ul>
@@ -315,7 +315,7 @@ results.</p>
 </div>
 <div class="section" id="deploying-the-application">
 <h2>Deploying the application<a class="headerlink" href="#deploying-the-application" title="Permalink to this headline">🔗</a></h2>
-<p>The project has an <span class="xref std std-doc">Image Source</span> connected to
+<p>The project has an <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image Source</span></a> connected to
 the image classifier compound tool, so it can be easily tested in the
 Builder. Our target is however to build an API to which images are sent
 from clients. For this, the app doesn’t need an internal image source.</p>

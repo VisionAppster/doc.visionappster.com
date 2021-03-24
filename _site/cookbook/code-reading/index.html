@@ -218,13 +218,13 @@ codes.</p>
 <p class="caption"><span class="caption-text">The processing graph of the code reading demo.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The images originate from a virtual camera configured in <span class="xref std std-doc">Image
-Source</span>.</p></li>
-<li><p><span class="xref std std-doc">Crop Image</span> can be used for selecting a
+<li><p>The images originate from a virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop Image</span></a> can be used for selecting a
 part of the image for analysis. By default, <code class="docutils literal notranslate"><span class="pre">Size</span></code> is set to
 <code class="docutils literal notranslate"><span class="pre">Whole</span> <span class="pre">Image</span></code> so the tool is in pass-through mode.</p></li>
-<li><p><span class="xref std std-doc">Histogram</span> and <span class="xref std std-doc">Find
-Threshold</span> tools determine the threshold
+<li><p><a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and <a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find
+Threshold</span></a> tools determine the threshold
 between white background and dark bars and modules in the code.</p></li>
 </ul>
 <p>Now the processing path is split into two branches. The rightmost one
@@ -232,7 +232,7 @@ detects and reads QR codes, whereas the left one detects and reads
 barcodes. Otherwise the paths are symmetrical. Let’s start with
 barcodes.</p>
 <ul>
-<li><p><span class="xref std std-doc">Find Barcode</span> finds the positions of
+<li><p><a class="reference internal" href="../../tools/FindBarcodeTool/"><span class="doc">Find Barcode</span></a> finds the positions of
 barcodes in customary <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> format. The intensity
 threshold between the bars and the background comes from
 <code class="docutils literal notranslate"><span class="pre">Find</span>&#160;&#160; <span class="pre">Threshold</span></code> tool. You can limit the maximum number of codes
@@ -248,13 +248,13 @@ not always get it right. The tool outputs sets of <code class="docutils literal 
 <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices which locate the positions and orientations of the
 found codes.</p>
 </li>
-<li><p><span class="xref std std-doc">Begin Iterate Tool</span> has been configured
+<li><p><a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate Tool</span></a> has been configured
 to input the sets of frames and sizes from the detector. It splits
 frame and size matrix sets back to single entities. For instance,
 assume that there are four barcodes in the image. In this case
 Iterate Tool splits the 16-by-4 frame matrix into four individual
 4-by-4 matrices and the 4-by-2 size matrix into four 1-by-2 matrices.</p></li>
-<li><p><span class="xref std std-doc">Read Barcode Tool</span> inputs the image and a
+<li><p><a class="reference internal" href="../../tools/ReadBarcodeTool/"><span class="doc">Read Barcode Tool</span></a> inputs the image and a
 <code class="docutils literal notranslate"><span class="pre">Frame</span></code>/<code class="docutils literal notranslate"><span class="pre">Size</span></code>-locator and reads the code bounded by the box
 defined by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. Notice that the tool has two
 different input methods for the code location. The method is chosen
@@ -273,7 +273,7 @@ the reading faster and more reliable. If you don’t know the code
 type, set the value to <code class="docutils literal notranslate"><span class="pre">Auto-detect</span></code> which is the default.</p>
 <p>The code contents and the detected code type are given as outputs.</p>
 </li>
-<li><p><span class="xref std std-doc">End Iterate Tool</span> is a counterpart to
+<li><p><a class="reference internal" href="../../tools/EndIterateTool/"><span class="doc">End Iterate Tool</span></a> is a counterpart to
 <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span> <span class="pre">Tool</span></code> described above. It stacks up entries received
 in its inputs, producing either matrices or tables as output. In this
 example, the entries received at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0</span></code> input are the code
@@ -289,7 +289,7 @@ to be connected to the corresponding <code class="docutils literal notranslate">
 repeated.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">JavaScript Tool</span> runs a simple script that
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript Tool</span></a> runs a simple script that
 takes the table of strings and filters out the empty one. This is
 necessary because sometimes the barcode is easier to find than it is
 to read. If the reading fails, the reader produces an empty string
@@ -297,7 +297,7 @@ that is filtered out by the script.</p></li>
 </ul>
 <p>The processing sequence for QR code reading is nearly identical.</p>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Find Matrix Code</span> inputs the image and
+<li><p><a class="reference internal" href="../../tools/FindMatrixCodeTool/"><span class="doc">Find Matrix Code</span></a> inputs the image and
 the intensity threshold as before. Again, you can limit the maximum
 number of codes the detector tries to find with the
 <code class="docutils literal notranslate"><span class="pre">Max</span>&#160;&#160; <span class="pre">Detections</span></code> parameter.</p></li>

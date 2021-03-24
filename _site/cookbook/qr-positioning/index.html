@@ -234,8 +234,8 @@ later.</p>
 <p class="caption"><span class="caption-text">The target is to straighten an image taken from an unknown angle.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The image originates from the virtual camera configured in <span class="xref std std-doc">Image
-Source</span>. <code class="docutils literal notranslate"><span class="pre">Position</span></code> parameters are disabled
+<li><p>The image originates from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>. <code class="docutils literal notranslate"><span class="pre">Position</span></code> parameters are disabled
 by default. The focal length in terms of pixel units on the sensor
 must be known as accurately as possible. Focal length can be
 determined quickly (but not very accurately) using the method
@@ -250,7 +250,7 @@ for positioning is simplicity because the calibration plate is not
 needed. Any QR code with a known edge length will do.</p></li>
 <li><p>Several tools downstream need to know the threshold between the dark
 and bright modules in the QR code. An estimate of such a threshold is
-given by <span class="xref std std-doc">Find Threshold</span>. Input for the
+given by <a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find Threshold</span></a>. Input for the
 threshold finder is a histogram calculated over the whole image.</p></li>
 </ul>
 <div class="medium figure align-default" id="id3">
@@ -259,8 +259,8 @@ threshold finder is a histogram calculated over the whole image.</p></li>
 and error.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The image is passed to <span class="xref std std-doc">Find Qr Key
-Points</span>. The tool has to know the
+<li><p>The image is passed to <a class="reference internal" href="../../tools/FindQrKeyPointsTool/"><span class="doc">Find Qr Key
+Points</span></a>. The tool has to know the
 length of the edge of the QR code. In this case, <code class="docutils literal notranslate"><span class="pre">Edge</span> <span class="pre">Length</span></code> is
 32 mm. <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> sets the limit between dark and bright modules
 in the code and <code class="docutils literal notranslate"><span class="pre">Invert</span></code> = <code class="docutils literal notranslate"><span class="pre">true</span></code> means that the code has black
@@ -275,16 +275,16 @@ the points with yellow lines.</p></li>
 </div>
 <ul class="simple">
 <li><p>The two point sets are passed to
-<span class="xref std std-doc">Homography</span>. The tool calculates a matrix
+<a class="reference internal" href="../../tools/HomographyTool/"><span class="doc">Homography</span></a>. The tool calculates a matrix
 that maps the coordinates of the detected key points to the known
 reference coordinates. This frame describes the position of the
 camera with respect to the world plane.</p></li>
-<li><p>The frame is passed to <span class="xref std std-doc">Replace Coordinate
-Frame</span> together with the image.
+<li><p>The frame is passed to <a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">Replace Coordinate
+Frame</span></a> together with the image.
 The tool attaches the frame to the image without modifying the
 pixels.</p></li>
-<li><p>The frame is also passed to <span class="xref std std-doc">Frame to
-Angles</span> which calculates Euler angles in
+<li><p>The frame is also passed to <a class="reference internal" href="../../tools/FrameToAnglesTool/"><span class="doc">Frame to
+Angles</span></a> which calculates Euler angles in
 degrees. They describe 3D rotation of the camera with respect to the
 QR code.</p></li>
 </ul>
@@ -295,10 +295,10 @@ used as a new coordinate frame.</span><a class="headerlink" href="#id5" title="P
 </div>
 <ul class="simple">
 <li><p>Unrelated to the positioning procedure, the QR code is also located
-in <span class="xref std std-doc">Matrix Code Detection</span>. Based on
+in <a class="reference internal" href="../../tools/FindMatrixCodeTool/"><span class="doc">Matrix Code Detection</span></a>. Based on
 the position information passed in <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices,
-the contents are read by <span class="xref std std-doc">Matrix Code
-Reading</span>. If you are not interested in
+the contents are read by <a class="reference internal" href="../../tools/ReadMatrixCodeTool/"><span class="doc">Matrix Code
+Reading</span></a>. If you are not interested in
 the information content of the QR code, these tools can be omitted.
 Notice the that information about the size of the edge (32 mm in this
 case) could be written to the QR code. It could be read with Matrix
@@ -312,8 +312,8 @@ the application.</p></li>
 <p class="caption"><span class="caption-text">The contents of the QR code can optionally be readed simultaneously.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
 </div>
 <p>Finally, let’s verify that the image is correctly positioned. For this
-end, we attach a <span class="xref std std-doc">Caliper</span> to the corrected image
-coming from <span class="xref std std-doc">Set Coordinate Frame</span>
+end, we attach a <a class="reference internal" href="../../tools/CaliperTool/"><span class="doc">Caliper</span></a> to the corrected image
+coming from <a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">Set Coordinate Frame</span></a>
 and set the start and end points of the measurement line to left and
 right sides of the perspective-corrected image. The width of the
 measurement line is set as 0.5 mm.</p>
@@ -321,8 +321,8 @@ measurement line is set as 0.5 mm.</p>
 distances of the begin and end points of the gaps measured from the
 beginning of the measurement line. This information is comes from
 <code class="docutils literal notranslate"><span class="pre">Gap</span> <span class="pre">Start</span> <span class="pre">Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Gap</span> <span class="pre">End</span> <span class="pre">Length</span></code> outputs. The unit of the
-length is now in millimeters because we told <span class="xref std std-doc">QR Key Point
-Detection</span> above how long the edge of the
+length is now in millimeters because we told <a class="reference internal" href="../../tools/FindQrKeyPointsTool/"><span class="doc">QR Key Point
+Detection</span></a> above how long the edge of the
 QR code is.</p>
 <p>The start and end length are passed to a simple script which calculates
 the difference between the beginning of the first gap and the end of the

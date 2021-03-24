@@ -218,9 +218,9 @@ classifier</a>.</p>
 <p class="caption"><span class="caption-text">Processing graph</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The images originate from the virtual camera configured in <span class="xref std std-doc">Image
-Source</span>.</p></li>
-<li><p><span class="xref std std-doc">Scale Image</span> scales the image to the size
+<li><p>The images originate from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/ScaleImageTool/"><span class="doc">Scale Image</span></a> scales the image to the size
 required by the YOLO classifier model. In this case, the size is 416
 x 416 pixels.</p></li>
 </ul>
@@ -229,7 +229,7 @@ x 416 pixels.</p></li>
 <p class="caption"><span class="caption-text">The Tiny YOLO model requires a fixed image size of 416 × 416 pixels.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Image to Tensor</span> converts a color image
+<li><p><a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to Tensor</span></a> converts a color image
 into a tensor of shape 1 x 3 x <code class="docutils literal notranslate"><span class="pre">height</span></code> x <code class="docutils literal notranslate"><span class="pre">width</span></code>. 1 is the
 number of images per tensor (N, batch size), 3 is the number of color
 channels (C) in an RGB image. Height (H) and width (W) are both 416
@@ -240,7 +240,7 @@ pixels.</p></li>
 <p class="caption"><span class="caption-text">The input to the model needs to be an image tensor in NCHW layout.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Run Onnx Model</span> runs the ONNX model. The
+<li><p><a class="reference internal" href="../../tools/RunOnnxModelTool/"><span class="doc">Run Onnx Model</span></a> runs the ONNX model. The
 model file is selected with a file dialog that appears by clicking on
 <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">File</span></code> input parameter. Connectable input and output sockets
 appear after the model file has been loaded. The output of this model
@@ -252,7 +252,7 @@ information about identified objects and their locations.</p></li>
 <p class="caption"><span class="caption-text">The ONNX model is stored as a resource file in the app.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Process Yolo Result</span> takes the
+<li><p><a class="reference internal" href="../../tools/ProcessYoloResultTool/"><span class="doc">Process Yolo Result</span></a> takes the
 output tensor of the ONNX tool and decodes the class and location
 data. The detection is accepted only if the probability of correct
 detection is higher than <code class="docutils literal notranslate"><span class="pre">Confidence</span> <span class="pre">Threshold</span></code>. The same object
@@ -270,7 +270,7 @@ matrices.</p></li>
 <p class="caption"><span class="caption-text">The output tensor of a YOLO model needs to be decoded.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>Finally, <span class="xref std std-doc">JavaScript</span> inputs the selected
+<li><p>Finally, <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the selected
 indices and converts them to class names.</p></li>
 </ul>
 <div class="medium figure align-default" id="id6">

@@ -222,18 +222,18 @@ walk it through in smaller pieces.</p>
 <p class="caption"><span class="caption-text">Big picture of the motion detector</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The images originate from the default webcam as configured in <span class="xref std std-doc">Image
-Source</span>. Notice that the default camera is
+<li><p>The images originate from the default webcam as configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>. Notice that the default camera is
 selected automatically by setting the <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Id</span></code> as <code class="docutils literal notranslate"><span class="pre">/^webcam/</span></code>,
 a regular expression that finds the first webcam connected to the
 computer.</p></li>
-<li><p><span class="xref std std-doc">Convert Colors</span> converts possibly
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> converts possibly
 encoded or compressed images to RGB format. This block is actually
 not needed as long as the images come from <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">Source</span></code> which
 decodes the images automatically. However, <code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">Colors</span></code> serves
 as a convenient entry point in case you later want to use the app as
 an API to which a client can send compressed images for analysis.</p></li>
-<li><p><span class="xref std std-doc">Detect Motion</span> compares the input image
+<li><p><a class="reference internal" href="../../tools/DetectMotionTool/"><span class="doc">Detect Motion</span></a> compares the input image
 to the background image which is a weighted average of all previous
 images. If more than 1% of the pixels (i.e. <code class="docutils literal notranslate"><span class="pre">Motion</span>&#160;&#160; <span class="pre">Threshold</span></code> =
 0.01) differ from the background by more than 10 intensity levels
@@ -241,7 +241,7 @@ images. If more than 1% of the pixels (i.e. <code class="docutils literal notran
 by setting output <code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Detected</span></code> as <code class="docutils literal notranslate"><span class="pre">true</span></code>. Parameters
 <code class="docutils literal notranslate"><span class="pre">Alpha1</span></code> and <code class="docutils literal notranslate"><span class="pre">Alpha2</span></code> control how fast the background image
 adapts to changes in input images.</p></li>
-<li><p><span class="xref std std-doc">Gate</span> passes through the input image and
+<li><p><a class="reference internal" href="../../tools/GateTool/"><span class="doc">Gate</span></a> passes through the input image and
 <code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Detected</span></code> flag only if motion has been detected-</p></li>
 </ul>
 <div class="small figure align-default" id="id2">
@@ -264,7 +264,7 @@ between 0 and 19.</p></li>
 <ul>
 <li><p>Information about detected motion, classes of objects which possibly
 caused the motion, as well as locations of the objects are passed to
-<span class="xref std std-doc">JavaScript</span> which makes the final decision
+<a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> which makes the final decision
 on whether to raise an alarm. Inputs, outputs and the code for the
 script are given below.</p>
 <p>YOLO recognizes 20 object classes. The name of the class can be
@@ -318,7 +318,7 @@ that the alarm may have been triggered also by motion of something else
 than the recognized object.</p>
 <p>In this example the frame and size outputs (i.e. the bounding box
 information) are not used. You can use them for example by dragging and
-dropping <span class="xref std std-doc">Crop Image</span> tool on the canvas and
+dropping <a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop Image</span></a> tool on the canvas and
 connecting the output of <code class="docutils literal notranslate"><span class="pre">Gate:</span> <span class="pre">Motion</span></code> tool to <code class="docutils literal notranslate"><span class="pre">Image</span></code> input of
 <code class="docutils literal notranslate"><span class="pre">Crop</span> <span class="pre">Image</span></code>. Then connect <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> outputs of the
 script to the corresponding input of <code class="docutils literal notranslate"><span class="pre">Crop</span> <span class="pre">Image</span></code> tool.</p>
@@ -354,9 +354,9 @@ zero.</p>
   <span class="p">}</span>
 </pre></div>
 </div>
-<p><span class="xref std std-doc">A gate</span> gets the <code class="docutils literal notranslate"><span class="pre">Write</span> <span class="pre">Enabled</span></code> flag from the
+<p><a class="reference internal" href="../../tools/GateTool/"><span class="doc">A gate</span></a> gets the <code class="docutils literal notranslate"><span class="pre">Write</span> <span class="pre">Enabled</span></code> flag from the
 script and uses it to decide whether to pass the image and file path to
-<span class="xref std std-doc">Save Image</span>.</p>
+<a class="reference internal" href="../../tools/SaveImageTool/"><span class="doc">Save Image</span></a>.</p>
 <div class="small figure align-default" id="id6">
 <img alt="Images of interest are saved to jpg files," src="../../_images/detectMotion-5.png" />
 <p class="caption"><span class="caption-text">Images of interest are saved to jpg files,</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>

@@ -229,19 +229,19 @@ analyzing results. We’ll walk through these from top to bottom.</p>
 <div class="section" id="preprocessing">
 <h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
-<li><p>The images originate from a virtual camera configured in <span class="xref std std-doc">Image
-Source</span>.</p></li>
-<li><p><span class="xref std std-doc">Separate Color Channels</span> splits
+<li><p>The images originate from a virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/SeparateColorChannelsTool/"><span class="doc">Separate Color Channels</span></a> splits
 color images into RGB color channels. In this application, we choose
 the blue channel as it gives the best separation of the objects
 against the dark background.</p></li>
-<li><p><span class="xref std std-doc">Histogram</span> calculates a histogram of the
+<li><p><a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> calculates a histogram of the
 intensities of the pixels in the 8-bit grayscale input image.</p></li>
-<li><p><span class="xref std std-doc">Find Threshold</span> analyzes the histogram
+<li><p><a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find Threshold</span></a> analyzes the histogram
 and suggests an optimal threshold for binarization.</p></li>
-<li><p><span class="xref std std-doc">Binarize</span> binarizes the image using the
+<li><p><a class="reference internal" href="../../tools/BinarizeTool/"><span class="doc">Binarize</span></a> binarizes the image using the
 suggested threshold.</p></li>
-<li><p><span class="xref std std-doc">Binary Morphology</span> fills the holes
+<li><p><a class="reference internal" href="../../tools/BinaryMorphologyTool/"><span class="doc">Binary Morphology</span></a> fills the holes
 possibly left over from the binarization process. The reasons why
 there might be holes are for instance random noise and reflections.
 This gives us relatively good-quality binary blobs from which
@@ -250,7 +250,7 @@ contours can be reliably extracted. The mask size is 5-by-5 pixels.</p></li>
 </div>
 <div class="section" id="matching">
 <h3>Matching<a class="headerlink" href="#matching" title="Permalink to this headline">🔗</a></h3>
-<p><span class="xref std std-doc">Match Countours</span> is the crux of this
+<p><a class="reference internal" href="../../tools/MatchContoursTool/"><span class="doc">Match Countours</span></a> is the crux of this
 recipe. It takes a binarized image as input, identifies the boundaries
 of the objects and compares them with the objects the matcher has been
 trained with.</p>
@@ -280,7 +280,7 @@ stacked up),</p></li>
 up) and</p></li>
 <li><p>the class names as a 4-by-1 table of strings.</p></li>
 </ul>
-<p>A <span class="xref std std-doc">Begin Iterate tool</span> has been configured
+<p>A <a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate tool</span></a> has been configured
 to input the three connected outputs from the contour matcher (i.e.
 <code class="docutils literal notranslate"><span class="pre">Frame</span></code>, <code class="docutils literal notranslate"><span class="pre">Size</span></code> and <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Name</span></code>). It splits the frame, size and
 class name matrices to single entities:</p>
@@ -294,10 +294,10 @@ class name matrices to single entities:</p>
 at once. Click on the names of the outputs to see where they are
 connected.</p>
 <ul>
-<li><p><span class="xref std std-doc">Project to Virtual View</span>
+<li><p><a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">Project to Virtual View</span></a>
 receives the original image and a frame/size-pair which frames a
 found object. The output image contains nothing but the found object.</p></li>
-<li><p><span class="xref std std-doc">JavaScript</span> (for spitting the image)
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> (for spitting the image)
 receives the image of the found object as well as the class name of
 the object. The names of the outputs of the script tool have been
 configured so that they are identical to the class names. Hence, the
@@ -322,13 +322,13 @@ values of the variables. For instance:</p>
 <p class="caption"><span class="caption-text">Inputs and outputs of the “split image” script</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <ul>
-<li><p>Another instance of <span class="xref std std-doc">Histogram</span> calculates
+<li><p>Another instance of <a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> calculates
 the histogram of intensities of segmented objects. The intensity of
 an RGB pixel is the average of the color channels.</p></li>
-<li><p><span class="xref std std-doc">Analyze Histogram</span> calculates
+<li><p><a class="reference internal" href="../../tools/AnalyzeHistogramTool/"><span class="doc">Analyze Histogram</span></a> calculates
 statistical features such as mean, variance, median and many more. In
 this case, only <code class="docutils literal notranslate"><span class="pre">mean</span></code> output is connected.</p></li>
-<li><p><span class="xref std std-doc">JavaScript</span> (for combining name and mean
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> (for combining name and mean
 of an object) receives the name of a found object and mean intensity
 and combines them into a 1-by-2 table which is sent to <code class="docutils literal notranslate"><span class="pre">info</span></code>
 output. Again, the script code is very simple:</p>
@@ -348,7 +348,7 @@ output. Again, the script code is very simple:</p>
 <p class="caption"><span class="caption-text">Inputs and outputs of the “name + mean” script</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">End Iterate</span> is a counterpart of the
+<li><p><a class="reference internal" href="../../tools/EndIterateTool/"><span class="doc">End Iterate</span></a> is a counterpart of the
 <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span></code> tool described above. It stacks up entries received
 at its inputs to matrices or tables. In this example, the entries
 received at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0</span></code> input are 1-by-2 tables with one row and

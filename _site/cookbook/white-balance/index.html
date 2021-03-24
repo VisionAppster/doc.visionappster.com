@@ -235,10 +235,10 @@ correction, the background is corrected as white.</p>
 <p class="caption"><span class="caption-text">Processing graph</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>Te test image originates from the virtual camera configured in <span class="xref std std-doc">Image
-Source</span>.</p></li>
-<li><p>The pixel intensities are linearized in <span class="xref std std-doc">Gamma
-Correction</span> which has been configured to
+<li><p>Te test image originates from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>.</p></li>
+<li><p>The pixel intensities are linearized in <a class="reference internal" href="../../tools/CorrectGammaTool/"><span class="doc">Gamma
+Correction</span></a> which has been configured to
 <code class="docutils literal notranslate"><span class="pre">Compress</span></code> mode. In this example we assume that the original image
 has been corrected with a gamma value 2.2. However, if the image
 comes from a file, the most likely value is <code class="docutils literal notranslate"><span class="pre">sRGB</span></code>. It is a special
@@ -248,8 +248,8 @@ linear color balancing below.</p></li>
 <li><p>In this example, our mission is to correct the background color which
 is known to be white, but does not look white in the image due to
 differences in lighting. A reference area with the known color (in
-this case white) is sampled with a <span class="xref std std-doc">Color
-Sampling</span> tool. The bigger the area, the
+this case white) is sampled with a <a class="reference internal" href="../../tools/SampleColorsTool/"><span class="doc">Color
+Sampling</span></a> tool. The bigger the area, the
 better the result will be because more noise can be filtered out. The
 location of the area is selected by dragging the <code class="docutils literal notranslate"><span class="pre">Frame</span></code> input on
 the image display. In this case, the lower right corner of the image
@@ -260,14 +260,14 @@ is selected for color sampling.</p></li>
 <p class="caption"><span class="caption-text">Color compression and sampling</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p>The known reference color is set in <span class="xref std std-doc">Color
-Ratio</span> tool. In this example, the reference
+<li><p>The known reference color is set in <a class="reference internal" href="../../tools/ColorRatioTool/"><span class="doc">Color
+Ratio</span></a> tool. In this example, the reference
 value on each color channel is 240, so the reference color is nearly
 white. The color is given as a hexadecimal value in the order <em>red,
 green, blue</em>. So in this case, the hex value is <code class="docutils literal notranslate"><span class="pre">f0f0f0</span></code> (<code class="docutils literal notranslate"><span class="pre">f0</span></code>
 hex = 240 decimal). The tool outputs scaling factors for each color
 channel.</p></li>
-<li><p><span class="xref std std-doc">Color Balancing</span> tool applies the
+<li><p><a class="reference internal" href="../../tools/BalanceColorsTool/"><span class="doc">Color Balancing</span></a> tool applies the
 correction to the input image. In this example, the tool balances the
 color channels so that the color measured from the reference area
 becomes white on average. The output is a corrected image with linear
