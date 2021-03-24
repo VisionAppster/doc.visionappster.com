@@ -240,8 +240,8 @@ top to bottom.</p>
 <h3>Image input<a class="headerlink" href="#image-input" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
 <li><p>The images originate from a live or virtual camera configured in
-<span class="xref std std-doc">Image Source</span>.</p></li>
-<li><p><span class="xref std std-doc">Convert Colors</span> converts the input
+<a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image Source</span></a>.</p></li>
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> converts the input
 images from RGB to grayscale. This step is actually not mandatory
 because all processing blocks downstream can input also color images.
 However, because matching is based on grayscale texture, the image is
@@ -258,15 +258,15 @@ examine the outputs of the other blocks.</p></li>
 <div class="section" id="match-with-a-trained-model">
 <h3>Match with a trained model<a class="headerlink" href="#match-with-a-trained-model" title="Permalink to this headline">🔗</a></h3>
 <ul>
-<li><p><span class="xref std std-doc">Linear filter</span> removes noise and
+<li><p><a class="reference internal" href="../../tools/LinearFilterTool/"><span class="doc">Linear filter</span></a> removes noise and
 possible artefacts like sharpening. The filter size is small so very
 few details are lost.</p></li>
-<li><p><span class="xref std std-doc">Match Textures</span> is the crux of this
+<li><p><a class="reference internal" href="../../tools/MatchContoursTool/"><span class="doc">Match Textures</span></a> is the crux of this
 recipe. It identifies keypoints from the input image, calculates LBP
 descriptors using the texture around the keypoints and compares them
 with the descriptors of the objects the matcher has been trained
 with. More on the matcher training later in this recipe.</p></li>
-<li><p><span class="xref std std-doc">JavaScript</span> inputs the frame and size
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the frame and size
 (i.e. the bounding box) of the found object (if any) and enlarges the
 bounding box so that the height and the width are extended by 10% on
 each side of the box and the original box resides in the middle of
@@ -316,12 +316,12 @@ depending whether <code class="docutils literal notranslate"><span class="pre">M
 <div class="section" id="project-into-a-constant-sized-image">
 <h3>Project into a constant sized image<a class="headerlink" href="#project-into-a-constant-sized-image" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Project To Virtual View</span> crops
+<li><p><a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">Project To Virtual View</span></a> crops
 and resizes the bounding box into a size proportional to the size of
 the template model. That is, the image which has been used in model
 training. The output image now looks the same regardless of the size
 and the orientation of the input image.</p></li>
-<li><p><span class="xref std std-doc">Replace Coordinate Frame</span>
+<li><p><a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">Replace Coordinate Frame</span></a>
 replaces the existing coordinate system with a new coordinate system
 such that the origin is at the center of the cropped image and the
 coordinate axes are orthonormal.</p></li>
@@ -336,11 +336,11 @@ coordinate axes are orthonormal.</p></li>
 <p>The image contains now only the logo and some margin. The logo should
 contain two dark blobs (the stalk and the apple) and the background
 should be a single connected bright area. The threshold for blob
-detectors is calculated with <span class="xref std std-doc">Histogram</span> and
-<span class="xref std std-doc">Find Threshold</span> tools. The blobs are
-detected with <span class="xref std std-doc">Detect Blobs</span> tools and the
-shapes and sizes of the blobs are analyzed in <span class="xref std std-doc">Analyze Blob
-Geometry</span> tools. There are two
+detectors is calculated with <a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and
+<a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find Threshold</span></a> tools. The blobs are
+detected with <a class="reference internal" href="../../tools/DetectBlobsTool/"><span class="doc">Detect Blobs</span></a> tools and the
+shapes and sizes of the blobs are analyzed in <a class="reference internal" href="../../tools/AnalyzeBlobGeometryTool/"><span class="doc">Analyze Blob
+Geometry</span></a> tools. There are two
 instances of both tools, one for dark and the other for bright blobs.</p>
 <div class="medium figure align-default" id="id5">
 <img alt="Split the logo into blobs" src="../../_images/texture-matching-5.png" />
@@ -350,7 +350,7 @@ instances of both tools, one for dark and the other for bright blobs.</p>
 <div class="section" id="analyze-the-results">
 <h3>Analyze the results<a class="headerlink" href="#analyze-the-results" title="Permalink to this headline">🔗</a></h3>
 <p>The final judgement on whether the quality of the logo is good enough is
-done in an instance of <span class="xref std std-doc">JavaScript</span> tool.</p>
+done in an instance of <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> tool.</p>
 <div class="medium figure align-default" id="id6">
 <img alt="Analyze the results in a script" src="../../_images/texture-matching-6.png" />
 <p class="caption"><span class="caption-text">Analyze the results in a script</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>

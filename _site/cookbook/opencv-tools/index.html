@@ -221,26 +221,26 @@ calculates the distance transform which describes the “closest
 territory” of each blob. Finally, it finds the convex hull of the
 centroids of the blobs, creating “a perimeter fence” that encircles the
 set of blobs.</p>
-<p>As usual, the image originates from an <span class="xref std std-doc">Image
-Source</span> and is passed on to a <span class="xref std std-doc">Detect Blobs
-Tool</span>. The output is split to two processing
+<p>As usual, the image originates from an <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a> and is passed on to a <a class="reference internal" href="../../tools/DetectBlobsTool/"><span class="doc">Detect Blobs
+Tool</span></a>. The output is split to two processing
 branches. Let’s first go over the left branch.</p>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Binarize Tool</span> is configured to produce a
+<li><p><a class="reference internal" href="../../tools/BinarizeTool/"><span class="doc">Binarize Tool</span></a> is configured to produce a
 binary image which has zero pixels (black) inside and ones (white)
 outside of the blobs.</p></li>
 <li><p>The binary image is passed to a tool which calls the
 <a class="reference external" href="https://docs.opencv.org/3.4/d7/d1b/group__imgproc__misc.html#ga8a0b7fdfcb7a13dde018988ba3a43042">distanceTransform</a>
 OpenCv function. <code class="docutils literal notranslate"><span class="pre">MaskSize</span></code> and <code class="docutils literal notranslate"><span class="pre">DistanceType</span></code> options can be
 selected from drop-down lists.</p></li>
-<li><p><span class="xref std std-doc">Color Distance Tool</span> inverts the gray
+<li><p><a class="reference internal" href="../../tools/ColorDistanceTool/"><span class="doc">Color Distance Tool</span></a> inverts the gray
 levels of the <code class="docutils literal notranslate"><span class="pre">Distance</span></code> output of the previous tool in order to
 improve the visual output. The brighter the pixel, the closer it is
 to a blob. Pixels inside the blobs are white.</p></li>
 </ul>
 <p>The tools in the rightmost processing branch are:</p>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Analyze Blob Geometry Tool</span>
+<li><p><a class="reference internal" href="../../tools/AnalyzeBlobGeometryTool/"><span class="doc">Analyze Blob Geometry Tool</span></a>
 inputs the labeled image from <code class="docutils literal notranslate"><span class="pre">Blob</span> <span class="pre">Detection</span> <span class="pre">Tool</span></code>. The output of
 interest is <code class="docutils literal notranslate"><span class="pre">Centroid</span></code> which contains coordinates of the centers of
 the blobs.</p></li>

@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Calibrate camera &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Calibrate line-scan camera" href="../CalibrateLinescanCameraTool/" />
+    <link rel="prev" title="Bounding box" href="../BoundingBoxTool/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
+
+        
+          <a href="../../">
+        
+
+        
+          
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
+          
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+              
+              
+                
+              
+              
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Built-in tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#list-of-all-tools">List of all tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../AbsTool/">Abs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddTool/">Add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddImagesTool/">Add images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ArithmeticTool/">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BalanceColorsTool/">Balance colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BarcodeProbabilityTool/">Barcode probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BeginBranchTool/">Begin branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BeginIterateTool/">Begin iterate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinPixelsTool/">Bin pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeTool/">Binarize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeAdaptivelyTool/">Binarize adaptively</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/">Binarize with limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinaryFunctionTool/">Binary function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinaryMorphologyTool/">Binary morphology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BlobBoundingBoxTool/">Blob bounding box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BooleanLogicTool/">Boolean logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BoundingBoxTool/">Bounding box</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Calibrate camera</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../CalibrateLinescanCameraTool/">Calibrate line-scan camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CalibrateManuallyTool/">Calibrate manually</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CaliperTool/">Caliper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CollapseArrayTool/">Collapse array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ColorDistanceTool/">Color distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ColorRatioTool/">Color ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CombineColorChannelsTool/">Combine color channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CompareTool/">Compare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ComplexConjugateTool/">Complex conjugate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CompressImageTool/">Compress image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ConvertColorsTool/">Convert colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ConvertTypeTool/">Convert type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CorrectGammaTool/">Correct gamma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CountTool/">Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBoundaryShapeTool/">Detect boundary shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectCirclesTool/">Detect circles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectCornersTool/">Detect corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectEdgesTool/">Detect edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectLbpTextureTool/">Detect LBP texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectLinesTool/">Detect lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectMotionTool/">Detect motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectShapesTool/">Detect shapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectionMaskTool/">Detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DivideTool/">Divide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DrawEdgesTool/">Draw edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EndBranchTool/">End branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EndIterateTool/">End iterate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EqualTool/">Equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EqualizeHistogramTool/">Equalize histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FileSystemWatcherTool/">File system watcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FilterKeyPointsTool/">Filter key points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindQrKeyPointsTool/">Find QR keypoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindThresholdTool/">Find threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FlipImageTool/">Flip image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FrameToAnglesTool/">Frame to angles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GateTool/">Gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GenerateGridTool/">Generate grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GradientHistogramTool/">Gradient histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GrayLevelProfileTool/">Gray level profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GreaterTool/">Greater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GreaterOrEqualTool/">Greater or equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HeightProfileTool/">Height profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HistogramTool/">Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HomographyTool/">Homography</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HuemapTool/">Huemap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../IdentityTool/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageCornersTool/">Image corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageInfoTool/">Image info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageSource/">Image source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageToMatrixTool/">Image to matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageToTensorTool/">Image to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InvertColorsTool/">Invert colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InvertMatrixTool/">Invert matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../JavaScriptTool/">JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../JoinImagesTool/">Join images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../KeypointHistogramTool/">Keypoint histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LogicalXorTool/">Logical XOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MapGrayLevelsTool/">Map gray levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MaskImageTool/">Mask image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchContoursTool/">Match contours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchKeyPointsTool/">Match key points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchRigid2DObjectTool/">Match rigid 2D object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchTexturesTool/">Match textures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchingCompoundTool/">Matching compound</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixcodeDetectionMaskTool/">Matrix code detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixcodeProbabilityTool/">Matrix code probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixToImageTool/">Matrix to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixToTensorTool/">Matrix to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MaxTool/">Max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeanTool/">Mean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureGapWidthsTool/">Measure gap widths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MedianFilterTool/">Median filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MinTool/">Min</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MonochromatizeImageTool/">Monochromatize image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MultiplyTool/">Multiply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MultiplyMatricesTool/">Multiply matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NegateTool/">Negate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NormalizeMeanGrayLevelTool/">Normalize mean gray level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NotEqualTool/">Not equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../OutputExternalDataTool/">Output external data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PixelCoordinatesToWorldTool/">Pixel coordinates to world</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PositionCameraTool/">Position camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PositionLinescanCameraTool/">Position line-scan camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PostprocessBoundaryTool/">Postprocess boundary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PowerTool/">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProcessYoloResultTool/">Process YOLO results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProductTool/">Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProfileToImageTool/">Profile to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProjectToVirtualViewTool/">Project to virtual view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PruneMatchesTool/">Prune matches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../QuantizeNonUniformlyTool/">Quantize non-uniformly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadBarcodeTool/">Read barcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadBarcodeLineTool/">Read barcode along a line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadDigitalInputTool/">Read digital input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RunOnnxModelTool/">Run ONNX model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SampleColorsTool/">Sample colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SaveImageTool/">Save image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ScaleImageTool/">Scale image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SeparateColorChannelsTool/">Separate color channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SerializeInputsTool/">Serialize inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SetColorChannelTool/">Set color channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SetIntensityRangeTool/">Set intensity range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ShapeContextTool/">Shape context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SimplifyPolylineTool/">Simplify polyline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SortRowsTool/">Sort rows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../StdTool/">Std</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SubmatrixTool/">Submatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SubtractTool/">Subtract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SubtractImagesTool/">Subtract images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SumTool/">Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SynchronizeInputsTool/">Synchronize inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorToClassificationTool/">Tensor to classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorToImageTool/">Tensor to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorToMatrixTool/">Tensor to matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TimerTool/">Timer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TrackMovingObjectsTool/">Track moving objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TransformCoordinatesTool/">Transform coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TranslateAndRotateFrameTool/">Translate and rotate frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TransposeMatrixTool/">Transpose matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../UnaryFunctionTool/">Unary function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../VarianceTool/">Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../VectorToImageTool/">Vector to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WorldCoordinatesToPixelsTool/">World coordinates to pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WriteDigitalOutputTool/">Write digital output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+              
+            
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Built-in tools</a> &raquo;</li>
+        
+      <li>Calibrate camera</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="calibrate-camera">
+<h1>Calibrate camera<a class="headerlink" href="#calibrate-camera" title="Permalink to this headline">🔗</a></h1>
+<p>Calculates intrinsic calibration parameters (principal point, focal
+length and radial distortion) of a matrix camera.</p>
+<p>The tool can be used in two separate modes. If focal length and
+principal point are not known, <em>calibrationMode</em> should be set to
+‘CalibrateEverything’. In this case the focal length, principal
+point and non-linear distortion coefficients will be calculated
+using at least three input images of the standard VisionAppster
+calibration plate. Each image should be taken from a different
+angle and as large portion of the calibration plate as possible
+should be visible.</p>
+<p>If the focal length is known and the principal point is
+in the middle of the sensor, <em>calibrationMode</em> can be set to
+‘CalibrateDistortion’. In this case only the distortion coefficients
+will be calculated using either one or several images.
+If only one image is used, the calibration plate should cover nearly
+the entire field of view. However, if the calibration plate covers
+only part of the field of view, you typically get an accurate result
+by taking four images such that the calibration plate is visible at
+a different corner of the field of view in each image.
+Unlike in ‘CalibrateEverything’ mode,  each of these four images
+can be taken from the same angle, typically placing the camera
+directly above the calibration plate.</p>
+<p>Once the calibration factors have been calculated, they can be
+copied to the image source connected to the camera.</p>
+<div class="section" id="inputs">
+<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code>: An optional synchronization input. This input makes it
+possible to feed multiple independent images to the calibration
+procedure. If <em>sync</em> is connected, the tool will collect input
+images related to the object received in it. This makes it
+possible to use an <a class="reference internal" href="../BeginIterateTool/"><span class="doc">iteration</span></a> to collect
+multiple calibration images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: An image of the calibration plate. The image must be
+such that either the center marker or at least one of
+the corners is visible.
+The more markers are visible the better.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">markerSpacing</span></code>: The spacing (distance between centers) of
+calibration markers on the calibration plate
+in world units.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">markerRows</span></code>: Number of marker rows on the calibration plate.
+A row is a sequence of markers along the long edge of the plate.
+The number must be odd.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">markerColumns</span></code>: Number of marker columns on the calibration plate
+A columns is a sequence of markers along the short edge of the plate.
+The number must be odd.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calibrationMode</span></code>: This flag can be set to ‘CalibrateDistortion’
+if the focal length and the pixel size are known and the
+principal point is in the middle of the sensor. In this case
+only non-linear distortion needs to be calibrated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code>: Focal length in world units, typically in millimeters.
+Applicable only if <em>calibrationMode</em> = ‘CalibrateDistortion’.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pixelSize</span></code>: Width of pixels on the image
+sensor, in world units. The tool assumes that
+pixels are square.
+Typical pixel sizes of area scan sensors range
+from 0.001 to 0.01 millimeters.
+Applicable only if <em>calibrationMode</em> = ‘CalibrateDistortion’.</p></li>
+</ul>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code>: The focal length of the camera in pixels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">principalPoint</span></code>: The location of the principal point in pixel
+coordinates (cx, cy). The principal point is the point where
+the optical axis hits the image sensor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distortionFactors</span></code>: The radial and tangential distortion
+factors (k1, k2, p1, p2). Tangential factors aren’t actually
+estimated and will always be zeros.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code>: A N-by-1 matrix containing the number of
+detected markers for every image.
+If the number is zero, no markers have been detected
+so the image is not usable.
+Ideally every marker on the plate should be visible.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code>: A measure of how successful the calibration
+procedure was. The smaller the value, the better. A value
+between 0 and 1 is good, between 1 and 2 is fair and larger
+than 2 is poor. If the calibration fails completely, the value
+is infinite.</p></li>
+</ul>
+<dl class="cpp class">
+<dt id="_CPPv419CalibrateCameraTool">
+<span id="_CPPv319CalibrateCameraTool"></span><span id="_CPPv219CalibrateCameraTool"></span><span id="CalibrateCameraTool"></span><span class="target" id="CalibrateCameraTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CalibrateCameraTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv419CalibrateCameraTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classCalibrateCameraTool_1autotoc_md0">
+<h3 id="classCalibrateCameraTool_1autotoc_md0">Calibrate camera<a class="headerlink" href="#classCalibrateCameraTool_1autotoc_md0" title="Permalink to this headline">🔗</a></h3>
+<p>Calculates intrinsic calibration parameters (principal point, focal length and radial distortion) of a matrix camera.</p>
+<p>The tool can be used in two separate modes. If focal length and principal point are not known, <em>calibrationMode</em> should be set to ‘CalibrateEverything’. In this case the focal length, principal point and non-linear distortion coefficients will be calculated using at least three input images of the standard VisionAppster calibration plate. Each image should be taken from a different angle and as large portion of the calibration plate as possible should be visible.</p>
+<p>If the focal length is known and the principal point is in the middle of the sensor, <em>calibrationMode</em> can be set to ‘CalibrateDistortion’. In this case only the distortion coefficients will be calculated using either one or several images. If only one image is used, the calibration plate should cover nearly the entire field of view. However, if the calibration plate covers only part of the field of view, you typically get an accurate result by taking four images such that the calibration plate is visible at a different corner of the field of view in each image. Unlike in ‘CalibrateEverything’ mode, each of these four images can be taken from the same angle, typically placing the camera directly above the calibration plate.</p>
+<p>Once the calibration factors have been calculated, they can be copied to the image source connected to the camera.</p>
+<div class="section" id="classCalibrateCameraTool_1autotoc_md1">
+<h4 id="classCalibrateCameraTool_1autotoc_md1">Inputs<a class="headerlink" href="#classCalibrateCameraTool_1autotoc_md1" title="Permalink to this headline">🔗</a></h4>
+<p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code> - An optional synchronization input. This input makes it possible to feed multiple independent images to the calibration procedure. If <em>sync</em> is connected, the tool will collect input images related to the object received in it. This makes it possible to use an <a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">iteration</span></a> to collect multiple calibration images.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - An image of the calibration plate. The image must be such that either the center marker or at least one of the corners is visible. The more markers are visible the better.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">markerSpacing</span></code> - The spacing (distance between centers) of calibration markers on the calibration plate in world units.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">markerRows</span></code> - Number of marker rows on the calibration plate. A row is a sequence of markers along the long edge of the plate. The number must be odd.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">markerColumns</span></code> - Number of marker columns on the calibration plate A columns is a sequence of markers along the short edge of the plate. The number must be odd.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">calibrationMode</span></code> - This flag can be set to ‘CalibrateDistortion’ if the focal length and the pixel size are known and the principal point is in the middle of the sensor. In this case only non-linear distortion needs to be calibrated.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - Focal length in world units, typically in millimeters. Applicable only if <em>calibrationMode</em> = ‘CalibrateDistortion’.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pixelSize</span></code> - Width of pixels on the image sensor, in world units. The tool assumes that pixels are square. Typical pixel sizes of area scan sensors range from 0.001 to 0.01 millimeters. Applicable only if <em>calibrationMode</em> = ‘CalibrateDistortion’.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classCalibrateCameraTool_1autotoc_md2">
+<h4 id="classCalibrateCameraTool_1autotoc_md2">Outputs<a class="headerlink" href="#classCalibrateCameraTool_1autotoc_md2" title="Permalink to this headline">🔗</a></h4>
+<p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - The focal length of the camera in pixels</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">principalPoint</span></code> - The location of the principal point in pixel coordinates (cx, cy). The principal point is the point where the optical axis hits the image sensor.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">distortionFactors</span></code> - The radial and tangential distortion factors (k1, k2, p1, p2). Tangential factors aren’t actually estimated and will always be zeros.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code> - A N-by-1 matrix containing the number of detected markers for every image. If the number is zero, no markers have been detected so the image is not usable. Ideally every marker on the plate should be visible.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code> - A measure of how successful the calibration procedure was. The smaller the value, the better. A value between 0 and 1 is good, between 1 and 2 is fair and larger than 2 is poor. If the calibration fails completely, the value is infinite. </p></li>
+</ul>
+</p>
+</div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Types</p>
+<dl class="cpp enum">
+<dt id="_CPPv4N19CalibrateCameraTool15CalibrationModeE">
+<span id="_CPPv3N19CalibrateCameraTool15CalibrationModeE"></span><span id="_CPPv2N19CalibrateCameraTool15CalibrationModeE"></span><span class="target" id="CalibrationMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">CalibrationMode</span></code><a class="headerlink" href="#_CPPv4N19CalibrateCameraTool15CalibrationModeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Mode of operation. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N19CalibrateCameraTool15CalibrationMode19CalibrateEverythingE">
+<span id="_CPPv3N19CalibrateCameraTool15CalibrationMode19CalibrateEverythingE"></span><span id="_CPPv2N19CalibrateCameraTool15CalibrationMode19CalibrateEverythingE"></span><span class="target" id="CalibrationMode::CalibrateEverything"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">CalibrateEverything</span></code><a class="headerlink" href="#_CPPv4N19CalibrateCameraTool15CalibrationMode19CalibrateEverythingE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Calibrate everything (focal length, principal point and distortion coefficients.) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N19CalibrateCameraTool15CalibrationMode19CalibrateDistortionE">
+<span id="_CPPv3N19CalibrateCameraTool15CalibrationMode19CalibrateDistortionE"></span><span id="_CPPv2N19CalibrateCameraTool15CalibrationMode19CalibrateDistortionE"></span><span class="target" id="CalibrationMode::CalibrateDistortion"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">CalibrateDistortion</span></code><a class="headerlink" href="#_CPPv4N19CalibrateCameraTool15CalibrationMode19CalibrateDistortionE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Calibrate only distortion coefficients. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../CalibrateLinescanCameraTool/" class="btn btn-neutral float-right" title="Calibrate line-scan camera" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../BoundingBoxTool/" class="btn btn-neutral float-left" title="Bounding box" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

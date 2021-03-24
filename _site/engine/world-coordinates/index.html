@@ -261,7 +261,7 @@ of the world coordinate system. Tools that make geometric
 transformations to images (such as rotation or scaling) don’t change the
 position of the image in the world, just the arrangement of pixels in
 the memory of your computer. Therefore, in world coordinates, the output
-of <span class="xref std std-doc">RotateImageTool</span> will look quite exactly
+of <a class="reference internal" href="../../tools/RotateImageTool/"><span class="doc">RotateImageTool</span></a> will look quite exactly
 the same as its input even though the pixels are rearranged by rotating
 them around the center of the image. The tool compensates for the
 rearrangement by rotating the axes of the image’s coordinate frame by an
@@ -295,13 +295,13 @@ measure the location of a thing in one image, it is just fine to use
 that location to crop a portion out of an image taken with another
 camera. The caveat: it is assumed that the images are on the same planar
 surface. This can be changed with
-<span class="xref std std-doc">ReplaceCoordinateFrameTool</span>, but
+<a class="reference internal" href="../../tools/ReplaceCoordinateFrameTool/"><span class="doc">ReplaceCoordinateFrameTool</span></a>, but
 we won’t go into details here.</p>
 <p>It is possible to create synthetic views of the world. For example, if
 you want to join images from multiple cameras into a compound view of
-the world, you can use <span class="xref std std-doc">JoinImagesTool</span>. To
+the world, you can use <a class="reference internal" href="../../tools/JoinImagesTool/"><span class="doc">JoinImagesTool</span></a>. To
 create a completely new view, you can use
-<span class="xref std std-doc">ProjectToVirtualViewTool</span>. It lets
+<a class="reference internal" href="../../tools/ProjectToVirtualViewTool/"><span class="doc">ProjectToVirtualViewTool</span></a>. It lets
 you to define a window through which to look at the world. As input
 data, you can provide any other view of the world. In fact, all
 geometric image transformation tools such as rotation and scaling are
@@ -352,7 +352,7 @@ units, not pixels. Consider the image above. There, a 3-by-2 portion of
 a world is represented as a red rectangle and the locations of pixel
 centers with black dots. If you haven’t calibrated the camera, there is
 a 1:1 correspondence between world units and pixels. The
-<span class="xref std std-doc">CropImageTool</span> must take so many pixels that
+<a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">CropImageTool</span></a> must take so many pixels that
 the distance between the centers of edge pixels is three horizontally
 and two vertically. 4×3 pixels, that is.</p>
 </div>

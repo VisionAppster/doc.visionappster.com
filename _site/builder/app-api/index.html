@@ -321,7 +321,7 @@ header.</p>
 depending on the number of output parameters.</p>
 </li>
 </ol>
-<p>For example, if the <span class="xref std std-doc">binarize tool</span> was
+<p>For example, if the <a class="reference internal" href="../../tools/BinarizeTool/"><span class="doc">binarize tool</span></a> was
 published as a function, the signatures of the two function overloads
 would be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binarize</span><span class="p">:</span> <span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span>
@@ -395,10 +395,10 @@ available elsewhere.</p>
 <li><p>Avoid types that are not natively supported by JSON in the interface.
 Data types such as tables, tensors, matrices or 16-bit floats cannot
 be directly represented as JSON and require custom en/decoders. For
-data type conversions, you can use conversion tools such as <span class="xref std std-doc">Image to
-Tensor</span> or <span class="xref std std-doc">Tensor to
-Image</span>. In
-<span class="xref std std-doc">JavaScript</span>, you can convert matrices and
+data type conversions, you can use conversion tools such as <a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to
+Tensor</span></a> or <a class="reference internal" href="../../tools/TensorToImageTool/"><span class="doc">Tensor to
+Image</span></a>. In
+<a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a>, you can convert matrices and
 tensors to JS arrays, for example. Returning a JS object is also a
 good idea.</p></li>
 <li><p>If an API function takes an image as input, make it the first input

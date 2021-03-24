@@ -218,13 +218,13 @@ optimization techniques are introduced.</p>
 <p>The processing graph is too large to fit one page, which is why we’ll
 walk through it from top to bottom in smaller pieces.</p>
 <ul class="simple">
-<li><p>The images originate from the default webcam as configured in <span class="xref std std-doc">Image
-Source</span>. Notice that the default camera is
+<li><p>The images originate from the default webcam as configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
+Source</span></a>. Notice that the default camera is
 selected automatically by setting the <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Id</span></code> as <code class="docutils literal notranslate"><span class="pre">/^webcam/</span></code>,
 a regular expression that finds the first webcam connected to the
 computer.</p></li>
 <li><p>The frame rate is reduced by a factor of 3 with
-<span class="xref std std-doc">Count</span> and <span class="xref std std-doc">Gate</span> tools.
+<a class="reference internal" href="../../tools/CountTool/"><span class="doc">Count</span></a> and <a class="reference internal" href="../../tools/GateTool/"><span class="doc">Gate</span></a> tools.
 The counter counts from zero to 2 and sets <code class="docutils literal notranslate"><span class="pre">Reset</span></code> output as
 <code class="docutils literal notranslate"><span class="pre">True</span></code> when it wraps around to zero. <code class="docutils literal notranslate"><span class="pre">Reset</span></code> output is connected
 to <code class="docutils literal notranslate"><span class="pre">Enabled</span></code> input of the Gate tool. Gate lets an image pass
@@ -240,17 +240,17 @@ to three tools as we will see later.</p></li>
 <p class="caption"><span class="caption-text">A counter and a gate are used to reduce frame rate.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Convert Colors</span> has been configured to
+<li><p><a class="reference internal" href="../../tools/ConvertColorsTool/"><span class="doc">Convert Colors</span></a> has been configured to
 convert the image from color to grayscale. This will speed up the
 processing downstream because grayscale image has only a quarter of
 the bytes compared to ordinary RGB color image.</p></li>
 <li><p>We speed up the processing further by cropping the original image to
 a quarter of its original size. The cropped area will be taken from
 the center of the original image.
-<span class="xref std std-doc">JavaScript</span> controls the size and position
+<a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> controls the size and position
 of the cropped image by calculating <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>
-accordingly. They are passed on to <span class="xref std std-doc">Crop
-Image</span>. The downside of cropping is that the
+accordingly. They are passed on to <a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop
+Image</span></a>. The downside of cropping is that the
 barcodes and QR codes will be read only if they are close to the
 center of the image.</p></li>
 </ul>
@@ -264,10 +264,10 @@ detects and reads barcodes, whereas the left one detects and reads QR
 codes. The middle branch measures histogram from the cropped grayscale
 image and analyzes the histogram to find the optimal intensity threshold
 between dark and bright bars or modules in the code. See the
-<span class="xref std std-doc">Histogram</span> and <span class="xref std std-doc">Find
-Threshold</span> tools for details. The user can
+<a class="reference internal" href="../../tools/HistogramTool/"><span class="doc">Histogram</span></a> and <a class="reference internal" href="../../tools/FindThresholdTool/"><span class="doc">Find
+Threshold</span></a> tools for details. The user can
 enable and disable the code reading branches by toggling the <code class="docutils literal notranslate"><span class="pre">enabled</span></code>
-input parameters of two <span class="xref std std-doc">gates</span>.</p>
+input parameters of two <a class="reference internal" href="../../tools/GateTool/"><span class="doc">gates</span></a>.</p>
 <div class="small figure align-default" id="id3">
 <img alt="Gates are used to selectively enable/disable code reading branches." src="../../_images/raspi-3.png" />
 <p class="caption"><span class="caption-text">Gates are used to selectively enable/disable code reading branches.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
@@ -275,20 +275,20 @@ input parameters of two <span class="xref std std-doc">gates</span>.</p>
 <p>The branches for finding and reading barcodes and QR codes are
 identical. Let us walk through the one for barcodes.</p>
 <ul class="simple">
-<li><p><span class="xref std std-doc">Find Barcode</span> finds the positions of
+<li><p><a class="reference internal" href="../../tools/FindBarcodeTool/"><span class="doc">Find Barcode</span></a> finds the positions of
 barcodes in the customary <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> format. The
 intensity threshold between the bars and the background comes from
 the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Threshold</span></code> tool. You can limit the maximum number of
 codes the detector tries to find with the <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Detections</span></code> input
 parameter. The tool outputs sets of <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices
 which locate the positions and orientations of the found codes.</p></li>
-<li><p><span class="xref std std-doc">Begin Iterate</span> has been configured to
+<li><p><a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate</span></a> has been configured to
 input the sets of frames and sizes from the detector. It splits frame
 and size matrix sets back to single entities. For instance, assume
 that there are four barcodes in the image. In this case Iterate Tool
 splits the 16-by-4 frame matrix into four individual 4-by-4 matrices
 and the 4-by-2 size matrix into four 1-by-2 matrices.</p></li>
-<li><p><span class="xref std std-doc">Read Barcode</span> inputs the image and a
+<li><p><a class="reference internal" href="../../tools/ReadBarcodeTool/"><span class="doc">Read Barcode</span></a> inputs the image and a
 <code class="docutils literal notranslate"><span class="pre">Frame</span></code>/<code class="docutils literal notranslate"><span class="pre">Size</span></code>-locator and reads the code bounded by the box
 defined by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. If you know the code type in
 advance (e.g. EAN-13, Code128 etc), you can configure it with the
@@ -301,7 +301,7 @@ more reliable. If you don’t know the code type, set the value to
 <p class="caption"><span class="caption-text">The Read Barcode tool will be invoked for each barcode found.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">
-<li><p><span class="xref std std-doc">End Iterate</span> is a counterpart to
+<li><p><a class="reference internal" href="../../tools/EndIterateTool/"><span class="doc">End Iterate</span></a> is a counterpart to
 <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span></code> described above. It stacks up entries received in
 its inputs, producing either matrices or tables as output. In this
 example, the entries received at <code class="docutils literal notranslate"><span class="pre">Element</span> <span class="pre">0</span></code> input are the code
@@ -310,7 +310,7 @@ are, say, four codes found in the original input image, the output at
 <code class="docutils literal notranslate"><span class="pre">Result</span> <span class="pre">0</span></code> will be a 4-by-2 table. Notice that <code class="docutils literal notranslate"><span class="pre">Sync</span></code> input has
 to be connected to the corresponding <code class="docutils literal notranslate"><span class="pre">Sync</span></code> output in
 <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span>&#160;&#160; <span class="pre">Tool</span></code>.</p></li>
-<li><p><span class="xref std std-doc">JavaScript Tool</span> runs a simple script that
+<li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript Tool</span></a> runs a simple script that
 takes the table of strings and filters out empty ones. This is
 necessary because sometimes the barcode is easier to find than it is
 to read. If the reading fails, the reader produces an empty string
