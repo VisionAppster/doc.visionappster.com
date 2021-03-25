@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
     <link rel="next" title="Logical AND" href="../LogicalAndTool/" />
-    <link rel="prev" title="Linear filter" href="../LinearFilterTool/" /> 
+    <link rel="prev" title="List directory" href="../ListDirectoryTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -191,6 +191,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Local binary patterns transform</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
@@ -384,11 +385,11 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv416LbpTransformTool">
 <span id="_CPPv316LbpTransformTool"></span><span id="_CPPv216LbpTransformTool"></span><span id="LbpTransformTool"></span><span class="target" id="LbpTransformTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">LbpTransformTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416LbpTransformTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classLbpTransformTool_1autotoc_md219">
-<h3 id="classLbpTransformTool_1autotoc_md219">Local binary patterns transform<a class="headerlink" href="#classLbpTransformTool_1autotoc_md219" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classLbpTransformTool_1autotoc_md222">
+<h3 id="classLbpTransformTool_1autotoc_md222">Local binary patterns transform<a class="headerlink" href="#classLbpTransformTool_1autotoc_md222" title="Permalink to this headline">🔗</a></h3>
 <p>Converts each pixel of an input image to a local binary pattern (LBP) code. The special case of eight samples with a radius of one is also known as the census transform.</p>
-<div class="section" id="classLbpTransformTool_1autotoc_md220">
-<h4 id="classLbpTransformTool_1autotoc_md220">Inputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md220" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classLbpTransformTool_1autotoc_md223">
+<h4 id="classLbpTransformTool_1autotoc_md223">Inputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md223" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. If a color image is input, its intensity will be used.</p></li>
 </ul>
@@ -409,8 +410,8 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classLbpTransformTool_1autotoc_md221">
-<h4 id="classLbpTransformTool_1autotoc_md221">Outputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md221" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classLbpTransformTool_1autotoc_md224">
+<h4 id="classLbpTransformTool_1autotoc_md224">Outputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md224" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Transformed, gray-level image. The binary value of the intensity of a pixel represents an LBP code. The output image lacks a border of <em>radius</em> pixels on all sides because the LBP code for these pixels would be undefined. The maximum value of the output image and hence the number of bits per pixels depends on <em>samples</em> and <em>mode</em>. </p></li>
 </ul>
@@ -473,7 +474,7 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../LogicalAndTool/" class="btn btn-neutral float-right" title="Logical AND" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../LinearFilterTool/" class="btn btn-neutral float-left" title="Linear filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ListDirectoryTool/" class="btn btn-neutral float-left" title="List directory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

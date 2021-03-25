@@ -191,6 +191,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -376,11 +377,11 @@ a floating point number returns a floating point number.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv412MultiplyTool">
 <span id="_CPPv312MultiplyTool"></span><span id="_CPPv212MultiplyTool"></span><span id="MultiplyTool"></span><span class="target" id="MultiplyTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MultiplyTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../ArithmeticTool/#_CPPv414ArithmeticTool" title="ArithmeticTool"><span class="pre">ArithmeticTool</span></a><a class="headerlink" href="#_CPPv412MultiplyTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMultiplyTool_1autotoc_md406">
-<h3 id="classMultiplyTool_1autotoc_md406">Multiply<a class="headerlink" href="#classMultiplyTool_1autotoc_md406" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classMultiplyTool_1autotoc_md409">
+<h3 id="classMultiplyTool_1autotoc_md409">Multiply<a class="headerlink" href="#classMultiplyTool_1autotoc_md409" title="Permalink to this headline">🔗</a></h3>
 <p>Multiplies the inputs element by element.</p>
-<div class="section" id="classMultiplyTool_1autotoc_md407">
-<h4 id="classMultiplyTool_1autotoc_md407">Inputs<a class="headerlink" href="#classMultiplyTool_1autotoc_md407" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMultiplyTool_1autotoc_md410">
+<h4 id="classMultiplyTool_1autotoc_md410">Inputs<a class="headerlink" href="#classMultiplyTool_1autotoc_md410" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> - a numeric (scalar) value, matrix or tensor.</p></li>
 </ul>
@@ -390,8 +391,8 @@ a floating point number returns a floating point number.</p></li>
 <p>If both </p>
 <em>a</em> and <em>b</em> are non-scalar (matrix or tensor), their dimensions must be the same.</p>
 </div>
-<div class="section" id="classMultiplyTool_1autotoc_md408">
-<h4 id="classMultiplyTool_1autotoc_md408">Outputs<a class="headerlink" href="#classMultiplyTool_1autotoc_md408" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMultiplyTool_1autotoc_md411">
+<h4 id="classMultiplyTool_1autotoc_md411">Outputs<a class="headerlink" href="#classMultiplyTool_1autotoc_md411" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">result</span></code> - If both inputs are scalar, the output is a scalar value. If either of the inputs is non-scalar, the output is of the same type as the inputs (i.e. either a matrix or tensor). If one input is scalar and the other input is non-scalar, the output is non-scalar and the values are determined by multiplying each element of the non-scalar input with the scalar input. The number format will be expanded so that there is no loss of accuracy. For example, multiplying an integer with a floating point number returns a floating point number. </p></li>
 </ul>

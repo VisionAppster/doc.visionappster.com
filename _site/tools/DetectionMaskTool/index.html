@@ -195,6 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -374,11 +375,11 @@ internal classifier, scaled to [0, 255].</p></li>
 <dl class="cpp class">
 <dt id="_CPPv417DetectionMaskTool">
 <span id="_CPPv317DetectionMaskTool"></span><span id="_CPPv217DetectionMaskTool"></span><span id="DetectionMaskTool"></span><span class="target" id="DetectionMaskTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectionMaskTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv417DetectionMaskTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectionMaskTool_1autotoc_md183">
-<h3 id="classDetectionMaskTool_1autotoc_md183">Detection mask<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md183" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classDetectionMaskTool_1autotoc_md186">
+<h3 id="classDetectionMaskTool_1autotoc_md186">Detection mask<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md186" title="Permalink to this headline">🔗</a></h3>
 <p>A compound tool that splits an image to fixed-size blocks and produces a low-resolution detection mask image by classifying each sub-image. The sub-image classifier is provided by an inherited implementation.</p>
-<div class="section" id="classDetectionMaskTool_1autotoc_md184">
-<h4 id="classDetectionMaskTool_1autotoc_md184">Inputs<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md184" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectionMaskTool_1autotoc_md187">
+<h4 id="classDetectionMaskTool_1autotoc_md187">Inputs<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md187" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image in which objects are to be detected.</p></li>
 </ul>
@@ -390,8 +391,8 @@ internal classifier, scaled to [0, 255].</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classDetectionMaskTool_1autotoc_md185">
-<h4 id="classDetectionMaskTool_1autotoc_md185">Outputs<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md185" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectionMaskTool_1autotoc_md188">
+<h4 id="classDetectionMaskTool_1autotoc_md188">Outputs<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md188" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> - A low-resolution mask image whose pixel intensities are classifications/regressions/probabilities produced by the internal classifier, scaled to [0, 255]. </p></li>
 </ul>

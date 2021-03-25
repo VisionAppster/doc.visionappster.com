@@ -191,6 +191,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Logical AND</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
@@ -378,11 +379,11 @@ the scalar input.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv414LogicalAndTool">
 <span id="_CPPv314LogicalAndTool"></span><span id="_CPPv214LogicalAndTool"></span><span id="LogicalAndTool"></span><span class="target" id="LogicalAndTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">LogicalAndTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../BooleanLogicTool/#_CPPv416BooleanLogicTool" title="BooleanLogicTool"><span class="pre">BooleanLogicTool</span></a><a class="headerlink" href="#_CPPv414LogicalAndTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classLogicalAndTool_1autotoc_md385">
-<h3 id="classLogicalAndTool_1autotoc_md385">Logical AND<a class="headerlink" href="#classLogicalAndTool_1autotoc_md385" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classLogicalAndTool_1autotoc_md388">
+<h3 id="classLogicalAndTool_1autotoc_md388">Logical AND<a class="headerlink" href="#classLogicalAndTool_1autotoc_md388" title="Permalink to this headline">🔗</a></h3>
 <p>Performs logical AND operation on inputs <em>a</em> and <em>b</em>. Inputs can be Boolean or numeric values, matrices or tensors. If the data types of inputs are not Boolean, the values are converted to Boolean values by setting zero elements to <code class="docutils literal notranslate"><span class="pre">false</span></code> and non-zero elements to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<div class="section" id="classLogicalAndTool_1autotoc_md386">
-<h4 id="classLogicalAndTool_1autotoc_md386">Inputs<a class="headerlink" href="#classLogicalAndTool_1autotoc_md386" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classLogicalAndTool_1autotoc_md389">
+<h4 id="classLogicalAndTool_1autotoc_md389">Inputs<a class="headerlink" href="#classLogicalAndTool_1autotoc_md389" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> - a Boolean or numeric (scalar) value, matrix or tensor</p></li>
 </ul>
@@ -392,8 +393,8 @@ the scalar input.</p></li>
 <p>If both </p>
 <em>a</em> and <em>b</em> are non-scalar (matrix or tensor), their dimensions must be the same.</p>
 </div>
-<div class="section" id="classLogicalAndTool_1autotoc_md387">
-<h4 id="classLogicalAndTool_1autotoc_md387">Outputs<a class="headerlink" href="#classLogicalAndTool_1autotoc_md387" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classLogicalAndTool_1autotoc_md390">
+<h4 id="classLogicalAndTool_1autotoc_md390">Outputs<a class="headerlink" href="#classLogicalAndTool_1autotoc_md390" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">result</span></code> - If both inputs are scalar, the output is a Boolean value. If either of the inputs is non-scalar, the output is either a Boolean matrix or a Boolean tensor. If one input is scalar and the other input is non-scalar, the output is non-scalar and the values are determined by applying the operator with each element of the non-scalar input and the scalar input. </p></li>
 </ul>

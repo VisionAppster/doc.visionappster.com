@@ -195,6 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -385,11 +386,11 @@ lower intensity means shorter distance to <em>referenceColor</em>. If
 <dl class="cpp class">
 <dt id="_CPPv417ColorDistanceTool">
 <span id="_CPPv317ColorDistanceTool"></span><span id="_CPPv217ColorDistanceTool"></span><span id="ColorDistanceTool"></span><span class="target" id="ColorDistanceTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ColorDistanceTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417ColorDistanceTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classColorDistanceTool_1autotoc_md159">
-<h3 id="classColorDistanceTool_1autotoc_md159">Color distance<a class="headerlink" href="#classColorDistanceTool_1autotoc_md159" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classColorDistanceTool_1autotoc_md162">
+<h3 id="classColorDistanceTool_1autotoc_md162">Color distance<a class="headerlink" href="#classColorDistanceTool_1autotoc_md162" title="Permalink to this headline">🔗</a></h3>
 <p>Transforms input image into a gray-level image. The intensity of each pixel in the output image reflects the distance between a reference color and the color of the pixel in the RGB color space. The lower the intensity, the closer the pixel matches the reference color. If the <em>invert</em> flag is <code class="docutils literal notranslate"><span class="pre">true</span></code>, higher intensity means closer match. If the input is a gray-level image, all color channels are assumed to be identical and equal to the intensity of each pixel.</p>
-<div class="section" id="classColorDistanceTool_1autotoc_md160">
-<h4 id="classColorDistanceTool_1autotoc_md160">Inputs<a class="headerlink" href="#classColorDistanceTool_1autotoc_md160" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classColorDistanceTool_1autotoc_md163">
+<h4 id="classColorDistanceTool_1autotoc_md163">Inputs<a class="headerlink" href="#classColorDistanceTool_1autotoc_md163" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
 </ul>
@@ -404,8 +405,8 @@ lower intensity means shorter distance to <em>referenceColor</em>. If
 </ul>
 </p>
 </div>
-<div class="section" id="classColorDistanceTool_1autotoc_md161">
-<h4 id="classColorDistanceTool_1autotoc_md161">Outputs<a class="headerlink" href="#classColorDistanceTool_1autotoc_md161" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classColorDistanceTool_1autotoc_md164">
+<h4 id="classColorDistanceTool_1autotoc_md164">Outputs<a class="headerlink" href="#classColorDistanceTool_1autotoc_md164" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Absolute color distances. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, lower intensity means shorter distance to <em>referenceColor</em>. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, brighter intensity means a better match. </p></li>
 </ul>

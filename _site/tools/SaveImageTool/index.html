@@ -191,6 +191,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -429,16 +430,16 @@ automatically.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv413SaveImageTool">
 <span id="_CPPv313SaveImageTool"></span><span id="_CPPv213SaveImageTool"></span><span id="SaveImageTool"></span><span class="target" id="SaveImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SaveImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv413SaveImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classSaveImageTool_1autotoc_md258">
-<h3 id="classSaveImageTool_1autotoc_md258">Save image<a class="headerlink" href="#classSaveImageTool_1autotoc_md258" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classSaveImageTool_1autotoc_md261">
+<h3 id="classSaveImageTool_1autotoc_md261">Save image<a class="headerlink" href="#classSaveImageTool_1autotoc_md261" title="Permalink to this headline">🔗</a></h3>
 <p>Writes images into files. This tool supports most standard image formats and a proprietary <em>kuva</em> format. The <em>kuva</em> format is the only format that supports raw image data and is guaranteed to preserve all information, including calibration coefficients.</p>
 <p><dl class="simple">
 <dt><strong>Note</strong></dt><dd><p>This tool will be run simultaneously in multiple processing threads. Due to this, incoming images may be written to the hard disk in arbitrary order. Don’t expect auto-numbered images to be written to the disk in the order they were received by the tool. If you need a serial number in file names, generate the names using a <a class="reference internal" href="../JavaScriptTool/#JavaScriptTool"><span class="std std-ref">script</span></a> that maintains a counter in its state variables.</p>
 </dd>
 </dl>
 </p>
-<div class="section" id="classSaveImageTool_1autotoc_md259">
-<h4 id="classSaveImageTool_1autotoc_md259">Inputs<a class="headerlink" href="#classSaveImageTool_1autotoc_md259" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classSaveImageTool_1autotoc_md262">
+<h4 id="classSaveImageTool_1autotoc_md262">Inputs<a class="headerlink" href="#classSaveImageTool_1autotoc_md262" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image to save.</p></li>
 </ul>
@@ -467,8 +468,8 @@ automatically.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classSaveImageTool_1autotoc_md260">
-<h4 id="classSaveImageTool_1autotoc_md260">Outputs<a class="headerlink" href="#classSaveImageTool_1autotoc_md260" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classSaveImageTool_1autotoc_md263">
+<h4 id="classSaveImageTool_1autotoc_md263">Outputs<a class="headerlink" href="#classSaveImageTool_1autotoc_md263" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">filePath</span></code> - Absolute path to the image file.</p></li>
 </ul>

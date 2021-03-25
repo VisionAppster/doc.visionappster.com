@@ -195,6 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -383,11 +384,11 @@ points contained duplicates.)</p></li>
 <dl class="cpp class">
 <dt id="_CPPv426AdjustPointsToGradientTool">
 <span id="_CPPv326AdjustPointsToGradientTool"></span><span id="_CPPv226AdjustPointsToGradientTool"></span><span id="AdjustPointsToGradientTool"></span><span class="target" id="AdjustPointsToGradientTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">AdjustPointsToGradientTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv426AdjustPointsToGradientTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classAdjustPointsToGradientTool_1autotoc_md306">
-<h3 id="classAdjustPointsToGradientTool_1autotoc_md306">Adjust points to gradient<a class="headerlink" href="#classAdjustPointsToGradientTool_1autotoc_md306" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classAdjustPointsToGradientTool_1autotoc_md309">
+<h3 id="classAdjustPointsToGradientTool_1autotoc_md309">Adjust points to gradient<a class="headerlink" href="#classAdjustPointsToGradientTool_1autotoc_md309" title="Permalink to this headline">🔗</a></h3>
 <p>Adjusts the given points in the input image towards maximum gradients and filters out the points which are surrounded by too similar points. Similarity is measured by calculating gray-level difference of each input point to the points <em>distance</em> pixels away in 8 directions. If the largest difference is more than <em>similarityThreshold</em>, the point is nudged towards the maximal direction. This is repeated up to <em>maxSteps</em> times. Typically, the coordinates of the input points come from [grid generation tool](<a class="reference internal" href="../GenerateGridTool/#GenerateGridTool"><span class="std std-ref">GenerateGridTool</span></a>).</p>
-<div class="section" id="classAdjustPointsToGradientTool_1autotoc_md307">
-<h4 id="classAdjustPointsToGradientTool_1autotoc_md307">Inputs<a class="headerlink" href="#classAdjustPointsToGradientTool_1autotoc_md307" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAdjustPointsToGradientTool_1autotoc_md310">
+<h4 id="classAdjustPointsToGradientTool_1autotoc_md310">Inputs<a class="headerlink" href="#classAdjustPointsToGradientTool_1autotoc_md310" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
 </ul>
@@ -405,8 +406,8 @@ points contained duplicates.)</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classAdjustPointsToGradientTool_1autotoc_md308">
-<h4 id="classAdjustPointsToGradientTool_1autotoc_md308">Outputs<a class="headerlink" href="#classAdjustPointsToGradientTool_1autotoc_md308" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAdjustPointsToGradientTool_1autotoc_md311">
+<h4 id="classAdjustPointsToGradientTool_1autotoc_md311">Outputs<a class="headerlink" href="#classAdjustPointsToGradientTool_1autotoc_md311" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - Pixel coordinates of output points. A N-by-2 matrix. There will be no duplicates (even if the set of input points contained duplicates.) </p></li>
 </ul>

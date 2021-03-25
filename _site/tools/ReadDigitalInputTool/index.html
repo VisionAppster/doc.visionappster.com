@@ -191,6 +191,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -390,12 +391,12 @@ selected device at start-up. See
 <dl class="cpp class">
 <dt id="_CPPv420ReadDigitalInputTool">
 <span id="_CPPv320ReadDigitalInputTool"></span><span id="_CPPv220ReadDigitalInputTool"></span><span id="ReadDigitalInputTool"></span><span class="target" id="ReadDigitalInputTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ReadDigitalInputTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DigitalIOTool</span><a class="headerlink" href="#_CPPv420ReadDigitalInputTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classReadDigitalInputTool_1autotoc_md85">
-<h3 id="classReadDigitalInputTool_1autotoc_md85">Read digital input<a class="headerlink" href="#classReadDigitalInputTool_1autotoc_md85" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classReadDigitalInputTool_1autotoc_md88">
+<h3 id="classReadDigitalInputTool_1autotoc_md88">Read digital input<a class="headerlink" href="#classReadDigitalInputTool_1autotoc_md88" title="Permalink to this headline">🔗</a></h3>
 <p>A tool that reads data from a digital I/O device and pushes it to processing. A new output signal is generated either synchronously using a software trigger or asynchronously each time the state of an input channel changes.</p>
 <p>Depending on the configuration of the I/O device and its driver, the tool can output either binary values or integers. Binary values are used to indicate state change events such as low-to-high transitions of an input line. Integers can be used if the device has addressable hardware registers whose contents can be read as words.</p>
-<div class="section" id="classReadDigitalInputTool_1autotoc_md86">
-<h4 id="classReadDigitalInputTool_1autotoc_md86">Inputs<a class="headerlink" href="#classReadDigitalInputTool_1autotoc_md86" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classReadDigitalInputTool_1autotoc_md89">
+<h4 id="classReadDigitalInputTool_1autotoc_md89">Inputs<a class="headerlink" href="#classReadDigitalInputTool_1autotoc_md89" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">channel</span></code> - The zero-based index of the input channel whose state needs to be read. If this input is not connected, the <em>value</em> output will send a value each time the state of the channel changes.</p></li>
 </ul>
@@ -416,8 +417,8 @@ selected device at start-up. See
 </ul>
 </p>
 </div>
-<div class="section" id="classReadDigitalInputTool_1autotoc_md87">
-<h4 id="classReadDigitalInputTool_1autotoc_md87">Outputs<a class="headerlink" href="#classReadDigitalInputTool_1autotoc_md87" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classReadDigitalInputTool_1autotoc_md90">
+<h4 id="classReadDigitalInputTool_1autotoc_md90">Outputs<a class="headerlink" href="#classReadDigitalInputTool_1autotoc_md90" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> - The new value of the channel. </p></li>
 </ul>

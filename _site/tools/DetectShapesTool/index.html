@@ -195,6 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -412,12 +413,12 @@ of the boundary curve.</p>
 <dl class="cpp class">
 <dt id="_CPPv416DetectShapesTool">
 <span id="_CPPv316DetectShapesTool"></span><span id="_CPPv216DetectShapesTool"></span><span id="DetectShapesTool"></span><span class="target" id="DetectShapesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectShapesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416DetectShapesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectShapesTool_1autotoc_md478">
-<h3 id="classDetectShapesTool_1autotoc_md478">Detect shapes<a class="headerlink" href="#classDetectShapesTool_1autotoc_md478" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classDetectShapesTool_1autotoc_md481">
+<h3 id="classDetectShapesTool_1autotoc_md481">Detect shapes<a class="headerlink" href="#classDetectShapesTool_1autotoc_md481" title="Permalink to this headline">🔗</a></h3>
 <p>Detects shapes by matching a boundary curve to a known geometric shape or a user-defined shape.</p>
 <p>This tool requires that the input is an ordered set of points that follows the boundary of an object. Suitable input can be generated for example with <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>.</p>
-<div class="section" id="classDetectShapesTool_1autotoc_md479">
-<h4 id="classDetectShapesTool_1autotoc_md479">Inputs<a class="headerlink" href="#classDetectShapesTool_1autotoc_md479" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectShapesTool_1autotoc_md482">
+<h4 id="classDetectShapesTool_1autotoc_md482">Inputs<a class="headerlink" href="#classDetectShapesTool_1autotoc_md482" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - The boundary curve of an unknown polygon as an N-by-2 matrix (N is a varying number of points).</p></li>
 </ul>
@@ -438,8 +439,8 @@ of the boundary curve.</p>
 </ul>
 </p>
 </div>
-<div class="section" id="classDetectShapesTool_1autotoc_md480">
-<h4 id="classDetectShapesTool_1autotoc_md480">Outputs<a class="headerlink" href="#classDetectShapesTool_1autotoc_md480" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectShapesTool_1autotoc_md483">
+<h4 id="classDetectShapesTool_1autotoc_md483">Outputs<a class="headerlink" href="#classDetectShapesTool_1autotoc_md483" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location and orientation of the upper left corner of a rectangle that encloses the detected shape in world coordinates. A 4-by-4 matrix.</p></li>
 </ul>
