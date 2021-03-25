@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -400,11 +401,11 @@ as in <em>verticesBlockSize</em>.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv423PostprocessBoundaryTool">
 <span id="_CPPv323PostprocessBoundaryTool"></span><span id="_CPPv223PostprocessBoundaryTool"></span><span id="PostprocessBoundaryTool"></span><span class="target" id="PostprocessBoundaryTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">PostprocessBoundaryTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv423PostprocessBoundaryTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classPostprocessBoundaryTool_1autotoc_md331">
-<h3 id="classPostprocessBoundaryTool_1autotoc_md331">Postprocess boundary<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md331" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classPostprocessBoundaryTool_1autotoc_md334">
+<h3 id="classPostprocessBoundaryTool_1autotoc_md334">Postprocess boundary<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md334" title="Permalink to this headline">🔗</a></h3>
 <p>A specialized tool used by <a class="reference internal" href="../DetectBoundaryShapeTool/#DetectBoundaryShapeTool"><span class="std std-ref">boundary shape detection</span></a> to subsample and join <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundaries</span></a> for shape context calculation.</p>
-<div class="section" id="classPostprocessBoundaryTool_1autotoc_md332">
-<h4 id="classPostprocessBoundaryTool_1autotoc_md332">Inputs<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md332" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classPostprocessBoundaryTool_1autotoc_md335">
+<h4 id="classPostprocessBoundaryTool_1autotoc_md335">Inputs<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md335" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - Vertex coordinates of all boundary curves found in an image. A N-by-2 matrix in which each row stores the (x, y) world coordinates of polygon vertex.</p></li>
 </ul>
@@ -422,8 +423,8 @@ as in <em>verticesBlockSize</em>.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classPostprocessBoundaryTool_1autotoc_md333">
-<h4 id="classPostprocessBoundaryTool_1autotoc_md333">Outputs<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md333" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classPostprocessBoundaryTool_1autotoc_md336">
+<h4 id="classPostprocessBoundaryTool_1autotoc_md336">Outputs<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md336" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - The points received in the <em>vertices</em> input, but rearranged so that the vertices of joined boundaries occupy successive rows.</p></li>
 </ul>

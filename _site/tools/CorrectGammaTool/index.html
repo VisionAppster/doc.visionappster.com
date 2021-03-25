@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -387,13 +388,13 @@ standard sRGB gamma function will be applied.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv416CorrectGammaTool">
 <span id="_CPPv316CorrectGammaTool"></span><span id="_CPPv216CorrectGammaTool"></span><span id="CorrectGammaTool"></span><span class="target" id="CorrectGammaTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CorrectGammaTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416CorrectGammaTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCorrectGammaTool_1autotoc_md174">
-<h3 id="classCorrectGammaTool_1autotoc_md174">Correct gamma<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md174" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classCorrectGammaTool_1autotoc_md177">
+<h3 id="classCorrectGammaTool_1autotoc_md177">Correct gamma<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md177" title="Permalink to this headline">🔗</a></h3>
 <p>Compresses or expands gray or RGB levels using a non-linear power-law function. In gamma expansion, the intensity level of an output pixel is generally calculated as <span class="math notranslate nohighlight">\( I_{out} = I_{in}^\gamma \)</span>, where <em>I</em> is a normalized intensity in the range [0, 1]. The output will be scaled so that the original intensity range is preserved. In gamma compression, the inverse of <span class="math notranslate nohighlight">\( \gamma \)</span> is used. In sRGB mode, the equation has a linear portion to fight numerical instability.</p>
 <p>Gamma expansion is needed when non-linear color channels are linearized. For example, most consumer-grade digital cameras use the non-linear sRGB color space. To correctly apply many color transforming algorithms one must linearize (i.e. expand) the color channels first.</p>
 <p>Gamma compression is needed to transform linear colors back to the standard sRGB color space, for example. Industrial-grade machine vision cameras also produce linear color, which need to be gamma-compressed to display correctly. The gamma value for a typical computer monitor is about 2.2. (Old Macs have 1.8.)</p>
-<div class="section" id="classCorrectGammaTool_1autotoc_md175">
-<h4 id="classCorrectGammaTool_1autotoc_md175">Inputs<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md175" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classCorrectGammaTool_1autotoc_md178">
+<h4 id="classCorrectGammaTool_1autotoc_md178">Inputs<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md178" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
 </ul>
@@ -405,8 +406,8 @@ standard sRGB gamma function will be applied.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classCorrectGammaTool_1autotoc_md176">
-<h4 id="classCorrectGammaTool_1autotoc_md176">Outputs<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md176" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classCorrectGammaTool_1autotoc_md179">
+<h4 id="classCorrectGammaTool_1autotoc_md179">Outputs<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md179" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Gamma-corrected image. </p></li>
 </ul>

@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -391,11 +392,11 @@ the better the match. An N-by-1 matrix.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv420MatchingCompoundTool">
 <span id="_CPPv320MatchingCompoundTool"></span><span id="_CPPv220MatchingCompoundTool"></span><span id="MatchingCompoundTool"></span><span class="target" id="MatchingCompoundTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchingCompoundTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv420MatchingCompoundTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchingCompoundTool_1autotoc_md322">
-<h3 id="classMatchingCompoundTool_1autotoc_md322">Matching compound<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md322" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classMatchingCompoundTool_1autotoc_md325">
+<h3 id="classMatchingCompoundTool_1autotoc_md325">Matching compound<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md325" title="Permalink to this headline">🔗</a></h3>
 <p>A compound tool that contains a key point detector and a matcher. Tools derived from this generic implementation specify which key point detector and matcher are actually used. All derived tools can be used in the matcher builder to create key point based matchers.</p>
-<div class="section" id="classMatchingCompoundTool_1autotoc_md323">
-<h4 id="classMatchingCompoundTool_1autotoc_md323">Inputs<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md323" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatchingCompoundTool_1autotoc_md326">
+<h4 id="classMatchingCompoundTool_1autotoc_md326">Inputs<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md326" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image in which objects are to be detected. Different key point detection techniques require different input image types: Boundary-based detectors only work with blob (binary or labeled) images. Texture or color based detectors work with gray-level or color input.</p></li>
 </ul>
@@ -410,8 +411,8 @@ the better the match. An N-by-1 matrix.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classMatchingCompoundTool_1autotoc_md324">
-<h4 id="classMatchingCompoundTool_1autotoc_md324">Outputs<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md324" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatchingCompoundTool_1autotoc_md327">
+<h4 id="classMatchingCompoundTool_1autotoc_md327">Outputs<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md327" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for each detected object. Each frame is a 4-by-4 matrix totaling in a 4N-by-4 matrix.</p></li>
 </ul>

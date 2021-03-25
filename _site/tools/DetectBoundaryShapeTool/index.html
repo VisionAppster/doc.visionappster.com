@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -402,11 +403,11 @@ as an input to <a class="reference internal" href="../BeginIterateTool/"><span c
 <dl class="cpp class">
 <dt id="_CPPv423DetectBoundaryShapeTool">
 <span id="_CPPv323DetectBoundaryShapeTool"></span><span id="_CPPv223DetectBoundaryShapeTool"></span><span id="DetectBoundaryShapeTool"></span><span class="target" id="DetectBoundaryShapeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectBoundaryShapeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv423DetectBoundaryShapeTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectBoundaryShapeTool_1autotoc_md309">
-<h3 id="classDetectBoundaryShapeTool_1autotoc_md309">Detect boundary shape<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md309" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classDetectBoundaryShapeTool_1autotoc_md312">
+<h3 id="classDetectBoundaryShapeTool_1autotoc_md312">Detect boundary shape<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md312" title="Permalink to this headline">🔗</a></h3>
 <p>A compound that combines <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a> and the <a class="reference internal" href="../ShapeContextTool/#ShapeContextTool"><span class="std std-ref">shape context</span></a> to an easy-to-use key point detector.</p>
-<div class="section" id="classDetectBoundaryShapeTool_1autotoc_md310">
-<h4 id="classDetectBoundaryShapeTool_1autotoc_md310">Inputs<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md310" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectBoundaryShapeTool_1autotoc_md313">
+<h4 id="classDetectBoundaryShapeTool_1autotoc_md313">Inputs<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md313" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. Usually this is a binary or a labeled image, but the <em>threshold</em> input parameter can be used to binarize an input image.</p></li>
 </ul>
@@ -423,8 +424,8 @@ as an input to <a class="reference internal" href="../BeginIterateTool/"><span c
 <em>threshold</em>, <em>invert</em>, <em>minBoundaryLength</em>, <em>maxBoundaryLength</em>, <em>maxBoundaries</em> and <em>maxVertices</em> parameters are aliases for the corresponding parameters in <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>.</p>
 <p>The <em>scaleInvariant</em>, <em>angleBins</em>, <em>distanceBins</em>, <em>maxSamplesPerKeyPoint</em> and <em>globalDescriptor</em> parameters are aliases for the corresponding parameters in <a class="reference internal" href="../ShapeContextTool/#ShapeContextTool"><span class="std std-ref">shape context</span></a>.</p>
 </div>
-<div class="section" id="classDetectBoundaryShapeTool_1autotoc_md311">
-<h4 id="classDetectBoundaryShapeTool_1autotoc_md311">Outputs<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md311" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectBoundaryShapeTool_1autotoc_md314">
+<h4 id="classDetectBoundaryShapeTool_1autotoc_md314">Outputs<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md314" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - The coordinates of extracted key points. A N-by-2 matrix in which each row holds the world (x, y) coordinates of a key point.</p></li>
 </ul>

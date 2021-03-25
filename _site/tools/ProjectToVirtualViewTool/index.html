@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -403,15 +404,15 @@ operation than rounding.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv424ProjectToVirtualViewTool">
 <span id="_CPPv324ProjectToVirtualViewTool"></span><span id="_CPPv224ProjectToVirtualViewTool"></span><span id="ProjectToVirtualViewTool"></span><span class="target" id="ProjectToVirtualViewTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ProjectToVirtualViewTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv424ProjectToVirtualViewTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classProjectToVirtualViewTool_1autotoc_md246">
-<h3 id="classProjectToVirtualViewTool_1autotoc_md246">Project to virtual view<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md246" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classProjectToVirtualViewTool_1autotoc_md249">
+<h3 id="classProjectToVirtualViewTool_1autotoc_md249">Project to virtual view<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md249" title="Permalink to this headline">🔗</a></h3>
 <p>Creates a new view of the world as if looked through a virtual window. This tool makes it possible to simultaneously perform any 3D affine transformation and perspective correction, scaling and cropping to an image.</p>
 <p>The tool is given a <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> and a size that describe a rectangular area in the physical world (not in the input image). The area may be freely rotated, scaled, stretched and skewed in three dimensions. The resulting image is an aligned picture of the area as if a virtual camera was placed right on top of it at <em>referenceDistance</em>.</p>
 <p>The tool can take any image as input and does not expect that the requested piece of the world is actually visible in it. If the input image does not contain the necessary data, portions of the output image (or even the whole image) may be left black.</p>
 <p>To rotate an image, one only needs to create a rotated coordinate frame. Images can be scaled by simply altering <em>referenceDistance</em>.</p>
 <p>This tool works with any 3D transformation and may therefore require a lot of computation. The tool is optimized so that it does the minimum amount of work required, but its speed may be hard to predict. If an application needs to quickly extract a rectangular, axis-aligned sub-image, use <a class="reference internal" href="../CropImageTool/#CropImageTool"><span class="std std-ref">cropping</span></a> instead.</p>
-<div class="section" id="classProjectToVirtualViewTool_1autotoc_md247">
-<h4 id="classProjectToVirtualViewTool_1autotoc_md247">Inputs<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md247" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classProjectToVirtualViewTool_1autotoc_md250">
+<h4 id="classProjectToVirtualViewTool_1autotoc_md250">Inputs<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md250" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
 </ul>
@@ -429,8 +430,8 @@ operation than rounding.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classProjectToVirtualViewTool_1autotoc_md248">
-<h4 id="classProjectToVirtualViewTool_1autotoc_md248">Outputs<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md248" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classProjectToVirtualViewTool_1autotoc_md251">
+<h4 id="classProjectToVirtualViewTool_1autotoc_md251">Outputs<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md251" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Output image. </p></li>
 </ul>

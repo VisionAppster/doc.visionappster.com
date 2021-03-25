@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
     <link rel="next" title="Analyze blob statistics" href="../AnalyzeBlobStatisticsTool/" />
-    <link rel="prev" title="Adjust points to gradient" href="../AdjustPointsToGradientTool/" /> 
+    <link rel="prev" title="Align images" href="../AlignImagesTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Analyze blob geometry</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
@@ -410,11 +411,11 @@ for each detected blob. Each frame is a 4-by-4 matrix totaling in a
 <dl class="cpp class">
 <dt id="_CPPv423AnalyzeBlobGeometryTool">
 <span id="_CPPv323AnalyzeBlobGeometryTool"></span><span id="_CPPv223AnalyzeBlobGeometryTool"></span><span id="AnalyzeBlobGeometryTool"></span><span class="target" id="AnalyzeBlobGeometryTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">AnalyzeBlobGeometryTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv423AnalyzeBlobGeometryTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classAnalyzeBlobGeometryTool_1autotoc_md445">
-<h3 id="classAnalyzeBlobGeometryTool_1autotoc_md445">Analyze blob geometry<a class="headerlink" href="#classAnalyzeBlobGeometryTool_1autotoc_md445" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classAnalyzeBlobGeometryTool_1autotoc_md448">
+<h3 id="classAnalyzeBlobGeometryTool_1autotoc_md448">Analyze blob geometry<a class="headerlink" href="#classAnalyzeBlobGeometryTool_1autotoc_md448" title="Permalink to this headline">🔗</a></h3>
 <p>Calculates geometric properties for labeled objects. All measurements are made in world coordinates.</p>
-<div class="section" id="classAnalyzeBlobGeometryTool_1autotoc_md446">
-<h4 id="classAnalyzeBlobGeometryTool_1autotoc_md446">Inputs<a class="headerlink" href="#classAnalyzeBlobGeometryTool_1autotoc_md446" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAnalyzeBlobGeometryTool_1autotoc_md449">
+<h4 id="classAnalyzeBlobGeometryTool_1autotoc_md449">Inputs<a class="headerlink" href="#classAnalyzeBlobGeometryTool_1autotoc_md449" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> - A labeled image. Each connected blob in the output image is marked with a distinct numeric label. Pixels that belong to the first detected blob are ones, the pixels that belong to the second one with twos and so on. Background is zero.</p></li>
 </ul>
@@ -426,8 +427,8 @@ for each detected blob. Each frame is a 4-by-4 matrix totaling in a
 </ul>
 </p>
 </div>
-<div class="section" id="classAnalyzeBlobGeometryTool_1autotoc_md447">
-<h4 id="classAnalyzeBlobGeometryTool_1autotoc_md447">Outputs<a class="headerlink" href="#classAnalyzeBlobGeometryTool_1autotoc_md447" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAnalyzeBlobGeometryTool_1autotoc_md450">
+<h4 id="classAnalyzeBlobGeometryTool_1autotoc_md450">Outputs<a class="headerlink" href="#classAnalyzeBlobGeometryTool_1autotoc_md450" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">area</span></code> - The number of pixels on each blob. A N-by-1 matrix.</p></li>
 </ul>
@@ -482,7 +483,7 @@ for each detected blob. Each frame is a 4-by-4 matrix totaling in a
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../AnalyzeBlobStatisticsTool/" class="btn btn-neutral float-right" title="Analyze blob statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../AdjustPointsToGradientTool/" class="btn btn-neutral float-left" title="Adjust points to gradient" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AlignImagesTool/" class="btn btn-neutral float-left" title="Align images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

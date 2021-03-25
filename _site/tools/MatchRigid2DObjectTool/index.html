@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -458,13 +459,13 @@ detections less likely.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv422MatchRigid2DObjectTool">
 <span id="_CPPv322MatchRigid2DObjectTool"></span><span id="_CPPv222MatchRigid2DObjectTool"></span><span id="MatchRigid2DObjectTool"></span><span class="target" id="MatchRigid2DObjectTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchRigid2DObjectTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../MatchKeyPointsTool/#_CPPv418MatchKeyPointsTool" title="MatchKeyPointsTool"><span class="pre">MatchKeyPointsTool</span></a><a class="headerlink" href="#_CPPv422MatchRigid2DObjectTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchRigid2DObjectTool_1autotoc_md328">
-<h3 id="classMatchRigid2DObjectTool_1autotoc_md328">Match rigid 2D object<a class="headerlink" href="#classMatchRigid2DObjectTool_1autotoc_md328" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classMatchRigid2DObjectTool_1autotoc_md331">
+<h3 id="classMatchRigid2DObjectTool_1autotoc_md331">Match rigid 2D object<a class="headerlink" href="#classMatchRigid2DObjectTool_1autotoc_md331" title="Permalink to this headline">🔗</a></h3>
 <p>Matches key points with the RANSAC algorithm using a geometric model that allows a proper rigid transformation and scaling in two dimensions. Given a set of points and their associated feature vectors, this matcher tries to find a transformation that maps the points to one of the known models in the model database with sufficient accuracy so that the shape of the model is preserved.</p>
 <p>In mathematics, a proper rigid transformation preserves distances between every pair of points and the handedness of shapes. In other words, it allows translation and rotation but no reflection or shape-changing transformations such as scaling or stretching. This tool can however allow scale changes even though it models rigid objects because the apparent size of a rigid object may change due to changing distance from the camera.</p>
 <p>The matching algorithm makes it possible to impose fine-grained limits on allowed changes between a model and a query. It is possible to limit allowed rotation angles and scaling factors to a predefined range. The algorithm can also prune duplicate detections that overlap each other. Finally, a number of parameters are provided for making an optimal trade-off between speed an accuracy.</p>
-<div class="section" id="classMatchRigid2DObjectTool_1autotoc_md329">
-<h4 id="classMatchRigid2DObjectTool_1autotoc_md329">Inputs<a class="headerlink" href="#classMatchRigid2DObjectTool_1autotoc_md329" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatchRigid2DObjectTool_1autotoc_md332">
+<h4 id="classMatchRigid2DObjectTool_1autotoc_md332">Inputs<a class="headerlink" href="#classMatchRigid2DObjectTool_1autotoc_md332" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rotationInvariant</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the matcher will allow at most <em>maxRotationAngle</em> degrees of rotation between a model and an unknown object to be matched. Otherwise, no rotation will be allowed.</p></li>
 </ul>

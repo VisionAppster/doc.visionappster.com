@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -400,15 +401,15 @@ detected foreground pixels is above <em>motionThreshold</em>, and
 <dl class="cpp class">
 <dt id="_CPPv416DetectMotionTool">
 <span id="_CPPv316DetectMotionTool"></span><span id="_CPPv216DetectMotionTool"></span><span id="DetectMotionTool"></span><span class="target" id="DetectMotionTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectMotionTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416DetectMotionTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectMotionTool_1autotoc_md439">
-<h3 id="classDetectMotionTool_1autotoc_md439">Detect motion<a class="headerlink" href="#classDetectMotionTool_1autotoc_md439" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classDetectMotionTool_1autotoc_md442">
+<h3 id="classDetectMotionTool_1autotoc_md442">Detect motion<a class="headerlink" href="#classDetectMotionTool_1autotoc_md442" title="Permalink to this headline">🔗</a></h3>
 <p>Accumulates a model of a static background of a scene with moving objects. The background model is based on the mean and covariance values of image pixels. The background model is updated according to the following formula:</p>
 <p><div class="math notranslate nohighlight">
 \[ B_{t+1} = B_t + (\alpha_1 * (1 - I_t) + \alpha_2 * I_t) * (I_t - B_t), \]</div>
 </p>
 <p>where <span class="math notranslate nohighlight">\( B_t \)</span> is the background model at time moment <span class="math notranslate nohighlight">\( t \)</span> and <span class="math notranslate nohighlight">\( I_t \)</span> the current intensity of a pixel. <span class="math notranslate nohighlight">\( \alpha_1 \)</span> and <span class="math notranslate nohighlight">\( \alpha_2 \)</span> are learning weights that control the speed at which the foreground pixels are merged to the background. Note that the input image is normalized so that the maximum pixel intensity is always one. Color images are automatically converted to gray levels by calculating the average of color channels.</p>
-<div class="section" id="classDetectMotionTool_1autotoc_md440">
-<h4 id="classDetectMotionTool_1autotoc_md440">Inputs<a class="headerlink" href="#classDetectMotionTool_1autotoc_md440" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectMotionTool_1autotoc_md443">
+<h4 id="classDetectMotionTool_1autotoc_md443">Inputs<a class="headerlink" href="#classDetectMotionTool_1autotoc_md443" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
 </ul>
@@ -429,8 +430,8 @@ detected foreground pixels is above <em>motionThreshold</em>, and
 </ul>
 </p>
 </div>
-<div class="section" id="classDetectMotionTool_1autotoc_md441">
-<h4 id="classDetectMotionTool_1autotoc_md441">Outputs<a class="headerlink" href="#classDetectMotionTool_1autotoc_md441" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectMotionTool_1autotoc_md444">
+<h4 id="classDetectMotionTool_1autotoc_md444">Outputs<a class="headerlink" href="#classDetectMotionTool_1autotoc_md444" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">background</span></code> - The current background model.</p></li>
 </ul>

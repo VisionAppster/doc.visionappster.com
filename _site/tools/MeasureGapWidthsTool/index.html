@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -411,11 +412,11 @@ XY-plane</p></li>
 <dl class="cpp class">
 <dt id="_CPPv420MeasureGapWidthsTool">
 <span id="_CPPv320MeasureGapWidthsTool"></span><span id="_CPPv220MeasureGapWidthsTool"></span><span id="MeasureGapWidthsTool"></span><span class="target" id="MeasureGapWidthsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MeasureGapWidthsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420MeasureGapWidthsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMeasureGapWidthsTool_1autotoc_md490">
-<h3 id="classMeasureGapWidthsTool_1autotoc_md490">Measure gap widths<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md490" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classMeasureGapWidthsTool_1autotoc_md493">
+<h3 id="classMeasureGapWidthsTool_1autotoc_md493">Measure gap widths<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md493" title="Permalink to this headline">🔗</a></h3>
 <p>Measures gap widths using a gray-level profile.</p>
-<div class="section" id="classMeasureGapWidthsTool_1autotoc_md491">
-<h4 id="classMeasureGapWidthsTool_1autotoc_md491">Inputs<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md491" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMeasureGapWidthsTool_1autotoc_md494">
+<h4 id="classMeasureGapWidthsTool_1autotoc_md494">Inputs<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md494" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">profile</span></code> - 1-by-N gray-scale profile vector originating typically from <a class="reference internal" href="../GrayLevelProfileTool/#GrayLevelProfileTool"><span class="std std-ref">gray level profiling</span></a>.</p></li>
 </ul>
@@ -442,8 +443,8 @@ XY-plane</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classMeasureGapWidthsTool_1autotoc_md492">
-<h4 id="classMeasureGapWidthsTool_1autotoc_md492">Outputs<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md492" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMeasureGapWidthsTool_1autotoc_md495">
+<h4 id="classMeasureGapWidthsTool_1autotoc_md495">Outputs<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md495" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">filteredProfile</span></code> - Filtered vector which is matched against the threshold. In absolute mode contains smoothed input profile. In differential mode contains filtered differences. In zero crossing mode contains filtered 2nd order differences.</p></li>
 </ul>

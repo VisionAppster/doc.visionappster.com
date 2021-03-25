@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -378,12 +379,12 @@ real).</p></li>
 <dl class="cpp class">
 <dt id="_CPPv417ConvertColorsTool">
 <span id="_CPPv317ConvertColorsTool"></span><span id="_CPPv217ConvertColorsTool"></span><span id="ConvertColorsTool"></span><span class="target" id="ConvertColorsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConvertColorsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417ConvertColorsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classConvertColorsTool_1autotoc_md171">
-<h3 id="classConvertColorsTool_1autotoc_md171">Convert colors<a class="headerlink" href="#classConvertColorsTool_1autotoc_md171" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classConvertColorsTool_1autotoc_md174">
+<h3 id="classConvertColorsTool_1autotoc_md174">Convert colors<a class="headerlink" href="#classConvertColorsTool_1autotoc_md174" title="Permalink to this headline">🔗</a></h3>
 <p>Converts encoded images to RGB or grayscale. This tool can be used to convert encoded and compressed image buffers to raw color or grayscale images. Encoded color images are produced e.g. by the <a class="reference internal" href="../ImageSource/#ImageSource"><span class="std std-ref">Image Source</span></a> with the <em>autoDecode</em> flag set to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Compressed images typically come from files (see <a class="reference internal" href="../ReadImageFileTool/#ReadImageFileTool"><span class="std std-ref">Read Image file</span></a>).</p>
 <p>This tool is useful in applications where the full RGB data received from a camera is not always needed or if decoding all frames takes too much time. It lets the application developer to move automatic decoding out of the image source and selectively decode color images when needed.</p>
-<div class="section" id="classConvertColorsTool_1autotoc_md172">
-<h4 id="classConvertColorsTool_1autotoc_md172">Inputs<a class="headerlink" href="#classConvertColorsTool_1autotoc_md172" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classConvertColorsTool_1autotoc_md175">
+<h4 id="classConvertColorsTool_1autotoc_md175">Inputs<a class="headerlink" href="#classConvertColorsTool_1autotoc_md175" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Any image, usually Bayer or YUV encoded or compressed as JPEG/PNG. The tool also accepts raw RGB and gray-level input and can thus be used with all types of cameras (virtual or real).</p></li>
 </ul>
@@ -392,8 +393,8 @@ real).</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classConvertColorsTool_1autotoc_md173">
-<h4 id="classConvertColorsTool_1autotoc_md173">Outputs<a class="headerlink" href="#classConvertColorsTool_1autotoc_md173" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classConvertColorsTool_1autotoc_md176">
+<h4 id="classConvertColorsTool_1autotoc_md176">Outputs<a class="headerlink" href="#classConvertColorsTool_1autotoc_md176" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Raw RGB or gray-level image. </p></li>
 </ul>

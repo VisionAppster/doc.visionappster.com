@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -465,15 +466,15 @@ entries. The sum of each histogram is normalized to one.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv416ShapeContextTool">
 <span id="_CPPv316ShapeContextTool"></span><span id="_CPPv216ShapeContextTool"></span><span id="ShapeContextTool"></span><span class="target" id="ShapeContextTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ShapeContextTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416ShapeContextTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classShapeContextTool_1autotoc_md334">
-<h3 id="classShapeContextTool_1autotoc_md334">Shape context<a class="headerlink" href="#classShapeContextTool_1autotoc_md334" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classShapeContextTool_1autotoc_md337">
+<h3 id="classShapeContextTool_1autotoc_md337">Shape context<a class="headerlink" href="#classShapeContextTool_1autotoc_md337" title="Permalink to this headline">🔗</a></h3>
 <p>Calculates the shape context descriptor for a set of points that describe the shape of an object. The shape context descriptor is given a large set of points that describes the shape and a (usually) smaller set of key points at which the feature vectors (descriptors) will be calculated.</p>
 <p>The feature vector collects the locations of the other points of the object as seen from a key point into a two-dimensional polar histogram. At each key point, the direction and distance of every point in <em>points</em> is calculated. A two-dimensional histogram bin index is found by quantizing direction and distance to a predefined number of discrete levels.</p>
 <p>Usually, the input for this tool is generated using <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>. The shape context descriptor can however be extracted from any arbitrary set of points. If rotational invariance is needed, local shape orientation must be provided.</p>
 <p>The descriptor can be made invariant against scaling and rotation. An invariant descriptor is necessarily less descriptive and slightly slower to calculate. Thus, if it is known that the orientation or size of the target objects doesn’t change, best performance is obtained by not enabling the invariance options.</p>
 <p>This tool rarely needs to be used explicitly. <a class="reference internal" href="../DetectBoundaryShapeTool/#DetectBoundaryShapeTool"><span class="std std-ref">Boundary shape detection</span></a> provides a more user-friendly interface.</p>
-<div class="section" id="classShapeContextTool_1autotoc_md335">
-<h4 id="classShapeContextTool_1autotoc_md335">Inputs<a class="headerlink" href="#classShapeContextTool_1autotoc_md335" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classShapeContextTool_1autotoc_md338">
+<h4 id="classShapeContextTool_1autotoc_md338">Inputs<a class="headerlink" href="#classShapeContextTool_1autotoc_md338" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - A set of points that form the boundaries of an object in an image. Each row in the matrix contains the (x, y) world coordinates of a point.</p></li>
 </ul>
@@ -509,8 +510,8 @@ entries. The sum of each histogram is normalized to one.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classShapeContextTool_1autotoc_md336">
-<h4 id="classShapeContextTool_1autotoc_md336">Outputs<a class="headerlink" href="#classShapeContextTool_1autotoc_md336" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classShapeContextTool_1autotoc_md339">
+<h4 id="classShapeContextTool_1autotoc_md339">Outputs<a class="headerlink" href="#classShapeContextTool_1autotoc_md339" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">features</span></code> - A polar histogram of point locations for each key point. The number of rows in the feature matrix is the same as that of the <em>keyPoints</em> input. Each row contains a two-dimensional polar histogram that is folded into a one-dimensional vector with <em>angleBins</em> Ã— <em>distanceBins</em> entries. The sum of each histogram is normalized to one. </p></li>
 </ul>

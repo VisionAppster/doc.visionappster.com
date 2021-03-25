@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Detect boundaries &mdash; VisionAppster  documentation</title>
+  <title>Align images &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Detect boundary shape" href="../DetectBoundaryShapeTool/" />
-    <link rel="prev" title="Detect blobs" href="../DetectBlobsTool/" /> 
+    <link rel="next" title="Analyze blob geometry" href="../AnalyzeBlobGeometryTool/" />
+    <link rel="prev" title="Adjust points to gradient" href="../AdjustPointsToGradientTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,7 +106,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Align images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -144,11 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Detect boundaries</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBoundaryShapeTool/">Detect boundary shape</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectCirclesTool/">Detect circles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectCornersTool/">Detect corners</a></li>
@@ -332,7 +332,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Detect boundaries</li>
+      <li>Align images</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -349,102 +349,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="detect-boundaries">
-<h1>Detect boundaries<a class="headerlink" href="#detect-boundaries" title="Permalink to this headline">🔗</a></h1>
-<p>Detects boundaries of connected objects in images and outputs them
-as a matrix that contains the coordinates of vertices that form a
-polygon. The resulting vertices can be used for example in <a class="reference internal" href="../DetectShapesTool/"><span class="doc">shape detection</span></a>. In many cases, it is useful
-to reduce the number of vertices with <a class="reference internal" href="../SimplifyPolylineTool/"><span class="doc">polyline simplification</span></a> before further
-processing.</p>
+  <div class="section" id="align-images">
+<h1>Align images<a class="headerlink" href="#align-images" title="Permalink to this headline">🔗</a></h1>
+<p>Adjusts the world frame and calibration data of an image so that
+the pixels are aligned with <em>reference</em> as if this image was a
+scaled version of <em>reference</em>.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image. This is usually a binary image or a
-labeled image. To avoid a separate thresholding step one can
-set the <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter to a non-zero value.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code>: A static threshold for binarizing a gray-level
-input image. Every pixel in the image whose gray level is
-higher than <code class="docutils literal notranslate"><span class="pre">threshold</span></code> is regarded as a part of an object. The
-default value is zero, which assumes a pre-binarized or labeled
-input image. Setting this value to a non-zero value may be
-useful in avoiding a separate thresholding step.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code>: Inverts automatic thresholding result if set to
-<code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">minLength</span></code>: The minimum length of a boundary in world
-coordinates. If a detected boundary is shorter, it will be
-discarded. Note that this is a quite rough estimate. The tool
-calculates the length of a detect boundary quickly based on the
-number of boundary pixels and camera geometry. It doesn’t
-traverse the boundary and match it to image features to get a
-really good length estimate.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maxLength</span></code>: The maximum length of a boundary in world
-coordinates. If a detected boundary is longer, it will be
-discarded. See notes about accuracy above.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maxBoundaries</span></code>: The maximum total number of boundary polygons.
-This parameter together with <em>maxVertices</em> poses an upper limit
-for the amount of memory the tool may allocate while traversing
-the boundaries.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maxVertices</span></code>: The maximum total number of vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The input image whose calibration data will be
+modified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code>: The image according to which the input image will
+be aligned.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code>: The coordinates of the vertices of found boundary
-polygons. Each polygon is stored as a M-by-2 block (M varies
-depending on the length of the boundary) in the matrix, and
-each row stores the (x, y) coordinates of a boundary point in
-the order the algorithm traversed the boundary. The
-coordinates are in the world coordinate system.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code>: The number of vertices in each polygon. This
-matrix has as many rows as there are separate boundaries. Each
-row has one element: the number of vertices in the polygon.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Boundary mask image. A gray-level image in which the
-detected edges are marked according to their type. Background
-is zero, right and bottom edges one, left and top edges two
-and double edges three.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Aligned image. Pixels won’t be modified.</p></li>
 </ul>
 <dl class="cpp class">
-<dt id="_CPPv420DetectBoundariesTool">
-<span id="_CPPv320DetectBoundariesTool"></span><span id="_CPPv220DetectBoundariesTool"></span><span id="DetectBoundariesTool"></span><span class="target" id="DetectBoundariesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectBoundariesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420DetectBoundariesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectBoundariesTool_1autotoc_md469">
-<h3 id="classDetectBoundariesTool_1autotoc_md469">Detect boundaries<a class="headerlink" href="#classDetectBoundariesTool_1autotoc_md469" title="Permalink to this headline">🔗</a></h3>
-<p>Detects boundaries of connected objects in images and outputs them as a matrix that contains the coordinates of vertices that form a polygon. The resulting vertices can be used for example in <a class="reference internal" href="../DetectShapesTool/#DetectShapesTool"><span class="std std-ref">shape detection</span></a>. In many cases, it is useful to reduce the number of vertices with <a class="reference internal" href="../SimplifyPolylineTool/#SimplifyPolylineTool"><span class="std std-ref">polyline simplification</span></a> before further processing.</p>
-<div class="section" id="classDetectBoundariesTool_1autotoc_md470">
-<h4 id="classDetectBoundariesTool_1autotoc_md470">Inputs<a class="headerlink" href="#classDetectBoundariesTool_1autotoc_md470" title="Permalink to this headline">🔗</a></h4>
+<dt id="_CPPv415AlignImagesTool">
+<span id="_CPPv315AlignImagesTool"></span><span id="_CPPv215AlignImagesTool"></span><span id="AlignImagesTool"></span><span class="target" id="AlignImagesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">AlignImagesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv415AlignImagesTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classAlignImagesTool_1autotoc_md141">
+<h3 id="classAlignImagesTool_1autotoc_md141">Align images<a class="headerlink" href="#classAlignImagesTool_1autotoc_md141" title="Permalink to this headline">🔗</a></h3>
+<p>Adjusts the world frame and calibration data of an image so that the pixels are aligned with <em>reference</em> as if this image was a scaled version of <em>reference</em>.</p>
+<div class="section" id="classAlignImagesTool_1autotoc_md142">
+<h4 id="classAlignImagesTool_1autotoc_md142">Inputs<a class="headerlink" href="#classAlignImagesTool_1autotoc_md142" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. This is usually a binary image or a labeled image. To avoid a separate thresholding step one can set the <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter to a non-zero value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image whose calibration data will be modified.</p></li>
 </ul>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - A static threshold for binarizing a gray-level input image. Every pixel in the image whose gray level is higher than <code class="docutils literal notranslate"><span class="pre">threshold</span></code> is regarded as a part of an object. The default value is zero, which assumes a pre-binarized or labeled input image. Setting this value to a non-zero value may be useful in avoiding a separate thresholding step.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Inverts automatic thresholding result if set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minLength</span></code> - The minimum length of a boundary in world coordinates. If a detected boundary is shorter, it will be discarded. Note that this is a quite rough estimate. The tool calculates the length of a detect boundary quickly based on the number of boundary pixels and camera geometry. It doesn’t traverse the boundary and match it to image features to get a really good length estimate.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxLength</span></code> - The maximum length of a boundary in world coordinates. If a detected boundary is longer, it will be discarded. See notes about accuracy above.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxBoundaries</span></code> - The maximum total number of boundary polygons. This parameter together with <em>maxVertices</em> poses an upper limit for the amount of memory the tool may allocate while traversing the boundaries.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxVertices</span></code> - The maximum total number of vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> - The image according to which the input image will be aligned.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classDetectBoundariesTool_1autotoc_md471">
-<h4 id="classDetectBoundariesTool_1autotoc_md471">Outputs<a class="headerlink" href="#classDetectBoundariesTool_1autotoc_md471" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAlignImagesTool_1autotoc_md143">
+<h4 id="classAlignImagesTool_1autotoc_md143">Outputs<a class="headerlink" href="#classAlignImagesTool_1autotoc_md143" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - The coordinates of the vertices of found boundary polygons. Each polygon is stored as a M-by-2 block (M varies depending on the length of the boundary) in the matrix, and each row stores the (x, y) coordinates of a boundary point in the order the algorithm traversed the boundary. The coordinates are in the world coordinate system.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of vertices in each polygon. This matrix has as many rows as there are separate boundaries. Each row has one element: the number of vertices in the polygon.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Boundary mask image. A gray-level image in which the detected edges are marked according to their type. Background is zero, right and bottom edges one, left and top edges two and double edges three. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Aligned image. Pixels won’t be modified. </p></li>
 </ul>
 </p>
 </div>
@@ -460,8 +403,8 @@ and double edges three.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../DetectBoundaryShapeTool/" class="btn btn-neutral float-right" title="Detect boundary shape" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../DetectBlobsTool/" class="btn btn-neutral float-left" title="Detect blobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AnalyzeBlobGeometryTool/" class="btn btn-neutral float-right" title="Analyze blob geometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../AdjustPointsToGradientTool/" class="btn btn-neutral float-left" title="Adjust points to gradient" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
