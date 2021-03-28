@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -400,11 +401,11 @@ An N-by-2 matrix.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv421ProcessYoloResultTool">
 <span id="_CPPv321ProcessYoloResultTool"></span><span id="_CPPv221ProcessYoloResultTool"></span><span id="ProcessYoloResultTool"></span><span class="target" id="ProcessYoloResultTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ProcessYoloResultTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv421ProcessYoloResultTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classProcessYoloResultTool_1autotoc_md285">
-<h3 id="classProcessYoloResultTool_1autotoc_md285">Process YOLO results<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md285" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classProcessYoloResultTool_1autotoc_md288">
+<h3 id="classProcessYoloResultTool_1autotoc_md288">Process YOLO results<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md288" title="Permalink to this headline">🔗</a></h3>
 <p>Converts the output tensor of a YOLO deep learning model to generally usable data types. The tool first reshapes an input tensor to an N-by-(5 + <em>classCount</em>) matrix that has the parameters of one bounding box on each row. It filters out detections that have too low confidence and performs non-maximum suppression on the rest.</p>
-<div class="section" id="classProcessYoloResultTool_1autotoc_md286">
-<h4 id="classProcessYoloResultTool_1autotoc_md286">Inputs<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md286" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classProcessYoloResultTool_1autotoc_md289">
+<h4 id="classProcessYoloResultTool_1autotoc_md289">Inputs<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md289" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - The output of a YOLO model. The shape is assumed to be (1 x K x S x S) or (K x S x S), where K = B * (<em>classCount</em> + 5), S is the number of vertical and horizontal image subdivisions and B is the number of anchor boxes per subdivision. For example in YOLO v2, S=13, B=5, classCount=20, so K = 125.</p></li>
 </ul>
@@ -425,8 +426,8 @@ An N-by-2 matrix.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classProcessYoloResultTool_1autotoc_md287">
-<h4 id="classProcessYoloResultTool_1autotoc_md287">Outputs<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md287" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classProcessYoloResultTool_1autotoc_md290">
+<h4 id="classProcessYoloResultTool_1autotoc_md290">Outputs<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md290" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - Upper left corner of each remaining detection as a coordinate frame that is aligned to the axes of the image coordinate system. A 4N-by-4 matrix.</p></li>
 </ul>

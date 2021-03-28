@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -384,11 +385,11 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv416LbpTransformTool">
 <span id="_CPPv316LbpTransformTool"></span><span id="_CPPv216LbpTransformTool"></span><span id="LbpTransformTool"></span><span class="target" id="LbpTransformTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">LbpTransformTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416LbpTransformTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classLbpTransformTool_1autotoc_md219">
-<h3 id="classLbpTransformTool_1autotoc_md219">Local binary patterns transform<a class="headerlink" href="#classLbpTransformTool_1autotoc_md219" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classLbpTransformTool_1autotoc_md222">
+<h3 id="classLbpTransformTool_1autotoc_md222">Local binary patterns transform<a class="headerlink" href="#classLbpTransformTool_1autotoc_md222" title="Permalink to this headline">🔗</a></h3>
 <p>Converts each pixel of an input image to a local binary pattern (LBP) code. The special case of eight samples with a radius of one is also known as the census transform.</p>
-<div class="section" id="classLbpTransformTool_1autotoc_md220">
-<h4 id="classLbpTransformTool_1autotoc_md220">Inputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md220" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classLbpTransformTool_1autotoc_md223">
+<h4 id="classLbpTransformTool_1autotoc_md223">Inputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md223" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. If a color image is input, its intensity will be used.</p></li>
 </ul>
@@ -409,8 +410,8 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classLbpTransformTool_1autotoc_md221">
-<h4 id="classLbpTransformTool_1autotoc_md221">Outputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md221" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classLbpTransformTool_1autotoc_md224">
+<h4 id="classLbpTransformTool_1autotoc_md224">Outputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md224" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Transformed, gray-level image. The binary value of the intensity of a pixel represents an LBP code. The output image lacks a border of <em>radius</em> pixels on all sides because the LBP code for these pixels would be undefined. The maximum value of the output image and hence the number of bits per pixels depends on <em>samples</em> and <em>mode</em>. </p></li>
 </ul>

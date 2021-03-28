@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -382,12 +383,12 @@ cells in the grid (width, height).</p></li>
 <dl class="cpp class">
 <dt id="_CPPv416GenerateGridTool">
 <span id="_CPPv316GenerateGridTool"></span><span id="_CPPv216GenerateGridTool"></span><span id="GenerateGridTool"></span><span class="target" id="GenerateGridTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">GenerateGridTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv416GenerateGridTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classGenerateGridTool_1autotoc_md195">
-<h3 id="classGenerateGridTool_1autotoc_md195">Generate grid<a class="headerlink" href="#classGenerateGridTool_1autotoc_md195" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classGenerateGridTool_1autotoc_md198">
+<h3 id="classGenerateGridTool_1autotoc_md198">Generate grid<a class="headerlink" href="#classGenerateGridTool_1autotoc_md198" title="Permalink to this headline">🔗</a></h3>
 <p>Generates a set points that uniformly covers the pixel grid of an image. With [an iteration](<a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">BeginIterateTool</span></a>) this tool can be used to apply an operation to sub-images.</p>
 <p>To split an input image into fixed-size pieces, iterated grid corners can be used as an input to [pixel-to-world coordinate transform](<a class="reference internal" href="../PixelCoordinatesToWorldTool/#PixelCoordinatesToWorldTool"><span class="std std-ref">PixelCoordinatesToWorldTool</span></a>) followed by [cropping](<a class="reference internal" href="../CropImageTool/#CropImageTool"><span class="std std-ref">CropImageTool</span></a>). To apply an operation to sub-images without cropping one can connect the iterated grid corners as the <em>frame</em> input for many tools such as [histogram](<a class="reference internal" href="../HistogramTool/#HistogramTool"><span class="std std-ref">HistogramTool</span></a>).</p>
-<div class="section" id="classGenerateGridTool_1autotoc_md196">
-<h4 id="classGenerateGridTool_1autotoc_md196">Inputs<a class="headerlink" href="#classGenerateGridTool_1autotoc_md196" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classGenerateGridTool_1autotoc_md199">
+<h4 id="classGenerateGridTool_1autotoc_md199">Inputs<a class="headerlink" href="#classGenerateGridTool_1autotoc_md199" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image to cover with a grid.</p></li>
 </ul>
@@ -399,8 +400,8 @@ cells in the grid (width, height).</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classGenerateGridTool_1autotoc_md197">
-<h4 id="classGenerateGridTool_1autotoc_md197">Outputs<a class="headerlink" href="#classGenerateGridTool_1autotoc_md197" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classGenerateGridTool_1autotoc_md200">
+<h4 id="classGenerateGridTool_1autotoc_md200">Outputs<a class="headerlink" href="#classGenerateGridTool_1autotoc_md200" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">corners</span></code> - The coordinates of the upper left corners of each grid cell in pixel coordinates in row-major order. A N-by-2 matrix. Note that due to perspective and non-linear lens distortions the points may not be uniformly spaced in world coordinates.</p></li>
 </ul>

@@ -235,6 +235,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -386,13 +387,13 @@ vectors are rotated according to <em>rotationAngle</em>.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv427TranslateAndRotateFrameTool">
 <span id="_CPPv327TranslateAndRotateFrameTool"></span><span id="_CPPv227TranslateAndRotateFrameTool"></span><span id="TranslateAndRotateFrameTool"></span><span class="target" id="TranslateAndRotateFrameTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TranslateAndRotateFrameTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv427TranslateAndRotateFrameTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTranslateAndRotateFrameTool_1autotoc_md126">
-<h3 id="classTranslateAndRotateFrameTool_1autotoc_md126">Translate and rotate frame<a class="headerlink" href="#classTranslateAndRotateFrameTool_1autotoc_md126" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classTranslateAndRotateFrameTool_1autotoc_md129">
+<h3 id="classTranslateAndRotateFrameTool_1autotoc_md129">Translate and rotate frame<a class="headerlink" href="#classTranslateAndRotateFrameTool_1autotoc_md129" title="Permalink to this headline">🔗</a></h3>
 <p>Translates and rotates a <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> or a point to a new location and orientation.</p>
 <p>The tool is given a <em>frame</em> and a <em>translation</em> vector in that frame. The input frame is usually in the world coordinate system, so let’s briefly assume it is so. The tool first transforms the translation vector to the world coordinate system, producing a translated coordinate frame whose origin in the world coordinate system moves and rotates according to the input frame. It then rotates the axes of the result according to <em>rotationAngle</em>.</p>
 <p>If the input is a point instead of a full coordinate frame, its coordinate axes are assumed to be aligned to the world coordinate system.</p>
-<div class="section" id="classTranslateAndRotateFrameTool_1autotoc_md127">
-<h4 id="classTranslateAndRotateFrameTool_1autotoc_md127">Inputs<a class="headerlink" href="#classTranslateAndRotateFrameTool_1autotoc_md127" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classTranslateAndRotateFrameTool_1autotoc_md130">
+<h4 id="classTranslateAndRotateFrameTool_1autotoc_md130">Inputs<a class="headerlink" href="#classTranslateAndRotateFrameTool_1autotoc_md130" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A coordinate frame to transform. This input also accepts a 2D point (1-by-2 matrix) as input. The point is treated as a coordinate frame whose x and y axes are aligned to those of the world coordinate system.</p></li>
 </ul>
@@ -404,8 +405,8 @@ vectors are rotated according to <em>rotationAngle</em>.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classTranslateAndRotateFrameTool_1autotoc_md128">
-<h4 id="classTranslateAndRotateFrameTool_1autotoc_md128">Outputs<a class="headerlink" href="#classTranslateAndRotateFrameTool_1autotoc_md128" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classTranslateAndRotateFrameTool_1autotoc_md131">
+<h4 id="classTranslateAndRotateFrameTool_1autotoc_md131">Outputs<a class="headerlink" href="#classTranslateAndRotateFrameTool_1autotoc_md131" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The transformed coordinate frame. The origin of the frame is moved according to the <em>translation</em> vector. The base vectors are rotated according to <em>rotationAngle</em>. </p></li>
 </ul>

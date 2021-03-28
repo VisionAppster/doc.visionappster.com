@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -449,14 +450,14 @@ the better the match. An N-by-1 matrix.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv418MatchKeyPointsTool">
 <span id="_CPPv318MatchKeyPointsTool"></span><span id="_CPPv218MatchKeyPointsTool"></span><span id="MatchKeyPointsTool"></span><span class="target" id="MatchKeyPointsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchKeyPointsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv418MatchKeyPointsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchKeyPointsTool_1autotoc_md325">
-<h3 id="classMatchKeyPointsTool_1autotoc_md325">Match key points<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md325" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classMatchKeyPointsTool_1autotoc_md328">
+<h3 id="classMatchKeyPointsTool_1autotoc_md328">Match key points<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md328" title="Permalink to this headline">🔗</a></h3>
 <p>A superclass for tools that match objects based on key point coordinates and their associated feature descriptors.</p>
 <p>This tool maintains a database of object models as feature points and quickly retrieves matching models for unknown objects. Each feature point is described by point coordinates and a feature vector (a.k.a “descriptor”). The point coordinates specify the location of the feature point with respect to the model. The tool can handle two- and three-dimensional point coordinates.</p>
 <p>There can be an unlimited number of models, each containing an unlimited number of feature points. Furthermore, each model may have an associated class index. This makes it possible to have multiple models for a class of objects.</p>
 <p>This tool implements a fast key point database search algorithm but does not specify a geometric model for the arrangement of the matched key points. Different geometric models are needed in different applications, and these are implemented by inherited tools such as <a class="reference internal" href="../MatchRigid2DObjectTool/#MatchRigid2DObjectTool"><span class="std std-ref">rigid 2D matching</span></a>.</p>
-<div class="section" id="classMatchKeyPointsTool_1autotoc_md326">
-<h4 id="classMatchKeyPointsTool_1autotoc_md326">Inputs<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md326" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatchKeyPointsTool_1autotoc_md329">
+<h4 id="classMatchKeyPointsTool_1autotoc_md329">Inputs<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md329" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - The locations of key points in world coordinates. A N-by-X matrix in which each row contains X-dimensional point coordinates (usually 2, but may be 3). Each point must have a corresponding feature vector in <em>features</em>. Otherwise, a run-time error will be generated.</p></li>
 </ul>
@@ -495,8 +496,8 @@ the better the match. An N-by-1 matrix.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classMatchKeyPointsTool_1autotoc_md327">
-<h4 id="classMatchKeyPointsTool_1autotoc_md327">Outputs<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md327" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatchKeyPointsTool_1autotoc_md330">
+<h4 id="classMatchKeyPointsTool_1autotoc_md330">Outputs<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md330" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location of the matched object in world coordinates. The matcher first finds the transformation between <em>points</em> and the matching model. The model’s frame is then transformed according to it. This output parameter contains the transformed frame(s). A 4*N-by-4 matrix.</p></li>
 </ul>
