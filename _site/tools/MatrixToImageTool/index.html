@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -383,11 +384,11 @@ The size of the reference image does not affect the output.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv417MatrixToImageTool">
 <span id="_CPPv317MatrixToImageTool"></span><span id="_CPPv217MatrixToImageTool"></span><span id="MatrixToImageTool"></span><span class="target" id="MatrixToImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatrixToImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417MatrixToImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatrixToImageTool_1autotoc_md234">
-<h3 id="classMatrixToImageTool_1autotoc_md234">Matrix to image<a class="headerlink" href="#classMatrixToImageTool_1autotoc_md234" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classMatrixToImageTool_1autotoc_md237">
+<h3 id="classMatrixToImageTool_1autotoc_md237">Matrix to image<a class="headerlink" href="#classMatrixToImageTool_1autotoc_md237" title="Permalink to this headline">🔗</a></h3>
 <p>Converts a matrix to an image. The type of the image is determined by <code class="docutils literal notranslate"><span class="pre">outputType</span></code>.</p>
-<div class="section" id="classMatrixToImageTool_1autotoc_md235">
-<h4 id="classMatrixToImageTool_1autotoc_md235">Inputs<a class="headerlink" href="#classMatrixToImageTool_1autotoc_md235" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatrixToImageTool_1autotoc_md238">
+<h4 id="classMatrixToImageTool_1autotoc_md238">Inputs<a class="headerlink" href="#classMatrixToImageTool_1autotoc_md238" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code> - The input matrix. If the type of the input matrix is <em>float</em> or <em>double</em>, the range of the values is assumed to be either on range [0, 1] or [-1, 1]. The positive range [0, 1] is assumed if the output is a color image or an 8-bit gray level image. The negative range [-1, 1] is assumed if the output is 16-bit or 32-bit gray level image.</p></li>
 </ul>
@@ -402,8 +403,8 @@ The size of the reference image does not affect the output.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classMatrixToImageTool_1autotoc_md236">
-<h4 id="classMatrixToImageTool_1autotoc_md236">Outputs<a class="headerlink" href="#classMatrixToImageTool_1autotoc_md236" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classMatrixToImageTool_1autotoc_md239">
+<h4 id="classMatrixToImageTool_1autotoc_md239">Outputs<a class="headerlink" href="#classMatrixToImageTool_1autotoc_md239" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The output image. </p></li>
 </ul>

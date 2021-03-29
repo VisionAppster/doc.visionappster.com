@@ -235,6 +235,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -409,11 +410,11 @@ the matrix is all zeros.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv422TrackMovingObjectsTool">
 <span id="_CPPv322TrackMovingObjectsTool"></span><span id="_CPPv222TrackMovingObjectsTool"></span><span id="TrackMovingObjectsTool"></span><span class="target" id="TrackMovingObjectsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TrackMovingObjectsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv422TrackMovingObjectsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTrackMovingObjectsTool_1autotoc_md442">
-<h3 id="classTrackMovingObjectsTool_1autotoc_md442">Track moving objects<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md442" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classTrackMovingObjectsTool_1autotoc_md445">
+<h3 id="classTrackMovingObjectsTool_1autotoc_md445">Track moving objects<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md445" title="Permalink to this headline">🔗</a></h3>
 <p>This tool takes in a set of points representing the locations of an arbitrary number of moving object at a time instant. It forms movement trajectories by connecting points in successive point sets based on a motion model. The trajectory estimates are updated each time new data comes in. The algorithm tries to find a set of trajectories that optimally describes the movement of the series of points in the used motion model.</p>
-<div class="section" id="classTrackMovingObjectsTool_1autotoc_md443">
-<h4 id="classTrackMovingObjectsTool_1autotoc_md443">Inputs<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md443" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classTrackMovingObjectsTool_1autotoc_md446">
+<h4 id="classTrackMovingObjectsTool_1autotoc_md446">Inputs<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md446" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - The coordinates of detected moving objects as a N-by-2 matrix.</p></li>
 </ul>
@@ -443,8 +444,8 @@ the matrix is all zeros.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classTrackMovingObjectsTool_1autotoc_md444">
-<h4 id="classTrackMovingObjectsTool_1autotoc_md444">Outputs<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md444" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classTrackMovingObjectsTool_1autotoc_md447">
+<h4 id="classTrackMovingObjectsTool_1autotoc_md447">Outputs<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md447" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">trajectories</span></code> - The current set of estimated trajectories. A N-by-2 matrix of point coordinates that contains M trajectories with a variable number of points.</p></li>
 </ul>

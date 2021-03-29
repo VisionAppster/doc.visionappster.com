@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -414,11 +415,11 @@ A M-by-1 matrix.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv425AnalyzeBlobStatisticsTool">
 <span id="_CPPv325AnalyzeBlobStatisticsTool"></span><span id="_CPPv225AnalyzeBlobStatisticsTool"></span><span id="AnalyzeBlobStatisticsTool"></span><span class="target" id="AnalyzeBlobStatisticsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">AnalyzeBlobStatisticsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv425AnalyzeBlobStatisticsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classAnalyzeBlobStatisticsTool_1autotoc_md448">
-<h3 id="classAnalyzeBlobStatisticsTool_1autotoc_md448">Analyze blob statistics<a class="headerlink" href="#classAnalyzeBlobStatisticsTool_1autotoc_md448" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classAnalyzeBlobStatisticsTool_1autotoc_md451">
+<h3 id="classAnalyzeBlobStatisticsTool_1autotoc_md451">Analyze blob statistics<a class="headerlink" href="#classAnalyzeBlobStatisticsTool_1autotoc_md451" title="Permalink to this headline">🔗</a></h3>
 <p>Calulates histograms of blobs in a gray scale image. The blobs are marked with labels given in the labeled image input. Calculates also statistical features from the histograms.</p>
-<div class="section" id="classAnalyzeBlobStatisticsTool_1autotoc_md449">
-<h4 id="classAnalyzeBlobStatisticsTool_1autotoc_md449">Inputs<a class="headerlink" href="#classAnalyzeBlobStatisticsTool_1autotoc_md449" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAnalyzeBlobStatisticsTool_1autotoc_md452">
+<h4 id="classAnalyzeBlobStatisticsTool_1autotoc_md452">Inputs<a class="headerlink" href="#classAnalyzeBlobStatisticsTool_1autotoc_md452" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
 </ul>
@@ -427,8 +428,8 @@ A M-by-1 matrix.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classAnalyzeBlobStatisticsTool_1autotoc_md450">
-<h4 id="classAnalyzeBlobStatisticsTool_1autotoc_md450">Outputs<a class="headerlink" href="#classAnalyzeBlobStatisticsTool_1autotoc_md450" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAnalyzeBlobStatisticsTool_1autotoc_md453">
+<h4 id="classAnalyzeBlobStatisticsTool_1autotoc_md453">Outputs<a class="headerlink" href="#classAnalyzeBlobStatisticsTool_1autotoc_md453" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - A M-by-N matrix of histograms. M is the number of blobs and N is the maximum number of gray levels in the input image. M depends on the dynamic scale of the input image, but is always at least 256. Each contains a histogram calculated from those pixels in the input image which coincide with the corresponding label in the label image.</p></li>
 </ul>

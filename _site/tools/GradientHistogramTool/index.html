@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -406,13 +407,13 @@ this is the location of the center of mass before rotation.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv421GradientHistogramTool">
 <span id="_CPPv321GradientHistogramTool"></span><span id="_CPPv221GradientHistogramTool"></span><span id="GradientHistogramTool"></span><span class="target" id="GradientHistogramTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">GradientHistogramTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv421GradientHistogramTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classGradientHistogramTool_1autotoc_md198">
-<h3 id="classGradientHistogramTool_1autotoc_md198">Gradient histogram<a class="headerlink" href="#classGradientHistogramTool_1autotoc_md198" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classGradientHistogramTool_1autotoc_md201">
+<h3 id="classGradientHistogramTool_1autotoc_md201">Gradient histogram<a class="headerlink" href="#classGradientHistogramTool_1autotoc_md201" title="Permalink to this headline">🔗</a></h3>
 <p>Calculates a magnitude-weighted gradient orientation histogram.</p>
 <p>Each bin in a gradient orientation histogram stores the sum of the magnitudes of the gradient vectors that point to the direction the bin represents. For example, if each bin represents 10 degrees (<em>angleBins</em> is 36), bin 0 collects magnitudes of gradient vectors whose angle is between -5 and 5 degrees, bin 1 collects angles between 5 and 15 and so on. The last bin (35) collects angles between 345 and 355 (-5) degrees.</p>
 <p>Gradient magnitudes are distributed to histogram bins using linear interpolation. In the example above, the magnitude of a vector whose direction is 5 degrees would be split equally between bins 0 and 1.</p>
-<div class="section" id="classGradientHistogramTool_1autotoc_md199">
-<h4 id="classGradientHistogramTool_1autotoc_md199">Inputs<a class="headerlink" href="#classGradientHistogramTool_1autotoc_md199" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classGradientHistogramTool_1autotoc_md202">
+<h4 id="classGradientHistogramTool_1autotoc_md202">Inputs<a class="headerlink" href="#classGradientHistogramTool_1autotoc_md202" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
 </ul>
@@ -436,8 +437,8 @@ this is the location of the center of mass before rotation.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classGradientHistogramTool_1autotoc_md200">
-<h4 id="classGradientHistogramTool_1autotoc_md200">Outputs<a class="headerlink" href="#classGradientHistogramTool_1autotoc_md200" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classGradientHistogramTool_1autotoc_md203">
+<h4 id="classGradientHistogramTool_1autotoc_md203">Outputs<a class="headerlink" href="#classGradientHistogramTool_1autotoc_md203" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - Gradient orientation histogram as a vector. The length of the vector depends on <em>angleBins</em> and <em>unidirectional</em>.</p></li>
 </ul>

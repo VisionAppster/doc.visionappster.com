@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -397,12 +398,12 @@ world frame.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv421AdjustCalibrationTool">
 <span id="_CPPv321AdjustCalibrationTool"></span><span id="_CPPv221AdjustCalibrationTool"></span><span id="AdjustCalibrationTool"></span><span class="target" id="AdjustCalibrationTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">AdjustCalibrationTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv421AdjustCalibrationTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classAdjustCalibrationTool_1autotoc_md138">
-<h3 id="classAdjustCalibrationTool_1autotoc_md138">Adjust calibration<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md138" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classAdjustCalibrationTool_1autotoc_md141">
+<h3 id="classAdjustCalibrationTool_1autotoc_md141">Adjust calibration<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md141" title="Permalink to this headline">🔗</a></h3>
 <p>Changes the calibration factors and/or the world frame of an image without changing pixel data. This tool is useful when one needs to restore image calibration and position data after a tool that does not preserve it.</p>
 <p>Many functions such as neural networks internally handle images as matrices or tensors that have no relation to the physical world. When such images are produced, their calibration factors and position need to be set before physical measurements can be made. This tool changes these values without altering the pixels.</p>
-<div class="section" id="classAdjustCalibrationTool_1autotoc_md139">
-<h4 id="classAdjustCalibrationTool_1autotoc_md139">Inputs<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md139" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAdjustCalibrationTool_1autotoc_md142">
+<h4 id="classAdjustCalibrationTool_1autotoc_md142">Inputs<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md142" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image whose calibration/position is to be changed.</p></li>
 </ul>
@@ -417,8 +418,8 @@ world frame.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classAdjustCalibrationTool_1autotoc_md140">
-<h4 id="classAdjustCalibrationTool_1autotoc_md140">Outputs<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md140" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classAdjustCalibrationTool_1autotoc_md143">
+<h4 id="classAdjustCalibrationTool_1autotoc_md143">Outputs<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md143" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image with new calibration factors and/or world frame. </p></li>
 </ul>

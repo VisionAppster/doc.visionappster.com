@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -389,8 +390,8 @@ gradient magnitude will be used.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv415DetectEdgesTool">
 <span id="_CPPv315DetectEdgesTool"></span><span id="_CPPv215DetectEdgesTool"></span><span id="DetectEdgesTool"></span><span class="target" id="DetectEdgesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectEdgesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv415DetectEdgesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectEdgesTool_1autotoc_md180">
-<h3 id="classDetectEdgesTool_1autotoc_md180">Detect edges<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md180" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classDetectEdgesTool_1autotoc_md183">
+<h3 id="classDetectEdgesTool_1autotoc_md183">Detect edges<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md183" title="Permalink to this headline">🔗</a></h3>
 <p>Detects prominent edges in images. This tool uses the Canny filtering technique to detect edges:</p>
 <p><ol class="loweralpha simple">
 <li><p>The input image is smoothed with a Gaussian filter.</p></li>
@@ -399,8 +400,8 @@ gradient magnitude will be used.</p></li>
 <li><p>Final edges are obtained with hysteresis thresholding: all pixels with a gradient magnitude of at least <em>lowThreshold</em> are regarded as edges if they are connected to at least one pixel whose gradient magnitude is at least <em>highThreshold</em>.</p></li>
 </ol>
 </p>
-<div class="section" id="classDetectEdgesTool_1autotoc_md181">
-<h4 id="classDetectEdgesTool_1autotoc_md181">Inputs<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md181" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectEdgesTool_1autotoc_md184">
+<h4 id="classDetectEdgesTool_1autotoc_md184">Inputs<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md184" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
 </ul>
@@ -415,8 +416,8 @@ gradient magnitude will be used.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classDetectEdgesTool_1autotoc_md182">
-<h4 id="classDetectEdgesTool_1autotoc_md182">Outputs<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md182" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDetectEdgesTool_1autotoc_md185">
+<h4 id="classDetectEdgesTool_1autotoc_md185">Outputs<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md185" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A binary image in which detected edges are ones. </p></li>
 </ul>

@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -377,11 +378,11 @@ as a 1-by-3 matrix. The order is red, green, blue.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv414ColorRatioTool">
 <span id="_CPPv314ColorRatioTool"></span><span id="_CPPv214ColorRatioTool"></span><span id="ColorRatioTool"></span><span class="target" id="ColorRatioTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ColorRatioTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv414ColorRatioTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classColorRatioTool_1autotoc_md162">
-<h3 id="classColorRatioTool_1autotoc_md162">Color ratio<a class="headerlink" href="#classColorRatioTool_1autotoc_md162" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classColorRatioTool_1autotoc_md165">
+<h3 id="classColorRatioTool_1autotoc_md165">Color ratio<a class="headerlink" href="#classColorRatioTool_1autotoc_md165" title="Permalink to this headline">🔗</a></h3>
 <p>Given a reference color and a color sample, calculates scaling factors suitable for <a class="reference internal" href="../BalanceColorsTool/#BalanceColorsTool"><span class="std std-ref">color balancing</span></a>. For accurate results, linear colors should be used as input. See <a class="reference internal" href="../CorrectGammaTool/#CorrectGammaTool"><span class="std std-ref">gamma correction</span></a> for details.</p>
-<div class="section" id="classColorRatioTool_1autotoc_md163">
-<h4 id="classColorRatioTool_1autotoc_md163">Inputs<a class="headerlink" href="#classColorRatioTool_1autotoc_md163" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classColorRatioTool_1autotoc_md166">
+<h4 id="classColorRatioTool_1autotoc_md166">Inputs<a class="headerlink" href="#classColorRatioTool_1autotoc_md166" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">referenceColor</span></code> - The reference color.</p></li>
 </ul>
@@ -393,8 +394,8 @@ as a 1-by-3 matrix. The order is red, green, blue.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classColorRatioTool_1autotoc_md164">
-<h4 id="classColorRatioTool_1autotoc_md164">Outputs<a class="headerlink" href="#classColorRatioTool_1autotoc_md164" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classColorRatioTool_1autotoc_md167">
+<h4 id="classColorRatioTool_1autotoc_md167">Outputs<a class="headerlink" href="#classColorRatioTool_1autotoc_md167" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">scalingFactors</span></code> - Scaling factors for each color channel represented as a 1-by-3 matrix. The order is red, green, blue. </p></li>
 </ul>

@@ -239,6 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -393,8 +394,8 @@ Each row has one element: the number of points in the segment.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv413DrawEdgesTool">
 <span id="_CPPv313DrawEdgesTool"></span><span id="_CPPv213DrawEdgesTool"></span><span id="DrawEdgesTool"></span><span class="target" id="DrawEdgesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DrawEdgesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv413DrawEdgesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDrawEdgesTool_1autotoc_md186">
-<h3 id="classDrawEdgesTool_1autotoc_md186">Draw edges<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md186" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classDrawEdgesTool_1autotoc_md189">
+<h3 id="classDrawEdgesTool_1autotoc_md189">Draw edges<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md189" title="Permalink to this headline">🔗</a></h3>
 <p>Detects prominent edges in images. This tool uses the Edge Drawing algorithm to detect edges in images:</p>
 <p><ol class="loweralpha simple">
 <li><p>The input image is smoothed with a Gaussian filter.</p></li>
@@ -402,8 +403,8 @@ Each row has one element: the number of points in the segment.</p></li>
 <li><p>Edge segments are detected by linking anchor points with locally maximal gradient values.</p></li>
 </ol>
 </p>
-<div class="section" id="classDrawEdgesTool_1autotoc_md187">
-<h4 id="classDrawEdgesTool_1autotoc_md187">Inputs<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md187" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDrawEdgesTool_1autotoc_md190">
+<h4 id="classDrawEdgesTool_1autotoc_md190">Inputs<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md190" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
 </ul>
@@ -418,8 +419,8 @@ Each row has one element: the number of points in the segment.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classDrawEdgesTool_1autotoc_md188">
-<h4 id="classDrawEdgesTool_1autotoc_md188">Outputs<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md188" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classDrawEdgesTool_1autotoc_md191">
+<h4 id="classDrawEdgesTool_1autotoc_md191">Outputs<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md191" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - An 8-bit gray-level image in which detected edges are marked with value 255.</p></li>
 </ul>

@@ -235,6 +235,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RemoteFunctionTool/">Remote function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
@@ -374,11 +375,11 @@ form the same shape.</p></li>
 <dl class="cpp class">
 <dt id="_CPPv420SimplifyPolylineTool">
 <span id="_CPPv320SimplifyPolylineTool"></span><span id="_CPPv220SimplifyPolylineTool"></span><span id="SimplifyPolylineTool"></span><span class="target" id="SimplifyPolylineTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SimplifyPolylineTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420SimplifyPolylineTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classSimplifyPolylineTool_1autotoc_md120">
-<h3 id="classSimplifyPolylineTool_1autotoc_md120">Simplify polyline<a class="headerlink" href="#classSimplifyPolylineTool_1autotoc_md120" title="Permalink to this headline">🔗</a></h3>
+<dd><div class="section" id="classSimplifyPolylineTool_1autotoc_md123">
+<h3 id="classSimplifyPolylineTool_1autotoc_md123">Simplify polyline<a class="headerlink" href="#classSimplifyPolylineTool_1autotoc_md123" title="Permalink to this headline">🔗</a></h3>
 <p>Reduces the number of vertices in a polyline or polygon. This tool uses an iterative end-point fit algorithm also known as the Ramer-Douglas-Peucker algorithm to reduce the number of points in a curve. Given a curve composed of line segments, the algorithm produces a simplified curve that preserves the shape of the original one up to a given tolerance.</p>
-<div class="section" id="classSimplifyPolylineTool_1autotoc_md121">
-<h4 id="classSimplifyPolylineTool_1autotoc_md121">Inputs<a class="headerlink" href="#classSimplifyPolylineTool_1autotoc_md121" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classSimplifyPolylineTool_1autotoc_md124">
+<h4 id="classSimplifyPolylineTool_1autotoc_md124">Inputs<a class="headerlink" href="#classSimplifyPolylineTool_1autotoc_md124" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - An ordered set of points that form a polyline or polygon. Suitable input can be generated for example with <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>.</p></li>
 </ul>
@@ -387,8 +388,8 @@ form the same shape.</p></li>
 </ul>
 </p>
 </div>
-<div class="section" id="classSimplifyPolylineTool_1autotoc_md122">
-<h4 id="classSimplifyPolylineTool_1autotoc_md122">Outputs<a class="headerlink" href="#classSimplifyPolylineTool_1autotoc_md122" title="Permalink to this headline">🔗</a></h4>
+<div class="section" id="classSimplifyPolylineTool_1autotoc_md125">
+<h4 id="classSimplifyPolylineTool_1autotoc_md125">Outputs<a class="headerlink" href="#classSimplifyPolylineTool_1autotoc_md125" title="Permalink to this headline">🔗</a></h4>
 <p><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - A subset of input vertices that can be connected to form the same shape. </p></li>
 </ul>
