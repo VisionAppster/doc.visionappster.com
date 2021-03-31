@@ -388,54 +388,6 @@ table.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code>: Confidence of the match (0…1). The bigger the value,
 the better the match. An N-by-1 matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv420MatchingCompoundTool">
-<span id="_CPPv320MatchingCompoundTool"></span><span id="_CPPv220MatchingCompoundTool"></span><span id="MatchingCompoundTool"></span><span class="target" id="MatchingCompoundTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchingCompoundTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv420MatchingCompoundTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchingCompoundTool_1autotoc_md322">
-<h3 id="classMatchingCompoundTool_1autotoc_md322">Matching compound<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md322" title="Permalink to this headline">🔗</a></h3>
-<p>A compound tool that contains a key point detector and a matcher. Tools derived from this generic implementation specify which key point detector and matcher are actually used. All derived tools can be used in the matcher builder to create key point based matchers.</p>
-<div class="section" id="classMatchingCompoundTool_1autotoc_md323">
-<h4 id="classMatchingCompoundTool_1autotoc_md323">Inputs<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md323" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image in which objects are to be detected. Different key point detection techniques require different input image types: Boundary-based detectors only work with blob (binary or labeled) images. Texture or color based detectors work with gray-level or color input.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location of a region-of-interest for the matcher. A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the region-of-interest in <em>frame</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classNames</span></code> - A N-by-1 table containing the names of the model classes.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMatchingCompoundTool_1autotoc_md324">
-<h4 id="classMatchingCompoundTool_1autotoc_md324">Outputs<a class="headerlink" href="#classMatchingCompoundTool_1autotoc_md324" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for each detected object. Each frame is a 4-by-4 matrix totaling in a 4N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size (width, height) of each detected object in the corresponding <em>frame</em>. An N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelIndex</span></code> - The index of the model that matched. An N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classIndex</span></code> - The class index of the matching model. An N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">className</span></code> - The class name of the matching model. An N-by-1 table.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - Confidence of the match (0…1). The bigger the value, the better the match. An N-by-1 matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by MatchContoursTool, MatchTexturesTool</p>
-</dd></dl>
-
 </div>
 </div>
 

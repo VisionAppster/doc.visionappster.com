@@ -383,35 +383,7 @@ the output matrix are in order 0xAARRGGBB.
 For example, a green opaque pixel results in 0xff00ff00.
 Notice that this may be interpreted as a negative integer.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417ImageToMatrixTool">
-<span id="_CPPv317ImageToMatrixTool"></span><span id="_CPPv217ImageToMatrixTool"></span><span id="ImageToMatrixTool"></span><span class="target" id="ImageToMatrixTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ImageToMatrixTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417ImageToMatrixTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classImageToMatrixTool_1autotoc_md210">
-<h3 id="classImageToMatrixTool_1autotoc_md210">Image to matrix<a class="headerlink" href="#classImageToMatrixTool_1autotoc_md210" title="Permalink to this headline">🔗</a></h3>
-<p>Takes in an image and outputs a matrix.</p>
-<div class="section" id="classImageToMatrixTool_1autotoc_md211">
-<h4 id="classImageToMatrixTool_1autotoc_md211">Inputs<a class="headerlink" href="#classImageToMatrixTool_1autotoc_md211" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code> - The type of the output matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">normalizeIntensity</span></code> - A Boolean flag that enables or disables intensity range normalization. This flag has an effect only if <em>outputType</em> = <code class="docutils literal notranslate"><span class="pre">Float</span></code> or <code class="docutils literal notranslate"><span class="pre">Double</span></code>. If this flag is <code class="docutils literal notranslate"><span class="pre">true</span></code> and <em>channel_min</em> of the input image is negative, the output range is [-1, 1] where pixels with intensity <em>channel_min</em> are mapped to -1 and pixels with intensity <em>channel_max</em> are mapped to 1. Otherwise, if <em>channel_min</em> is greater or equal to zero, the output range is [0, 1] where pixels with intensity <em>channel_min</em> are mapped to 0 and pixels with intensity <em>channel_max</em> are mapped to 1. If this flag is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the values of input pixels are copied to the output matrix as such. If the input is a color image, the pixels are first converted to grayscale.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classImageToMatrixTool_1autotoc_md212">
-<h4 id="classImageToMatrixTool_1autotoc_md212">Outputs<a class="headerlink" href="#classImageToMatrixTool_1autotoc_md212" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code> - Output matrix. If input is an ARGB color image and <em>outputType</em> is <code class="docutils literal notranslate"><span class="pre">RgbInt32</span></code>, the bytes in the elements of the output matrix are in order 0xAARRGGBB. For example, a green opaque pixel results in 0xff00ff00. Notice that this may be interpreted as a negative integer. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N17ImageToMatrixTool10OutputTypeE">
 <span id="_CPPv3N17ImageToMatrixTool10OutputTypeE"></span><span id="_CPPv2N17ImageToMatrixTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N17ImageToMatrixTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -445,8 +417,6 @@ Notice that this may be interpreted as a negative integer.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

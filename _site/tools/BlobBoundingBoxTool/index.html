@@ -387,50 +387,6 @@ A <a class="reference internal" href="../../engine/world-coordinates/#coordinate
 for each detected blob. Each frame is a 4-by-4 matrix totaling in a
 4N-by-4 matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv419BlobBoundingBoxTool">
-<span id="_CPPv319BlobBoundingBoxTool"></span><span id="_CPPv219BlobBoundingBoxTool"></span><span id="BlobBoundingBoxTool"></span><span class="target" id="BlobBoundingBoxTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BlobBoundingBoxTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv419BlobBoundingBoxTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classBlobBoundingBoxTool_1autotoc_md457">
-<h3 id="classBlobBoundingBoxTool_1autotoc_md457">Blob bounding box<a class="headerlink" href="#classBlobBoundingBoxTool_1autotoc_md457" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates the areas, centroids and bounding boxes of labeled objects. The boxes are aligned so that the X-axis points right, the Y-axis points down and the origin is at the upper left corner. If the bounding boxes should be tightly aligned around the objects, use [blob geometry analysis tool](<a class="reference internal" href="../AnalyzeBlobGeometryTool/#AnalyzeBlobGeometryTool"><span class="std std-ref">AnalyzeBlobGeometryTool</span></a>) with <em>aligned</em> flag turned on.</p>
-<div class="section" id="classBlobBoundingBoxTool_1autotoc_md458">
-<h4 id="classBlobBoundingBoxTool_1autotoc_md458">Inputs<a class="headerlink" href="#classBlobBoundingBoxTool_1autotoc_md458" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> - A labeled image. Each connected blob in the output image is marked with a distinct numeric label. Pixels that belong to the first detected blob are ones, the pixels that belong to the second one with twos and so on. Background is zero.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classBlobBoundingBoxTool_1autotoc_md459">
-<h4 id="classBlobBoundingBoxTool_1autotoc_md459">Outputs<a class="headerlink" href="#classBlobBoundingBoxTool_1autotoc_md459" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">area</span></code> - The number of pixels on each blob. A N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">centroid</span></code> - The center-of-mass point (x,y) for each blob. A N-by-2-matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">upperLeft</span></code> - The upper left corner of the blob’s bounding box. Each row in the matrix contains the (x,y) coordinates of a point. A N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">upperRight</span></code> - The upper right corner of the blob’s bounding box.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lowerLeft</span></code> - The lower left corner of the blob’s bounding box.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lowerRight</span></code> - The lower right corner of the blob’s bounding box.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the bounding box of each detected blob in world coordinates (width, height). A N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for each detected blob. Each frame is a 4-by-4 matrix totaling in a 4N-by-4 matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -409,70 +409,55 @@ the boundary. This technique is not sensitive to small deficiencies
 in the boundary curve. The downside is that cropping the input
 image based on the calculated frame and size generally loses part
 of the boundary curve.</p>
-<dl class="cpp class">
-<dt id="_CPPv416DetectShapesTool">
-<span id="_CPPv316DetectShapesTool"></span><span id="_CPPv216DetectShapesTool"></span><span id="DetectShapesTool"></span><span class="target" id="DetectShapesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectShapesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416DetectShapesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectShapesTool_1autotoc_md478">
-<h3 id="classDetectShapesTool_1autotoc_md478">Detect shapes<a class="headerlink" href="#classDetectShapesTool_1autotoc_md478" title="Permalink to this headline">🔗</a></h3>
-<p>Detects shapes by matching a boundary curve to a known geometric shape or a user-defined shape.</p>
-<p>This tool requires that the input is an ordered set of points that follows the boundary of an object. Suitable input can be generated for example with <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>.</p>
-<div class="section" id="classDetectShapesTool_1autotoc_md479">
-<h4 id="classDetectShapesTool_1autotoc_md479">Inputs<a class="headerlink" href="#classDetectShapesTool_1autotoc_md479" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - The boundary curve of an unknown polygon as an N-by-2 matrix (N is a varying number of points).</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> - The reference shape to match to <em>vertices</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">aspectRatio</span></code> - The aspect ratio (width/height) of the reference shape. In the case of an isosceles triangle with two equal sides with length b and the remaining side with length a the aspect ratio is a/b. An aspect ratio of one thus produces an equilateral triangle.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelVertices</span></code> - The vertices of a custom polygon if <em>shape</em> is <code class="docutils literal notranslate"><span class="pre">Custom</span></code>. The polygon must have at least three points and must not intersect itself.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxError</span></code> - The maximum matching error. If matching the input polygon to the reference shape produces a bigger error, no match will be reported. Zero error means a perfect match.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">preferredAngle</span></code> - If the model shape is symmetrical about at least one axis, determining a unique coordinate frame is not possible. In such a case, this parameter defines the preferred angle of the output frame’s x axis with respect to the world coordinate system’s x axis.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectShapesTool_1autotoc_md480">
-<h4 id="classDetectShapesTool_1autotoc_md480">Outputs<a class="headerlink" href="#classDetectShapesTool_1autotoc_md480" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location and orientation of the upper left corner of a rectangle that encloses the detected shape in world coordinates. A 4-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle that encloses a detected shape in world coordinates. A 1-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - The location (x, y) of the center point of a detected shape in world coordinates. A 1-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">diameter</span></code> - The longest diameter of a detected shape in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matchingError</span></code> - The mean square matching error between the input boundary and the matched shape.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">meanDiff</span></code> - The mean absolute distance between the boundary curve and the ideal matched shape in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxInDiff</span></code> - The maximum distance from the ideal shape to the boundary curve inwards.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxOutDiff</span></code> - The maximum distance from the ideal shape to the boundary curve outwards.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matchFound</span></code> - <code class="docutils literal notranslate"><span class="pre">true</span></code> if the input polygon was successfully matched to the reference shape and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. This output is useful for example as an input to a <a class="reference internal" href="../GateTool/#GateTool"><span class="std std-ref">gate</span></a>.</p></li>
-</ul>
-<p>The </p>
-<em>frame</em>, <em>size</em>, <em>center</em> and <em>diameter</em> parameters are measured from the ideal (model) shape after fitting the model to the boundary. This technique is not sensitive to small deficiencies in the boundary curve. The downside is that cropping the input image based on the calculated frame and size generally loses part of the boundary curve. </p>
-</div>
-</div>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N16DetectShapesTool5ShapeE">
+<span id="_CPPv3N16DetectShapesTool5ShapeE"></span><span id="_CPPv2N16DetectShapesTool5ShapeE"></span><span class="target" id="Shape"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Shape</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5ShapeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Supported geometric shapes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape8TriangleE">
+<span id="_CPPv3N16DetectShapesTool5Shape8TriangleE"></span><span id="_CPPv2N16DetectShapesTool5Shape8TriangleE"></span><span class="target" id="Shape::Triangle"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Triangle</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape8TriangleE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape9RectangleE">
+<span id="_CPPv3N16DetectShapesTool5Shape9RectangleE"></span><span id="_CPPv2N16DetectShapesTool5Shape9RectangleE"></span><span class="target" id="Shape::Rectangle"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Rectangle</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape9RectangleE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape7EllipseE">
+<span id="_CPPv3N16DetectShapesTool5Shape7EllipseE"></span><span id="_CPPv2N16DetectShapesTool5Shape7EllipseE"></span><span class="target" id="Shape::Ellipse"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Ellipse</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape7EllipseE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape7StadiumE">
+<span id="_CPPv3N16DetectShapesTool5Shape7StadiumE"></span><span id="_CPPv2N16DetectShapesTool5Shape7StadiumE"></span><span class="target" id="Shape::Stadium"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Stadium</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape7StadiumE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape7HexagonE">
+<span id="_CPPv3N16DetectShapesTool5Shape7HexagonE"></span><span id="_CPPv2N16DetectShapesTool5Shape7HexagonE"></span><span class="target" id="Shape::Hexagon"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Hexagon</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape7HexagonE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape7OctagonE">
+<span id="_CPPv3N16DetectShapesTool5Shape7OctagonE"></span><span id="_CPPv2N16DetectShapesTool5Shape7OctagonE"></span><span class="target" id="Shape::Octagon"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Octagon</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape7OctagonE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape8HexagramE">
+<span id="_CPPv3N16DetectShapesTool5Shape8HexagramE"></span><span id="_CPPv2N16DetectShapesTool5Shape8HexagramE"></span><span class="target" id="Shape::Hexagram"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Hexagram</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape8HexagramE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16DetectShapesTool5Shape6CustomE">
+<span id="_CPPv3N16DetectShapesTool5Shape6CustomE"></span><span id="_CPPv2N16DetectShapesTool5Shape6CustomE"></span><span class="target" id="Shape::Custom"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Custom</span></code><a class="headerlink" href="#_CPPv4N16DetectShapesTool5Shape6CustomE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
+</div>
 </div>
 </div>
 

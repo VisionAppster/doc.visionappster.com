@@ -397,53 +397,7 @@ orientation will be zero.</p></li>
 boundary curve. The number of rows in this matrix is the same
 as in <em>verticesBlockSize</em>.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv423PostprocessBoundaryTool">
-<span id="_CPPv323PostprocessBoundaryTool"></span><span id="_CPPv223PostprocessBoundaryTool"></span><span id="PostprocessBoundaryTool"></span><span class="target" id="PostprocessBoundaryTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">PostprocessBoundaryTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv423PostprocessBoundaryTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classPostprocessBoundaryTool_1autotoc_md331">
-<h3 id="classPostprocessBoundaryTool_1autotoc_md331">Postprocess boundary<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md331" title="Permalink to this headline">🔗</a></h3>
-<p>A specialized tool used by <a class="reference internal" href="../DetectBoundaryShapeTool/#DetectBoundaryShapeTool"><span class="std std-ref">boundary shape detection</span></a> to subsample and join <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundaries</span></a> for shape context calculation.</p>
-<div class="section" id="classPostprocessBoundaryTool_1autotoc_md332">
-<h4 id="classPostprocessBoundaryTool_1autotoc_md332">Inputs<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md332" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - Vertex coordinates of all boundary curves found in an image. A N-by-2 matrix in which each row stores the (x, y) world coordinates of polygon vertex.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of vertices in each separate boundary curve. A M-by-1 matrix, in which M is the number of boundary curves.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">subsamplingFactor</span></code> - The amount of subsampling applied to the incoming boundary curves. If <em>subsamplingFactor</em> is N, the tool will pick every Nth vertex on each curve as a key point.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxKeyPoints</span></code> - The approximate maximum number of key points extracted for a combined boundary curve. This parameter poses an upper bound for processing time. If subsampling by <em>subsamplingFactor</em> would produce more than <em>maxKeyPoints</em> key points, the factor will be automatically increased so that the number of key points produced will be approximately <em>maxKeyPoints</em>. Setting <em>maxKeyPoints</em> to zero disables the limit. The tool takes at least one point from each combined boundary. Therefore, the number of key points procuded may be greater than <em>maxKeyPoints</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">boundaryJoiningMode</span></code> - Specifies how boundary shapes and detected objects are related.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classPostprocessBoundaryTool_1autotoc_md333">
-<h4 id="classPostprocessBoundaryTool_1autotoc_md333">Outputs<a class="headerlink" href="#classPostprocessBoundaryTool_1autotoc_md333" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - The points received in the <em>vertices</em> input, but rearranged so that the vertices of joined boundaries occupy successive rows.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">verticesBlockSize</span></code> - The number of vertices in each of the joined boundary curves.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - Subsampled boundary curves.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">orientations</span></code> - Local boundary orientation on each key point in radians (-pi to pi). The number of rows in this matrix is the same as in <em>keyPoints</em>. If the number of vertices in a boundary is too small for reliable orientation estimation, the orientation will be zero.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPointsBlockSize</span></code> - The number of vertices in each subsampled boundary curve. The number of rows in this matrix is the same as in <em>verticesBlockSize</em>. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N23PostprocessBoundaryTool19BoundaryJoiningModeE">
 <span id="_CPPv3N23PostprocessBoundaryTool19BoundaryJoiningModeE"></span><span id="_CPPv2N23PostprocessBoundaryTool19BoundaryJoiningModeE"></span><span class="target" id="BoundaryJoiningMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">BoundaryJoiningMode</span></code><a class="headerlink" href="#_CPPv4N23PostprocessBoundaryTool19BoundaryJoiningModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -472,8 +426,6 @@ as in <em>verticesBlockSize</em>.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

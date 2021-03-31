@@ -389,50 +389,7 @@ a key point.</p></li>
 An N-by-M matrix where M depends on the parameters of the
 shape context descriptor.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv420DetectLbpTextureTool">
-<span id="_CPPv320DetectLbpTextureTool"></span><span id="_CPPv220DetectLbpTextureTool"></span><span id="DetectLbpTextureTool"></span><span class="target" id="DetectLbpTextureTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectLbpTextureTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv420DetectLbpTextureTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectLbpTextureTool_1autotoc_md312">
-<h3 id="classDetectLbpTextureTool_1autotoc_md312">Detect LBP texture<a class="headerlink" href="#classDetectLbpTextureTool_1autotoc_md312" title="Permalink to this headline">🔗</a></h3>
-<p>This tool is a compound that combines key point finder and <a class="reference internal" href="../LbpTransformTool/#LbpTransformTool"><span class="std std-ref">local binary patterns</span></a> to an easy-to-use keypoint and feature vector detector.</p>
-<div class="section" id="classDetectLbpTextureTool_1autotoc_md313">
-<h4 id="classDetectLbpTextureTool_1autotoc_md313">Inputs<a class="headerlink" href="#classDetectLbpTextureTool_1autotoc_md313" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code> - This parameters relates to the sizes of the detectable objects in the input image. The scale is a relative unitless value. The default value is one, which typically works reasonably well. If the size of the input image is e.g. halved or doubled, <em>scale</em> should be doubled or halved accordingly.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> - Sensitivity of keypoint filtering. The smaller the value, the fewer keypoints are generated. The value range is 0…100.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keypointAlgorithm</span></code> - Keypoint selection algorithm. The options are <em>Corners</em> and <em>Grid</em>. <em>Corners</em> means that keypoints are generated at sharp edges in the image. <em>Grid</em> means that the keypoints form an evenly spaced grid. Grid points which are deemed uninteresting are filtered away (see <em>sensitivity</em> above).</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">roiRadius</span></code> - Radius of the region-of-interest (ROI) around each key point on which the histogram is calculated, in pixels.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">noiseThreshold</span></code> - A threshold for noise cancellation. The bigger the threshold, the more noise is filtered out but also more local texture is ignored.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - The mode of operation of Local Binary Pattern algorithm.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectLbpTextureTool_1autotoc_md314">
-<h4 id="classDetectLbpTextureTool_1autotoc_md314">Outputs<a class="headerlink" href="#classDetectLbpTextureTool_1autotoc_md314" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - The coordinates of extracted key points. A N-by-2 matrix in which each row holds the world (x, y) coordinates of a key point.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">features</span></code> - A shape context feature vector for each key point. An N-by-M matrix where M depends on the parameters of the shape context descriptor. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N20DetectLbpTextureTool4ModeE">
 <span id="_CPPv3N20DetectLbpTextureTool4ModeE"></span><span id="_CPPv2N20DetectLbpTextureTool4ModeE"></span><span class="target" id="Mode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Mode</span></code><a class="headerlink" href="#_CPPv4N20DetectLbpTextureTool4ModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -475,8 +432,6 @@ shape context descriptor.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

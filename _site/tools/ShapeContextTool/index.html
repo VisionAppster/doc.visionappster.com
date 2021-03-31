@@ -462,63 +462,6 @@ two-dimensional polar histogram that is folded into a
 one-dimensional vector with <em>angleBins</em> × <em>distanceBins</em>
 entries. The sum of each histogram is normalized to one.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv416ShapeContextTool">
-<span id="_CPPv316ShapeContextTool"></span><span id="_CPPv216ShapeContextTool"></span><span id="ShapeContextTool"></span><span class="target" id="ShapeContextTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ShapeContextTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416ShapeContextTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classShapeContextTool_1autotoc_md334">
-<h3 id="classShapeContextTool_1autotoc_md334">Shape context<a class="headerlink" href="#classShapeContextTool_1autotoc_md334" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates the shape context descriptor for a set of points that describe the shape of an object. The shape context descriptor is given a large set of points that describes the shape and a (usually) smaller set of key points at which the feature vectors (descriptors) will be calculated.</p>
-<p>The feature vector collects the locations of the other points of the object as seen from a key point into a two-dimensional polar histogram. At each key point, the direction and distance of every point in <em>points</em> is calculated. A two-dimensional histogram bin index is found by quantizing direction and distance to a predefined number of discrete levels.</p>
-<p>Usually, the input for this tool is generated using <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>. The shape context descriptor can however be extracted from any arbitrary set of points. If rotational invariance is needed, local shape orientation must be provided.</p>
-<p>The descriptor can be made invariant against scaling and rotation. An invariant descriptor is necessarily less descriptive and slightly slower to calculate. Thus, if it is known that the orientation or size of the target objects doesn’t change, best performance is obtained by not enabling the invariance options.</p>
-<p>This tool rarely needs to be used explicitly. <a class="reference internal" href="../DetectBoundaryShapeTool/#DetectBoundaryShapeTool"><span class="std std-ref">Boundary shape detection</span></a> provides a more user-friendly interface.</p>
-<div class="section" id="classShapeContextTool_1autotoc_md335">
-<h4 id="classShapeContextTool_1autotoc_md335">Inputs<a class="headerlink" href="#classShapeContextTool_1autotoc_md335" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - A set of points that form the boundaries of an object in an image. Each row in the matrix contains the (x, y) world coordinates of a point.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - A selected set of points at which the local shape descriptors are collected. The key points are usually a subset of <em>points</em>, but need not be. If key points are not provided, <em>points</em> will be used as key points.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">orientations</span></code> - Local shape orientation for each key point in radians. If this input is connected, the resulting key point descriptors will be normalized along the provided orientations. This input must be a 1-by-N matrix, where N is the number of rows in <em>keyPoints</em> (if connected) or <em>points</em>. If this parameter is connected, the resulting descriptors will be rotationally invariant.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scaleInvariant</span></code> - Enables and disables scale invariance. If scale invariance is enabled, distances are normalized by dividing them by the (approximate) mean distance between point pairs.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">angleBins</span></code> - The number of quantization bins for angle in the polar histogram. The width of each sector will be 360Â° / <em>angleBins</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">distanceBins</span></code> - The number of quantization bins for distance in the polar coordinate system. The size of each distance bin will grow exponentially based on <em>firstAbsoluteDistance</em> and <em>distanceScale</em>. The total length of each key point descriptor will be <em>angleBins</em> Ã— <em>distanceBins</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">firstAbsoluteDistance</span></code> - Absolute size of the first quantization bin for distance. Distance is quantized to exponentially growing bins. Everything closer than <em>firstAbsoluteDistance</em> will be put into the first distance bin. The distance is expressed as an absolute measurement in world coordinates and it will be used if the <em>scaleInvariant</em> flag is <code class="docutils literal notranslate"><span class="pre">false</span></code>. Note that setting <em>firstAbsoluteDistance</em> to zero produces an empty descriptor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">firstRelativeDistance</span></code> - Relative size of the first quantization bin for distance. This parameter has the same effect as <em>firstAbsoluteDistance</em>, but it is relative to the mean distance between points in a shape. For example, 0.1 means that the first distance bin will cover 10% of the mean distance. This parameter will be used if <em>scaleInvariant</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. If this value is set to zero, the tool automatically picks a value that scales the distance bins so that the last one just reaches the mean distance between point pairs.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">distanceScale</span></code> - A scaling factor for the exponentially growing distance bins. If the first distance (either <em>firstAbsoluteDistance</em> or <em>firstRelativeDistance</em> depending on <em>scaleInvariant</em>) is denoted by <em>f</em>, the first distance bin will be from zero to <em>f</em>. The second one will be from <em>f</em> to <em>f</em> Ã— <em>distanceScale</em> and so on. The last bin will be from $f Ã— distanceScale^{distanceBins - 2}$ to $f Ã— distanceScale^{distanceBins - 1}$.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">globalDescriptor</span></code> - A flag that controls how to treat points whose distance to the key point is greater than the reach of the last distance bin (distance is greater than $f Ã— distanceScale^{distanceBins - 1})$. If this flag is <code class="docutils literal notranslate"><span class="pre">true</span></code>, all these points will be collected to the last distance bin. If the value is <code class="docutils literal notranslate"><span class="pre">false</span></code>, they will be discarded. This makes it possible to switch between a local and global descriptor. A global descriptor may provide more accuracy if it is known that there are no occlusions or overlapping objects. Otherwise, a local descriptor is better as it is more likely to collect points from a single object.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxSamplesPerKeyPoint</span></code> - The maximum number of samples on the contour to collect for each key point. This parameter poses a hard upper limit for the processing time for the algorithm. If every point on a contour was considered, a total number of points.rows * keyPoints.rows point pairs would need to be evaluated. This would make processing of long contours really heavy. This parameter sets an upper limit to the number of evaluations, after which the contour will be uniformly subsampled to reduce the computational burden. Even if <em>maxSamplesPerKeyPoint</em> is set to a small value, the algorithm will take at least <em>angleBins</em> Ã— <em>distanceBins</em> samples for each key point. Setting <em>maxSamplesPerKeyPoint</em> to zero removes the upper bound.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classShapeContextTool_1autotoc_md336">
-<h4 id="classShapeContextTool_1autotoc_md336">Outputs<a class="headerlink" href="#classShapeContextTool_1autotoc_md336" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">features</span></code> - A polar histogram of point locations for each key point. The number of rows in the feature matrix is the same as that of the <em>keyPoints</em> input. Each row contains a two-dimensional polar histogram that is folded into a one-dimensional vector with <em>angleBins</em> Ã— <em>distanceBins</em> entries. The sum of each histogram is normalized to one. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

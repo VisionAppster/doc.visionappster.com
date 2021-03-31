@@ -380,43 +380,7 @@ or <a class="reference internal" href="../CropImageTool/"><span class="doc">crop
 the tensor size if required by the application. In NCHW and
 NHWC layouts, the batch size (“n”) will be one.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417ImageToTensorTool">
-<span id="_CPPv317ImageToTensorTool"></span><span id="_CPPv217ImageToTensorTool"></span><span id="ImageToTensorTool"></span><span class="target" id="ImageToTensorTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ImageToTensorTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417ImageToTensorTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classImageToTensorTool_1autotoc_md279">
-<h3 id="classImageToTensorTool_1autotoc_md279">Image to tensor<a class="headerlink" href="#classImageToTensorTool_1autotoc_md279" title="Permalink to this headline">🔗</a></h3>
-<p>Takes in an image and outputs a dense tensor in a predefined format.</p>
-<div class="section" id="classImageToTensorTool_1autotoc_md280">
-<h4 id="classImageToTensorTool_1autotoc_md280">Inputs<a class="headerlink" href="#classImageToTensorTool_1autotoc_md280" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Any image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">layout</span></code> - Layout of output tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code> - The data type of output tensor elements.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">normalizeIntensity</span></code><p> - A Boolean flag that enables or disables intensity range normalization. If enabled, the intensity levels of the input image are scaled by equation “out = ((in /</p>
-<p>    channel_max) * max - offset) / divisor” before they are copied to the output tensor. This is done separately for each color channel. See </p>
-<em>normalizationFactors</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">normalizationFactors</span></code> - A 3-by-3 matrix that contains the <em>max</em>, <em>offset</em> and <em>divisor</em> values for each color channel. Only the first row is used with grayscale images.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classImageToTensorTool_1autotoc_md281">
-<h4 id="classImageToTensorTool_1autotoc_md281">Outputs<a class="headerlink" href="#classImageToTensorTool_1autotoc_md281" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - A tensor in the defined format. If the input is an RGB image, the output tensor will have three elements in the “c” dimension. Gray images produce just one. Use <a class="reference internal" href="../ConvertColorsTool/#ConvertColorsTool"><span class="std std-ref">color converting</span></a> to convert gray levels to RGB if needed. The “w” and “h” dimensions will match the size of the input image. Use <a class="reference internal" href="../ScaleImageTool/#ScaleImageTool"><span class="std std-ref">image scaling</span></a> or <a class="reference internal" href="../CropImageTool/#CropImageTool"><span class="std std-ref">cropping</span></a> as a preprocessing tool to fix the tensor size if required by the application. In NCHW and NHWC layouts, the batch size (“n”) will be one. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N17ImageToTensorTool6LayoutE">
 <span id="_CPPv3N17ImageToTensorTool6LayoutE"></span><span id="_CPPv2N17ImageToTensorTool6LayoutE"></span><span class="target" id="Layout"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Layout</span></code><a class="headerlink" href="#_CPPv4N17ImageToTensorTool6LayoutE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -526,8 +490,6 @@ NHWC layouts, the batch size (“n”) will be one.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -371,32 +371,6 @@ grid corner points in pixel coordinates. A 1-by-2 matrix.</p></li>
 probabilities produced by the internal barcode code classifier,
 scaled to [0, 255].</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv424BarcodeDetectionMaskTool">
-<span id="_CPPv324BarcodeDetectionMaskTool"></span><span id="_CPPv224BarcodeDetectionMaskTool"></span><span id="BarcodeDetectionMaskTool"></span><span class="target" id="BarcodeDetectionMaskTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BarcodeDetectionMaskTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../DetectionMaskTool/#_CPPv417DetectionMaskTool" title="DetectionMaskTool"><span class="pre">DetectionMaskTool</span></a><a class="headerlink" href="#_CPPv424BarcodeDetectionMaskTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classBarcodeDetectionMaskTool_1autotoc_md144">
-<h3 id="classBarcodeDetectionMaskTool_1autotoc_md144">Barcode detection mask<a class="headerlink" href="#classBarcodeDetectionMaskTool_1autotoc_md144" title="Permalink to this headline">🔗</a></h3>
-<p>A compound tool that splits an image to fixed-size blocks and produces a low-resolution detection mask image by classifying each sub-image. The brighter an output pixel corresponding to the sub-image will be, the more likely it is that a sub-image overlaps with a barcode.</p>
-<div class="section" id="classBarcodeDetectionMaskTool_1autotoc_md145">
-<h4 id="classBarcodeDetectionMaskTool_1autotoc_md145">Inputs<a class="headerlink" href="#classBarcodeDetectionMaskTool_1autotoc_md145" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gridSpacing</span></code> - The horizontal and vertical spacing between grid corner points in pixel coordinates. A 1-by-2 matrix.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classBarcodeDetectionMaskTool_1autotoc_md146">
-<h4 id="classBarcodeDetectionMaskTool_1autotoc_md146">Outputs<a class="headerlink" href="#classBarcodeDetectionMaskTool_1autotoc_md146" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> - A low-resolution mask image whose pixel intensities are probabilities produced by the internal barcode code classifier, scaled to [0, 255]. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

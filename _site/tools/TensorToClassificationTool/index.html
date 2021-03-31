@@ -372,41 +372,7 @@ one to pick only the entry with the greatest confidence.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code>: The corresponding confidence values in the input
 tensor, sorted in descending order.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv426TensorToClassificationTool">
-<span id="_CPPv326TensorToClassificationTool"></span><span id="_CPPv226TensorToClassificationTool"></span><span id="TensorToClassificationTool"></span><span class="target" id="TensorToClassificationTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TensorToClassificationTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv426TensorToClassificationTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTensorToClassificationTool_1autotoc_md297">
-<h3 id="classTensorToClassificationTool_1autotoc_md297">Tensor to classification<a class="headerlink" href="#classTensorToClassificationTool_1autotoc_md297" title="Permalink to this headline">🔗</a></h3>
-<p>Given a tensor representing classification results, outputs the indices of accepted classes and the corresponding tensor values.</p>
-<div class="section" id="classTensorToClassificationTool_1autotoc_md298">
-<h4 id="classTensorToClassificationTool_1autotoc_md298">Inputs<a class="headerlink" href="#classTensorToClassificationTool_1autotoc_md298" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - An input tensor of confidence values in which at most one dimension differs from one. The tool will reshape the tensor to a 1-by-N matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidenceThreshold</span></code> - The minimum confidence value that will be accepted. Set to zero to accept all values.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxResultCount</span></code> - The maximum number of accepted results. Set to one to pick only the entry with the greatest confidence.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scaling</span></code> - The way confidence values in the input tensor are scaled.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classTensorToClassificationTool_1autotoc_md299">
-<h4 id="classTensorToClassificationTool_1autotoc_md299">Outputs<a class="headerlink" href="#classTensorToClassificationTool_1autotoc_md299" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> - The indices of selected entries as a N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - The corresponding confidence values in the input tensor, sorted in descending order. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N26TensorToClassificationTool7ScalingE">
 <span id="_CPPv3N26TensorToClassificationTool7ScalingE"></span><span id="_CPPv2N26TensorToClassificationTool7ScalingE"></span><span class="target" id="Scaling"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Scaling</span></code><a class="headerlink" href="#_CPPv4N26TensorToClassificationTool7ScalingE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -427,8 +393,6 @@ tensor, sorted in descending order.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

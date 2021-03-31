@@ -398,53 +398,6 @@ for each detected bar code. Each frame is a 4-by-4 matrix totaling in a
 <li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size (width, height) of each detected bar code in
 the corresponding <em>frame</em>. An N-by-2 matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv415FindBarcodeTool">
-<span id="_CPPv315FindBarcodeTool"></span><span id="_CPPv215FindBarcodeTool"></span><span id="FindBarcodeTool"></span><span class="target" id="FindBarcodeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FindBarcodeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv415FindBarcodeTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classFindBarcodeTool_1autotoc_md27">
-<h3 id="classFindBarcodeTool_1autotoc_md27">Find barcode<a class="headerlink" href="#classFindBarcodeTool_1autotoc_md27" title="Permalink to this headline">🔗</a></h3>
-<p>Finds locations of barcodes in the specified region-of-interest of the input image.</p>
-<div class="section" id="classFindBarcodeTool_1autotoc_md28">
-<h4 id="classFindBarcodeTool_1autotoc_md28">Inputs<a class="headerlink" href="#classFindBarcodeTool_1autotoc_md28" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxDetections</span></code> - The maximum number of bar codes to detect.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">quietZoneWidth</span></code> - Width of the quiet zone at both ends of the barcode. If the value is zero, the quiet zone width will be estimated automatically.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle in which bar codes are searched. If <em>size</em> is undefined (either width or height is NAN), barcodes are searched in the whole image. Otherwise the region of interest is determined by <em>size</em> and <em>frame</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location of a region-of-interest for the detector. A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - Threshold for separating the bars of barcodes from the background. A possible method to set the threshold is to use the <a class="reference internal" href="../HistogramTool/#HistogramTool"><span class="std std-ref">histogram tool</span></a> to calculate a grayscale histogram and pass the histogram to the <a class="reference internal" href="../FindThresholdTool/#FindThresholdTool"><span class="std std-ref">threshold finding tool</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">orientation</span></code> - A-priori information about the orientation of the barcode. Setting this parameter improves the probability of correct detection if the information is available. If <em>orientation</em> is Horizontal, only bars with orientation [-45..+45] and [135..225] degrees are searched. If <em>orientation</em> is Vertical, only bars with orientation [-45..-135] and [+45..+135] degrees are searched. The default value is Unknown.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">preferredAngle</span></code> - A-priori information about the orientation of the barcode. Setting this parameter favors barcodes which have orientation near the given angle. This improves the probability of correct detection if the information is available. The default value is NAN, which means no preference.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classFindBarcodeTool_1autotoc_md29">
-<h4 id="classFindBarcodeTool_1autotoc_md29">Outputs<a class="headerlink" href="#classFindBarcodeTool_1autotoc_md29" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for each detected bar code. Each frame is a 4-by-4 matrix totaling in a 4N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size (width, height) of each detected bar code in the corresponding <em>frame</em>. An N-by-2 matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

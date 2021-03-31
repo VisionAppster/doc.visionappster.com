@@ -455,66 +455,6 @@ model will be rejected if the number of matched points is less
 than this value. Increasing this value makes spurious
 detections less likely.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv422MatchRigid2DObjectTool">
-<span id="_CPPv322MatchRigid2DObjectTool"></span><span id="_CPPv222MatchRigid2DObjectTool"></span><span id="MatchRigid2DObjectTool"></span><span class="target" id="MatchRigid2DObjectTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchRigid2DObjectTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../MatchKeyPointsTool/#_CPPv418MatchKeyPointsTool" title="MatchKeyPointsTool"><span class="pre">MatchKeyPointsTool</span></a><a class="headerlink" href="#_CPPv422MatchRigid2DObjectTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchRigid2DObjectTool_1autotoc_md328">
-<h3 id="classMatchRigid2DObjectTool_1autotoc_md328">Match rigid 2D object<a class="headerlink" href="#classMatchRigid2DObjectTool_1autotoc_md328" title="Permalink to this headline">🔗</a></h3>
-<p>Matches key points with the RANSAC algorithm using a geometric model that allows a proper rigid transformation and scaling in two dimensions. Given a set of points and their associated feature vectors, this matcher tries to find a transformation that maps the points to one of the known models in the model database with sufficient accuracy so that the shape of the model is preserved.</p>
-<p>In mathematics, a proper rigid transformation preserves distances between every pair of points and the handedness of shapes. In other words, it allows translation and rotation but no reflection or shape-changing transformations such as scaling or stretching. This tool can however allow scale changes even though it models rigid objects because the apparent size of a rigid object may change due to changing distance from the camera.</p>
-<p>The matching algorithm makes it possible to impose fine-grained limits on allowed changes between a model and a query. It is possible to limit allowed rotation angles and scaling factors to a predefined range. The algorithm can also prune duplicate detections that overlap each other. Finally, a number of parameters are provided for making an optimal trade-off between speed an accuracy.</p>
-<div class="section" id="classMatchRigid2DObjectTool_1autotoc_md329">
-<h4 id="classMatchRigid2DObjectTool_1autotoc_md329">Inputs<a class="headerlink" href="#classMatchRigid2DObjectTool_1autotoc_md329" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rotationInvariant</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the matcher will allow at most <em>maxRotationAngle</em> degrees of rotation between a model and an unknown object to be matched. Otherwise, no rotation will be allowed.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxRotationAngle</span></code> - The maximum allowed absolute rotation angle in degrees. If set to 180, all rotations will be accepted.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scaleInvariant</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the matcher will allow a relative scale change between <em>minScale</em> and <em>maxScale</em>. Otherwise, no scale changes will be allowed.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minScale</span></code> - The minimum accepted scaling factor. If the size of an unknown object is less than <em>minScale</em> times that of the matched model, no match will be reported.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxScale</span></code> - The maximum accepted scaling factor. If the size of an unknown object is greater than <em>maxScale</em> times that of the matched model, no match will be reported.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minimizeGeometricError</span></code> - Enables or disables geometric refinement of the matched transformation. The RANSAC algorithm produces a transformation that is based on a random subset of the input points. If <em>minimizeGeometricError</em> is enabled, the model will be adjusted so that it matches the matched points with the smallest possible geometric error. This will generally result in more accurate match positioning, but it also makes the algorithm a bit slower.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mergeNearbyMatches</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the matcher will merge detections whose scale, angle and location are close enough to each other. This is usually the right thing to do because the same model can often be matched with slightly different parameters. Model merging puts such nearby matches into one match. With geometric error minimization enabled, the geometric model will be fitted to all of the points in the merged matches.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scaleTolerance</span></code> - The maximum allowed relative scale change in merging nearby detections. Setting <em>scaleTolerance</em> to a non-zero value makes it possible to merge detected models even if their sizes are slightly different. For example, if <em>scaleTolerance</em> is 0.1, the tool can merge two detections if the scaling factor of the smaller detection is greater than 90% of the scaling factor of the larger detection.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">angleTolerance</span></code> - The maximum allowed angle change in merging nearby detections, in degrees. Setting <em>angleTolerance</em> to a non-zero value makes it possible to merge detected models even if their angles are slightly different. For example, if <em>scaleTolerance</em> is 5, the tool can merge two detections if the angle between them is less than 5 degrees.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">distanceTolerance</span></code> - The maximum allowed distance between origins of models to be merged, in world coordinates. Setting <em>distanceTolerance</em> to a non-zero value makes it possible to merge detected models even if their locations are slightly different. For example, if <em>distanceTolerance</em> is set to 10, the tool can merge overlapping detections if the distance between their coordinate frames is less than 10 world units.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">selectionProbability</span></code> - The probability of choosing a model that fits the data well enough. Provided that a model can be fitted to the input points, the RANSAC algorithm can estimate the number or rounds required to find a good solution. Due to the probabilistic nature of the algorithm, one can never be sure that the solution is actually found. This parameter sets the confidence level for finding a solution. A higher probability means slower execution.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxIterations</span></code> - The maximum number of iterations the RANSAC algorithm will run if it doesn’t find a match earlier. This value is used to put a hard upper bound to the time the algorithm will run even when a high <em>selectionProbability</em> value is used.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxSamplings</span></code> - The maximum number of random samplings the algorithm will try while finding model candidates. On each iteration, the algorithm randomly picks a subset of points to match the models against. The algorithm will fail if no valid model candidates are found after <em>maxSamplings</em> random subsets.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxPointMatchDistance</span></code> - The threshold for accepting a point as an match. When the matcher tries to fit different models to the input points, it measures the distance of each point to the corresponding point in the model. If the distance exceeds <em>maxPointMatchDistance</em>, the point will be considered an outlier and rejected. The points whose distance to the corresponding model point is less than or equal to <em>maxPointMatchDistance</em> are regarded as inliers to which the model can be fitted.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minMatchedPoints</span></code> - The minimum number of matched key point pairs that are required for an accepted match. A candidate model will be rejected if the number of matched points is less than this value. Increasing this value makes spurious detections less likely. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

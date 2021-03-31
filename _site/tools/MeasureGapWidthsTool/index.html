@@ -408,74 +408,7 @@ XY-plane</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gapEndPoint</span></code>: World coordinates of the right end of the gap on
 XY-plane</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv420MeasureGapWidthsTool">
-<span id="_CPPv320MeasureGapWidthsTool"></span><span id="_CPPv220MeasureGapWidthsTool"></span><span id="MeasureGapWidthsTool"></span><span class="target" id="MeasureGapWidthsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MeasureGapWidthsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420MeasureGapWidthsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMeasureGapWidthsTool_1autotoc_md490">
-<h3 id="classMeasureGapWidthsTool_1autotoc_md490">Measure gap widths<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md490" title="Permalink to this headline">🔗</a></h3>
-<p>Measures gap widths using a gray-level profile.</p>
-<div class="section" id="classMeasureGapWidthsTool_1autotoc_md491">
-<h4 id="classMeasureGapWidthsTool_1autotoc_md491">Inputs<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md491" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">profile</span></code> - 1-by-N gray-scale profile vector originating typically from <a class="reference internal" href="../GrayLevelProfileTool/#GrayLevelProfileTool"><span class="std std-ref">gray level profiling</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code> - The location of the first profile point in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code> - The location of the last profile point in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code> - Gap edge detection algorithm. Gap edges are detected from filtered profile using the selected algorithm.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">smoothness</span></code> - Smoothness of the profile filter. Small smoothness value works best with sharp edges. Large smoothness value gives better results if the edges are dull or the image is noisy.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - The following condition must be met at be met before a filtered profile entry is considered to be a start / end of a gap: Absolute mode: Filtered gray level must be larger than this. Differential mode: Rate of change must be larger than this. Gaussian zero crossing mode: Two consecutive 2nd order differences must be of opposite signs and their difference must be larger than <code class="docutils literal notranslate"><span class="pre">threshold</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hysteresis</span></code> - Hysteresis to the threshold Absolute mode: The threshold must be exceeded by this number before the pixel is considered an edge. Differential mode: Pixel at which the rate of change is local maximum minus hysteresis is set as an edge. Gaussian zero crossing mode: N/A</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxGapCount</span></code> - maximum number of gaps to be detected</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMeasureGapWidthsTool_1autotoc_md492">
-<h4 id="classMeasureGapWidthsTool_1autotoc_md492">Outputs<a class="headerlink" href="#classMeasureGapWidthsTool_1autotoc_md492" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filteredProfile</span></code> - Filtered vector which is matched against the threshold. In absolute mode contains smoothed input profile. In differential mode contains filtered differences. In zero crossing mode contains filtered 2nd order differences.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapStartLength</span></code> - distance of the left edge of the gap from the beginning of the profile line in world coodinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapEndLength</span></code> - distance of the right edge of the gap from the beginning of the profile line in world coodinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapWidth</span></code> - Width of the gap in world coordinates</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapType</span></code> - Type of the gap. 0 = dark gap, 1 = light gap.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapMagnitude</span></code> - Magnitude of the filtered profile which exceeded the threshold for the left edge of this gap. The bigger the value, the sharper the edge is. Absolute mode: Maximum gray level in light gap and minimum gray level in dark gap. Differential mode: Maximum change in light gap (&gt;0) and minimum change in dark gap (&lt;0) at the left edge of the gap. Gaussian zero crossing mode: Difference between the two consecutive 2nd order differences with opposite signs.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapStartPoint</span></code> - World coordinates of the left end of the gap on XY-plane</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapCenterPoint</span></code> - World coordinates of the center of the gap on XY-plane</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gapEndPoint</span></code> - World coordinates of the right end of the gap on XY-plane </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N20MeasureGapWidthsTool13AlgorithmTypeE">
 <span id="_CPPv3N20MeasureGapWidthsTool13AlgorithmTypeE"></span><span id="_CPPv2N20MeasureGapWidthsTool13AlgorithmTypeE"></span><span class="target" id="AlgorithmType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">AlgorithmType</span></code><a class="headerlink" href="#_CPPv4N20MeasureGapWidthsTool13AlgorithmTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -529,8 +462,6 @@ XY-plane</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

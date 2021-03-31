@@ -396,53 +396,6 @@ automatic estimation. Otherwise the same as
 input parameter ‘relativeDotSize’.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">codeType</span></code>: The type of the matrix code that was recognized.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv418ReadMatrixCodeTool">
-<span id="_CPPv318ReadMatrixCodeTool"></span><span id="_CPPv218ReadMatrixCodeTool"></span><span id="ReadMatrixCodeTool"></span><span class="target" id="ReadMatrixCodeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ReadMatrixCodeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv418ReadMatrixCodeTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classReadMatrixCodeTool_1autotoc_md45">
-<h3 id="classReadMatrixCodeTool_1autotoc_md45">Read matrix code<a class="headerlink" href="#classReadMatrixCodeTool_1autotoc_md45" title="Permalink to this headline">🔗</a></h3>
-<p>Reads various formats of matrix codes (2D barcodes).</p>
-<div class="section" id="classReadMatrixCodeTool_1autotoc_md46">
-<h4 id="classReadMatrixCodeTool_1autotoc_md46">Inputs<a class="headerlink" href="#classReadMatrixCodeTool_1autotoc_md46" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">codeType</span></code> - The type of the matrix code to be recognized.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> which defines orientation of the bounding box in which the code matrix is assumed to be. Typically this input should be connected to the corresponding output of <a class="reference internal" href="../FindMatrixCodeTool/#FindMatrixCodeTool"><span class="std std-ref">FindMatrixCodeTool</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size (width, height) of the bounding box in which the code matrix is assumed to be. Typically this input should be connected to the corresponding output of <a class="reference internal" href="../FindMatrixCodeTool/#FindMatrixCodeTool"><span class="std std-ref">FindMatrixCodeTool</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">relativeDotSize</span></code> - Ratio of the width of a module to the distance between the center points of adjacent modules. The value range is 0…1 or NAN. For example, if the modules are squares which are printed on paper, the value should be 1. If the modules are tiny dots etched on the surface, the value should be close to zero. The smaller the dots, the smaller the value. The optimal value is the one which gives maximal <em>correlation</em>. If ‘relativeDotSize’ is set to NAN, the tool estimates the relative dot size. This makes the reading slightly slower.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">codeSize</span></code> - Number of modules in the code matrix. If either width or height is zero, the tool tries to determine the size automatically. The automatic mode is slower than the mode where the matrix size is known.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classReadMatrixCodeTool_1autotoc_md47">
-<h4 id="classReadMatrixCodeTool_1autotoc_md47">Outputs<a class="headerlink" href="#classReadMatrixCodeTool_1autotoc_md47" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code> - The contents of the matrix code as a text string.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">correlation</span></code> - Correlation metric of the selected code. This entity can be used for detecting code words which may be wrong but have passed the check sum by chance.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">relativeDotSize</span></code> - Estimated relative dot size if the corresponding input parameter is set to NAN for automatic estimation. Otherwise the same as input parameter ‘relativeDotSize’.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">codeType</span></code> - The type of the matrix code that was recognized. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

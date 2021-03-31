@@ -375,34 +375,6 @@ non-scalar and the values are determined by applying
 the operator with each element of the non-scalar input and
 the scalar input.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv416BooleanLogicTool">
-<span id="_CPPv316BooleanLogicTool"></span><span id="_CPPv216BooleanLogicTool"></span><span id="BooleanLogicTool"></span><span class="target" id="BooleanLogicTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BooleanLogicTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../BinaryFunctionTool/#_CPPv418BinaryFunctionTool" title="BinaryFunctionTool"><span class="pre">BinaryFunctionTool</span></a><a class="headerlink" href="#_CPPv416BooleanLogicTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classBooleanLogicTool_1autotoc_md349">
-<h3 id="classBooleanLogicTool_1autotoc_md349">Boolean logic<a class="headerlink" href="#classBooleanLogicTool_1autotoc_md349" title="Permalink to this headline">🔗</a></h3>
-<p>Performs Boolean logic on inputs <em>a</em> and <em>b</em>. Inputs can be Boolean or numeric values, matrices or tensors. If the data types of inputs are not Boolean, the values are converted to Boolean values by setting zero elements to <code class="docutils literal notranslate"><span class="pre">false</span></code> and non-zero elements to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<div class="section" id="classBooleanLogicTool_1autotoc_md350">
-<h4 id="classBooleanLogicTool_1autotoc_md350">Inputs<a class="headerlink" href="#classBooleanLogicTool_1autotoc_md350" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> - a Boolean or numeric (scalar) value, matrix or tensor</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> - a Boolean or numeric (scalar) value, matrix or tensor.</p></li>
-</ul>
-<p>If both </p>
-<em>a</em> and <em>b</em> are non-scalar (matrix or tensor), their dimensions must be the same.</p>
-</div>
-<div class="section" id="classBooleanLogicTool_1autotoc_md351">
-<h4 id="classBooleanLogicTool_1autotoc_md351">Outputs<a class="headerlink" href="#classBooleanLogicTool_1autotoc_md351" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code> - If both inputs are scalar, the output is a Boolean value. If either of the inputs is non-scalar, the output is either a Boolean matrix or a Boolean tensor. If one input is scalar and the other input is non-scalar, the output is non-scalar and the values are determined by applying the operator with each element of the non-scalar input and the scalar input. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by LogicalAndTool, LogicalOrTool, LogicalXorTool</p>
-</dd></dl>
-
 </div>
 </div>
 

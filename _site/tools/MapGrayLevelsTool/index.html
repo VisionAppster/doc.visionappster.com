@@ -370,32 +370,6 @@ in which each pixel is obtained by using the input image’s
 gray level as an array index to the lookup table. Gray levels
 with no assigned look-up table entry will be set to zero.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417MapGrayLevelsTool">
-<span id="_CPPv317MapGrayLevelsTool"></span><span id="_CPPv217MapGrayLevelsTool"></span><span id="MapGrayLevelsTool"></span><span class="target" id="MapGrayLevelsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MapGrayLevelsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417MapGrayLevelsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMapGrayLevelsTool_1autotoc_md225">
-<h3 id="classMapGrayLevelsTool_1autotoc_md225">Map gray levels<a class="headerlink" href="#classMapGrayLevelsTool_1autotoc_md225" title="Permalink to this headline">🔗</a></h3>
-<p>Maps pixels in the input image to new values in output image according to a lookup table.</p>
-<div class="section" id="classMapGrayLevelsTool_1autotoc_md226">
-<h4 id="classMapGrayLevelsTool_1autotoc_md226">Inputs<a class="headerlink" href="#classMapGrayLevelsTool_1autotoc_md226" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image of any type.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lookupTable</span></code> - An N-by-1 or 1-by-N vector where N must be large enough to cover the whole dynamic range of the input <em>image</em>. If the look-up table is empty, <em>image</em> will be passed to the <em>image</em> output unaltered.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMapGrayLevelsTool_1autotoc_md227">
-<h4 id="classMapGrayLevelsTool_1autotoc_md227">Outputs<a class="headerlink" href="#classMapGrayLevelsTool_1autotoc_md227" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Image of the same size as type as the input <em>image</em>, in which each pixel is obtained by using the input image’s gray level as an array index to the lookup table. Gray levels with no assigned look-up table entry will be set to zero. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

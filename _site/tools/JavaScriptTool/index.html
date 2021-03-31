@@ -413,59 +413,6 @@ invokations. They can be accessed in the script code through an
 object called <code class="docutils literal notranslate"><span class="pre">$s</span></code>. For example, storing to the state variable
 <code class="docutils literal notranslate"><span class="pre">foo</span></code> can be done by <code class="docutils literal notranslate"><span class="pre">$s.foo</span> <span class="pre">=</span> <span class="pre">'bar'</span></code>. Next time the script is run,
 variable <code class="docutils literal notranslate"><span class="pre">$s.foo</span></code> will have ‘bar’.</p>
-<dl class="cpp class">
-<dt id="_CPPv414JavaScriptTool">
-<span id="_CPPv314JavaScriptTool"></span><span id="_CPPv214JavaScriptTool"></span><span id="JavaScriptTool"></span><span class="target" id="JavaScriptTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">JavaScriptTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DynamicOperation</span><span class="pre">&lt;</span><span class="pre">JavaScriptToolBase</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv414JavaScriptTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classJavaScriptTool_1autotoc_md75">
-<h3 id="classJavaScriptTool_1autotoc_md75">JavaScript<a class="headerlink" href="#classJavaScriptTool_1autotoc_md75" title="Permalink to this headline">🔗</a></h3>
-<p>Runs user-defined JavaScript code in the processing pipeline.</p>
-<div class="section" id="classJavaScriptTool_1autotoc_md76">
-<h4 id="classJavaScriptTool_1autotoc_md76">Inputs<a class="headerlink" href="#classJavaScriptTool_1autotoc_md76" title="Permalink to this headline">🔗</a></h4>
-<p>The inputs of the tool are defined by the <em>inputParameters</em> parameter. Input values can be accessed in the script code through an object called <code class="docutils literal notranslate"><span class="pre">$i</span></code> in the global scope. For example, if there is an input parameter called <code class="docutils literal notranslate"><span class="pre">input</span></code>, its value is stored in <code class="docutils literal notranslate"><span class="pre">$i.input</span></code>.</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">inputParameters</span></code> - A table that defines input parameters. The first column contains the name of a parameter, the second one its type (optional/required/fixed) and the third one the data type of the parameter’s value.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputParameters</span></code> - A table that defines output parameters. The first column contains the name of the parameter, the second one is type (synchronous/asynchronous) and the third one the data type of the parameter’s value.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code> - JavaScript code to run.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">stateEnabled</span></code> - Whether the script code supports state variables or not. It may have a slight impact on performance, so if the script does not need state variables, it is advisable not to enable this parameter.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classJavaScriptTool_1autotoc_md77">
-<h4 id="classJavaScriptTool_1autotoc_md77">Outputs<a class="headerlink" href="#classJavaScriptTool_1autotoc_md77" title="Permalink to this headline">🔗</a></h4>
-<p>The outputs of the tool are defined by the <em>outputParameters</em> parameter. Output values can be accessed in the script code through an object called <code class="docutils literal notranslate"><span class="pre">$o</span></code> in its scope. For example, if there is an output parameter called <code class="docutils literal notranslate"><span class="pre">output</span></code>, it can be assigned a value by <code class="docutils literal notranslate"><span class="pre">$o.output</span> <span class="pre">=</span> <span class="pre">value</span></code>.</p>
-<p>If an output is synchronous, it must be assigned a value on each processing round. Leaving a synchronous output empty will cause a run-time error. On the other hand, asynchronous outputs do not need to be assigned values.</p>
-</div>
-<div class="section" id="classJavaScriptTool_1autotoc_md78">
-<h4 id="classJavaScriptTool_1autotoc_md78">Code examples<a class="headerlink" href="#classJavaScriptTool_1autotoc_md78" title="Permalink to this headline">🔗</a></h4>
-<p>A tool that calculates has two numeric input parameters: <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> and a single output parameter <code class="docutils literal notranslate"><span class="pre">sum</span></code>, which is the sum of the two inputs:</p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$o.sum = $i.a + $i.b
-</pre></div>
-</div>
-</p>
-<p>A tool that strips the first three characters of an input string:</p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$o.string = $i.string.substring(3)
-</pre></div>
-</div>
-</p>
-<p>A tool that multiplies two input matrices (<code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>):</p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$o.c = $i.a.times($i.b)
-</pre></div>
-</div>
-</p>
-</div>
-<div class="section" id="classJavaScriptTool_1autotoc_md79">
-<h4 id="classJavaScriptTool_1autotoc_md79">State variables<a class="headerlink" href="#classJavaScriptTool_1autotoc_md79" title="Permalink to this headline">🔗</a></h4>
-<p>If the <code class="docutils literal notranslate"><span class="pre">stateEnabled</span></code> parameter is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the script can also use special state variables that retain their values between invokations. They can be accessed in the script code through an object called <code class="docutils literal notranslate"><span class="pre">$s</span></code>. For example, storing to the state variable <code class="docutils literal notranslate"><span class="pre">foo</span></code> can be done by $s.foo = ‘bar<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">Next</span> <span class="pre">time</span> <span class="pre">the</span> <span class="pre">script</span> <span class="pre">is</span> <span class="pre">run,</span> <span class="pre">variable</span></code>$s.foo will have ‘bar. </p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

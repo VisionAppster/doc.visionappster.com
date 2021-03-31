@@ -372,35 +372,6 @@ in the output image.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv413MaskImageTool">
-<span id="_CPPv313MaskImageTool"></span><span id="_CPPv213MaskImageTool"></span><span id="MaskImageTool"></span><span class="target" id="MaskImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MaskImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv413MaskImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMaskImageTool_1autotoc_md228">
-<h3 id="classMaskImageTool_1autotoc_md228">Mask image<a class="headerlink" href="#classMaskImageTool_1autotoc_md228" title="Permalink to this headline">🔗</a></h3>
-<p>Applies a binary mask to the input image. A pixel is copied from the input image to the output image if the corresponding pixel in the mask image is non-zero. Otherwise the pixel in the output image is set to zero. The logic can be inverted with the <code class="docutils literal notranslate"><span class="pre">invert</span></code> flag.</p>
-<div class="section" id="classMaskImageTool_1autotoc_md229">
-<h4 id="classMaskImageTool_1autotoc_md229">Inputs<a class="headerlink" href="#classMaskImageTool_1autotoc_md229" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> - Binary mask. Must be the same size as the input or an empty image. If the mask is empty, the input image will be passed as such.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Logic inversion flag. If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code>, a non-zero pixel in the mask means a zero pixel in the output image.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMaskImageTool_1autotoc_md230">
-<h4 id="classMaskImageTool_1autotoc_md230">Outputs<a class="headerlink" href="#classMaskImageTool_1autotoc_md230" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Output image. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

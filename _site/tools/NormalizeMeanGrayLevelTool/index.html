@@ -372,36 +372,6 @@ calculation, in world coordinates.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Normalized image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv426NormalizeMeanGrayLevelTool">
-<span id="_CPPv326NormalizeMeanGrayLevelTool"></span><span id="_CPPv226NormalizeMeanGrayLevelTool"></span><span id="NormalizeMeanGrayLevelTool"></span><span class="target" id="NormalizeMeanGrayLevelTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">NormalizeMeanGrayLevelTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv426NormalizeMeanGrayLevelTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classNormalizeMeanGrayLevelTool_1autotoc_md243">
-<h3 id="classNormalizeMeanGrayLevelTool_1autotoc_md243">Normalize mean gray level<a class="headerlink" href="#classNormalizeMeanGrayLevelTool_1autotoc_md243" title="Permalink to this headline">🔗</a></h3>
-<p>Normalizes an image so that its local average is approximately constant everywhere. This is done by calculating the local average around each pixel and adjusting the pixel’s gray level so that it is relatively as far from the target mean as it was from the origin one.</p>
-<p>The tool prevents overflows by cutting the gray levels at 255 in 8-bit images.</p>
-<div class="section" id="classNormalizeMeanGrayLevelTool_1autotoc_md244">
-<h4 id="classNormalizeMeanGrayLevelTool_1autotoc_md244">Inputs<a class="headerlink" href="#classNormalizeMeanGrayLevelTool_1autotoc_md244" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. Color images will be normalized channel-wise.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">windowSize</span></code> - Size of the local window for average gray level calculation, in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">targetMean</span></code> - The target mean gray level.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classNormalizeMeanGrayLevelTool_1autotoc_md245">
-<h4 id="classNormalizeMeanGrayLevelTool_1autotoc_md245">Outputs<a class="headerlink" href="#classNormalizeMeanGrayLevelTool_1autotoc_md245" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Normalized image. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

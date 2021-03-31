@@ -374,32 +374,6 @@ tensor or matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A matrix or a tensor of the same type as the input.
 If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv47MaxTool">
-<span id="_CPPv37MaxTool"></span><span id="_CPPv27MaxTool"></span><span id="MaxTool"></span><span class="target" id="MaxTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MaxTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../CollapseArrayTool/#_CPPv417CollapseArrayTool" title="CollapseArrayTool"><span class="pre">CollapseArrayTool</span></a><a class="headerlink" href="#_CPPv47MaxTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMaxTool_1autotoc_md394">
-<h3 id="classMaxTool_1autotoc_md394">Max<a class="headerlink" href="#classMaxTool_1autotoc_md394" title="Permalink to this headline">🔗</a></h3>
-<p>Finds the maximum value of the elements of a matrix or a tensor.</p>
-<div class="section" id="classMaxTool_1autotoc_md395">
-<h4 id="classMaxTool_1autotoc_md395">Inputs<a class="headerlink" href="#classMaxTool_1autotoc_md395" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> - A matrix or a tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code> - Specifies the dimension along which the maximum will be searched. -1 means maximum of all elements. For matrices, dimension 0 is rows (output will be 1-by-N) and 1 is columns (output will be N-by-1). For tensors, the specified dimension will be collapsed. For example, if the input is a 1Ã—2Ã—3Ã—4 tensor and <em>dimension</em> is 1, the output will be a 1Ã—3Ã—4 tensor. If the size of the specified dimension is one, maximum is equal to reshaping the tensor. If <em>dimension</em> is greater or equal to the number of dimensions in the input tensor or matrix, the output will be an empty tensor or matrix.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMaxTool_1autotoc_md396">
-<h4 id="classMaxTool_1autotoc_md396">Outputs<a class="headerlink" href="#classMaxTool_1autotoc_md396" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code> - A matrix or a tensor of the same type as the input. If <em>dimension</em> is -1, the output will be a scalar value. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

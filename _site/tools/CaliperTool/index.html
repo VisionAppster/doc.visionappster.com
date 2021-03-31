@@ -389,52 +389,7 @@ Gaussian zero crossing mode: N/A</p></li>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
-<dl class="cpp class">
-<dt id="_CPPv411CaliperTool">
-<span id="_CPPv311CaliperTool"></span><span id="_CPPv211CaliperTool"></span><span id="CaliperTool"></span><span class="target" id="CaliperTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CaliperTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv411CaliperTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCaliperTool_1autotoc_md460">
-<h3 id="classCaliperTool_1autotoc_md460">Caliper<a class="headerlink" href="#classCaliperTool_1autotoc_md460" title="Permalink to this headline">🔗</a></h3>
-<p>A compound tool that contains a Profile tool which is connected to a MeasureGapWidths tool.</p>
-<div class="section" id="classCaliperTool_1autotoc_md461">
-<h4 id="classCaliperTool_1autotoc_md461">Inputs<a class="headerlink" href="#classCaliperTool_1autotoc_md461" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code> - The location of the first point in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code> - The location of the last point in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code> - The width of the caliper line line on XY-plane in world coordinates. If the width is zero, the line will be made of point samples. A non-zero width means that an average over the pixels that span <em>width</em> world units will be calculated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">interpolation</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, improve accuracy by interpolating point samples between pixels along the line. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, round pixel coordinates to the nearest integer.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code> - Gap edge detection algorithm. Gap edges are detected from filtered profile using the selected algorithm.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">smoothness</span></code> - Smoothness of the profile filter. Small smoothness value works best with sharp edges. Large smoothness value gives better results if the edges are dull or the image is noisy.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - The following condition must be met at be met before a filtered profile entry is considered to be a start / end of a gap: Absolute mode: Filtered gray level must be larger than this. Differential mode: Rate of change must be larger than this. Gaussian zero crossing mode: Two consecutive 2nd order differences must be of opposite signs and their difference must be larger than <code class="docutils literal notranslate"><span class="pre">threshold</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hysteresis</span></code> - Hysteresis to the threshold Absolute mode: The threshold must be exceeded by this number before the pixel is considered an edge. Differential mode: Pixel at which the rate of change is local maximum minus hysteresis is set as an edge. Gaussian zero crossing mode: N/A</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxGapCount</span></code> - maximum number of gaps to be detected</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCaliperTool_1autotoc_md462">
-<h4 id="classCaliperTool_1autotoc_md462">Outputs<a class="headerlink" href="#classCaliperTool_1autotoc_md462" title="Permalink to this headline">🔗</a></h4>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N11CaliperTool13AlgorithmTypeE">
 <span id="_CPPv3N11CaliperTool13AlgorithmTypeE"></span><span id="_CPPv2N11CaliperTool13AlgorithmTypeE"></span><span class="target" id="AlgorithmType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">AlgorithmType</span></code><a class="headerlink" href="#_CPPv4N11CaliperTool13AlgorithmTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -488,8 +443,6 @@ Gaussian zero crossing mode: N/A</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

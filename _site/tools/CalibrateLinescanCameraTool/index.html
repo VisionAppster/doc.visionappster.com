@@ -428,69 +428,6 @@ than 2 is poor. If the calibration fails completely, the value
 is infinite. In that case it is likely that the calibration
 plate was not detected at all in at least one image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv427CalibrateLinescanCameraTool">
-<span id="_CPPv327CalibrateLinescanCameraTool"></span><span id="_CPPv227CalibrateLinescanCameraTool"></span><span id="CalibrateLinescanCameraTool"></span><span class="target" id="CalibrateLinescanCameraTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CalibrateLinescanCameraTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv427CalibrateLinescanCameraTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCalibrateLinescanCameraTool_1autotoc_md3">
-<h3 id="classCalibrateLinescanCameraTool_1autotoc_md3">Calibrate line-scan camera<a class="headerlink" href="#classCalibrateLinescanCameraTool_1autotoc_md3" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates intrinsic calibration parameters for a line-scan camera. The tool requires several images of the standard VisionAppster line-scan calibration plate. It calculates the intrinsic parameters (principal point, focal length and radial distortion) of the camera the pictures were taken with.</p>
-<p>Once the calibration factors have been calculated, they can be copied to the image source connected to the camera.</p>
-<div class="section" id="classCalibrateLinescanCameraTool_1autotoc_md4">
-<h4 id="classCalibrateLinescanCameraTool_1autotoc_md4">Inputs<a class="headerlink" href="#classCalibrateLinescanCameraTool_1autotoc_md4" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code> - An optional synchronization input. This input makes it possible to feed multiple independent images to the calibration procedure. If <em>sync</em> is connected, the tool will collect input images related to the object received in it. This makes it possible to use an <a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">iteration</span></a> to collect multiple calibration images.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A picture of the standard VisionAppster line-scan calibration plate taken with the camera being calibrated. The picture may be composed of several images of equal width and height which have been stacked as a single image outside of the tool. In such a case, <em>sampleCount</em> should be set equal to the number of stacked sub-images.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerHeight</span></code> - Height of the markers on the calibration plate in world units.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerSpacing</span></code> - Distance between the markers on the calibration plate in world units.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerCount</span></code> - Number of markers on the calibration plate on each side of the center. So there are 2 * markerCount markers in total.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - Threshold used in detecting the markers. The bigger the threshold, a larger contrast is required for reliable detection. The smaller the threshold, the larger is the probability for false detection. A number between 50 and 100 is typically a good compromise.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sampleCount</span></code> - The number of sample profiles extracted from each input image. This can be used to sample each single input image multiple times, but is mostly useful if the input image is composed of equally sized sub-images stacked on top of each other.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sampleWidth</span></code> - The number of scan lines summed up and averaged in each sampleCount image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - Focal length in world units, typically in millimeters.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pixelSize</span></code> - The horizontal width of a pixel on the image sensor, in world units. Typical pixel sizes of line-scan sensors range from 0.005 to 0.02 millimeters.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCalibrateLinescanCameraTool_1autotoc_md5">
-<h4 id="classCalibrateLinescanCameraTool_1autotoc_md5">Outputs<a class="headerlink" href="#classCalibrateLinescanCameraTool_1autotoc_md5" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - The focal length of the camera in pixels (fx, fy). Only fx will actually be estimated, and fy will be set equal to it.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">principalPoint</span></code> - The location of the principal point in pixel coordinates (cx, cy). The principal point is the point where the optical axis hits the image sensor. Note that with a line-scan camera, this should actually be stated “where the optical axis would hit the image sensor, if it was wide enough”. Imperfect lens centering will usually cause the center to be slightly off the sensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">distortionFactors</span></code> - The radial and tangential distortion factors (k1, k2, p1, p2). Tangential factors aren’t actually estimated and will be zeros.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code> - A N-by-2 matrix containing the number of detected markers on left and right sides of the calibration plate. For each input image, <em>sampleCount</em> rows will be inserted to this matrix. The total number of lines thus varies depending on the number of images received. Ideally, both values on every line should be equal to <em>markerCount</em> if the images are such that all markers are visible.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code> - A measure of how successful the calibration procedure was. The smaller the value, the better. A value between 0 and 1 is good, between 1 and 2 is fair and larger than 2 is poor. If the calibration fails completely, the value is infinite. In that case it is likely that the calibration plate was not detected at all in at least one image. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

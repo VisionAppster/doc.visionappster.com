@@ -386,49 +386,6 @@ of the key points found in the input image.</p></li>
 The origin of the coordinate system
 is relative to the base corner of the detected QR code.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv419FindQrKeyPointsTool">
-<span id="_CPPv319FindQrKeyPointsTool"></span><span id="_CPPv219FindQrKeyPointsTool"></span><span id="FindQrKeyPointsTool"></span><span class="target" id="FindQrKeyPointsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FindQrKeyPointsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv419FindQrKeyPointsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classFindQrKeyPointsTool_1autotoc_md33">
-<h3 id="classFindQrKeyPointsTool_1autotoc_md33">Find QR keypoints<a class="headerlink" href="#classFindQrKeyPointsTool_1autotoc_md33" title="Permalink to this headline">🔗</a></h3>
-<p>Finds location of a QR code and returns 13 key points of the code. The points are given in both pixel coordinates and in coordinates relative to the base corner of the QR code. Base corner is the corner which has a finder pattern at the corner and on both sides of the corner. There is only one such corner in a QR code.</p>
-<p>Example:</p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span><span class="o">...</span>    <span class="n">F</span> <span class="o">=</span> <span class="n">a</span> <span class="n">corner</span> <span class="k">with</span> <span class="n">a</span> <span class="n">finder</span> <span class="n">pattern</span>
-<span class="o">....</span>    <span class="n">B</span> <span class="o">=</span> <span class="n">Base</span> <span class="n">corner</span> <span class="p">(</span><span class="n">which</span> <span class="n">also</span> <span class="n">has</span> <span class="n">a</span> <span class="n">finder</span> <span class="n">pattern</span><span class="p">)</span>
-<span class="n">B</span><span class="o">..</span><span class="n">F</span>
-</pre></div>
-</div>
-</p>
-<p>Typically the output of this tool is connected to <a class="reference internal" href="../HomographyTool/#HomographyTool"><span class="std std-ref">HomographyTool</span></a> that finds the transformation between detected points and their known reference locations.</p>
-<div class="section" id="classFindQrKeyPointsTool_1autotoc_md34">
-<h4 id="classFindQrKeyPointsTool_1autotoc_md34">Inputs<a class="headerlink" href="#classFindQrKeyPointsTool_1autotoc_md34" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - Threshold for separating the modules of matrix code from the background.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Invert flag. If the flag is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tool assumes a black code on white background. This can be changed by setting the <em>invert</em> flag to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">edgeLength</span></code> - Length of the edge of the QR code in physical units (e.g. millimeters or inches).</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classFindQrKeyPointsTool_1autotoc_md35">
-<h4 id="classFindQrKeyPointsTool_1autotoc_md35">Outputs<a class="headerlink" href="#classFindQrKeyPointsTool_1autotoc_md35" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - A 13-by-2 matrix of world coordinates of the key points found in the input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">referencePoints</span></code> - A 13-by-2 matrix of reference points. The origin of the coordinate system is relative to the base corner of the detected QR code. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

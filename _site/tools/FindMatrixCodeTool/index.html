@@ -403,53 +403,6 @@ totaling in a 4N-by-4 matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size (width, height) of each detected matrix code in
 the corresponding <em>frame</em>. An N-by-2 matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv418FindMatrixCodeTool">
-<span id="_CPPv318FindMatrixCodeTool"></span><span id="_CPPv218FindMatrixCodeTool"></span><span id="FindMatrixCodeTool"></span><span class="target" id="FindMatrixCodeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FindMatrixCodeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv418FindMatrixCodeTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classFindMatrixCodeTool_1autotoc_md30">
-<h3 id="classFindMatrixCodeTool_1autotoc_md30">Find matrix code<a class="headerlink" href="#classFindMatrixCodeTool_1autotoc_md30" title="Permalink to this headline">🔗</a></h3>
-<p>Finds location of a matrix code in the specified region-of-interest in the input image.</p>
-<div class="section" id="classFindMatrixCodeTool_1autotoc_md31">
-<h4 id="classFindMatrixCodeTool_1autotoc_md31">Inputs<a class="headerlink" href="#classFindMatrixCodeTool_1autotoc_md31" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">codeType</span></code> - Prefered type of the detected matrix code. The deployed detection algorithm is optimized for the given code type but it may detect also other types.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxDetections</span></code> - The maximum number of matrix codes to detect. Note: The current version of the tool can detect several QR codes but only one code of any other type. The tool may sometimes give some false positives so it is advisable to set <em>maxDetections</em> to a much larger value than the expected number of codes to ensure that all codes will be found.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle in which matrix codes are searched. If <em>size</em> is undefined (either width or height is NAN), the code is searched in the whole image. Otherwise the region of interest is determined by <em>size</em> and <em>frame</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location of the region-of-interest for the detector. A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - Threshold for separating the modules of matrix code from the background. QR codes can be detected reliably from an arbitrary image. The other code types are detected only if the entire background is brighter (when <em>invert</em> flag is <code class="docutils literal notranslate"><span class="pre">true</span></code>) or darker (when <em>invert</em> flag is<code class="docutils literal notranslate"><span class="pre">false</span></code>) than the given threshold. A possible method to set the threshold is to use the <a class="reference internal" href="../HistogramTool/#HistogramTool"><span class="std std-ref">histogram tool</span></a> to calculate a grayscale histogram and pass the histogram to the <a class="reference internal" href="../FindThresholdTool/#FindThresholdTool"><span class="std std-ref">threshold finding tool</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hysteresis</span></code> - Hysteresis for module thresholding. If <em>hysteresis</em> is set to a non-zero value, the modules of a matrix code are allowed to contain pixels whose gray level does not meet the rule set by <em>threshold</em> parameter.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Invert flag. If the flag is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tool assumes a black code on white background. This can be changed by setting the <em>invert</em> flag to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classFindMatrixCodeTool_1autotoc_md32">
-<h4 id="classFindMatrixCodeTool_1autotoc_md32">Outputs<a class="headerlink" href="#classFindMatrixCodeTool_1autotoc_md32" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for each detected matrix code. Each frame is a 4-by-4 matrix totaling in a 4N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size (width, height) of each detected matrix code in the corresponding <em>frame</em>. An N-by-2 matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

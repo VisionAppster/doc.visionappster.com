@@ -358,17 +358,6 @@ in the shape, it generally expects that the target objects are
 rigid.</p>
 <p>If you need simple alignment based on a single, completely visible
 object boundary, use the faster <a class="reference internal" href="../DetectShapesTool/"><span class="doc">shape detection</span></a> technique instead.</p>
-<dl class="cpp class">
-<dt id="_CPPv417MatchContoursTool">
-<span id="_CPPv317MatchContoursTool"></span><span id="_CPPv217MatchContoursTool"></span><span id="MatchContoursTool"></span><span class="target" id="MatchContoursTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchContoursTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../MatchingCompoundTool/#_CPPv420MatchingCompoundTool" title="MatchingCompoundTool"><span class="pre">MatchingCompoundTool</span></a><a class="headerlink" href="#_CPPv417MatchContoursTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchContoursTool_1autotoc_md321">
-<h2 id="classMatchContoursTool_1autotoc_md321">Match contours<a class="headerlink" href="#classMatchContoursTool_1autotoc_md321" title="Permalink to this headline">🔗</a></h2>
-<p>Matches arbitrary boundary shapes using <a class="reference internal" href="../DetectBoundaryShapeTool/#DetectBoundaryShapeTool"><span class="std std-ref">boundary shape detection</span></a> and <a class="reference internal" href="../MatchRigid2DObjectTool/#MatchRigid2DObjectTool"><span class="std std-ref">rigid 2D matching</span></a>. This tool requires that the input image contains blobs; it must have gone through <a class="reference internal" href="../BinarizeTool/#BinarizeTool"><span class="std std-ref">binarization</span></a> or <a class="reference internal" href="../DetectBlobsTool/#DetectBlobsTool"><span class="std std-ref">blob detection</span></a>, for example. Alternatively, the <em>threshold</em> parameter of the feature detector can be used to apply a static gray-level threshold to a gray scale or color input image.</p>
-<p>This tool can be used in applications where target objects can be separated from the background as blobs. The tool tolerates scale and rotation changes, partial occlusions, missing parts and overlapping objects. Although the tool tolerates local variations in the shape, it generally expects that the target objects are rigid.</p>
-<p>If you need simple alignment based on a single, completely visible object boundary, use the faster <a class="reference internal" href="../DetectShapesTool/#DetectShapesTool"><span class="std std-ref">shape detection</span></a> technique instead. </p>
-</div>
-</dd></dl>
-
 </div>
 
 

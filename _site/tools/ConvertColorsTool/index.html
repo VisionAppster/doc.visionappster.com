@@ -375,33 +375,7 @@ real).</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Raw RGB or gray-level image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417ConvertColorsTool">
-<span id="_CPPv317ConvertColorsTool"></span><span id="_CPPv217ConvertColorsTool"></span><span id="ConvertColorsTool"></span><span class="target" id="ConvertColorsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConvertColorsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417ConvertColorsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classConvertColorsTool_1autotoc_md171">
-<h3 id="classConvertColorsTool_1autotoc_md171">Convert colors<a class="headerlink" href="#classConvertColorsTool_1autotoc_md171" title="Permalink to this headline">🔗</a></h3>
-<p>Converts encoded images to RGB or grayscale. This tool can be used to convert encoded and compressed image buffers to raw color or grayscale images. Encoded color images are produced e.g. by the <a class="reference internal" href="../ImageSource/#ImageSource"><span class="std std-ref">Image Source</span></a> with the <em>autoDecode</em> flag set to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Compressed images typically come from files (see <a class="reference internal" href="../ReadImageFileTool/#ReadImageFileTool"><span class="std std-ref">Read Image file</span></a>).</p>
-<p>This tool is useful in applications where the full RGB data received from a camera is not always needed or if decoding all frames takes too much time. It lets the application developer to move automatic decoding out of the image source and selectively decode color images when needed.</p>
-<div class="section" id="classConvertColorsTool_1autotoc_md172">
-<h4 id="classConvertColorsTool_1autotoc_md172">Inputs<a class="headerlink" href="#classConvertColorsTool_1autotoc_md172" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Any image, usually Bayer or YUV encoded or compressed as JPEG/PNG. The tool also accepts raw RGB and gray-level input and can thus be used with all types of cameras (virtual or real).</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code> - Type of the output image.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classConvertColorsTool_1autotoc_md173">
-<h4 id="classConvertColorsTool_1autotoc_md173">Outputs<a class="headerlink" href="#classConvertColorsTool_1autotoc_md173" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Raw RGB or gray-level image. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N17ConvertColorsTool10OutputTypeE">
 <span id="_CPPv3N17ConvertColorsTool10OutputTypeE"></span><span id="_CPPv2N17ConvertColorsTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N17ConvertColorsTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -441,8 +415,6 @@ real).</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

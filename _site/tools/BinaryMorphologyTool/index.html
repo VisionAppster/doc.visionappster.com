@@ -374,41 +374,82 @@ slower.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: A binary image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv420BinaryMorphologyTool">
-<span id="_CPPv320BinaryMorphologyTool"></span><span id="_CPPv220BinaryMorphologyTool"></span><span id="BinaryMorphologyTool"></span><span class="target" id="BinaryMorphologyTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BinaryMorphologyTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420BinaryMorphologyTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classBinaryMorphologyTool_1autotoc_md454">
-<h3 id="classBinaryMorphologyTool_1autotoc_md454">Binary morphology<a class="headerlink" href="#classBinaryMorphologyTool_1autotoc_md454" title="Permalink to this headline">🔗</a></h3>
-<p>Applies morphological operations to binary images. Typically used for noise reduction and shape enhancement in thresholded images.</p>
-<div class="section" id="classBinaryMorphologyTool_1autotoc_md455">
-<h4 id="classBinaryMorphologyTool_1autotoc_md455">Inputs<a class="headerlink" href="#classBinaryMorphologyTool_1autotoc_md455" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A binary image. All non-zero pixels in the input image are regarded as foreground.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">operation</span></code> - The morphological operation to apply to the input.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maskSize</span></code> - The size of the morphological mask (a.k.a the structuring element) in world coordinates. If the mask is bigger than the input image, the output image will be filled with zeros.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maskShape</span></code> - The shape of the structuring element.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">expandBorders</span></code> - A flag that indicates whether foreground objects on image borders are assumed to expand beyond the edge. Setting this property to <code class="docutils literal notranslate"><span class="pre">true</span></code> makes the algorithm slower.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classBinaryMorphologyTool_1autotoc_md456">
-<h4 id="classBinaryMorphologyTool_1autotoc_md456">Outputs<a class="headerlink" href="#classBinaryMorphologyTool_1autotoc_md456" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A binary image. </p></li>
-</ul>
-</p>
-</div>
-</div>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N20BinaryMorphologyTool9OperationE">
+<span id="_CPPv3N20BinaryMorphologyTool9OperationE"></span><span id="_CPPv2N20BinaryMorphologyTool9OperationE"></span><span class="target" id="Operation"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Operation</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9OperationE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Binary morphology operation types. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9Operation5ErodeE">
+<span id="_CPPv3N20BinaryMorphologyTool9Operation5ErodeE"></span><span id="_CPPv2N20BinaryMorphologyTool9Operation5ErodeE"></span><span class="target" id="Operation::Erode"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Erode</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9Operation5ErodeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Erosion. Shrinks blobs and completely removes small ones. </p>
 </dd></dl>
 
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9Operation6DilateE">
+<span id="_CPPv3N20BinaryMorphologyTool9Operation6DilateE"></span><span id="_CPPv2N20BinaryMorphologyTool9Operation6DilateE"></span><span class="target" id="Operation::Dilate"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Dilate</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9Operation6DilateE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Dilation. Enlarges blobs. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9Operation4OpenE">
+<span id="_CPPv3N20BinaryMorphologyTool9Operation4OpenE"></span><span id="_CPPv2N20BinaryMorphologyTool9Operation4OpenE"></span><span class="target" id="Operation::Open"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Open</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9Operation4OpenE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Erosion followed by dilation. </p>
+<p>Removes small blobs and juts, and breaks thin connections between blobs. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9Operation5CloseE">
+<span id="_CPPv3N20BinaryMorphologyTool9Operation5CloseE"></span><span id="_CPPv2N20BinaryMorphologyTool9Operation5CloseE"></span><span class="target" id="Operation::Close"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Close</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9Operation5CloseE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Dilation followed by erosion. </p>
+<p>Closes holes in blobs and gaps between blobs. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9Operation6TopHatE">
+<span id="_CPPv3N20BinaryMorphologyTool9Operation6TopHatE"></span><span id="_CPPv2N20BinaryMorphologyTool9Operation6TopHatE"></span><span class="target" id="Operation::TopHat"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">TopHat</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9Operation6TopHatE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Original minus opened. </p>
+<p>Leaves only the small elements removed by opening. Also known as the white top-hat transformation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9Operation9BottomHatE">
+<span id="_CPPv3N20BinaryMorphologyTool9Operation9BottomHatE"></span><span id="_CPPv2N20BinaryMorphologyTool9Operation9BottomHatE"></span><span class="target" id="Operation::BottomHat"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">BottomHat</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9Operation9BottomHatE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Closed minus original. </p>
+<p>Leaves the small elements added by closing. Also known as the black top-hat transformation. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N20BinaryMorphologyTool9MaskShapeE">
+<span id="_CPPv3N20BinaryMorphologyTool9MaskShapeE"></span><span id="_CPPv2N20BinaryMorphologyTool9MaskShapeE"></span><span class="target" id="MaskShape"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">MaskShape</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9MaskShapeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Shapes of morphology masks. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9MaskShape15RectangularMaskE">
+<span id="_CPPv3N20BinaryMorphologyTool9MaskShape15RectangularMaskE"></span><span id="_CPPv2N20BinaryMorphologyTool9MaskShape15RectangularMaskE"></span><span class="target" id="MaskShape::RectangularMask"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">RectangularMask</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9MaskShape15RectangularMaskE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The whole mask is filled with ones. </p>
+<p>Large masks produce jagged output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9MaskShape14EllipticalMaskE">
+<span id="_CPPv3N20BinaryMorphologyTool9MaskShape14EllipticalMaskE"></span><span id="_CPPv2N20BinaryMorphologyTool9MaskShape14EllipticalMaskE"></span><span class="target" id="MaskShape::EllipticalMask"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">EllipticalMask</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9MaskShape14EllipticalMaskE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Circle or ellipse, depending on the size of the mask. </p>
+<p>Produces smooth, round output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20BinaryMorphologyTool9MaskShape11DiamondMaskE">
+<span id="_CPPv3N20BinaryMorphologyTool9MaskShape11DiamondMaskE"></span><span id="_CPPv2N20BinaryMorphologyTool9MaskShape11DiamondMaskE"></span><span class="target" id="MaskShape::DiamondMask"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">DiamondMask</span></code><a class="headerlink" href="#_CPPv4N20BinaryMorphologyTool9MaskShape11DiamondMaskE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>A diamond. A compromise between the others. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 

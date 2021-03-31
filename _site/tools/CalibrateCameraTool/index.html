@@ -431,65 +431,7 @@ between 0 and 1 is good, between 1 and 2 is fair and larger
 than 2 is poor. If the calibration fails completely, the value
 is infinite.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv419CalibrateCameraTool">
-<span id="_CPPv319CalibrateCameraTool"></span><span id="_CPPv219CalibrateCameraTool"></span><span id="CalibrateCameraTool"></span><span class="target" id="CalibrateCameraTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CalibrateCameraTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv419CalibrateCameraTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCalibrateCameraTool_1autotoc_md0">
-<h3 id="classCalibrateCameraTool_1autotoc_md0">Calibrate camera<a class="headerlink" href="#classCalibrateCameraTool_1autotoc_md0" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates intrinsic calibration parameters (principal point, focal length and radial distortion) of a matrix camera.</p>
-<p>The tool can be used in two separate modes. If focal length and principal point are not known, <em>calibrationMode</em> should be set to ‘CalibrateEverything’. In this case the focal length, principal point and non-linear distortion coefficients will be calculated using at least three input images of the standard VisionAppster calibration plate. Each image should be taken from a different angle and as large portion of the calibration plate as possible should be visible.</p>
-<p>If the focal length is known and the principal point is in the middle of the sensor, <em>calibrationMode</em> can be set to ‘CalibrateDistortion’. In this case only the distortion coefficients will be calculated using either one or several images. If only one image is used, the calibration plate should cover nearly the entire field of view. However, if the calibration plate covers only part of the field of view, you typically get an accurate result by taking four images such that the calibration plate is visible at a different corner of the field of view in each image. Unlike in ‘CalibrateEverything’ mode, each of these four images can be taken from the same angle, typically placing the camera directly above the calibration plate.</p>
-<p>Once the calibration factors have been calculated, they can be copied to the image source connected to the camera.</p>
-<div class="section" id="classCalibrateCameraTool_1autotoc_md1">
-<h4 id="classCalibrateCameraTool_1autotoc_md1">Inputs<a class="headerlink" href="#classCalibrateCameraTool_1autotoc_md1" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code> - An optional synchronization input. This input makes it possible to feed multiple independent images to the calibration procedure. If <em>sync</em> is connected, the tool will collect input images related to the object received in it. This makes it possible to use an <a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">iteration</span></a> to collect multiple calibration images.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - An image of the calibration plate. The image must be such that either the center marker or at least one of the corners is visible. The more markers are visible the better.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerSpacing</span></code> - The spacing (distance between centers) of calibration markers on the calibration plate in world units.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerRows</span></code> - Number of marker rows on the calibration plate. A row is a sequence of markers along the long edge of the plate. The number must be odd.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerColumns</span></code> - Number of marker columns on the calibration plate A columns is a sequence of markers along the short edge of the plate. The number must be odd.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">calibrationMode</span></code> - This flag can be set to ‘CalibrateDistortion’ if the focal length and the pixel size are known and the principal point is in the middle of the sensor. In this case only non-linear distortion needs to be calibrated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - Focal length in world units, typically in millimeters. Applicable only if <em>calibrationMode</em> = ‘CalibrateDistortion’.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pixelSize</span></code> - Width of pixels on the image sensor, in world units. The tool assumes that pixels are square. Typical pixel sizes of area scan sensors range from 0.001 to 0.01 millimeters. Applicable only if <em>calibrationMode</em> = ‘CalibrateDistortion’.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCalibrateCameraTool_1autotoc_md2">
-<h4 id="classCalibrateCameraTool_1autotoc_md2">Outputs<a class="headerlink" href="#classCalibrateCameraTool_1autotoc_md2" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - The focal length of the camera in pixels</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">principalPoint</span></code> - The location of the principal point in pixel coordinates (cx, cy). The principal point is the point where the optical axis hits the image sensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">distortionFactors</span></code> - The radial and tangential distortion factors (k1, k2, p1, p2). Tangential factors aren’t actually estimated and will always be zeros.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code> - A N-by-1 matrix containing the number of detected markers for every image. If the number is zero, no markers have been detected so the image is not usable. Ideally every marker on the plate should be visible.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code> - A measure of how successful the calibration procedure was. The smaller the value, the better. A value between 0 and 1 is good, between 1 and 2 is fair and larger than 2 is poor. If the calibration fails completely, the value is infinite. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N19CalibrateCameraTool15CalibrationModeE">
 <span id="_CPPv3N19CalibrateCameraTool15CalibrationModeE"></span><span id="_CPPv2N19CalibrateCameraTool15CalibrationModeE"></span><span class="target" id="CalibrationMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">CalibrationMode</span></code><a class="headerlink" href="#_CPPv4N19CalibrateCameraTool15CalibrationModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -510,8 +452,6 @@ is infinite.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

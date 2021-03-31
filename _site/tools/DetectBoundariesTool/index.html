@@ -403,53 +403,6 @@ detected edges are marked according to their type. Background
 is zero, right and bottom edges one, left and top edges two
 and double edges three.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv420DetectBoundariesTool">
-<span id="_CPPv320DetectBoundariesTool"></span><span id="_CPPv220DetectBoundariesTool"></span><span id="DetectBoundariesTool"></span><span class="target" id="DetectBoundariesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectBoundariesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420DetectBoundariesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectBoundariesTool_1autotoc_md466">
-<h3 id="classDetectBoundariesTool_1autotoc_md466">Detect boundaries<a class="headerlink" href="#classDetectBoundariesTool_1autotoc_md466" title="Permalink to this headline">🔗</a></h3>
-<p>Detects boundaries of connected objects in images and outputs them as a matrix that contains the coordinates of vertices that form a polygon. The resulting vertices can be used for example in <a class="reference internal" href="../DetectShapesTool/#DetectShapesTool"><span class="std std-ref">shape detection</span></a>. In many cases, it is useful to reduce the number of vertices with <a class="reference internal" href="../SimplifyPolylineTool/#SimplifyPolylineTool"><span class="std std-ref">polyline simplification</span></a> before further processing.</p>
-<div class="section" id="classDetectBoundariesTool_1autotoc_md467">
-<h4 id="classDetectBoundariesTool_1autotoc_md467">Inputs<a class="headerlink" href="#classDetectBoundariesTool_1autotoc_md467" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. This is usually a binary image or a labeled image. To avoid a separate thresholding step one can set the <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter to a non-zero value.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - A static threshold for binarizing a gray-level input image. Every pixel in the image whose gray level is higher than <code class="docutils literal notranslate"><span class="pre">threshold</span></code> is regarded as a part of an object. The default value is zero, which assumes a pre-binarized or labeled input image. Setting this value to a non-zero value may be useful in avoiding a separate thresholding step.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Inverts automatic thresholding result if set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minLength</span></code> - The minimum length of a boundary in world coordinates. If a detected boundary is shorter, it will be discarded. Note that this is a quite rough estimate. The tool calculates the length of a detect boundary quickly based on the number of boundary pixels and camera geometry. It doesn’t traverse the boundary and match it to image features to get a really good length estimate.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxLength</span></code> - The maximum length of a boundary in world coordinates. If a detected boundary is longer, it will be discarded. See notes about accuracy above.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxBoundaries</span></code> - The maximum total number of boundary polygons. This parameter together with <em>maxVertices</em> poses an upper limit for the amount of memory the tool may allocate while traversing the boundaries.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxVertices</span></code> - The maximum total number of vertices.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectBoundariesTool_1autotoc_md468">
-<h4 id="classDetectBoundariesTool_1autotoc_md468">Outputs<a class="headerlink" href="#classDetectBoundariesTool_1autotoc_md468" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vertices</span></code> - The coordinates of the vertices of found boundary polygons. Each polygon is stored as a M-by-2 block (M varies depending on the length of the boundary) in the matrix, and each row stores the (x, y) coordinates of a boundary point in the order the algorithm traversed the boundary. The coordinates are in the world coordinate system.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of vertices in each polygon. This matrix has as many rows as there are separate boundaries. Each row has one element: the number of vertices in the polygon.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Boundary mask image. A gray-level image in which the detected edges are marked according to their type. Background is zero, right and bottom edges one, left and top edges two and double edges three. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

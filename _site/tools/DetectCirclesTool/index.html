@@ -396,57 +396,6 @@ points for each detection is given by the <em>blockSize</em> output.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code>: An N-by-1 matrix that stores the number of points
 that made each detection.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417DetectCirclesTool">
-<span id="_CPPv317DetectCirclesTool"></span><span id="_CPPv217DetectCirclesTool"></span><span id="DetectCirclesTool"></span><span class="target" id="DetectCirclesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectCirclesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417DetectCirclesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectCirclesTool_1autotoc_md469">
-<h3 id="classDetectCirclesTool_1autotoc_md469">Detect circles<a class="headerlink" href="#classDetectCirclesTool_1autotoc_md469" title="Permalink to this headline">🔗</a></h3>
-<p>Detects circles in point sets. This tool can detect an arbitrary number of circles in boundary curves or other point sets. It can be used to accurately detect the location of circular objects, even when they overlap.</p>
-<p>The input to this tool can come from any tool that finds point sets in images, such as <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">DetectBoundariesTool</span></a>, <a class="reference internal" href="../DrawEdgesTool/#DrawEdgesTool"><span class="std std-ref">DrawEdgesTool</span></a> or <a class="reference internal" href="../DetectCornersTool/#DetectCornersTool"><span class="std std-ref">DetectCornersTool</span></a>.</p>
-<div class="section" id="classDetectCirclesTool_1autotoc_md470">
-<h4 id="classDetectCirclesTool_1autotoc_md470">Inputs<a class="headerlink" href="#classDetectCirclesTool_1autotoc_md470" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - The (x, y) coordinates of detected points in world coordinates (a N-by-2 matrix). The points may be in arbitrary order.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minRadius</span></code> - The minimum radius of a circle, in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxRadius</span></code> - The maximum radius of a circle, in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxCircles</span></code> - The maximum number of detections. If this value is exceeded, the tool retains the strongest detections.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">radialTolerance</span></code> - The relative amount of variation allowed in radial direction. For example, if this value is set to 0.05, then all points that are within 5% of the estimated circle radius will be regarded as part of the circle.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minConfidence</span></code> - The minimum number of points required for a detection, relative to the circumference of the circle. For example, if this value is set to 0.5, then a detection is only accepted if there are at least 0.5 * 2 * pi * r points within <em>radialTolerance</em>.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectCirclesTool_1autotoc_md471">
-<h4 id="classDetectCirclesTool_1autotoc_md471">Outputs<a class="headerlink" href="#classDetectCirclesTool_1autotoc_md471" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - The center points (x, y) of each detected circle as an N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location and orientation of the upper left corner of a rectangle that encloses the detected circle in world coordinates. A 4*N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle that encloses a detected circle in world coordinates. An N-by-2 matrix. X- and Y-values are identical and equal to the diameter of the detected circle.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - The points that made up a detection. The number of points for each detection is given by the <em>blockSize</em> output.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - An N-by-1 matrix that stores the number of points that made each detection. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

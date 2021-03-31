@@ -368,32 +368,6 @@ equals the sum of entries of the input histogram.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cumulativeDistribution</span></code>: Cumulative distribution of
 the <em>histogram</em> output.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv421EqualizeHistogramTool">
-<span id="_CPPv321EqualizeHistogramTool"></span><span id="_CPPv221EqualizeHistogramTool"></span><span id="EqualizeHistogramTool"></span><span class="target" id="EqualizeHistogramTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">EqualizeHistogramTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv421EqualizeHistogramTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classEqualizeHistogramTool_1autotoc_md481">
-<h3 id="classEqualizeHistogramTool_1autotoc_md481">Equalize histogram<a class="headerlink" href="#classEqualizeHistogramTool_1autotoc_md481" title="Permalink to this headline">🔗</a></h3>
-<p>Equalizes a histogram by making the gray level distribution as uniform as possible. An image can be equalized by connecting the image and <em>cumulativeDistribution</em> output of this tool to <a class="reference internal" href="../MapGrayLevelsTool/#MapGrayLevelsTool"><span class="std std-ref">map gray levels</span></a>.</p>
-<div class="section" id="classEqualizeHistogramTool_1autotoc_md482">
-<h4 id="classEqualizeHistogramTool_1autotoc_md482">Inputs<a class="headerlink" href="#classEqualizeHistogramTool_1autotoc_md482" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - Histogram vector of size 1-by-N or N-by-1.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classEqualizeHistogramTool_1autotoc_md483">
-<h4 id="classEqualizeHistogramTool_1autotoc_md483">Outputs<a class="headerlink" href="#classEqualizeHistogramTool_1autotoc_md483" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - Equalized histogram. The sum of all entries equals the sum of entries of the input histogram.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cumulativeDistribution</span></code> - Cumulative distribution of the <em>histogram</em> output. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

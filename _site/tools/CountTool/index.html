@@ -371,38 +371,6 @@ it will be reset to <em>min</em>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">reset</span></code>: Either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> depending on whether the
 counter was reset or not.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv49CountTool">
-<span id="_CPPv39CountTool"></span><span id="_CPPv29CountTool"></span><span id="CountTool"></span><span class="target" id="CountTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CountTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv49CountTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCountTool_1autotoc_md54">
-<h3 id="classCountTool_1autotoc_md54">Count<a class="headerlink" href="#classCountTool_1autotoc_md54" title="Permalink to this headline">🔗</a></h3>
-<p>Increases a counter and produces a reset signal every time the counter reaches a user-defined maximum value. This tool can be used as a general-purpose counter in many applications. One of the typical use cases is to pick every Nth input object by connecting the <em>reset</em> output to the <em>enabled</em> input of a Gate.</p>
-<div class="section" id="classCountTool_1autotoc_md55">
-<h4 id="classCountTool_1autotoc_md55">Inputs<a class="headerlink" href="#classCountTool_1autotoc_md55" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Any object.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code> - The minimum value for the counter.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span></code> - The maximum value for the counter.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCountTool_1autotoc_md56">
-<h4 id="classCountTool_1autotoc_md56">Outputs<a class="headerlink" href="#classCountTool_1autotoc_md56" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code> - The current counter value. If the count exceeds <em>max</em>, it will be reset to <em>min</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">reset</span></code> - Either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> depending on whether the counter was reset or not. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -394,39 +394,6 @@ of <em>referenceImage</em>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The input image with new calibration factors and/or
 world frame.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv421AdjustCalibrationTool">
-<span id="_CPPv321AdjustCalibrationTool"></span><span id="_CPPv221AdjustCalibrationTool"></span><span id="AdjustCalibrationTool"></span><span class="target" id="AdjustCalibrationTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">AdjustCalibrationTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv421AdjustCalibrationTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classAdjustCalibrationTool_1autotoc_md138">
-<h3 id="classAdjustCalibrationTool_1autotoc_md138">Adjust calibration<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md138" title="Permalink to this headline">🔗</a></h3>
-<p>Changes the calibration factors and/or the world frame of an image without changing pixel data. This tool is useful when one needs to restore image calibration and position data after a tool that does not preserve it.</p>
-<p>Many functions such as neural networks internally handle images as matrices or tensors that have no relation to the physical world. When such images are produced, their calibration factors and position need to be set before physical measurements can be made. This tool changes these values without altering the pixels.</p>
-<div class="section" id="classAdjustCalibrationTool_1autotoc_md139">
-<h4 id="classAdjustCalibrationTool_1autotoc_md139">Inputs<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md139" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image whose calibration/position is to be changed.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">referenceImage</span></code> - An optional image whose position and calibration factors will be copied. If this input is connected, the calibration factors and world coordinate frame of <em>referenceImage</em> will be copied to the output image as the first step.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code> - A 1-by-2 matrix specifying horizontal and vertical scaling factors. The focal lengths of the output image will be multiplied by <em>scale</em>. This is useful if the <em>image</em> has been e.g. downscaled. If a scaling factor is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, the corresponding focal length of <em>image</em> will be scaled so that its physical size matches <em>referenceImage</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">translation</span></code> - A 1-by-2 matrix that can be used to translate the principal point of the output image. This is needed for example if a downscaled image isn’t perfectly centered on the original. For example, if a 9Ã—9 (center at (4, 4)) image is downscaled to 4Ã—4 (center at (1.5, 1.5)) so that one pixel is left out at the right and bottom edges, the center of the image after upscaling back to 8Ã—8 will be at (3.5, 3.5). This can be corrected by setting translation to (0.5, 0.5). If a translation coordinate is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, the translation will set so that the principal point matches the pricipal point of <em>referenceImage</em>.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classAdjustCalibrationTool_1autotoc_md140">
-<h4 id="classAdjustCalibrationTool_1autotoc_md140">Outputs<a class="headerlink" href="#classAdjustCalibrationTool_1autotoc_md140" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image with new calibration factors and/or world frame. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

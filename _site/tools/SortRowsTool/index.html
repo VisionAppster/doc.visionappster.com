@@ -401,60 +401,42 @@ some three-letter codes),</p></li>
 “419” as defined by United Nations), and codeset and modifier are
 ignored.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv412SortRowsTool">
-<span id="_CPPv312SortRowsTool"></span><span id="_CPPv212SortRowsTool"></span><span id="SortRowsTool"></span><span class="target" id="SortRowsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SortRowsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv412SortRowsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classSortRowsTool_1autotoc_md91">
-<h3 id="classSortRowsTool_1autotoc_md91">Sort rows<a class="headerlink" href="#classSortRowsTool_1autotoc_md91" title="Permalink to this headline">🔗</a></h3>
-<p>Sorts matrices and tables according to a key.</p>
-<div class="section" id="classSortRowsTool_1autotoc_md92">
-<h4 id="classSortRowsTool_1autotoc_md92">Inputs<a class="headerlink" href="#classSortRowsTool_1autotoc_md92" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">inputX</span></code> - A matrix or table to be sorted. X ranges from 0 to <em>dynamicInputCount</em> - 1. The number of rows in each input matrix must be divisible by the number of rows in the key column. If N is the number of rows in an input matrix and M is the number of rows in the key column with N = k * M, then the sorting is applied to blocks of k rows.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyColumn</span></code> - The (zero-based) index of a sort key in input0. All output matrices, including <em>input0</em>, will be sorted based on values on this column.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">order</span></code> - Sorting order.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code> - Sorting algorithm.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">locale</span></code> - The locale used for string sorting. The “C” locale commonly used in programming is identical to “en_US”. An empty value means the locale will be automatically chosen based on the settings of the user’s operating system.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">numeric</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the string sorting algorithm will place “99” before “100”. Otherwise, numbers are treated as characters.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ignorePunctuation</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, punctuation characters and symbols are ignored when determining sort order. Otherwise, they are treated as sortable characters. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the behavior depends on locale.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classSortRowsTool_1autotoc_md93">
-<h4 id="classSortRowsTool_1autotoc_md93">Outputs<a class="headerlink" href="#classSortRowsTool_1autotoc_md93" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">permutation</span></code> - A matrix that stores the original index of each row in the input matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputX</span></code> - A matrix or table that contains the rows received in <em>inputX</em>, sorted according to values of the key column.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classSortRowsTool_1autotoc_md94">
-<h4 id="classSortRowsTool_1autotoc_md94">Locale codes<a class="headerlink" href="#classSortRowsTool_1autotoc_md94" title="Permalink to this headline">🔗</a></h4>
-<p>If you need to manually craft a locale code, the format is “language[_script][_country]”, where:</p>
-<p><ul class="simple">
-<li><p>language is a lowercase, two-letter, ISO 639 language code (also some three-letter codes),</p></li>
-<li><p>script is a titlecase, four-letter, ISO 15924 script code,</p></li>
-<li><p>country is an uppercase, two-letter, ISO 3166 country code (also “419” as defined by United Nations), and codeset and modifier are ignored. </p></li>
-</ul>
-</p>
-</div>
-</div>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N12SortRowsTool5OrderE">
+<span id="_CPPv3N12SortRowsTool5OrderE"></span><span id="_CPPv2N12SortRowsTool5OrderE"></span><span class="target" id="Order"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Order</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool5OrderE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sorting order. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N12SortRowsTool5Order9AscendingE">
+<span id="_CPPv3N12SortRowsTool5Order9AscendingE"></span><span id="_CPPv2N12SortRowsTool5Order9AscendingE"></span><span class="target" id="Order::Ascending"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Ascending</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool5Order9AscendingE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N12SortRowsTool5Order10DescendingE">
+<span id="_CPPv3N12SortRowsTool5Order10DescendingE"></span><span id="_CPPv2N12SortRowsTool5Order10DescendingE"></span><span class="target" id="Order::Descending"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Descending</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool5Order10DescendingE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
+<dl class="cpp enum">
+<dt id="_CPPv4N12SortRowsTool9AlgorithmE">
+<span id="_CPPv3N12SortRowsTool9AlgorithmE"></span><span id="_CPPv2N12SortRowsTool9AlgorithmE"></span><span class="target" id="Algorithm"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Algorithm</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool9AlgorithmE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sorting algorithm. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N12SortRowsTool9Algorithm11NumericSortE">
+<span id="_CPPv3N12SortRowsTool9Algorithm11NumericSortE"></span><span id="_CPPv2N12SortRowsTool9Algorithm11NumericSortE"></span><span class="target" id="Algorithm::NumericSort"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">NumericSort</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool9Algorithm11NumericSortE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N12SortRowsTool9Algorithm10StringSortE">
+<span id="_CPPv3N12SortRowsTool9Algorithm10StringSortE"></span><span id="_CPPv2N12SortRowsTool9Algorithm10StringSortE"></span><span class="target" id="Algorithm::StringSort"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">StringSort</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool9Algorithm10StringSortE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 

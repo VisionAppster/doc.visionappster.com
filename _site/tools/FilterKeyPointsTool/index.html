@@ -396,52 +396,6 @@ contains the number of rows in the <em>points</em> output.</p></li>
 <em>dynamicInputCount</em> - 1). Each will be a M-by-C matrix. The
 tool removes the corresponding rows from each output matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv419FilterKeyPointsTool">
-<span id="_CPPv319FilterKeyPointsTool"></span><span id="_CPPv219FilterKeyPointsTool"></span><span id="FilterKeyPointsTool"></span><span class="target" id="FilterKeyPointsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterKeyPointsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv419FilterKeyPointsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classFilterKeyPointsTool_1autotoc_md315">
-<h3 id="classFilterKeyPointsTool_1autotoc_md315">Filter key points<a class="headerlink" href="#classFilterKeyPointsTool_1autotoc_md315" title="Permalink to this headline">🔗</a></h3>
-<p>Discards points whose coordinates don’t fall inside a rectangular region of interest in world coordinates. The rectangular area is defined by a coordinate frame and a size, and may thus be warped by an affine transformation.</p>
-<p>This tool is used in key point based matching as an optimization. It is usually preceded by <a class="reference internal" href="../CropImageTool/#CropImageTool"><span class="std std-ref">cropping</span></a>, which provides a quick way of extracting a sub-image. However, if the coordinate frame is not aligned to image axes, parts of the cropped image will be outside of the region of interest. The key point filtering tool is used as a postprocessing step to filter out key points extracted from such boundary areas.</p>
-<p>The tool inspects all input points and removes those that fall outside of the region of interest. If dynamic input parameter matrices are provided, the corresponding rows in those will be removed as well.</p>
-<div class="section" id="classFilterKeyPointsTool_1autotoc_md316">
-<h4 id="classFilterKeyPointsTool_1autotoc_md316">Inputs<a class="headerlink" href="#classFilterKeyPointsTool_1autotoc_md316" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - A N-by-2 matrix that contains key point coordinates (x, y) as row vectors.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the region of interest in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for the rectangular region of interest in the world coordinate system.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of rows in each block of key points. This input provides a way for the key point detector to group key points belonging to separate objects.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dynamicInputCount</span></code> - The number of dynamic input parameters.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matrixX</span></code> - Dynamic input parameters (X ranges from 0 to <em>dynamicInputCount</em> - 1). They all accept an N-by-C matrix (C may be different in each input).</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classFilterKeyPointsTool_1autotoc_md317">
-<h4 id="classFilterKeyPointsTool_1autotoc_md317">Outputs<a class="headerlink" href="#classFilterKeyPointsTool_1autotoc_md317" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - A M-by-2 matrix that contains the coordinates that fall inside the region of interest.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of key points remaining in each block. A one-column matrix. If the <em>blockSize</em> input is not connected, this output will always be a 1-by-1 matrix that contains the number of rows in the <em>points</em> output.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matrixX</span></code> - Dynamic output parameters(X ranges from 0 to <em>dynamicInputCount</em> - 1). Each will be a M-by-C matrix. The tool removes the corresponding rows from each output matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

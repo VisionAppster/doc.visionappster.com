@@ -421,60 +421,6 @@ with unique integers. The image can be used for
 checking which markers are possibly missing or disfigured
 due to poor image quality and make necessary corrections.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv418PositionCameraTool">
-<span id="_CPPv318PositionCameraTool"></span><span id="_CPPv218PositionCameraTool"></span><span id="PositionCameraTool"></span><span class="target" id="PositionCameraTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">PositionCameraTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv418PositionCameraTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classPositionCameraTool_1autotoc_md15">
-<h3 id="classPositionCameraTool_1autotoc_md15">Position camera<a class="headerlink" href="#classPositionCameraTool_1autotoc_md15" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates the position of a matrix camera with respect to the world coordinate system. The tool needs a picture of VisionAppster matrix camera calibration plate, which is taken with a calibrated camera. It is important that the intrinsic calibration parameters in the image are correct. See <a class="reference internal" href="../CalibrateCameraTool/#CalibrateCameraTool"><span class="std std-ref">CalibrateCameraTool</span></a>.</p>
-<p>The tool will detect the origin of the calibration plate and use that as the origin of the world coordinate system for the <em>image</em> output. It is possible to adjust the position of the world origin using the <em>worldFrame</em> input parameter.</p>
-<div class="section" id="classPositionCameraTool_1autotoc_md16">
-<h4 id="classPositionCameraTool_1autotoc_md16">Inputs<a class="headerlink" href="#classPositionCameraTool_1autotoc_md16" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A picture of the standard VisionAppster matrix camera calibration plate taken with a calibrated camera. The image may be obtained directly from a calibrated camera or from a .kuva file. Other file formats don’t contain calibration information.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerSpacing</span></code> - The spacing (distance between centers) of calibration markers on the calibration plate in world units.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerRows</span></code> - Number of marker rows on the calibration plate. A row is a sequence of markers along the long edge of the plate. The number must be odd.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">markerColumns</span></code> - Number of marker columns on the calibration plate A columns is a sequence of markers along the short edge of the plate. The number must be odd.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">worldFrame</span></code> - The position of the world coordinate system in the coordinate system of the calibration plate. Note that the input image does not yet contain a valid world coordinate system. This frame is only valid in the context of the new world coordinate system, which is present in the <em>image</em> output.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classPositionCameraTool_1autotoc_md17">
-<h4 id="classPositionCameraTool_1autotoc_md17">Outputs<a class="headerlink" href="#classPositionCameraTool_1autotoc_md17" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image with the calibration plate’s coordinate system attached.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The position of the calibration plate in the <strong>camera coordinate system</strong>. Drawing this frame on top of an image using its world coordinate system is not meaningful. Similarly, this frame does not work as an input to tools that expect a frame in the world coordinate system. To permanently store camera position, this parameter can be copied to the <em>frame</em> input parameter of <a class="reference internal" href="../ImageSource/#ImageSource"><span class="std std-ref">Image Source</span></a>. This will move the world origin to the center of the calibration plate.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">worldFrame</span></code> - The position of the world coordinate frame in the <strong>camera coordinate system</strong>. Drawing this frame on top of an image using its world coordinate system is not meaningful. Similarly, this frame does not work as an input to tools that expect a frame in the world coordinate system. To permanently store camera position, this parameter can be copied to the <em>frame</em> input parameter of <a class="reference internal" href="../ImageSource/#ImageSource"><span class="std std-ref">Image Source</span></a>. This will move the world origin to the place defined by the <em>worldFrame</em> input parameter.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rotationAngles</span></code> - A 1-by-3 matrix containing rotation angles of the camera line about Z (roll), Y (yaw) and X (pitch) axes in degrees.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">detectedMarkerCount</span></code> - The number of detected markers on the matrix camera calibration plate.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code> - A measure of how successful the positioning procedure was. The smaller the value, the better. A value between 0 and 1 is good, between 1 and 2 is fair and larger than 2 is poor. If the positioning fails completely, the value is infinite. In that case it is likely that the calibration plate was not detected at all.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> - Labeled image in which detected markers are marked with unique integers. The image can be used for checking which markers are possibly missing or disfigured due to poor image quality and make necessary corrections. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -374,33 +374,6 @@ tensor or matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A matrix or a tensor of the same type as the input.
 If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417CollapseArrayTool">
-<span id="_CPPv317CollapseArrayTool"></span><span id="_CPPv217CollapseArrayTool"></span><span id="CollapseArrayTool"></span><span class="target" id="CollapseArrayTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CollapseArrayTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417CollapseArrayTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCollapseArrayTool_1autotoc_md352">
-<h3 id="classCollapseArrayTool_1autotoc_md352">Collapse array<a class="headerlink" href="#classCollapseArrayTool_1autotoc_md352" title="Permalink to this headline">🔗</a></h3>
-<p>Base class for tools which collapse a dimension from matrices and tensors.</p>
-<div class="section" id="classCollapseArrayTool_1autotoc_md353">
-<h4 id="classCollapseArrayTool_1autotoc_md353">Inputs<a class="headerlink" href="#classCollapseArrayTool_1autotoc_md353" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> - A matrix or a tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code> - Specifies the dimension along which the array or tensor will be collapsed. Setting <em>dimension</em> = -1 collapses everything into a scalar value. For matrices, dimension 0 is rows (output will be 1-by-N) and 1 is columns (output will be N-by-1). For tensors, the specified dimension will be collapsed. For example, if the input is a 1Ã—2Ã—3Ã—4 tensor and <em>dimension</em> is 1, the output will be a 1Ã—3Ã—4 tensor. If <em>dimension</em> is greater or equal to the number of dimensions in the input tensor or matrix, the output will be an empty tensor or matrix.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCollapseArrayTool_1autotoc_md354">
-<h4 id="classCollapseArrayTool_1autotoc_md354">Outputs<a class="headerlink" href="#classCollapseArrayTool_1autotoc_md354" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code> - A matrix or a tensor of the same type as the input. If <em>dimension</em> is -1, the output will be a scalar value. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by MaxTool, MeanTool, MinTool, ProductTool, StdTool, SumTool, VarianceTool</p>
-</dd></dl>
-
 </div>
 </div>
 

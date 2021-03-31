@@ -370,35 +370,7 @@ into the matrix.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code>: The output matrix</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv418TensorToMatrixTool">
-<span id="_CPPv318TensorToMatrixTool"></span><span id="_CPPv218TensorToMatrixTool"></span><span id="TensorToMatrixTool"></span><span class="target" id="TensorToMatrixTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TensorToMatrixTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv418TensorToMatrixTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTensorToMatrixTool_1autotoc_md303">
-<h3 id="classTensorToMatrixTool_1autotoc_md303">Tensor to matrix<a class="headerlink" href="#classTensorToMatrixTool_1autotoc_md303" title="Permalink to this headline">🔗</a></h3>
-<p>Converts a tensor to a matrix. This tool is a special case of <a class="reference internal" href="../ReshapeTensorTool/#ReshapeTensorTool"><span class="std std-ref">reshape tensor</span></a> that always produces a two-dimensional matrix.</p>
-<div class="section" id="classTensorToMatrixTool_1autotoc_md304">
-<h4 id="classTensorToMatrixTool_1autotoc_md304">Inputs<a class="headerlink" href="#classTensorToMatrixTool_1autotoc_md304" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - The input tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> - The shape of the output matrix. A 1-by-2 matrix, where the first column tells the number of rows and the second one the number of columns in the output matrix. If either value is non-positive (&lt;= 0), that dimension will be automatically calculated so that all elements of the input tensor can be fit into the matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> outputType - Type of the output matrix.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classTensorToMatrixTool_1autotoc_md305">
-<h4 id="classTensorToMatrixTool_1autotoc_md305">Outputs<a class="headerlink" href="#classTensorToMatrixTool_1autotoc_md305" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code> - The output matrix </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N18TensorToMatrixTool10OutputTypeE">
 <span id="_CPPv3N18TensorToMatrixTool10OutputTypeE"></span><span id="_CPPv2N18TensorToMatrixTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N18TensorToMatrixTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -437,8 +409,6 @@ into the matrix.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

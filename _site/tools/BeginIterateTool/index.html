@@ -409,43 +409,6 @@ is usually connected to the <em>sync</em> input of an <a class="reference intern
 <li><p><code class="docutils literal notranslate"><span class="pre">elementX</span></code>: A variable number of sub-matrices, sub-tables or
 individual matrix/table elements.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv416BeginIterateTool">
-<span id="_CPPv316BeginIterateTool"></span><span id="_CPPv216BeginIterateTool"></span><span id="BeginIterateTool"></span><span class="target" id="BeginIterateTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BeginIterateTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv416BeginIterateTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classBeginIterateTool_1autotoc_md51">
-<h3 id="classBeginIterateTool_1autotoc_md51">Begin iterate<a class="headerlink" href="#classBeginIterateTool_1autotoc_md51" title="Permalink to this headline">🔗</a></h3>
-<p>A starting point for a part of a processing graph that needs to be repeated multiple times with different parameters. This tool takes in a matrix or a table that it splits into smaller blocks, producing a variable number of outputs depending on the size of the input.</p>
-<p>A typical use case for iteration is to repeat the same analysis steps for a variable number of detected objects, such as <a class="reference internal" href="../DetectBlobsTool/#DetectBlobsTool"><span class="std std-ref">blobs</span></a>. For example, its <em>iterable</em> input can be connected to the <em>frame</em> output of <a class="reference internal" href="../AnalyzeBlobGeometryTool/#AnalyzeBlobGeometryTool"><span class="std std-ref">blob geometry analysis</span></a>. In this case, <em>blockSize</em> would be need to be set to four. The <em>element</em> output can then be connected for example to <a class="reference internal" href="../JavaScriptTool/#JavaScriptTool"><span class="std std-ref">script</span></a> to analyze each frame separately.</p>
-<p>Another use case that involves variable block sizes is <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>. Connecting its <em>blockSize</em> output to the <em>blockSize</em> input of this tool produces output matrices with a variable number of rows.</p>
-<p>If multiple iterable inputs are provided, the tool first inspects which has the minimum number rows. <em>blockSize</em> refers to this matrix/table, and the row count in the other inputs must be the same as the minimum or a multiple of it. The tool then adapts the block size to each of the other matrices accordingly. For example, if <em>blockSize</em> is 1, <em>iterable0</em> is a matrix with 10 rows and <em>iterable1</em> is a matrix with 40 rows, the resulting block size will be one for <em>element0</em> and four for <em>element1</em>.</p>
-<p>Note that “iteration” on the VisionAppster platform does not mean sequential processing. Unless the tools that follow are forced to sequential mode (by enabling state in a script, for example), iterations may be executed simultaneously or even out of order. The platform however ensures that the final output parameters will be sent in the correct order.</p>
-<p>At the end of an iteration, <a class="reference internal" href="../EndIterateTool/#EndIterateTool"><span class="std std-ref">collecting</span></a> the results back to a matrix/table may be required for subsequent analysis.</p>
-<div class="section" id="classBeginIterateTool_1autotoc_md52">
-<h4 id="classBeginIterateTool_1autotoc_md52">Inputs<a class="headerlink" href="#classBeginIterateTool_1autotoc_md52" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">iterableX</span></code> - A matrix or table to be split into smaller pieces. X ranges from 0 to <em>dynamicInputCount</em> - 1.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of rows in each output block. If this parameter is not connected, its value will be used as a fixed block size. If it is connected, the input may be either an integer constant specifying the number of rows in each output matrix/table, or a matrix specifying a variable number of rows for the output matrices/tables. In the latter case, the number of rows in the <em>blockSize</em> matrix determines the number of output elements. If <em>blockSize</em> is set to zero, the tool tries to automatically deduce a suitable block size based on connected inputs.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">column</span></code> - Setting <em>column</em> to a non-negative value makes the tool to send the matrix/table element on the specified column (zero-based index) instead of the whole row.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classBeginIterateTool_1autotoc_md53">
-<h4 id="classBeginIterateTool_1autotoc_md53">Outputs<a class="headerlink" href="#classBeginIterateTool_1autotoc_md53" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code> - Emits <code class="docutils literal notranslate"><span class="pre">true</span></code> before the start of each loop. This output is usually connected to the <em>sync</em> input of an <a class="reference internal" href="../EndIterateTool/#EndIterateTool"><span class="std std-ref">end iterate tool</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">elementX</span></code> - A variable number of sub-matrices, sub-tables or individual matrix/table elements. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

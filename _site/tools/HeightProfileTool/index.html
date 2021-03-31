@@ -426,60 +426,6 @@ coordinates. Since the distance between <em>startPoint</em> and
 <em>sampleDistance</em> input parameter, this value may be slightly
 different from it.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417HeightProfileTool">
-<span id="_CPPv317HeightProfileTool"></span><span id="_CPPv217HeightProfileTool"></span><span id="HeightProfileTool"></span><span class="target" id="HeightProfileTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">HeightProfileTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417HeightProfileTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classHeightProfileTool_1autotoc_md487">
-<h3 id="classHeightProfileTool_1autotoc_md487">Height profile<a class="headerlink" href="#classHeightProfileTool_1autotoc_md487" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates the height profile of a surface that is illuminated with stripe of light. It is designed to be used in applications where the target to be measured is scanned with a laser line to obtain its 3D shape.</p>
-<p>The tool is configured with a reference line that indicates the visual location of the laser line on the xy plane of the world coordinate system (z = 0). The calibration of the tool is most easily performed by taking a picture of the inspection area (world xy plane) without the target object and placing the reference line on top of the laser line in the picture.</p>
-<p>It is also possible to use any other flat object as the calibration target. This however requires that the thickness of the object is known and given as the <em>zOffset</em> parameter. The tool assumes a flat and opaque world xy plane behind the object and produces no negative heights. Giving a too small offset can cause cutting.</p>
-<p>3D triangulation is performed by calculating the perpendicular distance from the reference line to the detected location of the light stripe. Deviation to the right (traversing from <em>startPoint</em> to <em>endPoint</em>) increases height and deviation to the left decreases it, although this can be changed by making <em>scale</em> negative.</p>
-<p>The <em>width</em> of the search area defines the limit for the search of the laser line. Depending on <em>zOffset</em> and <em>scale</em>, only the part of this area that would produce positive height measurements will actually be taken into account. For example, if <em>zOffset</em> is zero and <em>scale</em> is negative, only the left half will be considered.</p>
-<div class="section" id="classHeightProfileTool_1autotoc_md488">
-<h4 id="classHeightProfileTool_1autotoc_md488">Inputs<a class="headerlink" href="#classHeightProfileTool_1autotoc_md488" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code> - The expected location of the start of the light stripe on a flat surface at z = <em>zOffset</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code> - The expected location of the end of the light stripe on a flat surface at z = <em>zOffset</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code> - The width of the window to search for the light stripe. The width of the window places a hard limit to the maximum height.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code> - The conversion ratio between world units and height. The tool first calculates the shortest distance from a detected point on the light stripe to the reference line in world units. This distance is then multiplied by <em>scale</em> to get the relative height.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">zOffset</span></code> - The height of the calibration surface the reference line lies on in world units. Positive value means closer to camera. zOffset has to be smaller than the distance between the camera and the surface at z = 0 in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - By default, the tool looks for the brightest spot in the search area. In some situations, the measurement line is however a shadow rather than a light stripe. Enabling <em>invert</em> makes the tool search for the darkest spot.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">interpolation</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, improve accuracy by calculating the location of the brightest/darkest spot in sub-pixel accuracy. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, round pixel coordinates to the nearest integer. Notice that interpolation is a significantly slower operation than rounding.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sampleDistance</span></code> - The distance between height profile samples in world units. Note that the requested sample distance may not be exactly achievable; the tool rounds it so that the last sample is exactly at <em>endPoint</em>. In addition, the length of the resulting vector is limited to 10000. Setting <em>sampleDistance</em> to zero makes the tool to automatically select the sampling distance so that it is close to the distance between adjacent pixels in the image.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classHeightProfileTool_1autotoc_md489">
-<h4 id="classHeightProfileTool_1autotoc_md489">Outputs<a class="headerlink" href="#classHeightProfileTool_1autotoc_md489" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">profile</span></code> - 1-by-N matrix that contains the height at each sampled point along the reference line. The height values are given in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sampleDistance</span></code> - The distance between height samples in world coordinates. Since the distance between <em>startPoint</em> and <em>endPoint</em> may not be exactly divisible by the <em>sampleDistance</em> input parameter, this value may be slightly different from it. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

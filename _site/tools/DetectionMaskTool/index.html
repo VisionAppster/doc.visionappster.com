@@ -371,36 +371,7 @@ grid corner points in pixel coordinates. A 1-by-2 matrix.</p></li>
 classifications/regressions/probabilities produced by the
 internal classifier, scaled to [0, 255].</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417DetectionMaskTool">
-<span id="_CPPv317DetectionMaskTool"></span><span id="_CPPv217DetectionMaskTool"></span><span id="DetectionMaskTool"></span><span class="target" id="DetectionMaskTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectionMaskTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv417DetectionMaskTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectionMaskTool_1autotoc_md183">
-<h3 id="classDetectionMaskTool_1autotoc_md183">Detection mask<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md183" title="Permalink to this headline">🔗</a></h3>
-<p>A compound tool that splits an image to fixed-size blocks and produces a low-resolution detection mask image by classifying each sub-image. The sub-image classifier is provided by an inherited implementation.</p>
-<div class="section" id="classDetectionMaskTool_1autotoc_md184">
-<h4 id="classDetectionMaskTool_1autotoc_md184">Inputs<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md184" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image in which objects are to be detected.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gridSpacing</span></code> - The horizontal and vertical spacing between grid corner points in pixel coordinates. A 1-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gridPosition</span></code> - Specifies how the grid should be positioned. See <a class="reference internal" href="../GenerateGridTool/#GenerateGridTool"><span class="std std-ref">Generate grid</span></a>.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectionMaskTool_1autotoc_md185">
-<h4 id="classDetectionMaskTool_1autotoc_md185">Outputs<a class="headerlink" href="#classDetectionMaskTool_1autotoc_md185" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> - A low-resolution mask image whose pixel intensities are classifications/regressions/probabilities produced by the internal classifier, scaled to [0, 255]. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by BarcodeDetectionMaskTool, MatrixcodeDetectionMaskTool</p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N17DetectionMaskTool12GridPositionE">
 <span id="_CPPv3N17DetectionMaskTool12GridPositionE"></span><span id="_CPPv2N17DetectionMaskTool12GridPositionE"></span><span class="target" id="GridPosition"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">GridPosition</span></code><a class="headerlink" href="#_CPPv4N17DetectionMaskTool12GridPositionE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -423,8 +394,6 @@ internal classifier, scaled to [0, 255].</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

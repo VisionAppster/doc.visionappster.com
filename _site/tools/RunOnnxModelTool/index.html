@@ -374,33 +374,7 @@ when a model has been loaded.</p>
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <p>Output tensors are defined by the model. They appear in the tool
 when a model has been loaded.</p>
-<dl class="cpp class">
-<dt id="_CPPv416RunOnnxModelTool">
-<span id="_CPPv316RunOnnxModelTool"></span><span id="_CPPv216RunOnnxModelTool"></span><span id="RunOnnxModelTool"></span><span class="target" id="RunOnnxModelTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">RunOnnxModelTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv416RunOnnxModelTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classRunOnnxModelTool_1autotoc_md294">
-<h3 id="classRunOnnxModelTool_1autotoc_md294">Run ONNX model<a class="headerlink" href="#classRunOnnxModelTool_1autotoc_md294" title="Permalink to this headline">🔗</a></h3>
-<p>Runs a machine learning model stored in the ONNX format.</p>
-<div class="section" id="classRunOnnxModelTool_1autotoc_md295">
-<h4 id="classRunOnnxModelTool_1autotoc_md295">Inputs<a class="headerlink" href="#classRunOnnxModelTool_1autotoc_md295" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelFile</span></code> - Path to an ONNX model file.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">executor</span></code> - The preferred execution back-end for the machine learning model. This parameter can be used to force the tool to stick to one of the available execution back-ends. If the selected executor is not available, a generic CPU implementation will be used. Note that all supported executors are selectable even though the machine on which you use the tool doesn’t have the required hardware and/or libraries.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">deviceIndex</span></code> - The index of the computation device used by the selected executor. Usually, this is the index of a CUDA device as listed by <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>. If the chosen device is not available at run time, the first device will be used instead.</p></li>
-</ul>
-<p>Input tensors are defined by the model. They appear in the tool when a model has been loaded.</p>
-</p>
-</div>
-<div class="section" id="classRunOnnxModelTool_1autotoc_md296">
-<h4 id="classRunOnnxModelTool_1autotoc_md296">Outputs<a class="headerlink" href="#classRunOnnxModelTool_1autotoc_md296" title="Permalink to this headline">🔗</a></h4>
-<p>Output tensors are defined by the model. They appear in the tool when a model has been loaded. </p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N16RunOnnxModelTool8ExecutorE">
 <span id="_CPPv3N16RunOnnxModelTool8ExecutorE"></span><span id="_CPPv2N16RunOnnxModelTool8ExecutorE"></span><span class="target" id="Executor"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Executor</span></code><a class="headerlink" href="#_CPPv4N16RunOnnxModelTool8ExecutorE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -440,8 +414,6 @@ when a model has been loaded.</p>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

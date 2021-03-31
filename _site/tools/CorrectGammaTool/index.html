@@ -35,7 +35,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
         <script defer="defer" src="../../_static/js/algolia.js"></script>
     
@@ -384,37 +383,7 @@ standard sRGB gamma function will be applied.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Gamma-corrected image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv416CorrectGammaTool">
-<span id="_CPPv316CorrectGammaTool"></span><span id="_CPPv216CorrectGammaTool"></span><span id="CorrectGammaTool"></span><span class="target" id="CorrectGammaTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CorrectGammaTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416CorrectGammaTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCorrectGammaTool_1autotoc_md174">
-<h3 id="classCorrectGammaTool_1autotoc_md174">Correct gamma<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md174" title="Permalink to this headline">🔗</a></h3>
-<p>Compresses or expands gray or RGB levels using a non-linear power-law function. In gamma expansion, the intensity level of an output pixel is generally calculated as <span class="math notranslate nohighlight">\( I_{out} = I_{in}^\gamma \)</span>, where <em>I</em> is a normalized intensity in the range [0, 1]. The output will be scaled so that the original intensity range is preserved. In gamma compression, the inverse of <span class="math notranslate nohighlight">\( \gamma \)</span> is used. In sRGB mode, the equation has a linear portion to fight numerical instability.</p>
-<p>Gamma expansion is needed when non-linear color channels are linearized. For example, most consumer-grade digital cameras use the non-linear sRGB color space. To correctly apply many color transforming algorithms one must linearize (i.e. expand) the color channels first.</p>
-<p>Gamma compression is needed to transform linear colors back to the standard sRGB color space, for example. Industrial-grade machine vision cameras also produce linear color, which need to be gamma-compressed to display correctly. The gamma value for a typical computer monitor is about 2.2. (Old Macs have 1.8.)</p>
-<div class="section" id="classCorrectGammaTool_1autotoc_md175">
-<h4 id="classCorrectGammaTool_1autotoc_md175">Inputs<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md175" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - Gamma correction mode.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gamma</span></code> - The gamma. A value of one means no transformation. Use the <em>mode</em> input parameter to invert gamma. If <em>gamma</em> is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, standard sRGB gamma function will be applied.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCorrectGammaTool_1autotoc_md176">
-<h4 id="classCorrectGammaTool_1autotoc_md176">Outputs<a class="headerlink" href="#classCorrectGammaTool_1autotoc_md176" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Gamma-corrected image. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N16CorrectGammaTool4ModeE">
 <span id="_CPPv3N16CorrectGammaTool4ModeE"></span><span id="_CPPv2N16CorrectGammaTool4ModeE"></span><span class="target" id="Mode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Mode</span></code><a class="headerlink" href="#_CPPv4N16CorrectGammaTool4ModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -435,8 +404,6 @@ standard sRGB gamma function will be applied.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

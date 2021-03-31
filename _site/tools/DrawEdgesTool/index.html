@@ -390,50 +390,6 @@ connected edge are stored on consequtive rows.</p></li>
 matrix has as many rows as there are detected edge segments.
 Each row has one element: the number of points in the segment.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv413DrawEdgesTool">
-<span id="_CPPv313DrawEdgesTool"></span><span id="_CPPv213DrawEdgesTool"></span><span id="DrawEdgesTool"></span><span class="target" id="DrawEdgesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DrawEdgesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv413DrawEdgesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDrawEdgesTool_1autotoc_md186">
-<h3 id="classDrawEdgesTool_1autotoc_md186">Draw edges<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md186" title="Permalink to this headline">🔗</a></h3>
-<p>Detects prominent edges in images. This tool uses the Edge Drawing algorithm to detect edges in images:</p>
-<p><ol class="loweralpha simple">
-<li><p>The input image is smoothed with a Gaussian filter.</p></li>
-<li><p>Gaussian gradient filters are used to estimate local gradient.</p></li>
-<li><p>Edge segments are detected by linking anchor points with locally maximal gradient values.</p></li>
-</ol>
-</p>
-<div class="section" id="classDrawEdgesTool_1autotoc_md187">
-<h4 id="classDrawEdgesTool_1autotoc_md187">Inputs<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md187" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">smoothness</span></code> - The standard deviation of the of the Gaussian smoothing filter. Bigger value means better tolerance against noise, less sensitivity and worse localization. The Gaussian filter is cut at approximately 1.5 times the standard deviation of the Gaussian function. If smoothness is zero, no smoothing filter will be applied.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gradientThreshold</span></code> - The minimum absolute gradient that can still be regarded as an edge. If this value is zero, a suitable threshold will be selected automatically.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">anchorThreshold</span></code> - The minimum absolute difference to neighboring gradient values an anchor point must have. If this value is zero, a suitable threshold will be selected automatically.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDrawEdgesTool_1autotoc_md188">
-<h4 id="classDrawEdgesTool_1autotoc_md188">Outputs<a class="headerlink" href="#classDrawEdgesTool_1autotoc_md188" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - An 8-bit gray-level image in which detected edges are marked with value 255.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - An N-by-2 matrix that contains the coordinates of all detected edge points. Each row of the matrix contains the (x, y) coordinates of a detected edge point. Points belonging to a connected edge are stored on consequtive rows.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of points in each edge segment. This matrix has as many rows as there are detected edge segments. Each row has one element: the number of points in the segment. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -378,50 +378,6 @@ color images don’t have a fourth color channel, but it can be
 used for storing additional information in some applications.
 A typical use is to store opacity (alpha) with RGB.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv425SeparateColorChannelsTool">
-<span id="_CPPv325SeparateColorChannelsTool"></span><span id="_CPPv225SeparateColorChannelsTool"></span><span id="SeparateColorChannelsTool"></span><span class="target" id="SeparateColorChannelsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SeparateColorChannelsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv425SeparateColorChannelsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classSeparateColorChannelsTool_1autotoc_md264">
-<h3 id="classSeparateColorChannelsTool_1autotoc_md264">Separate color channels<a class="headerlink" href="#classSeparateColorChannelsTool_1autotoc_md264" title="Permalink to this headline">🔗</a></h3>
-<p>Separates a color image to components, each represented by a gray-level image. To combine color channels back to a color image, use <a class="reference internal" href="../CombineColorChannelsTool/#CombineColorChannelsTool"><span class="std std-ref">color combining</span></a>.</p>
-<div class="section" id="classSeparateColorChannelsTool_1autotoc_md265">
-<h4 id="classSeparateColorChannelsTool_1autotoc_md265">Inputs<a class="headerlink" href="#classSeparateColorChannelsTool_1autotoc_md265" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A color image. If a gray-level input image is received, it will be sent to all three outputs as such.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel0Enabled</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, channel0 output will be generated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel1Enabled</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, channel1 output will be generated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel2Enabled</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, channel2 output will be generated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel3Enabled</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, channel3 output will be generated.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classSeparateColorChannelsTool_1autotoc_md266">
-<h4 id="classSeparateColorChannelsTool_1autotoc_md266">Outputs<a class="headerlink" href="#classSeparateColorChannelsTool_1autotoc_md266" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel0</span></code> - The first color channel as a gray-level image. If the input is an RGB image, this will be the red color channel.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel1</span></code> - The second color channel as a gray-level image (green in the case of an RGB image).</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel2</span></code> - The third color channel as a gray-level image (blue in the case of an RGB image).</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel3</span></code> - The fourth color channel as a gray-level image. Most color images don’t have a fourth color channel, but it can be used for storing additional information in some applications. A typical use is to store opacity (alpha) with RGB. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

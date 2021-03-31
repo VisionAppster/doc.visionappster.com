@@ -446,81 +446,7 @@ table.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code>: Confidence of the match (0…1). The bigger the value,
 the better the match. An N-by-1 matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv418MatchKeyPointsTool">
-<span id="_CPPv318MatchKeyPointsTool"></span><span id="_CPPv218MatchKeyPointsTool"></span><span id="MatchKeyPointsTool"></span><span class="target" id="MatchKeyPointsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatchKeyPointsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv418MatchKeyPointsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatchKeyPointsTool_1autotoc_md325">
-<h3 id="classMatchKeyPointsTool_1autotoc_md325">Match key points<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md325" title="Permalink to this headline">🔗</a></h3>
-<p>A superclass for tools that match objects based on key point coordinates and their associated feature descriptors.</p>
-<p>This tool maintains a database of object models as feature points and quickly retrieves matching models for unknown objects. Each feature point is described by point coordinates and a feature vector (a.k.a “descriptor”). The point coordinates specify the location of the feature point with respect to the model. The tool can handle two- and three-dimensional point coordinates.</p>
-<p>There can be an unlimited number of models, each containing an unlimited number of feature points. Furthermore, each model may have an associated class index. This makes it possible to have multiple models for a class of objects.</p>
-<p>This tool implements a fast key point database search algorithm but does not specify a geometric model for the arrangement of the matched key points. Different geometric models are needed in different applications, and these are implemented by inherited tools such as <a class="reference internal" href="../MatchRigid2DObjectTool/#MatchRigid2DObjectTool"><span class="std std-ref">rigid 2D matching</span></a>.</p>
-<div class="section" id="classMatchKeyPointsTool_1autotoc_md326">
-<h4 id="classMatchKeyPointsTool_1autotoc_md326">Inputs<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md326" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - The locations of key points in world coordinates. A N-by-X matrix in which each row contains X-dimensional point coordinates (usually 2, but may be 3). Each point must have a corresponding feature vector in <em>features</em>. Otherwise, a run-time error will be generated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">features</span></code> - A feature vector for each point. An N-by-D matrix in which each row stores a feature point descriptor (D-dimensional vector).</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelPoints</span></code> - The locations of model key points in world coordinates. A P-by-X matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelFeatures</span></code> - A feature vector for each model key point. A P-by-D matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelIndices</span></code> - The index of the model the key points belong to. A P-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelFrames</span></code> - An optional parameter specifying a coordinate frame for each model, in world coordinates. A 4*M-by-4 matrix. If a match for a model is found, this coordinate frame will be transformed based on its location and reported as the <em>frame</em> of the match. If model frames are not provided, the tool automatically places the frame to the upper left corner of the axis-aligned bounding box of the model’s key points. If <em>modelFrames</em> is non-empty, <em>modelSizes</em> must be provided as well.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelSizes</span></code> - An optional parameter specifying the size of each model in world coordinates. A M-by-2 matrix. If model sizes are not provided, the tool automatically uses the size of the axis-aligned bounding box of the model’s key points. If <em>modelSizes</em> is non-empty, <em>modelFrames</em> must also be provided. Note that the frame and size of a model may specify any area in world coordinates; the key points don’t need to be enclosed by it.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelClasses</span></code> - Class indices for each model. If this matrix is non-empty, there must be a class index for each of the M models, resulting in a M-by-1 matrix. If this matrix is empty, the class and model indices will be the same.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classNames</span></code> - A C-by-1 table that contains the names of the classes. The <em>modelClasses</em> parameter may not contain values that are greater than C - 1.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxMatches</span></code> - The maximum allowed number of matches. Setting <em>maxMatches</em> to one returns the best match only. Zero disables this limit.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">closestMatchCount</span></code> - The number of closest matches against which each query point will be compared. By default, only the closest match in the model database will be considered. A greater value means higher accuracy and lower speed.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxEvaluations</span></code> - The maximum number of evaluations when searching the database for matching feature vectors. Setting <em>maxEvaluations</em> to zero makes the search algorithm perform an exact search: for each feature vector, the closest match(es) will be found with a probability of one. Limiting the number of evaluations may be useful if the model database is large. The limit turns the exact search into an approximate one that returns the probably closest neighbors if it runs out of time. Choosing <em>maxEvaluations</em> appropriately makes it possible to return correct matches for the majority of feature points while making the search much faster.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMatchKeyPointsTool_1autotoc_md327">
-<h4 id="classMatchKeyPointsTool_1autotoc_md327">Outputs<a class="headerlink" href="#classMatchKeyPointsTool_1autotoc_md327" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location of the matched object in world coordinates. The matcher first finds the transformation between <em>points</em> and the matching model. The model’s frame is then transformed according to it. This output parameter contains the transformed frame(s). A 4*N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the matched object in world coordinates. An N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelIndex</span></code> - The index of the model that matched. An N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classIndex</span></code> - The class index of the matching model. An N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">className</span></code> - The class name of the matching model. An N-by-1 table.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - Confidence of the match (0…1). The bigger the value, the better the match. An N-by-1 matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by MatchRigid2DObjectTool</p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N18MatchKeyPointsTool12MatchingModeE">
 <span id="_CPPv3N18MatchKeyPointsTool12MatchingModeE"></span><span id="_CPPv2N18MatchKeyPointsTool12MatchingModeE"></span><span class="target" id="MatchingMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">MatchingMode</span></code><a class="headerlink" href="#_CPPv4N18MatchKeyPointsTool12MatchingModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -543,8 +469,6 @@ the better the match. An N-by-1 matrix.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

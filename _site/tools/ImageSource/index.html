@@ -375,7 +375,7 @@ indicated by surrounding the ID with forward slashes. For
 example, “/^webcam:.*0$/” uses the first web camera whose id
 ends with “0”. “/./” (Automatic) matches all cameras and thus
 uses the very first camera found by the camera manager. See
-<span class="xref std std-ref">device IDs</span>.</p>
+<a class="reference internal" href="../../engine/hardware-devices/#device-ids"><span class="std std-ref">device IDs</span></a>.</p>
 <p>If <em>cameraId</em> is a colon (:), a temporary virtual camera will
 be created. The object received in the <em>trigger</em> input will
 then be used as a file name to read.</p>
@@ -394,7 +394,7 @@ database will take effect only after a restart.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: The position and orientation of the world coordinate
 system with respect to the camera. This parameter has an effect
 only in the <code class="docutils literal notranslate"><span class="pre">ManualPosition</span></code> mode. See
-<span class="xref std std-ref">coordinate frames</span>
+<a class="reference internal" href="../../engine/world-coordinates/#coordinate-frames"><span class="std std-ref">coordinate frames</span></a>
 for more information.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">calibration</span></code>: The method of requesting camera calibration
 parameters. While it is possible to change manual calibration
@@ -436,79 +436,7 @@ is not synchronous to the other outputs. One should use this
 output for informational purposes only. Attaching heavy
 analysis to it easily causes more frames to be missed.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv411ImageSource">
-<span id="_CPPv311ImageSource"></span><span id="_CPPv211ImageSource"></span><span id="ImageSource"></span><span class="target" id="ImageSource"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ImageSource</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv411ImageSource" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classImageSource_1autotoc_md496">
-<h3 id="classImageSource_1autotoc_md496">Image source<a class="headerlink" href="#classImageSource_1autotoc_md496" title="Permalink to this headline">🔗</a></h3>
-<p>Sends image frames received from a camera. The image source can work in two different modes:</p>
-<p><ul class="simple">
-<li><p>Receive and pass images from a camera at the speed the camera is producing them. The camera may operate in a free run or a hardware-triggered mode.</p></li>
-<li><p>Read images from a camera, but trigger acquisition through software every time a signal is received in the <em>trigger</em> input. This mode allows one to use an external sofware controller such as a timer for triggering images.</p></li>
-</ul>
-</p>
-<div class="section" id="classImageSource_1autotoc_md497">
-<h4 id="classImageSource_1autotoc_md497">Inputs<a class="headerlink" href="#classImageSource_1autotoc_md497" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Software trigger. If this input is connected, images are captured only when an object is received in it. The trigger input accepts any object type.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cameraId</span></code> - The ID of the selected camera. The camera ID must be composed of a driverId, a colon and a camera id, for example “webcam:usb-Logitech_Ltd._video-index0”.</p></li>
-</ul>
-<p>The ID can also be given as a regular expression. This is indicated by surrounding the ID with forward slashes. For example, “/^webcam:.*0$/” uses the first web camera whose id ends with “0”. “/./” (Automatic) matches all cameras and thus uses the very first camera found by the camera manager. See </p>
-<a class="reference external" href="/engine/hardware-devices.html#device-ids">device IDs</a>.</p>
-<p>If <em>cameraId</em> is a colon (:), a temporary virtual camera will be created. The object received in the <em>trigger</em> input will then be used as a file name to read.</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoConfig</span></code> - If this flag is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the camera will be configured with settings read from the camera configuration database at start-up. Otherwise, camera settings will not be touched with the exception of trigger mode, which will be set to software trigger (and back) if the <em>trigger</em> input is connected.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> - The method of requesting camera position parameters. While it is possible to change camera position parameters manually at run time, the position database will only be queried during start-up. Thus, changes made to the position database will take effect only after a restart.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The position and orientation of the world coordinate system with respect to the camera. This parameter has an effect only in the <code class="docutils literal notranslate"><span class="pre">ManualPosition</span></code> mode. See <a class="reference external" href="/engine/world-coordinates.html#coordinate-frames">coordinate frames</a> for more information.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">calibration</span></code> - The method of requesting camera calibration parameters. While it is possible to change manual calibration parameters at run time, the calibration database will only be queried during start-up. Thus, changes made to the calibration database will take effect only after a restart.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sensorType</span></code> - The type of the camera’s image sensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code> - The focal length of the camera in pixels.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoCenter</span></code> - If this flag is true, the principal point will be automatically placed to the center of each outgoing image. Otherwise, the fixed value given by the <em>principalPoint</em> parameter will be used.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">principalPoint</span></code> - The location of the principal point in pixel coordinates. The principal point is the point where the optical axis hits the image sensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">distortionFactors</span></code> - Radial distortion factors k1 and k2. Tangential distortion factors p1 and p2 are currently not used.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">triggerTimeout</span></code> - The number of milliseconds the tool will wait for an image after a software trigger. If no image is received from the camera within <em>triggerTimeout</em> milliseconds, a run-time error will be generated. Setting <em>triggerTimeout</em> to zero makes the tool to wait forever.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoDecode</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, the tool will emit images in the raw encoded color format such as Bayer or YUV provided by the camera driver. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the images are always automatically decoded to RGB before emitting.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classImageSource_1autotoc_md498">
-<h4 id="classImageSource_1autotoc_md498">Outputs<a class="headerlink" href="#classImageSource_1autotoc_md498" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image received from a camera driver or from the image property.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">imageCount</span></code> - The number of images sent since last reset.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">missedFrames</span></code> - The number of captured image frames that were missed due to exhausted computing resources since last reset. This output will be sent only when frames are missed, and it is not synchronous to the other outputs. One should use this output for informational purposes only. Attaching heavy analysis to it easily causes more frames to be missed. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N11ImageSource11CalibrationE">
 <span id="_CPPv3N11ImageSource11CalibrationE"></span><span id="_CPPv2N11ImageSource11CalibrationE"></span><span class="target" id="Calibration"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Calibration</span></code><a class="headerlink" href="#_CPPv4N11ImageSource11CalibrationE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -592,7 +520,6 @@ analysis to it easily causes more frames to be missed.</p></li>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4NK11ImageSource6driverEv">
 <span id="_CPPv3NK11ImageSource6driverEv"></span><span id="_CPPv2NK11ImageSource6driverEv"></span><span id="ImageSource::driverC"></span><span class="target" id="ImageSource.driver"></span><span class="pre">QObject</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">driver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK11ImageSource6driverEv" title="Permalink to this definition">🔗</a><br /></dt>
@@ -601,8 +528,6 @@ analysis to it easily causes more frames to be missed.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

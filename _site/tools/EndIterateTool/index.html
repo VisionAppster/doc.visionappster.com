@@ -404,47 +404,7 @@ matrix or an empty table will be sent depending on
 input element occupies in the output matrix/table. This is
 useful if the input elements have a variable number of rows.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv414EndIterateTool">
-<span id="_CPPv314EndIterateTool"></span><span id="_CPPv214EndIterateTool"></span><span id="EndIterateTool"></span><span class="target" id="EndIterateTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">EndIterateTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv414EndIterateTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classEndIterateTool_1autotoc_md60">
-<h3 id="classEndIterateTool_1autotoc_md60">End iterate<a class="headerlink" href="#classEndIterateTool_1autotoc_md60" title="Permalink to this headline">🔗</a></h3>
-<p>Collects results produced by an <a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">iterated</span></a> part of a processing graph to a matrix or a table.</p>
-<div class="section" id="classEndIterateTool_1autotoc_md61">
-<h4 id="classEndIterateTool_1autotoc_md61">Inputs<a class="headerlink" href="#classEndIterateTool_1autotoc_md61" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code> - An input that synchronizes the <em>result</em> output. This input is required so that the tool knows when every element related to the one that triggered an iteration has been received. One accumulated matrix/table will be sent for each object in this input. Usually, this input is connected to the <em>sync</em> output of the corresponding <a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">iteration</span></a>. It is however possible to synchronize the output to any output that precedes it in a synchronized processing pipeline, even over nested iterations. The value of the <em>sync</em> input is ignored.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dynamicInputCount</span></code> - The number of dynamic inputs.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">discardEmptyElements</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, empty elements (tables and matrices with zero rows or zero columns) will not be counted as blocks and put to the <em>blockSize</em> output matrices. The number of rows in the <em>blockSize</em> matrix may thus be different from the number of input elements. If this flag is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the number of rows in the <em>blockSize</em> output will be equal to the number of input elements, but the matrix may contain zeros. Note that the result matrix will be the same in both cases.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">reservedElements</span></code> - The estimated number of input elements. This is an optimization parameter that makes it possible to avoid unnecessary reallocation of memory. The tool estimates the number or rows required in the output by multiplying the number of rows in the first received element by <em>reservedElements</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code> - The type of the result outputs.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">elementX</span></code> - A matrix, table, or an element that will be put into the accumulated result. X ranges from 0 to <em>dynamicInputCount</em> - 1. Any number of elements may be provided for a single <em>sync</em> object. This input must come from a part of the processing graph that is iterated.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classEndIterateTool_1autotoc_md62">
-<h4 id="classEndIterateTool_1autotoc_md62">Outputs<a class="headerlink" href="#classEndIterateTool_1autotoc_md62" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">resultX</span></code> - The accumulated matrix or table, one for each object in the <em>sync</em> input. The type of the output depends on the value of the <em>outputType</em> parameter and on the corresponding <em>element</em> input: if <em>outputType</em> is <code class="docutils literal notranslate"><span class="pre">Matrix</span></code>, the output will be either an integer matrix or a real matrix depending on the type of the first element received. If <em>outputType</em> is <code class="docutils literal notranslate"><span class="pre">Table</span></code>, the output will always be a table. If no elements were received during an iteration, either an empty integer matrix or an empty table will be sent depending on <em>outputType</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSizeX</span></code> - A matrix that specifies the number of rows each input element occupies in the output matrix/table. This is useful if the input elements have a variable number of rows. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N14EndIterateTool10OutputTypeE">
 <span id="_CPPv3N14EndIterateTool10OutputTypeE"></span><span id="_CPPv2N14EndIterateTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N14EndIterateTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -478,8 +438,6 @@ useful if the input elements have a variable number of rows.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -378,38 +378,7 @@ depending on <code class="docutils literal notranslate"><span class="pre">mode</
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: The date and local time when the file or directory
 was last modified.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv421FileSystemWatcherTool">
-<span id="_CPPv321FileSystemWatcherTool"></span><span id="_CPPv221FileSystemWatcherTool"></span><span id="FileSystemWatcherTool"></span><span class="target" id="FileSystemWatcherTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FileSystemWatcherTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv421FileSystemWatcherTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classFileSystemWatcherTool_1autotoc_md63">
-<h3 id="classFileSystemWatcherTool_1autotoc_md63">File system watcher<a class="headerlink" href="#classFileSystemWatcherTool_1autotoc_md63" title="Permalink to this headline">🔗</a></h3>
-<p>A data source that outputs the path to a file or directory each time a change is detected.</p>
-<div class="section" id="classFileSystemWatcherTool_1autotoc_md64">
-<h4 id="classFileSystemWatcherTool_1autotoc_md64">Inputs<a class="headerlink" href="#classFileSystemWatcherTool_1autotoc_md64" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> - The path to a file or directory to watch. The file or directory at <em>path</em> must exists. If it doesn’t, nothing will be emitted. If the file or directory is removed during execution, the file system watcher will stop sending signals.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">delay</span></code> - The number of milliseconds to wait before a change is reported. The output will only be sent when a file has not been changed for <em>delay</em> milliseconds. This is useful to avoid processing incomplete files. If delay is zero, every detected change will cause an output.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - Mode of operation.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classFileSystemWatcherTool_1autotoc_md65">
-<h4 id="classFileSystemWatcherTool_1autotoc_md65">Outputs<a class="headerlink" href="#classFileSystemWatcherTool_1autotoc_md65" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> - The name of a changed file. If the <em>path</em> input parameter points to a file, this value will always be the same. If a directory is being watched, either the path of the directory or the paths of all added files are sent, depending on <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> - The date and local time when the file or directory was last modified. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N21FileSystemWatcherTool4ModeE">
 <span id="_CPPv3N21FileSystemWatcherTool4ModeE"></span><span id="_CPPv2N21FileSystemWatcherTool4ModeE"></span><span class="target" id="Mode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Mode</span></code><a class="headerlink" href="#_CPPv4N21FileSystemWatcherTool4ModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -437,8 +406,6 @@ was last modified.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

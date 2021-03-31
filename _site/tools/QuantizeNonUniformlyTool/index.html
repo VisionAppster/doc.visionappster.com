@@ -376,38 +376,7 @@ equal to 0 as <em>value</em> gives 0, anything greater than 0 but
 less than 10 gives 1 and values from 10 up give 2. If <em>limits</em>
 is empty or has more than one column, <em>index</em> will be -1.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv424QuantizeNonUniformlyTool">
-<span id="_CPPv324QuantizeNonUniformlyTool"></span><span id="_CPPv224QuantizeNonUniformlyTool"></span><span id="QuantizeNonUniformlyTool"></span><span class="target" id="QuantizeNonUniformlyTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">QuantizeNonUniformlyTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv424QuantizeNonUniformlyTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classQuantizeNonUniformlyTool_1autotoc_md82">
-<h3 id="classQuantizeNonUniformlyTool_1autotoc_md82">Quantize non-uniformly<a class="headerlink" href="#classQuantizeNonUniformlyTool_1autotoc_md82" title="Permalink to this headline">🔗</a></h3>
-<p>Given a list of limits in ascending order, finds the smallest limit that is not smaller than the input value and outputs its zero-based index.</p>
-<div class="section" id="classQuantizeNonUniformlyTool_1autotoc_md83">
-<h4 id="classQuantizeNonUniformlyTool_1autotoc_md83">Inputs<a class="headerlink" href="#classQuantizeNonUniformlyTool_1autotoc_md83" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> - The value to compare against <em>limits</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> - A set of limits in ascending order. A N-by-1 matrix. Note that the tool does not do the sorting for you.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoSortLimits</span></code> - If enabled, the tool automatically sorts the limits on each invokation.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code> - The type of the output, also determines accepted input types.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classQuantizeNonUniformlyTool_1autotoc_md84">
-<h4 id="classQuantizeNonUniformlyTool_1autotoc_md84">Outputs<a class="headerlink" href="#classQuantizeNonUniformlyTool_1autotoc_md84" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> - The zero-based index of the smallest limit that is greater than or equal to <em>value</em>. If <em>value</em> is not less than the last limit, <em>index</em> will be equal to the number of limits. For example, if <em>limits</em> is [ 0, 10 ], anything less than or equal to 0 as <em>value</em> gives 0, anything greater than 0 but less than 10 gives 1 and values from 10 up give 2. If <em>limits</em> is empty or has more than one column, <em>index</em> will be -1. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N24QuantizeNonUniformlyTool10OutputTypeE">
 <span id="_CPPv3N24QuantizeNonUniformlyTool10OutputTypeE"></span><span id="_CPPv2N24QuantizeNonUniformlyTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N24QuantizeNonUniformlyTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -430,8 +399,6 @@ is empty or has more than one column, <em>index</em> will be -1.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

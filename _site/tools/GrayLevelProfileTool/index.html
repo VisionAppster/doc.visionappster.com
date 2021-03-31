@@ -389,47 +389,6 @@ coordinates. Since the distance between <em>startPoint</em> and
 <em>sampleDistance</em> input parameter, this value may be slightly
 different from it.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv420GrayLevelProfileTool">
-<span id="_CPPv320GrayLevelProfileTool"></span><span id="_CPPv220GrayLevelProfileTool"></span><span id="GrayLevelProfileTool"></span><span class="target" id="GrayLevelProfileTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">GrayLevelProfileTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv420GrayLevelProfileTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classGrayLevelProfileTool_1autotoc_md484">
-<h3 id="classGrayLevelProfileTool_1autotoc_md484">Gray level profile<a class="headerlink" href="#classGrayLevelProfileTool_1autotoc_md484" title="Permalink to this headline">🔗</a></h3>
-<p>Computes the gray-level profile of any rectangular region.</p>
-<div class="section" id="classGrayLevelProfileTool_1autotoc_md485">
-<h4 id="classGrayLevelProfileTool_1autotoc_md485">Inputs<a class="headerlink" href="#classGrayLevelProfileTool_1autotoc_md485" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code> - The location of the first profile point in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code> - The location of the last profile point in world coordinates.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code> - The width of the profile line on XY-plane in world coordinates. If the width is zero, the profile will be made of point samples. A non-zero width means that an average over the pixels that span <em>width</em> world units will be calculated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">interpolation</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, improve accuracy by interpolating point samples between pixels along the profile line. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, round pixel coordinates to the nearest integer. Notice that interpolation is a significantly slower operation than rounding.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sampleDistance</span></code> - The distance between profile samples in world units. Note that the requested sample distance may not be exactly achievable; the tool rounds it so that the last profile point is exactly at <em>endPoint</em>. In addition, the length of the resulting profile vector is limited to 10000. Setting <em>sampleDistance</em> to zero makes the tool to automatically select the sampling distance so that it is close to the distance between adjacent pixels in the image.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classGrayLevelProfileTool_1autotoc_md486">
-<h4 id="classGrayLevelProfileTool_1autotoc_md486">Outputs<a class="headerlink" href="#classGrayLevelProfileTool_1autotoc_md486" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">profile</span></code> - 1-by-N matrix containing gray-level profile calculated on the specified region.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sampleDistance</span></code> - The distance between profile samples in world coordinates. Since the distance between <em>startPoint</em> and <em>endPoint</em> may not be exactly divisible by the <em>sampleDistance</em> input parameter, this value may be slightly different from it. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

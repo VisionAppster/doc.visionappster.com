@@ -383,34 +383,6 @@ side of the the selected threshold, background is
 assumed to be dark and the the <em>invert</em> output will
 be <code class="docutils literal notranslate"><span class="pre">false</span></code>. Otherwise, it will be <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417FindThresholdTool">
-<span id="_CPPv317FindThresholdTool"></span><span id="_CPPv217FindThresholdTool"></span><span id="FindThresholdTool"></span><span class="target" id="FindThresholdTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FindThresholdTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417FindThresholdTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classFindThresholdTool_1autotoc_md189">
-<h3 id="classFindThresholdTool_1autotoc_md189">Find threshold<a class="headerlink" href="#classFindThresholdTool_1autotoc_md189" title="Permalink to this headline">🔗</a></h3>
-<p>Automatically finds a suitable threshold value for binarizing a gray-level image based on its histogram. This tool uses Otsu’s method to find a threshold that best separates background from foreground. Mathematically, the threshold is selected by splitting the input histogram so that the sum of variances on both sides of the threshold is minimized.</p>
-<p>In addition to the optimal threshold, the tool estimates which of the sides of the threshold represents foreground and background and sets the <em>invert</em> output accordingly.</p>
-<p>This tool is usually used as a way to automatically choose a suitable threshold for tools such as <a class="reference internal" href="../BinarizeTool/#BinarizeTool"><span class="std std-ref">binarize</span></a>, <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">detect boundaries</span></a>, <a class="reference internal" href="../DetectBlobsTool/#DetectBlobsTool"><span class="std std-ref">detect blobs</span></a> or <a class="reference internal" href="../FindMatrixCodeTool/#FindMatrixCodeTool"><span class="std std-ref">find matrix code</span></a>.</p>
-<div class="section" id="classFindThresholdTool_1autotoc_md190">
-<h4 id="classFindThresholdTool_1autotoc_md190">Inputs<a class="headerlink" href="#classFindThresholdTool_1autotoc_md190" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - The gray-level histogram of an image.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classFindThresholdTool_1autotoc_md191">
-<h4 id="classFindThresholdTool_1autotoc_md191">Outputs<a class="headerlink" href="#classFindThresholdTool_1autotoc_md191" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - The optimal threshold.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - A boolean value that indicates whether the background is dark or light. It is assumed that the input <em>histogram</em> contains more background than foreground. If at least half of its mass is on the left side of the the selected threshold, background is assumed to be dark and the the <em>invert</em> output will be <code class="docutils literal notranslate"><span class="pre">false</span></code>. Otherwise, it will be <code class="docutils literal notranslate"><span class="pre">true</span></code>. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

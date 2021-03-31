@@ -407,51 +407,6 @@ has no effect.</p></li>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <p>The outputs of the tool are defined by the <em>outputParameters</em> table.</p>
-<dl class="cpp class">
-<dt id="_CPPv421InputExternalDataTool">
-<span id="_CPPv321InputExternalDataTool"></span><span id="_CPPv221InputExternalDataTool"></span><span id="InputExternalDataTool"></span><span class="target" id="InputExternalDataTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">InputExternalDataTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DynamicOperation</span><span class="pre">&lt;</span><span class="pre">InputExternalDataToolBase</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv421InputExternalDataTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classInputExternalDataTool_1autotoc_md72">
-<h3 id="classInputExternalDataTool_1autotoc_md72">Data Input<a class="headerlink" href="#classInputExternalDataTool_1autotoc_md72" title="Permalink to this headline">🔗</a></h3>
-<p>Reads data from a supported data source and pushes it to analysis. The tool can work either as an asynchronous data source that drives a processing pipeline or synchronously driven by another tool. It can also work as a master or as a slave device, depending on the capabilities of the underlying data link device driver. This results in a total of four different operation modes:</p>
-<p><ul class="simple">
-<li><p><strong>Synchronous master</strong>: The tool reads the state of a slave device each time an object is received in the <em>trigger</em> input.</p></li>
-<li><p><strong>Synchronous slave</strong>: The tool updates the values of its internal variables based on requests from a master device. Whenever an object is received in the <em>trigger</em> input, the current values will be sent to analysis.</p></li>
-<li><p><strong>Asynchronous master</strong>: The tool polls the state of a slave device and sends the values of all variables to analysis every time a change is detected in any one of them.</p></li>
-<li><p><strong>Asynchronous slave</strong>: Whenever a master device writes to a variable, all variable values are immediately sent to analysis. Note that in this mode the value of a variable may actually not have changed; all writes by a master device are regarded as changes.</p></li>
-</ul>
-</p>
-<div class="section" id="classInputExternalDataTool_1autotoc_md73">
-<h4 id="classInputExternalDataTool_1autotoc_md73">Inputs<a class="headerlink" href="#classInputExternalDataTool_1autotoc_md73" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - A trigger input that accepts any object type. If this input is connected, the tool works in synchronous mode and sends all output values each time a trigger signal is received. If the trigger input is not connected, values will be sent every time a change is noticed.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">deviceId</span></code> - The device ID of the data link device. See <a class="reference external" href="/engine/hardware-devices#device-ids">device IDs</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoConfig</span></code> - A flag that enables and disables device auto-configuration. See <a class="reference external" href="/engine/hardware-devices#device-configuration">device configuration</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">parameterSet</span></code> - The name of a parameter set to apply to the selected device at start-up. See <a class="reference external" href="/engine/hardware-devices#device-configuration">device configuration</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">outputParameters</span></code> - A table that defines the output parameters. In slave mode, these are the variables that will become writable by master devices. In master mode, they must exist on the slave device or the driver must be able to create them. Typically, output parameters refer to SQL table column names or PLC tags.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pollingPeriod</span></code> - Defines polling period in milliseconds. Polling is used to update values if the <em>trigger</em> input is not connected or if the driver does not support notification of changed value for all the parameters.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sendInitialValue</span></code> - If this flag is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tool will send the initial value of each variable immediately at start-up. Otherwise, the tool will send all the values when something has changed in them. If the trigger input is connected, this property has no effect.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classInputExternalDataTool_1autotoc_md74">
-<h4 id="classInputExternalDataTool_1autotoc_md74">Outputs<a class="headerlink" href="#classInputExternalDataTool_1autotoc_md74" title="Permalink to this headline">🔗</a></h4>
-<p>The outputs of the tool are defined by the <em>outputParameters</em> table. </p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

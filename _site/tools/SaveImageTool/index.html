@@ -426,60 +426,6 @@ automatically.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">success</span></code>: <code class="docutils literal notranslate"><span class="pre">true</span></code> if the image was successfully written and
 <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv413SaveImageTool">
-<span id="_CPPv313SaveImageTool"></span><span id="_CPPv213SaveImageTool"></span><span id="SaveImageTool"></span><span class="target" id="SaveImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SaveImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv413SaveImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classSaveImageTool_1autotoc_md258">
-<h3 id="classSaveImageTool_1autotoc_md258">Save image<a class="headerlink" href="#classSaveImageTool_1autotoc_md258" title="Permalink to this headline">🔗</a></h3>
-<p>Writes images into files. This tool supports most standard image formats and a proprietary <em>kuva</em> format. The <em>kuva</em> format is the only format that supports raw image data and is guaranteed to preserve all information, including calibration coefficients.</p>
-<p><dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>This tool will be run simultaneously in multiple processing threads. Due to this, incoming images may be written to the hard disk in arbitrary order. Don’t expect auto-numbered images to be written to the disk in the order they were received by the tool. If you need a serial number in file names, generate the names using a <a class="reference internal" href="../JavaScriptTool/#JavaScriptTool"><span class="std std-ref">script</span></a> that maintains a counter in its state variables.</p>
-</dd>
-</dl>
-</p>
-<div class="section" id="classSaveImageTool_1autotoc_md259">
-<h4 id="classSaveImageTool_1autotoc_md259">Inputs<a class="headerlink" href="#classSaveImageTool_1autotoc_md259" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image to save.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filePath</span></code> - A relative or absolute path to the output files. The <em>filePath</em> input can contain both a path and a file name. However, if <em>fileName</em> input contains a non-empty value, <em>filePath</em> input is treated as a directory and the <em>fileName</em> input defines the filename in it. A trailing slash is not required in <em>filePath</em> in that case. See also <em>autoNumber</em> input.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fileName</span></code> - A file name to be appended to the <em>filePath</em> input. A directory separator is automatically inserted in between, if necessary.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> - The file format. In <code class="docutils literal notranslate"><span class="pre">Automatic</span></code> mode, the format is deduced from the file name suffix in <em>filePath</em>, if one exists. If no suffix is given in <em>filePath</em>, the format will be used as a suffix in the generated file names. For example, if <em>filePath</em> is “/tmp/” and <em>format</em> is “jpg”, the generated file names will be “/tmp/1.jpg”, “/tmp/2.jpg” etc. If automatic deduction fails, the default format will be “kuva”.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">compressionLevel</span></code> - Sets the level of compression when saving an image. The effect of the compression level depends on the selected image format. For example, tiff images support two alternatives: no compression or LZW compression. With the tiff format, any compression level higher than zero will turn on LZW compression. With the jpeg format, even a compression level of zero means that the image will be compressed, but quality will be preferred over compression ratio as much as possible. If the selected image format does not support compression, this value will be ignored. Setting <em>compressionLevel</em> to -1 uses default settings for the selected image format.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoNumber</span></code> - Toggles automatic numbering of output images. If this option is enabled, the tool automatically inserts a numeric suffix to the image file names to prevent overwriting existing files. Note that the incoming images are not guaranteed to be numbered in the order they were received; automatic numbering guarantees just a unique file name for each image.</p></li>
-</ul>
-<p>Let’s call the path composed by combining the </p>
-<em>filePath</em> and <em>fileName</em> inputs “path” and assume <em>autoNumber</em> is enabled. Now, if path is “images/”, the tool will write “images/1.kuva”, “images/2.kuva” etc. If path is “image”, the generated file names will be “image1.kuva”, “image2.kuva” etc. If path contains a file name extension (identified by a dot after the last path component), the numeric suffix will be appended to the preceding part. For example, if path is “C:/temp/img.kuva”, auto-numbered names will be “C:/temp/img1.kuva” etc.</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">overwrite</span></code> - Toggles overwriting of existing files. If overwriting is disabled and the file being written already exists, the <em>success</em> output will be set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoCreateDirectory</span></code> - A flag that controls automatic creation of directories. If the output directory does not exist and this option is enabled, the tool will try to create the directory automatically.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classSaveImageTool_1autotoc_md260">
-<h4 id="classSaveImageTool_1autotoc_md260">Outputs<a class="headerlink" href="#classSaveImageTool_1autotoc_md260" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filePath</span></code> - Absolute path to the image file.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">success</span></code> - <code class="docutils literal notranslate"><span class="pre">true</span></code> if the image was successfully written and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

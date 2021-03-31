@@ -377,41 +377,7 @@ underflows, the output will be 8-bit. If the input is a signed
 image type, the output will be the same type. No overflow or
 underflow prevention will be applied.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv416LinearFilterTool">
-<span id="_CPPv316LinearFilterTool"></span><span id="_CPPv216LinearFilterTool"></span><span id="LinearFilterTool"></span><span class="target" id="LinearFilterTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">LinearFilterTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416LinearFilterTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classLinearFilterTool_1autotoc_md222">
-<h3 id="classLinearFilterTool_1autotoc_md222">Linear filter<a class="headerlink" href="#classLinearFilterTool_1autotoc_md222" title="Permalink to this headline">🔗</a></h3>
-<p>Applies a linear filter to images. Linear filters can be used to smooth images, enhance edges, reduce noise etc.</p>
-<div class="section" id="classLinearFilterTool_1autotoc_md223">
-<h4 id="classLinearFilterTool_1autotoc_md223">Inputs<a class="headerlink" href="#classLinearFilterTool_1autotoc_md223" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filterType</span></code> - The type of the filter.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filterSize</span></code> - The size of the filter in pixels, if applicable. If you need to scale the filter according to the world coordinate system, the filter needs to be calculated separately and connected to the <em>filter</em> input.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filter</span></code> - Filter matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">borderHandling</span></code> - Specifies the way borders are handled.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classLinearFilterTool_1autotoc_md224">
-<h4 id="classLinearFilterTool_1autotoc_md224">Outputs<a class="headerlink" href="#classLinearFilterTool_1autotoc_md224" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Filtered output image. If the input image is an RGB image, the output will also be RGB, and overflows and underflows will be truncated. If the input is 8-bit gray, the output is either 8-bit or 16-bit depending on the filter: if the filter is such that it cannot cause overflows or underflows, the output will be 8-bit. If the input is a signed image type, the output will be the same type. No overflow or underflow prevention will be applied. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N16LinearFilterTool14BorderHandlingE">
 <span id="_CPPv3N16LinearFilterTool14BorderHandlingE"></span><span id="_CPPv2N16LinearFilterTool14BorderHandlingE"></span><span class="target" id="BorderHandling"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">BorderHandling</span></code><a class="headerlink" href="#_CPPv4N16LinearFilterTool14BorderHandlingE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -511,8 +477,6 @@ underflow prevention will be applied.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

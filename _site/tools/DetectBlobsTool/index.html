@@ -411,56 +411,47 @@ The range is [0…1].</p></li>
 increasing ordinal numbers 1,2,…,N.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">blobCount</span></code>: The number of distinct objects in the input image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv415DetectBlobsTool">
-<span id="_CPPv315DetectBlobsTool"></span><span id="_CPPv215DetectBlobsTool"></span><span id="DetectBlobsTool"></span><span class="target" id="DetectBlobsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectBlobsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv415DetectBlobsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectBlobsTool_1autotoc_md463">
-<h3 id="classDetectBlobsTool_1autotoc_md463">Detect blobs<a class="headerlink" href="#classDetectBlobsTool_1autotoc_md463" title="Permalink to this headline">🔗</a></h3>
-<p>Detects blobs in an image using 4- or 8-connectivity. The tool can work without a separate tresholding step. If it is given a gray-level or color image, it automatically thresholds it while scanning the image.</p>
-<div class="section" id="classDetectBlobsTool_1autotoc_md464">
-<h4 id="classDetectBlobsTool_1autotoc_md464">Inputs<a class="headerlink" href="#classDetectBlobsTool_1autotoc_md464" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minimumBlobSize</span></code> - The minimum area of a detected blob in world units. Blobs smaller than this are discarded. The limit is accurate at the center of the image. Blobs which are near an edge of the image and are smaller than the limit may pass the filter due to perspective distortion. If this is not acceptable, correct the perspective first for example by passing the image through <a class="reference internal" href="../ProjectToVirtualViewTool/#ProjectToVirtualViewTool"><span class="std std-ref">virtual view</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maximumBlobSize</span></code> - The maximum area of a detected blob in world units. Blobs larger than this are discarded. The limit is accurate at the center of the image. Blobs which are near an edge of the image and are larger than the limit may pass the filter due to perspective distortion. If this is not acceptable, correct the perspective first for example by passing the image through <a class="reference internal" href="../ProjectToVirtualViewTool/#ProjectToVirtualViewTool"><span class="std std-ref">virtual view</span></a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - Threshold for automatic binarization. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, every pixel with a gray level higher than or equal to <em>threshold</em> will be considered part of a blob. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, every pixel with a gray level below <em>threshold</em> will be considered part of a blob.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hysteresis</span></code> - Hysteresis for automatic binarization. If <em>hysteresis</em> is set to a non-zero value, foreground objects are allowed to contain pixels whose gray level does not meet the thresholding rule. If the gray level of a pixel is within <em>hysteresis</em> gray levels from the threshold and connected to a blob that has at least one pixel that meets the <em>threshold</em> rule, it will be considered part of the blob.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Inverts automatic binarization result if set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">thresholdType</span></code> - If set to <code class="docutils literal notranslate"><span class="pre">StaticThreshold</span></code>, applies parameters <em>threshold</em> and <em>hysteresis</em> to binarization. If set to <code class="docutils literal notranslate"><span class="pre">DynamicThreshold</span></code>, the algorithm identifies the regions which look like a blob and applies an individually selected binarization threshold for each region. Notice that blurring the image with Gaussian filter with a 3…9 pixel kernel may improve dynamic blob detection due to reduced noise.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> - Sensitivity of the dynamic thresholding mode. The smaller the sensitivity, the more distinct the edges of a region must be in order to qualify as a blob. The range is [0…1].</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code> - Chooses the labeling algorithm (4- or 8-connectivity).</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectBlobsTool_1autotoc_md465">
-<h4 id="classDetectBlobsTool_1autotoc_md465">Outputs<a class="headerlink" href="#classDetectBlobsTool_1autotoc_md465" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> - Labeled image in which the objects are marked with increasing ordinal numbers 1,2,…,N.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blobCount</span></code> - The number of distinct objects in the input image. </p></li>
-</ul>
-</p>
-</div>
-</div>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N15DetectBlobsTool9AlgorithmE">
+<span id="_CPPv3N15DetectBlobsTool9AlgorithmE"></span><span id="_CPPv2N15DetectBlobsTool9AlgorithmE"></span><span class="target" id="Algorithm"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Algorithm</span></code><a class="headerlink" href="#_CPPv4N15DetectBlobsTool9AlgorithmE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Connected component algorithms. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N15DetectBlobsTool9Algorithm8Connect4E">
+<span id="_CPPv3N15DetectBlobsTool9Algorithm8Connect4E"></span><span id="_CPPv2N15DetectBlobsTool9Algorithm8Connect4E"></span><span class="target" id="Algorithm::Connect4"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Connect4</span></code><a class="headerlink" href="#_CPPv4N15DetectBlobsTool9Algorithm8Connect4E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pixels are regarded as neighbors if their horizontal or vertical edges touch each other. </p>
 </dd></dl>
 
+<dl class="cpp enumerator">
+<dt id="_CPPv4N15DetectBlobsTool9Algorithm8Connect8E">
+<span id="_CPPv3N15DetectBlobsTool9Algorithm8Connect8E"></span><span id="_CPPv2N15DetectBlobsTool9Algorithm8Connect8E"></span><span class="target" id="Algorithm::Connect8"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Connect8</span></code><a class="headerlink" href="#_CPPv4N15DetectBlobsTool9Algorithm8Connect8E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Pixels are regarded as neighbors if they share edges or corners. </p>
+<p>That is, diagonally connected pixels are also considered neighbors. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N15DetectBlobsTool13ThresholdTypeE">
+<span id="_CPPv3N15DetectBlobsTool13ThresholdTypeE"></span><span id="_CPPv2N15DetectBlobsTool13ThresholdTypeE"></span><span class="target" id="ThresholdType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">ThresholdType</span></code><a class="headerlink" href="#_CPPv4N15DetectBlobsTool13ThresholdTypeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Threshold types. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N15DetectBlobsTool13ThresholdType15StaticThresholdE">
+<span id="_CPPv3N15DetectBlobsTool13ThresholdType15StaticThresholdE"></span><span id="_CPPv2N15DetectBlobsTool13ThresholdType15StaticThresholdE"></span><span class="target" id="ThresholdType::StaticThreshold"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">StaticThreshold</span></code><a class="headerlink" href="#_CPPv4N15DetectBlobsTool13ThresholdType15StaticThresholdE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Use the given threshold in binarization. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N15DetectBlobsTool13ThresholdType16DynamicThresholdE">
+<span id="_CPPv3N15DetectBlobsTool13ThresholdType16DynamicThresholdE"></span><span id="_CPPv2N15DetectBlobsTool13ThresholdType16DynamicThresholdE"></span><span class="target" id="ThresholdType::DynamicThreshold"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">DynamicThreshold</span></code><a class="headerlink" href="#_CPPv4N15DetectBlobsTool13ThresholdType16DynamicThresholdE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Use dynamic threshold in binarization. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 

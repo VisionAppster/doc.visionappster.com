@@ -35,7 +35,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
         <script defer="defer" src="../../_static/js/algolia.js"></script>
     
@@ -397,54 +396,6 @@ emitted value will be <code class="docutils literal notranslate"><span class="pr
 detected foreground pixels is above <em>motionThreshold</em>, and
 <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv416DetectMotionTool">
-<span id="_CPPv316DetectMotionTool"></span><span id="_CPPv216DetectMotionTool"></span><span id="DetectMotionTool"></span><span class="target" id="DetectMotionTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectMotionTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416DetectMotionTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectMotionTool_1autotoc_md439">
-<h3 id="classDetectMotionTool_1autotoc_md439">Detect motion<a class="headerlink" href="#classDetectMotionTool_1autotoc_md439" title="Permalink to this headline">🔗</a></h3>
-<p>Accumulates a model of a static background of a scene with moving objects. The background model is based on the mean and covariance values of image pixels. The background model is updated according to the following formula:</p>
-<p><div class="math notranslate nohighlight">
-\[ B_{t+1} = B_t + (\alpha_1 * (1 - I_t) + \alpha_2 * I_t) * (I_t - B_t), \]</div>
-</p>
-<p>where <span class="math notranslate nohighlight">\( B_t \)</span> is the background model at time moment <span class="math notranslate nohighlight">\( t \)</span> and <span class="math notranslate nohighlight">\( I_t \)</span> the current intensity of a pixel. <span class="math notranslate nohighlight">\( \alpha_1 \)</span> and <span class="math notranslate nohighlight">\( \alpha_2 \)</span> are learning weights that control the speed at which the foreground pixels are merged to the background. Note that the input image is normalized so that the maximum pixel intensity is always one. Color images are automatically converted to gray levels by calculating the average of color channels.</p>
-<div class="section" id="classDetectMotionTool_1autotoc_md440">
-<h4 id="classDetectMotionTool_1autotoc_md440">Inputs<a class="headerlink" href="#classDetectMotionTool_1autotoc_md440" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - The minimum intensity difference between the background model and the current frame that will be considered a change.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">alpha1</span></code> - The first learning weight. It determines the rate of adaptation towards dark intensity.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">alpha2</span></code> - The second learning weight. It determines the rate of adaptation towards bright intensity.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxStillTime</span></code> - The maximum number of successive frames a pixel can belong to foreground. This value makes it possible to kill burnt-in objects before the adaptation catches them.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">motionThreshold</span></code> - The maximum fraction of pixels that can be classified as foreground before the <em>motionDetected</em> output is triggered.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectMotionTool_1autotoc_md441">
-<h4 id="classDetectMotionTool_1autotoc_md441">Outputs<a class="headerlink" href="#classDetectMotionTool_1autotoc_md441" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">background</span></code> - The current background model.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> - A movement mask image in which background pixels are zero. The value of a pixel indicates the number of successive frames the pixel has been classified as foreground.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">motionDetected</span></code> - this output emits a boolean value that determines if there is significant movement in the current frame. The emitted value will be <code class="docutils literal notranslate"><span class="pre">true</span></code> if the relative number of detected foreground pixels is above <em>motionThreshold</em>, and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

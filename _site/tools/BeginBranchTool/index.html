@@ -375,37 +375,6 @@ index.</p>
 to the corresponding input of
 <a class="reference internal" href="../EndBranchTool/"><span class="doc">end branch tool</span></a>.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv415BeginBranchTool">
-<span id="_CPPv315BeginBranchTool"></span><span id="_CPPv215BeginBranchTool"></span><span id="BeginBranchTool"></span><span class="target" id="BeginBranchTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BeginBranchTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DynamicOperation</span><span class="pre">&lt;</span><span class="pre">BeginBranchToolBase</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv415BeginBranchTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classBeginBranchTool_1autotoc_md48">
-<h3 id="classBeginBranchTool_1autotoc_md48">Begin branch<a class="headerlink" href="#classBeginBranchTool_1autotoc_md48" title="Permalink to this headline">🔗</a></h3>
-<p>Passes input parameters to alternative branches depending on the <em>branch</em> input.</p>
-<div class="section" id="classBeginBranchTool_1autotoc_md49">
-<h4 id="classBeginBranchTool_1autotoc_md49">Inputs<a class="headerlink" href="#classBeginBranchTool_1autotoc_md49" title="Permalink to this headline">🔗</a></h4>
-<p>The inputs of the tool are defined by the <em>inputParameters</em> parameter.</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">inputParameters</span></code> - A table that defines the switched input parameters.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">branchCount</span></code> - The number of alternative branches.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">branch</span></code> - Selects the output branch using zero-based indexing.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classBeginBranchTool_1autotoc_md50">
-<h4 id="classBeginBranchTool_1autotoc_md50">Outputs<a class="headerlink" href="#classBeginBranchTool_1autotoc_md50" title="Permalink to this headline">🔗</a></h4>
-<p>The total number of outputs is the product of <em>branchCount</em> and the number of input parameters. The pattern for naming output parameters is “name[X]”, where “name” is the name of the input parameter the output corresponds to and X a zero-based branch index.</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">branch</span></code> - Copy of <em>branch</em> input. This is typically connected to the corresponding input of <a class="reference internal" href="../EndBranchTool/#EndBranchTool"><span class="std std-ref">end branch tool</span></a>. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

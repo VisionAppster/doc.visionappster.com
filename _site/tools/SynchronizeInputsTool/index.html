@@ -395,34 +395,6 @@ input parameter is connected, the last value received in it will be
 sent to the corresponding output. As a consequence, all connected
 inputs must receive at least one object before anything will be
 sent out.</p>
-<dl class="cpp class">
-<dt id="_CPPv421SynchronizeInputsTool">
-<span id="_CPPv321SynchronizeInputsTool"></span><span id="_CPPv221SynchronizeInputsTool"></span><span id="SynchronizeInputsTool"></span><span class="target" id="SynchronizeInputsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SynchronizeInputsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DynamicOperation</span><span class="pre">&lt;</span><span class="pre">SynchronizeInputsToolBase</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv421SynchronizeInputsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classSynchronizeInputsTool_1autotoc_md98">
-<h3 id="classSynchronizeInputsTool_1autotoc_md98">Synchronize inputs<a class="headerlink" href="#classSynchronizeInputsTool_1autotoc_md98" title="Permalink to this headline">🔗</a></h3>
-<p>Receives data from multiple asynchronous sources and outputs the received objects in synchronization with the <em>trigger</em> input.</p>
-<p>The synchronization tool can be used to combine unrelated data from sources such as <a class="reference internal" href="../ReadDigitalInputTool/#ReadDigitalInputTool"><span class="std std-ref">digital inputs</span></a>, <a class="reference internal" href="../InputExternalDataTool/#InputExternalDataTool"><span class="std std-ref">data inputs</span></a> and <a class="reference internal" href="../ImageSource/#ImageSource"><span class="std std-ref">image sources</span></a> to a single processing pipeline.</p>
-<p>Another use case for the tool is to set the same input parameter value in many tools synchronously. For example, the <em>branch</em> of a <a class="reference internal" href="../BeginBranchTool/#BeginBranchTool"><span class="std std-ref">begin branch</span></a> and its opposite, <a class="reference internal" href="../EndBranchTool/#EndBranchTool"><span class="std std-ref">end branch</span></a>, should always be changed synchronously. If the branch is controlled asynchronously by setting a parameter from a UI, for example, a synchronization tool with a <em>branch</em> input parameter can be used. The synchronized <em>branch</em> output can then be used to set the parameter value in both tools synchronously.</p>
-<div class="section" id="classSynchronizeInputsTool_1autotoc_md99">
-<h4 id="classSynchronizeInputsTool_1autotoc_md99">Inputs<a class="headerlink" href="#classSynchronizeInputsTool_1autotoc_md99" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - A trigger input that accepts any object type. The tool will send the current values of all inputs whenever an object is received in this input.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">synchronousInputs</span></code> - If this parameter is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tool expects that whenever any of the connected dynamic input parameters changes, all of them will. This is usually true if the data to all dynamic inputs originates from one source. This ensures that at the time the next <em>trigger</em> object is received, all or none of the the dynamic input parameter values have been updated. If the dynamic input parameters come from unrelated sources, this parameter needs to be set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, which means that the values of an input parameters will always be updated independently.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">inputParameters</span></code> - A table that defines dynamic input parameters. The first column contains the name of a parameter and the second one the data type of the parameter’s value. All dynamic input parameters are optional. If none of them is connected, the tool always outputs the default values.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classSynchronizeInputsTool_1autotoc_md100">
-<h4 id="classSynchronizeInputsTool_1autotoc_md100">Outputs<a class="headerlink" href="#classSynchronizeInputsTool_1autotoc_md100" title="Permalink to this headline">🔗</a></h4>
-<p>The outputs are defined by <em>inputParameters</em>. An output parameter will be created for each dynamic input parameter. If an optional input is not connected, the parameter’s current value will be sent to the corresponding output whenever a trigger is received. If the input parameter is connected, the last value received in it will be sent to the corresponding output. As a consequence, all connected inputs must receive at least one object before anything will be sent out. </p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

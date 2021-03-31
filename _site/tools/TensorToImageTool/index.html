@@ -371,38 +371,6 @@ values will be cut.</p></li>
 will be scaled and capped from [<em>minIntensity</em>, <em>maxIntensity</em>] to
 [0, 255]. If not, values will be just capped.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417TensorToImageTool">
-<span id="_CPPv317TensorToImageTool"></span><span id="_CPPv217TensorToImageTool"></span><span id="TensorToImageTool"></span><span class="target" id="TensorToImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TensorToImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417TensorToImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTensorToImageTool_1autotoc_md300">
-<h3 id="classTensorToImageTool_1autotoc_md300">Tensor to image<a class="headerlink" href="#classTensorToImageTool_1autotoc_md300" title="Permalink to this headline">🔗</a></h3>
-<p>Converts a tensor to an image. The tool automatically detects the layout of the input tensor and converts it to an RGB or gray-level image with eight bits per channel.</p>
-<div class="section" id="classTensorToImageTool_1autotoc_md301">
-<h4 id="classTensorToImageTool_1autotoc_md301">Inputs<a class="headerlink" href="#classTensorToImageTool_1autotoc_md301" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - A tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rescaleIntensity</span></code> - A Boolean flag that enables or disables rescaling of tensor values to 0-255. If rescaling is disabled, values will be cut.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minIntensity</span></code> - The minimum intensity value in the input tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxIntensity</span></code> - The maximum intensity value in the input tensor.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classTensorToImageTool_1autotoc_md302">
-<h4 id="classTensorToImageTool_1autotoc_md302">Outputs<a class="headerlink" href="#classTensorToImageTool_1autotoc_md302" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - An image. If rescaling is enabled, each color channel will be scaled and capped from [<em>minIntensity</em>, <em>maxIntensity</em>] to [0, 255]. If not, values will be just capped. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

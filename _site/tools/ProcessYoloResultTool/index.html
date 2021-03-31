@@ -397,53 +397,6 @@ An N-by-2 matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">classIndex</span></code>: The class index of each detection. An N-by-1 matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code>: The confidence of each detection. An N-by-1 matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv421ProcessYoloResultTool">
-<span id="_CPPv321ProcessYoloResultTool"></span><span id="_CPPv221ProcessYoloResultTool"></span><span id="ProcessYoloResultTool"></span><span class="target" id="ProcessYoloResultTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ProcessYoloResultTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv421ProcessYoloResultTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classProcessYoloResultTool_1autotoc_md285">
-<h3 id="classProcessYoloResultTool_1autotoc_md285">Process YOLO results<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md285" title="Permalink to this headline">🔗</a></h3>
-<p>Converts the output tensor of a YOLO deep learning model to generally usable data types. The tool first reshapes an input tensor to an N-by-(5 + <em>classCount</em>) matrix that has the parameters of one bounding box on each row. It filters out detections that have too low confidence and performs non-maximum suppression on the rest.</p>
-<div class="section" id="classProcessYoloResultTool_1autotoc_md286">
-<h4 id="classProcessYoloResultTool_1autotoc_md286">Inputs<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md286" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - The output of a YOLO model. The shape is assumed to be (1 x K x S x S) or (K x S x S), where K = B * (<em>classCount</em> + 5), S is the number of vertical and horizontal image subdivisions and B is the number of anchor boxes per subdivision. For example in YOLO v2, S=13, B=5, classCount=20, so K = 125.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The image to which the model was applied. Both width and height are assumed to be P * S, where S is the number of vertical and horizontal image subdivisions, P is the number of pixels per subdivision. For example in YOLO v2, S=13 and P=32, so the image size must be 416 x 416. The image is needed because the tensor produced by a YOLO model does not contain information about the coordinate system of the image the model was applied to.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidenceThreshold</span></code> - Minimum confidence for a bounding box to be accepted.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">overlapRatioThreshold</span></code> - Overlap ratio threshold for pruning overlapping detections (non-maximum suppression). If the overlap ratio (intersection over union) of two detections with the same class is greater than this value, the detection with a lower confidence will be discarded. Set to one to disable non-maximum suppression.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classCount</span></code> - The number of classes in the one-hot encoded class vector.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">anchorSizes</span></code> - A B-by-2 matrix that contains the relative size of anchor boxes the YOLO model was trained with.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classProcessYoloResultTool_1autotoc_md287">
-<h4 id="classProcessYoloResultTool_1autotoc_md287">Outputs<a class="headerlink" href="#classProcessYoloResultTool_1autotoc_md287" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - Upper left corner of each remaining detection as a coordinate frame that is aligned to the axes of the image coordinate system. A 4N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the bounding box in world coordinates. An N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classIndex</span></code> - The class index of each detection. An N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - The confidence of each detection. An N-by-1 matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

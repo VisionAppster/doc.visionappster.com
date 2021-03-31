@@ -400,45 +400,6 @@ operation than rounding.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv424ProjectToVirtualViewTool">
-<span id="_CPPv324ProjectToVirtualViewTool"></span><span id="_CPPv224ProjectToVirtualViewTool"></span><span id="ProjectToVirtualViewTool"></span><span class="target" id="ProjectToVirtualViewTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ProjectToVirtualViewTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv424ProjectToVirtualViewTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classProjectToVirtualViewTool_1autotoc_md246">
-<h3 id="classProjectToVirtualViewTool_1autotoc_md246">Project to virtual view<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md246" title="Permalink to this headline">🔗</a></h3>
-<p>Creates a new view of the world as if looked through a virtual window. This tool makes it possible to simultaneously perform any 3D affine transformation and perspective correction, scaling and cropping to an image.</p>
-<p>The tool is given a <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> and a size that describe a rectangular area in the physical world (not in the input image). The area may be freely rotated, scaled, stretched and skewed in three dimensions. The resulting image is an aligned picture of the area as if a virtual camera was placed right on top of it at <em>referenceDistance</em>.</p>
-<p>The tool can take any image as input and does not expect that the requested piece of the world is actually visible in it. If the input image does not contain the necessary data, portions of the output image (or even the whole image) may be left black.</p>
-<p>To rotate an image, one only needs to create a rotated coordinate frame. Images can be scaled by simply altering <em>referenceDistance</em>.</p>
-<p>This tool works with any 3D transformation and may therefore require a lot of computation. The tool is optimized so that it does the minimum amount of work required, but its speed may be hard to predict. If an application needs to quickly extract a rectangular, axis-aligned sub-image, use <a class="reference internal" href="../CropImageTool/#CropImageTool"><span class="std std-ref">cropping</span></a> instead.</p>
-<div class="section" id="classProjectToVirtualViewTool_1autotoc_md247">
-<h4 id="classProjectToVirtualViewTool_1autotoc_md247">Inputs<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md247" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle to be selected and aligned in world coordinates. Note that a 0-by-0 size produces a one-pixel image. If <em>size</em> is undefined (either width or height is NAN), the whole image is used.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for the rectangle in the world coordinate system.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">referenceDistance</span></code> - Reference distance used when projecting the area to an image. Setting the reference distance to zero makes the tool use the distance between camera and world origins as a reference, or use the distance required to make the whole image visible in the view if <em>size</em> is undefined.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">interpolation</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, improve the visual quality of the output by interpolating non-exact values from neighboring pixels. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, round pixel coordinates to the nearest integer. Notice that interpolation is a significantly slower operation than rounding.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classProjectToVirtualViewTool_1autotoc_md248">
-<h4 id="classProjectToVirtualViewTool_1autotoc_md248">Outputs<a class="headerlink" href="#classProjectToVirtualViewTool_1autotoc_md248" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Output image. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

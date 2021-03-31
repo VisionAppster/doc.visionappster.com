@@ -386,45 +386,6 @@ gradient magnitude will be used.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: A binary image in which detected edges are ones.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv415DetectEdgesTool">
-<span id="_CPPv315DetectEdgesTool"></span><span id="_CPPv215DetectEdgesTool"></span><span id="DetectEdgesTool"></span><span class="target" id="DetectEdgesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectEdgesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv415DetectEdgesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectEdgesTool_1autotoc_md180">
-<h3 id="classDetectEdgesTool_1autotoc_md180">Detect edges<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md180" title="Permalink to this headline">🔗</a></h3>
-<p>Detects prominent edges in images. This tool uses the Canny filtering technique to detect edges:</p>
-<p><ol class="loweralpha simple">
-<li><p>The input image is smoothed with a Gaussian filter.</p></li>
-<li><p>Sobel gradient filters are used to estimate local gradient.</p></li>
-<li><p>The gradient image is processed to contain only local maxima.</p></li>
-<li><p>Final edges are obtained with hysteresis thresholding: all pixels with a gradient magnitude of at least <em>lowThreshold</em> are regarded as edges if they are connected to at least one pixel whose gradient magnitude is at least <em>highThreshold</em>.</p></li>
-</ol>
-</p>
-<div class="section" id="classDetectEdgesTool_1autotoc_md181">
-<h4 id="classDetectEdgesTool_1autotoc_md181">Inputs<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md181" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">smoothness</span></code> - The standard deviation of the of the Gaussian smoothing filter. Bigger value means better tolerance against noise, less sensitivity and worse localization. The Gaussian filter is cut at approximately 1.5 times the standard deviation of the Gaussian function. If smoothness is zero, no smoothing filter will be applied.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lowThreshold</span></code> - The minimum gradient that can still be recarded as an edge, if a connected edge pixel exceeds <em>highThreshold</em>. If this value is zero, 0.4 * <em>highThreshold</em> will be used.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">highThreshold</span></code> - The gradient value that at least one pixel in a connected edge must exceed. If this value is zero, two times the standard deviation of the gradient magnitude plus the mean gradient magnitude will be used.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classDetectEdgesTool_1autotoc_md182">
-<h4 id="classDetectEdgesTool_1autotoc_md182">Outputs<a class="headerlink" href="#classDetectEdgesTool_1autotoc_md182" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A binary image in which detected edges are ones. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

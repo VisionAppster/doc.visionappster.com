@@ -373,34 +373,6 @@ input. The number format will be expanded so that there is
 no loss of accuracy. For example, adding an integer to
 a floating point number returns a floating point number.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv414ArithmeticTool">
-<span id="_CPPv314ArithmeticTool"></span><span id="_CPPv214ArithmeticTool"></span><span id="ArithmeticTool"></span><span class="target" id="ArithmeticTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ArithmeticTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../BinaryFunctionTool/#_CPPv418BinaryFunctionTool" title="BinaryFunctionTool"><span class="pre">BinaryFunctionTool</span></a><a class="headerlink" href="#_CPPv414ArithmeticTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classArithmeticTool_1autotoc_md343">
-<h3 id="classArithmeticTool_1autotoc_md343">Arithmetic<a class="headerlink" href="#classArithmeticTool_1autotoc_md343" title="Permalink to this headline">🔗</a></h3>
-<p>Base class for arithmetic tools.</p>
-<div class="section" id="classArithmeticTool_1autotoc_md344">
-<h4 id="classArithmeticTool_1autotoc_md344">Inputs<a class="headerlink" href="#classArithmeticTool_1autotoc_md344" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> - a numeric (scalar) value, matrix or tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> - a numeric (scalar) value, matrix or tensor.</p></li>
-</ul>
-<p>If both </p>
-<em>a</em> and <em>b</em> are non-scalar (matrix or tensor), their dimensions must be the same.</p>
-</div>
-<div class="section" id="classArithmeticTool_1autotoc_md345">
-<h4 id="classArithmeticTool_1autotoc_md345">Outputs<a class="headerlink" href="#classArithmeticTool_1autotoc_md345" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code> - If both inputs are scalar, the output is a scalar value. If either of the inputs is non-scalar, the output is of the same type as the inputs (i.e. either a matrix or tensor). If one input is scalar and the other input is non-scalar, the output is non-scalar and the values are determined by adding up each element of the non-scalar input to the scalar input. The number format will be expanded so that there is no loss of accuracy. For example, adding an integer to a floating point number returns a floating point number. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by AddTool, DivideTool, MultiplyTool, PowerTool, SubtractTool</p>
-</dd></dl>
-
 </div>
 </div>
 

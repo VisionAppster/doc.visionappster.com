@@ -372,35 +372,6 @@ plugins. The format is case-insensitive.</p></li>
 the size of the original image. This ratio is typically
 less than one. The smaller it is, the better the compression.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417CompressImageTool">
-<span id="_CPPv317CompressImageTool"></span><span id="_CPPv217CompressImageTool"></span><span id="CompressImageTool"></span><span class="target" id="CompressImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CompressImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417CompressImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCompressImageTool_1autotoc_md168">
-<h3 id="classCompressImageTool_1autotoc_md168">Compress image<a class="headerlink" href="#classCompressImageTool_1autotoc_md168" title="Permalink to this headline">🔗</a></h3>
-<p>Compresses the pixel buffer of an image. This makes the image unprocessable by analysis tools, but may be useful for example in passing images over the network. To undo compression, use the <a class="reference internal" href="../ConvertColorsTool/#ConvertColorsTool"><span class="std std-ref">convert colors tool</span></a>.</p>
-<div class="section" id="classCompressImageTool_1autotoc_md169">
-<h4 id="classCompressImageTool_1autotoc_md169">Inputs<a class="headerlink" href="#classCompressImageTool_1autotoc_md169" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. Any image type works as input. Encoded (YUV, Bayer) are first decoded. If the image is already compressed, this tool does nothing.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> - The format of the compressed image buffer. “JPEG” and “PNG” are always supported, more formats may be available via plugins. The format is case-insensitive.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCompressImageTool_1autotoc_md170">
-<h4 id="classCompressImageTool_1autotoc_md170">Outputs<a class="headerlink" href="#classCompressImageTool_1autotoc_md170" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A compressed image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">compressionRate</span></code> - Size of the compressed image divided by the size of the original image. This ratio is typically less than one. The smaller it is, the better the compression. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

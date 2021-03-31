@@ -375,32 +375,6 @@ tensor or matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A double matrix or double tensor.
 If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv412VarianceTool">
-<span id="_CPPv312VarianceTool"></span><span id="_CPPv212VarianceTool"></span><span id="VarianceTool"></span><span class="target" id="VarianceTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">VarianceTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../CollapseArrayTool/#_CPPv417CollapseArrayTool" title="CollapseArrayTool"><span class="pre">CollapseArrayTool</span></a><a class="headerlink" href="#_CPPv412VarianceTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classVarianceTool_1autotoc_md436">
-<h3 id="classVarianceTool_1autotoc_md436">Variance<a class="headerlink" href="#classVarianceTool_1autotoc_md436" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates the variance of the elements of a matrix or a tensor.</p>
-<div class="section" id="classVarianceTool_1autotoc_md437">
-<h4 id="classVarianceTool_1autotoc_md437">Inputs<a class="headerlink" href="#classVarianceTool_1autotoc_md437" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> - A matrix or a tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code> - Specifies the dimension along which the variance will be calculated. -1 means variance of all elements. For matrices, dimension 0 is rows (output will be 1-by-N) and 1 is columns (output will be N-by-1). For tensors, the specified dimension will be collapsed. For example, if the input is a 1Ã—2Ã—3Ã—4 tensor and <em>dimension</em> is 1, the output will be a 1Ã—3Ã—4 tensor. If the size of the specified dimension is one, the variance will be zero. If <em>dimension</em> is greater or equal to the number of dimensions in the input tensor or matrix, the output will be an empty tensor or matrix.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classVarianceTool_1autotoc_md438">
-<h4 id="classVarianceTool_1autotoc_md438">Outputs<a class="headerlink" href="#classVarianceTool_1autotoc_md438" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code> - A double matrix or double tensor. If <em>dimension</em> is -1, the output will be a scalar value. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

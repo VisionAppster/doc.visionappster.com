@@ -385,37 +385,7 @@ supported.</p></li>
 coordinates. The size of this matrix is equal to that of the
 input coordinate matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv424TransformCoordinatesTool">
-<span id="_CPPv324TransformCoordinatesTool"></span><span id="_CPPv224TransformCoordinatesTool"></span><span id="TransformCoordinatesTool"></span><span class="target" id="TransformCoordinatesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TransformCoordinatesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv424TransformCoordinatesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTransformCoordinatesTool_1autotoc_md123">
-<h3 id="classTransformCoordinatesTool_1autotoc_md123">Transform coordinates<a class="headerlink" href="#classTransformCoordinatesTool_1autotoc_md123" title="Permalink to this headline">🔗</a></h3>
-<p>Transforms point coordinates to/from a coordinate frame. This tool is typically used to transform coordinates in the world coordinate system to coordinates aligned to a detected object, such as a blob or a geometric shape, and back.</p>
-<p>Using the <em>frame</em> output of an object detector (e.g. <a class="reference internal" href="../AnalyzeBlobGeometryTool/#AnalyzeBlobGeometryTool"><span class="std std-ref">Blob Geometry Analysis</span></a>) as the <em>frame</em> input to this tool and passing world coordinates (such as blob centers) as the <em>coordinates</em> input converts the absolute world coordinates to coordinates that are relative to the corner of the detected object.</p>
-<p>If the <em>direction</em> flag is set to <code class="docutils literal notranslate"><span class="pre">FromFrame</span></code>, the tool transforms points back to the world coordinate system. For example, using the <em>size</em> output of <a class="reference internal" href="../AnalyzeBlobGeometryTool/#AnalyzeBlobGeometryTool"><span class="std std-ref">Blob Geometry Analysis</span></a> as the <em>coordinate</em> input would yield the coordinates of the blob’s bottom-right corner in the world coordinate system.</p>
-<div class="section" id="classTransformCoordinatesTool_1autotoc_md124">
-<h4 id="classTransformCoordinatesTool_1autotoc_md124">Inputs<a class="headerlink" href="#classTransformCoordinatesTool_1autotoc_md124" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> to/from which the coordinates are to be transformed. This can be either a single frame or a separate frame for each coordinate. In the latter case, the number of rows in this matrix must be four times that of <em>coordinates</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">coordinates</span></code> - A matrix that contains the coordinates of the points to be transformed as rows. 2D and 3D coordinates are supported.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> - The direction of the transformation.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classTransformCoordinatesTool_1autotoc_md125">
-<h4 id="classTransformCoordinatesTool_1autotoc_md125">Outputs<a class="headerlink" href="#classTransformCoordinatesTool_1autotoc_md125" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">coordinates</span></code> - A matrix that contains the transformed coordinates. The size of this matrix is equal to that of the input coordinate matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N24TransformCoordinatesTool9DirectionE">
 <span id="_CPPv3N24TransformCoordinatesTool9DirectionE"></span><span id="_CPPv2N24TransformCoordinatesTool9DirectionE"></span><span class="target" id="Direction"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Direction</span></code><a class="headerlink" href="#_CPPv4N24TransformCoordinatesTool9DirectionE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -438,8 +408,6 @@ input coordinate matrix.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

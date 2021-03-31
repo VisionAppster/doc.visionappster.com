@@ -371,32 +371,6 @@ producing a two-dimensional tensor.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code>: The output tensor. The data type of the output tensor
 will be same as that of the input matrix.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv418MatrixToTensorTool">
-<span id="_CPPv318MatrixToTensorTool"></span><span id="_CPPv218MatrixToTensorTool"></span><span id="MatrixToTensorTool"></span><span class="target" id="MatrixToTensorTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatrixToTensorTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv418MatrixToTensorTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatrixToTensorTool_1autotoc_md282">
-<h3 id="classMatrixToTensorTool_1autotoc_md282">Matrix to tensor<a class="headerlink" href="#classMatrixToTensorTool_1autotoc_md282" title="Permalink to this headline">🔗</a></h3>
-<p>Converts a matrix to a tensor. This tool is a special case of <a class="reference internal" href="../ReshapeTensorTool/#ReshapeTensorTool"><span class="std std-ref">reshape tensor</span></a> that takes a two-dimensional matrix as input.</p>
-<div class="section" id="classMatrixToTensorTool_1autotoc_md283">
-<h4 id="classMatrixToTensorTool_1autotoc_md283">Inputs<a class="headerlink" href="#classMatrixToTensorTool_1autotoc_md283" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code> - The input matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> - The shape of the output tensor. A 1-by-N matrix, where N is the number of dimensions in the output tensor. At most one component of the shape can be non-positive (&lt;= 0), which causes the size of that dimension to be computed so that all elements of the input tensor are consumed. If the shape is empty, it will be treated as if it contained {matrix rows, matrix columns}, producing a two-dimensional tensor.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMatrixToTensorTool_1autotoc_md284">
-<h4 id="classMatrixToTensorTool_1autotoc_md284">Outputs<a class="headerlink" href="#classMatrixToTensorTool_1autotoc_md284" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code> - The output tensor. The data type of the output tensor will be same as that of the input matrix. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

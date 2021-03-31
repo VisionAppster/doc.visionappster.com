@@ -377,39 +377,7 @@ in compositing.</p></li>
 covered by any of the input images. Undefined pixels are left
 black.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv414JoinImagesTool">
-<span id="_CPPv314JoinImagesTool"></span><span id="_CPPv214JoinImagesTool"></span><span id="JoinImagesTool"></span><span class="target" id="JoinImagesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">JoinImagesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv414JoinImagesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classJoinImagesTool_1autotoc_md216">
-<h3 id="classJoinImagesTool_1autotoc_md216">Join images<a class="headerlink" href="#classJoinImagesTool_1autotoc_md216" title="Permalink to this headline">🔗</a></h3>
-<p>Joins two or more images to a single, possibly bigger image. The tool uses the xy plane of the first input image as a reference and projects other inputs images on it.</p>
-<p>Note that this tool does not use any type of interpolation. If the input images are of very different scales or undergo 3D transformations, this may result in poor output image quality. In such a case it is advisable to preprocess the input images first for example by scaling them to the roughly same resolution.</p>
-<div class="section" id="classJoinImagesTool_1autotoc_md217">
-<h4 id="classJoinImagesTool_1autotoc_md217">Inputs<a class="headerlink" href="#classJoinImagesTool_1autotoc_md217" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">imageX</span></code> - A configurable number of input images.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">imageCount</span></code> - The number of input images.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">compositing</span></code> - The way overlapping and possibly partially transparent pixels are composited.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">reverseOrder</span></code> - Reverse the order of input images. This affects the order in which the images are stacked in compositing.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classJoinImagesTool_1autotoc_md218">
-<h4 id="classJoinImagesTool_1autotoc_md218">Outputs<a class="headerlink" href="#classJoinImagesTool_1autotoc_md218" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A combined image. Parts of the output image may not be covered by any of the input images. Undefined pixels are left black. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N14JoinImagesTool11CompositingE">
 <span id="_CPPv3N14JoinImagesTool11CompositingE"></span><span id="_CPPv2N14JoinImagesTool11CompositingE"></span><span class="target" id="Compositing"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Compositing</span></code><a class="headerlink" href="#_CPPv4N14JoinImagesTool11CompositingE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -456,8 +424,6 @@ black.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

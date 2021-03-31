@@ -382,38 +382,6 @@ no effect if the input is a gray-level image.</p></li>
 lower intensity means shorter distance to <em>referenceColor</em>. If
 <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, brighter intensity means a better match.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417ColorDistanceTool">
-<span id="_CPPv317ColorDistanceTool"></span><span id="_CPPv217ColorDistanceTool"></span><span id="ColorDistanceTool"></span><span class="target" id="ColorDistanceTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ColorDistanceTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417ColorDistanceTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classColorDistanceTool_1autotoc_md159">
-<h3 id="classColorDistanceTool_1autotoc_md159">Color distance<a class="headerlink" href="#classColorDistanceTool_1autotoc_md159" title="Permalink to this headline">🔗</a></h3>
-<p>Transforms input image into a gray-level image. The intensity of each pixel in the output image reflects the distance between a reference color and the color of the pixel in the RGB color space. The lower the intensity, the closer the pixel matches the reference color. If the <em>invert</em> flag is <code class="docutils literal notranslate"><span class="pre">true</span></code>, higher intensity means closer match. If the input is a gray-level image, all color channels are assumed to be identical and equal to the intensity of each pixel.</p>
-<div class="section" id="classColorDistanceTool_1autotoc_md160">
-<h4 id="classColorDistanceTool_1autotoc_md160">Inputs<a class="headerlink" href="#classColorDistanceTool_1autotoc_md160" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">referenceColor</span></code> - The color to which differences are calculated.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code> - Inversion flag. If this value is <code class="docutils literal notranslate"><span class="pre">true</span></code>, smaller intensity in the output image indicates greater color distance. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, 255 indicates a perfect match.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">normalize</span></code> - Color intensity normalization flag. If this value is <code class="docutils literal notranslate"><span class="pre">true</span></code>, intensities of the RGB components of both the reference color and colors of the pixels in the input image are normalized before distance calculation. The removes the effect of varying brightness due to e.g. uneven lighting or light drop-off towards the edge of the field of view. This flag has no effect if the input is a gray-level image.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classColorDistanceTool_1autotoc_md161">
-<h4 id="classColorDistanceTool_1autotoc_md161">Outputs<a class="headerlink" href="#classColorDistanceTool_1autotoc_md161" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Absolute color distances. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, lower intensity means shorter distance to <em>referenceColor</em>. If <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, brighter intensity means a better match. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

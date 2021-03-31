@@ -388,57 +388,7 @@ region is the maximum of all the merged regions.</p></li>
 </ul>
 <p>The output rows are in descending confidence order within each class,
 but the classes are in arbitrary order.</p>
-<dl class="cpp class">
-<dt id="_CPPv416PruneMatchesTool">
-<span id="_CPPv316PruneMatchesTool"></span><span id="_CPPv216PruneMatchesTool"></span><span id="PruneMatchesTool"></span><span class="target" id="PruneMatchesTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">PruneMatchesTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416PruneMatchesTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classPruneMatchesTool_1autotoc_md288">
-<h3 id="classPruneMatchesTool_1autotoc_md288">Prune matches<a class="headerlink" href="#classPruneMatchesTool_1autotoc_md288" title="Permalink to this headline">🔗</a></h3>
-<p>Removes matches that have overlapping bounding boxes or too low confidences. This tool implements non-maximum suppression for bounding boxes produced by an object detector.</p>
-<div class="section" id="classPruneMatchesTool_1autotoc_md289">
-<h4 id="classPruneMatchesTool_1autotoc_md289">Inputs<a class="headerlink" href="#classPruneMatchesTool_1autotoc_md289" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - The location and orientation of each bounding box rectangle of a matched object in world coordinates. A 4*N-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the bounding box in world coordinates. An N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> - The class index of the matching model. An N-by-1 matrix. If this input is not connected, the <em>index</em> output will be all zeros.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - Confidence of the matched object. The higher the value, the better the match. An N-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidenceThreshold</span></code> - Minimum confidence for a bounding box to be accepted.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">overlapRatioThreshold</span></code> - If the overlap ratio (intersection over union) of two detections with the same class is greater than this value, the two detections will be merged. Set to one to disable merging.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mergeMode</span></code> - The way overlapping regions are merged.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classPruneMatchesTool_1autotoc_md290">
-<h4 id="classPruneMatchesTool_1autotoc_md290">Outputs<a class="headerlink" href="#classPruneMatchesTool_1autotoc_md290" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - Coordinate frames for the remaining detection boxes after the overlapping regions have been merged. A 4M-by-4 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the bounding box in world coordinates. An M-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> - The class index of each detection. An M-by-1 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - The confidence of each detection in descending order within each class. An M-by-1 matrix. The confidence of a region is the maximum of all the merged regions.</p></li>
-</ul>
-<p>The output rows are in descending confidence order within each class, but the classes are in arbitrary order. </p>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N16PruneMatchesTool9MergeModeE">
 <span id="_CPPv3N16PruneMatchesTool9MergeModeE"></span><span id="_CPPv2N16PruneMatchesTool9MergeModeE"></span><span class="target" id="MergeMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">MergeMode</span></code><a class="headerlink" href="#_CPPv4N16PruneMatchesTool9MergeModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -467,8 +417,6 @@ but the classes are in arbitrary order.</p>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

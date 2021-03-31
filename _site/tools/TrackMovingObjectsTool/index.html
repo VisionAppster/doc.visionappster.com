@@ -406,62 +406,6 @@ the matrix is all zeros.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">times</span></code>: An array of time stamps, one for each point in
 <em>trajectories</em>.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv422TrackMovingObjectsTool">
-<span id="_CPPv322TrackMovingObjectsTool"></span><span id="_CPPv222TrackMovingObjectsTool"></span><span id="TrackMovingObjectsTool"></span><span class="target" id="TrackMovingObjectsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TrackMovingObjectsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv422TrackMovingObjectsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTrackMovingObjectsTool_1autotoc_md442">
-<h3 id="classTrackMovingObjectsTool_1autotoc_md442">Track moving objects<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md442" title="Permalink to this headline">🔗</a></h3>
-<p>This tool takes in a set of points representing the locations of an arbitrary number of moving object at a time instant. It forms movement trajectories by connecting points in successive point sets based on a motion model. The trajectory estimates are updated each time new data comes in. The algorithm tries to find a set of trajectories that optimally describes the movement of the series of points in the used motion model.</p>
-<div class="section" id="classTrackMovingObjectsTool_1autotoc_md443">
-<h4 id="classTrackMovingObjectsTool_1autotoc_md443">Inputs<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md443" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - The coordinates of detected moving objects as a N-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classIndices</span></code> - An optional classification for each point as a N-by-1 matrix of integers. This information is not necessary, but helps if different objects can be reliably distinguished before tracking.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxStartDistance</span></code> - The maximum distance between two points in successive sets that can be considered “close enough” to start a new trajectory. This limit only applies until a movement estimate is available.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxJoiningDistance</span></code> - The maximum distance between an input point and the predicted location of an object that can still be considered a candidate for extending a trajectory.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxPredictionLength</span></code> - The maximum number of past measurements the tracker will consider in its movement estimate. A larger value makes movement estimates less noisy but also imposes some stiffness to the trajectories.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxStopTime</span></code> - The maximum number of time units a trajectory will be kept in memory if no new points can be connected to it.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> - A time stamp for the measurement. Can be either an integer representing abstract time units or a DateTime object. If this input is not connected, the tool assumes that the measurement interval is constant.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minTrajectoryLength</span></code> - The minimum number of connected points that will be reported as a trajectory.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">maxTrajectoryLength</span></code> - The maximum number of points connected to a trajectory before it is pruned and a new trajectory is started.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classTrackMovingObjectsTool_1autotoc_md444">
-<h4 id="classTrackMovingObjectsTool_1autotoc_md444">Outputs<a class="headerlink" href="#classTrackMovingObjectsTool_1autotoc_md444" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trajectories</span></code> - The current set of estimated trajectories. A N-by-2 matrix of point coordinates that contains M trajectories with a variable number of points.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The number of points in each of the trajectories stored in <em>trajectories</em>. An M-by-1 integer matrix in which the number of rows (M) corresponds to the number of detected trajectories. Values in this matrix are between <em>minTrajectoryLength</em> and <em>maxTrajectoryLength</em>, inclusive.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">classIndices</span></code> - The class index of each trajectory as an M-by-1 integer matrix. If class indices were not provided as input, the matrix is all zeros.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">times</span></code> - An array of time stamps, one for each point in <em>trajectories</em>. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -371,38 +371,6 @@ height is NAN), the histogram is computed from the whole image.</p></li>
 region-of-interest in <em>image</em> represents a matrix code
 (e.g. QR code or data matrix)</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv425MatrixcodeProbabilityTool">
-<span id="_CPPv325MatrixcodeProbabilityTool"></span><span id="_CPPv225MatrixcodeProbabilityTool"></span><span id="MatrixcodeProbabilityTool"></span><span class="target" id="MatrixcodeProbabilityTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatrixcodeProbabilityTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv425MatrixcodeProbabilityTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classMatrixcodeProbabilityTool_1autotoc_md36">
-<h3 id="classMatrixcodeProbabilityTool_1autotoc_md36">Matrix code probability<a class="headerlink" href="#classMatrixcodeProbabilityTool_1autotoc_md36" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates the probability that a matrix code is present in an image patch. For this, gray-level histogram is used.</p>
-<div class="section" id="classMatrixcodeProbabilityTool_1autotoc_md37">
-<h4 id="classMatrixcodeProbabilityTool_1autotoc_md37">Inputs<a class="headerlink" href="#classMatrixcodeProbabilityTool_1autotoc_md37" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">corner</span></code> - Pixel coordinate of the upper left corner of the region of interest. A 1-by-2 matrix.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle framing the region-of-interest. If <em>size</em> is undefined (either width or height is NAN), the histogram is computed from the whole image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filterWindow</span></code> - Window size for smoothing the histogram vector.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classMatrixcodeProbabilityTool_1autotoc_md38">
-<h4 id="classMatrixcodeProbabilityTool_1autotoc_md38">Outputs<a class="headerlink" href="#classMatrixcodeProbabilityTool_1autotoc_md38" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - The probability (0-1) that the region-of-interest in <em>image</em> represents a matrix code (e.g. QR code or data matrix) </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

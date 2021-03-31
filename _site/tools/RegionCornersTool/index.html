@@ -375,45 +375,6 @@ A 4-by-2 matrix containing all the corner coordinates (x, y)
 ordered clockwise: top left, top right, bottom right, bottom left.</p></li>
 </ul>
 <p>All the output points are two-dimensional and projected to world XY plane.</p>
-<dl class="cpp class">
-<dt id="_CPPv417RegionCornersTool">
-<span id="_CPPv317RegionCornersTool"></span><span id="_CPPv217RegionCornersTool"></span><span id="RegionCornersTool"></span><span class="target" id="RegionCornersTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">RegionCornersTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417RegionCornersTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classRegionCornersTool_1autotoc_md117">
-<h3 id="classRegionCornersTool_1autotoc_md117">Region corners<a class="headerlink" href="#classRegionCornersTool_1autotoc_md117" title="Permalink to this headline">🔗</a></h3>
-<p>Converts a region (coordinate frame and size) to a set of corner points.</p>
-<div class="section" id="classRegionCornersTool_1autotoc_md118">
-<h4 id="classRegionCornersTool_1autotoc_md118">Inputs<a class="headerlink" href="#classRegionCornersTool_1autotoc_md118" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> in the world coordinate system for the region of interest. Any 3D transformation is allowed.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the region of interest in <em>frame</em>. If <em>size</em> is undefined (either width or height is NAN), the returned coordinates are also NAN.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classRegionCornersTool_1autotoc_md119">
-<h4 id="classRegionCornersTool_1autotoc_md119">Outputs<a class="headerlink" href="#classRegionCornersTool_1autotoc_md119" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">topLeft</span></code> - Top-left corner of the region.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">topRight</span></code> - Top-right corner of the region.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bottomRight</span></code> - Bottom-right corner of the region.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bottomLeft</span></code> - Bottom-left corner of the region.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">corners</span></code> - This is a combination of the individual corner outputs. A 4-by-2 matrix containing all the corner coordinates (x, y) ordered clockwise: top left, top right, bottom right, bottom left.</p></li>
-</ul>
-<p>All the output points are two-dimensional and projected to world XY plane. </p>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

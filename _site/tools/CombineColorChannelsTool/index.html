@@ -378,39 +378,6 @@ the eight least significant bits will be used.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: A color image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv424CombineColorChannelsTool">
-<span id="_CPPv324CombineColorChannelsTool"></span><span id="_CPPv224CombineColorChannelsTool"></span><span id="CombineColorChannelsTool"></span><span class="target" id="CombineColorChannelsTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CombineColorChannelsTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv424CombineColorChannelsTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCombineColorChannelsTool_1autotoc_md165">
-<h3 id="classCombineColorChannelsTool_1autotoc_md165">Combine color channels<a class="headerlink" href="#classCombineColorChannelsTool_1autotoc_md165" title="Permalink to this headline">🔗</a></h3>
-<p>Combines separated color channels to a color image. To separate a color image to color channels, use <a class="reference internal" href="../SeparateColorChannelsTool/#SeparateColorChannelsTool"><span class="std std-ref">color separation</span></a>.</p>
-<div class="section" id="classCombineColorChannelsTool_1autotoc_md166">
-<h4 id="classCombineColorChannelsTool_1autotoc_md166">Inputs<a class="headerlink" href="#classCombineColorChannelsTool_1autotoc_md166" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel0</span></code> - The first color channel as a gray-level image. If an RGB image is being composed, this is the red color channel.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel1</span></code> - The second color channel as a gray-level image. If an RGB image is being composed, this is the green color channel.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel2</span></code> - The second color channel as a gray-level image. If an RGB image is being composed, this is the blue color channel.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel3</span></code> - The fourth color channel as a gray-level image. Usually, images only have three color channels. The fourth channel can be used for storing additional information in some applications. A typical use is to store opacity (alpha) with RGB.</p></li>
-</ul>
-<p>Unconnected color channels will be zeros in the output. All input images must be the same size. The calibration data of the first one will be copied to the output image. If input images have a depth of more than eight bits, the eight least significant bits will be used.</p>
-</p>
-</div>
-<div class="section" id="classCombineColorChannelsTool_1autotoc_md167">
-<h4 id="classCombineColorChannelsTool_1autotoc_md167">Outputs<a class="headerlink" href="#classCombineColorChannelsTool_1autotoc_md167" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A color image. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

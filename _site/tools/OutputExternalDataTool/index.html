@@ -377,32 +377,6 @@ available on a data link device. In such a case the app writer
 must ensure that the names and data types are correct. If they
 are not, a run-time error will be generated.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv422OutputExternalDataTool">
-<span id="_CPPv322OutputExternalDataTool"></span><span id="_CPPv222OutputExternalDataTool"></span><span id="OutputExternalDataTool"></span><span class="target" id="OutputExternalDataTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">OutputExternalDataTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DynamicOperation</span><span class="pre">&lt;</span><span class="pre">OutputExternalDataToolBase</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv422OutputExternalDataTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classOutputExternalDataTool_1autotoc_md80">
-<h3 id="classOutputExternalDataTool_1autotoc_md80">Output external data<a class="headerlink" href="#classOutputExternalDataTool_1autotoc_md80" title="Permalink to this headline">🔗</a></h3>
-<p>Writes data to a data link device. This tool requires a data link driver that works in master mode. It writes the values of all defined parameters to a slave device on each processing round.</p>
-<p>If the device driver supports batch writes, all defined variables will be written atomically. This is a requirement for SQL database drivers, for example (all columns of a table row are written simultaneously). Other devices, such as PLCs, don’t usually provide such features, and multiple variables need to be written sequentially.</p>
-<div class="section" id="classOutputExternalDataTool_1autotoc_md81">
-<h4 id="classOutputExternalDataTool_1autotoc_md81">Inputs<a class="headerlink" href="#classOutputExternalDataTool_1autotoc_md81" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">deviceId</span></code> - The device ID of the data link device. See <a class="reference external" href="/engine/hardware-devices#device-ids">device IDs</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">autoConfig</span></code> - A flag that enables and disables device auto-configuration. See <a class="reference external" href="/engine/hardware-devices#device-configuration">device configuration</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">parameterSet</span></code> - The name of a parameter set to apply to the selected device at start-up. See <a class="reference external" href="/engine/hardware-devices#device-configuration">device configuration</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">inputParameters</span></code> - A table that defines the rest of the input parameters. Depending on the driver, the input parameters can refer to SQL table column names, PLC tags etc. Note that not all device drivers provide a way to query the variables available on a data link device. In such a case the app writer must ensure that the names and data types are correct. If they are not, a run-time error will be generated. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

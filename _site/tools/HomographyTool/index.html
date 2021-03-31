@@ -374,36 +374,6 @@ between the input points: points2 = F points1.</p></li>
 The smaller the value, the better.
 The value is infinite if the calculation fails completely.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv414HomographyTool">
-<span id="_CPPv314HomographyTool"></span><span id="_CPPv214HomographyTool"></span><span id="HomographyTool"></span><span class="target" id="HomographyTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">HomographyTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv414HomographyTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classHomographyTool_1autotoc_md12">
-<h3 id="classHomographyTool_1autotoc_md12">Homography<a class="headerlink" href="#classHomographyTool_1autotoc_md12" title="Permalink to this headline">🔗</a></h3>
-<p>Calculates a coordinate frame which maps one set of coordinates into another. Both sets are assumed to represent the same set of planar points seen from two different angles of view. As the points lie on XY-plane, the Z-coordinates are assumed to be zero. At least 9 points are needed in both sets of points.</p>
-<p>For example, the frame can be be used as an input to <a class="reference internal" href="../ReplaceCoordinateFrameTool/#ReplaceCoordinateFrameTool"><span class="std std-ref">replace coordinate frame</span></a> that replaces the existing coordinate system of an image with a new one.</p>
-<div class="section" id="classHomographyTool_1autotoc_md13">
-<h4 id="classHomographyTool_1autotoc_md13">Inputs<a class="headerlink" href="#classHomographyTool_1autotoc_md13" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points1</span></code> - 2D coordinates of the points in the first view.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points2</span></code> - 2D coordinates of the points in the second view.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classHomographyTool_1autotoc_md14">
-<h4 id="classHomographyTool_1autotoc_md14">Outputs<a class="headerlink" href="#classHomographyTool_1autotoc_md14" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A coordinate frame F that describes the mapping between the input points: points2 = F points1.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">errorMeasure</span></code> - A measure of how accurate the mapping is. The smaller the value, the better. The value is infinite if the calculation fails completely. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

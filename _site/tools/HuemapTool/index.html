@@ -416,81 +416,7 @@ It is typically 255.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output color image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv410HuemapTool">
-<span id="_CPPv310HuemapTool"></span><span id="_CPPv210HuemapTool"></span><span id="HuemapTool"></span><span class="target" id="HuemapTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">HuemapTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv410HuemapTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classHuemapTool_1autotoc_md204">
-<h3 id="classHuemapTool_1autotoc_md204">Huemap<a class="headerlink" href="#classHuemapTool_1autotoc_md204" title="Permalink to this headline">🔗</a></h3>
-<p>Sets the chromacity of a pixel in the output image according to the intensity the corresponding pixel in the input image. The smallest possible intensity is mapped to <code class="docutils literal notranslate"><span class="pre">lowIntensityHue</span></code> and the largest possible intensity to <code class="docutils literal notranslate"><span class="pre">highIntensityHue</span></code>. Chromacity values for other intensities are determined with linear interpolation. The chromacity values are given in degrees which describe rotation on circular color plane.</p>
-<div class="section" id="classHuemapTool_1autotoc_md205">
-<h4 id="classHuemapTool_1autotoc_md205">Inputs<a class="headerlink" href="#classHuemapTool_1autotoc_md205" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lowIntensityHue</span></code> - Chromaticity value to which lowest intensity pixels are mapped. The lowest intensity is determined by <code class="docutils literal notranslate"><span class="pre">channel_min</span></code>. It is typically zero. Some examples of the mapping between degrees of rotation and colors are:</p></li>
-</ul>
-<table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Rotation   </p></th>
-<th class="head"><p>Color    </p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0 deg   </p></td>
-<td><p>Red    </p></td>
-</tr>
-</tbody>
-<tbody>
-<tr class="row-odd"><td><p>60 deg   </p></td>
-<td><p>Yellow    </p></td>
-</tr>
-</tbody>
-<tbody>
-<tr class="row-even"><td><p>120 deg   </p></td>
-<td><p>Green    </p></td>
-</tr>
-</tbody>
-<tbody>
-<tr class="row-odd"><td><p>180 deg   </p></td>
-<td><p>Cyan    </p></td>
-</tr>
-</tbody>
-<tbody>
-<tr class="row-even"><td><p>240 deg   </p></td>
-<td><p>Blue    </p></td>
-</tr>
-</tbody>
-<tbody>
-<tr class="row-odd"><td><p>300 deg   </p></td>
-<td><p>Magenta    </p></td>
-</tr>
-</tbody>
-<tbody>
-<tr class="row-even"><td><p>360 deg   </p></td>
-<td><p>Red   </p></td>
-</tr>
-</tbody>
-</table>
-</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">highIntensityHue</span></code> - Chromaticity value to which highest intensity pixels are mapped. The highest intensity is determined by <code class="docutils literal notranslate"><span class="pre">channel_max</span></code>. It is typically 255.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hueDirection</span></code> - Hue circle traversal direction.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classHuemapTool_1autotoc_md206">
-<h4 id="classHuemapTool_1autotoc_md206">Outputs<a class="headerlink" href="#classHuemapTool_1autotoc_md206" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Output color image. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N10HuemapTool12HueDirectionE">
 <span id="_CPPv3N10HuemapTool12HueDirectionE"></span><span id="_CPPv2N10HuemapTool12HueDirectionE"></span><span class="target" id="HueDirection"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">HueDirection</span></code><a class="headerlink" href="#_CPPv4N10HuemapTool12HueDirectionE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -513,8 +439,6 @@ It is typically 255.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

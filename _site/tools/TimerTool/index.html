@@ -382,35 +382,6 @@ The accuracy of the time depends on various factors including
 (but not limited to) the underlying operating system and
 system load.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv49TimerTool">
-<span id="_CPPv39TimerTool"></span><span id="_CPPv29TimerTool"></span><span id="TimerTool"></span><span class="target" id="TimerTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TimerTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv49TimerTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classTimerTool_1autotoc_md101">
-<h3 id="classTimerTool_1autotoc_md101">Timer<a class="headerlink" href="#classTimerTool_1autotoc_md101" title="Permalink to this headline">🔗</a></h3>
-<p>Produces time stamps. The timer can work either with or without a trigger signal. If the trigger is connected, a time stamp will be sent out after a user-specified delay (<em>interval</em>) whenever an object is received. If the trigger is not connected, the timer will launch either repeatedly in <em>interval</em> millisecond intervals or once at startup after <em>interval</em> milliseconds, depending on <em>mode</em>.</p>
-<div class="section" id="classTimerTool_1autotoc_md102">
-<h4 id="classTimerTool_1autotoc_md102">Inputs<a class="headerlink" href="#classTimerTool_1autotoc_md102" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - An optional trigger input. Trigger signals are not queued: a new time stamp will not be sent until the timer has fired after the previous trigger. In other words, exactly one time will be emitted for each input. If this input is connected, the user is responsible for setting <em>interval</em> to a value that is shorter than the time between successive trigger signals. Failing to do so will block successive trigger calls for at least <em>interval</em> milliseconds.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">interval</span></code> - The time-out interval in milliseconds. If the <em>trigger</em> input is connected, this value specifies the delay after which the time stamp will be generated and sent. If not, the timer will fire repeatedly every <em>interval</em> milliseconds.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - Timer mode.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classTimerTool_1autotoc_md103">
-<h4 id="classTimerTool_1autotoc_md103">Outputs<a class="headerlink" href="#classTimerTool_1autotoc_md103" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> - A DateTime object that stores the time the timer fired. The accuracy of the time depends on various factors including (but not limited to) the underlying operating system and system load. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

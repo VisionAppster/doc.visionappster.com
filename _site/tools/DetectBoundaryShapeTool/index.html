@@ -399,46 +399,33 @@ each disjoint shape. This output parameter tells how many rows
 of <em>keyPoints</em> and <em>features</em> belong to each. It can be used
 as an input to <a class="reference internal" href="../BeginIterateTool/"><span class="doc">iterate</span></a>.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv423DetectBoundaryShapeTool">
-<span id="_CPPv323DetectBoundaryShapeTool"></span><span id="_CPPv223DetectBoundaryShapeTool"></span><span id="DetectBoundaryShapeTool"></span><span class="target" id="DetectBoundaryShapeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectBoundaryShapeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiOperationCompound</span><a class="headerlink" href="#_CPPv423DetectBoundaryShapeTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classDetectBoundaryShapeTool_1autotoc_md309">
-<h3 id="classDetectBoundaryShapeTool_1autotoc_md309">Detect boundary shape<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md309" title="Permalink to this headline">🔗</a></h3>
-<p>A compound that combines <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a> and the <a class="reference internal" href="../ShapeContextTool/#ShapeContextTool"><span class="std std-ref">shape context</span></a> to an easy-to-use key point detector.</p>
-<div class="section" id="classDetectBoundaryShapeTool_1autotoc_md310">
-<h4 id="classDetectBoundaryShapeTool_1autotoc_md310">Inputs<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md310" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. Usually this is a binary or a labeled image, but the <em>threshold</em> input parameter can be used to binarize an input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">absoluteKeyPointRadius</span></code> - The absolute radius of a key point descriptor in world coordinates. This parameter will be used if <em>scaleInvariant</em> is <code class="docutils literal notranslate"><span class="pre">false</span></code>. Key point descriptors should usually be calculated from an area that is significantly smaller than the whole object to be detected.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">relativeKeyPointRadius</span></code> - The radius of a key point descriptor relative to the average distance between points in the shape. This parameter will be used if <em>scaleInvariant</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. If <em>relativeKeyPointRadius</em> is one, each key point descriptor will be calculated over an area whose radius equals the mean distance between points in the shape. Otherwise, this parameter behaves the same way as <em>absoluteKeyPointRadius</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rotationInvariant</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the key point descriptors will be aligned to local boundary direction, making the descriptor invariant against rotation. Otherwise, the descriptors will depend on the orientation of the object. A non-rotation invariant descriptor is slightly faster and more accurate. If you know the target object will not rotate, you may experience better performance by disabling this option.</p></li>
-</ul>
-<p>The </p>
-<em>threshold</em>, <em>invert</em>, <em>minBoundaryLength</em>, <em>maxBoundaryLength</em>, <em>maxBoundaries</em> and <em>maxVertices</em> parameters are aliases for the corresponding parameters in <a class="reference internal" href="../DetectBoundariesTool/#DetectBoundariesTool"><span class="std std-ref">boundary detection</span></a>.</p>
-<p>The <em>scaleInvariant</em>, <em>angleBins</em>, <em>distanceBins</em>, <em>maxSamplesPerKeyPoint</em> and <em>globalDescriptor</em> parameters are aliases for the corresponding parameters in <a class="reference internal" href="../ShapeContextTool/#ShapeContextTool"><span class="std std-ref">shape context</span></a>.</p>
-</div>
-<div class="section" id="classDetectBoundaryShapeTool_1autotoc_md311">
-<h4 id="classDetectBoundaryShapeTool_1autotoc_md311">Outputs<a class="headerlink" href="#classDetectBoundaryShapeTool_1autotoc_md311" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">keyPoints</span></code> - The coordinates of extracted key points. A N-by-2 matrix in which each row holds the world (x, y) coordinates of a key point.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">features</span></code> - A shape context feature vector for each key point. An N-by-M matrix where M depends on the parameters of the shape context descriptor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code> - The descriptor will be calculated separately for each disjoint shape. This output parameter tells how many rows of <em>keyPoints</em> and <em>features</em> belong to each. It can be used as an input to <a class="reference internal" href="../BeginIterateTool/#BeginIterateTool"><span class="std std-ref">iterate</span></a>. </p></li>
-</ul>
-</p>
-</div>
-</div>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningModeE">
+<span id="_CPPv3N23DetectBoundaryShapeTool19BoundaryJoiningModeE"></span><span id="_CPPv2N23DetectBoundaryShapeTool19BoundaryJoiningModeE"></span><span class="target" id="BoundaryJoiningMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">BoundaryJoiningMode</span></code><a class="headerlink" href="#_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningModeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Different ways of combining boundary curves to form objects. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningMode22KeepSeparateBoundariesE">
+<span id="_CPPv3N23DetectBoundaryShapeTool19BoundaryJoiningMode22KeepSeparateBoundariesE"></span><span id="_CPPv2N23DetectBoundaryShapeTool19BoundaryJoiningMode22KeepSeparateBoundariesE"></span><span class="target" id="BoundaryJoiningMode::KeepSeparateBoundaries"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">KeepSeparateBoundaries</span></code><a class="headerlink" href="#_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningMode22KeepSeparateBoundariesE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Treat each boundary curve as a separate object. </p>
 </dd></dl>
 
+<dl class="cpp enumerator">
+<dt id="_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningMode20JoinNestedBoundariesE">
+<span id="_CPPv3N23DetectBoundaryShapeTool19BoundaryJoiningMode20JoinNestedBoundariesE"></span><span id="_CPPv2N23DetectBoundaryShapeTool19BoundaryJoiningMode20JoinNestedBoundariesE"></span><span class="target" id="BoundaryJoiningMode::JoinNestedBoundaries"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">JoinNestedBoundaries</span></code><a class="headerlink" href="#_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningMode20JoinNestedBoundariesE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Treat nested but separate boundaries as a single object. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningMode17JoinAllBoundariesE">
+<span id="_CPPv3N23DetectBoundaryShapeTool19BoundaryJoiningMode17JoinAllBoundariesE"></span><span id="_CPPv2N23DetectBoundaryShapeTool19BoundaryJoiningMode17JoinAllBoundariesE"></span><span class="target" id="BoundaryJoiningMode::JoinAllBoundaries"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">JoinAllBoundaries</span></code><a class="headerlink" href="#_CPPv4N23DetectBoundaryShapeTool19BoundaryJoiningMode17JoinAllBoundariesE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Treat all detected boundaries as a single object. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 
