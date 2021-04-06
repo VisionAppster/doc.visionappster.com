@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Output external data &mdash; VisionAppster  documentation</title>
+  <title>Align images &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Pixel coordinates to world" href="../PixelCoordinatesToWorldTool/" />
-    <link rel="prev" title="Not equal" href="../NotEqualTool/" /> 
+    <link rel="next" title="Analyze blob geometry" href="../AnalyzeBlobGeometryTool/" />
+    <link rel="prev" title="Adjust points to gradient" href="../AdjustPointsToGradientTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,7 +106,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Align images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -218,10 +222,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../NegateTool/">Negate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../NormalizeMeanGrayLevelTool/">Normalize mean gray level</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../NotEqualTool/">Not equal</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Output external data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../OutputExternalDataTool/">Output external data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../PixelCoordinatesToWorldTool/">Pixel coordinates to world</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../PositionCameraTool/">Position camera</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../PositionLinescanCameraTool/">Position line-scan camera</a></li>
@@ -332,7 +333,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Output external data</li>
+      <li>Align images</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -349,35 +350,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="output-external-data">
-<h1>Output external data<a class="headerlink" href="#output-external-data" title="Permalink to this headline">🔗</a></h1>
-<p>Writes data to a data link device. This tool requires a data link
-driver that works in master mode. It writes the values of all
-defined parameters to a slave device on each processing round.</p>
-<p>If the device driver supports batch writes, all defined variables
-will be written atomically. This is a requirement for SQL database
-drivers, for example (all columns of a table row are written
-simultaneously). Other devices, such as PLCs, don’t usually provide
-such features, and multiple variables need to be written
-sequentially.</p>
+  <div class="section" id="align-images">
+<h1>Align images<a class="headerlink" href="#align-images" title="Permalink to this headline">🔗</a></h1>
+<p>Adjusts the world frame and calibration data of an image so that
+the pixels are aligned with <em>reference</em> as if this image was a
+scaled version of <em>reference</em>.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">deviceId</span></code>: The device ID of the data link device. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-ids"><span class="std std-ref">device IDs</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">autoConfig</span></code>: A flag that enables and disables device
-auto-configuration. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-configuration"><span class="std std-ref">device configuration</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">parameterSet</span></code>: The name of a parameter set to apply to the
-selected device at start-up. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-configuration"><span class="std std-ref">device configuration</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">inputParameters</span></code>: A table that defines the rest of the input
-parameters. Depending on the driver, the input parameters can
-refer to SQL table column names, PLC tags etc. Note that not
-all device drivers provide a way to query the variables
-available on a data link device. In such a case the app writer
-must ensure that the names and data types are correct. If they
-are not, a run-time error will be generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The input image whose calibration data will be
+modified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code>: The image according to which the input image will
+be aligned.</p></li>
+</ul>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Aligned image. Pixels won’t be modified.</p></li>
 </ul>
 </div>
 </div>
@@ -388,8 +378,8 @@ are not, a run-time error will be generated.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../PixelCoordinatesToWorldTool/" class="btn btn-neutral float-right" title="Pixel coordinates to world" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../NotEqualTool/" class="btn btn-neutral float-left" title="Not equal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AnalyzeBlobGeometryTool/" class="btn btn-neutral float-right" title="Analyze blob geometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../AdjustPointsToGradientTool/" class="btn btn-neutral float-left" title="Adjust points to gradient" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

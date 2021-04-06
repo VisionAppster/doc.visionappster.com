@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -371,41 +372,7 @@ the output.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output image.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv414ScaleImageTool">
-<span id="_CPPv314ScaleImageTool"></span><span id="_CPPv214ScaleImageTool"></span><span id="ScaleImageTool"></span><span class="target" id="ScaleImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ScaleImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv414ScaleImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classScaleImageTool_1autotoc_md264">
-<h3 id="classScaleImageTool_1autotoc_md264">Scale image<a class="headerlink" href="#classScaleImageTool_1autotoc_md264" title="Permalink to this headline">🔗</a></h3>
-<p>Scales an image.</p>
-<div class="section" id="classScaleImageTool_1autotoc_md265">
-<h4 id="classScaleImageTool_1autotoc_md265">Inputs<a class="headerlink" href="#classScaleImageTool_1autotoc_md265" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scalingMode</span></code> - The way the image is scaled.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scalingFactor</span></code> - A scalar scaling factor. Depending on scaling mode, either <em>scalingFactor</em> or <em>size</em> will be used.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The target size in pixels. In modes that make use of aspect ratio, the width/height ratio defines the target aspect ratio.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">backgroundColor</span></code> - The color to use for undefined pixels in the output.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classScaleImageTool_1autotoc_md266">
-<h4 id="classScaleImageTool_1autotoc_md266">Outputs<a class="headerlink" href="#classScaleImageTool_1autotoc_md266" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Output image. </p></li>
-</ul>
-</p>
-</div>
-</div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N14ScaleImageTool11ScalingModeE">
 <span id="_CPPv3N14ScaleImageTool11ScalingModeE"></span><span id="_CPPv2N14ScaleImageTool11ScalingModeE"></span><span class="target" id="ScalingMode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">ScalingMode</span></code><a class="headerlink" href="#_CPPv4N14ScaleImageTool11ScalingModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -488,8 +455,6 @@ the output.</p></li>
 </dd></dl>
 
 </div>
-</dd></dl>
-
 </div>
 </div>
 

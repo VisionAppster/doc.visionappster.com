@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -391,41 +392,6 @@ For example, “Requested-From”, “My Software”.</p></li>
 function has neither a return value nor output arguments, the tool
 will not have outputs. Otherwise, the return value or the output arguments
 are provided as outputs.</p>
-<dl class="cpp class">
-<dt id="_CPPv418RemoteFunctionTool">
-<span id="_CPPv318RemoteFunctionTool"></span><span id="_CPPv218RemoteFunctionTool"></span><span id="RemoteFunctionTool"></span><span class="target" id="RemoteFunctionTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">RemoteFunctionTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">DynamicOperation</span><span class="pre">&lt;</span><span class="pre">RemoteFunctionToolBase</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv418RemoteFunctionTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classRemoteFunctionTool_1autotoc_md88">
-<h3 id="classRemoteFunctionTool_1autotoc_md88">Remote function<a class="headerlink" href="#classRemoteFunctionTool_1autotoc_md88" title="Permalink to this headline">🔗</a></h3>
-<p>Passes the input values to an external API function and outputs the possible return values. The function can be any API end-point that conforms to the VisionAppster RPC protocol specification. Usually, it is either a single published input of a tool (no outputs) or a tool function (any number of outputs).</p>
-<div class="section" id="classRemoteFunctionTool_1autotoc_md89">
-<h4 id="classRemoteFunctionTool_1autotoc_md89">Inputs<a class="headerlink" href="#classRemoteFunctionTool_1autotoc_md89" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">functionId</span></code> - Either a full URI of the remote API function to call or a published API function identifier in the locally running engine. A remote function URI can be e.g.</p></li>
-</ul>
-<p>”http://111.222.333.444:2015/manager/startOnce” or “http://111.222.333.444:2015/apis/my.remote.component/1/callMe”</p>
-</p>
-<p>A locally published API function identifier can be e.g.</p>
-<p>“my.local.component/1/callMe”</p>
-<p>The “functions/” part before the API function name is optional in both cases.</p>
-<p>The dynamic inputs and outputs of the tool depend on the input arguments and output values of the function.</p>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">authenticationScheme</span></code> - Server’s authentication scheme. If authentication is used, a HTTPS server connection is always used regardless of the scheme in the given URI.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">authorizationToken</span></code> - A token sent to the server in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header. If Bearer authentication is used, the value will be sent as such. This is the standard authentication method for APIs running in the VisionAppster Cloud. If the server uses Basic authentication, the token consists of the user’s credentials: username and password separated by a colon. For example: “john.doe:secret”. The credentials will be encoded as base64 before sending to the server.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">headers</span></code> - Custom HTTP headers sent to the server, one per row. For example, “Requested-From”, “My Software”.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classRemoteFunctionTool_1autotoc_md90">
-<h4 id="classRemoteFunctionTool_1autotoc_md90">Outputs<a class="headerlink" href="#classRemoteFunctionTool_1autotoc_md90" title="Permalink to this headline">🔗</a></h4>
-<p>The outputs of the tool depend on the remote function. If the function has neither a return value nor output arguments, the tool will not have outputs. Otherwise, the return value or the output arguments are provided as outputs. </p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 
