@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -383,59 +384,6 @@ file names.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fileNames</span></code>: An array of file names matching the criteria.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417ListDirectoryTool">
-<span id="_CPPv317ListDirectoryTool"></span><span id="_CPPv217ListDirectoryTool"></span><span id="ListDirectoryTool"></span><span class="target" id="ListDirectoryTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ListDirectoryTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417ListDirectoryTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classListDirectoryTool_1autotoc_md80">
-<h3 id="classListDirectoryTool_1autotoc_md80">List directory<a class="headerlink" href="#classListDirectoryTool_1autotoc_md80" title="Permalink to this headline">🔗</a></h3>
-<p>Lists files in a directory.</p>
-<div class="section" id="classListDirectoryTool_1autotoc_md81">
-<h4 id="classListDirectoryTool_1autotoc_md81">Inputs<a class="headerlink" href="#classListDirectoryTool_1autotoc_md81" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> - The path to the directory to list.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">glob</span></code> - A glob to match file names against. For example, “*.png”. If left empty, every file will match.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">regex</span></code> - A regular expression to match file names against. For example, “.(jpg|png)$”. If left empty, every file will match.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code> - Enables or disables listing of ordinary files.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">directories</span></code> - Enables or disables listing of directories. “.” and “..” will never be included.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">symbolicLinks</span></code> - Enables or disables listing of symbolic links.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">resolveLinks</span></code> - If enabled, symbolic links are resolved. The link name will be included in the output only if it points to a valid file or directory and the resolved file/directory matches the rest of the selection criteria. Note that <em>pattern</em> is applied to the name of the link, not its target. If <em>resolveLinks</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the output file names will contain an absolute path irrespective of the value of <em>includePath</em>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">readable</span></code> - If enabled, the selected files must be readable.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">writable</span></code> - If enabled, the selected files must be writable.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">executable</span></code> - If enabled, the selected files must be executable.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">includePath</span></code> - If enabled, <em>path</em> will be prepended to output file names.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classListDirectoryTool_1autotoc_md82">
-<h4 id="classListDirectoryTool_1autotoc_md82">Outputs<a class="headerlink" href="#classListDirectoryTool_1autotoc_md82" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fileNames</span></code> - An array of file names matching the criteria. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

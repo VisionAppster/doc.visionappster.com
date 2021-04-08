@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -375,33 +376,6 @@ tensor or matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A matrix or a tensor of the same type as the input.
 If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv417CollapseArrayTool">
-<span id="_CPPv317CollapseArrayTool"></span><span id="_CPPv217CollapseArrayTool"></span><span id="CollapseArrayTool"></span><span class="target" id="CollapseArrayTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CollapseArrayTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv417CollapseArrayTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCollapseArrayTool_1autotoc_md355">
-<h3 id="classCollapseArrayTool_1autotoc_md355">Collapse array<a class="headerlink" href="#classCollapseArrayTool_1autotoc_md355" title="Permalink to this headline">🔗</a></h3>
-<p>Base class for tools which collapse a dimension from matrices and tensors.</p>
-<div class="section" id="classCollapseArrayTool_1autotoc_md356">
-<h4 id="classCollapseArrayTool_1autotoc_md356">Inputs<a class="headerlink" href="#classCollapseArrayTool_1autotoc_md356" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> - A matrix or a tensor.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code> - Specifies the dimension along which the array or tensor will be collapsed. Setting <em>dimension</em> = -1 collapses everything into a scalar value. For matrices, dimension 0 is rows (output will be 1-by-N) and 1 is columns (output will be N-by-1). For tensors, the specified dimension will be collapsed. For example, if the input is a 1Ã—2Ã—3Ã—4 tensor and <em>dimension</em> is 1, the output will be a 1Ã—3Ã—4 tensor. If <em>dimension</em> is greater or equal to the number of dimensions in the input tensor or matrix, the output will be an empty tensor or matrix.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCollapseArrayTool_1autotoc_md357">
-<h4 id="classCollapseArrayTool_1autotoc_md357">Outputs<a class="headerlink" href="#classCollapseArrayTool_1autotoc_md357" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code> - A matrix or a tensor of the same type as the input. If <em>dimension</em> is -1, the output will be a scalar value. </p></li>
-</ul>
-</p>
-</div>
-</div>
-<p>Subclassed by MaxTool, MeanTool, MinTool, ProductTool, StdTool, SumTool, VarianceTool</p>
-</dd></dl>
-
 </div>
 </div>
 

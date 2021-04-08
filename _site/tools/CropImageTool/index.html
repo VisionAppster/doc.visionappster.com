@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -381,36 +382,6 @@ for the rectangle in the world coordinate system.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: A cropped output image. This will be a sub-image
 reference to the input image, if possible.</p></li>
 </ul>
-<dl class="cpp class">
-<dt id="_CPPv413CropImageTool">
-<span id="_CPPv313CropImageTool"></span><span id="_CPPv213CropImageTool"></span><span id="CropImageTool"></span><span class="target" id="CropImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CropImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv413CropImageTool" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><div class="section" id="classCropImageTool_1autotoc_md180">
-<h3 id="classCropImageTool_1autotoc_md180">Crop image<a class="headerlink" href="#classCropImageTool_1autotoc_md180" title="Permalink to this headline">🔗</a></h3>
-<p>Quickly extracts a rectangular portion of an image. The tool is configured with an arbitrary coordinate frame and a size in world coordinates. It calculates the axis-aligned bounding box for the area in the input image’s pixel coordinates and outputs an image that is a sub-image reference to the input image pixels, if possible. If the specified area is not fully covered by the input image, parts (or all) of the output will be left black.</p>
-<p>The difference between cropping and <a class="reference internal" href="../ProjectToVirtualViewTool/#ProjectToVirtualViewTool"><span class="std std-ref">virtual view</span></a> is that this tool never applies any transformations to the input pixels. The orientation and scale of the output will be the same as that of the input.</p>
-<div class="section" id="classCropImageTool_1autotoc_md181">
-<h4 id="classCropImageTool_1autotoc_md181">Inputs<a class="headerlink" href="#classCropImageTool_1autotoc_md181" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle to be cropped in world coordinates. Note that a 0-by-0 size produces a one-pixel image. The actual size of the output image varies depending on <em>frame</em>. If <em>size</em> is undefined (either width or height is NAN), the whole image is passed through without cropping.</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> - A <a class="reference external" href="/engine/world-coordinates#coordinate-frames">coordinate frame</a> for the rectangle in the world coordinate system.</p></li>
-</ul>
-</p>
-</div>
-<div class="section" id="classCropImageTool_1autotoc_md182">
-<h4 id="classCropImageTool_1autotoc_md182">Outputs<a class="headerlink" href="#classCropImageTool_1autotoc_md182" title="Permalink to this headline">🔗</a></h4>
-<p><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - A cropped output image. This will be a sub-image reference to the input image, if possible. </p></li>
-</ul>
-</p>
-</div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 

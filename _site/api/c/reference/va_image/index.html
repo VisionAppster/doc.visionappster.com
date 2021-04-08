@@ -215,7 +215,7 @@
 <p>The image structure describes the format of the image and contains a pointer to the start of image data. Images are always stored in row-major order: the <em>data</em> pointer points to the upper left pixel, <em>data</em> + 1 to the pixel to the right of it and <em>data</em> + <em>stride</em> to the beginning of the row below the first one.</p>
 <p>The image structure always contains calibration data and a coordinate frame that can be used to map the image to the physical world. This makes it possible to always make measurements in world units (e.g. millimeters) and to easily relate images to each other without using side channels to pass location information. For example, the exact location of a subimage within the original is always known because both images know their location with respect to the world. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Members</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt id="_CPPv4N8va_image4typeE">
 <span id="_CPPv3N8va_image4typeE"></span><span id="_CPPv2N8va_image4typeE"></span><span id="va_image::type__va_image_type"></span><span class="target" id="va_image.type"></span><a class="reference internal" href="#_CPPv413va_image_type" title="va_image_type"><span class="pre">va_image_type</span></a> <code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#_CPPv4N8va_image4typeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -312,7 +312,7 @@
 </dd></dl>
 
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Defines</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
 <dt id="c.VA_IMAGE_ROW_ALIGN">
 <span class="target" id="VA_IMAGE_ROW_ALIGN"></span><code class="sig-name descname"><span class="pre">VA_IMAGE_ROW_ALIGN</span></code><a class="headerlink" href="#c.VA_IMAGE_ROW_ALIGN" title="Permalink to this definition">🔗</a><br /></dt>
@@ -336,7 +336,7 @@
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
 <dt>
 <span class="target" id="va_image"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <code class="sig-name descname"><span class="pre">va_image</span></code><br /></dt>
@@ -347,7 +347,7 @@
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Enums</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
 <dt id="_CPPv413va_image_type">
 <span id="_CPPv313va_image_type"></span><span id="_CPPv213va_image_type"></span><span class="target" id="va_image_type"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_image_type</span></code><a class="headerlink" href="#_CPPv413va_image_type" title="Permalink to this definition">🔗</a><br /></dt>
@@ -819,7 +819,7 @@
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Functions</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv420va_image_alloc_emptyv">
 <span id="_CPPv320va_image_alloc_emptyv"></span><span id="_CPPv220va_image_alloc_emptyv"></span><span id="va_image_alloc_empty"></span><span class="target" id="va_image_alloc_empty"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_image_alloc_emptyv" title="Permalink to this definition">🔗</a><br /></dt>
