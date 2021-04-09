@@ -141,6 +141,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ConvertTypeTool/">Convert type</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CorrectGammaTool/">Correct gamma</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CountTool/">Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
@@ -192,7 +193,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -389,6 +389,15 @@ interval is constant.</p></li>
 that will be reported as a trajectory.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">maxTrajectoryLength</span></code>: The maximum number of points connected to
 a trajectory before it is pruned and a new trajectory is started.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pointSnapDistance</span></code>: Minimum distance between any two points
+withing the same class.
+The set of input <em>points</em> are filtered so that the distance
+between any two points within the same class is at least
+<em>pointSnapDistance</em>. If <em>classIndices</em> input is not connected,
+every input point is assumed to belong to the same class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimation</span></code>: The tracked points are decimated by
+averaging <em>decimation</em> consecutive points before writing
+them to <em>trajectories</em> output. 1 means decimation is not used.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
@@ -407,6 +416,12 @@ integer matrix. If class indices were not provided as input,
 the matrix is all zeros.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">times</span></code>: An array of time stamps, one for each point in
 <em>trajectories</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifiers</span></code>: A (temporarily) unique identifier for each
+trajectory. An M-by-1 integer matrix containing an
+auto-generated unique ID for each trajectory. The ID lets one
+to associate trajectories even if their order and points
+change. Note that the ID is not suitable for long-term
+identification of trajectories as it rolls over after a while.</p></li>
 </ul>
 </div>
 </div>

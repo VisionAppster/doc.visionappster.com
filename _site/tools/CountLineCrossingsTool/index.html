@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>List directory &mdash; VisionAppster  documentation</title>
+  <title>Count line crossings &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Local binary patterns transform" href="../LbpTransformTool/" />
-    <link rel="prev" title="Linear filter" href="../LinearFilterTool/" /> 
+    <link rel="next" title="Crop image" href="../CropImageTool/" />
+    <link rel="prev" title="Count" href="../CountTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -141,6 +141,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../ConvertTypeTool/">Convert type</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CorrectGammaTool/">Correct gamma</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CountTool/">Count</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Count line crossings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
@@ -192,11 +197,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">List directory</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -333,7 +333,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>List directory</li>
+      <li>Count line crossings</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -350,39 +350,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="list-directory">
-<h1>List directory<a class="headerlink" href="#list-directory" title="Permalink to this headline">🔗</a></h1>
-<p>Lists files in a directory.</p>
+  <div class="section" id="count-line-crossings">
+<h1>Count line crossings<a class="headerlink" href="#count-line-crossings" title="Permalink to this headline">🔗</a></h1>
+<p>Counts the number of times a trajectory or a set of trajectories
+crosses a line segment. The tool considers only the end of a
+trajectory; a crossing will be counted only if the last point
+of a trajectory is the first one on that side of the detection
+line.</p>
+<p>The tool makes a distinction between positive and negative crossing
+direction. If you think of the line segment as the X axis of a
+right-handed coordinate system, positive and negative directions
+are defined by the direction of the Y axis. That is, if the line
+segment points up, positive direction is to the right.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: The path to the directory to list.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">glob</span></code>: A glob to match file names against. For example, “<a href="#id1"><span class="problematic" id="id2">*</span></a>.png”.
-If left empty, every file will match.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">regex</span></code>: A regular expression to match file names against. For
-example, “.(jpg|png)$”. If left empty, every file will match.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code>: Enables or disables listing of ordinary files.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">directories</span></code>: Enables or disables listing of directories. “.”
-and “..” will never be included.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">symbolicLinks</span></code>: Enables or disables listing of symbolic links.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">resolveLinks</span></code>: If enabled, symbolic links are resolved. The
-link name will be included in the output only if it points to a
-valid file or directory and the resolved file/directory matches
-the rest of the selection criteria. Note that <em>pattern</em> is
-applied to the name of the link, not its target.
-If <em>resolveLinks</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the output file names will contain
-an absolute path irrespective of the value of <em>includePath</em>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">readable</span></code>: If enabled, the selected files must be readable.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">writable</span></code>: If enabled, the selected files must be writable.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">executable</span></code>: If enabled, the selected files must be executable.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">includePath</span></code>: If enabled, <em>path</em> will be prepended to output
-file names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trajectories</span></code>: A trajectory or a set of trajectories
+represented as an N-by-2 matrix. If there is only one
+trajectory, both outputs will be either 0 or 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code>: If the input contains multiple trajectories, this
+matrix stores the number of points in each.
+An M-by-1 integer matrix in which the number of rows (M)
+corresponds to the number of detected trajectories.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifiers</span></code>: A (temporarily) unique identifier for each
+trajectory. An M-by-1 integer matrix containing an
+auto-generated unique ID for each trajectory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code>: The location of the start of a line segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code>: The location of the end of a line segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>: The width of the detection line. A non-zero <em>width</em> can
+be used as a hysteresis: a crossing will be detected only if a
+trajectory crosses two lines that are <em>width</em> units apart.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fileNames</span></code>: An array of file names matching the criteria.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">positiveCrossings</span></code>: The number of crossings to the positive
+direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">positiveIdentifiers</span></code>: Identifiers of those trajectories which
+made a positive crossing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">negativeCrossings</span></code>: The number of crossings to the negative
+direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">negativeIdentifiers</span></code>: Identifiers of those trajectories which
+made a negative crossing.</p></li>
 </ul>
 </div>
 </div>
@@ -393,8 +403,8 @@ file names.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../LbpTransformTool/" class="btn btn-neutral float-right" title="Local binary patterns transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../LinearFilterTool/" class="btn btn-neutral float-left" title="Linear filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../CropImageTool/" class="btn btn-neutral float-right" title="Crop image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../CountTool/" class="btn btn-neutral float-left" title="Count" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
