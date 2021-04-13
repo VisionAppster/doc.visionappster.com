@@ -196,6 +196,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -397,10 +398,11 @@ value of the <em>outputType</em> parameter and on the corresponding
 <em>element</em> input: if <em>outputType</em> is <code class="docutils literal notranslate"><span class="pre">Matrix</span></code>, the output will
 be either an integer matrix or a real matrix depending on the
 type of the first element received. If <em>outputType</em> is
-<code class="docutils literal notranslate"><span class="pre">Table</span></code>, the output will always be a table. If no elements
-were received during an iteration, either an empty integer
-matrix or an empty table will be sent depending on
-<em>outputType</em>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">Table</span></code> or <code class="docutils literal notranslate"><span class="pre">Array</span></code>, the output will always be a table or
+an array, respectively. If no elements
+were received during an iteration, an empty integer
+matrix, an empty table or an empty array will be sent
+depending on <em>outputType</em>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">blockSizeX</span></code>: A matrix that specifies the number of rows each
 input element occupies in the output matrix/table. This is
 useful if the input elements have a variable number of rows.</p></li>
@@ -431,9 +433,21 @@ useful if the input elements have a variable number of rows.</p></li>
 </dd></dl>
 
 <dl class="cpp enumerator">
+<dt id="_CPPv4N14EndIterateTool10OutputType13ComplexMatrixE">
+<span id="_CPPv3N14EndIterateTool10OutputType13ComplexMatrixE"></span><span id="_CPPv2N14EndIterateTool10OutputType13ComplexMatrixE"></span><span class="target" id="OutputType::ComplexMatrix"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">ComplexMatrix</span></code><a class="headerlink" href="#_CPPv4N14EndIterateTool10OutputType13ComplexMatrixE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Output will be a complex-valued matrix. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
 <dt id="_CPPv4N14EndIterateTool10OutputType5TableE">
 <span id="_CPPv3N14EndIterateTool10OutputType5TableE"></span><span id="_CPPv2N14EndIterateTool10OutputType5TableE"></span><span class="target" id="OutputType::Table"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Table</span></code><a class="headerlink" href="#_CPPv4N14EndIterateTool10OutputType5TableE" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Output will be a VariantTable. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N14EndIterateTool10OutputType5ArrayE">
+<span id="_CPPv3N14EndIterateTool10OutputType5ArrayE"></span><span id="_CPPv2N14EndIterateTool10OutputType5ArrayE"></span><span class="target" id="OutputType::Array"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Array</span></code><a class="headerlink" href="#_CPPv4N14EndIterateTool10OutputType5ArrayE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Output will be an Array. </p>
 </dd></dl>
 
 </dd></dl>

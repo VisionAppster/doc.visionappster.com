@@ -196,6 +196,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -353,7 +354,7 @@
 <h1>Begin iterate<a class="headerlink" href="#begin-iterate" title="Permalink to this headline">🔗</a></h1>
 <p>A starting point for a part of a processing graph that needs to be
 repeated multiple times with different parameters. This tool takes
-in a matrix or a table that it splits into smaller blocks,
+in a matrix, a table or an array that it splits into smaller blocks,
 producing a variable number of outputs depending on the size of the
 input.</p>
 <p>A typical use case for iteration is to repeat the same analysis
@@ -385,7 +386,8 @@ analysis.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">iterableX</span></code>: A matrix or table to be split into smaller pieces.
+<li><p><code class="docutils literal notranslate"><span class="pre">iterableX</span></code>: A matrix, a table or an array to be split
+into smaller pieces.
 X ranges from 0 to <em>dynamicInputCount</em> - 1.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">blockSize</span></code>: The number of rows in each output block. If this
 parameter is not connected, its value will be used as a fixed
@@ -399,7 +401,9 @@ to automatically deduce a suitable block size based on
 connected inputs.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">column</span></code>: Setting <em>column</em> to a non-negative value makes the
 tool to send the matrix/table element on the specified column
-(zero-based index) instead of the whole row.</p></li>
+(zero-based index) instead of the whole row.
+An array is a one dimensional object so <em>column</em> cannot be
+greater than zero.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">

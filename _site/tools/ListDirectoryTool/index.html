@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Variance &mdash; VisionAppster  documentation</title>
+  <title>List directory &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Vector to image" href="../VectorToImageTool/" />
-    <link rel="prev" title="Unary function" href="../UnaryFunctionTool/" /> 
+    <link rel="next" title="Local binary patterns transform" href="../LbpTransformTool/" />
+    <link rel="prev" title="Linear filter" href="../LinearFilterTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -192,7 +192,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">List directory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -266,11 +270,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../TranslateAndRotateFrameTool/">Translate and rotate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TransposeMatrixTool/">Transpose matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../UnaryFunctionTool/">Unary function</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Variance</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../VarianceTool/">Variance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../VectorToImageTool/">Vector to image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WorldCoordinatesToPixelsTool/">World coordinates to pixels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WriteDigitalOutputTool/">Write digital output</a></li>
@@ -333,7 +333,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Variance</li>
+      <li>List directory</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -350,32 +350,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="variance">
-<h1>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">🔗</a></h1>
-<p>Calculates the variance of the elements of a matrix or a
-tensor.</p>
+  <div class="section" id="list-directory">
+<h1>List directory<a class="headerlink" href="#list-directory" title="Permalink to this headline">🔗</a></h1>
+<p>Lists files in a directory.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: A matrix or a tensor.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code>: Specifies the dimension along which the variance will
-be calculated. -1 means variance of all elements. For matrices,
-dimension 0 is rows (output will be 1-by-N) and 1 is columns
-(output will be N-by-1). For tensors, the specified dimension
-will be collapsed. For example, if the input is a 1×2×3×4
-tensor and <em>dimension</em> is 1, the output will be a 1×3×4 tensor.
-If the size of the specified dimension is one,
-the variance will be zero.
-If <em>dimension</em> is greater or equal to the number of dimensions
-in the input tensor or matrix, the output will be an empty
-tensor or matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: The path to the directory to list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">glob</span></code>: A glob to match file names against. For example, “<a href="#id1"><span class="problematic" id="id2">*</span></a>.png”.
+If left empty, every file will match.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regex</span></code>: A regular expression to match file names against. For
+example, “.(jpg|png)$”. If left empty, every file will match.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code>: Enables or disables listing of ordinary files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directories</span></code>: Enables or disables listing of directories. “.”
+and “..” will never be included.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">symbolicLinks</span></code>: Enables or disables listing of symbolic links.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resolveLinks</span></code>: If enabled, symbolic links are resolved. The
+link name will be included in the output only if it points to a
+valid file or directory and the resolved file/directory matches
+the rest of the selection criteria. Note that <em>pattern</em> is
+applied to the name of the link, not its target.
+If <em>resolveLinks</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the output file names will contain
+an absolute path irrespective of the value of <em>includePath</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readable</span></code>: If enabled, the selected files must be readable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writable</span></code>: If enabled, the selected files must be writable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">executable</span></code>: If enabled, the selected files must be executable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">includePath</span></code>: If enabled, <em>path</em> will be prepended to output
+file names.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A double matrix or double tensor.
-If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fileNames</span></code>: An array of file names matching the criteria.</p></li>
 </ul>
 </div>
 </div>
@@ -386,8 +393,8 @@ If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../VectorToImageTool/" class="btn btn-neutral float-right" title="Vector to image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../UnaryFunctionTool/" class="btn btn-neutral float-left" title="Unary function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../LbpTransformTool/" class="btn btn-neutral float-right" title="Local binary patterns transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../LinearFilterTool/" class="btn btn-neutral float-left" title="Linear filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
