@@ -372,13 +372,15 @@ values on this column.</p></li>
 commonly used in programming is identical to “en_US”. An empty
 value means the locale will be automatically chosen based on
 the settings of the user’s operating system.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">numeric</span></code>: If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the string sorting algorithm will place
-“99” before “100”. Otherwise, numbers are treated as
-characters.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ignorePunctuation</span></code>: If <code class="docutils literal notranslate"><span class="pre">true</span></code>, punctuation characters and
 symbols are ignored when determining sort order. Otherwise,
 they are treated as sortable characters. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the
 behavior depends on locale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">caseSensitive</span></code>: If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the string sorting algorithm
+is case sensitive. Otherwise, the case is ignored.
+Notice that case is used only for breaking the tie
+between otherwise identical strings.
+For example, “abc” &lt; “ABC” but “ABC0” &lt; “abc1”.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
@@ -411,12 +413,14 @@ ignored.</p></li>
 <dl class="cpp enumerator">
 <dt id="_CPPv4N12SortRowsTool5Order9AscendingE">
 <span id="_CPPv3N12SortRowsTool5Order9AscendingE"></span><span id="_CPPv2N12SortRowsTool5Order9AscendingE"></span><span class="target" id="Order::Ascending"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Ascending</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool5Order9AscendingE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Sort in ascending order. </p>
+</dd></dl>
 
 <dl class="cpp enumerator">
 <dt id="_CPPv4N12SortRowsTool5Order10DescendingE">
 <span id="_CPPv3N12SortRowsTool5Order10DescendingE"></span><span id="_CPPv2N12SortRowsTool5Order10DescendingE"></span><span class="target" id="Order::Descending"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Descending</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool5Order10DescendingE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Sort in descending order. </p>
+</dd></dl>
 
 </dd></dl>
 
@@ -428,12 +432,16 @@ ignored.</p></li>
 <dl class="cpp enumerator">
 <dt id="_CPPv4N12SortRowsTool9Algorithm11NumericSortE">
 <span id="_CPPv3N12SortRowsTool9Algorithm11NumericSortE"></span><span id="_CPPv2N12SortRowsTool9Algorithm11NumericSortE"></span><span class="target" id="Algorithm::NumericSort"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">NumericSort</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool9Algorithm11NumericSortE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Input values are converted to numbers before sorting. </p>
+<p>If an input value is a string which can not be converted to a number, the value is treated as if it was zero. </p>
+</dd></dl>
 
 <dl class="cpp enumerator">
 <dt id="_CPPv4N12SortRowsTool9Algorithm10StringSortE">
 <span id="_CPPv3N12SortRowsTool9Algorithm10StringSortE"></span><span id="_CPPv2N12SortRowsTool9Algorithm10StringSortE"></span><span class="target" id="Algorithm::StringSort"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">StringSort</span></code><a class="headerlink" href="#_CPPv4N12SortRowsTool9Algorithm10StringSortE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Input values are converted to strings before sorting and string ordering rules are applied. </p>
+<p>For example, “100” is less than “99”. </p>
+</dd></dl>
 
 </dd></dl>
 
