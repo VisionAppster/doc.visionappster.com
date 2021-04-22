@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -365,7 +363,32 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Flipped image.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv413FlipImageTool">
+<span id="_CPPv313FlipImageTool"></span><span id="_CPPv213FlipImageTool"></span><span id="FlipImageTool"></span><span class="target" id="FlipImageTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FlipImageTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv413FlipImageTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classFlipImageTool_1autotoc_md192">
+<h3>Flip image<a class="headerlink" href="#classFlipImageTool_1autotoc_md192" title="Permalink to this headline">🔗</a></h3>
+<p id="classFlipImageTool_1autotoc_md192">Flips an image horizontally and/or vertically.</p>
+<div class="section" id="classFlipImageTool_1autotoc_md193">
+<h4>Inputs<a class="headerlink" href="#classFlipImageTool_1autotoc_md193" title="Permalink to this headline">🔗</a></h4>
+<p id="classFlipImageTool_1autotoc_md193"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - The input image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flipDirection</span></code> - Flip direction.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classFlipImageTool_1autotoc_md194">
+<h4>Outputs<a class="headerlink" href="#classFlipImageTool_1autotoc_md194" title="Permalink to this headline">🔗</a></h4>
+<p id="classFlipImageTool_1autotoc_md194"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Flipped image. </p></li>
+</ul>
+</p>
+</div>
+</div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N13FlipImageTool13FlipDirectionE">
 <span id="_CPPv3N13FlipImageTool13FlipDirectionE"></span><span id="_CPPv2N13FlipImageTool13FlipDirectionE"></span><span class="target" id="FlipDirection"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">FlipDirection</span></code><a class="headerlink" href="#_CPPv4N13FlipImageTool13FlipDirectionE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -392,6 +415,8 @@
 </dd></dl>
 
 </div>
+</dd></dl>
+
 </div>
 </div>
 

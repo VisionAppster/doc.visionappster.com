@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -373,7 +371,38 @@ matrix, where N is the number of key points and K is the
 length of the histogram, which depends on the maximum possible
 (not actual) value in the input image.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv421KeypointHistogramTool">
+<span id="_CPPv321KeypointHistogramTool"></span><span id="_CPPv221KeypointHistogramTool"></span><span id="KeypointHistogramTool"></span><span class="target" id="KeypointHistogramTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">KeypointHistogramTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv421KeypointHistogramTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classKeypointHistogramTool_1autotoc_md318">
+<h3>Keypoint histogram<a class="headerlink" href="#classKeypointHistogramTool_1autotoc_md318" title="Permalink to this headline">🔗</a></h3>
+<p id="classKeypointHistogramTool_1autotoc_md318">Calculates the gray-level histogram around a set of key points.</p>
+<div class="section" id="classKeypointHistogramTool_1autotoc_md319">
+<h4>Inputs<a class="headerlink" href="#classKeypointHistogramTool_1autotoc_md319" title="Permalink to this headline">🔗</a></h4>
+<p id="classKeypointHistogramTool_1autotoc_md319"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. If a color image is received, its intensity will be used.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code> - Points of interest in world coordinates. An N-by-2 or N-by-3 matrix.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code> - Radius of the region-of-interest (ROI) around each key point on which the histogram is calculated, in pixels.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> - The shape of the ROI around each key point.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classKeypointHistogramTool_1autotoc_md320">
+<h4>Outputs<a class="headerlink" href="#classKeypointHistogramTool_1autotoc_md320" title="Permalink to this headline">🔗</a></h4>
+<p id="classKeypointHistogramTool_1autotoc_md320"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">histogram</span></code> - a histogram for each key point. An N-by-K integer matrix, where N is the number of key points and K is the length of the histogram, which depends on the maximum possible (not actual) value in the input image. </p></li>
+</ul>
+</p>
+</div>
+</div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N21KeypointHistogramTool5ShapeE">
 <span id="_CPPv3N21KeypointHistogramTool5ShapeE"></span><span id="_CPPv2N21KeypointHistogramTool5ShapeE"></span><span class="target" id="Shape"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Shape</span></code><a class="headerlink" href="#_CPPv4N21KeypointHistogramTool5ShapeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -394,6 +423,8 @@ length of the histogram, which depends on the maximum possible
 </dd></dl>
 
 </div>
+</dd></dl>
+
 </div>
 </div>
 

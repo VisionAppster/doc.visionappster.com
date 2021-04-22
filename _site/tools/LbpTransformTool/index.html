@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
     <link rel="next" title="Logical AND" href="../LogicalAndTool/" />
-    <link rel="prev" title="List directory" href="../ListDirectoryTool/" /> 
+    <link rel="prev" title="Linear filter" href="../LinearFilterTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -192,7 +191,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Local binary patterns transform</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
@@ -383,7 +381,44 @@ code for these pixels would be undefined. The maximum value of
 the output image and hence the number of bits per pixels
 depends on <em>samples</em> and <em>mode</em>.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv416LbpTransformTool">
+<span id="_CPPv316LbpTransformTool"></span><span id="_CPPv216LbpTransformTool"></span><span id="LbpTransformTool"></span><span class="target" id="LbpTransformTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">LbpTransformTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416LbpTransformTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classLbpTransformTool_1autotoc_md219">
+<h3>Local binary patterns transform<a class="headerlink" href="#classLbpTransformTool_1autotoc_md219" title="Permalink to this headline">🔗</a></h3>
+<p id="classLbpTransformTool_1autotoc_md219">Converts each pixel of an input image to a local binary pattern (LBP) code. The special case of eight samples with a radius of one is also known as the census transform.</p>
+<div class="section" id="classLbpTransformTool_1autotoc_md220">
+<h4>Inputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md220" title="Permalink to this headline">🔗</a></h4>
+<p id="classLbpTransformTool_1autotoc_md220"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image. If a color image is input, its intensity will be used.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interpolation</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, improve accuracy by calculating the intensity of neighborhood samples in sub-pixel accuracy. If <code class="docutils literal notranslate"><span class="pre">false</span></code>, round pixel coordinates to the nearest integer. Notice that interpolation is a significantly slower operation than rounding.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">samples</span></code> - The number of neighborhood samples.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code> - The radius of a local neighborhood, in pixels.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">noiseThreshold</span></code> - A local threshold for cancelling out noise. Bits in the local pattern will turn one only if their intensity difference to the center of the pattern exceeds the threshold.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - The mode of operation.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classLbpTransformTool_1autotoc_md221">
+<h4>Outputs<a class="headerlink" href="#classLbpTransformTool_1autotoc_md221" title="Permalink to this headline">🔗</a></h4>
+<p id="classLbpTransformTool_1autotoc_md221"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Transformed, gray-level image. The binary value of the intensity of a pixel represents an LBP code. The output image lacks a border of <em>radius</em> pixels on all sides because the LBP code for these pixels would be undefined. The maximum value of the output image and hence the number of bits per pixels depends on <em>samples</em> and <em>mode</em>. </p></li>
+</ul>
+</p>
+</div>
+</div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N16LbpTransformTool4ModeE">
 <span id="_CPPv3N16LbpTransformTool4ModeE"></span><span id="_CPPv2N16LbpTransformTool4ModeE"></span><span class="target" id="Mode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Mode</span></code><a class="headerlink" href="#_CPPv4N16LbpTransformTool4ModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -426,6 +461,8 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
 </dd></dl>
 
 </div>
+</dd></dl>
+
 </div>
 </div>
 
@@ -436,7 +473,7 @@ depends on <em>samples</em> and <em>mode</em>.</p></li>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../LogicalAndTool/" class="btn btn-neutral float-right" title="Logical AND" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../ListDirectoryTool/" class="btn btn-neutral float-left" title="List directory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../LinearFilterTool/" class="btn btn-neutral float-left" title="Linear filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
