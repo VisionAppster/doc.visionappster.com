@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -192,7 +191,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -373,6 +371,32 @@ grid corner points in pixel coordinates. A 1-by-2 matrix.</p></li>
 probabilities produced by the internal matrix code classifier,
 scaled to [0, 255].</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv427MatrixcodeDetectionMaskTool">
+<span id="_CPPv327MatrixcodeDetectionMaskTool"></span><span id="_CPPv227MatrixcodeDetectionMaskTool"></span><span id="MatrixcodeDetectionMaskTool"></span><span class="target" id="MatrixcodeDetectionMaskTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MatrixcodeDetectionMaskTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../DetectionMaskTool/#_CPPv417DetectionMaskTool" title="DetectionMaskTool"><span class="pre">DetectionMaskTool</span></a><a class="headerlink" href="#_CPPv427MatrixcodeDetectionMaskTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classMatrixcodeDetectionMaskTool_1autotoc_md231">
+<h3>Matrix code detection mask<a class="headerlink" href="#classMatrixcodeDetectionMaskTool_1autotoc_md231" title="Permalink to this headline">🔗</a></h3>
+<p id="classMatrixcodeDetectionMaskTool_1autotoc_md231">A compound tool that splits an image to fixed-size blocks and produces a low-resolution detection mask image by classifying each sub-image. The brighter an output pixel corresponding to the sub-image will be, the more likely it is that a sub-image overlaps with a matrix code.</p>
+<div class="section" id="classMatrixcodeDetectionMaskTool_1autotoc_md232">
+<h4>Inputs<a class="headerlink" href="#classMatrixcodeDetectionMaskTool_1autotoc_md232" title="Permalink to this headline">🔗</a></h4>
+<p id="classMatrixcodeDetectionMaskTool_1autotoc_md232"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gridSpacing</span></code> - The horizontal and vertical spacing between grid corner points in pixel coordinates. A 1-by-2 matrix.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classMatrixcodeDetectionMaskTool_1autotoc_md233">
+<h4>Outputs<a class="headerlink" href="#classMatrixcodeDetectionMaskTool_1autotoc_md233" title="Permalink to this headline">🔗</a></h4>
+<p id="classMatrixcodeDetectionMaskTool_1autotoc_md233"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> - A low-resolution mask image whose pixel intensities are probabilities produced by the internal matrix code classifier, scaled to [0, 255]. </p></li>
+</ul>
+</p>
+</div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 

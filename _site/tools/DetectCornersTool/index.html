@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -374,6 +372,38 @@ should be modified by the same factor.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">coordinates</span></code>: The locations (x, y) of detected points in the
 world coordinate system.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv417DetectCornersTool">
+<span id="_CPPv317DetectCornersTool"></span><span id="_CPPv217DetectCornersTool"></span><span id="DetectCornersTool"></span><span class="target" id="DetectCornersTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DetectCornersTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv417DetectCornersTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classDetectCornersTool_1autotoc_md472">
+<h3>Detect corners<a class="headerlink" href="#classDetectCornersTool_1autotoc_md472" title="Permalink to this headline">🔗</a></h3>
+<p id="classDetectCornersTool_1autotoc_md472">Detects corners in images.</p>
+<div class="section" id="classDetectCornersTool_1autotoc_md473">
+<h4>Inputs<a class="headerlink" href="#classDetectCornersTool_1autotoc_md473" title="Permalink to this headline">🔗</a></h4>
+<p id="classDetectCornersTool_1autotoc_md473"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> - Detection threshold. This value affects both the number of detections and the detection speed. A high value means only prominent corners will be detected. The lower the value, the more corners are detected, which also means lower processing speed.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code> - Distance between pixels in gradient computation. If the image zoomed up or down by a factor, the distance should be modified by the same factor.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classDetectCornersTool_1autotoc_md474">
+<h4>Outputs<a class="headerlink" href="#classDetectCornersTool_1autotoc_md474" title="Permalink to this headline">🔗</a></h4>
+<p id="classDetectCornersTool_1autotoc_md474"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Binary output image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinates</span></code> - The locations (x, y) of detected points in the world coordinate system. </p></li>
+</ul>
+</p>
+</div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 

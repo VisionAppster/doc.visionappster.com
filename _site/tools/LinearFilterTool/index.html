@@ -43,7 +43,7 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="List directory" href="../ListDirectoryTool/" />
+    <link rel="next" title="Local binary patterns transform" href="../LbpTransformTool/" />
     <link rel="prev" title="Less or equal" href="../LessOrEqualTool/" /> 
 </head>
 
@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -379,7 +377,41 @@ underflows, the output will be 8-bit. If the input is a signed
 image type, the output will be the same type. No overflow or
 underflow prevention will be applied.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv416LinearFilterTool">
+<span id="_CPPv316LinearFilterTool"></span><span id="_CPPv216LinearFilterTool"></span><span id="LinearFilterTool"></span><span class="target" id="LinearFilterTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">LinearFilterTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv416LinearFilterTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classLinearFilterTool_1autotoc_md222">
+<h3>Linear filter<a class="headerlink" href="#classLinearFilterTool_1autotoc_md222" title="Permalink to this headline">🔗</a></h3>
+<p id="classLinearFilterTool_1autotoc_md222">Applies a linear filter to images. Linear filters can be used to smooth images, enhance edges, reduce noise etc.</p>
+<div class="section" id="classLinearFilterTool_1autotoc_md223">
+<h4>Inputs<a class="headerlink" href="#classLinearFilterTool_1autotoc_md223" title="Permalink to this headline">🔗</a></h4>
+<p id="classLinearFilterTool_1autotoc_md223"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filterType</span></code> - The type of the filter.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filterSize</span></code> - The size of the filter in pixels, if applicable. If you need to scale the filter according to the world coordinate system, the filter needs to be calculated separately and connected to the <em>filter</em> input.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filter</span></code> - Filter matrix.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">borderHandling</span></code> - Specifies the way borders are handled.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classLinearFilterTool_1autotoc_md224">
+<h4>Outputs<a class="headerlink" href="#classLinearFilterTool_1autotoc_md224" title="Permalink to this headline">🔗</a></h4>
+<p id="classLinearFilterTool_1autotoc_md224"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Filtered output image. If the input image is an RGB image, the output will also be RGB, and overflows and underflows will be truncated. If the input is 8-bit gray, the output is either 8-bit or 16-bit depending on the filter: if the filter is such that it cannot cause overflows or underflows, the output will be 8-bit. If the input is a signed image type, the output will be the same type. No overflow or underflow prevention will be applied. </p></li>
+</ul>
+</p>
+</div>
+</div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N16LinearFilterTool14BorderHandlingE">
 <span id="_CPPv3N16LinearFilterTool14BorderHandlingE"></span><span id="_CPPv2N16LinearFilterTool14BorderHandlingE"></span><span class="target" id="BorderHandling"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">BorderHandling</span></code><a class="headerlink" href="#_CPPv4N16LinearFilterTool14BorderHandlingE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -479,6 +511,8 @@ underflow prevention will be applied.</p></li>
 </dd></dl>
 
 </div>
+</dd></dl>
+
 </div>
 </div>
 
@@ -488,7 +522,7 @@ underflow prevention will be applied.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../ListDirectoryTool/" class="btn btn-neutral float-right" title="List directory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../LbpTransformTool/" class="btn btn-neutral float-right" title="Local binary patterns transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../LessOrEqualTool/" class="btn btn-neutral float-left" title="Less or equal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

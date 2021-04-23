@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -369,7 +367,35 @@ to integers.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: The converted value.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv415ConvertTypeTool">
+<span id="_CPPv315ConvertTypeTool"></span><span id="_CPPv215ConvertTypeTool"></span><span id="ConvertTypeTool"></span><span class="target" id="ConvertTypeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConvertTypeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <a class="reference internal" href="../UnaryFunctionTool/#_CPPv417UnaryFunctionTool" title="UnaryFunctionTool"><span class="pre">UnaryFunctionTool</span></a><a class="headerlink" href="#_CPPv415ConvertTypeTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classConvertTypeTool_1autotoc_md361">
+<h3>Convert type<a class="headerlink" href="#classConvertTypeTool_1autotoc_md361" title="Permalink to this headline">🔗</a></h3>
+<p id="classConvertTypeTool_1autotoc_md361">Changes the data type of the input object.</p>
+<div class="section" id="classConvertTypeTool_1autotoc_md362">
+<h4>Input<a class="headerlink" href="#classConvertTypeTool_1autotoc_md362" title="Permalink to this headline">🔗</a></h4>
+<p id="classConvertTypeTool_1autotoc_md362"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code> - A scalar, a matrix or a tensor. Accepted types depend on <em>outputType</em>: a scalar output type requires a scalar input type etc.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code> - The type of the output.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">roundingMode</span></code> - The way floating-point values are converted to integers.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classConvertTypeTool_1autotoc_md363">
+<h4>Outputs<a class="headerlink" href="#classConvertTypeTool_1autotoc_md363" title="Permalink to this headline">🔗</a></h4>
+<p id="classConvertTypeTool_1autotoc_md363"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code> - The converted value. </p></li>
+</ul>
+</p>
+</div>
+</div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N15ConvertTypeTool10OutputTypeE">
 <span id="_CPPv3N15ConvertTypeTool10OutputTypeE"></span><span id="_CPPv2N15ConvertTypeTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N15ConvertTypeTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -540,6 +566,8 @@ to integers.</p></li>
 </dd></dl>
 
 </div>
+</dd></dl>
+
 </div>
 </div>
 

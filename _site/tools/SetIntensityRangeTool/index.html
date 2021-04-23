@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -192,7 +191,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -369,7 +367,38 @@ a given range.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: a grayscale image with the smallest possible number
 of bits per pixel.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv421SetIntensityRangeTool">
+<span id="_CPPv321SetIntensityRangeTool"></span><span id="_CPPv221SetIntensityRangeTool"></span><span id="SetIntensityRangeTool"></span><span class="target" id="SetIntensityRangeTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SetIntensityRangeTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv421SetIntensityRangeTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classSetIntensityRangeTool_1autotoc_md270">
+<h3>Set intensity range<a class="headerlink" href="#classSetIntensityRangeTool_1autotoc_md270" title="Permalink to this headline">🔗</a></h3>
+<p id="classSetIntensityRangeTool_1autotoc_md270">Scales or clamps the gray levels or color channels of an image into a given range.</p>
+<div class="section" id="classSetIntensityRangeTool_1autotoc_md271">
+<h4>Inputs<a class="headerlink" href="#classSetIntensityRangeTool_1autotoc_md271" title="Permalink to this headline">🔗</a></h4>
+<p id="classSetIntensityRangeTool_1autotoc_md271"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> - Mode of operation.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code> - minimum gray level.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max</span></code> - maximum gray level.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classSetIntensityRangeTool_1autotoc_md272">
+<h4>Outputs<a class="headerlink" href="#classSetIntensityRangeTool_1autotoc_md272" title="Permalink to this headline">🔗</a></h4>
+<p id="classSetIntensityRangeTool_1autotoc_md272"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - a grayscale image with the smallest possible number of bits per pixel. </p></li>
+</ul>
+</p>
+</div>
+</div>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp enum">
 <dt id="_CPPv4N21SetIntensityRangeTool4ModeE">
 <span id="_CPPv3N21SetIntensityRangeTool4ModeE"></span><span id="_CPPv2N21SetIntensityRangeTool4ModeE"></span><span class="target" id="Mode"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Mode</span></code><a class="headerlink" href="#_CPPv4N21SetIntensityRangeTool4ModeE" title="Permalink to this definition">🔗</a><br /></dt>
@@ -405,6 +434,8 @@ of bits per pixel.</p></li>
 </dd></dl>
 
 </div>
+</dd></dl>
+
 </div>
 </div>
 

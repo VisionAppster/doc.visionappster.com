@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -376,6 +374,35 @@ are calculated from non-normalized input colors.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scalingFactors</span></code>: Scaling factors for each color channel represented
 as a 1-by-3 matrix. The order is red, green, blue.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv414ColorRatioTool">
+<span id="_CPPv314ColorRatioTool"></span><span id="_CPPv214ColorRatioTool"></span><span id="ColorRatioTool"></span><span class="target" id="ColorRatioTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ColorRatioTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">PiiDefaultOperation</span><a class="headerlink" href="#_CPPv414ColorRatioTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classColorRatioTool_1autotoc_md162">
+<h3>Color ratio<a class="headerlink" href="#classColorRatioTool_1autotoc_md162" title="Permalink to this headline">🔗</a></h3>
+<p id="classColorRatioTool_1autotoc_md162">Given a reference color and a color sample, calculates scaling factors suitable for <a class="reference internal" href="../BalanceColorsTool/#BalanceColorsTool"><span class="std std-ref">color balancing</span></a>. For accurate results, linear colors should be used as input. See <a class="reference internal" href="../CorrectGammaTool/#CorrectGammaTool"><span class="std std-ref">gamma correction</span></a> for details.</p>
+<div class="section" id="classColorRatioTool_1autotoc_md163">
+<h4>Inputs<a class="headerlink" href="#classColorRatioTool_1autotoc_md163" title="Permalink to this headline">🔗</a></h4>
+<p id="classColorRatioTool_1autotoc_md163"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">referenceColor</span></code> - The reference color.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> - A color sample. If a channel in the color is zero, the corresponding scaling factor will be set to one.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">normalize</span></code> - If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the input colors are normalized to equal intensity (luminance) before calculating the scaling factors. This way, the calculated scaling factors won’t change average intensity. If this flag is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the scaling factors are calculated from non-normalized input colors.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classColorRatioTool_1autotoc_md164">
+<h4>Outputs<a class="headerlink" href="#classColorRatioTool_1autotoc_md164" title="Permalink to this headline">🔗</a></h4>
+<p id="classColorRatioTool_1autotoc_md164"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scalingFactors</span></code> - Scaling factors for each color channel represented as a 1-by-3 matrix. The order is red, green, blue. </p></li>
+</ul>
+</p>
+</div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 

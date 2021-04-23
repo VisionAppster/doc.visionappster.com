@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
@@ -196,7 +195,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
@@ -377,6 +375,41 @@ default value is NAN, which means no preference.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code>: The probability (0-1) that the
 region-of-interest in <em>image</em> represents a barcode.</p></li>
 </ul>
+<dl class="cpp class">
+<dt id="_CPPv422BarcodeProbabilityTool">
+<span id="_CPPv322BarcodeProbabilityTool"></span><span id="_CPPv222BarcodeProbabilityTool"></span><span id="BarcodeProbabilityTool"></span><span class="target" id="BarcodeProbabilityTool"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BarcodeProbabilityTool</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">HalFunctionOperation</span><a class="headerlink" href="#_CPPv422BarcodeProbabilityTool" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><div class="section" id="classBarcodeProbabilityTool_1autotoc_md24">
+<h3>Barcode probability<a class="headerlink" href="#classBarcodeProbabilityTool_1autotoc_md24" title="Permalink to this headline">🔗</a></h3>
+<p id="classBarcodeProbabilityTool_1autotoc_md24">Calculates the probability that a barcode is present in an image patch. For this, gradient orientation histogram is used.</p>
+<div class="section" id="classBarcodeProbabilityTool_1autotoc_md25">
+<h4>Inputs<a class="headerlink" href="#classBarcodeProbabilityTool_1autotoc_md25" title="Permalink to this headline">🔗</a></h4>
+<p id="classBarcodeProbabilityTool_1autotoc_md25"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Input image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">corner</span></code> - Pixel coordinate of the upper left corner of the region of interest. A 1-by-2 matrix.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - The size of the rectangle framing the region-of-interest. If <em>size</em> is undefined (either width or height is NAN), the histogram is computed from the whole image.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">angleBins</span></code> - The number of quantization bins for gradient angle.</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">preferredAngle</span></code> - A-priori information about the orientation of the barcode. Setting this parameter favors barcodes which have orientation near the given angle. This improves the probability of correct detection if the information is available. The default value is NAN, which means no preference.</p></li>
+</ul>
+</p>
+</div>
+<div class="section" id="classBarcodeProbabilityTool_1autotoc_md26">
+<h4>Outputs<a class="headerlink" href="#classBarcodeProbabilityTool_1autotoc_md26" title="Permalink to this headline">🔗</a></h4>
+<p id="classBarcodeProbabilityTool_1autotoc_md26"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code> - The probability (0-1) that the region-of-interest in <em>image</em> represents a barcode. </p></li>
+</ul>
+</p>
+</div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 
