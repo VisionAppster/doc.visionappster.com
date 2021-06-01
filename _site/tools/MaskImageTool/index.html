@@ -111,6 +111,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ArithmeticTool/">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoCropTool/">Automatic target location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoLocateTargetTool/">Automatic target location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BalanceColorsTool/">Balance colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeProbabilityTool/">Barcode probability</a></li>
@@ -160,7 +162,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../EndIterateTool/">End iterate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../EqualTool/">Equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../EqualizeHistogramTool/">Equalize histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EstimateBackgroundColorTool/">Estimate background color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ExpandFrameTool/">Expand frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FileSystemWatcherTool/">File system watcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FillRegionTool/">Fill region</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FilterKeyPointsTool/">Filter key points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
@@ -356,7 +361,7 @@
 <p>Applies a binary mask to the input image. A pixel is copied from
 the input image to the output image if the corresponding pixel
 in the mask image is non-zero. Otherwise the pixel in the output
-image is set to zero.
+image is set to <code class="docutils literal notranslate"><span class="pre">maskedColor</span></code>.
 The logic can be inverted with the <code class="docutils literal notranslate"><span class="pre">invert</span></code> flag.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
@@ -366,8 +371,9 @@ The logic can be inverted with the <code class="docutils literal notranslate"><s
 or an empty image. If the mask is empty,
 the input image will be passed as such.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code>: Logic inversion flag. If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code>,
-a non-zero pixel in the mask means a zero pixel
+a non-zero pixel in the mask means a pixel set to <code class="docutils literal notranslate"><span class="pre">maskedColor</span></code>
 in the output image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maskedColor</span></code>: Color with which the masked pixels will be replaced.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">

@@ -111,6 +111,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ArithmeticTool/">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoCropTool/">Automatic target location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoLocateTargetTool/">Automatic target location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BalanceColorsTool/">Balance colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeProbabilityTool/">Barcode probability</a></li>
@@ -160,7 +162,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../EndIterateTool/">End iterate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../EqualTool/">Equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../EqualizeHistogramTool/">Equalize histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EstimateBackgroundColorTool/">Estimate background color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ExpandFrameTool/">Expand frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FileSystemWatcherTool/">File system watcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FillRegionTool/">Fill region</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FilterKeyPointsTool/">Filter key points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
@@ -365,6 +370,11 @@ for the rectangle in the world coordinate system.</p></li>
 calculated. If <em>size</em> is undefined (either width or height is
 NAN), the average is computed from the whole image. Otherwise
 the region of interest is determined by <em>size</em> and <em>frame</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setAlpha</span></code>: If this value is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the alpha channel of
+the output <em>color</em> is always set to zero.
+If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the alpha channel is sampled from
+the region of interest of the input image just like
+the RGB channels are.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">

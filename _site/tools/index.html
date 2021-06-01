@@ -111,6 +111,8 @@
 <li class="toctree-l3"><a class="reference internal" href="AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="AnalyzeHistogramTool/">Analyze histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ArithmeticTool/">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutoCropTool/">Automatic target location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutoLocateTargetTool/">Automatic target location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="BalanceColorsTool/">Balance colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="BarcodeProbabilityTool/">Barcode probability</a></li>
@@ -160,7 +162,10 @@
 <li class="toctree-l3"><a class="reference internal" href="EndIterateTool/">End iterate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EqualTool/">Equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EqualizeHistogramTool/">Equalize histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EstimateBackgroundColorTool/">Estimate background color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExpandFrameTool/">Expand frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FileSystemWatcherTool/">File system watcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FillRegionTool/">Fill region</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FilterKeyPointsTool/">Filter key points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FindBarcodeTool/">Find barcode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FindMatrixCodeTool/">Find matrix code</a></li>
@@ -449,6 +454,14 @@ selected examples:</p>
   <td class="tool-desc">Base class for arithmetic tools.</td>
 </tr>
 <tr>
+  <td class="tool-name"><a href="AutoCropTool/">Automatic target location</a></td>
+  <td class="tool-desc">Attempts to localize a target object on a relatively uniform background and to crop it out of the image.</td>
+</tr>
+<tr>
+  <td class="tool-name"><a href="AutoLocateTargetTool/">Automatic target location</a></td>
+  <td class="tool-desc">Attempts to localize a target object on a relatively uniform background and to crop it out of the image.</td>
+</tr>
+<tr>
   <td class="tool-name"><a href="BalanceColorsTool/">Balance colors</a></td>
   <td class="tool-desc">Corrects RGB color balance according to the given scaling factors.</td>
 </tr>
@@ -641,8 +654,20 @@ selected examples:</p>
   <td class="tool-desc">Equalizes a histogram by making the gray level distribution as uniform as possible.</td>
 </tr>
 <tr>
+  <td class="tool-name"><a href="EstimateBackgroundColorTool/">Estimate background color</a></td>
+  <td class="tool-desc">Estimates the background color based on the corners of the image.</td>
+</tr>
+<tr>
+  <td class="tool-name"><a href="ExpandFrameTool/">Expand frame</a></td>
+  <td class="tool-desc">Expands or shrinks the frame by the given margin along coordinate axes.</td>
+</tr>
+<tr>
   <td class="tool-name"><a href="FileSystemWatcherTool/">File system watcher</a></td>
   <td class="tool-desc">A data source that outputs the path to a file or directory each time a change is detected.</td>
+</tr>
+<tr>
+  <td class="tool-name"><a href="FillRegionTool/">Fill region</a></td>
+  <td class="tool-desc">Replaces pixels inside a rectangle with a constant color.</td>
 </tr>
 <tr>
   <td class="tool-name"><a href="FilterKeyPointsTool/">Filter key points</a></td>
