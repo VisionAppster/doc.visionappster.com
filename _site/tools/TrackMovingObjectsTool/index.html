@@ -217,6 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../MatrixToTensorTool/">Matrix to tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MaxTool/">Max</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MeanTool/">Mean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureDwellTimeTool/">Measure dwell time</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MeasureGapWidthsTool/">Measure gap widths</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MedianFilterTool/">Median filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MinTool/">Min</a></li>
@@ -394,7 +395,7 @@ the tool assumes that the measurement interval is constant.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">minTrajectoryLength</span></code>: The minimum number of connected points
 that will be reported as a trajectory.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">maxTrajectoryLength</span></code>: The maximum number of points connected to
-a trajectory before it is pruned and a new trajectory is started.</p></li>
+a trajectory before the oldest points start dropping out.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pointSnapDistance</span></code>: Minimum distance between any two points
 within the same class.
 The set of input <em>points</em> are filtered so that the distance
@@ -444,7 +445,7 @@ identification of trajectories as it rolls over after a while.</p></li>
 This is a copy of the last points in <em>trajectories</em> output
 for each active trajectory.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lastTime</span></code>: The last time of each trajectory.
-This is a copy of the last timess in <em>times</em> output
+This is a copy of the last times in <em>times</em> output
 for each active trajectory.</p></li>
 </ul>
 </div>

@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Automatic target location &mdash; VisionAppster  documentation</title>
+  <title>Measure dwell time &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Automatic target location" href="../AutoLocateTargetTool/" />
-    <link rel="prev" title="Arithmetic" href="../ArithmeticTool/" /> 
+    <link rel="next" title="Measure gap widths" href="../MeasureGapWidthsTool/" />
+    <link rel="prev" title="Mean" href="../MeanTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -111,11 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ArithmeticTool/">Arithmetic</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Automatic target location</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoCropTool/">Automatic target location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AutoLocateTargetTool/">Automatic target location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BalanceColorsTool/">Balance colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
@@ -221,7 +217,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../MatrixToTensorTool/">Matrix to tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MaxTool/">Max</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MeanTool/">Mean</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../MeasureDwellTimeTool/">Measure dwell time</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Measure dwell time</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../MeasureGapWidthsTool/">Measure gap widths</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MedianFilterTool/">Median filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MinTool/">Min</a></li>
@@ -341,7 +341,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Automatic target location</li>
+      <li>Measure dwell time</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -358,42 +358,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="automatic-target-location">
-<h1>Automatic target location<a class="headerlink" href="#automatic-target-location" title="Permalink to this headline">🔗</a></h1>
-<p>Attempts to localize a target object on a relatively uniform
-background and to crop it out of the image. This tool can be used
-in various situations to automatically frame a single target object
-in an image. The assumption is that the target object is completely
-visible in the picture and surrounded by a margin of relatively
-uniform background.</p>
-<p>The tool estimates the approximate color of the background around
-the target and then crops out the largest object whose color is
-sufficiently different.</p>
+  <div class="section" id="measure-dwell-time">
+<h1>Measure dwell time<a class="headerlink" href="#measure-dwell-time" title="Permalink to this headline">🔗</a></h1>
+<p>Measures how long an identifier stays in the input
+set of identifiers.
+When an identifier is no longer in the input set,
+it is added to <em>identifiers</em> output matrix in the next
+invocation and it stays there for one invocation.
+The difference between the times it was seen first and last
+is added to <em>dwellTimes</em>.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The input image.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">colorThreshold</span></code>: The threshold for minimum absolute color
-difference between background and foreground. If the input is a
-gray-level image, the threshold applies to the intensity only.
-Otherwise, it will be calculated as the sum of channel-wise
-differences.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">aligned</span></code>: If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the cropped image will be aligned to the
-detected object, leaving as few background pixels as possible.
-This mode is slower and thus not enabled by default. If this
-flag is <code class="docutils literal notranslate"><span class="pre">false</span></code>, an axis-aligned rectangular region of the
-input image will be extracted. If the target is not aligned to
-image axes, this mode will leave traces of background.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">filterNoise</span></code>: If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tool applies noise filtering.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">margin</span></code>: The amount of space left around the target, in pixels.
-This may be a negative number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifiers</span></code>: A unique identifier for each object.
+An M-by-1 integer matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">times</span></code>: DateTime stamps associated with the objects.
+An array of M times.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The cropped target image.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: color of the background</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifiers</span></code>: Identifiers of disappeared objects.
+An N-by-1 integer matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dwellTimes</span></code>: Dwell times of disappeared objects in milliseconds.
+An N-by-1 integer matrix.</p></li>
 </ul>
 </div>
 </div>
@@ -404,8 +393,8 @@ This may be a negative number.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../AutoLocateTargetTool/" class="btn btn-neutral float-right" title="Automatic target location" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../ArithmeticTool/" class="btn btn-neutral float-left" title="Arithmetic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../MeasureGapWidthsTool/" class="btn btn-neutral float-right" title="Measure gap widths" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../MeanTool/" class="btn btn-neutral float-left" title="Mean" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
