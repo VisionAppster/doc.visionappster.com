@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Blob bounding box &mdash; VisionAppster  documentation</title>
+  <title>Matrix info &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Boolean logic" href="../BooleanLogicTool/" />
-    <link rel="prev" title="Binary morphology" href="../BinaryMorphologyTool/" /> 
+    <link rel="next" title="Matrix to image" href="../MatrixToImageTool/" />
+    <link rel="prev" title="Matrix code probability" href="../MatrixcodeProbabilityTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -125,11 +125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/#outputs">Outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinaryFunctionTool/">Binary function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinaryMorphologyTool/">Binary morphology</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Blob bounding box</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../BlobBoundingBoxTool/">Blob bounding box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BooleanLogicTool/">Boolean logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BoundingBoxTool/">Bounding box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CalibrateCameraTool/">Calibrate camera</a></li>
@@ -216,7 +212,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../MatchingCompoundTool/">Matching compound</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MatrixcodeDetectionMaskTool/">Matrix code detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MatrixcodeProbabilityTool/">Matrix code probability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../MatrixInfoTool/">Matrix info</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Matrix info</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../MatrixToImageTool/">Matrix to image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MatrixToTensorTool/">Matrix to tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MaxTool/">Max</a></li>
@@ -341,7 +341,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Blob bounding box</li>
+      <li>Matrix info</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -358,44 +358,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="blob-bounding-box">
-<h1>Blob bounding box<a class="headerlink" href="#blob-bounding-box" title="Permalink to this headline">🔗</a></h1>
-<p>Calculates the areas, centroids and bounding boxes of labeled
-objects. The boxes are aligned so that the X-axis points right, the
-Y-axis points down and the origin is at the upper left corner. If
-the bounding boxes should be tightly aligned around the objects,
-use <a class="reference internal" href="../AnalyzeBlobGeometryTool/"><span class="doc">blob geometry analysis tool</span></a> with
-<em>aligned</em> flag turned on.</p>
+  <div class="section" id="matrix-info">
+<h1>Matrix info<a class="headerlink" href="#matrix-info" title="Permalink to this headline">🔗</a></h1>
+<p>Takes in a matrix and outputs various information about the matrix.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code>: A labeled image. Each connected blob in the output
-image is marked with a distinct numeric label. Pixels that
-belong to the first detected blob are ones, the pixels that
-belong to the second one with twos and so on. Background is
-zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code>: Input matrix.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">area</span></code>: The number of pixels on each blob. A N-by-1 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">centroid</span></code>: The center-of-mass point (x,y) for each blob. A
-N-by-2-matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">upperLeft</span></code>: The upper left corner of the blob’s bounding box.
-Each row in the matrix contains the (x,y) coordinates of a
-point. A N-by-2 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">upperRight</span></code>: The upper right corner of the blob’s bounding
-box.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lowerLeft</span></code>: The lower left corner of the blob’s bounding box.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lowerRight</span></code>: The lower right corner of the blob’s bounding
-box.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size of the bounding box of each detected blob in
-world coordinates (width, height). A N-by-2 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: 
-A <a class="reference internal" href="../../engine/world-coordinates/#coordinate-frames"><span class="std std-ref">coordinate frame</span></a>
-for each detected blob. Each frame is a 4-by-4 matrix totaling in a
-4N-by-4 matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrixType</span></code>: Type of the matrix.
+Matrix type codes are:</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Code</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Integer matrix</p></td>
+<td><p>256</p></td>
+</tr>
+<tr class="row-odd"><td><p>Float matrix</p></td>
+<td><p>257</p></td>
+</tr>
+<tr class="row-even"><td><p>Double matrix</p></td>
+<td><p>258</p></td>
+</tr>
+<tr class="row-odd"><td><p>Complex float matrix</p></td>
+<td><p>259</p></td>
+</tr>
+<tr class="row-even"><td><p>Complex double matrix</p></td>
+<td><p>260</p></td>
+</tr>
+<tr class="row-odd"><td><p>Boolean matrix</p></td>
+<td><p>261</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">typeName</span></code>: Matrix type in human-readable format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rows</span></code>: Number of rows</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code>: Number of columns</p></li>
 </ul>
 </div>
 </div>
@@ -406,8 +418,8 @@ for each detected blob. Each frame is a 4-by-4 matrix totaling in a
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../BooleanLogicTool/" class="btn btn-neutral float-right" title="Boolean logic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../BinaryMorphologyTool/" class="btn btn-neutral float-left" title="Binary morphology" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../MatrixToImageTool/" class="btn btn-neutral float-right" title="Matrix to image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../MatrixcodeProbabilityTool/" class="btn btn-neutral float-left" title="Matrix code probability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Blob bounding box &mdash; VisionAppster  documentation</title>
+  <title>Tensor info &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Boolean logic" href="../BooleanLogicTool/" />
-    <link rel="prev" title="Binary morphology" href="../BinaryMorphologyTool/" /> 
+    <link rel="next" title="Tensor to classification" href="../TensorToClassificationTool/" />
+    <link rel="prev" title="Synchronize inputs" href="../SynchronizeInputsTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -125,11 +125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/#outputs">Outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinaryFunctionTool/">Binary function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinaryMorphologyTool/">Binary morphology</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Blob bounding box</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../BlobBoundingBoxTool/">Blob bounding box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BooleanLogicTool/">Boolean logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BoundingBoxTool/">Bounding box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CalibrateCameraTool/">Calibrate camera</a></li>
@@ -268,7 +264,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../SubtractImagesTool/">Subtract images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SumTool/">Sum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SynchronizeInputsTool/">Synchronize inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TensorInfoTool/">Tensor info</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tensor info</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../TensorToClassificationTool/">Tensor to classification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TensorToImageTool/">Tensor to image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TensorToMatrixTool/">Tensor to matrix</a></li>
@@ -341,7 +341,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Blob bounding box</li>
+      <li>Tensor info</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -358,44 +358,89 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="blob-bounding-box">
-<h1>Blob bounding box<a class="headerlink" href="#blob-bounding-box" title="Permalink to this headline">🔗</a></h1>
-<p>Calculates the areas, centroids and bounding boxes of labeled
-objects. The boxes are aligned so that the X-axis points right, the
-Y-axis points down and the origin is at the upper left corner. If
-the bounding boxes should be tightly aligned around the objects,
-use <a class="reference internal" href="../AnalyzeBlobGeometryTool/"><span class="doc">blob geometry analysis tool</span></a> with
-<em>aligned</em> flag turned on.</p>
+  <div class="section" id="tensor-info">
+<h1>Tensor info<a class="headerlink" href="#tensor-info" title="Permalink to this headline">🔗</a></h1>
+<p>Takes in a tensor and outputs various information about the tensor.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code>: A labeled image. Each connected blob in the output
-image is marked with a distinct numeric label. Pixels that
-belong to the first detected blob are ones, the pixels that
-belong to the second one with twos and so on. Background is
-zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code>: Input tensor.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">area</span></code>: The number of pixels on each blob. A N-by-1 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">centroid</span></code>: The center-of-mass point (x,y) for each blob. A
-N-by-2-matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">upperLeft</span></code>: The upper left corner of the blob’s bounding box.
-Each row in the matrix contains the (x,y) coordinates of a
-point. A N-by-2 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">upperRight</span></code>: The upper right corner of the blob’s bounding
-box.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lowerLeft</span></code>: The lower left corner of the blob’s bounding box.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lowerRight</span></code>: The lower right corner of the blob’s bounding
-box.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size of the bounding box of each detected blob in
-world coordinates (width, height). A N-by-2 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: 
-A <a class="reference internal" href="../../engine/world-coordinates/#coordinate-frames"><span class="std std-ref">coordinate frame</span></a>
-for each detected blob. Each frame is a 4-by-4 matrix totaling in a
-4N-by-4 matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensorType</span></code>: Type of the tensor.
+Tensor type codes are:</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Code</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>invalid</p></td>
+<td><p>512</p></td>
+</tr>
+<tr class="row-odd"><td><p>float</p></td>
+<td><p>513</p></td>
+</tr>
+<tr class="row-even"><td><p>uint8</p></td>
+<td><p>514</p></td>
+</tr>
+<tr class="row-odd"><td><p>int8</p></td>
+<td><p>515</p></td>
+</tr>
+<tr class="row-even"><td><p>uint16</p></td>
+<td><p>516</p></td>
+</tr>
+<tr class="row-odd"><td><p>int16</p></td>
+<td><p>517</p></td>
+</tr>
+<tr class="row-even"><td><p>int32</p></td>
+<td><p>518</p></td>
+</tr>
+<tr class="row-odd"><td><p>int64</p></td>
+<td><p>519</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>520</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p>521</p></td>
+</tr>
+<tr class="row-even"><td><p>float16</p></td>
+<td><p>522</p></td>
+</tr>
+<tr class="row-odd"><td><p>double</p></td>
+<td><p>523</p></td>
+</tr>
+<tr class="row-even"><td><p>uint32</p></td>
+<td><p>524</p></td>
+</tr>
+<tr class="row-odd"><td><p>uint64</p></td>
+<td><p>525</p></td>
+</tr>
+<tr class="row-even"><td><p>fcomplex</p></td>
+<td><p>526</p></td>
+</tr>
+<tr class="row-odd"><td><p>dcomplex</p></td>
+<td><p>527</p></td>
+</tr>
+<tr class="row-even"><td><p>bfloat16</p></td>
+<td><p>528</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">typeName</span></code>: Tensor type in human-readable format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code>: A 1-by-N matrix which contains the dimensions
+of the tensor.</p></li>
 </ul>
 </div>
 </div>
@@ -406,8 +451,8 @@ for each detected blob. Each frame is a 4-by-4 matrix totaling in a
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../BooleanLogicTool/" class="btn btn-neutral float-right" title="Boolean logic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../BinaryMorphologyTool/" class="btn btn-neutral float-left" title="Binary morphology" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../TensorToClassificationTool/" class="btn btn-neutral float-right" title="Tensor to classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../SynchronizeInputsTool/" class="btn btn-neutral float-left" title="Synchronize inputs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
