@@ -363,8 +363,13 @@
             
   <div class="section" id="measure-dwell-time">
 <h1>Measure dwell time<a class="headerlink" href="#measure-dwell-time" title="Permalink to this headline">🔗</a></h1>
-<p>Measures how long an identifier stays in the input
-set of identifiers.
+<p>Measures the time a tracked object is seen.
+This tool can be used with the
+<a class="reference internal" href="../TrackMovingObjectsTool/"><span class="doc">motion tracker</span></a> to measure
+how long specific targets stay in the view.
+It records the time whenever a new identifier appears
+in or disappears from the set of tracked identifiers
+and reports the time difference.
 When an identifier is no longer in the input set,
 it is added to <em>identifiers</em> output matrix in the next
 invocation and it stays there for one invocation.

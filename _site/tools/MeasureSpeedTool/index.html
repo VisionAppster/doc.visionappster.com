@@ -364,10 +364,9 @@
   <div class="section" id="measure-speed">
 <h1>Measure speed<a class="headerlink" href="#measure-speed" title="Permalink to this headline">🔗</a></h1>
 <p>Measures the speed of objects represented by coordinates
-in <em>points</em> input. The speed measurement begins when an object
-crosses one of the line segments defined by points <em>startLineBegin</em>
-to <em>startLineEnd</em> and <em>finishLineBegin</em>
-to <em>finishLineEnd</em> and ends when the object crosses the other line.</p>
+in <em>points</em> input. The speed measurement begins when
+an object crosses either of the two line segments defined by
+the four point inputs.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
@@ -377,18 +376,10 @@ An M-by-2 matrix.</p></li>
 An M-by-1 integer matrix.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">times</span></code>: DateTime stamps associated with the objects.
 An array of M times.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">startLineBegin</span></code>: Speed measurement begins when an object crosses
-the entry line in positive direction.
-This is the start point of the entry line.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">startLineEnd</span></code>: Speed measurement begins when an object crosses
-the entry line in positive direction.
-This is the end point of the entry line.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">finishLineBegin</span></code>: Speed measurement ends when an object crosses
-the exit line in positive direction.
-This is the start point of the exit line.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">finishLineEnd</span></code>: Speed measurement ends when an object crosses
-the exit line in positive direction.
-This is the end point of the exit line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firstStartPoint</span></code>: Start point of the first line segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firstEndPoint</span></code>: End point of the first line segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secondStartPoint</span></code>: Start point of the second line segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secondEndPoint</span></code>: End point of the second line segment.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">linearize</span></code>: If true, assumes that objects move along
 a straight line between the entry and exit lines.</p></li>
 </ul>
@@ -398,11 +389,15 @@ a straight line between the entry and exit lines.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">identifiers</span></code>: Identifiers of the objects whose speed has been measured.
 An N-by-1 integer matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: Traveled distance between entry and exit lines in coordinate units.
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: Traveled distance between entry and
+exit lines in coordinate units.
 An N-by-1 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: Time spent travelling from the entry to the exit line in milliseconds.
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: Time spent travelling from the entry to
+the exit line in milliseconds.
 An N-by-1 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">speed</span></code>: Speeds of the objects in coordinate units per second
+<li><p><code class="docutils literal notranslate"><span class="pre">speed</span></code>: Speeds of the objects in coordinate units per second.
+The speed is be positive if the object crossed the first line
+first and negative otherwise.
 An N-by-1 matrix.</p></li>
 </ul>
 </div>
