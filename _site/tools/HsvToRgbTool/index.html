@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Sum &mdash; VisionAppster  documentation</title>
+  <title>Hsv to rgb &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Synchronize inputs" href="../SynchronizeInputsTool/" />
-    <link rel="prev" title="Subtract images" href="../SubtractImagesTool/" /> 
+    <link rel="next" title="Huemap" href="../HuemapTool/" />
+    <link rel="prev" title="Homography" href="../HomographyTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -182,7 +182,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../HeightProfileTool/">Height profile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HistogramTool/">Histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HomographyTool/">Homography</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../HsvToRgbTool/">Hsv to rgb</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hsv to rgb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../HuemapTool/">Huemap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../IdentityTool/">Identity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageCornersTool/">Image corners</a></li>
@@ -264,11 +268,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../SubmatrixTool/">Submatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SubtractTool/">Subtract</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SubtractImagesTool/">Subtract images</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Sum</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../SumTool/">Sum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SynchronizeInputsTool/">Synchronize inputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TensorInfoTool/">Tensor info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TensorToClassificationTool/">Tensor to classification</a></li>
@@ -343,7 +343,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Sum</li>
+      <li>Hsv to rgb</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -360,33 +360,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sum">
-<h1>Sum<a class="headerlink" href="#sum" title="Permalink to this headline">🔗</a></h1>
-<p>Calculates the sum of the elements of a matrix or a
-tensor. Notice that the sum of boolean elements is
-equivalent to logical OR operation.</p>
+  <div class="section" id="hsv-to-rgb">
+<h1>Hsv to rgb<a class="headerlink" href="#hsv-to-rgb" title="Permalink to this headline">🔗</a></h1>
+<p>Converts an HSV image to RGB format.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: A matrix or a tensor.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code>: Specifies the dimension along which sum will be
-calculated. -1 means sum of all elements. For matrices,
-dimension 0 is rows (output will be 1-by-N) and 1 is columns
-(output will be N-by-1). For tensors, the specified dimension
-will be collapsed. For example, if the input is a 1×2×3×4
-tensor and <em>dimension</em> is 1, the output will be a 1×3×4 tensor.
-If the size of the specified dimension is one, sum is equal to
-reshaping the tensor.
-If <em>dimension</em> is greater or equal to the number of dimensions
-in the input tensor or matrix, the output will be an empty
-tensor or matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A matrix or a tensor of the same type as the input.
-If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output image.</p></li>
 </ul>
 </div>
 </div>
@@ -397,8 +383,8 @@ If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../SynchronizeInputsTool/" class="btn btn-neutral float-right" title="Synchronize inputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../SubtractImagesTool/" class="btn btn-neutral float-left" title="Subtract images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../HuemapTool/" class="btn btn-neutral float-right" title="Huemap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../HomographyTool/" class="btn btn-neutral float-left" title="Homography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
