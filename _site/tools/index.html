@@ -154,6 +154,7 @@
 <li class="toctree-l3"><a class="reference internal" href="DetectLbpTextureTool/">Detect LBP texture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DetectLinesTool/">Detect lines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DetectMotionTool/">Detect motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DetectMotionTextureTool/">Detect motion texture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DetectShapesTool/">Detect shapes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DetectionMaskTool/">Detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DivideTool/">Divide</a></li>
@@ -182,7 +183,6 @@
 <li class="toctree-l3"><a class="reference internal" href="HeightProfileTool/">Height profile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="HistogramTool/">Histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="HomographyTool/">Homography</a></li>
-<li class="toctree-l3"><a class="reference internal" href="HsvToRgbTool/">Hsv to rgb</a></li>
 <li class="toctree-l3"><a class="reference internal" href="HuemapTool/">Huemap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="IdentityTool/">Identity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ImageCornersTool/">Image corners</a></li>
@@ -247,7 +247,6 @@
 <li class="toctree-l3"><a class="reference internal" href="RegionCornersTool/">Region corners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ReshapeTensorTool/">Reshape tensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="RgbToHsvTool/">Rgb to hsv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RotateImageTool/">Rotate image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RunOnnxModelTool/">Run ONNX model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SampleColorsTool/">Sample colors</a></li>
@@ -626,6 +625,10 @@ selected examples:</p>
   <td class="tool-desc">Accumulates a model of a static background of a scene with moving objects.</td>
 </tr>
 <tr>
+  <td class="tool-name"><a href="DetectMotionTextureTool/">Detect motion texture</a></td>
+  <td class="tool-desc">Loosely based on Vishnyakov et al : Fast moving objects detection using iLBP background model.</td>
+</tr>
+<tr>
   <td class="tool-name"><a href="DetectShapesTool/">Detect shapes</a></td>
   <td class="tool-desc">Detects shapes by matching a boundary curve to a known geometric shape or a user-defined shape.</td>
 </tr>
@@ -736,10 +739,6 @@ selected examples:</p>
 <tr>
   <td class="tool-name"><a href="HomographyTool/">Homography</a></td>
   <td class="tool-desc">Calculates a coordinate frame which maps one set of coordinates into another.</td>
-</tr>
-<tr>
-  <td class="tool-name"><a href="HsvToRgbTool/">Hsv to rgb</a></td>
-  <td class="tool-desc">Converts an HSV image to RGB format.</td>
 </tr>
 <tr>
   <td class="tool-name"><a href="HuemapTool/">Huemap</a></td>
@@ -996,10 +995,6 @@ selected examples:</p>
 <tr>
   <td class="tool-name"><a href="ReshapeTensorTool/">Reshape tensor</a></td>
   <td class="tool-desc">Creates a new tensor that points to the same data as the input tensor, but has a different layout.</td>
-</tr>
-<tr>
-  <td class="tool-name"><a href="RgbToHsvTool/">Rgb to hsv</a></td>
-  <td class="tool-desc">Converts an RGB image to HSV format.</td>
 </tr>
 <tr>
   <td class="tool-name"><a href="RotateImageTool/">Rotate image</a></td>

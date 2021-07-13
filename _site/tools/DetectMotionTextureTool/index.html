@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Hsv to rgb &mdash; VisionAppster  documentation</title>
+  <title>Detect motion texture &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Huemap" href="../HuemapTool/" />
-    <link rel="prev" title="Homography" href="../HomographyTool/" /> 
+    <link rel="next" title="Detect shapes" href="../DetectShapesTool/" />
+    <link rel="prev" title="Detect motion" href="../DetectMotionTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -154,6 +154,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../DetectLbpTextureTool/">Detect LBP texture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectLinesTool/">Detect lines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectMotionTool/">Detect motion</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Detect motion texture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectShapesTool/">Detect shapes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectionMaskTool/">Detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DivideTool/">Divide</a></li>
@@ -182,11 +187,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../HeightProfileTool/">Height profile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HistogramTool/">Histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HomographyTool/">Homography</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Hsv to rgb</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../HuemapTool/">Huemap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../IdentityTool/">Identity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageCornersTool/">Image corners</a></li>
@@ -251,7 +251,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../RgbToHsvTool/">Rgb to hsv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../RunOnnxModelTool/">Run ONNX model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SampleColorsTool/">Sample colors</a></li>
@@ -343,7 +342,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Hsv to rgb</li>
+      <li>Detect motion texture</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -360,19 +359,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hsv-to-rgb">
-<h1>Hsv to rgb<a class="headerlink" href="#hsv-to-rgb" title="Permalink to this headline">🔗</a></h1>
-<p>Converts an HSV image to RGB format.</p>
+  <div class="section" id="detect-motion-texture">
+<h1>Detect motion texture<a class="headerlink" href="#detect-motion-texture" title="Permalink to this headline">🔗</a></h1>
+<dl class="simple">
+<dt>Loosely based on</dt><dd><p>Vishnyakov et al : Fast moving objects detection using iLBP background model.</p>
+</dd>
+</dl>
+<p>Currently totally unoptimized. Does not work very well either.
+Especially the contribution of the LBP part is not easy to configure
+such that it actually works better than using only intensity.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lbpNoiseThreshold</span></code>: Threshold for LBP difference like in LBP tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backgroundThreshold</span></code>: Threshold for final decision (equation (12) in the paper)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lbpWeight</span></code>: LBP’s contribution to the decision if any of the random processes of eqn (9)
+have changed. Related to equation (11) but not quite.
+If zero, LBP is not calculated and only filtered intensity is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">historyLength</span></code>: Length of the history. The same as N1 in equation (11).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smoothness</span></code>: Filtering level of the reference image. The same as N2 in equation (11).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">motionType</span></code>: Improves the detection of either dark or bright objects compared to the background.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code>: Output mask. 0 = not background pixel, &gt; 0 = background pixel.</p></li>
 </ul>
 </div>
 </div>
@@ -383,8 +396,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../HuemapTool/" class="btn btn-neutral float-right" title="Huemap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../HomographyTool/" class="btn btn-neutral float-left" title="Homography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../DetectShapesTool/" class="btn btn-neutral float-right" title="Detect shapes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../DetectMotionTool/" class="btn btn-neutral float-left" title="Detect motion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
