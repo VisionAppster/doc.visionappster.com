@@ -365,18 +365,20 @@
 <dt>Loosely based on</dt><dd><p>Vishnyakov et al : Fast moving objects detection using iLBP background model.</p>
 </dd>
 </dl>
-<p>Currently totally unoptimized. Does not work very well either.
-Especially the contribution of the LBP part is not easy to configure
-such that it actually works better than using only intensity.</p>
+<p>Works reasonably smoothly on Flatpak with 640x480 video stream.
+Impossibly slow in debug mode.
+To be decided if the algorithm works well enough to be worth further optimization.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lbpNoiseThreshold</span></code>: Threshold for LBP difference like in LBP tool</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">backgroundThreshold</span></code>: Threshold for final decision (equation (12) in the paper)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lbpWeight</span></code>: LBP’s contribution to the decision if any of the random processes of eqn (9)
-have changed. Related to equation (11) but not quite.
-If zero, LBP is not calculated and only filtered intensity is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lbpNoiseThreshold</span></code>: Threshold for LBP difference like in the LBP tool.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backgroundThreshold</span></code>: Threshold for the final decision (equation (12) in the paper)
+which is the sum of intensity and LBP contributions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lbpWeight</span></code>: LBP’s contribution to the decision variable if any of the random processes of eqn (9)
+have changed. Related to equation (11) but not quite the same.
+If zero, LBP is not calculated and only filtered intensity is used.
+If not zero, it typically should be eg. backgroundThreshold - 1 to avoid noise.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">historyLength</span></code>: Length of the history. The same as N1 in equation (11).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">smoothness</span></code>: Filtering level of the reference image. The same as N2 in equation (11).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">motionType</span></code>: Improves the detection of either dark or bright objects compared to the background.</p></li>
