@@ -143,6 +143,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ConvertTypeTool/">Convert type</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CorrectGammaTool/">Correct gamma</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CountTool/">Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
@@ -217,7 +218,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../MatrixToTensorTool/">Matrix to tensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MaxTool/">Max</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MeanTool/">Mean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureDwellTimeTool/">Measure dwell time</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MeasureGapWidthsTool/">Measure gap widths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureSpeedTool/">Measure speed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MedianFilterTool/">Median filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MinTool/">Min</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../MonochromatizeImageTool/">Monochromatize image</a></li>
@@ -389,14 +392,29 @@ value makes movement estimates less noisy but also imposes some
 stiffness to the trajectories.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">maxStopTime</span></code>: The maximum number of time units a trajectory
 will be kept in memory if no new points can be connected to it.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: A time stamp for the measurement. Can be either an integer
-representing abstract time units or a DateTime object. If this
-input is not connected, the tool assumes that the measurement
-interval is constant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: A time stamp for the measurement. If connected, must be
+a DateTime object. If this input is not connected,
+the tool assumes that the measurement interval is constant.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">minTrajectoryLength</span></code>: The minimum number of connected points
 that will be reported as a trajectory.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">maxTrajectoryLength</span></code>: The maximum number of points connected to
-a trajectory before it is pruned and a new trajectory is started.</p></li>
+a trajectory before the oldest points start dropping out.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pointSnapDistance</span></code>: Minimum distance between any two points
+within the same class.
+The set of input <em>points</em> are filtered so that the distance
+between any two points within the same class is at least
+<em>pointSnapDistance</em>. If <em>classIndices</em> input is not connected,
+every input point is assumed to belong to the same class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimation</span></code>: The tracked points are decimated by
+averaging <em>decimation</em> consecutive points before writing
+them to <em>trajectories</em> output. 1 means decimation is not used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reportingDelay</span></code>: The number of invocations to delay the output
+of trajectories. Setting <em>reportingDelay</em> to a non-zero value
+is useful if tracked trajectories cross often, making the
+tracker to find a more optimal arrangement of trajectories
+later only after it has gathered more information. Analysing
+the trajectories becomes more reliable if one does not need to
+deal with changing estimates.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
@@ -414,7 +432,24 @@ trajectories. Values in this matrix are between
 integer matrix. If class indices were not provided as input,
 the matrix is all zeros.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">times</span></code>: An array of time stamps, one for each point in
-<em>trajectories</em>.</p></li>
+<em>trajectories</em>. If <em>time</em> input is not connected,
+the time stamps are composed of an increasing frame count
+starting from zero. The count is converted to a time stamp
+by assuming that the interval between each frame is one
+millisecond and the time of the first frame is the beginning
+of the standard epoch (Jan 1, 1970).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifiers</span></code>: A (temporarily) unique identifier for each
+trajectory. An M-by-1 integer matrix containing an
+auto-generated unique ID for each trajectory. The ID lets one
+to associate trajectories even if their order and points
+change. Note that the ID is not suitable for long-term
+identification of trajectories as it rolls over after a while.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lastPoint</span></code>: The last point of each trajectory.
+This is a copy of the last points in <em>trajectories</em> output
+for each active trajectory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lastTime</span></code>: The last time of each trajectory.
+This is a copy of the last times in <em>times</em> output
+for each active trajectory.</p></li>
 </ul>
 </div>
 </div>
