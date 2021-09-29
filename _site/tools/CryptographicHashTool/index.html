@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Image info &mdash; VisionAppster  documentation</title>
+  <title>Cryptographic hash &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Image sharpness" href="../ImageSharpnessTool/" />
-    <link rel="prev" title="Image corners" href="../ImageCornersTool/" /> 
+    <link rel="next" title="Data Input" href="../InputExternalDataTool/" />
+    <link rel="prev" title="Crop image" href="../CropImageTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -145,7 +145,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../CountTool/">Count</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../CryptographicHashTool/">Cryptographic hash</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Cryptographic hash</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
@@ -189,11 +193,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../HuemapTool/">Huemap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../IdentityTool/">Identity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageCornersTool/">Image corners</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Image info</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageInfoTool/">Image info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageSharpnessTool/">Image sharpness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageSource/">Image source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToMatrixTool/">Image to matrix</a></li>
@@ -348,7 +348,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Image info</li>
+      <li>Cryptographic hash</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -365,88 +365,159 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="image-info">
-<h1>Image info<a class="headerlink" href="#image-info" title="Permalink to this headline">🔗</a></h1>
-<p>Takes in an image and outputs various information about the image.</p>
+  <div class="section" id="cryptographic-hash">
+<h1>Cryptographic hash<a class="headerlink" href="#cryptographic-hash" title="Permalink to this headline">🔗</a></h1>
+<p>Generates a cryptographic hash string from the input string using
+a hashing algorithm.
+The length of the output string depends on the selected
+hashing algorithm.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: String to be hashed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code>: Type of the output hex string.
+The options are lower case or upper case.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code>: The encryption algorithm.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">imageType</span></code>: Type of the image.
-Typical image types codes are:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: The output string</p></li>
 </ul>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Type</strong></p></th>
-<th class="head"><p><strong>Code</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Unknown</p></td>
-<td><p>-1</p></td>
-</tr>
-<tr class="row-odd"><td><p>Invalid</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-even"><td><p>8-bit gray</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>16-bit gray</p></td>
-<td><p>2</p></td>
-</tr>
-<tr class="row-even"><td><p>32-bit gray</p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>32-bit RGB</p></td>
-<td><p>4</p></td>
-</tr>
-<tr class="row-even"><td><p>32-bit ARGB</p></td>
-<td><p>5</p></td>
-</tr>
-<tr class="row-odd"><td><p>Premultiplied ARGB</p></td>
-<td><p>6</p></td>
-</tr>
-</tbody>
-</table>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">typeName</span></code>: Image type in human-readable format.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">worldFrame</span></code>: A 4-by-4 transformation matrix which converts
-world coordinates to camera coordinates.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cameraFrame</span></code>: A 4-by-4 transformation matrix which converts
-camera coordinates to world coordinates.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">distortionFactors</span></code>: A 1-by-4 matrix with
-radial distortion factors of
-2nd and 4th degrees (k1, k2) and tangential distortion
-factors (p1, p2).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">focalLength</span></code>: The factors are focal length in pixels (fx, fy).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">principalPoint</span></code>: principal point (i.e. optical center of the image)
-in pixels (cx, cy).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sensorType</span></code>: 0 means a matrix camera and 1 means a line camera.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">imageSize</span></code>: A 1-by-2 matrix with image width and height
-in pixels.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">channelMin</span></code>: Minimum possible pixel intensity.
-Notice that this value is not necessarily the true minimum
-intensity of this particular image. For example, the typical
-values in an 8-bit grayscale image is min=0 even if all
-pixel intensities in this image were
-greater than 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">channelMax</span></code>: Maximum possible pixel intensity.
-Notice that this value is not necessarily the true maximum
-intensity of this particular image. For example, the typical
-value in an 8-bit grayscale image is max=255 even if all
-pixel intensities in this image were
-less than 255.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">timeStamp</span></code>: A 32-bit timestamp set by the image source.</p></li>
-</ul>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N21CryptographicHashTool9AlgorithmE">
+<span id="_CPPv3N21CryptographicHashTool9AlgorithmE"></span><span id="_CPPv2N21CryptographicHashTool9AlgorithmE"></span><span class="target" id="Algorithm"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Algorithm</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9AlgorithmE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Type of the hashing algorithm. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm3Md4E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm3Md4E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm3Md4E"></span><span class="target" id="Algorithm::Md4"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Md4</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm3Md4E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>MD4. </p>
+<p>Produces a string with 32 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm3Md5E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm3Md5E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm3Md5E"></span><span class="target" id="Algorithm::Md5"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Md5</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm3Md5E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>MD5. </p>
+<p>Produces a string with 32 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm4Sha1E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm4Sha1E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm4Sha1E"></span><span class="target" id="Algorithm::Sha1"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha1</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm4Sha1E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sha v1. </p>
+<p>Produces a string with 40 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm6Sha224E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm6Sha224E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm6Sha224E"></span><span class="target" id="Algorithm::Sha224"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha224</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm6Sha224E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA224 v2. </p>
+<p>Produces a string with 56 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm6Sha256E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm6Sha256E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm6Sha256E"></span><span class="target" id="Algorithm::Sha256"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha256</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm6Sha256E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA256 v2. </p>
+<p>Produces a string with 64 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm6Sha384E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm6Sha384E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm6Sha384E"></span><span class="target" id="Algorithm::Sha384"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha384</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm6Sha384E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA384 v2. </p>
+<p>Produces a string with 96 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm6Sha512E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm6Sha512E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm6Sha512E"></span><span class="target" id="Algorithm::Sha512"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha512</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm6Sha512E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA512 v2. </p>
+<p>Produces a string with 128 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm8Sha3_224E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm8Sha3_224E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm8Sha3_224E"></span><span class="target" id="Algorithm::Sha3_224"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha3_224</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm8Sha3_224E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA224 v3. </p>
+<p>Produces a string with 56 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm8Sha3_256E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm8Sha3_256E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm8Sha3_256E"></span><span class="target" id="Algorithm::Sha3_256"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha3_256</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm8Sha3_256E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA256 v3. </p>
+<p>Produces a string with 64 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm8Sha3_384E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm8Sha3_384E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm8Sha3_384E"></span><span class="target" id="Algorithm::Sha3_384"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha3_384</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm8Sha3_384E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA384. </p>
+<p>Produces a string with 96 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm8Sha3_512E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm8Sha3_512E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm8Sha3_512E"></span><span class="target" id="Algorithm::Sha3_512"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Sha3_512</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm8Sha3_512E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>SHA512 v3. </p>
+<p>Produces a string with 128 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm10Keccak_224E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm10Keccak_224E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm10Keccak_224E"></span><span class="target" id="Algorithm::Keccak_224"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Keccak_224</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm10Keccak_224E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>KECCAK224. </p>
+<p>Produces a string with 56 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm10Keccak_256E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm10Keccak_256E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm10Keccak_256E"></span><span class="target" id="Algorithm::Keccak_256"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Keccak_256</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm10Keccak_256E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>KECCAK256. </p>
+<p>Produces a string with 64 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm10Keccak_384E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm10Keccak_384E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm10Keccak_384E"></span><span class="target" id="Algorithm::Keccak_384"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Keccak_384</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm10Keccak_384E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>KECCAK384. </p>
+<p>Produces a string with 96 hex digits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool9Algorithm10Keccak_512E">
+<span id="_CPPv3N21CryptographicHashTool9Algorithm10Keccak_512E"></span><span id="_CPPv2N21CryptographicHashTool9Algorithm10Keccak_512E"></span><span class="target" id="Algorithm::Keccak_512"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Keccak_512</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool9Algorithm10Keccak_512E" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>KECCAK512. </p>
+<p>Produces a string with 128 hex digits. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv4N21CryptographicHashTool10OutputTypeE">
+<span id="_CPPv3N21CryptographicHashTool10OutputTypeE"></span><span id="_CPPv2N21CryptographicHashTool10OutputTypeE"></span><span class="target" id="OutputType"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">OutputType</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool10OutputTypeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Determines the type of the output hex string. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool10OutputType12LowercaseHexE">
+<span id="_CPPv3N21CryptographicHashTool10OutputType12LowercaseHexE"></span><span id="_CPPv2N21CryptographicHashTool10OutputType12LowercaseHexE"></span><span class="target" id="OutputType::LowercaseHex"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">LowercaseHex</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool10OutputType12LowercaseHexE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The output is lower case. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N21CryptographicHashTool10OutputType12UppercaseHexE">
+<span id="_CPPv3N21CryptographicHashTool10OutputType12UppercaseHexE"></span><span id="_CPPv2N21CryptographicHashTool10OutputType12UppercaseHexE"></span><span class="target" id="OutputType::UppercaseHex"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">UppercaseHex</span></code><a class="headerlink" href="#_CPPv4N21CryptographicHashTool10OutputType12UppercaseHexE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The output is upper case. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 
@@ -456,8 +527,8 @@ less than 255.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../ImageSharpnessTool/" class="btn btn-neutral float-right" title="Image sharpness" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../ImageCornersTool/" class="btn btn-neutral float-left" title="Image corners" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../InputExternalDataTool/" class="btn btn-neutral float-right" title="Data Input" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../CropImageTool/" class="btn btn-neutral float-left" title="Crop image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
