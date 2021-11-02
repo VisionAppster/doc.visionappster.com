@@ -209,7 +209,7 @@ to world coordinates such as millimeters.</p>
 <p>The <a class="reference internal" href="../../tools/CalibrateManuallyTool/"><span class="doc">Calibrate Manually tool</span></a> can be
 used to quickly find approximate values of either the focal length of a
 camera or the distance between the camera and a planar surface. The tool
-requires a known planar template object (e.g. a ruler).</p>
+requires a known planar template object (e.g. a ruler).</p>
 <ul class="simple">
 <li><p>If the distance between the camera and the template object is known,
 the tool calculates the focal length. This option is demonstrated is
@@ -253,21 +253,20 @@ the relevant tool in Camera Configurator.</p></li>
 <img alt="A ruler can be used as a calibration target." src="../../_images/simple-calibration-2.png" />
 <p class="caption"><span class="caption-text">A ruler can be used as a calibration target.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
-<ul>
+<ul class="simple">
 <li><p><a class="reference internal" href="../../tools/CalibrateManuallyTool/"><span class="doc">Calibrate Manually</span></a> needs the
 following information in order to calculate the focal length:</p>
-<ul class="simple">
+<ul>
 <li><p>Start and end points of a line on the image plane. The points can
 easily be positioned manually by dragging and dropping a line
 widget on the image window. The line widget is shown with an
 orange line in the above image. In this case, it spans the tick
 marks between 10 and 15 cm</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Physical</span> <span class="pre">length</span></code> of the line is 50 mm (i.e. from 10 cm to 15</p></li>
-</ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Physical</span> <span class="pre">length</span></code> of the line is 50 mm (i.e. from 10 cm to 15</p>
 <ol class="lowerroman simple" start="900">
 <li></li>
 </ol>
-<ul class="simple">
+</li>
 <li><p>Distance between the camera’s aperture and the plane where the
 ruler lies. In this case <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Distance</span></code> = 100 mm.</p></li>
 <li><p>The tool calculates <code class="docutils literal notranslate"><span class="pre">Focal</span> <span class="pre">Length</span></code> in terms of pixels. In this
@@ -275,12 +274,12 @@ case, the focal length is 1949 pixels.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Frame</span></code> contains the distance between the plane and the camera
 as <em>Z</em>-coordinate of the last column (<code class="docutils literal notranslate"><span class="pre">origin</span></code>). The origin of
 the world coordinate system is by default at the center of the
-image (i.e. <em>X</em>- and <em>Y</em>-coordinates are zeros).</p></li>
+image (i.e. <em>X</em>- and <em>Y</em>-coordinates are zeros).</p></li>
 </ul>
 </li>
 </ul>
 <div class="medium figure align-default" id="id3">
-<img alt="If the camera distance is known, the tool can calculate the camera's focal length." src="../../_images/simple-calibration-3.png" />
+<img alt="If the camera distance is known, the tool can calculate the camera’s focal length." src="../../_images/simple-calibration-3.png" />
 <p class="caption"><span class="caption-text">If the camera distance is known, the tool can calculate the camera’s
 focal length.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>

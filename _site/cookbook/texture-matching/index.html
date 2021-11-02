@@ -35,7 +35,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
         <script defer="defer" src="../../_static/js/algolia.js"></script>
     
@@ -267,7 +266,7 @@ descriptors using the texture around the keypoints and compares them
 with the descriptors of the objects the matcher has been trained
 with. More on the matcher training later in this recipe.</p></li>
 <li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the frame and size
-(i.e. the bounding box) of the found object (if any) and enlarges the
+(i.e. the bounding box) of the found object (if any) and enlarges the
 bounding box so that the height and the width are extended by 10% on
 each side of the box and the original box resides in the middle of
 the new box. Boolean output <code class="docutils literal notranslate"><span class="pre">Found</span></code> is either true or false
@@ -362,43 +361,84 @@ as it is wide whereas the height and width of the apple should be about
 the same.</p>
 <p>The script makes several checks on the number of detected blobs as well
 as their shapes and sizes before passing a verdict on the print quality.</p>
-<p><sub>~</sub>{.js} $o.result = false; $o.problem = “Unspecified defect
-detected”;</p>
-<p>// No pattern found if (!$i.found) { $o.problem = “Logo not found”;
-return; }</p>
-<p>// There should be 2 white-on-black blobs and one black-on-while blob if
-($i.size1.rows != 2 ||
-<span class="math notranslate nohighlight">\(i.size2.rows != 1)  {  if (\)</span>i.size1.rows &lt; 2)
-<span class="math notranslate nohighlight">\(o.problem = &quot;Part of the logo missing&quot;;  else if (\)</span>i.size1.rows
-&gt; 2)
-<span class="math notranslate nohighlight">\(o.problem = &quot;Black fragments detected&quot;;  else if (\)</span>i.size2.rows
-&gt; 1) $o.problem = “Possible hole(s) detected”; else $o.problem = “Blob
-count mismatch”; return; }</p>
-<p>// Ratios of areas of the big and small blobs should be within limits.
-var smallBlobIndex = 0, bigBlobIndex = 1; if ($i.area1.entry(0,0) &gt;
-$i.area1.entry(1,0)) { bigBlobIndex = 0; smallBlobIndex = 1; } var
-smallArea = $i.area1.entry(smallBlobIndex,0); var bigArea =
-$i.area1.entry(bigBlobIndex,0); var areaRatio = bigArea / smallArea;</p>
-<p>if (areaRatio &lt; 16 || areaRatio &gt; 20) { $o.problem = “Size ratio of
-the stalk and the apple is out of limits”; return; }</p>
-<p>// Axis ratios of small and big blobs should be within limits. // The
-stalk of the apple is oblong var axisRatioSmall =
-$i.ratio1.entry(smallBlobIndex, 0); if (axisRatioSmall &lt; 2 ||
-axisRatioSmall &gt; 2.5) { $o.problem = “Shape of the stalk is out of
-limits”; return; }</p>
-<p>// The apple is nearly round, var axisRatioBig =
-$i.ratio1.entry(bigBlobIndex, 0); if (axisRatioBig &lt; 0.95 ||
-axisRatioBig &gt; 1.15) { $o.problem = “Shape of the apple is out of
-limits”; return; }</p>
-<p>// The sizes of the bounding boxes of both blobs should be within
-limits. var sizeRatioSmall = $i.size1.entry(smallBlobIndex, 0) /
-$i.size1.entry(smallBlobIndex, 1); var sizeRatioBig =
-$i.size1.entry(bigBlobIndex, 0) / $i.size1.entry(bigBlobIndex, 1);</p>
-<p>if (sizeRatioSmall &lt; 0.80 || sizeRatioSmall &gt; 1.08) { $o.problem =
-“Shape of the stalk’s bounding box is out of limits”; return; }</p>
-<p>if (sizeRatioBig &lt; 1 || sizeRatioBig &gt; 1.12) { $o.problem = “Shape of
-the apple’s bounding box is out of limits”; return; }</p>
-<p>$o.result = true; $o.problem = “No problems”; <sub>~</sub></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$o</span><span class="p">.</span><span class="nx">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Unspecified defect detected&quot;</span><span class="p">;</span>
+
+<span class="c1">// No pattern found</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$i</span><span class="p">.</span><span class="nx">found</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Logo not found&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// There should be 2 white-on-black blobs and one black-on-while blob</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mf">2</span> <span class="o">||</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size2</span><span class="p">.</span><span class="nx">rows</span> <span class="o">!=</span> <span class="mf">1</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&lt;</span> <span class="mf">2</span><span class="p">)</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Part of the logo missing&quot;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&gt;</span> <span class="mf">2</span><span class="p">)</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Black fragments detected&quot;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">size2</span><span class="p">.</span><span class="nx">rows</span> <span class="o">&gt;</span> <span class="mf">1</span><span class="p">)</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Possible hole(s) detected&quot;</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Blob count mismatch&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// Ratios of areas of the big and small blobs should be within limits.</span>
+<span class="kd">var</span> <span class="nx">smallBlobIndex</span> <span class="o">=</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">bigBlobIndex</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="mf">0</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="nx">bigBlobIndex</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+    <span class="nx">smallBlobIndex</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="kd">var</span> <span class="nx">smallArea</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span><span class="mf">0</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">bigArea</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">area1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span><span class="mf">0</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">areaRatio</span> <span class="o">=</span> <span class="nx">bigArea</span> <span class="o">/</span> <span class="nx">smallArea</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">areaRatio</span> <span class="o">&lt;</span> <span class="mf">16</span> <span class="o">||</span> <span class="nx">areaRatio</span> <span class="o">&gt;</span> <span class="mf">20</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Size ratio of the stalk and the apple is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// Axis ratios of small and big blobs should be within limits.</span>
+<span class="c1">// The stalk of the apple is oblong</span>
+<span class="kd">var</span> <span class="nx">axisRatioSmall</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">ratio1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mf">0</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">axisRatioSmall</span> <span class="o">&lt;</span> <span class="mf">2</span> <span class="o">||</span> <span class="nx">axisRatioSmall</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the stalk is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// The apple is nearly round,</span>
+<span class="kd">var</span> <span class="nx">axisRatioBig</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">ratio1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mf">0</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">axisRatioBig</span> <span class="o">&lt;</span> <span class="mf">0.95</span> <span class="o">||</span> <span class="nx">axisRatioBig</span> <span class="o">&gt;</span> <span class="mf">1.15</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the apple is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="c1">// The sizes of the bounding boxes of both blobs should be within limits.</span>
+<span class="kd">var</span> <span class="nx">sizeRatioSmall</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">smallBlobIndex</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sizeRatioBig</span> <span class="o">=</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">$i</span><span class="p">.</span><span class="nx">size1</span><span class="p">.</span><span class="nx">entry</span><span class="p">(</span><span class="nx">bigBlobIndex</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">sizeRatioSmall</span> <span class="o">&lt;</span> <span class="mf">0.80</span> <span class="o">||</span> <span class="nx">sizeRatioSmall</span> <span class="o">&gt;</span> <span class="mf">1.08</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the stalk&#39;s bounding box is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">sizeRatioBig</span> <span class="o">&lt;</span> <span class="mf">1</span> <span class="o">||</span> <span class="nx">sizeRatioBig</span> <span class="o">&gt;</span> <span class="mf">1.12</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;Shape of the apple&#39;s bounding box is out of limits&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="nx">$o</span><span class="p">.</span><span class="nx">result</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">$o</span><span class="p">.</span><span class="nx">problem</span> <span class="o">=</span> <span class="s2">&quot;No problems&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>Here are a few examples on passed (green) and failed (red) cases.</p>
 <div class="medium figure align-default" id="id7">
 <img alt="Print quality is good" src="../../_images/texture-matching-pass-1.png" />

@@ -111,7 +111,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#store-packages">Store packages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#signing">Signing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#retrieving-licenses">Retrieving licenses</a></li>
 </ul>
 </li>
 </ul>
@@ -393,63 +392,24 @@ run an app in VisionAppster Cloud, you must register the component’s ID
 on the Store, give it a name and sign the app. Giving a name is easy.
 Just give this command in the directory where <code class="docutils literal notranslate"><span class="pre">component.json</span></code> is
 stored:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update --name <span class="s2">&quot;My cool component&quot;</span> mycomponent
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update --name <span class="s2">&quot;My cool component&quot;</span>
 </pre></div>
 </div>
 <div class="section" id="signing">
 <h3>Signing<a class="headerlink" href="#signing" title="Permalink to this headline">🔗</a></h3>
 <p>If the package contains encrypted tool files or copy-protected native
 tool plugins, you’ll be unable to use them unless the package has a
-valid signature. Therefore, you need the signature already for local
-testing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">could</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">actions</span><span class="o">/</span><span class="n">sign</span><span class="o">-</span><span class="n">component</span>
+valid signature. A signature is also required for every component
+distributed through the VisionAppster Store.</p>
+<p>To sign a component you need to create a token in the Store’s web
+interface (<a class="reference external" href="https://store.visionappster.com/account/tokens">My Account → Tokens → New
+token</a>) and assign
+the token the “Sign component” permission. Then, copy the token ID to
+<code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command line (in the directory where <code class="docutils literal notranslate"><span class="pre">component.json</span></code> is
+stored):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg sign --token 0123456789abcdef0123456789abcdef
 </pre></div>
 </div>
-<p>The package to be signed is uploaded using HTTP POST:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --data-binary <span class="s2">&quot;@com.example.apps.cool-1.0.0.vapkg&quot;</span> <span class="se">\</span>
-  --header <span class="s2">&quot;Content-Type: application/vnd.va-pkg&quot;</span> <span class="se">\</span>
-  --header <span class="s2">&quot;Authorization: Bearer API-TOKEN&quot;</span> <span class="se">\</span>
-  --header <span class="s2">&quot;Buyer-ID: BUYER-ID-1,BUYER-ID-2...&quot;</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  https://could.visionappster.com/api/1/signatures/sign <span class="se">\</span>
-  &gt; com.example.apps.cool-1.0.0-signed.vapkg
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header tells the server how to handle the body of
-the message.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header must contain an API token that can be
-generated for a seller account in the cloud service. The server inspects
-the token and verifies that it is valid and belongs to a seller account
-that owns the uploaded package.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Buyer-ID</span></code> header contains a comma-separated list of UUIDs. Each
-identifies a buyer account to which a temporary license is generated.
-The license allows 24 hours of usage for the single uploaded component.</p>
-<p>The server performs basic integrity checks to ensure that the format of
-the package is OK, generates a signature file for <code class="docutils literal notranslate"><span class="pre">component.json</span></code>
-(<code class="docutils literal notranslate"><span class="pre">component.json.crt</span></code>) and sends the signed package back in the
-response body. On error, you’ll get an appropriate HTTP error code.</p>
-</div>
-<div class="section" id="retrieving-licenses">
-<h3>Retrieving licenses<a class="headerlink" href="#retrieving-licenses" title="Permalink to this headline">🔗</a></h3>
-<p>The signing API lets you to give a short-term license to any buyer
-account. If you have installed any packages from the Store using the
-buyer account, the new license should available automatically. It is
-also possible to retrieve the licenses manually. The URL of the license
-API is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">BUYER</span><span class="o">-</span><span class="n">ID</span><span class="o">/</span><span class="n">licenses</span><span class="o">.</span><span class="n">vapkg</span>
-</pre></div>
-</div>
-<p>To retrieve the license file, give the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --header <span class="s2">&quot;Authorization: Bearer API-TOKEN&quot;</span> <span class="se">\</span>
-  https://could.visionappster.com/api/1/users/BUYER-ID/licenses.vapkg <span class="se">\</span>
-  &gt; licenses.vapkg
-</pre></div>
-</div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">BUYER-ID</span></code> is the UUID of your buyer account, which was also
-used in the signing API call. <code class="docutils literal notranslate"><span class="pre">API-TOKEN</span></code> is an authorization key you
-can set in your buyer account.</p>
-<p>The server returns your licenses as a component package that can be
-<a class="reference internal" href="../installing/"><span class="doc">installed</span></a> just like any package.</p>
 </div>
 </div>
 </div>

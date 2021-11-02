@@ -203,7 +203,7 @@
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
 <p>This recipe shows how to make an app that detects motion by monitoring
 changes in successive input images and raises an alarm if an object of
-the specified type (e.g. a person, a dog or a car) is seen in the image.
+the specified type (e.g. a person, a dog or a car) is seen in the image.
 Furthermore, the image which triggered the alarm can be saved to a file.</p>
 </div>
 <div class="section" id="downloads">
@@ -235,9 +235,9 @@ as a convenient entry point in case you later want to use the app as
 an API to which a client can send compressed images for analysis.</p></li>
 <li><p><a class="reference internal" href="../../tools/DetectMotionTool/"><span class="doc">Detect Motion</span></a> compares the input image
 to the background image which is a weighted average of all previous
-images. If more than 1% of the pixels (i.e. <code class="docutils literal notranslate"><span class="pre">Motion</span>&#160;&#160; <span class="pre">Threshold</span></code> =
+images. If more than 1% of the pixels (i.e. <code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Threshold</span></code> =
 0.01) differ from the background by more than 10 intensity levels
-(i.e. <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> = 10), it declares that motion has been detected
+(i.e. <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> = 10), it declares that motion has been detected
 by setting output <code class="docutils literal notranslate"><span class="pre">Motion</span> <span class="pre">Detected</span></code> as <code class="docutils literal notranslate"><span class="pre">true</span></code>. Parameters
 <code class="docutils literal notranslate"><span class="pre">Alpha1</span></code> and <code class="docutils literal notranslate"><span class="pre">Alpha2</span></code> control how fast the background image
 adapts to changes in input images.</p></li>
@@ -316,7 +316,7 @@ empty, the alarm is raised whenever any motion is detected.</p>
 interest, <code class="docutils literal notranslate"><span class="pre">ObjectDetected</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Remember however
 that the alarm may have been triggered also by motion of something else
 than the recognized object.</p>
-<p>In this example the frame and size outputs (i.e. the bounding box
+<p>In this example the frame and size outputs (i.e. the bounding box
 information) are not used. You can use them for example by dragging and
 dropping <a class="reference internal" href="../../tools/CropImageTool/"><span class="doc">Crop Image</span></a> tool on the canvas and
 connecting the output of <code class="docutils literal notranslate"><span class="pre">Gate:</span> <span class="pre">Motion</span></code> tool to <code class="docutils literal notranslate"><span class="pre">Image</span></code> input of
@@ -363,7 +363,7 @@ script and uses it to decide whether to pass the image and file path to
 </div>
 <p>Finally, an example of the app in action. The object of interest has
 been configured as a dog. The app has detected both motion and a dog, so
-an alarm has been raised (i.e. <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Detected</span></code> output is <code class="docutils literal notranslate"><span class="pre">True</span></code>)
+an alarm has been raised (i.e. <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Detected</span></code> output is <code class="docutils literal notranslate"><span class="pre">True</span></code>)
 and the image has been saved to a file.</p>
 <div class="medium figure align-default" id="id7">
 <img alt="An example of dog detection cam." src="../../_images/detectMotion-dog.png" />

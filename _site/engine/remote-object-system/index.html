@@ -340,7 +340,7 @@ with an object that contains named arguments:</p>
 </pre></div>
 </div>
 <p>If a function has many parameters that cannot be encoded in the same way
-(e.g. JSON), the arguments can be passed as a MIME multipart message.
+(e.g. JSON), the arguments can be passed as a MIME multipart message.
 Let us assume the server provides a function with the signature
 <code class="docutils literal notranslate"><span class="pre">binarize(image:</span> <span class="pre">Image,</span> <span class="pre">threshold:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">Image</span></code>. This function could
 be called with a MIME multipart message as follows:</p>
@@ -409,7 +409,7 @@ try to automatically determine the types. It recognizes integers,
 decimal numbers and hexadecimal color codes in addition to the keywords
 <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">nan</span></code>, <code class="docutils literal notranslate"><span class="pre">inf</span></code> and <code class="docutils literal notranslate"><span class="pre">-inf</span></code>. Everything else is
 treated as a string. If you need to pass a string that matches one of
-the keywords, you can enclose it in double quotes, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>.</p>
+the keywords, you can enclose it in double quotes, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>.</p>
 <p>For example, consider the following query string:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?123&amp;true&amp;%22true%22&amp;-2.1e5&amp;inf&amp;abc&amp;%23ff0000
 </pre></div>
@@ -613,9 +613,9 @@ message will be sent once.</p>
 <dt>At least once (2)</dt><dd><p>Make sure receiver gets the message. Resend after a while if the
 client fails to acknowledge.</p>
 </dd>
-<dt>Last at least once (3)</dt><dd><p>Make sure receiver gets the last message from a source. Same as
-2, but his mode allows the server to update message content
-until it has been acknowledged.</p>
+<dt>Last at least once (3)</dt><dd><p>Make sure receiver gets the last message from a source. Same as 2,
+but his mode allows the server to update message content until it
+has been acknowledged.</p>
 </dd>
 </dl>
 </dd>
@@ -724,7 +724,7 @@ one can give <code class="docutils literal notranslate"><span class="pre">null</
 </div>
 <p>Specifying a <code class="docutils literal notranslate"><span class="pre">null</span></code> media type for all parameters makes the server to
 send the signal with an empty body. This may be useful if you want to
-e.g. observe property changes but retrieve the latest value only on
+e.g. observe property changes but retrieve the latest value only on
 explicit request.</p>
 <p>Callbacks are connected to in a similar manner, but the <code class="docutils literal notranslate"><span class="pre">sourceUri</span></code> is
 “callbacks/callbackName”. Unlike signals, callbacks may return a value

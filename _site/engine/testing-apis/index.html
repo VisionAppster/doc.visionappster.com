@@ -206,7 +206,7 @@ the “Test” button opens an API tester. If you have the Builder running,
 its embedded web server provides the same functionality, by default in
 <a class="reference external" href="http://localhost:2015/#apis">port 2020</a>.</p>
 <div class="figure align-default" id="id1">
-<img alt="Clicking the &quot;Test&quot; button opens an API tester." src="../../_images/engine-api-tester-open.png" />
+<img alt="Clicking the “Test” button opens an API tester." src="../../_images/engine-api-tester-open.png" />
 <p class="caption"><span class="caption-text">Clicking the “Test” button opens an API tester.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
 <p>The tester lists the public API functions as collapsible tabs
@@ -270,23 +270,24 @@ your cloud app in VisionAppster Store. An example:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>VisionAppster Cloud generates demos for your app using <code class="docutils literal notranslate"><span class="pre">actions.json</span></code>.
-It also automatically tests and benchmarks your app using the same data.
-When uploading a component to VisionAppster Store you should thus try to
-make sure your demo data is representative of actual data used in
-production. Otherwise, you may get misleading performance metrics.</p>
-<p>In addition to <code class="docutils literal notranslate"><span class="pre">actions.json</span></code> the cloud service needs the input data.
-You need to combine these into a single file called <code class="docutils literal notranslate"><span class="pre">actions.zip</span></code> so
-that relative paths to images (and possibly other input data) are
-correct. A correctly formatted zip file in the example above could be
-created from the following directory structure:</p>
+<p>The VisionAppster Store generates demos for your app using
+<code class="docutils literal notranslate"><span class="pre">actions.json</span></code>. It also automatically tests and benchmarks your app
+using the same data. When uploading a component to VisionAppster Store
+you should thus try to make sure your demo data is representative of
+actual data used in production. Otherwise, you may get misleading
+performance metrics.</p>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">actions.json</span></code>, input data is needed. You need to
+combine these into a single file called <code class="docutils literal notranslate"><span class="pre">actions.zip</span></code> so that relative
+paths to images (and possibly other input data) are correct. A correctly
+formatted zip file in the example above could be created from the
+following directory structure:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myactions</span><span class="o">/</span>
 <span class="n">myactions</span><span class="o">/</span><span class="n">actions</span><span class="o">.</span><span class="n">json</span>
 <span class="n">myactions</span><span class="o">/</span><span class="n">crowded_street</span><span class="o">.</span><span class="n">jpg</span>
 <span class="n">myactions</span><span class="o">/</span><span class="n">horses_dogs_and_cats</span><span class="o">.</span><span class="n">jpg</span>
 </pre></div>
 </div>
-<p>To create an <code class="docutils literal notranslate"><span class="pre">actions.zip</span></code> for the cloud service, you would do this:</p>
+<p>To create an <code class="docutils literal notranslate"><span class="pre">actions.zip</span></code> for the Store, you would do this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> myactions
 zip actions.zip *
 </pre></div>
@@ -323,7 +324,7 @@ can pass <code class="docutils literal notranslate"><span class="pre">--data-roo
 you’ll get a JSON document by default. XML output (xUnit) is also
 supported.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--coverage</span></code> option can be used to verify that your API meets
-VisionAppster Cloud requirements:</p>
+VisionAppster Store requirements:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-api-tester --run actions.json --coverage
 </pre></div>
 </div>
@@ -338,7 +339,7 @@ be used to demonstrate the API without actually running the app:</p>
 two files: <code class="docutils literal notranslate"><span class="pre">00.vabin</span></code> and <code class="docutils literal notranslate"><span class="pre">01.vabin</span></code>. These files can be uploaded to
 the API tester web UI using the “Click to upload or drop .vabin files
 here.” control at the bottom of the page.</p>
-<p>VisionAppster Cloud executes the exact same steps to generate demos for
+<p>VisionAppster Store executes the exact same steps to generate demos for
 your cloud apps. To make sure your demos look exactly what you expect
 you should run tester locally first and see the result.</p>
 </div>

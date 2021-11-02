@@ -235,14 +235,14 @@ barcodes.</p>
 <li><p><a class="reference internal" href="../../tools/FindBarcodeTool/"><span class="doc">Find Barcode</span></a> finds the positions of
 barcodes in customary <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code> format. The intensity
 threshold between the bars and the background comes from
-<code class="docutils literal notranslate"><span class="pre">Find</span>&#160;&#160; <span class="pre">Threshold</span></code> tool. You can limit the maximum number of codes
+<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Threshold</span></code> tool. You can limit the maximum number of codes
 the detector tries to find with the <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Detections</span></code> input
 parameter.</p>
 <p>There is always some white space around the first and the last bars
 of the barcode. This space is called a <em>quiet zone</em>. If you roughly
 know how wide the quiet zone is in terms of world coordinates (or
 pixels in case of uncalibrated camera), you can help the code finder
-by setting the estimate in parameter <code class="docutils literal notranslate"><span class="pre">Quiet</span> <span class="pre">Zone</span>&#160;&#160; <span class="pre">Width</span></code>. If the
+by setting the estimate in parameter <code class="docutils literal notranslate"><span class="pre">Quiet</span> <span class="pre">Zone</span> <span class="pre">Width</span></code>. If the
 width is set as <code class="docutils literal notranslate"><span class="pre">Automatic</span></code>, the tool tries to guess it but does
 not always get it right. The tool outputs sets of <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and
 <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices which locate the positions and orientations of the
@@ -263,11 +263,11 @@ with the <code class="docutils literal notranslate"><span class="pre">Reading</s
 <dt>Single Line</dt><dd><p>the barcode is read along a line specified by start and end
 points.</p>
 </dd>
-<dt>Area</dt><dd><p>the location of the barcode is set by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>.
-This method is used in this example.</p>
+<dt>Area</dt><dd><p>the location of the barcode is set by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. This
+method is used in this example.</p>
 </dd>
 </dl>
-<p>If you know the code type in advance (e.g. EAN-13, Code128 etc), you
+<p>If you know the code type in advance (e.g. EAN-13, Code128 etc), you
 can configure it with the <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">Type</span></code> input parameter. This makes
 the reading faster and more reliable. If you don’t know the code
 type, set the value to <code class="docutils literal notranslate"><span class="pre">Auto-detect</span></code> which is the default.</p>
@@ -300,7 +300,7 @@ that is filtered out by the script.</p></li>
 <li><p><a class="reference internal" href="../../tools/FindMatrixCodeTool/"><span class="doc">Find Matrix Code</span></a> inputs the image and
 the intensity threshold as before. Again, you can limit the maximum
 number of codes the detector tries to find with the
-<code class="docutils literal notranslate"><span class="pre">Max</span>&#160;&#160; <span class="pre">Detections</span></code> parameter.</p></li>
+<code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Detections</span></code> parameter.</p></li>
 </ul>
 <p>The found position candidates are now iterated over just as they were in
 barcode reading. The healthy codes are filtered by the script. The same

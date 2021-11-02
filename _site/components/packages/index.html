@@ -204,9 +204,7 @@ component with all of its dependencies in a single file.</p>
 <div class="section" id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">🔗</a></h2>
 <p>When component packages are created by the Builder, they include exactly
-one component. Packages that contain many components and licenses are
-only created by the cloud service. In the example below, the
-<code class="docutils literal notranslate"><span class="pre">licenses/</span></code> directory is added by the cloud.</p>
+one component.</p>
 <p>The structure of a component package is, for example, as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">com</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">mvp</span><span class="o">/</span>
 <span class="n">com</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">mvp</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span>
@@ -218,10 +216,6 @@ only created by the cloud service. In the example below, the
 <span class="n">com</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">mvp</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">arm</span><span class="o">/</span><span class="n">plugin</span><span class="o">.</span><span class="n">toolplugin</span>
 <span class="n">com</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">mvp</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">Fancy</span><span class="o">.</span><span class="n">toolc</span>
 <span class="n">com</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">mvp</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">model</span><span class="o">.</span><span class="n">onnx</span>
-<span class="n">licenses</span><span class="o">/</span>
-<span class="n">licenses</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">json</span>
-<span class="n">licenses</span><span class="o">/</span><span class="n">license</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">crt</span>
-<span class="n">licenses</span><span class="o">/</span><span class="n">config</span>
 </pre></div>
 </div>
 <p>Each component is stored under a path that is composed of the component
@@ -243,8 +237,7 @@ The contents of this file are as follows:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;componentId&quot;</span><span class="p">:</span> <span class="s2">&quot;com.visionappster.mvp&quot;</span><span class="p">,</span>
   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VisionAppster minimum viable product&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;c1624182-9ff6-44e4-a887-95d533fc78e4&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VisionAppster most valuable product&quot;</span><span class="p">,</span>
   <span class="nt">&quot;archs&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;windows-x86_64&quot;</span><span class="p">,</span>
     <span class="s2">&quot;linux-x86_64&quot;</span><span class="p">,</span>
@@ -307,8 +300,8 @@ the <code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</s
 <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code> macro must also match the component ID.
 The <code class="docutils literal notranslate"><span class="pre">version</span></code> field contains the exact version number of the
 component.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">uuid</span></code> fields are for the cloud service and only
-required if the component is uploaded to the store.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> field is strictly required for the VisionAppster Store
+only, but giving a human-readable name to a component is good practice.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">archs</span></code> fields provides a way to list the architectures the
 component supports. If the component contains no architecture-dependent
 machine code and therefore runs on any platform, <code class="docutils literal notranslate"><span class="pre">archs</span></code> can be
@@ -368,7 +361,7 @@ and version number of the referred component.</p>
 <p>For example, if a component references
 <code class="docutils literal notranslate"><span class="pre">res://com.example.foobar/1/model.onnx</span></code>, the Engine determines where
 components are installed in the system and inserts the absolute root
-path to the beginning. resulting e.g. in
+path to the beginning. resulting e.g. in
 <code class="docutils literal notranslate"><span class="pre">/opt/visionappster/components/com.example.foobar/1/model.onnx</span></code>.</p>
 </div>
 <div class="section" id="apps">
@@ -510,9 +503,9 @@ checksum of a file doesn’t match.</p>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">🔗</a></h2>
 <p>When a component package is distributed through the VisionAppster Store,
-<code class="docutils literal notranslate"><span class="pre">component.json</span></code> and possible license files are digitally signed by
-the cloud service. The signature is stored in a <code class="docutils literal notranslate"><span class="pre">.crt</span></code> file alongside
-the signed file. If an installed component has a signature, its validity
+<code class="docutils literal notranslate"><span class="pre">component.json</span></code> and possible license files must be digitally signed
+by the Store. The signature is stored in a <code class="docutils literal notranslate"><span class="pre">.crt</span></code> file alongside the
+signed file. If an installed component has a signature, its validity
 will be checked when loading the component. Licensed components
 distributed through the Store can only be loaded if they have a valid
 signature.</p>
@@ -520,18 +513,18 @@ signature.</p>
 <div class="section" id="licenses">
 <h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">🔗</a></h2>
 <p>A component package can optionally contain license files and their
-signatures in a directory called <code class="docutils literal notranslate"><span class="pre">licenses</span></code>. This makes it possible
-for the cloud service to craft self-contained packages that don’t
-require extra licensing steps after installation.</p>
+signatures in a directory called <code class="docutils literal notranslate"><span class="pre">licenses</span></code>. This makes it possible to
+craft self-contained packages that don’t require extra licensing steps
+after installation.</p>
 <p>In addition to the license file and its certificate, a component package
 can contain a configuration file (<code class="docutils literal notranslate"><span class="pre">licenses/config</span></code>) that contains the
-information required to fetch a new license file from the cloud service.
-The file format is such that it can be easily parsed in any programming
+information required to fetch a new license file from the Store. The
+file format is such that it can be easily parsed in any programming
 language and the shell. Two variables are currently recognized: <code class="docutils literal notranslate"><span class="pre">url</span></code>
 specifies where a new license file can be obtained for the user and
-<code class="docutils literal notranslate"><span class="pre">key</span></code> is an API key for authorization.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">url</span><span class="o">=</span><span class="s">https://va-engine.com/api/1/users/id-here/licenses.vapkg</span>
-<span class="na">key</span><span class="o">=</span><span class="s">6ee144ad-0bbb-4bf8-aeb4-f292febbe5d1</span>
+<code class="docutils literal notranslate"><span class="pre">token</span></code> is an API token for authorization.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">url</span><span class="o">=</span><span class="s">https://public-api.visionappster.com/1/licenses/license.vapkg</span>
+<span class="na">token</span><span class="o">=</span><span class="s">6ee144ad0bbb4bf8aeb4f292febbe5d1</span>
 </pre></div>
 </div>
 </div>
@@ -546,11 +539,11 @@ plugins (<code class="docutils literal notranslate"><span class="pre">.toolplugi
 and version. This embeds a component ID check to the auto-generated
 plugin code. The platform verifies the integrity of the plugin binary
 and the validity of its license.</p>
-<p>To protect a tool saved in the Builder one does not need to do anything.
-The Builder automatically encrypts all <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files when a component
-is being created for the cloud. This will transform the (about
-human-readable) <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files into <code class="docutils literal notranslate"><span class="pre">.toolc</span></code> files that can only be
-opened once they have been signed by the cloud service.</p>
+<p>On the command line, <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">tool</span> <span class="pre">encrypt</span></code> can be used to encrypt tool
+files. This will transform the (about human-readable) <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files
+into <code class="docutils literal notranslate"><span class="pre">.toolc</span></code> files that can only be opened if they have a valid
+digital signature. Such a signature can be generated using
+<code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">sign</span></code>.</p>
 </div>
 </div>
 

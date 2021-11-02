@@ -291,9 +291,9 @@ and the 4-by-2 size matrix into four 1-by-2 matrices.</p></li>
 <li><p><a class="reference internal" href="../../tools/ReadBarcodeTool/"><span class="doc">Read Barcode</span></a> inputs the image and a
 <code class="docutils literal notranslate"><span class="pre">Frame</span></code>/<code class="docutils literal notranslate"><span class="pre">Size</span></code>-locator and reads the code bounded by the box
 defined by <code class="docutils literal notranslate"><span class="pre">Frame</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>. If you know the code type in
-advance (e.g. EAN-13, Code128 etc), you can configure it with the
-<code class="docutils literal notranslate"><span class="pre">Code</span>&#160;&#160; <span class="pre">Type</span></code> input parameter. This makes the reading faster and
-more reliable. If you don’t know the code type, set the value to
+advance (e.g. EAN-13, Code128 etc), you can configure it with the
+<code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">Type</span></code> input parameter. This makes the reading faster and more
+reliable. If you don’t know the code type, set the value to
 <code class="docutils literal notranslate"><span class="pre">Auto-detect</span></code> which is the default.</p></li>
 </ul>
 <div class="small figure align-default" id="id4">
@@ -309,7 +309,7 @@ strings and the entries at <code class="docutils literal notranslate"><span clas
 are, say, four codes found in the original input image, the output at
 <code class="docutils literal notranslate"><span class="pre">Result</span> <span class="pre">0</span></code> will be a 4-by-2 table. Notice that <code class="docutils literal notranslate"><span class="pre">Sync</span></code> input has
 to be connected to the corresponding <code class="docutils literal notranslate"><span class="pre">Sync</span></code> output in
-<code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span>&#160;&#160; <span class="pre">Tool</span></code>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Iterate</span> <span class="pre">Tool</span></code>.</p></li>
 <li><p><a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript Tool</span></a> runs a simple script that
 takes the table of strings and filters out empty ones. This is
 necessary because sometimes the barcode is easier to find than it is

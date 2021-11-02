@@ -111,6 +111,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installing and uninstalling</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usage-examples">Usage examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#licenses">Licenses</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#caveats">Caveats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raw-http-api">Raw HTTP API</a></li>
 </ul>
@@ -190,10 +191,10 @@
             
   <div class="section" id="installing-and-uninstalling">
 <h1>Installing and uninstalling<a class="headerlink" href="#installing-and-uninstalling" title="Permalink to this headline">🔗</a></h1>
-<p>Component packages can be installed and uninstalled graphically through
-the Engine’s <a class="reference internal" href="../../engine/management-interface/"><span class="doc">management interface</span></a>.
-Another option is to use the <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command-line tool, which we’ll
-be using here.</p>
+<p>Component and license packages can be installed and uninstalled
+graphically through the Engine’s <a class="reference internal" href="../../engine/management-interface/"><span class="doc">management
+interface</span></a>. Another option is to use
+the <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command-line tool, which we’ll be using here.</p>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">🔗</a></h2>
 <p>On Windows, <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> is in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory of the VisionAppster
@@ -219,7 +220,8 @@ may want to set up an alias first:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install python:numpy python:opencv-python
 </pre></div>
 </div>
-<p>NOTE! You need to install the <a href="#id1"><span class="problematic" id="id2">`com.visionappster.extensions.python &lt;&gt;`__</span></a>
+<p>NOTE! You need to install the
+<a class="reference external" href="https://download.visionappster.com/packages/com.visionappster.extensions.python-3.8.6.vapkg">com.visionappster.extensions.python</a>
 component to enable Python support.</p>
 <p>Uninstall the only installed version of a component:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg uninstall com.example.component
@@ -238,6 +240,20 @@ computer running an VisionAppster Engine instance:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install --remote <span class="m">192</span>.168.1.23 com.example.component-1.2.3.vapkg
 </pre></div>
 </div>
+</div>
+<div class="section" id="licenses">
+<h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">🔗</a></h2>
+<p>To set up licenses you need the “Automatic license refreshing” API token
+from your VisionAppster Store account (<a class="reference external" href="https://store.visionappster.com/account/tokens">My account →
+Tokens</a>). To save it
+permanently, give the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg license config save --token <span class="nv">$TOKEN_ID</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">$TOKEN_ID</span></code> with the hexadecimal string you find in your
+account. Once the token is set, the VisionAppster Engine will
+automatically update your licenses. Licenses can also be downloaded
+using the <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">license</span> <span class="pre">refresh</span></code> command.</p>
 </div>
 <div class="section" id="caveats">
 <h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">🔗</a></h2>

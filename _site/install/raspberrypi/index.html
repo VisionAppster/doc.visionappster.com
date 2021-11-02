@@ -102,6 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#graphically">Graphically</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#on-command-line">On command line</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting">Connecting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-components-and-licenses">Installing components and licenses</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../windows/">Windows installation</a></li>
@@ -249,7 +250,7 @@ something similar. If unsure, use Etcher.</p>
 </div>
 <div class="section" id="connecting">
 <h2>Connecting<a class="headerlink" href="#connecting" title="Permalink to this headline">🔗</a></h2>
-<p>The VisionAppster Rpi image is based on <a class="reference external" href="https://archlinuxarm.org/">Arch Linux
+<p>The VisionAppster RPi image is based on <a class="reference external" href="https://archlinuxarm.org/">Arch Linux
 ARM</a>. The default username and password
 are <strong>alarm</strong> and <strong>alarm</strong>, respectively. The system has SSH enabled.
 The <strong>root</strong> password is <strong>root</strong>.</p>
@@ -273,7 +274,7 @@ RPi.</p>
 <p>If you can’t access the DHCP log file but you know the network segment
 to which you attached the RPi, you may try <a class="reference external" href="https://nmap.org/">nmap</a>.
 On Linux, you can usually install it using your system’s package manager
-(e.g. apt or yum). A Windows installer is available on the <a class="reference external" href="https://nmap.org/download">nmap
+(e.g. apt or yum). A Windows installer is available on the <a class="reference external" href="https://nmap.org/download">nmap
 site</a>.</p>
 <p>On Linux, give the following command (<code class="docutils literal notranslate"><span class="pre">sudo</span></code> is needed to display MAC
 addresses, which reveal the network card manufacturer):</p>
@@ -285,13 +286,27 @@ addresses, which reveal the network card manufacturer):</p>
 </pre></div>
 </div>
 <p>Here, 192.168.1.0/24 is your network segment, which you need to find out
-e.g. by using <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> or by opening the IPv4 properties of your network
+e.g. by using <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> or by opening the IPv4 properties of your network
 interface in a graphical environment.</p>
 <p>Once you have found the IP address, you can test the installation by
-pointing your browser to <a class="reference external" href="http://ip-address-of-rpi:2015/">http://ip-address-of-rpi:2015/</a>. You can also
+pointing your browser to <a class="reference external" href="http:/">http:/</a>/{ip-address-of-rpi}:2015/. You can also
 add the RPi as a remote in VisionAppster Builder. This makes it possible
 to use the camera of the RPi as an image source in the Builder and to
 export packages directly to it.</p>
+</div>
+<div class="section" id="installing-components-and-licenses">
+<h2>Installing components and licenses<a class="headerlink" href="#installing-components-and-licenses" title="Permalink to this headline">🔗</a></h2>
+<p>To install component packages and licenses (<code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> files) to the RPi
+you can either use the <a class="reference internal" href="../../engine/management-interface/"><span class="doc">management
+interface</span></a> with a web browser or the
+<code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command-line tool. Detailed instructions can be found
+<a class="reference internal" href="../../components/installing/"><span class="doc">here</span></a>.</p>
+<p>Note that when accessing a remote system you need to give the
+<code class="docutils literal notranslate"><span class="pre">--remote</span></code> option to <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install --remote <span class="m">192</span>.168.1.12 com.example.component-1.2.3.vapkg
+va-pkg license config save --remote <span class="m">192</span>.168.1.12 --token <span class="nv">$TOKEN_ID</span>
+</pre></div>
+</div>
 </div>
 </div>
 

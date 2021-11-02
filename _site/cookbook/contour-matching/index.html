@@ -274,16 +274,16 @@ the <code class="docutils literal notranslate"><span class="pre">Frame</span></c
 the recognized objects are given in the <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Name</span></code> output. Assume
 that the matcher finds four objects. This means that</p>
 <ul class="simple">
-<li><p>the frames are presented as a 16-by-4 matrix (i.e. four 4x4-frames
+<li><p>the frames are presented as a 16-by-4 matrix (i.e. four 4x4-frames
 stacked up),</p></li>
 <li><p>the sizes are presented as a 4-by-2 matrix (four 1-by-2 sizes stacked
 up) and</p></li>
 <li><p>the class names as a 4-by-1 table of strings.</p></li>
 </ul>
 <p>A <a class="reference internal" href="../../tools/BeginIterateTool/"><span class="doc">Begin Iterate tool</span></a> has been configured
-to input the three connected outputs from the contour matcher (i.e.
-<code class="docutils literal notranslate"><span class="pre">Frame</span></code>, <code class="docutils literal notranslate"><span class="pre">Size</span></code> and <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Name</span></code>). It splits the frame, size and
-class name matrices to single entities:</p>
+to input the three connected outputs from the contour matcher
+(i.e. <code class="docutils literal notranslate"><span class="pre">Frame</span></code>, <code class="docutils literal notranslate"><span class="pre">Size</span></code> and <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Name</span></code>). It splits the frame, size
+and class name matrices to single entities:</p>
 <ul class="simple">
 <li><p>the 16-by-4 frame matrix becomes four 4-by-4 matrices,</p></li>
 <li><p>the 4-by-2 size matrix becomes four 1-by-2 matrices,</p></li>
@@ -318,7 +318,7 @@ values of the variables. For instance:</p>
 </li>
 </ul>
 <div class="medium figure align-default" id="id3">
-<img alt="Inputs and outputs of the &quot;split image&quot; script" src="../../_images/contour-matching-script-1.png" />
+<img alt="Inputs and outputs of the “split image” script" src="../../_images/contour-matching-script-1.png" />
 <p class="caption"><span class="caption-text">Inputs and outputs of the “split image” script</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <ul>
@@ -344,7 +344,7 @@ output. Again, the script code is very simple:</p>
 </li>
 </ul>
 <div class="medium figure align-default" id="id4">
-<img alt="Inputs and outputs of the &quot;name + mean&quot; script" src="../../_images/contour-matching-script-2.png" />
+<img alt="Inputs and outputs of the “name + mean” script" src="../../_images/contour-matching-script-2.png" />
 <p class="caption"><span class="caption-text">Inputs and outputs of the “name + mean” script</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
 <ul class="simple">

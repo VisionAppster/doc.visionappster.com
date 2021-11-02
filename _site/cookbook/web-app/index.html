@@ -305,9 +305,9 @@ code.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">appId</span></code></dt><dd><p>The full component ID of your app.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">apiFunction</span></code></dt><dd><p>The name of the API function to call. This may be either a tool
-function or a single input function. In the latter case,
-resultSignal is needed to receive processing results. Note that this
-template only supports functions that take a single argument.</p>
+function or a single input function. In the latter case, resultSignal
+is needed to receive processing results. Note that this template only
+supports functions that take a single argument.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">resultSignal</span></code></dt><dd><p>The name the signal that passes processing results. Not needed with
 tool functions.</p>
@@ -329,10 +329,10 @@ template provides the following display functions:</p>
 </dl>
 <p>To build an installable web app component, you need to store the three
 files (<code class="docutils literal notranslate"><span class="pre">index.html</span></code>, <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code> and <code class="docutils literal notranslate"><span class="pre">style.css</span></code>) into any
-directory. In the Builder, select File, Package a folder… and select
-the directory. Type in the component ID
-(<code class="docutils literal notranslate"><span class="pre">com.example.edgedetector.web</span></code>) and version number (<code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>),
-select the “Remote” section and click “Upload”.</p>
+directory. In the Builder, select File, Package a folder… and select the
+directory. Type in the component ID (<code class="docutils literal notranslate"><span class="pre">com.example.edgedetector.web</span></code>)
+and version number (<code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>), select the “Remote” section and click
+“Upload”.</p>
 <div class="figure align-default" id="id1">
 <img alt="Uploading a web app component directly to a remote Engine." src="../../_images/web-app-create-component.png" />
 <p class="caption"><span class="caption-text">Uploading a web app component directly to a remote Engine.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
@@ -352,8 +352,8 @@ and install the web app to your local Engine.</p>
 <a class="reference external" href="http://localhost:2015/components/com.example.edgedetector.web/1/">com.example.edgedetector.web/1/</a>
 link to open the web app. If the server isn’t running, the web app will
 start it automatically.</p>
-<p>The input to the edge detector app is a file name. Use the “Text…”
-link at the top to send a text string to the API function.</p>
+<p>The input to the edge detector app is a file name. Use the “Text…” link
+at the top to send a text string to the API function.</p>
 <div class="figure align-default" id="id4">
 <img alt="Enter the full path to a file." src="../../_images/web-app-enter-filename.png" />
 <p class="caption"><span class="caption-text">Enter the full path to a file.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
@@ -365,7 +365,7 @@ gray levels of the output image will be scaled from [0, 1] to [0, 255].</p>
 from the browser. In this case, it will be empty as the app reads the
 image from a file on the server side. The result:</p>
 <div class="figure align-default" id="id5">
-<img alt="Pena's gorgeous contours." src="../../_images/web-app-pena-result.png" />
+<img alt="Pena’s gorgeous contours." src="../../_images/web-app-pena-result.png" />
 <p class="caption"><span class="caption-text">Pena’s gorgeous contours.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
 </div>
 </div>

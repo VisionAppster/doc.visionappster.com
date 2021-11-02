@@ -217,41 +217,39 @@ classifier</a>.</p>
 <img alt="Processing graph" src="../../_images/yolo-classifier-1.png" />
 <p class="caption"><span class="caption-text">Processing graph</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
-<ul class="simple">
+<ul>
 <li><p>The images originate from the virtual camera configured in <a class="reference internal" href="../../tools/ImageSource/"><span class="doc">Image
 Source</span></a>.</p></li>
 <li><p><a class="reference internal" href="../../tools/ScaleImageTool/"><span class="doc">Scale Image</span></a> scales the image to the size
 required by the YOLO classifier model. In this case, the size is 416
-x 416 pixels.</p></li>
-</ul>
+x 416 pixels.</p>
 <div class="medium figure align-default" id="id2">
 <img alt="The Tiny YOLO model requires a fixed image size of 416 × 416 pixels." src="../../_images/yolo-classifier-2.png" />
-<p class="caption"><span class="caption-text">The Tiny YOLO model requires a fixed image size of 416 × 416 pixels.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+<p class="caption"><span class="caption-text">The Tiny YOLO model requires a fixed image size of 416 × 416
+pixels.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
-<ul class="simple">
+</li>
 <li><p><a class="reference internal" href="../../tools/ImageToTensorTool/"><span class="doc">Image to Tensor</span></a> converts a color image
 into a tensor of shape 1 x 3 x <code class="docutils literal notranslate"><span class="pre">height</span></code> x <code class="docutils literal notranslate"><span class="pre">width</span></code>. 1 is the
 number of images per tensor (N, batch size), 3 is the number of color
 channels (C) in an RGB image. Height (H) and width (W) are both 416
-pixels.</p></li>
-</ul>
+pixels.</p>
 <div class="small figure align-default" id="id3">
 <img alt="The input to the model needs to be an image tensor in NCHW layout." src="../../_images/yolo-classifier-3.png" />
 <p class="caption"><span class="caption-text">The input to the model needs to be an image tensor in NCHW layout.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
-<ul class="simple">
+</li>
 <li><p><a class="reference internal" href="../../tools/RunOnnxModelTool/"><span class="doc">Run Onnx Model</span></a> runs the ONNX model. The
 model file is selected with a file dialog that appears by clicking on
 <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">File</span></code> input parameter. Connectable input and output sockets
 appear after the model file has been loaded. The output of this model
 is a tensor of shape 1 x 125 x 13 x 13. It contains encoded
-information about identified objects and their locations.</p></li>
-</ul>
+information about identified objects and their locations.</p>
 <div class="small figure align-default" id="id4">
 <img alt="The ONNX model is stored as a resource file in the app." src="../../_images/yolo-classifier-5.png" />
 <p class="caption"><span class="caption-text">The ONNX model is stored as a resource file in the app.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
-<ul class="simple">
+</li>
 <li><p><a class="reference internal" href="../../tools/ProcessYoloResultTool/"><span class="doc">Process Yolo Result</span></a> takes the
 output tensor of the ONNX tool and decodes the class and location
 data. The detection is accepted only if the probability of correct
@@ -259,24 +257,24 @@ detection is higher than <code class="docutils literal notranslate"><span class=
 can typically be detected several times within a slightly different
 bounding box. These false detections can be prevented by specifying
 how much the detected bounding boxes can overlap. The maximum amount
-of overlap is determined by <code class="docutils literal notranslate"><span class="pre">Overlap</span> <span class="pre">Ratio</span>&#160;&#160; <span class="pre">Threshold</span></code>. The number
+of overlap is determined by <code class="docutils literal notranslate"><span class="pre">Overlap</span> <span class="pre">Ratio</span> <span class="pre">Threshold</span></code>. The number
 of object classes in Tiny YOLO V2 is 20. The locations of the
 identified objects are given as <code class="docutils literal notranslate"><span class="pre">Frame</span></code>and <code class="docutils literal notranslate"><span class="pre">Size</span></code> matrices. The
 corresponding class indices and confidence levels are also given as
-matrices.</p></li>
-</ul>
+matrices.</p>
 <div class="small figure align-default" id="id5">
 <img alt="The output tensor of a YOLO model needs to be decoded." src="../../_images/yolo-classifier-6.png" />
 <p class="caption"><span class="caption-text">The output tensor of a YOLO model needs to be decoded.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
 </div>
-<ul class="simple">
+</li>
 <li><p>Finally, <a class="reference internal" href="../../tools/JavaScriptTool/"><span class="doc">JavaScript</span></a> inputs the selected
-indices and converts them to class names.</p></li>
-</ul>
+indices and converts them to class names.</p>
 <div class="medium figure align-default" id="id6">
 <img alt="The script tool takes in class indices and outputs class names." src="../../_images/yolo-classifier-7.png" />
 <p class="caption"><span class="caption-text">The script tool takes in class indices and outputs class names.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
 </div>
+</li>
+</ul>
 <p>The script code is given in the images below.</p>
 <div class="small figure align-default" id="id7">
 <img alt="Creating a table with JavaScript is straightforward." src="../../_images/yolo-classifier-A.png" />

@@ -111,7 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../#caveats">Caveats</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Creating tools with Python</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#minimal-example">Minimal example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#describing-a-tool-s-interface">Describing a tool’s interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#describing-a-tools-interface">Describing a tool’s interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#data-type-conversions">Data type conversions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#runtime-errors">Runtime errors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tool-state">Tool state</a></li>
@@ -233,15 +233,15 @@ empty image. The single output parameter is declared the same way except
 that it has no default value.</p>
 <p>The body of the <code class="docutils literal notranslate"><span class="pre">process</span></code> function simply copies the value of the
 <code class="docutils literal notranslate"><span class="pre">image</span></code> input parameter to the output. In a more realistic situation,
-the tool would make calls to e.g. NumPy and OpenCV functions.</p>
+the tool would make calls to e.g. NumPy and OpenCV functions.</p>
 <p>Finally, the VisionAppster runtime must be made aware of the existence
 of the tool. This happens by calling the <code class="docutils literal notranslate"><span class="pre">Tool.publish</span></code> function. The
 first argument is the <a class="reference internal" href="../../../components/#full-component-id"><span class="std std-ref">full component
 ID</span></a> of the tool plugin. The rest
 are the names of the Python classes to be registered in that plugin.</p>
 </div>
-<div class="section" id="describing-a-tool-s-interface">
-<h2>Describing a tool’s interface<a class="headerlink" href="#describing-a-tool-s-interface" title="Permalink to this headline">🔗</a></h2>
+<div class="section" id="describing-a-tools-interface">
+<h2>Describing a tool’s interface<a class="headerlink" href="#describing-a-tools-interface" title="Permalink to this headline">🔗</a></h2>
 <p>In essence, each tool in a VisionAppster processing graph is a function
 that will be called by the runtime when needed. At a minimum, the
 runtime only needs to know the names and types of input and output
@@ -342,8 +342,8 @@ table lists the supported conversions between Python data types and
 VisionAppster C types.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 62%" />
-<col style="width: 38%" />
+<col style="width: 64%" />
+<col style="width: 36%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Python type</p></th>

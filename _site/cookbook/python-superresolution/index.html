@@ -228,8 +228,8 @@ execute all Python modules whose name ends with <code class="docutils literal no
 <code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/plugins/tool/</span></code>. If these modules register tools,
 they will appear in Builder’s tool box. In this example, the Python
 module will be
-<a class="reference download internal" download="" href="../../_downloads/d6b4a2614ec85991a41827699079069d/rescale_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">rescale_toolplugin.py</span></code></a> and the
-name of the tool in the plugin is <code class="docutils literal notranslate"><span class="pre">Rescale</span></code>.</p>
+<a class="reference download internal" download="" href="../../_downloads/d6b4a2614ec85991a41827699079069d/rescale_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">rescale_toolplugin.py</span></code></a> and the name
+of the tool in the plugin is <code class="docutils literal notranslate"><span class="pre">Rescale</span></code>.</p>
 <p>The Rescale tool uses a deep neural network (DNN) to zoom up an image
 with enhanced resolution. The DNN is first used for zooming up in steps
 of powers of 2 and finally adjusting the size with OpenCV’s <code class="docutils literal notranslate"><span class="pre">resize</span></code>
@@ -305,7 +305,7 @@ changed by the user of the tool.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">zoomFactor</span></code> determines how much the image is zoomed in X- and
 Y-directions. For example, if <code class="docutils literal notranslate"><span class="pre">zoomFactor</span></code> = 3, the size of the
 output image will be 3*3=9 times the size of the input. The default
-value is 1 (i.e. no change). The value must be positive.</p></li>
+value is 1 (i.e. no change). The value must be positive.</p></li>
 </ul>
 <p>The output is also called <code class="docutils literal notranslate"><span class="pre">image</span></code>, and its type is <code class="docutils literal notranslate"><span class="pre">va.Image</span></code>.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">inputs</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>

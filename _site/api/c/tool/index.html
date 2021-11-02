@@ -289,7 +289,7 @@ parentheses.</p>
 <div class="section" id="tool-declaration">
 <h3>Tool declaration<a class="headerlink" href="#tool-declaration" title="Permalink to this headline">🔗</a></h3>
 <p>Each tool declaration contains a variable number of entries that are
-created using special declaration macros (e.g. <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code> and
+created using special declaration macros (e.g. <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code> and
 <code class="docutils literal notranslate"><span class="pre">NAME</span></code>) as shown in the example. The first macro in all declarations
 must be <code class="docutils literal notranslate"><span class="pre">IDENTIFIER</span></code>. In addition, the <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> member function
 must be defined. Everything else is optional.</p>
@@ -302,11 +302,11 @@ should follow the rules for naming structures in C.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">NAME(NAME)</span></code></dt><dd><p>Gives the tool a user-visible name as a text string.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">TAG(TAG)</span></code></dt><dd><p>Tags can be used to give the VisionAppster engine additional hints
-about the tool. Currently, tools marked with <code class="docutils literal notranslate"><span class="pre">TAG(&quot;internal&quot;)</span></code>
-will not be shown in the Builder’s tool box. This is useful if you
-build apps or compound tools that require native functionality that
-is not intended to be used directly. The tool declaration can
-include any number of tags.</p>
+about the tool. Currently, tools marked with <code class="docutils literal notranslate"><span class="pre">TAG(&quot;internal&quot;)</span></code> will
+not be shown in the Builder’s tool box. This is useful if you build
+apps or compound tools that require native functionality that is not
+intended to be used directly. The tool declaration can include any
+number of tags.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PROCESS(FUNCTION)</span></code></dt><dd><p>The name of the C function implementation. The signature of the
 function must be <code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">FUNCTION(void*,</span> <span class="pre">void*)</span></code>. To ensure
@@ -325,7 +325,7 @@ variable name according to the rules of the C programming language.</p>
 default value. The default value can be any code that evaluates to
 the correct type. Usually, <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> is a constant value (such as
 1.23), but it can also be a function call that returns a value of
-<code class="docutils literal notranslate"><span class="pre">TYPE</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">sin(M_PI)</span></code>). Complex types can be allocated using
+<code class="docutils literal notranslate"><span class="pre">TYPE</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">sin(M_PI)</span></code>). Complex types can be allocated using
 functions such as <a class="reference internal" href="../reference/va_matrix/#_CPPv415va_matrix_alloc14va_matrix_typeii" title="va_matrix_alloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_matrix_alloc()</span></code></a>, or
 <a class="reference internal" href="../reference/va_image/#_CPPv414va_image_alloc13va_image_typeii" title="va_image_alloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_image_alloc()</span></code></a>. The ownership of a returned pointer
 will be transferred to the platform.</p>
@@ -407,21 +407,21 @@ file as shown in the example above. The <code class="docutils literal notranslat
 takes two parameters:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code></dt><dd><p>A globally unique identifier for the component the plugin will be
-placed into. If a component contains many plugins, the same
-component ID must be used in all of them. The component ID is used
-as a namespace for the tools that are defined within the component.
-The fully-qualified name for a tool will be composed of the
-component ID, its major version number and the name of the tool, for
-example <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p>
+placed into. If a component contains many plugins, the same component
+ID must be used in all of them. The component ID is used as a
+namespace for the tools that are defined within the component. The
+fully-qualified name for a tool will be composed of the component ID,
+its major version number and the name of the tool, for example
+<code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></dt><dd><p>Version number of the component. The version number has three parts:
 major.minor.patch. If a change in the plugin breaks existing
-functionality, the major version number must be incremented.
-Features can be added but not removed when changing the minor
-version number. If a release does not add new functionality but just
-improves or fixes the implementation, patch must be incremented.
-Version numbering can be started at any number, but usually 1.0.0
-marks the first release.</p>
+functionality, the major version number must be incremented. Features
+can be added but not removed when changing the minor version number.
+If a release does not add new functionality but just improves or
+fixes the implementation, patch must be incremented. Version
+numbering can be started at any number, but usually 1.0.0 marks the
+first release.</p>
 </dd>
 </dl>
 <p>Only the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro is strictly required for a
