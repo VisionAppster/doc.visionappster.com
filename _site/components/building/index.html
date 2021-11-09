@@ -108,6 +108,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Building component packages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#native-tool-plugins">Native tool plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tool-files">Tool files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-tool-plugins">Python tool plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#store-packages">Store packages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#signing">Signing</a></li>
@@ -299,10 +300,10 @@ has a valid digital signature, and the full component ID of that
 component matches the ID assigned to the <code class="docutils literal notranslate"><span class="pre">.tool</span></code> file. If an encrypted
 tool file is loaded in the Builder, it will appear just like a native
 tool that cannot be opened.</p>
-<p>Since encrypted files require a valid signature, they can only be used
-if the package has been validated and signed by VisionAppster Store. You
-must register the <a class="reference internal" href="../#component-id"><span class="std std-ref">component ID</span></a>
-using your seller account and use the <a class="reference internal" href="../#full-component-id"><span class="std std-ref">full component
+<p>Since decrypting encrypted files require a valid signature, they can
+only be used if the package has been signed by the VisionAppster Store.
+You must register the <a class="reference internal" href="../#component-id"><span class="std std-ref">component ID</span></a>
+in the Store and use the <a class="reference internal" href="../#full-component-id"><span class="std std-ref">full component
 ID</span></a> to encrypt files.</p>
 <p>Let’s assume you have created a processing graph, made it <a class="reference internal" href="../../builder/compounds/"><span class="doc">a
 compound</span></a> and saved it as a <code class="docutils literal notranslate"><span class="pre">.tool</span></code> file. To
@@ -339,6 +340,22 @@ single component. Add the encrypted file to the manifest:</p>
 will contain <code class="docutils literal notranslate"><span class="pre">MyComplexTool.toolc</span></code>. When installed, this tool will
 appear among other tools in the Builder as “My Complex Tool”.</p>
 </div>
+<div class="section" id="python-tool-plugins">
+<h2>Python tool plugins<a class="headerlink" href="#python-tool-plugins" title="Permalink to this headline">🔗</a></h2>
+<p>Just like native tool plugins and <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files, a package can contain
+Python tool plugins. They are normal Python source files with a <code class="docutils literal notranslate"><span class="pre">.py</span></code>
+extension. The convention is to end the file name with <code class="docutils literal notranslate"><span class="pre">toolplugin</span></code>.
+If you follow this convention, <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">--scan</span></code> will be able to set the
+correct file type automatically. The structure of a minimal component
+providing Python tools is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mycomponent</span><span class="o">/</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">component</span><span class="o">.</span><span class="n">json</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">toolplugin</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Note that the component ID you pass to <code class="docutils literal notranslate"><span class="pre">va.Tool.publish()</span></code> in your
+Python code must match the component ID of the package you are building.</p>
+</div>
 <div class="section" id="apps">
 <h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">🔗</a></h2>
 <p>When you save a project in the Builder, the Builder creates an app that
@@ -348,8 +365,8 @@ Builder, the natural way to create a component package out of it is to
 <a class="reference internal" href="../../builder/creating-components/#packaging-apps"><span class="std std-ref">use the Builder</span></a>.</p>
 <p>It is usually a good idea to build required tools into a separate
 component and add the full component IDs of required tool plugins as
-dependencies to the app component. You can do this in the Builder’s
-graphical interface.</p>
+dependencies to the app component. You can define dependencies in the
+Builder’s graphical interface.</p>
 <p>Alternatively, you can create a self-contained app component by copying
 the app’s files from <code class="docutils literal notranslate"><span class="pre">analysisapp/</span></code> to the root directory of your tool
 plugin component:</p>
@@ -358,14 +375,15 @@ plugin component:</p>
 <span class="n">mycomponent</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">qml</span>
 <span class="n">mycomponent</span><span class="o">/</span><span class="n">appconfig</span><span class="o">.</span><span class="n">json</span>
 <span class="n">mycomponent</span><span class="o">/</span><span class="n">engine</span><span class="o">.</span><span class="n">tool</span>
+<span class="n">mycomponent</span><span class="o">/</span><span class="n">toolplugin</span><span class="o">.</span><span class="n">py</span>
 <span class="n">mycomponent</span><span class="o">/</span><span class="n">MyComplexTool</span><span class="o">.</span><span class="n">tool</span>
 <span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span>
 <span class="n">mycomponent</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">mycooltools</span><span class="o">.</span><span class="n">toolplugin</span>
 </pre></div>
 </div>
-<p>The component ID of such a package would need to be changed. This
-requires a change in the native C code that implements the tool plugin.
-If you want to encrypt the <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files, the new ID must be given
+<p>The component ID of such a package would need to be set so that it
+matches the component ID used in tool plugins implemented in Python or
+C. If you want to encrypt the <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files, the new ID must be given
 there as well:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg tool encrypt <span class="se">\</span>
   --full-component-id com.example.apps.cool/1 engine.tool

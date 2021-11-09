@@ -239,6 +239,10 @@ of the tool. This happens by calling the <code class="docutils literal notransla
 first argument is the <a class="reference internal" href="../../../components/#full-component-id"><span class="std std-ref">full component
 ID</span></a> of the tool plugin. The rest
 are the names of the Python classes to be registered in that plugin.</p>
+<p><em>NOTE</em>: If you package your Python code into a component, make sure that
+the full component ID you use in the Python code (here
+“com.acme.python/0”) matches that of the component you create. Python
+imports may fail to work otherwise.</p>
 </div>
 <div class="section" id="describing-a-tools-interface">
 <h2>Describing a tool’s interface<a class="headerlink" href="#describing-a-tools-interface" title="Permalink to this headline">🔗</a></h2>
