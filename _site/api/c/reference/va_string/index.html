@@ -258,17 +258,17 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv422va_string_from_pointerPK9va_string">
-<span id="_CPPv322va_string_from_pointerPK9va_string"></span><span id="_CPPv222va_string_from_pointerPK9va_string"></span><span id="va_string_from_pointer__va_stringCP"></span><span class="target" id="va_string_from_pointer"></span><a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_string_from_pointer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_string_from_pointerPK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>If <em>string</em> points to a va_string, returns <em>string</em>. </p>
-<p>Otherwise assumes that <em>string</em> points to a sequence of characters and returns <code class="docutils literal notranslate"><span class="pre">va_string_clone(string)</span></code>. </p>
+<dt id="_CPPv415va_string_sharePK9va_string">
+<span id="_CPPv315va_string_sharePK9va_string"></span><span id="_CPPv215va_string_sharePK9va_string"></span><span id="va_string_share__va_stringCP"></span><span class="target" id="va_string_share"></span><a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_string_share</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_string_sharePK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>If <em>string</em> points to a dynamically allocated va_string, increases its reference count and returns <em>string</em>. </p>
+<p>If <em>string</em> is a C string returns <code class="docutils literal notranslate"><span class="pre">va_string_clone(string)</span></code>. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv414va_string_freeP9va_string">
 <span id="_CPPv314va_string_freeP9va_string"></span><span id="_CPPv214va_string_freeP9va_string"></span><span id="va_string_free__va_stringP"></span><span class="target" id="va_string_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_string_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_string_freeP9va_string" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Releases the memory allocated by <em>string</em>. </p>
-<p>If <em>string</em> points to a C-style character array (see va_string_is_cstring), this function does nothing. </p>
+<p>If <em>string</em> points to a C-style character array (see va_string_is_cstring), this function does nothing. If the string is shared (see va_string_share), the memory will be released once the last reference has been freed. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -320,6 +320,13 @@ va_string_free(str);
 </pre></div>
 </div>
  </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_string_comparePK9va_stringPK9va_string">
+<span id="_CPPv317va_string_comparePK9va_stringPK9va_string"></span><span id="_CPPv217va_string_comparePK9va_stringPK9va_string"></span><span id="va_string_compare__va_stringCP.va_stringCP"></span><span class="target" id="va_string_compare"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_string_compare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string1</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">string2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_string_comparePK9va_stringPK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Compares two strings. </p>
+<p>This function is equivalent to strcmp() of UTF-8 encoded C strings: it returns an integer less than, equal to, or greater than zero if <em>string1</em> is found, respectively, to be less than, to match, or be greater than <em>string2</em>. </p>
 </dd></dl>
 
 <dl class="cpp function">
