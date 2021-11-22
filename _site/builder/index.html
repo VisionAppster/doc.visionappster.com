@@ -43,7 +43,7 @@
     
     <link rel="index" title="Index" href="../genindex/" />
     <link rel="search" title="Search" href="../search/" />
-    <link rel="next" title="Creating an API" href="creating-api/" />
+    <link rel="next" title="App API" href="app-api/" />
     <link rel="prev" title="World coordinates" href="../engine/world-coordinates/" /> 
 </head>
 
@@ -98,10 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../engine/">Engine</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Builder</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#first-steps">First steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="creating-api/">Creating an API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="creating-components/">Creating components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compounds/">Compound tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="app-api/">App API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compounds/">Compound tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-components/">Creating components</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/">Built-in tools</a></li>
@@ -185,22 +184,26 @@ Engine</span></a> and sold in the <a class="reference external" href="https://st
 Store</a>.</p>
 <div class="section" id="first-steps">
 <h2>First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">🔗</a></h2>
-<p>Start the VisionAppster Builder from the start menu of your desktop
-environment. The Builder will open with a new project that contains an
+<iframe class="youtube" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/1k5S1-1AHDg?rel=0"></iframe><p>Start the VisionAppster Builder from the start menu of your desktop
+environment. The Builder will open with an new project that contains an
 empty processing graph.</p>
-<p>To create a functional processing graph you need to add some tools. The
-“Tools” menu at the top lists installed tools. Type in a search term to
-find tools by their name. To add a tool, drag and drop it on the
-workspace. Here, we’ll create a very simple graph that produces a
-monochrome version of an input image.</p>
 <div class="figure align-default" id="id1">
-<img alt="Drag and drop a tool from the tool menu to the processing graph." src="../_images/builder-drag-tool.png" />
-<p class="caption"><span class="caption-text">Drag and drop a tool from the tool menu to the processing graph.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
+<img alt="The Builder opens with an empty workspace." src="../_images/builder-empty.png" />
+<p class="caption"><span class="caption-text">The Builder opens with an empty workspace.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Click the tool to reveal its parameters. The parameters listed above the
-tool are inputs and those below it are outputs. The parameters with a
-colored dot are connectable. In most tools all connection points are
-initially gray. The color codes are as follows:</p>
+<p>To create a functional processing graph you need to add some tools. The
+Tools menu at the top lists installed tools. Type in a search term to
+find tools by their name. To add a tool, drag and drop it on the
+workspace.</p>
+<div class="figure align-default" id="id2">
+<img alt="Drag and drop tools from the tool menu to the processing graph." src="../_images/builder-tools.png" />
+<p class="caption"><span class="caption-text">Drag and drop tools from the tool menu to the processing graph.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Now, find a tool called “Image Source” and drop it on the workspace.
+Click the workspace to hide the tool box. Then click the tool to reveal
+its parameters. The parameters listed above the tool are inputs and
+those below it are outputs. The parameters with a colored dots are
+connectable. The color codes are as follows:</p>
 <dl class="simple">
 <dt>Gray</dt><dd><p>Optionally connectable, currently not connected.</p>
 </dd>
@@ -209,51 +212,69 @@ initially gray. The color codes are as follows:</p>
 <dt>Red</dt><dd><p>Required, but not connected.</p>
 </dd>
 </dl>
-<div class="figure align-default" id="id2">
-<img alt="Click a tool to show and hide its parameters." src="../_images/builder-tool-parameters.png" />
-<p class="caption"><span class="caption-text">Click a tool to show and hide its parameters.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
-</div>
-<p>Clicking a connection point starts adding a new connection or removes an
-existing one. We’ll not add connections here but set the input
-parameters manually. Let’s start editing the <code class="docutils literal notranslate"><span class="pre">image</span></code> input by clicking
-its value (<code class="docutils literal notranslate"><span class="pre">Image,</span> <span class="pre">0×0</span></code>):</p>
+<p>Click the dots to add and delete connections.</p>
 <div class="figure align-default" id="id3">
-<img alt="Click a value to open a pop-up editor or display." src="../_images/builder-popup-editor.png" />
-<p class="caption"><span class="caption-text">Click a value to open a pop-up editor or display.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+<img alt="The workspace after dropping and clicking on an image source" src="../_images/builder-image-source.png" />
+<p class="caption"><span class="caption-text">The workspace after dropping and clicking on an image source</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Find a suitable test picture from your disk and close the pop-up window
-by clicking the <code class="docutils literal notranslate"><span class="pre">×</span></code> at the upper right corner.</p>
-<p>The app is ready to run. Press F5 to start it. If you prefer a mouse,
-you can also use the execution controls on the status line.</p>
-<p>When the app starts, the input values will be sent to the tool, which
-processes them. As a result, the <code class="docutils literal notranslate"><span class="pre">image</span></code> output changes. To see the
-output image, you can either click the value or drag and drop it on the
-workspace. We’ll do the latter to keep the display open.</p>
+<p>The image source receives images from a camera and sends them to the
+processing pipeline. In this case, we are going to set up a virtual
+camera that reads images from files. Open the Virtual Camera menu and
+click the “+” button to add source images. Select “Add images” and use
+the file browser to select images from your hard drive.</p>
 <div class="figure align-default" id="id4">
-<img alt="Drag a value on workspace to open a permanent editor or display." src="../_images/builder-image-display.png" />
-<p class="caption"><span class="caption-text">Drag a value on workspace to open a permanent editor or display.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+<img alt="Virtual cameras can be used to build test image sets." src="../_images/builder-virtual-camera.png" />
+<p class="caption"><span class="caption-text">Virtual cameras can be used to build test image sets.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Now, if you make changes to the parameters of the tool, the output
-display will update automatically to display the effect. Try this by
-clicking the value of the <code class="docutils literal notranslate"><span class="pre">hue</span></code> input parameter. Use the slider to
-adjust the color.</p>
+<p>Now that the virtual camera has been configured, we can use it as a
+source of images: click the <em>Camera Id</em> input parameter of the Image
+Source and select “Virtual Camera”.</p>
 <div class="figure align-default" id="id5">
-<img alt="Change parameters and see the effect immediately." src="../_images/builder-auto-update.png" />
-<p class="caption"><span class="caption-text">Change parameters and see the effect immediately.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+<img alt="Auto-detected cameras are shown in a drop-down list." src="../_images/builder-select-camera.png" />
+<p class="caption"><span class="caption-text">Auto-detected cameras are shown in a drop-down list.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
 </div>
-<p>If the graph does heavy calculations, automatic updating may slow down
-the Builder. You can disable the feature by clicking the circular arrow
-button on the status line.</p>
+<p>The image source will automatically take a picture, which you can see by
+dragging the <em>Image</em> output parameter to the workspace.</p>
 <div class="figure align-default" id="id6">
-<img alt="Automatic updating can be disabled on the status line." src="../_images/builder-disable-auto-restart.png" />
-<p class="caption"><span class="caption-text">Automatic updating can be disabled on the status line.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+<img alt="Image parameters are displayed using a powerful image display." src="../_images/builder-captured-image.png" />
+<p class="caption"><span class="caption-text">Image parameters are displayed using a powerful image display.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Save the project (“File” → “Save as…”) as “Monochromatizer”.</p>
+<p>Input and output parameters can be dragged to the workspace. This will
+publish the parameter in the API of the app. The Builder will create a
+suitable user interface component to display the value of the parameter
+and connect it to the API entry. The type of the UI component can be
+changed in the window menu.</p>
+<p>Now open the Tool menu, drag “Detect Edges” and drop it on top of the
+Image Source on the workspace.</p>
 <div class="figure align-default" id="id7">
-<img alt="Save the project with a descriptive name." src="../_images/builder-save-as.png" />
-<p class="caption"><span class="caption-text">Save the project with a descriptive name.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
+<img alt="Tools dropped on top of each other are automatically connected." src="../_images/builder-auto-connect.png" />
+<p class="caption"><span class="caption-text">Tools dropped on top of each other are automatically connected.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Now, you are ready to <a class="reference internal" href="creating-api/"><span class="doc">create an API</span></a>.</p>
+<p>To feed a new image to the analysis pipeline, click the “next” button at
+the bottom.</p>
+<div class="small figure align-default" id="id8">
+<img alt="The buttons on the status bar are used to step execution." src="../_images/builder-next.png" />
+<p class="caption"><span class="caption-text">The buttons on the status bar are used to step execution.</span><a class="headerlink" href="#id8" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Click the Detect Edges tool and drag its <em>Image</em> output on top of the
+image display. This will add another layer on the display. Use the
+layers tab on the image display to adjust the properties of the topmost
+layer as shown in the picture below.</p>
+<div class="figure align-default" id="id9">
+<img alt="Source image and analysis result shown on top of each other" src="../_images/builder-pena-edge-detection.png" />
+<p class="caption"><span class="caption-text">Source image and analysis result shown on top of each other</span><a class="headerlink" href="#id9" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Your first app is ready. Click File, Save As… and give your project a
+name.</p>
+<div class="figure align-default" id="id10">
+<img alt="Saving a project." src="../_images/builder-save-as.png" />
+<p class="caption"><span class="caption-text">Saving a project.</span><a class="headerlink" href="#id10" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Saving a project creates a <em>directory</em> that contains the project’s
+assets. When you open a saved project, you need to select that
+directory, not the project file (<code class="docutils literal notranslate"><span class="pre">vaproject.json</span></code>) in the directory.</p>
+<p>Now, you are ready to <a class="reference internal" href="creating-components/"><span class="doc">create your first
+component</span></a>.</p>
 </div>
 </div>
 
@@ -263,7 +284,7 @@ button on the status line.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="creating-api/" class="btn btn-neutral float-right" title="Creating an API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="app-api/" class="btn btn-neutral float-right" title="App API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../engine/world-coordinates/" class="btn btn-neutral float-left" title="World coordinates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
