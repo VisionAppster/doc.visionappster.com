@@ -368,13 +368,15 @@
             
   <div class="section" id="convert-type">
 <h1>Convert type<a class="headerlink" href="#convert-type" title="Permalink to this headline">🔗</a></h1>
-<p>Changes the data type of the input object.</p>
+<p>Changes the data type of the input object or converts a string to a
+number.</p>
 <div class="section" id="input">
 <h2>Input<a class="headerlink" href="#input" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: A scalar, a matrix or a tensor. Accepted types depend
-on <em>outputType</em>: a scalar output type requires a scalar input
-type etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: A scalar, a matrix, a tensor or a string. Accepted
+types depend on <em>outputType</em>: a scalar output type requires a
+scalar or string as an input, a matrix output type requires
+matrix input etc.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">outputType</span></code>: The type of the output.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">roundingMode</span></code>: The way floating-point values are converted
 to integers.</p></li>
