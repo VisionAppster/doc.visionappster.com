@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Built-in tools" href="../../tools/" />
-    <link rel="prev" title="Compound tools" href="../compounds/" /> 
+    <link rel="next" title="Compound tools" href="../compounds/" />
+    <link rel="prev" title="Creating an API" href="../creating-api/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,13 +98,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Builder</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../#first-steps">First steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../app-api/">App API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../compounds/">Compound tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../creating-api/">Creating an API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Creating components</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#packaging-apps">Packaging apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#packaging-tool-plugins">Packaging tool plugins</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../compounds/">Compound tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-api/">App API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
@@ -196,75 +197,28 @@ use the Builder or <a class="reference internal" href="../../components/building
 compile the package file.</p>
 <div class="section" id="packaging-apps">
 <h2>Packaging apps<a class="headerlink" href="#packaging-apps" title="Permalink to this headline">🔗</a></h2>
-<p>We’ll use the <a class="reference internal" href="../"><span class="doc">edge detector app</span></a> as an example. The
-target is to create an app can be triggered to process a file on the
-local hard drive through an HTTP request. The app will send the
-processing results as signals.</p>
-<p>Click File, Open… and choose the directory you saved the project into.
-The Builder will show you the platform’s file dialog, the picture below
-shows a Qt dialog in Linux.</p>
-<div class="large figure align-default" id="id1">
-<img alt="Choose the directory of the project to open it." src="../../_images/components-open-project.png" />
-<p class="caption"><span class="caption-text">Choose the directory of the project to open it.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
-</div>
+<p>We’ll use the <a class="reference internal" href="../"><span class="doc">Monochromatizer app</span></a> as an example
+again. First, open it in the Builder.</p>
 <p>As a first step, we’ll give our app a component ID. The component ID
-will uniquely identify the app and its API. Select File, App properties…
-and change the auto-generated component ID to
-“com.example.edgedetector”. If your intent is to sell or provide the app
-as a free component in the VisionAppster Store, you need to register the
-component ID there.</p>
-<div class="large figure align-default" id="id2">
-<img alt="Give the app a unique component ID." src="../../_images/components-app-id.png" />
-<p class="caption"><span class="caption-text">Give the app a unique component ID.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+will uniquely identify the app and its API. Select “File” → “App
+properties…” in the menu and change the auto-generated default component
+ID to “com.example.monochromatizer”. If you want sell or provide the app
+as a free component in the VisionAppster Store, you also need to
+register the component ID there.</p>
+<div class="figure align-default" id="id1">
+<img alt="Give the app a unique component ID." src="../../_images/builder-app-properties.png" />
+<p class="caption"><span class="caption-text">Give the app a unique component ID.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
-<p>The virtual camera the app was set up with reads images from your hard
-drive, which will not be accessible by the users of the app. The next
-step is to change this so that the name of the image file will come
-through an API call. Change the <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Id</span></code> parameter to “File name
-trigger”.</p>
-<p>Note that this will cause the processing graph to stop because there is
-no longer a camera from which images could be read. You can dismiss the
-error message by clicking “Restart now”.</p>
-<div class="small figure align-default" id="id3">
-<img alt="“File name trigger” makes the image source to treat trigger inputs as file names." src="../../_images/components-file-name-trigger.png" />
-<p class="caption"><span class="caption-text">“File name trigger” makes the image source to treat trigger inputs as
-file names.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+<p>Save the app with Ctrl+S. Select “File” → “Package this app…” in the
+menu. Give the component a name, open the “Local” section and pick a
+target folder. Then click “Create”.</p>
+<div class="figure align-default" id="id2">
+<img alt="Creating a component out of an app is straightforward." src="../../_images/builder-create-app-package.png" />
+<p class="caption"><span class="caption-text">Creating a component out of an app is straightforward.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
 </div>
-<p>In the context menu of the <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> input, select “Publish app API
-function” to add the input to the API object as a function.</p>
-<div class="small figure align-default" id="id4">
-<img alt="Any connectable input can be turned into an API function." src="../../_images/components-publish-api-function.png" />
-<p class="caption"><span class="caption-text">Any connectable input can be turned into an API function.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
-</div>
-<p>Open the API editor to see the app’s API. You’ll see three entries: one
-function and two signals. Since we dragged two output parameters to an
-image display, the Builder has automatically created two signals for us.
-The trigger input will show up as a function.</p>
-<div class="large figure align-default" id="id5">
-<img alt="The API editor shows the public API of your app." src="../../_images/components-api-editor.png" />
-<p class="caption"><span class="caption-text">The API editor shows the public API of your app.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
-</div>
-<p>The default names of the API entries are composed of the parameter name
-and an optional postfix number to make the name unique in the
-application scope. Since the API is intended to be used as the public
-interface of your app, try to find descriptive names. Click the name of
-the API entry (the rightmost column) to rename it.</p>
-<p>We’ll change the default names to <code class="docutils literal notranslate"><span class="pre">sendFileName</span></code>, <code class="docutils literal notranslate"><span class="pre">sourceImage</span></code> and
-<code class="docutils literal notranslate"><span class="pre">edges</span></code> as shown in the next picture. By convention, the names should
-be in camelCase, i.e. start with a lowercase letter and capitalize the
-first letter of subsequent words.</p>
-<div class="small figure align-default" id="id6">
-<img alt="Make the names of API entries descriptive." src="../../_images/components-rename-api.png" />
-<p class="caption"><span class="caption-text">Make the names of API entries descriptive.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
-</div>
-<p>Close the API editor by clicking the API icon again and save it with
-<em>Ctrl + s</em>. Select File, Package this app… You’ll be shown a component
-editor dialog. Open the “Local” section and pick a target folder. Then
-click “Create”.</p>
-<div class="large figure align-default" id="id7">
-<img alt="Creating a component out of an app is straightforward." src="../../_images/components-create-app-package.png" />
-<p class="caption"><span class="caption-text">Creating a component out of an app is straightforward.</span><a class="headerlink" href="#id7" title="Permalink to this image">🔗</a></p>
-</div>
+<p>Congratulations! You have finished created your first functional vision
+app. The package is ready to be installed with <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> or via the web
+interface.</p>
 <p>If you used the default target folder, opening the <a class="reference internal" href="../../engine/management-interface/"><span class="doc">web-based management
 interface</span></a> in a browser
 (<a class="reference external" href="http://localhost:2020/">http://localhost:2020/</a> by default) will show your component package in
@@ -319,11 +273,12 @@ plugin binary for two different architectures:</p>
 <p>When a package like this is installed, the installer will only copy the
 files matching the architecture of the running machine.</p>
 <p>The final step is to create a component package in the builder. Click
-File, Package a folder… Select the <code class="docutils literal notranslate"><span class="pre">myopencv-1</span></code> directory.</p>
-<div class="large figure align-default" id="id8">
+“File” → “Package a folder…”. Give the component a name and select the
+<code class="docutils literal notranslate"><span class="pre">myopencv-1</span></code> directory.</p>
+<div class="large figure align-default" id="id3">
 <img alt="Once you have the files, you just need to fill in component ID and version." src="../../_images/components-create-opencv-package.png" />
 <p class="caption"><span class="caption-text">Once you have the files, you just need to fill in component ID and
-version.</span><a class="headerlink" href="#id8" title="Permalink to this image">🔗</a></p>
+version.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
 <p>Make sure to enter the correct component ID (<code class="docutils literal notranslate"><span class="pre">com.example.opencv</span></code>) and
 version number (<code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>). Then pick a target directory in the “Local”
@@ -337,8 +292,8 @@ section and click “Create”. Done.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../../tools/" class="btn btn-neutral float-right" title="Built-in tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../compounds/" class="btn btn-neutral float-left" title="Compound tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../compounds/" class="btn btn-neutral float-right" title="Compound tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../creating-api/" class="btn btn-neutral float-left" title="Creating an API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
