@@ -122,7 +122,14 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Web app</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image-analysis-app">Image analysis app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Web app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-and-installing-a-component-package">Creating and installing a component package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../white-balance/">White Balance Correction</a></li>
@@ -201,30 +208,47 @@
 <h1>Web app<a class="headerlink" href="#web-app" title="Permalink to this headline">🔗</a></h1>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
-<p>This recipe shows how to create a web app that communicates with the
-VisionAppster Engine. As an example server app, the simple edge
-detection app created in the <a class="reference internal" href="../../builder/"><span class="doc">Builder tutorial</span></a> will
-be used. The technique is however generally applicable. The provided web
-app template can be used with many types of API objects with minimal
-modifications.</p>
-<p>If you followed the tutorial, you can download and install the web app
-package, and it should work out of the box. If not, the server app
-package is also provided here for completeness.</p>
+<p>This recipe shows how to create a simple image analysis app and a <a class="reference internal" href="../../engine/web-apps/"><span class="doc">web
+UI</span></a> that communicates with it. We’ll be using a web
+app template that can be used with many types of API objects with
+minimal modifications.</p>
 </div>
 <div class="section" id="downloads">
 <h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/d1c517edf7f4d78d11819fc6a244ca4e/com.example.edgedetector-1.0.0.vapkg"><code class="xref download docutils literal notranslate"><span class="pre">Server</span> <span class="pre">app</span></code></a></p></li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/0bd82289ad539e1ae5d8d7e1487f43e3/com.example.edgedetector.web-1.0.0.vapkg"><code class="xref download docutils literal notranslate"><span class="pre">Web</span> <span class="pre">app</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/5d2132877e575f31b2abe741ae794a82/Edge detector.zip"><code class="xref download docutils literal notranslate"><span class="pre">Project</span> <span class="pre">file</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/d1c517edf7f4d78d11819fc6a244ca4e/com.example.edgedetector-1.0.0.vapkg"><code class="xref download docutils literal notranslate"><span class="pre">Component</span>
+<span class="pre">package</span></code></a></p></li>
 </ul>
 </div>
 <div class="section" id="detailed-description">
 <h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
-<p>As the first step, install both of the provided <code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> files to your
-local Engine. Some of the links below point to the installed packages.</p>
+<div class="section" id="image-analysis-app">
+<h3>Image analysis app<a class="headerlink" href="#image-analysis-app" title="Permalink to this headline">🔗</a></h3>
+<p>The app we are building consists of two tools: one that reads an image
+file and another that applies an edge detector to it. The <code class="docutils literal notranslate"><span class="pre">fileName</span></code>
+input is exposed as an API function (context menu: “Publish in API” →
+“As function”) and the <code class="docutils literal notranslate"><span class="pre">image</span></code> output as a signal (“Publish API
+signal”). The app is included in the project file, but you may want to
+try recreating it by yourself.</p>
+<div class="figure align-default" id="id2">
+<img alt="The complete edge detector app." src="../../_images/web-app-server-in-builder.png" />
+<p class="caption"><span class="caption-text">The complete edge detector app.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Web app<a class="headerlink" href="#id1" title="Permalink to this headline">🔗</a></h3>
+<p>If you have the <span class="xref std std-doc">VisionAppster Engine</span> running as a local
+service (Windows service, systemd service, Docker, …), you can
+<a class="reference internal" href="../../engine/management-interface/"><span class="doc">install</span></a> the provided <code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> file
+(Component package) now as some of the links below point to the files
+installed there. It is assumed that the Engine runs in port 2015.</p>
+<p>If you’d rather walk through the process first, you can come back and
+inspect the links in detail at the end. You can build and test the app
+without a running Engine instance.</p>
 <p>A web app consists of at least one HTML file. The front page of the app
-must be called <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. The full contents of the file are as
-follows:</p>
+must be called <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. In this example, the full contents of the
+file are as follows:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -249,11 +273,11 @@ follows:</p>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row content&quot;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;resultContainer&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;inputDisplay&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">video</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;video&quot;</span> <span class="na">autoplay</span> <span class="na">playsinline</span><span class="p">&gt;&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;sourceImage&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;outputDisplay&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;resultImage&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;result&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;resultTable&quot;</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">thead</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;resultTableHead&quot;</span><span class="p">&gt;</span>
@@ -264,10 +288,19 @@ follows:</p>
         <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- Custom style --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+      <span class="p">#</span><span class="nn">webcamOption</span><span class="o">,</span> <span class="p">#</span><span class="nn">imageFileOption</span><span class="o">,</span> <span class="p">#</span><span class="nn">inputDisplay</span> <span class="p">{</span>
+        <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
+<p>This is a generic template that works with <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block at the end is used to hide elements that are not
+needed in this app.</p>
 <p>Since the web app is intended to be installed to the VisionAppster
 Engine, it makes references to resources available on the built-in web
 server instead of including everything in the app:</p>
@@ -281,9 +314,9 @@ for styling the web page.</p></li>
 <p>In addition, the page links to two files that are included in the app
 itself:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://localhost:2015/components/com.example.edgedetector.web/1/style.css">style.css</a>
+<li><p><a class="reference external" href="http://localhost:2015/components/com.example.edgedetector/1/style.css">style.css</a>
 contains style definitions.</p></li>
-<li><p><a class="reference external" href="http://localhost:2015/components/com.example.edgedetector.web/1/webapp.js">webapp.js</a>
+<li><p><a class="reference external" href="http://localhost:2015/components/com.example.edgedetector/1/webapp.js">webapp.js</a>
 contains the actual logic of the app.</p></li>
 </ul>
 <p>You are encouraged to look at the source code. It works with most API
@@ -294,7 +327,7 @@ code.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">appId</span><span class="o">:</span> <span class="s1">&#39;com.example.edgedetector/1&#39;</span><span class="p">,</span>
   <span class="nx">apiFunction</span><span class="o">:</span> <span class="s1">&#39;sendFileName&#39;</span><span class="p">,</span>
-  <span class="nx">resultSignal</span><span class="o">:</span> <span class="s1">&#39;edges&#39;</span><span class="p">,</span>
+  <span class="nx">resultSignal</span><span class="o">:</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span>
   <span class="nx">resultHandler</span><span class="o">:</span> <span class="nx">displayImage</span><span class="p">,</span>
   <span class="nx">binaryImage</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">};</span>
@@ -302,12 +335,16 @@ code.</p>
 </div>
 <p>The configurable parameters are as follows:</p>
 <dl>
-<dt><code class="docutils literal notranslate"><span class="pre">appId</span></code></dt><dd><p>The full component ID of your app.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">appId</span></code></dt><dd><p>The full component ID of your image analysis app. This may be
+different from the ID of your web app if you decide to ship them
+separately.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">apiFunction</span></code></dt><dd><p>The name of the API function to call. This may be either a tool
 function or a single input function. In the latter case, resultSignal
 is needed to receive processing results. Note that this template only
-supports functions that take a single argument.</p>
+supports functions that take a single argument. If the image analysis
+app produces signals spontaneously, without external input,
+<code class="docutils literal notranslate"><span class="pre">apiFunction</span></code> can be left unspecified.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">resultSignal</span></code></dt><dd><p>The name the signal that passes processing results. Not needed with
 tool functions.</p>
@@ -327,47 +364,142 @@ template provides the following display functions:</p>
 </dl>
 </dd>
 </dl>
-<p>To build an installable web app component, you need to store the three
-files (<code class="docutils literal notranslate"><span class="pre">index.html</span></code>, <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code> and <code class="docutils literal notranslate"><span class="pre">style.css</span></code>) into any
-directory. In the Builder, select File, Package a folder… and select the
-directory. Type in the component ID (<code class="docutils literal notranslate"><span class="pre">com.example.edgedetector.web</span></code>)
-and version number (<code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>), select the “Remote” section and click
-“Upload”.</p>
-<div class="figure align-default" id="id1">
-<img alt="Uploading a web app component directly to a remote Engine." src="../../_images/web-app-create-component.png" />
-<p class="caption"><span class="caption-text">Uploading a web app component directly to a remote Engine.</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Browse to <a class="reference external" href="http://localhost:2015/#components">the components page</a>
-and install the web app to your local Engine.</p>
-<div class="figure align-default" id="id2">
-<img alt="Components page after installing two packages." src="../../_images/web-app-components-page.png" />
-<p class="caption"><span class="caption-text">Components page after installing two packages.</span><a class="headerlink" href="#id2" title="Permalink to this image">🔗</a></p>
+<div class="section" id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">🔗</a></h3>
+<p>You can test a web app just like you would test any web page: copy the
+files in a directory that is published by a web server and open
+<code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a browser.</p>
+<ol class="arabic">
+<li><p>Unzip the project file to your projects directory (by default
+<code class="docutils literal notranslate"><span class="pre">$HOME/VisionAppster/Projects</span></code>).</p></li>
+<li><p>Open the project in VisionAppster Builder (Press Ctrl+O, select “Edge
+detector” and click “OK” or “Choose”, whichever your operating
+system’s file dialog happens to offer.)</p></li>
+<li><p>Start the app (Press F5). Make sure that the text on the status line
+changes to “Running”.</p></li>
+<li><p>Copy or link the web app to the <code class="docutils literal notranslate"><span class="pre">packages/web</span></code> directory under the
+web server’s root. On Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/VisionAppster/packages
+ln -s <span class="s2">&quot;../Projects/Edge detector/analysisapp/web&quot;</span> .
+</pre></div>
 </div>
-<p>The apps page should now look like this:</p>
+<p>On Windows:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> <span class="nv">%USERPROFILE%</span>\VisionAppster
+xcopy <span class="s2">&quot;Projects\Edge detector\analysisapp\web&quot;</span> packages\web\ /S
+</pre></div>
+</div>
+</li>
+<li><p>Point your browser to <a class="reference external" href="http://localhost:2020/packages/web/index.html">http://localhost:2020/packages/web/index.html</a>.
+This assumes that the Builder is using the default port (2020). The
+port can be changed in “File” → “Options…” → “Web server”.</p></li>
+<li><p>Click “TEXT…” in the page header and type in an absolute path to a
+file on your local disk.</p></li>
+</ol>
 <div class="figure align-default" id="id3">
-<img alt="The apps page contains two apps." src="../../_images/web-app-apps-page.png" />
-<p class="caption"><span class="caption-text">The apps page contains two apps.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
+<img alt="The edge detector highlights contours in the input image." src="../../_images/web-app-pena-result.png" />
+<p class="caption"><span class="caption-text">The edge detector highlights contours in the input image.</span><a class="headerlink" href="#id3" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Click on the
-<a class="reference external" href="http://localhost:2015/components/com.example.edgedetector.web/1/">com.example.edgedetector.web/1/</a>
-link to open the web app. If the server isn’t running, the web app will
-start it automatically.</p>
-<p>The input to the edge detector app is a file name. Use the “Text…” link
-at the top to send a text string to the API function.</p>
-<div class="figure align-default" id="id4">
-<img alt="Enter the full path to a file." src="../../_images/web-app-enter-filename.png" />
-<p class="caption"><span class="caption-text">Enter the full path to a file.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
-</div>
+<p>If you created the app from scratch, you need to change its component ID
+to <code class="docutils literal notranslate"><span class="pre">com.example.edgedetector</span></code> in “File” → “App properties…” before
+starting it. This is required because the app’s API object the web app
+connects to is identified by the component ID.</p>
+<p>The web app calls the <code class="docutils literal notranslate"><span class="pre">sendFileName</span></code> API function using the
+user-supplied path as a parameter. It will end up to the <code class="docutils literal notranslate"><span class="pre">fileName</span></code>
+input of the Read Image File tool. If you switch back to the Builder,
+you’ll see the image there if you click the <code class="docutils literal notranslate"><span class="pre">image</span></code> output of the
+tool.</p>
+<p>Once the image has passed through the analysis pipeline, the result will
+appear in the <code class="docutils literal notranslate"><span class="pre">image</span></code> output of the Detect Edges tool. It is exposed
+as a signal in the API and our web app is listening to it. Therefore,
+the display will change whenever an image is processed.</p>
 <p>The result of the edge detector is a binary image, which is why
 <code class="docutils literal notranslate"><span class="pre">binaryImage</span></code> was specified in the configuration. As a result, the
 gray levels of the output image will be scaled from [0, 1] to [0, 255].</p>
-<p>The web app template has a placeholder for an input image if it comes
-from the browser. In this case, it will be empty as the app reads the
-image from a file on the server side. The result:</p>
-<div class="figure align-default" id="id5">
-<img alt="Pena’s gorgeous contours." src="../../_images/web-app-pena-result.png" />
-<p class="caption"><span class="caption-text">Pena’s gorgeous contours.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+<p>It is important to note that the <code class="docutils literal notranslate"><span class="pre">image</span></code> signal is not a return value
+of the <code class="docutils literal notranslate"><span class="pre">sendFileName</span></code> function. Instead, it will be emitted whenever
+the output changes, and all listeners will receive the image. If another
+client calls the <code class="docutils literal notranslate"><span class="pre">sendFileName</span></code> function, you’ll be able to see the
+result. Try it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">image</span><span class="o">=</span>/path/to/image.jpg
+curl http://localhost:2020/apis/builder/com.example.edgedetector/1/functions/sendFileName?<span class="nv">$image</span>
+</pre></div>
 </div>
+</div>
+<div class="section" id="creating-and-installing-a-component-package">
+<h3>Creating and installing a component package<a class="headerlink" href="#creating-and-installing-a-component-package" title="Permalink to this headline">🔗</a></h3>
+<p>To build an installable web app component, you need to copy the three
+files (<code class="docutils literal notranslate"><span class="pre">index.html</span></code>, <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code> and <code class="docutils literal notranslate"><span class="pre">style.css</span></code>) into any
+directory and <a class="reference internal" href="../../components/building/"><span class="doc">build a component out of it</span></a>.
+Here, we’ll make a single component package that contains both the
+analysis app and the web UI.</p>
+<p>If you created the app from scratch, copy the whole <code class="docutils literal notranslate"><span class="pre">web</span></code> directory
+from <code class="docutils literal notranslate"><span class="pre">VisionAppster/packages</span></code> to
+<code class="docutils literal notranslate"><span class="pre">VisionAppster/Projects/Edge</span> <span class="pre">detector/analysisapp</span></code>. In VisionAppster
+Builder, save the project (Ctrl+S) and package the app: “File” →
+“Package this app…” → “Local” → “Create”.</p>
+<div class="figure align-default" id="id4">
+<img alt="Save the component package to the default location." src="../../_images/web-app-create-component.png" />
+<p class="caption"><span class="caption-text">Save the component package to the default location.</span><a class="headerlink" href="#id4" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The package is now ready to be installed to the VisionAppster Engine. If
+you did not install the ready-made package at the beginning, you can
+install the new one now.</p>
+<p>Browse to the components page on the management interface of your Engine
+instance. If you run a local instance, the URL is
+<a class="reference external" href="http://localhost:2015/#components">http://localhost:2015/#components</a> by default. The package can be
+installed on another machine as well. In the picture below, we are using
+a local instance that shows the <code class="docutils literal notranslate"><span class="pre">web/</span></code> directory we used for testing
+the app in “Uploaded packages”. Install the package by selecting it and
+clicking the “Install” button twice.</p>
+<div class="figure align-default" id="id5">
+<img alt="Install the package." src="../../_images/web-app-components-page.png" />
+<p class="caption"><span class="caption-text">Install the package.</span><a class="headerlink" href="#id5" title="Permalink to this image">🔗</a></p>
+</div>
+<p>The apps page should now look like this:</p>
+<div class="figure align-default" id="id6">
+<img alt="The apps page contains two apps." src="../../_images/web-app-apps-page.png" />
+<p class="caption"><span class="caption-text">The apps page contains two apps.</span><a class="headerlink" href="#id6" title="Permalink to this image">🔗</a></p>
+</div>
+<p>Click on the
+<a class="reference external" href="http://localhost:2015/components/com.example.edgedetector/1/web/">com.example.edgedetector/1/web/</a>
+link to open the web app. If the server app isn’t running, the web app
+will start it automatically.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">🔗</a></h2>
+<p><strong>I get a “Not Found” error.</strong></p>
+<ol class="arabic simple">
+<li><p>The app is not running. If the app has not been started, its API is
+not available and the web page cannot connect to it. If you are
+testing the app in the Builder, make sure you started it (F5).</p></li>
+<li><p>The component ID is wrong. The API object is identified by the
+component ID. Double-check that the component ID in <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code>
+matches the one set in “File” → “App properties”. You may need to
+restart the app in the Builder and refresh the web page after the
+change.</p></li>
+<li><p>API URL is wrong. The web app template uses a simple heuristic to
+automatically guess the correct URL of the analysis app’s API object:
+if the server’s port is 2020, the API URL will be <code class="docutils literal notranslate"><span class="pre">/apis/builder/</span></code>.
+Otherwise, it will be <code class="docutils literal notranslate"><span class="pre">/apis/</span></code>. You can override this by setting
+<code class="docutils literal notranslate"><span class="pre">apiUrl</span></code> in the <code class="docutils literal notranslate"><span class="pre">config</span></code> object in <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code>.</p></li>
+</ol>
+<p><strong>Can I test the app when it is running in a system-level service?</strong></p>
+<p>Yes. On Linux, a system level service usually serves files from
+<code class="docutils literal notranslate"><span class="pre">/opt/visionappster/packages</span></code>. On Windows, the root directory is
+<code class="docutils literal notranslate"><span class="pre">C:\Windows\ServiceProfiles\LocalService\VisionAppster\packages</span></code>. You
+can copy the web app there. This requires root/administrator privileges.</p>
+<p><strong>Can I connect to an app running on another Engine instance?</strong></p>
+<p>Yes. If you host the web front-end on a dedicated web server, you need
+to copy the files that are linked from the Engine’s web server
+(<code class="docutils literal notranslate"><span class="pre">VisionAppster.js</span></code>, <code class="docutils literal notranslate"><span class="pre">fonts.css</span></code>, <code class="docutils literal notranslate"><span class="pre">visionappster.png</span></code>) and adjust
+the HTML template accordingly.</p>
+<ol class="arabic simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">apiUrl</span></code> to the <code class="docutils literal notranslate"><span class="pre">config</span></code> object in <code class="docutils literal notranslate"><span class="pre">webapp.js</span></code>. For
+example: <code class="docutils literal notranslate"><span class="pre">apiUrl:</span> <span class="pre">'http://hostname.lan:2015/apis/'</span></code>.</p></li>
+<li><p><a class="reference internal" href="../../engine/configuration/#cors"><span class="std std-ref">Enable CORS on the server</span></a>.</p></li>
+</ol>
 </div>
 </div>
 
