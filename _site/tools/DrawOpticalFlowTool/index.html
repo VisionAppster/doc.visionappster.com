@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Find barcode &mdash; VisionAppster  documentation</title>
+  <title>Draw motion flow &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Find matrix code" href="../FindMatrixCodeTool/" />
-    <link rel="prev" title="Filter key points" href="../FilterKeyPointsTool/" /> 
+    <link rel="next" title="End branch" href="../EndBranchTool/" />
+    <link rel="prev" title="Draw edges" href="../DrawEdgesTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -161,7 +161,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../DetectionMaskTool/">Detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DivideTool/">Divide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DrawEdgesTool/">Draw edges</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../DrawOpticalFlowTool/">Draw motion flow</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Draw motion flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../EndBranchTool/">End branch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../EndIterateTool/">End iterate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../EqualTool/">Equal</a></li>
@@ -171,11 +175,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../FileSystemWatcherTool/">File system watcher</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FillRegionTool/">Fill region</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FilterKeyPointsTool/">Filter key points</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Find barcode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindQrKeyPointsTool/">Find QR keypoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindThresholdTool/">Find threshold</a></li>
@@ -350,7 +350,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Find barcode</li>
+      <li>Draw motion flow</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -367,55 +367,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="find-barcode">
-<h1>Find barcode<a class="headerlink" href="#find-barcode" title="Permalink to this headline">🔗</a></h1>
-<p>Finds locations of barcodes in the specified region-of-interest of
-the input image.</p>
+  <div class="section" id="draw-motion-flow">
+<h1>Draw motion flow<a class="headerlink" href="#draw-motion-flow" title="Permalink to this headline">🔗</a></h1>
+<p>Makes a mask image where moving points are marked by rectangular markers.
+The markers are drawn only around points which are moving fast enough
+(see <code class="docutils literal notranslate"><span class="pre">motionThreshold</span></code>) and are moving in the specified direction
+(see <code class="docutils literal notranslate"><span class="pre">sectorStart</span></code> and <code class="docutils literal notranslate"><span class="pre">sectorEnd</span></code>).</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maxDetections</span></code>: The maximum number of bar codes to detect.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">quietZoneWidth</span></code>: Width of the quiet zone at both ends of the
-barcode. If the value is zero, the quiet zone width will
-be estimated automatically.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size of the rectangle in which bar codes are
-searched. If <em>size</em> is undefined (either width or height is
-NAN), barcodes are searched in the whole image. Otherwise
-the region of interest is determined by <em>size</em> and <em>frame</em>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: The location of a region-of-interest for the detector.
-A <a class="reference internal" href="../../engine/world-coordinates/#coordinate-frames"><span class="std std-ref">coordinate frame</span></a>
-in world coordinates.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code>: Threshold for separating the bars of
-barcodes from the background.
-A possible method to set the threshold is to use the
-<a class="reference internal" href="../HistogramTool/"><span class="doc">histogram tool</span></a> to calculate
-a grayscale histogram and pass the histogram to
-the <a class="reference internal" href="../FindThresholdTool/"><span class="doc">threshold finding tool</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">orientation</span></code>: A-priori information about the orientation of the
-barcode. Setting this parameter improves the probability of
-correct detection if the information is available. If
-<em>orientation</em> is Horizontal, only bars with orientation
-[-45..+45] and [135..225] degrees are searched. If
-<em>orientation</em> is Vertical, only bars with orientation
-[-45..-135] and [+45..+135] degrees are searched. The default
-value is Unknown.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">preferredAngle</span></code>: A-priori information about the orientation of
-the barcode. Setting this parameter favors barcodes which have
-orientation near the given angle. This improves the probability
-of correct detection if the information is available. The
-default value is NAN, which means no preference.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code>: List of pixel coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offset</span></code>: Direction vectors which indicate how much each pixel
+has moved between consecutive images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sectorStart</span></code>: The beginning of the motion sector of interest in degrees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sectorEnd</span></code>: The end of the motion sector of interest in degrees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">motionThreshold</span></code>: The minimum length of motion vectors which are
+considered being in motion.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Length of the edges of the marker boxes.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: 
-A <a class="reference internal" href="../../engine/world-coordinates/#coordinate-frames"><span class="std std-ref">coordinate frame</span></a>
-for each detected bar code. Each frame is a 4-by-4 matrix totaling in a
-4N-by-4 matrix.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size (width, height) of each detected bar code in
-the corresponding <em>frame</em>. An N-by-2 matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Grayscale mask image</p></li>
 </ul>
 </div>
 </div>
@@ -426,8 +401,8 @@ the corresponding <em>frame</em>. An N-by-2 matrix.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../FindMatrixCodeTool/" class="btn btn-neutral float-right" title="Find matrix code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../FilterKeyPointsTool/" class="btn btn-neutral float-left" title="Filter key points" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../EndBranchTool/" class="btn btn-neutral float-right" title="End branch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../DrawEdgesTool/" class="btn btn-neutral float-left" title="Draw edges" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
