@@ -753,6 +753,48 @@
 </dd></dl>
 
 <dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_yuv422p_image_typeE">
+<span id="_CPPv3N13va_image_type21va_yuv422p_image_typeE"></span><span id="_CPPv2N13va_image_type21va_yuv422p_image_typeE"></span><span class="target" id="va_image_type::va_yuv422p_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yuv422p_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_yuv422p_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:2:2. </p>
+<p>First there are as many Y-samples as there are pixels (N), followed by N/2 consecutive U-samples, followed by N/2 consequtive V-samples. The total number of samples is hence 2*N.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y1a</span> <span class="o">|</span> <span class="n">Y2a</span> <span class="o">|</span> <span class="n">Y3b</span> <span class="o">|</span> <span class="n">Y4b</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y5c</span> <span class="o">|</span> <span class="n">Y6c</span> <span class="o">|</span> <span class="n">Y7d</span> <span class="o">|</span> <span class="n">Y8d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U1a</span> <span class="o">|</span> <span class="n">U2b</span> <span class="o">|</span> <span class="n">U3c</span> <span class="o">|</span> <span class="n">U4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V1a</span> <span class="o">|</span> <span class="n">V2b</span> <span class="o">|</span> <span class="n">V3c</span> <span class="o">|</span> <span class="n">V4d</span> <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N13va_image_type21va_yuv444p_image_typeE">
+<span id="_CPPv3N13va_image_type21va_yuv444p_image_typeE"></span><span id="_CPPv2N13va_image_type21va_yuv444p_image_typeE"></span><span class="target" id="va_image_type::va_yuv444p_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_yuv444p_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type21va_yuv444p_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>YUV 4:4:4. </p>
+<p>First there are as many Y-samples as there are pixels (N), followed by N consecutive U-samples, followed by N consequtive V-samples. The total number of samples is hence 3*N.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y1</span>  <span class="o">|</span> <span class="n">Y2</span>  <span class="o">|</span> <span class="n">Y3</span>  <span class="o">|</span> <span class="n">Y4</span>  <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">Y5</span>  <span class="o">|</span> <span class="n">Y6</span>  <span class="o">|</span> <span class="n">Y7</span>  <span class="o">|</span> <span class="n">Y8</span>  <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U1</span>  <span class="o">|</span> <span class="n">U2</span>  <span class="o">|</span> <span class="n">U3</span>  <span class="o">|</span> <span class="n">U4</span>  <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">U5</span>  <span class="o">|</span> <span class="n">U6</span>  <span class="o">|</span> <span class="n">U7</span>  <span class="o">|</span> <span class="n">U8</span>  <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V1</span>  <span class="o">|</span> <span class="n">V2</span>  <span class="o">|</span> <span class="n">V3</span>  <span class="o">|</span> <span class="n">V4</span>  <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+<span class="o">|</span> <span class="n">V5</span>  <span class="o">|</span> <span class="n">V6</span>  <span class="o">|</span> <span class="n">V7</span>  <span class="o">|</span> <span class="n">V8</span>  <span class="o">|</span>
+<span class="o">+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
 <dt id="_CPPv4N13va_image_type26va_last_encoded_image_typeE">
 <span id="_CPPv3N13va_image_type26va_last_encoded_image_typeE"></span><span id="_CPPv2N13va_image_type26va_last_encoded_image_typeE"></span><span class="target" id="va_image_type::va_last_encoded_image_type"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_last_encoded_image_type</span></code><a class="headerlink" href="#_CPPv4N13va_image_type26va_last_encoded_image_typeE" title="Permalink to this definition">🔗</a><br /></dt>
 <dd></dd></dl>
