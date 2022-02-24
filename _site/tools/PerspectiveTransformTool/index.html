@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Begin branch &mdash; VisionAppster  documentation</title>
+  <title>Perspective transform &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Begin iterate" href="../BeginIterateTool/" />
-    <link rel="prev" title="Barcode probability" href="../BarcodeProbabilityTool/" /> 
+    <link rel="next" title="Pixel coordinates to world" href="../PixelCoordinatesToWorldTool/" />
+    <link rel="prev" title="Output external data" href="../OutputExternalDataTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -117,11 +117,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../BalanceColorsTool/">Balance colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BarcodeProbabilityTool/">Barcode probability</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Begin branch</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../BeginBranchTool/">Begin branch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BeginIterateTool/">Begin iterate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinPixelsTool/">Bin pixels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinarizeTool/">Binarize</a></li>
@@ -239,7 +235,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../NormalizeMeanGrayLevelTool/">Normalize mean gray level</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../NotEqualTool/">Not equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../OutputExternalDataTool/">Output external data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../PerspectiveTransformTool/">Perspective transform</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Perspective transform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../PixelCoordinatesToWorldTool/">Pixel coordinates to world</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../PositionCameraTool/">Position camera</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../PositionLinescanCameraTool/">Position line-scan camera</a></li>
@@ -354,7 +353,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Begin branch</li>
+      <li>Perspective transform</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -371,32 +370,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="begin-branch">
-<h1>Begin branch<a class="headerlink" href="#begin-branch" title="Permalink to this headline">🔗</a></h1>
-<p>Passes input parameters to alternative branches depending on the
-<em>branch</em> input.</p>
+  <div class="section" id="perspective-transform">
+<h1>Perspective transform<a class="headerlink" href="#perspective-transform" title="Permalink to this headline">🔗</a></h1>
+<p>Calculates a coordinate frame (<a class="reference internal" href="../HomographyTool/"><span class="doc">homography</span></a>)
+that maps a quadrilateral defined by the corner points <em>points1</em>
+into a quadrilateral defined by the corner points <em>points2</em> in
+projective geometry.</p>
+<p>If we denote the coordinate <em>frame</em> by f$Ff$, a point in
+<em>points1</em> as f$P_1f$ (in homogeneous coordinates, f$[x y 0
+1]f$), a point in <em>points2</em> as f$P_2f$ and the perspective
+projection function by f$p()f$, the following holds: f$P_2 =
+p(FP_1)f$.</p>
+<p>Both point sets are assumed to represent the corners of the same
+quardilateral seen from two different angles of view. As the points
+lie on the XY-planes of their coordinate systems, the Z-coordinates
+are zero.</p>
+<ul class="simple">
+<li><p>The first point determines the origin.</p></li>
+<li><p>The second point determines the direction of X-axis.</p></li>
+<li><p>The third point determines the corner diagonally opposite to the origin.</p></li>
+<li><p>The fourth point determines the direction of Y-axis.</p></li>
+</ul>
+<p>Since the Y axis usually points downwards, this means that the
+points should be entered clockwise, starting from the origin.</p>
+<p>The usual use case for this tool is to find out the position of a
+camera with respect to a known rectangular object. This happens by
+entering the known world coordinates into <em>points1</em> and the
+corresponding (X, Y) coordinates in the camera coordinate system to
+<em>points2</em>. If the camera has not been calibrated and positioned,
+the (X, Y) coordinates are the same in the default world coordinate
+system. Note that these are different from pixel coordinates.</p>
+<p>The <em>frame</em> output can be connected to <a class="reference internal" href="../ReplaceCoordinateFrameTool/"><span class="doc">ReplaceCoordinateFrameTool</span></a> to set a new world coordinate system to
+an image. Since the new coordinate frame is not expressed in the
+world coordinates of the input image but in its camera coordinate
+system, the <em>referenceFrame</em> input must be set to <code class="docutils literal notranslate"><span class="pre">Camera</span></code>. The
+world coordinate system of the <em>image</em> output will be aligned
+according to <em>points1</em>, but the pixels of the image will remain the
+same.</p>
+<p>If one needs an actual projected image in analysis, the <em>image</em>
+output of ReplaceCoordinateFrameTool can be connected to <a class="reference internal" href="../ProjectToVirtualViewTool/"><span class="doc">ProjectToVirtualViewTool</span></a>. If the <em>size</em> output from this tool is
+used as the <em>size</em> input to the ProjectToVirtualViewTool, the
+result contains just the specified area, projected to a rectangular
+image array.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
-<p>The inputs of the tool are defined by the <em>inputParameters</em>
-parameter.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">inputParameters</span></code>: A table that defines the switched input
-parameters.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">branchCount</span></code>: The number of alternative branches.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">branch</span></code>: Selects the output branch using zero-based indexing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">points1</span></code>: Four 2D corner points in the first view. Usually,
+these are known world coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">points2</span></code>: The corresponding corner points in the second view.
+Usually, these are coordinates in the camera coordinate system.
+Outputs</p></li>
 </ul>
-</div>
-<div class="section" id="outputs">
-<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
-<p>The total number of outputs is the product of <em>branchCount</em> and the
-number of input parameters. The pattern for naming output
-parameters is “name[X]”, where “name” is the name of the input
-parameter the output corresponds to and X a zero-based branch
-index.</p>
+<hr class="docutils" />
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">branch</span></code>: Copy of <em>branch</em> input. This is typically connected
-to the corresponding input of
-<a class="reference internal" href="../EndBranchTool/"><span class="doc">end branch tool</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: A coordinate frame that maps <em>points1</em> to <em>points2</em> in
+projective geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The size of the area in <em>frame</em>.</p></li>
 </ul>
 </div>
 </div>
@@ -407,8 +436,8 @@ to the corresponding input of
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../BeginIterateTool/" class="btn btn-neutral float-right" title="Begin iterate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../BarcodeProbabilityTool/" class="btn btn-neutral float-left" title="Barcode probability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../PixelCoordinatesToWorldTool/" class="btn btn-neutral float-right" title="Pixel coordinates to world" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../OutputExternalDataTool/" class="btn btn-neutral float-left" title="Output external data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
