@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Adjust calibration &mdash; VisionAppster  documentation</title>
+  <title>Write to database &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Adjust points to gradient" href="../AdjustPointsToGradientTool/" />
-    <link rel="prev" title="Add noise" href="../AddNoiseTool/" /> 
+    <link rel="next" title="APIs" href="../../api/" />
+    <link rel="prev" title="Write file" href="../WriteFileTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,11 +104,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../AddTool/">Add</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AddImagesTool/">Add images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Adjust calibration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
@@ -295,7 +291,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../WorldCoordinatesToPixelsTool/">World coordinates to pixels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WriteDigitalOutputTool/">Write digital output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WriteFileTool/">Write file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../WriteToDatabaseTool/">Write to database</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Write to database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -355,7 +354,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Adjust calibration</li>
+      <li>Write to database</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -372,52 +371,97 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="adjust-calibration">
-<h1>Adjust calibration<a class="headerlink" href="#adjust-calibration" title="Permalink to this headline">🔗</a></h1>
-<p>Changes the calibration factors and/or the world frame of an image
-without changing pixel data. This tool is useful when one needs to
-restore image calibration and position data after a tool that does
-not preserve it.</p>
-<p>Many functions such as neural networks internally handle images as
-matrices or tensors that have no relation to the physical world.
-When such images are produced, their calibration factors and
-position need to be set before physical measurements can be made.
-This tool changes these values without altering the pixels.</p>
+  <div class="section" id="write-to-database">
+<h1>Write to database<a class="headerlink" href="#write-to-database" title="Permalink to this headline">🔗</a></h1>
+<p>Writes data to a table in an SQL database. A new row will be
+written on each processing round.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">driver</span></code>: The name of the database driver to use. Valid values
+depend on installed plugins and the operating system
+environment. The following drivers may be available:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The input image whose calibration/position is to be
-changed.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">referenceImage</span></code>: An optional image whose position and
-calibration factors will be copied. If this input is connected,
-the calibration factors and world coordinate frame of
-<em>referenceImage</em> will be copied to the output image as the
-first step.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code>: A 1-by-2 matrix specifying horizontal and vertical
-scaling factors. The focal lengths of the output image will be
-multiplied by <em>scale</em>. This is useful if the <em>image</em> has been
-e.g. downscaled. If a scaling factor is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, the
-corresponding focal length of <em>image</em> will be scaled so that
-its physical size matches <em>referenceImage</em>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">translation</span></code>: A 1-by-2 matrix that can be used to translate the
-principal point of the output image. This is needed for example
-if a downscaled image isn’t perfectly centered on the original.
-For example, if a 9×9 (center at (4, 4)) image is downscaled to
-4×4 (center at (1.5, 1.5)) so that one pixel is left out at the
-right and bottom edges, the center of the image after upscaling
-back to 8×8 will be at (3.5, 3.5). This can be corrected by
-setting translation to (0.5, 0.5).
-If a translation coordinate is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, the translation will set
-so that the principal point matches the pricipal point
-of <em>referenceImage</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mysql</span></code> - MySQL (version 5.0 and above)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mariadb</span></code> - MariaDb</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psql</span></code> - PostgreSQL (version 7.3 and above)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code> - SQLite (version 3 or above)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">odbc</span></code> - ODBC (includes Microsoft SQL Server)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oci</span></code> - Oracle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db2</span></code> - IBM DB2 (version 7.1 and above)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ibase</span></code> - Borland InterBase</p></li>
 </ul>
+<p>Leaving the driver empty (None) causes the tool to ignore all
+input parameters. This is useful when no real database is
+available to avoid breaking the processing graph.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">userName</span></code>: Database user to connect as.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">password</span></code>: Database password.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host</span></code>: The name of the database host, either a host name or an
+IP address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: The TCP port number of the database host. If <em>port</em> is
+zero, the default port of the selected database driver will be
+used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">databaseName</span></code>: The name of the database schema. For SQLite, use
+the absolute path of a database file or a URI reference to the
+app’s resources (starts with <code class="docutils literal notranslate"><span class="pre">&quot;res://&quot;</span></code>). For ODBC, the database
+name can be either a DSN, a DSN filename (with a <code class="docutils literal notranslate"><span class="pre">.dsn</span></code>
+extension, resource URI is supported) or a connection string
+such as <code class="docutils literal notranslate"><span class="pre">&quot;Driver={Microsoft</span> <span class="pre">Access</span> <span class="pre">Driver</span>
+<span class="pre">(*.mdb)};Dbq=accessfile.mdb;Uid=Admin;Pwd=;&quot;</span></code> Note that
+resource URIs are not supported in files encoded in the
+connection string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tableName</span></code>: The name of the database table to write into.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code>: A table that defines the table columns to write into.
+The first column contains the name of a column and the second
+one its data type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errorHandling</span></code>: The way temporary database connection failures
+while writing are handled. Note that other types of errors such
+as not being able to establish a connection in the first place,
+incorrect table name or other SQL errors always generate a
+run-time failure. Different database engines have different
+error behavior. For example, columns in SQLite are typeless by
+default. An INSERT statement that works in SQLite may fail in
+MySQL even if the column definitions are identical.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">retryDelay</span></code>: The number of milliseconds to wait before a retry
+if <em>errorHandling</em> is set to <code class="docutils literal notranslate"><span class="pre">RetryOnError</span></code>.</p></li>
+</ul>
+<p>Each column has a corresponding dynamic input parameter. The types
+or contents of the input parameters are not checked by the tool at
+run time. The database back-end may or may not accept the value,
+depending on the actual column type and other restrictions such as
+string length.</p>
+<p>Note that all connection parameters are not always required. For
+example, only <em>databaseName</em> and <em>tableName</em> are needed for SQLite
+and ODBC.</p>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N19WriteToDatabaseTool13ErrorHandlingE">
+<span id="_CPPv3N19WriteToDatabaseTool13ErrorHandlingE"></span><span id="_CPPv2N19WriteToDatabaseTool13ErrorHandlingE"></span><span class="target" id="ErrorHandling"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">ErrorHandling</span></code><a class="headerlink" href="#_CPPv4N19WriteToDatabaseTool13ErrorHandlingE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Possible ways of handling connection errors. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N19WriteToDatabaseTool13ErrorHandling11FailOnErrorE">
+<span id="_CPPv3N19WriteToDatabaseTool13ErrorHandling11FailOnErrorE"></span><span id="_CPPv2N19WriteToDatabaseTool13ErrorHandling11FailOnErrorE"></span><span class="target" id="ErrorHandling::FailOnError"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">FailOnError</span></code><a class="headerlink" href="#_CPPv4N19WriteToDatabaseTool13ErrorHandling11FailOnErrorE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Generate a run-time failure on error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N19WriteToDatabaseTool13ErrorHandling12RetryOnErrorE">
+<span id="_CPPv3N19WriteToDatabaseTool13ErrorHandling12RetryOnErrorE"></span><span id="_CPPv2N19WriteToDatabaseTool13ErrorHandling12RetryOnErrorE"></span><span class="target" id="ErrorHandling::RetryOnError"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">RetryOnError</span></code><a class="headerlink" href="#_CPPv4N19WriteToDatabaseTool13ErrorHandling12RetryOnErrorE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Log the error and retry after <em>retryDelay</em> milliseconds. </p>
+<p>Generate a run-time error if the the second attempt also fails. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N19WriteToDatabaseTool13ErrorHandling8LogErrorE">
+<span id="_CPPv3N19WriteToDatabaseTool13ErrorHandling8LogErrorE"></span><span id="_CPPv2N19WriteToDatabaseTool13ErrorHandling8LogErrorE"></span><span class="target" id="ErrorHandling::LogError"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">LogError</span></code><a class="headerlink" href="#_CPPv4N19WriteToDatabaseTool13ErrorHandling8LogErrorE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Write the error message to log, but do not generate a failure. </p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="outputs">
-<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: The input image with new calibration factors and/or
-world frame.</p></li>
-</ul>
 </div>
 </div>
 
@@ -427,8 +471,8 @@ world frame.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../AdjustPointsToGradientTool/" class="btn btn-neutral float-right" title="Adjust points to gradient" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../AddNoiseTool/" class="btn btn-neutral float-left" title="Add noise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../api/" class="btn btn-neutral float-right" title="APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../WriteFileTool/" class="btn btn-neutral float-left" title="Write file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
