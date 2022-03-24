@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Binarize adaptively &mdash; VisionAppster  documentation</title>
+  <title>Unwarp cylinder &mdash; VisionAppster  documentation</title>
   
 
   
@@ -35,7 +35,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
         <script defer="defer" src="../../_static/js/algolia.js"></script>
     
@@ -44,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Binarize with limits" href="../BinarizeWithLimitsTool/" />
-    <link rel="prev" title="Binarize" href="../BinarizeTool/" /> 
+    <link rel="next" title="Variance" href="../VarianceTool/" />
+    <link rel="prev" title="Unary function" href="../UnaryFunctionTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -122,11 +121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../BeginIterateTool/">Begin iterate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinPixelsTool/">Bin pixels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinarizeTool/">Binarize</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Binarize adaptively</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeAdaptivelyTool/">Binarize adaptively</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/">Binarize with limits</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/#outputs">Outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../BinaryFunctionTool/">Binary function</a></li>
@@ -291,7 +286,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../TranslateAndRotateFrameTool/">Translate and rotate frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TransposeMatrixTool/">Transpose matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../UnaryFunctionTool/">Unary function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../UnwarpCylinderTool/">Unwarp cylinder</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Unwarp cylinder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../VarianceTool/">Variance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../VectorToImageTool/">Vector to image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WorldCoordinatesToPixelsTool/">World coordinates to pixels</a></li>
@@ -357,7 +356,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Binarize adaptively</li>
+      <li>Unwarp cylinder</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -374,60 +373,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="binarize-adaptively">
-<h1>Binarize adaptively<a class="headerlink" href="#binarize-adaptively" title="Permalink to this headline">🔗</a></h1>
-<p>Transforms any gray-level or color image to a binary image using
-one of the selected adaptive thresholding algorithms.</p>
+  <div class="section" id="unwarp-cylinder">
+<h1>Unwarp cylinder<a class="headerlink" href="#unwarp-cylinder" title="Permalink to this headline">🔗</a></h1>
+<p>Unwarps a cylindrical surface so that it appears flat.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Image to be thresholded. Color images will be
-converted to gray scale before applying the threshold.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">windowSize</span></code>: Size of the local window for adaptive threshold
-calculation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">absoluteLevel</span></code>: Absolute threshold. The effect of this value
-depends on <em>algorithm</em>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">relativeLevel</span></code>: Relative threshold. The effect of this value
-depends on <em>algorithm</em>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code>: Adaptive thresholding algorithm.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code>: If <code class="docutils literal notranslate"><span class="pre">true</span></code>, inverts the result so that all foreground
-pixels become background and vice versa.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: An image of a cylinder in any angle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code>: A 3D point on the cylinder’s rotation axle, in the
+world coordinate system. This point will be positioned on the
+left edge of the projected image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code>: A 3D point on the cylinder’s rotation axle, in the
+world coordinate system. This point will be positioned on the
+right edge of the projected image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: The radius of the cylinder, in world units.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sectorAngle</span></code>: The angle of the sector to straighten, in
+degrees. The theoretical upper limit is 180, but projection
+error increases while approaching this limit. If <em>sectorAngle</em>
+is smaller than what the camera sees, it will be used as an
+upper bound to cut off image edges.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Binary image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Straightened image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sectorAngle</span></code>: The actual angle of the extracted sector, in
+degrees. May be smaller than the corresponding input if the
+camera can’t see a wide enough sector.</p></li>
 </ul>
-<div class="breathe-sectiondef docutils container">
-<dl class="cpp enum">
-<dt id="_CPPv4N22BinarizeAdaptivelyTool9AlgorithmE">
-<span id="_CPPv3N22BinarizeAdaptivelyTool9AlgorithmE"></span><span id="_CPPv2N22BinarizeAdaptivelyTool9AlgorithmE"></span><span class="target" id="Algorithm"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Algorithm</span></code><a class="headerlink" href="#_CPPv4N22BinarizeAdaptivelyTool9AlgorithmE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Thresholding algorithms. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt id="_CPPv4N22BinarizeAdaptivelyTool9Algorithm14RelativeToMeanE">
-<span id="_CPPv3N22BinarizeAdaptivelyTool9Algorithm14RelativeToMeanE"></span><span id="_CPPv2N22BinarizeAdaptivelyTool9Algorithm14RelativeToMeanE"></span><span class="target" id="Algorithm::RelativeToMean"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">RelativeToMean</span></code><a class="headerlink" href="#_CPPv4N22BinarizeAdaptivelyTool9Algorithm14RelativeToMeanE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Local threshold is calculated by multiplying the mean gray level around a pixel by <em>relativeLevel</em> and adding <em>absoluteThreshold</em> to the result. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N22BinarizeAdaptivelyTool9Algorithm20RelativeToMeanAndStdE">
-<span id="_CPPv3N22BinarizeAdaptivelyTool9Algorithm20RelativeToMeanAndStdE"></span><span id="_CPPv2N22BinarizeAdaptivelyTool9Algorithm20RelativeToMeanAndStdE"></span><span class="target" id="Algorithm::RelativeToMeanAndStd"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">RelativeToMeanAndStd</span></code><a class="headerlink" href="#_CPPv4N22BinarizeAdaptivelyTool9Algorithm20RelativeToMeanAndStdE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Local threshold is calculated by adding <em>relativeThreshold</em> times the standard deviation of the local gray levels to the mean gray level. </p>
-<p><em>absoluteLevel</em> will be added to the result. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N22BinarizeAdaptivelyTool9Algorithm23WeightedMeanAndVarianceE">
-<span id="_CPPv3N22BinarizeAdaptivelyTool9Algorithm23WeightedMeanAndVarianceE"></span><span id="_CPPv2N22BinarizeAdaptivelyTool9Algorithm23WeightedMeanAndVarianceE"></span><span class="target" id="Algorithm::WeightedMeanAndVariance"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">WeightedMeanAndVariance</span></code><a class="headerlink" href="#_CPPv4N22BinarizeAdaptivelyTool9Algorithm23WeightedMeanAndVarianceE" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Local threshold <em>t</em> is calculated as <span class="math notranslate nohighlight">\( t = \mu (1 + r (\sigma/\sigma_{\mathrm max} - 1)) + a \)</span>, where <em>r</em> stands for <em>relativeThreshold</em>, <em>a</em> for <em>absoluteThreshold</em>, and <span class="math notranslate nohighlight">\( \sigma_{\mathrm max} \)</span> for the maximum possible standard deviation, which is assumed to be 128. </p>
-<p>In document image binarization, a good value for <em>relativeThreshold</em> is 0.34, whereas <em>absoluteThreshold</em> is typically zero. </p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 </div>
 </div>
 
@@ -437,8 +411,8 @@ pixels become background and vice versa.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../BinarizeWithLimitsTool/" class="btn btn-neutral float-right" title="Binarize with limits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../BinarizeTool/" class="btn btn-neutral float-left" title="Binarize" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../VarianceTool/" class="btn btn-neutral float-right" title="Variance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../UnaryFunctionTool/" class="btn btn-neutral float-left" title="Unary function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
