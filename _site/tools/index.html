@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="AnalyzeHistogramTool/">Analyze histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LineLineAngleTool/">Angle between lines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ArithmeticTool/">Arithmetic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ToCsvTool/">Array to CSV record conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="AutoCropTool/">Automatic target location</a></li>
@@ -160,6 +161,7 @@
 <li class="toctree-l3"><a class="reference internal" href="DetectMotionTool/">Detect motion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DetectShapesTool/">Detect shapes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DetectionMaskTool/">Detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PointLineDistanceTool/">Distance between point and line</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DivideTool/">Divide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DrawEdgesTool/">Draw edges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EndBranchTool/">End branch</a></li>
@@ -200,9 +202,11 @@
 <li class="toctree-l3"><a class="reference internal" href="InvertMatrixTool/">Invert matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="JavaScriptTool/">JavaScript</a></li>
 <li class="toctree-l3"><a class="reference internal" href="JoinImagesTool/">Join images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JoinMatricesTool/">Join matrices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KeypointHistogramTool/">Keypoint histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LessTool/">Less</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LessOrEqualTool/">Less or equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LineLineIntersectionTool/">Line-line intersection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LinearFilterTool/">Linear filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ListDirectoryTool/">List directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LbpTransformTool/">Local binary patterns transform</a></li>
@@ -467,6 +471,10 @@ selected examples:</p>
   <td class="tool-desc">Calculates statistical features from a histogram.</td>
 </tr>
 <tr>
+  <td class="tool-name"><a href="LineLineAngleTool/">Angle between lines</a></td>
+  <td class="tool-desc">Calculates the angle between two lines.</td>
+</tr>
+<tr>
   <td class="tool-name"><a href="ArithmeticTool/">Arithmetic</a></td>
   <td class="tool-desc">Base class for arithmetic tools.</td>
 </tr>
@@ -663,6 +671,10 @@ selected examples:</p>
   <td class="tool-desc">A compound tool that splits an image to fixed-size blocks and produces a low-resolution detection mask image by classifying each sub-image.</td>
 </tr>
 <tr>
+  <td class="tool-name"><a href="PointLineDistanceTool/">Distance between point and line</a></td>
+  <td class="tool-desc">Calculates the shortest distance between a line and a point or a set of points.</td>
+</tr>
+<tr>
   <td class="tool-name"><a href="DivideTool/">Divide</a></td>
   <td class="tool-desc">Divides input <emphasis>a</emphasis> by input <emphasis>b</emphasis> element by element.</td>
 </tr>
@@ -823,6 +835,10 @@ selected examples:</p>
   <td class="tool-desc">Joins two or more images to a single, possibly bigger image.</td>
 </tr>
 <tr>
+  <td class="tool-name"><a href="JoinMatricesTool/">Join matrices</a></td>
+  <td class="tool-desc">Joins multiple input matrices or tables to a single output matrix or table.</td>
+</tr>
+<tr>
   <td class="tool-name"><a href="KeypointHistogramTool/">Keypoint histogram</a></td>
   <td class="tool-desc">Calculates the gray-level histogram around a set of key points.</td>
 </tr>
@@ -833,6 +849,10 @@ selected examples:</p>
 <tr>
   <td class="tool-name"><a href="LessOrEqualTool/">Less or equal</a></td>
   <td class="tool-desc">Compares a numeric value, matrix or tensor <emphasis>a</emphasis> to another numeric value, matrix or tensor <emphasis>b</emphasis> and outputs the result as a Boolean value.</td>
+</tr>
+<tr>
+  <td class="tool-name"><a href="LineLineIntersectionTool/">Line-line intersection</a></td>
+  <td class="tool-desc">Calculates the points where lines, half-lines or line segments intersect.</td>
 </tr>
 <tr>
   <td class="tool-name"><a href="LinearFilterTool/">Linear filter</a></td>
