@@ -379,8 +379,15 @@
             
   <div class="section" id="read-video-file">
 <h1>Read video file<a class="headerlink" href="#read-video-file" title="Permalink to this headline">🔗</a></h1>
-<p>Reads an mp4, H.264 or mjpeg video file and outputs the frames as
-RGB images.</p>
+<p>Reads a video file and outputs the frames as RGB images. This tool
+supports all video formats supported by the VisionAppster Engine,
+which includes at least the following:</p>
+<ul class="simple">
+<li><p>AV1</p></li>
+<li><p>H.264</p></li>
+<li><p>VP8</p></li>
+<li><p>VP9</p></li>
+</ul>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
@@ -405,9 +412,9 @@ RGB.</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Output image. An empty image means that the file
 has no valid frames.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">frameCount</span></code>: The number of frames emitted. Wraps back to one
-when the end of the file is reached and the frames wrap
-around. The value is zero if the file has no valid frames.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frameIndex</span></code>: The zero-based index of the current frame. If
+<em>loop</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, restarts at zero when the end of the file is
+reached.</p></li>
 </ul>
 </div>
 </div>
