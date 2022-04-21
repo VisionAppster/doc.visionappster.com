@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Write digital output &mdash; VisionAppster  documentation</title>
+  <title>Find Line Segment &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Write file" href="../WriteFileTool/" />
-    <link rel="prev" title="World coordinates to pixels" href="../WorldCoordinatesToPixelsTool/" /> 
+    <link rel="next" title="Find matrix code" href="../FindMatrixCodeTool/" />
+    <link rel="prev" title="Find barcode" href="../FindBarcodeTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -174,7 +174,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../FillRegionTool/">Fill region</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FilterKeyPointsTool/">Filter key points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../FindLineSegmentTool/">Find Line Segment</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Find Line Segment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindQrKeyPointsTool/">Find QR keypoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindThresholdTool/">Find threshold</a></li>
@@ -295,10 +299,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../VarianceTool/">Variance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../VectorToImageTool/">Vector to image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WorldCoordinatesToPixelsTool/">World coordinates to pixels</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Write digital output</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../WriteDigitalOutputTool/">Write digital output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WriteFileTool/">Write file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../WriteToDatabaseTool/">Write to database</a></li>
 </ul>
@@ -360,7 +361,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Write digital output</li>
+      <li>Find Line Segment</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -377,33 +378,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="write-digital-output">
-<h1>Write digital output<a class="headerlink" href="#write-digital-output" title="Permalink to this headline">🔗</a></h1>
-<p>Changes the status of digital output lines and writes values to
-hardware registers.</p>
+  <div class="section" id="find-line-segment">
+<h1>Find Line Segment<a class="headerlink" href="#find-line-segment" title="Permalink to this headline">🔗</a></h1>
+<p>Detects the longest line segments from the input image.
+Every pixel whose intensity is greater
+(or less if <em>invert</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>) than <em>threshold</em>
+is assumed to belong to a line segment.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel</span></code>: The zero-based index of the digital output channel to
-activate. If the channel index is -1, no action will be taken.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">channels</span></code>: A table of the available output channels and their parameters.
-The <em>channel</em> input selects a row in this table.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: The value to be written to the channel. This value may
-or may not be used depending on the configuration of the I/O
-device and its driver. The value only has a role if the output
-channel refers to a writable hardware register, or if it is
-used in toggling a binary output line. If the output channel is
-configured e.g. to emit a fixed-width pulse, the pulse will be
-sent each time anything is received in inputs, and the actual
-value has no effect.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">deviceId</span></code>: The device ID of the I/O device. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-ids"><span class="std std-ref">device IDs</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">autoConfig</span></code>: A flag that enables and disables device
-auto-configuration. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-configuration"><span class="std std-ref">device configuration</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">parameterSet</span></code>: The name of a parameter set to apply to the
-selected device at start-up. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-configuration"><span class="std std-ref">device configuration</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code>: Input image.
+Usually, the input comes from an
+<a class="reference internal" href="../DetectEdgesTool/"><span class="doc">edge detector</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code>: Threshold for binarization.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">invert</span></code>: Inversion flag. If this value is <code class="docutils literal notranslate"><span class="pre">true</span></code>, inverts the
+result so that pixels whose gray level is less than <em>threshold</em>
+are regarded as foreground.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trim</span></code>: If this value is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the tool interpolates
+the start and end points so that they are precisely
+at the points where the pixel intensities
+cross the <em>threshold</em>.</p></li>
+</ul>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">startPoint</span></code>: The start point (x, y) of the line
+segment as an 1-by-2 matrix. Start point is chosen so that
+it is closer to the origin in world coordinates than
+the end point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endPoint</span></code>: The end point (x, y) of the detected line segment
+as an 1-by-2 matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">length</span></code>: The length of the detected line segment or NAN
+if the segment was not found.</p></li>
 </ul>
 </div>
 </div>
@@ -414,8 +421,8 @@ selected device at start-up. See
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../WriteFileTool/" class="btn btn-neutral float-right" title="Write file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../WorldCoordinatesToPixelsTool/" class="btn btn-neutral float-left" title="World coordinates to pixels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../FindMatrixCodeTool/" class="btn btn-neutral float-right" title="Find matrix code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../FindBarcodeTool/" class="btn btn-neutral float-left" title="Find barcode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
