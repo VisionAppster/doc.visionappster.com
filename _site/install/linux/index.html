@@ -97,7 +97,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../">Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#instructions">Instructions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Linux installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linux installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#desktop-flatpak">Desktop (Flatpak)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#embedded-tarball">Embedded (tarball)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#differences-to-docker">Differences to Docker</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../raspberrypi/">Raspberry Pi installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../windows/">Windows installation</a></li>
 </ul>
@@ -179,30 +187,33 @@
             
   <div class="section" id="linux-installation">
 <h1>Linux installation<a class="headerlink" href="#linux-installation" title="Permalink to this headline">🔗</a></h1>
-<ul class="simple">
-<li><p>Download the <a class="reference external" href="https://download.visionappster.com/linux/va-install">Linux
-installer</a>.</p></li>
-<li><p>Open a terminal and run the installer by giving the following
-command:</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash ~/Downloads/va-install
+<p>The Linux installer comes in two flavors: a Flatpak-based desktop
+installer that contains both the Builder, the SDK and the Engine and a
+tarball that contains just the Engine. If you are installing
+VisionAppster on a desktop PC for development purposes, you’ll need the
+desktop installer (Flatpak). If you only need the Engine (and do not
+want Docker) or are installing it on an embedded device, pick the
+tarball.</p>
+<div class="section" id="desktop-flatpak">
+<h2>Desktop (Flatpak)<a class="headerlink" href="#desktop-flatpak" title="Permalink to this headline">🔗</a></h2>
+<p>Open a terminal and run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://download.visionappster.com/linux/va-install
+chmod +x va-install
+./va-install
 </pre></div>
 </div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">~/Downloads</span></code> is the directory you saved the installer into. The
-VisionAppster platform will be installed to your home directory (user
-scope) by default.</p>
-<p>The VisionAppster platform for Linux is distributed as a Flatpak to
-cover as many Linux distributions as possible. The installer will
-inspect your system and try to install a recent enough Flatpak if
-needed. We haven’t tested all Linux distributions. If the installer
-fails, please check <a class="reference external" href="https://flatpak.org/setup/">the official Flatpak
-site</a> for distro-specific installation
-instructions.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">va-install</span></code> script is used as a maintenance tool. You may want to
-make it available globally to ease future maintenance tasks. In the
-terminal, give the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod +x ~/Downloads/va-install
-sudo cp ~/Downloads/va-install /usr/bin
+<p>The VisionAppster platform will be installed to your home directory
+(user scope) by default.</p>
+<p>The desktop installer uses Flatpak to cover as many Linux distributions
+as possible. The <code class="docutils literal notranslate"><span class="pre">va-install</span></code> script will inspect your system and try
+to install a recent enough Flatpak if needed. We haven’t tested all
+Linux distributions though. If the installer fails, please check <a class="reference external" href="https://flatpak.org/setup/">the
+official Flatpak site</a> for
+distro-specific installation instructions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">va-install</span></code> script can later be used as a maintenance tool. You
+may want to copy it to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to ease future maintenance tasks.
+In the terminal, give the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo cp va-install /usr/bin
 </pre></div>
 </div>
 <p>Once this is done, you can update your local or system-level
@@ -220,7 +231,8 @@ va-builder
 flatpak run com.visionappster.Builder
 </pre></div>
 </div>
-<p>To start and stop the Engine systemd service:</p>
+<p>The installer lets you to optionally install the VisionAppster Engine as
+a systemd service. To start and stop the service:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># User scope installation</span>
 systemctl start --user va-engine
 systemctl stop --user va-engine
@@ -229,6 +241,99 @@ systemctl stop --user va-engine
 sudo systemctl start va-engine
 sudo systemctl stop va-engine
 </pre></div>
+</div>
+</div>
+<div class="section" id="embedded-tarball">
+<h2>Embedded (tarball)<a class="headerlink" href="#embedded-tarball" title="Permalink to this headline">🔗</a></h2>
+<p>The tarball installer contains the VisionAppster Engine and all of its
+dependencies. This makes it possible to run the Engine on practically
+any Linux distribution provided that the underlying hardware meets the
+<a class="reference internal" href="../../components/cross-compilation/#hardware-profiles-and-optimization"><span class="std std-ref">requirements</span></a>.</p>
+<p>To install the tarball, type the following commands in a terminal. You
+may need to make some adaptations; for example, the <code class="docutils literal notranslate"><span class="pre">sudo</span></code> command may
+not be available. In such a case run the commands as root.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change as needed. Supported architectures are x86_64, arm_64 and arm_32</span>
+<span class="nv">ARCH</span><span class="o">=</span>x86_64
+wget https://download.visionappster.com/linux/<span class="nv">$ARCH</span>/va-engine-linux-<span class="nv">$ARCH</span>-latest.tgz
+sudo tar zxfC va-engine-linux-<span class="nv">$ARCH</span>-latest.tgz /
+<span class="nb">cd</span> /va-engine/overlay/opt/visionappster/bin
+sudo chown root:root va-chroot
+sudo chmod +s va-chroot
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:/va-engine/overlay/bin&quot;</span>
+</pre></div>
+</div>
+<p>Test the installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg --help
+</pre></div>
+</div>
+<p>To install the VisionAppster Engine as a systemd service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ln -s /va-engine/overlay/usr/lib/systemd/system/va-engine.service /usr/lib/systemd/system
+sudo systemctl <span class="nb">enable</span> va-engine
+</pre></div>
+</div>
+<p>Inspect the <code class="docutils literal notranslate"><span class="pre">va-engine.service</span></code> file to see how to start the service
+manually.</p>
+<div class="section" id="how-does-it-work">
+<h3>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">🔗</a></h3>
+<p>The tarball contains everything the VisionAppster Engine requires,
+including the standard C library (<code class="docutils literal notranslate"><span class="pre">glibc</span></code>) and the dynamic loader
+(<code class="docutils literal notranslate"><span class="pre">ld-linux.so</span></code>). It depends on nothing but the Linux kernel, which has
+a very stable interface. If you compile the kernel yourself, make sure
+to enable overlayfs support.</p>
+<p>Binaries in the tarball are started through <code class="docutils literal notranslate"><span class="pre">va-chroot</span></code>, a statically
+linked executable that sets up a chrooted sandbox for a command to run.
+This separates the command from the surrounding system so that no
+conflicting shared libraries will be loaded.</p>
+<p><code class="docutils literal notranslate"><span class="pre">va-chroot</span></code> works broadly the same way as the standard
+<a class="reference external" href="https://linux.die.net/man/1/chroot">chroot</a> command, but instead of
+just using an existing directory as the file system root it creates a
+merged file system (overlayfs) by mounting the tarball’s contents on top
+of the system’s root directory (in a private namespace) and chroots the
+process there. This requires root privileges, which is why we set the
+suid bit (<code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+s</span></code>) in the instructions above. <code class="docutils literal notranslate"><span class="pre">va-chroot</span></code> will
+drop root privileges once it has done the mounts.</p>
+<p>The system’s root directory will be mounted in read-only mode, which
+means the VisionAppster Engine will not be able to make changes to it.
+Instead, the changes will appear under <code class="docutils literal notranslate"><span class="pre">/va-engine/overlay/</span></code> when
+viewed from the host system. (This directory is not accessible in the
+sandbox.)</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">va-chroot</span></code> either through symbolic links or by invoking
+the command directly. By default, the <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> and <code class="docutils literal notranslate"><span class="pre">va-run</span></code> commands
+are symlinked to <code class="docutils literal notranslate"><span class="pre">/va-engine/overlay/bin</span></code>, which is why we added that
+directory to <code class="docutils literal notranslate"><span class="pre">PATH</span></code> above. If you want to use other commands through
+<code class="docutils literal notranslate"><span class="pre">va-chroot</span></code>, its help provides further details:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/va-engine/overlay/opt/visionappster/bin/va-chroot --help
+</pre></div>
+</div>
+<p>Note that if you run dynamically linked binaries in the sandbox, they
+must be compatible with the shared libraries and the dynamic loader that
+are shipped in the tarball. Existing binaries in your system may or may
+not work. For example, the following either lists the contents of the
+merged file system’s root or fails with a dynamic linker error message:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/va-engine/overlay/opt/visionappster/bin/va-chroot /bin/ls /
+</pre></div>
+</div>
+</div>
+<div class="section" id="differences-to-docker">
+<h3>Differences to Docker<a class="headerlink" href="#differences-to-docker" title="Permalink to this headline">🔗</a></h3>
+<p>The <a class="reference external" href="https://hub.docker.com/r/visionappster/va-engine">VisionAppster Engine Docker
+image</a> contains the
+same binary files as the tarball. The file system in the Docker image is
+however strictly separated from the host system, which means that the
+image must be more self-contained. It basically comes with a small Linux
+distribution wrapped around the tarball, which obviously makes it
+bigger. To run the image you also need to have the Docker runtime
+installed. These reasons, and the more restricted access to the
+underlying system make the Docker image less suitable for embedded
+devices. Docker’s management interface however makes it a good choice
+e.g. in cloud deployments.</p>
+<p>On the other hand, the tarball is not fully self-contained in the sense
+that it directly uses the host system’s devices, network configuration
+etc. Apart from the Linux kernel it requires no external binaries to
+function, which makes it ideal for custom-built embedded systems. It is
+also a good choice on bare-metal server deployments (e.g. Linux PCs)
+that are managed via systemd.</p>
+</div>
 </div>
 </div>
 
