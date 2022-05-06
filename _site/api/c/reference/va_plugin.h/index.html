@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_plugin.h &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_pp.h" href="../va_pp.h/" />
+    <link rel="prev" title="va_datalink.h" href="../va_datalink.h/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
+
+        
+          <a href="../../../../">
+        
+
+        
+          
+          <img src="../../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
+          
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+              
+              
+                
+              
+              
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../datalink/">Creating device drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_datalink.h/">va_datalink.h</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_plugin.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+              
+            
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_plugin.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-plugin-h">
+<h1>va_plugin.h<a class="headerlink" href="#va-plugin-h" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_plugin.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_IMPLEMENT_PLUGIN">
+<span class="target" id="VA_IMPLEMENT_PLUGIN"></span><code class="sig-name descname"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code><span class="sig-paren">(</span><em><span class="pre">COMPONENT_ID</span></em>, <em><span class="pre">COMPONENT_VERSION</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_IMPLEMENT_PLUGIN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Generates code for a plugin entry point function, <code class="docutils literal notranslate"><span class="pre">va_get_plugin_info</span></code>. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code>: A globally unique identifier for the component the plugin will be placed into. If a component contains many plugins, the same component ID must be used in all of them. The component ID is used as a namespace for the tools or drivers that are defined within the component. The fully-qualified name for a tool or driver will be composed of the component ID, its major version number and the name of the tool or driver, for example <code class="docutils literal notranslate"><span class="pre">com.visionappster.demo/1/MySum</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPONENT_VERSION</span></code>: The version number of the component. The version number has three parts: major.minor.patch. If a change in the plugin breaks existing functionality, the major version number must be incremented. Features can be added but not removed when changing the minor version number. If a release does not add new functionality but just improves or fixes the implementation, patch must be incremented. Version numbering can be started at any number, but usually 1.0.0 marks the first release.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code>: An optional parameter that specifies the type of the plugin. The default value is <code class="docutils literal notranslate"><span class="pre">tool</span></code>. <code class="docutils literal notranslate"><span class="pre">datalink_driver</span></code> is also supported. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.VA_IMPLEMENT_LICENSED_PLUGIN">
+<span class="target" id="VA_IMPLEMENT_LICENSED_PLUGIN"></span><code class="sig-name descname"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code><span class="sig-paren">(</span><em><span class="pre">COMPONENT_ID</span></em>, <em><span class="pre">COMPONENT_VERSION</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_IMPLEMENT_LICENSED_PLUGIN" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Generates code for a plugin entry point function, <code class="docutils literal notranslate"><span class="pre">va_get_plugin_info</span></code>. </p>
+<p>This macro works the same way as VA_IMPLEMENT_PLUGIN, but it also generates a piece of code that checks the component ID when the plugin is being loaded. This makes it hard to load the plugin without a valid license. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv420va_registration_func">
+<span id="_CPPv320va_registration_func"></span><span id="_CPPv220va_registration_func"></span><span id="va_registration_func"></span><span class="target" id="*,...)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_registration_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span><span class="pre">*</span>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_registration_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of the registration function that will be passed as a function pointer to a plugin initialization function when a plugin is loaded. </p>
+<p>The initialization function uses the registration function to register tool or driver instances to the VisionAppster platform. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv419va_plugin_init_func">
+<span id="_CPPv319va_plugin_init_func"></span><span id="_CPPv219va_plugin_init_func"></span><span id="va_plugin_init_func"></span><span class="target" id="(va_registration_func)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_plugin_init_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420va_registration_func" title="va_registration_func"><span class="pre">va_registration_func</span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_plugin_init_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a function that registers tools or drivers in a plug-in. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv419va_plugin_info_func">
+<span id="_CPPv319va_plugin_info_func"></span><span id="_CPPv219va_plugin_info_func"></span><span id="va_plugin_info_func"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv416va_plugin_status" title="va_plugin_status"><span class="pre">va_plugin_status</span></a> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_plugin_info_func</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">va_plugin_info</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_plugin_info_func" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The type of a function that returns basic information about a plug-in. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt id="_CPPv416va_plugin_status">
+<span id="_CPPv316va_plugin_status"></span><span id="_CPPv216va_plugin_status"></span><span class="target" id="va_plugin_status"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_plugin_status</span></code><a class="headerlink" href="#_CPPv416va_plugin_status" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Plugin initialization function return status codes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16va_plugin_status12va_plugin_okE">
+<span id="_CPPv3N16va_plugin_status12va_plugin_okE"></span><span id="_CPPv2N16va_plugin_status12va_plugin_okE"></span><span class="target" id="va_plugin_status::va_plugin_ok"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_plugin_ok</span></code><a class="headerlink" href="#_CPPv4N16va_plugin_status12va_plugin_okE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16va_plugin_status29va_plugin_unsupported_versionE">
+<span id="_CPPv3N16va_plugin_status29va_plugin_unsupported_versionE"></span><span id="_CPPv2N16va_plugin_status29va_plugin_unsupported_versionE"></span><span class="target" id="va_plugin_status::va_plugin_unsupported_version"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_plugin_unsupported_version</span></code><a class="headerlink" href="#_CPPv4N16va_plugin_status29va_plugin_unsupported_versionE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16va_plugin_status31va_plugin_component_id_mismatchE">
+<span id="_CPPv3N16va_plugin_status31va_plugin_component_id_mismatchE"></span><span id="_CPPv2N16va_plugin_status31va_plugin_component_id_mismatchE"></span><span class="target" id="va_plugin_status::va_plugin_component_id_mismatch"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_plugin_component_id_mismatch</span></code><a class="headerlink" href="#_CPPv4N16va_plugin_status31va_plugin_component_id_mismatchE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N16va_plugin_status36va_plugin_component_version_mismatchE">
+<span id="_CPPv3N16va_plugin_status36va_plugin_component_version_mismatchE"></span><span id="_CPPv2N16va_plugin_status36va_plugin_component_version_mismatchE"></span><span class="target" id="va_plugin_status::va_plugin_component_version_mismatch"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_plugin_component_version_mismatch</span></code><a class="headerlink" href="#_CPPv4N16va_plugin_status36va_plugin_component_version_mismatchE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_pp.h/" class="btn btn-neutral float-right" title="va_pp.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_datalink.h/" class="btn btn-neutral float-left" title="va_datalink.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

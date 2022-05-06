@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#tool-files">Tool files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#python-tool-plugins">Python tool plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drivers">Drivers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#store-packages">Store packages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#signing">Signing</a></li>
 </ul>
@@ -402,6 +403,19 @@ va-pkg build mycomponent
 </div>
 <p>This will create <code class="docutils literal notranslate"><span class="pre">com.example.apps.cool-1.0.0.vapkg</span></code> that contains not
 only the app but also a native tool plugin and a tool file.</p>
+</div>
+<div class="section" id="drivers">
+<h2>Drivers<a class="headerlink" href="#drivers" title="Permalink to this headline">🔗</a></h2>
+<p>A component package can contain driver plugins that are compiled to
+native code. Currently, camera drivers (<code class="docutils literal notranslate"><span class="pre">.gentl</span></code> and <code class="docutils literal notranslate"><span class="pre">.cti</span></code> file
+name suffixes) and data link drivers (<code class="docutils literal notranslate"><span class="pre">.datalink</span></code> suffix) are
+supported. The same suggestions and conventions as with native tool
+plugins apply:</p>
+<ul class="simple">
+<li><p>Preferably compile the plugin with <code class="docutils literal notranslate"><span class="pre">va-cross</span></code>.</p></li>
+<li><p>Put the plugin into a directory that identifies the hardware
+architecture, e.g. <code class="docutils literal notranslate"><span class="pre">linux-x86_86</span></code>.</p></li>
+</ul>
 </div>
 <div class="section" id="store-packages">
 <h2>Store packages<a class="headerlink" href="#store-packages" title="Permalink to this headline">🔗</a></h2>

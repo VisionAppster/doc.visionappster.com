@@ -112,15 +112,21 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Package file format</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#structure">Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#general-configuration">General configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tools">Tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resource-files">Resource files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#web-apps">Web apps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#camera-driver-plugins">Camera driver plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#checksums">Checksums</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#signatures">Signatures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#licenses">Licenses</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#copy-protection">Copy protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#licenses">Licenses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps">Apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-apps">Web apps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#special-file-types">Special file types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#saved-tools">Saved tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#binary-plugins">Binary plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-tool-plugins">Python tool plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resource-files">Resource files</a></li>
 </ul>
 </li>
 </ul>
@@ -295,11 +301,11 @@ The contents of this file are as follows:</p>
 longer.</p>
 <p>The file must contain the <code class="docutils literal notranslate"><span class="pre">componentId</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> keys.
 <code class="docutils literal notranslate"><span class="pre">componentId</span></code> must match the directory name. If a component contains
-binary plugins implemented using the <a class="reference internal" href="../../api/c/tool/"><span class="doc">tool interface</span></a>,
-the <code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> or
-<code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code> macro must also match the component ID.
-The <code class="docutils literal notranslate"><span class="pre">version</span></code> field contains the exact version number of the
-component.</p>
+<a class="reference internal" href="../../api/c/reference/va_plugin.h/"><span class="doc">binary plugins</span></a> such as tool plugins
+or device drivers, the <code class="docutils literal notranslate"><span class="pre">COMPONENT_ID</span></code> parameter of the
+<code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> or <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code> macro must
+also match the component ID. The <code class="docutils literal notranslate"><span class="pre">version</span></code> field contains the exact
+version number of the component.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> field is strictly required for the VisionAppster Store
 only, but giving a human-readable name to a component is good practice.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">archs</span></code> fields provides a way to list the architectures the
@@ -336,36 +342,64 @@ Each must be accompanied with the <code class="docutils literal notranslate"><sp
 <code class="docutils literal notranslate"><span class="pre">type</span></code> is omitted, the file is treated as a generic resource file with
 no special meaning.</p>
 </div>
-<div class="section" id="tools">
-<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">🔗</a></h2>
-<p>Tools can be stored either as machine code plugins or as
-architecture-independent tool files. Any file that specifies
-<code class="docutils literal notranslate"><span class="pre">toolplugin</span></code> as its <code class="docutils literal notranslate"><span class="pre">type</span></code> must also contain an <code class="docutils literal notranslate"><span class="pre">arch</span></code> field that
-specifies the target processor architecture and operating system.</p>
-<p>If the <code class="docutils literal notranslate"><span class="pre">type</span></code> of a file is <code class="docutils literal notranslate"><span class="pre">tool</span></code>, the file contains an
-architecture-independent tool saved by the Builder. The base name of the
-tool file will be used as the name of the tool. It should be noted that
-although the tool file itself is architecture-independent, it may refer
-to native tools that are available on certain platforms only.</p>
+<div class="section" id="checksums">
+<h2>Checksums<a class="headerlink" href="#checksums" title="Permalink to this headline">🔗</a></h2>
+<p>All files must be accompanied with a checksum, which is a 64-byte
+<a class="reference external" href="https://blake2.net/">Blake2b</a> hash of the file’s contents,
+represented as a hexadecimal number with lowercase letters (128
+characters in total). The checksum is used to make sure that a licensed
+file has not been modified after publication. It is also used to ensure
+the integrity of all other files and for detecting if a file has been
+changed by the user after installation. This information is useful when
+uninstalling a component. Loading a licensed file will fail if the
+checksum of a file doesn’t match.</p>
 </div>
-<div class="section" id="resource-files">
-<h2>Resource files<a class="headerlink" href="#resource-files" title="Permalink to this headline">🔗</a></h2>
-<p>A component may require external files to be functional. Typical
-examples include images and machine learning models. Sometimes, these
-can be baked into binaries, but this is not always possible or even
-useful. The <code class="docutils literal notranslate"><span class="pre">type</span></code> of a resource file is <code class="docutils literal notranslate"><span class="pre">file</span></code> and can be omitted.</p>
-<p>Whenever a component refers to a file in itself or another component at
-run time, the path is relative to the component installation root
-directory. The Engine resolves the full path based on the component ID
-and version number of the referred component.</p>
-<p>For example, if a component references
-<code class="docutils literal notranslate"><span class="pre">res://com.example.foobar/1/model.onnx</span></code>, the Engine determines where
-components are installed in the system and inserts the absolute root
-path to the beginning. resulting e.g. in
-<code class="docutils literal notranslate"><span class="pre">/opt/visionappster/components/com.example.foobar/1/model.onnx</span></code>.</p>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">🔗</a></h2>
+<p>When a component package is distributed through the VisionAppster Store,
+<code class="docutils literal notranslate"><span class="pre">component.json</span></code> and possible license files must be digitally signed
+by the Store. The signature is stored in a <code class="docutils literal notranslate"><span class="pre">.crt</span></code> file alongside the
+signed file. If an installed component has a signature, its validity
+will be checked when loading the component. Licensed components
+distributed through the Store can only be loaded if they have a valid
+signature.</p>
+</div>
+<div class="section" id="copy-protection">
+<h2>Copy protection<a class="headerlink" href="#copy-protection" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster engine provides protection against unauthorized
+copying of licensed files. Currently, saved tools (<code class="docutils literal notranslate"><span class="pre">.toolc</span></code>) and
+binary plugins (<code class="docutils literal notranslate"><span class="pre">.toolplugin</span></code>, <code class="docutils literal notranslate"><span class="pre">.datalink</span></code>) can be protected.</p>
+<p>To protect a binary plugin all one needs to do is to use the
+<code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code> macro (details
+<a class="reference internal" href="../../api/c/reference/va_plugin.h/"><span class="doc">here</span></a>) and pass it the component’s ID
+and version. This embeds a component ID check to the auto-generated
+plugin code. The platform verifies the integrity of the plugin binary
+and the validity of its license.</p>
+<p>On the command line, <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">tool</span> <span class="pre">encrypt</span></code> can be used to encrypt tool
+files. This will transform the (about human-readable) <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files
+into <code class="docutils literal notranslate"><span class="pre">.toolc</span></code> files that can only be opened if they have a valid
+digital signature. Such a signature can be generated using
+<code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">sign</span></code>.</p>
+</div>
+<div class="section" id="licenses">
+<h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">🔗</a></h2>
+<p>A component package can optionally contain license files and their
+signatures in a directory called <code class="docutils literal notranslate"><span class="pre">licenses</span></code>. This makes it possible to
+craft self-contained packages that don’t require extra licensing steps
+after installation.</p>
+<p>In addition to the license file and its certificate, a component package
+can contain a configuration file (<code class="docutils literal notranslate"><span class="pre">licenses/config</span></code>) that contains the
+information required to fetch a new license file from the Store. The
+file format is such that it can be easily parsed in any programming
+language and the shell. Two variables are currently recognized: <code class="docutils literal notranslate"><span class="pre">url</span></code>
+specifies where a new license file can be obtained for the user and
+<code class="docutils literal notranslate"><span class="pre">token</span></code> is an API token for authorization.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">url</span><span class="o">=</span><span class="s">https://public-api.visionappster.com/1/licenses/license.vapkg</span>
+<span class="na">token</span><span class="o">=</span><span class="s">6ee144ad0bbb4bf8aeb4f292febbe5d1</span>
+</pre></div>
 </div>
 <div class="section" id="apps">
-<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">🔗</a></h2>
+<h3>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">🔗</a></h3>
 <p>The structure of a component package containing a single analysis
 <a class="reference internal" href="../../engine/apps/"><span class="doc">app</span></a> is like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">com</span><span class="o">.</span><span class="n">visionappster</span><span class="o">.</span><span class="n">awesome</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span>
@@ -430,7 +464,7 @@ app’s script code. Therefore, it is considered just another file in the
 package.</p>
 </div>
 <div class="section" id="web-apps">
-<h2>Web apps<a class="headerlink" href="#web-apps" title="Permalink to this headline">🔗</a></h2>
+<h3>Web apps<a class="headerlink" href="#web-apps" title="Permalink to this headline">🔗</a></h3>
 <p>For the VisionAppster engine, web apps are just files that are served
 through the built-in web server. In the simplest case, the structure of
 the component package can be for example like this:</p>
@@ -475,75 +509,71 @@ works as if it was a directory. This approach has some performance
 benefits. By convention, webapp zips should have a <code class="docutils literal notranslate"><span class="pre">.webapp</span></code> file name
 extension.</p>
 </div>
+</div>
+<div class="section" id="special-file-types">
+<h2>Special file types<a class="headerlink" href="#special-file-types" title="Permalink to this headline">🔗</a></h2>
+<div class="section" id="saved-tools">
+<h3>Saved tools<a class="headerlink" href="#saved-tools" title="Permalink to this headline">🔗</a></h3>
+<p>If the <code class="docutils literal notranslate"><span class="pre">type</span></code> of a file is <code class="docutils literal notranslate"><span class="pre">tool</span></code>, the file contains an
+architecture-independent tool saved by the Builder. The base name of the
+tool file will be used as the name of the tool. It should be noted that
+although the tool file itself is architecture-independent, it may refer
+to native tools that are available on certain platforms only.</p>
+</div>
+<div class="section" id="binary-plugins">
+<h3>Binary plugins<a class="headerlink" href="#binary-plugins" title="Permalink to this headline">🔗</a></h3>
+<p>Binary plugins are compiled machine code and must thus be annotated with
+an <code class="docutils literal notranslate"><span class="pre">arch</span></code> field that specifies the target processor architecture and
+operating system. Three types of binary plugins are supported.</p>
+<div class="section" id="tool-plugins">
+<h4>Tool plugins<a class="headerlink" href="#tool-plugins" title="Permalink to this headline">🔗</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> of a tool plugin is <code class="docutils literal notranslate"><span class="pre">toolplugin</span></code>. As a convention, the
+file name extension of a tool plugin is :doc:<code class="docutils literal notranslate"><span class="pre">.toolplugin</span></code>. The <cite>tool C
+API &lt;/api/c/tool&gt;</cite> is used for creating native tool plugins.</p>
+</div>
+<div class="section" id="data-link-driver-plugins">
+<h4>Data link driver plugins<a class="headerlink" href="#data-link-driver-plugins" title="Permalink to this headline">🔗</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> of a data link plugin is <code class="docutils literal notranslate"><span class="pre">datalinkdriverplugin</span></code>. As a
+convention, the file name extension of a tool plugin is <code class="docutils literal notranslate"><span class="pre">.datalink</span></code>.
+The <a class="reference internal" href="../../api/c/datalink/"><span class="doc">data link C API</span></a> is used for creating native
+data link driver plugins.</p>
+</div>
 <div class="section" id="camera-driver-plugins">
-<h2>Camera driver plugins<a class="headerlink" href="#camera-driver-plugins" title="Permalink to this headline">🔗</a></h2>
-<p>Camera driver plugins are binaries implementing the <a class="reference external" href="https://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf">GenICam GenTL
+<h4>Camera driver plugins<a class="headerlink" href="#camera-driver-plugins" title="Permalink to this headline">🔗</a></h4>
+<p>Camera driver plugins are shared libraries that implement the <a class="reference external" href="https://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf">GenICam
+GenTL
 API</a>.
 To include such a plugin in the component package, the <code class="docutils literal notranslate"><span class="pre">type</span></code> field of
-the file must be set to <code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code> and it must also contain
-an <code class="docutils literal notranslate"><span class="pre">arch</span></code> field that specifies the target processor architecture and
-operating system. When creating a component package in the Builder,
-<code class="docutils literal notranslate"><span class="pre">type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code> for any files with the
-extension <code class="docutils literal notranslate"><span class="pre">.gentl</span></code> or <code class="docutils literal notranslate"><span class="pre">.cti</span></code>.</p>
-<p>To enable camera driver plugin support, you need to install the <a class="reference external" href="https://store.visionappster.com">GenTL
-camera driver</a> component.</p>
-</div>
-<div class="section" id="checksums">
-<h2>Checksums<a class="headerlink" href="#checksums" title="Permalink to this headline">🔗</a></h2>
-<p>All files must be accompanied with a checksum, which is a 64-byte
-<a class="reference external" href="https://blake2.net/">Blake2b</a> hash of the file’s contents,
-represented as a hexadecimal number with lowercase letters (128
-characters in total). The checksum is used to make sure that a licensed
-file has not been modified after publication. It is also used to ensure
-the integrity of all other files and for detecting if a file has been
-changed by the user after installation. This information is useful when
-uninstalling a component. Loading a licensed file will fail if the
-checksum of a file doesn’t match.</p>
-</div>
-<div class="section" id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">🔗</a></h2>
-<p>When a component package is distributed through the VisionAppster Store,
-<code class="docutils literal notranslate"><span class="pre">component.json</span></code> and possible license files must be digitally signed
-by the Store. The signature is stored in a <code class="docutils literal notranslate"><span class="pre">.crt</span></code> file alongside the
-signed file. If an installed component has a signature, its validity
-will be checked when loading the component. Licensed components
-distributed through the Store can only be loaded if they have a valid
-signature.</p>
-</div>
-<div class="section" id="licenses">
-<h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">🔗</a></h2>
-<p>A component package can optionally contain license files and their
-signatures in a directory called <code class="docutils literal notranslate"><span class="pre">licenses</span></code>. This makes it possible to
-craft self-contained packages that don’t require extra licensing steps
-after installation.</p>
-<p>In addition to the license file and its certificate, a component package
-can contain a configuration file (<code class="docutils literal notranslate"><span class="pre">licenses/config</span></code>) that contains the
-information required to fetch a new license file from the Store. The
-file format is such that it can be easily parsed in any programming
-language and the shell. Two variables are currently recognized: <code class="docutils literal notranslate"><span class="pre">url</span></code>
-specifies where a new license file can be obtained for the user and
-<code class="docutils literal notranslate"><span class="pre">token</span></code> is an API token for authorization.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">url</span><span class="o">=</span><span class="s">https://public-api.visionappster.com/1/licenses/license.vapkg</span>
-<span class="na">token</span><span class="o">=</span><span class="s">6ee144ad0bbb4bf8aeb4f292febbe5d1</span>
-</pre></div>
+the file must be set to <code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code>. When creating a
+component package in the Builder, <code class="docutils literal notranslate"><span class="pre">type</span></code> is set to
+<code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code> for any files with the extension <code class="docutils literal notranslate"><span class="pre">.gentl</span></code> or
+<code class="docutils literal notranslate"><span class="pre">.cti</span></code>.</p>
 </div>
 </div>
-<div class="section" id="copy-protection">
-<h2>Copy protection<a class="headerlink" href="#copy-protection" title="Permalink to this headline">🔗</a></h2>
-<p>The VisionAppster engine provides protection against unauthorized
-copying of licensed files. Currently, tools (<code class="docutils literal notranslate"><span class="pre">.toolc</span></code>) and tool
-plugins (<code class="docutils literal notranslate"><span class="pre">.toolplugin</span></code>) can be protected.</p>
-<p>To protect a binary tool plugin all one needs to do is to use the
-<code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code> macro (details
-<a class="reference internal" href="../../api/c/reference/va_tool.h/"><span class="doc">here</span></a>) and pass it the component’s ID
-and version. This embeds a component ID check to the auto-generated
-plugin code. The platform verifies the integrity of the plugin binary
-and the validity of its license.</p>
-<p>On the command line, <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">tool</span> <span class="pre">encrypt</span></code> can be used to encrypt tool
-files. This will transform the (about human-readable) <code class="docutils literal notranslate"><span class="pre">.tool</span></code> files
-into <code class="docutils literal notranslate"><span class="pre">.toolc</span></code> files that can only be opened if they have a valid
-digital signature. Such a signature can be generated using
-<code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">sign</span></code>.</p>
+<div class="section" id="python-tool-plugins">
+<h3>Python tool plugins<a class="headerlink" href="#python-tool-plugins" title="Permalink to this headline">🔗</a></h3>
+<p>Python tool plugins contain tools implemented in Python. Their <code class="docutils literal notranslate"><span class="pre">type</span></code>
+must be <code class="docutils literal notranslate"><span class="pre">pythontoolplugin</span></code>. By convention, the names of Python tool
+plugin files follow the pattern <code class="docutils literal notranslate"><span class="pre">*toolplugin.py</span></code>, for example
+:doc:<code class="docutils literal notranslate"><span class="pre">mytoolplugin.py</span></code>. Use the <cite>Python tool API &lt;/api/python/tool&gt;</cite> to
+create tool plugins in Python.</p>
+</div>
+</div>
+<div class="section" id="resource-files">
+<h2>Resource files<a class="headerlink" href="#resource-files" title="Permalink to this headline">🔗</a></h2>
+<p>A component may require external files to be functional. Typical
+examples include images and machine learning models. Sometimes, these
+can be baked into binaries, but this is not always possible or even
+useful. The <code class="docutils literal notranslate"><span class="pre">type</span></code> of a resource file is <code class="docutils literal notranslate"><span class="pre">file</span></code> and can be omitted.</p>
+<p>Whenever a component refers to a file in itself or another component at
+run time, the path is relative to the component installation root
+directory. The Engine resolves the full path based on the component ID
+and version number of the referred component.</p>
+<p>For example, if a component references
+<code class="docutils literal notranslate"><span class="pre">res://com.example.foobar/1/model.onnx</span></code>, the Engine determines where
+components are installed in the system and inserts the absolute root
+path to the beginning. resulting e.g. in
+<code class="docutils literal notranslate"><span class="pre">/opt/visionappster/components/com.example.foobar/1/model.onnx</span></code>.</p>
 </div>
 </div>
 

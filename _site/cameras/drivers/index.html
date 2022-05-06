@@ -177,26 +177,23 @@
   <div class="section" id="camera-drivers">
 <h1>Camera drivers<a class="headerlink" href="#camera-drivers" title="Permalink to this headline">🔗</a></h1>
 <p>VisionAppster software installation provides a Webcam Camera Driver for
-using a (USB) webcams as image sources. In addition to that the default
-installation supports virtual cameras using a predefined set of image
-files for feeding images.</p>
-<p>Additional camera drivers can be added as camera driver plugins. You can
-search for such plugins in the <a class="reference external" href="https://store.visionappster.com">VisionAppster
+using V4L2 (Linux) and DirectShow (Windows) cameras as image sources. In
+addition to that the default installation supports virtual cameras using
+a predefined set of image files for feeding images.</p>
+<p>Additional camera drivers can be added either by installing a driver on
+the operating system level (V4L2 or DirectShow) or as camera driver
+plugins. You can search for such plugins in the <a class="reference external" href="https://store.visionappster.com">VisionAppster
 Store</a> or implement your own.</p>
-<p>Camera driver plugins require the GenTL camera driver component that is
-available in the Store. The GenTL camera driver implements a GenTL
-consumer and works with any standards-compliant implementation of the
-GenICam GenTL producer. The process of creating a compliant GenTL
-producer is beyond the scope of this document. Please refer to the
-<a class="reference external" href="https://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf">GenICam GenTL
-specification</a>
-for details.</p>
-<p>Once a GenTL producer plugin is available, it can be put into a
+<p>Camera driver plugins implement the <a class="reference external" href="https://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf">GenTL producer
+interface</a>.
+The process of creating a compliant implementation is beyond the scope
+of this document. Please refer to the specification for details.</p>
+<p>Once a GenTL producer library is available, it can be put into a
 <a class="reference internal" href="../../components/packages/"><span class="doc">component package</span></a> and installed. Since GenTL
 producers are native machine code, they need the <code class="docutils literal notranslate"><span class="pre">arch</span></code> field in
 <code class="docutils literal notranslate"><span class="pre">package.json</span></code>. The <code class="docutils literal notranslate"><span class="pre">type</span></code> field must be set to
-<code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code>. By convention, GenTL producer plugins should
-have either <code class="docutils literal notranslate"><span class="pre">.gentl</span></code> or <code class="docutils literal notranslate"><span class="pre">.cti</span></code> extension.</p>
+<code class="docutils literal notranslate"><span class="pre">cameradriverplugin</span></code>. By convention, a GenTL producer library should
+have either <code class="docutils literal notranslate"><span class="pre">.gentl</span></code> or <code class="docutils literal notranslate"><span class="pre">.cti</span></code> as the file name extension.</p>
 </div>
 
 

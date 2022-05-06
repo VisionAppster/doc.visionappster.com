@@ -379,9 +379,10 @@
             
   <div class="section" id="output-external-data">
 <h1>Output external data<a class="headerlink" href="#output-external-data" title="Permalink to this headline">🔗</a></h1>
-<p>Writes data to a data link device. This tool requires a data link
-driver that works in master mode. It writes the values of all
-defined parameters to a slave device on each processing round.</p>
+<p>Writes data to a data link device. This tool requires a :doc:<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">link</span>
+<span class="pre">driver</span> <span class="pre">&lt;/api/c/datalink&gt;</span></code> that works in master mode. It writes the
+values of all defined parameters to a slave device on each
+processing round.</p>
 <p>If the device driver supports batch writes, all defined variables
 will be written atomically. This is a requirement for SQL database
 drivers, for example (all columns of a table row are written

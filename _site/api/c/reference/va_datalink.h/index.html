@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>va_datalink.h &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <link rel="next" title="va_plugin.h" href="../va_plugin.h/" />
+    <link rel="prev" title="va_coordinate_transform.h" href="../va_coordinate_transform.h/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
+
+        
+          <a href="../../../../">
+        
+
+        
+          
+          <img src="../../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
+          
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+              
+              
+                
+              
+              
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tool/">Tool APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../">C API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../datalink/">Creating device drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tool/">Creating tools in C</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../">C API reference</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../va_array/">va_array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_camera_parameters/">va_camera_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_frame/">va_coordinate_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_image/">va_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_matrix/">va_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_object/">va_object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_string/">va_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_table/">va_table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tensor/">va_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_coordinate_transform.h/">va_coordinate_transform.h</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">va_datalink.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_plugin.h/">va_plugin.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_pp.h/">va_pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_tool.h/">va_tool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_types.h/">va_types.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../va_util.h/">va_util.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/">Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cookbook/">Cookbook</a></li>
+</ul>
+
+              
+            
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../../">C API</a> &raquo;</li>
+        
+          <li><a href="../">C API reference</a> &raquo;</li>
+        
+      <li>va_datalink.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="va-datalink-h">
+<h1>va_datalink.h<a class="headerlink" href="#va-datalink-h" title="Permalink to this headline">🔗</a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_datalink.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt id="c.VA_REGISTER_DATALINK_DRIVER">
+<span class="target" id="VA_REGISTER_DATALINK_DRIVER"></span><code class="sig-name descname"><span class="pre">VA_REGISTER_DATALINK_DRIVER</span></code><span class="sig-paren">(</span><em><span class="pre">IDENTIFIER</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.VA_REGISTER_DATALINK_DRIVER" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a function that registers the shared library as a data link driver with the given <em>IDENTIFIER</em>, which must be unique within the enclosing component. </p>
+<p><em>IDENTIFIER</em> should follow class name conventions: start with a capital letter and capitalize each word. For example, “AcmePlcDriver”. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv420va_datalink_callback">
+<span id="_CPPv320va_datalink_callback"></span><span id="_CPPv220va_datalink_callback"></span><span id="va_datalink_callback"></span><span class="target" id="*)"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_callback</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_datalink_callback" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Function signature for the call-back function that will be called when the value of a variable in a slave device is set by a master device. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt id="_CPPv420va_datalink_dev_flag">
+<span id="_CPPv320va_datalink_dev_flag"></span><span id="_CPPv220va_datalink_dev_flag"></span><span class="target" id="va_datalink_dev_flag"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_datalink_dev_flag</span></code><a class="headerlink" href="#_CPPv420va_datalink_dev_flag" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Data link device driver capability flags. </p>
+<p>A bit mask of these flags is returned as the “flags” configuration variable of a device. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_datalink_dev_flag22va_datalink_dev_masterE">
+<span id="_CPPv3N20va_datalink_dev_flag22va_datalink_dev_masterE"></span><span id="_CPPv2N20va_datalink_dev_flag22va_datalink_dev_masterE"></span><span class="target" id="va_datalink_dev_flag::va_datalink_dev_master"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_datalink_dev_master</span></code><a class="headerlink" href="#_CPPv4N20va_datalink_dev_flag22va_datalink_dev_masterE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The device driver works as a master device. </p>
+<p>It writes and reads data from a slave device using a communication bus. A master driver may also be able to receive change notification signals if the slave device and the underlying protocol supports them. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_datalink_dev_flag21va_datalink_dev_slaveE">
+<span id="_CPPv3N20va_datalink_dev_flag21va_datalink_dev_slaveE"></span><span id="_CPPv2N20va_datalink_dev_flag21va_datalink_dev_slaveE"></span><span class="target" id="va_datalink_dev_flag::va_datalink_dev_slave"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_datalink_dev_slave</span></code><a class="headerlink" href="#_CPPv4N20va_datalink_dev_flag21va_datalink_dev_slaveE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The device driver works as a slave device. </p>
+<p>A slave device listens to a communication bus and either returns the values of local variables or assigns their values based on the incoming requests. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N20va_datalink_dev_flag26va_datalink_dev_fixed_varsE">
+<span id="_CPPv3N20va_datalink_dev_flag26va_datalink_dev_fixed_varsE"></span><span id="_CPPv2N20va_datalink_dev_flag26va_datalink_dev_fixed_varsE"></span><span class="target" id="va_datalink_dev_flag::va_datalink_dev_fixed_vars"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_datalink_dev_fixed_vars</span></code><a class="headerlink" href="#_CPPv4N20va_datalink_dev_flag26va_datalink_dev_fixed_varsE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Set if the driver implementation has a fixed set of variables and cannot create new ones. </p>
+<p>In this case <a class="reference internal" href="#va_datalink_var_create"><span class="std std-ref">va_datalink_var_create</span></a> never makes changes to the actual device but merely returns a reference to an existing variable and fails if the named variable does not exist. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt id="_CPPv424va_datalink_batch_action">
+<span id="_CPPv324va_datalink_batch_action"></span><span id="_CPPv224va_datalink_batch_action"></span><span class="target" id="va_datalink_batch_action"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">va_datalink_batch_action</span></code><a class="headerlink" href="#_CPPv424va_datalink_batch_action" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Ways of finishing a batch write. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N24va_datalink_batch_action24va_datalink_batch_commitE">
+<span id="_CPPv3N24va_datalink_batch_action24va_datalink_batch_commitE"></span><span id="_CPPv2N24va_datalink_batch_action24va_datalink_batch_commitE"></span><span class="target" id="va_datalink_batch_action::va_datalink_batch_commit"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_datalink_batch_commit</span></code><a class="headerlink" href="#_CPPv4N24va_datalink_batch_action24va_datalink_batch_commitE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Write the values of all changed variables at once. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N24va_datalink_batch_action26va_datalink_batch_rollbackE">
+<span id="_CPPv3N24va_datalink_batch_action26va_datalink_batch_rollbackE"></span><span id="_CPPv2N24va_datalink_batch_action26va_datalink_batch_rollbackE"></span><span class="target" id="va_datalink_batch_action::va_datalink_batch_rollback"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">va_datalink_batch_rollback</span></code><a class="headerlink" href="#_CPPv4N24va_datalink_batch_action26va_datalink_batch_rollbackE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Restore all variables to their original values. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv420va_datalink_dev_listv">
+<span id="_CPPv320va_datalink_dev_listv"></span><span id="_CPPv220va_datalink_dev_listv"></span><span id="va_datalink_dev_list__void"></span><span class="target" id="va_datalink_dev_list"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_dev_list</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_datalink_dev_listv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a list of data link devices that are detected by this driver. </p>
+<p>Use the returned handle as a parameter to <a class="reference internal" href="#va_datalink_handle_next"><span class="std std-ref">va_datalink_handle_next</span></a> to loop through available devices.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A handle to a list of devices.</p>
+</dd>
+<dt><strong>Note</strong></dt><dd><p>This is an optional function. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv422va_datalink_dev_createPK9va_string">
+<span id="_CPPv322va_datalink_dev_createPK9va_string"></span><span id="_CPPv222va_datalink_dev_createPK9va_string"></span><span id="va_datalink_dev_create__va_stringCP"></span><span class="target" id="va_datalink_dev_create"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_dev_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">device_address</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_datalink_dev_createPK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a connection to the device identified by an implementation-specific device address. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A handle to a device or NULL if the call fails. In a typical implementation, the handle is a pointer to a heap-allocated structure that stores the state of a device. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">device_address</span></code>: An implementation-specific way of identifying a data link device. Can be e.g. a network URI. The device address can contain encoded parameters, but devices may also support setting configuration parameters via <a class="reference internal" href="#va_datalink_config_get"><span class="std std-ref">va_datalink_config_get</span></a> and <a class="reference internal" href="#va_datalink_var_write"><span class="std std-ref">va_datalink_var_write</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_datalink_dev_openPv">
+<span id="_CPPv320va_datalink_dev_openPv"></span><span id="_CPPv220va_datalink_dev_openPv"></span><span id="va_datalink_dev_open__voidP"></span><span class="target" id="va_datalink_dev_open"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_dev_open</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_datalink_dev_openPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Opens a connection to a data link device. </p>
+<p>The function fails if connection cannot be established within the time-out set by the “timeout” configuration variable.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv421va_datalink_dev_closePv">
+<span id="_CPPv321va_datalink_dev_closePv"></span><span id="_CPPv221va_datalink_dev_closePv"></span><span id="va_datalink_dev_close__voidP"></span><span class="target" id="va_datalink_dev_close"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_dev_close</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421va_datalink_dev_closePv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Closes connection to a data link device. </p>
+<p>After closing the connection, the device can be configured and opened again.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv423va_datalink_config_listPv">
+<span id="_CPPv323va_datalink_config_listPv"></span><span id="_CPPv223va_datalink_config_listPv"></span><span id="va_datalink_config_list__voidP"></span><span class="target" id="va_datalink_config_list"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_config_list</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423va_datalink_config_listPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a list of configuration values supported by the given device. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A list handle on success, NULL on failure. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv422va_datalink_config_getPvPK9va_string">
+<span id="_CPPv322va_datalink_config_getPvPK9va_string"></span><span id="_CPPv222va_datalink_config_getPvPK9va_string"></span><span id="va_datalink_config_get__voidP.va_stringCP"></span><span class="target" id="va_datalink_config_get"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_config_get</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_datalink_config_getPvPK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a variable handle to the configuration variable with the specified <em>name</em> in the device identified by the given <em>dev_handle</em>. </p>
+<p>The returned handle needs to be destroyed with <code class="docutils literal notranslate"><a class="reference internal" href="#va_datalink_handle_destroy"><span class="std std-ref"><span class="pre">va_datalink_handle_destroy()</span></span></a></code> when no longer used.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A variable handle on success, NULL on failure. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dev_handle</span></code>: A device handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The name of the configuration variable.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv424va_datalink_var_meta_setPv7int32_tPK9va_stringz">
+<span id="_CPPv324va_datalink_var_meta_setPv7int32_tPK9va_stringz"></span><span id="_CPPv224va_datalink_var_meta_setPv7int32_tPK9va_stringz"></span><span id="va_datalink_var_meta_set__voidP.int32_t.va_stringCP.z"></span><span class="target" id="va_datalink_var_meta_set"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_var_meta_set</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">handle</span></em>, <span class="pre">int32_t</span> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424va_datalink_var_meta_setPv7int32_tPK9va_stringz" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Sets a variable meta value. </p>
+<p><p>Note that in most cases the variable meta values are not writable, in which case this method returns failure. </p>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">handle</span></code>: A variable handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The data type of the value to set, one of <a class="reference internal" href="../va_types.h/#va_type_id"><span class="std std-ref">va_type_id</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The name of the meta value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">...</span></code>: Type-dependent parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv424va_datalink_var_meta_getPv7int32_tPK9va_stringz">
+<span id="_CPPv324va_datalink_var_meta_getPv7int32_tPK9va_stringz"></span><span id="_CPPv224va_datalink_var_meta_getPv7int32_tPK9va_stringz"></span><span id="va_datalink_var_meta_get__voidP.int32_t.va_stringCP.z"></span><span class="target" id="va_datalink_var_meta_get"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_var_meta_get</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">handle</span></em>, <span class="pre">int32_t</span> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424va_datalink_var_meta_getPv7int32_tPK9va_stringz" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Reads a variable meta value. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span><span class="o">*</span> <span class="n">pVar</span> <span class="o">=</span> <span class="n">va_datalink_var_create</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">va_string_id</span><span class="p">,</span> <span class="s2">&quot;string_var&quot;</span><span class="p">);</span>
+<span class="n">int32_t</span> <span class="n">iType</span><span class="p">;</span>
+<span class="n">va_datalink_meta_get</span><span class="p">(</span><span class="n">pVar</span><span class="p">,</span> <span class="n">int32_t_id</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iType</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">handle</span></code>: A variable handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The expected data type of the meta value to retrieve, one of <a class="reference internal" href="../va_types.h/#va_type_id"><span class="std std-ref">va_type_id</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The name of the meta value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">...</span></code>: Type-dependent parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv426va_datalink_handle_destroyPv">
+<span id="_CPPv326va_datalink_handle_destroyPv"></span><span id="_CPPv226va_datalink_handle_destroyPv"></span><span id="va_datalink_handle_destroy__voidP"></span><span class="target" id="va_datalink_handle_destroy"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_handle_destroy</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426va_datalink_handle_destroyPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Destroys a handle. </p>
+<p>Subsequent operations on the handle result in undefined behavior. The memory allocated by <em>handle</em> will be freed even if the handle can not be finalized cleanly.</p>
+<p>If the handle represents a list, the implementation can decide whether the handles in the list are destroyed or not. It must guarantee that the handles in a list are valid at least until the list is passed to this function.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">handle</span></code>: A device, variable or list handle. It is safe to destroy a NULL handle.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv423va_datalink_handle_nextPv">
+<span id="_CPPv323va_datalink_handle_nextPv"></span><span id="_CPPv223va_datalink_handle_nextPv"></span><span id="va_datalink_handle_next__voidP"></span><span class="target" id="va_datalink_handle_next"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_handle_next</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">list_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423va_datalink_handle_nextPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the next handle in a handle list. </p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">the</span> <span class="n">addresses</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">detected</span> <span class="n">devices</span><span class="o">.</span>
+<span class="n">char</span> <span class="n">bfr</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+<span class="n">void</span><span class="o">*</span> <span class="n">lst</span> <span class="o">=</span> <span class="n">va_datalink_dev_list</span><span class="p">();</span>
+<span class="n">void</span><span class="o">*</span> <span class="n">dev</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">((</span><span class="n">dev</span> <span class="o">=</span> <span class="n">va_datalink_handle_next</span><span class="p">(</span><span class="n">lst</span><span class="p">)))</span>
+  <span class="p">{</span>
+    <span class="n">va_datalink_config_get</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">va_string_id</span><span class="p">,</span> <span class="s2">&quot;address&quot;</span><span class="p">,</span> <span class="n">bfr</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">bfr</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="n">va_datalink_handle_destroy</span><span class="p">(</span><span class="n">lst</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>The next handle in list or NULL if there are no more handles. The returned handles are valid until the returned list is destroyed using <a class="reference internal" href="#va_datalink_handle_destroy"><span class="std std-ref">va_datalink_handle_destroy</span></a>.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">list_handle</span></code>: A list handle returned by <a class="reference internal" href="#va_datalink_dev_list"><span class="std std-ref">va_datalink_dev_list</span></a> or <a class="reference internal" href="#va_datalink_var_list"><span class="std std-ref">va_datalink_var_list</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_datalink_var_listPv">
+<span id="_CPPv320va_datalink_var_listPv"></span><span id="_CPPv220va_datalink_var_listPv"></span><span id="va_datalink_var_list__voidP"></span><span class="target" id="va_datalink_var_list"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_var_list</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_datalink_var_listPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a list of variables known to the given device. </p>
+<p>This function fails if called on a device that hasn’t been opened.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A handle to a list of variables.</p>
+</dd>
+<dt><strong>Note</strong></dt><dd><p>This is an optional function. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv422va_datalink_var_createPv7int32_tPK9va_string">
+<span id="_CPPv322va_datalink_var_createPv7int32_tPK9va_string"></span><span id="_CPPv222va_datalink_var_createPv7int32_tPK9va_string"></span><span id="va_datalink_var_create__voidP.int32_t.va_stringCP"></span><span class="target" id="va_datalink_var_create"></span><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_var_create</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em>, <span class="pre">int32_t</span> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><em><span class="pre">var_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_datalink_var_createPv7int32_tPK9va_string" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Creates a variable. </p>
+<p>Depending on the driver implementation, creating a variable may or may not actually create a new variable on the device. For example, an SQL database driver may be able to create new columns in a database table. Slave devices usually allocate local storage for the variable, but may also provide a fixed set of variables. If the variable set is fixed, the driver should return <code class="docutils literal notranslate"><span class="pre">va_datalink_dev_fixed_vars</span></code> in its flags (see <a class="reference internal" href="#va_datalink_config_get"><span class="std std-ref">va_datalink_config_get</span></a>).</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A handle to a variable or NULL if the function failed. As the handle, a typical implementation would use a pointer to a heap-allocated structure that contains <em>dev_handle</em>, the type of the variable and possibly local storage for the value of the variable. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dev_handle</span></code>: A device handle returned by va_datalink_dev_create.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The type of the variable, one of <a class="reference internal" href="../va_types.h/#va_type_id"><span class="std std-ref">va_type_id</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var_name</span></code>: An implementation-specific character string that identifies the variable. The variable name can be e.g. a PLC tag name or a database column name.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv428va_datalink_var_callback_setPv20va_datalink_callbackPv">
+<span id="_CPPv328va_datalink_var_callback_setPv20va_datalink_callbackPv"></span><span id="_CPPv228va_datalink_var_callback_setPv20va_datalink_callbackPv"></span><span id="va_datalink_var_callback_set__voidP.va_datalink_callback.voidP"></span><span class="target" id="va_datalink_var_callback_set"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_var_callback_set</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">var_handle</span></em>, <a class="reference internal" href="#_CPPv420va_datalink_callback" title="va_datalink_callback"><span class="pre">va_datalink_callback</span></a> <em><span class="pre">callback</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">user_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428va_datalink_var_callback_setPv20va_datalink_callbackPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Assigns a call-back function to a local variable. </p>
+<p>The call-back function will be invoked if the driver is in slave mode and a master device writes to the variable. Some drivers may also support assigning call-back functions to variables in master mode.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">dl_cb</span><span class="p">(</span><span class="n">void</span><span class="o">*</span> <span class="n">var</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">int32_t</span> <span class="n">value</span><span class="p">;</span>
+  <span class="n">va_datalink_var_read</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">int32_t_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Received </span><span class="si">%d</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">void</span><span class="o">*</span> <span class="n">dev</span> <span class="o">=</span> <span class="n">va_datalink_dev_create</span><span class="p">(</span><span class="s2">&quot;demoslave&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="n">void</span><span class="o">*</span> <span class="n">var</span> <span class="o">=</span> <span class="n">va_datalink_var_create</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">int32_t_id</span><span class="p">,</span> <span class="s2">&quot;demovariable&quot;</span><span class="p">);</span>
+<span class="n">va_datalink_var_callback_set</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dl_cb</span><span class="p">,</span> <span class="n">var</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">var_handle</span></code>: A variable handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code>: A pointer to a call-back function to invoke when the value of the variable is set by an external source. The callback is invoked always when the value is set, even if the value does not change. Set the callback to NULL to remove it. The callback is invoked in the context of the thread that changed the value of the variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_data</span></code>: A pointer to be passed to the call-back function when invoked. A typical choice is to pass <em>var_handle</em> as the user data.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><ol class="loweralpha simple">
+<li><p>destroy any variable handle referring to the same variable <em>var_handle</em> refers to. Doing so will invoke undefined behavior.</p></li>
+<li><p>throw exceptions.</p></li>
+<li><p>wait for another thread that may access the same datalink device, as this may cause a deadlock for certain driver implementations.</p></li>
+</ol>
+<dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>The call-back function MUST NOT</p>
+</dd>
+</dl>
+</p>
+<p><p>Attempting to lock mutexes in the call-back function is dangerous and discouraged. If a mutex is necessary, you need to make sure not to lock any mutex that may be locked simultaneously while accessing the same datalink variable. That may cause a “dual</p>
+<p>mutex deadlock”: callback thread is keeping the variable mutex locked during the callback and other thread is keeping the mutex needed by the callback while trying to acquire the variable mutex.</p>
+</p>
+<p><dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>This function does not need to be implemented by master device drivers. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv420va_datalink_var_readPv7int32_tz">
+<span id="_CPPv320va_datalink_var_readPv7int32_tz"></span><span id="_CPPv220va_datalink_var_readPv7int32_tz"></span><span id="va_datalink_var_read__voidP.int32_t.z"></span><span class="target" id="va_datalink_var_read"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_var_read</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">var_handle</span></em>, <span class="pre">int32_t</span> <em><span class="pre">type</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_datalink_var_readPv7int32_tz" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Reads the value of a variable. </p>
+<p>In slave mode, returns the local value of the variable. In master mode, sends a read request to a slave device and returns the result.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32_t</span> <span class="n">i</span><span class="p">;</span>
+<span class="n">va_datalink_var_read</span><span class="p">(</span><span class="n">pVar</span><span class="p">,</span> <span class="n">va_int32_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">var_handle</span></code>: A variable handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The excepted type, one of <a class="reference internal" href="../va_types.h/#va_type_id"><span class="std std-ref">va_type_id</span></a>. If the type of the variable is not compatible with <em>type</em>, the function fails.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">...</span></code>: Type-dependent parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv421va_datalink_var_writePv7int32_tz">
+<span id="_CPPv321va_datalink_var_writePv7int32_tz"></span><span id="_CPPv221va_datalink_var_writePv7int32_tz"></span><span id="va_datalink_var_write__voidP.int32_t.z"></span><span class="target" id="va_datalink_var_write"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_var_write</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">var_handle</span></em>, <span class="pre">int32_t</span> <em><span class="pre">type</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421va_datalink_var_writePv7int32_tz" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Writes the value of a variable. </p>
+<p>In slave mode, assigns the value to a local variable without calling any call-back functions. In master mode, sends a write request to a slave device.</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span><span class="o">*</span> <span class="n">pVar</span> <span class="o">=</span> <span class="n">va_datalink_var_create</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">va_string_id</span><span class="p">,</span> <span class="s2">&quot;string_var&quot;</span><span class="p">);</span>
+<span class="n">int32_t</span> <span class="n">iSuccess</span> <span class="o">=</span> <span class="n">va_datalink_var_write</span><span class="p">(</span><span class="n">pVar</span><span class="p">,</span> <span class="n">va_string_id</span><span class="p">,</span> <span class="s2">&quot;string_value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Zero on success and non-zero on failure.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">var_handle</span></code>: A variable handle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The excepted type, one of <a class="reference internal" href="../va_types.h/#va_type_id"><span class="std std-ref">va_type_id</span></a>. If the type of the variable is not compatible with <em>type</em>, the function fails.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">...</span></code>: Type-dependent parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv423va_datalink_batch_startPv">
+<span id="_CPPv323va_datalink_batch_startPv"></span><span id="_CPPv223va_datalink_batch_startPv"></span><span id="va_datalink_batch_start__voidP"></span><span class="target" id="va_datalink_batch_start"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_batch_start</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423va_datalink_batch_startPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Starts a batch of variable writes. </p>
+<p>If batch changes are supported, the driver caches variable writes until <a class="reference internal" href="#va_datalink_batch_finish"><span class="std std-ref">va_datalink_batch_finish</span></a> is called and then sets all variables at once. On devices that support batch processing, this ensures that no incomplete state is observable while setting multiple variables.</p>
+<p>A typical example is an SQL database driver that inserts a row of related values to a table. Setting one entry at a time would be really slow and even impossible in some cases.</p>
+<p><dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>This is an optional function. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dev_handle</span></code>: A handle to an open device.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv424va_datalink_batch_finishPv24va_datalink_batch_action">
+<span id="_CPPv324va_datalink_batch_finishPv24va_datalink_batch_action"></span><span id="_CPPv224va_datalink_batch_finishPv24va_datalink_batch_action"></span><span id="va_datalink_batch_finish__voidP.va_datalink_batch_action"></span><span class="target" id="va_datalink_batch_finish"></span><span class="pre">int32_t</span> <code class="sig-name descname"><span class="pre">va_datalink_batch_finish</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em>, <a class="reference internal" href="#_CPPv424va_datalink_batch_action" title="va_datalink_batch_action"><span class="pre">va_datalink_batch_action</span></a> <em><span class="pre">action</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424va_datalink_batch_finishPv24va_datalink_batch_action" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Finishes a batch of variable writes. </p>
+<p><dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>This is an optional function. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dev_handle</span></code>: A handle to an open device.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">action</span></code>: The way the batch is finished.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_datalink_errorPv">
+<span id="_CPPv317va_datalink_errorPv"></span><span id="_CPPv217va_datalink_errorPv"></span><span id="va_datalink_error__voidP"></span><span class="target" id="va_datalink_error"></span><a class="reference internal" href="../va_string/#_CPPv49va_string" title="va_string"><span class="pre">va_string</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_datalink_error</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">dev_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_datalink_errorPv" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns the last error message. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>A pointer to a va_string or NULL if there is no error. It is the caller’s responsibility to deallocate the string with va_string_free. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dev_handle</span></code>: A handle to an open device.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../va_plugin.h/" class="btn btn-neutral float-right" title="va_plugin.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../va_coordinate_transform.h/" class="btn btn-neutral float-left" title="va_coordinate_transform.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

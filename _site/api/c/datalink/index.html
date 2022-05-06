@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Creating device drivers &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script defer="defer" src="../../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="Creating tools in C" href="../tool/" />
+    <link rel="prev" title="C API" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
+
+        
+          <a href="../../../">
+        
+
+        
+          
+          <img src="../../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
+          
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+              
+              
+                
+              
+              
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../#data-types">Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tool/">Tool APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">C API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating device drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#master-and-slave-operation">Master and slave operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handles">Handles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-values">Configuration values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-handling">Error handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thread-safety">Thread-safety</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-a-driver">Implementing a driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-driver">Using the driver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tool/">Creating tools in C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/">C API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/">Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cookbook/">Cookbook</a></li>
+</ul>
+
+              
+            
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../">APIs</a> &raquo;</li>
+        
+          <li><a href="../">C API</a> &raquo;</li>
+        
+      <li>Creating device drivers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-device-drivers">
+<h1>Creating device drivers<a class="headerlink" href="#creating-device-drivers" title="Permalink to this headline">🔗</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">🔗</a></h2>
+<p>The VisionAppster data link driver API consists of a set of C functions
+that provide a generic interface for working with different types of
+external devices such as digital I/O devices, programmable logic
+controllers (PLC), distributed control systems (DCS) and SQL databases.
+Broadly, it can be used as a general way of implementing custom
+machine-to-machine data link protocols.</p>
+<p>This documentation specifies the required functionality for a compatible
+data link driver. The following sections describe some key concepts.
+Please refer to the <a class="reference internal" href="../reference/va_datalink.h/"><span class="doc">API
+documentation</span></a> for further details.</p>
+</div>
+<div class="section" id="master-and-slave-operation">
+<h2>Master and slave operation<a class="headerlink" href="#master-and-slave-operation" title="Permalink to this headline">🔗</a></h2>
+<p>When working as a master device, a data link driver communicates with a
+remote device by sending commands through a communication bus such as
+serial line, digital I/O lines, field bus or Ethernet. This way, it is
+able to read and write variables on the external device. If a device
+master must react to changes in the value of a variable in a remote
+device, it must repeatedly poll the variable.</p>
+<p>In slave device mode, the driver works as a server that listens to
+commands coming from a communication bus. It interprets the commands and
+either sets or returns the values of local variables.</p>
+</div>
+<div class="section" id="handles">
+<h2>Handles<a class="headerlink" href="#handles" title="Permalink to this headline">🔗</a></h2>
+<p>The API works with generic handles that are expressed as typeless
+pointers (<code class="docutils literal notranslate"><span class="pre">void*</span></code>). The actual meaning of the handles is up to the
+driver implementation. However, the implementation must ensure that it
+has a way of distinguishing handles that represent <em>devices</em>,
+<em>variables</em>, and <em>handle lists</em>.</p>
+<p>A handle list can hold any number of handles (including zero). On
+success, the <a class="reference internal" href="../reference/va_datalink.h/#_CPPv420va_datalink_dev_listv" title="va_datalink_dev_list"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_dev_list()</span></code></a> and
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv420va_datalink_var_listPv" title="va_datalink_var_list"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_list()</span></code></a> functions always return a non-null
+handle. To iterate a handle list, the
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv423va_datalink_handle_nextPv" title="va_datalink_handle_next"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_handle_next()</span></code></a> function is used.</p>
+<p>See the <a class="reference internal" href="../reference/va_datalink.h/#_CPPv422va_datalink_dev_createPK9va_string" title="va_datalink_dev_create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_dev_create()</span></code></a> and
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv422va_datalink_var_createPv7int32_tPK9va_string" title="va_datalink_var_create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_create()</span></code></a> functions for more details.</p>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">🔗</a></h2>
+<p>The representation of variables is implementation-specific. Thus, the
+API just uses handles. The value of a variable can be changed with
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv421va_datalink_var_writePv7int32_tz" title="va_datalink_var_write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_write()</span></code></a> and retrieved with
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv420va_datalink_var_readPv7int32_tz" title="va_datalink_var_read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_read()</span></code></a>.</p>
+<p>Some data link devices provide a fixed set of variables. For example, a
+SQL table has a fixed set of columns that may not be changeable by the
+driver. The same applies to the tags provided by a remote PLC slave. In
+such a case, the driver may provide a
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv420va_datalink_var_listPv" title="va_datalink_var_list"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_list()</span></code></a> function for listing the
+variables.</p>
+<p>In master mode, setting a variable pushes it to an external data link
+device. Similarly, reading a variable makes a read request over the
+communication bus.</p>
+<p>In slave mode, variables are stored locally. Changing the value of a
+variable has no direct effect on remote masters, but they’ll get the
+updated value on the next request. Reading a variable returns the last
+value set either locally or by a master device.</p>
+<p>The number of data types supported by the API does not cover all
+possible data types supported by every imaginable data link device. The
+driver implementation makes sure the variable values are correctly
+converted to the types supported by the API. It must take into account
+things like byte order and overflow handling.</p>
+<p>Whenever the value of a variable is passed to an API function, a vararg
+list (…) will be used. The interpretation of the list depends on the
+type of the variable; variable types are preceded by a type ID. For
+example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">va_datalink_var_write</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">va_int32_t_id</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
+<span class="n">va_datalink_var_write</span><span class="p">(</span><span class="n">var2</span><span class="p">,</span> <span class="n">va_double_id</span><span class="p">,</span> <span class="mf">3.141593</span><span class="p">);</span>
+<span class="n">va_datalink_var_write</span><span class="p">(</span><span class="n">var3</span><span class="p">,</span> <span class="n">va_string_id</span><span class="p">,</span> <span class="s">&quot;COM1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When reading values with <a class="reference internal" href="../reference/va_datalink.h/#_CPPv420va_datalink_var_readPv7int32_tz" title="va_datalink_var_read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_read()</span></code></a>, the
+argument following a type ID must be a pointer to the type. For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">i_value</span><span class="p">;</span>
+<span class="n">va_string</span><span class="o">*</span> <span class="n">str</span><span class="p">;</span>
+<span class="n">va_datalink_var_read</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">va_int32_t_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i_value</span><span class="p">);</span>
+<span class="n">va_datalink_var_read</span><span class="p">(</span><span class="n">var2</span><span class="p">,</span> <span class="n">datalink_string</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">);</span>
+<span class="n">va_string_free</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration-values">
+<h2>Configuration values<a class="headerlink" href="#configuration-values" title="Permalink to this headline">🔗</a></h2>
+<p>Devices and variables have a number of configuration values that can be
+used to control their behavior. Configuration variables can be queried
+using the <a class="reference internal" href="../reference/va_datalink.h/#_CPPv422va_datalink_config_getPvPK9va_string" title="va_datalink_config_get"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_config_get()</span></code></a> function and set with
+the <a class="reference internal" href="../reference/va_datalink.h/#_CPPv421va_datalink_var_writePv7int32_tz" title="va_datalink_var_write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_write()</span></code></a> function.</p>
+<div class="section" id="device-configuration-values">
+<h3>Device configuration values<a class="headerlink" href="#device-configuration-values" title="Permalink to this headline">🔗</a></h3>
+<p>Configuration values may be needed in order to successfully connect to a
+data link device. While it is possible to encode these properties to the
+device address, using configuration values should be the preferred
+choice as it lets the Application Engine to store device-specific
+parameters in its device database and thus change them without modifying
+the app that uses the data link driver.</p>
+<p>The following table lists supported configuration values.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 30%" />
+<col style="width: 12%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Writab
+le</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>address</p></td>
+<td><p>va_string*</p></td>
+<td><p>No</p></td>
+<td><p>The address of the
+device.</p></td>
+</tr>
+<tr class="row-odd"><td><p>flags</p></td>
+<td><p>int32_t</p></td>
+<td><p>No</p></td>
+<td><p>A bit mask of
+device
+capabilities
+(` &lt;:cpp:type:va_d
+atalink_dev_flag&gt;`
+__)</p></td>
+</tr>
+<tr class="row-even"><td><p>mode</p></td>
+<td><p>int32_t</p></td>
+<td><p>Y/N</p></td>
+<td><p>The operation
+mode. Writable if
+driver supports
+both modes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>timeout</p></td>
+<td><p>int32_t</p></td>
+<td><p>Yes</p></td>
+<td><p>The maximum number
+of milliseconds
+any operation
+(connection
+attempt, write or
+read) can last.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="variable-configuration-values">
+<h3>Variable configuration values<a class="headerlink" href="#variable-configuration-values" title="Permalink to this headline">🔗</a></h3>
+<p>In general, variable configuration values are read-only and defined
+either by the data link device or at creation time
+(<a class="reference internal" href="../reference/va_datalink.h/#_CPPv422va_datalink_var_createPv7int32_tPK9va_string" title="va_datalink_var_create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_var_create()</span></code></a>).</p>
+<p>The following table lists supported variable configuration values.
+Optional values are in cursive.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 39%" />
+<col style="width: 11%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Writa
+ble</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>va_string*</p></td>
+<td><p>No</p></td>
+<td><p>The name of the
+variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>int32_t</p></td>
+<td><p>No</p></td>
+<td><p>The type of the
+variable. One of
+<code class="docutils literal notranslate"><span class="pre">va_type_id</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>min</em></p></td>
+<td><p>int32_t/double</p></td>
+<td><p>No</p></td>
+<td><p>Minimum value of
+a range-limited
+numeric variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>max</em></p></td>
+<td><p>int32_t/double</p></td>
+<td><p>No</p></td>
+<td><p>Maximum value of
+a range-limited
+numeric variable.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>count</em></p></td>
+<td><p>int32_t</p></td>
+<td><p>No</p></td>
+<td><p>Fixed number of
+items in an array
+variable.
+Required if the
+variable is an
+array.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="error-handling">
+<h2>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">🔗</a></h2>
+<p>All functions in the data link API return a status code or a value whose
+validity can be checked. If the return value is a pointer, NULL
+indicates a failure, any other value means success. If the returned
+value is a status code, one indicates success and zero indicates
+failure.</p>
+<p>To indicate the reason for a failure, the driver implementation stores a
+device-specific failure code internally. The user of the driver can get
+a textual representation of the error by calling
+<a class="reference internal" href="../reference/va_datalink.h/#_CPPv417va_datalink_errorPv" title="va_datalink_error"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_error()</span></code></a>. The implementation can use for
+example <code class="docutils literal notranslate"><span class="pre">errno</span></code> constants and pass them to <code class="docutils literal notranslate"><span class="pre">strerror_r()</span></code> in the
+implementation of <a class="reference internal" href="../reference/va_datalink.h/#_CPPv417va_datalink_errorPv" title="va_datalink_error"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">va_datalink_error()</span></code></a>.</p>
+</div>
+<div class="section" id="thread-safety">
+<h2>Thread-safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">🔗</a></h2>
+<p>The functions in the data link driver do not need to be thread-safe, but
+they need to be re-entrant. In other words, the driver implementation
+must not hold state in global variables, but only in the created
+handles.</p>
+</div>
+<div class="section" id="implementing-a-driver">
+<h2>Implementing a driver<a class="headerlink" href="#implementing-a-driver" title="Permalink to this headline">🔗</a></h2>
+<p>A valid driver must implement all non-optional functions in the API. The
+VisionAppster Engine refuses to load a driver that is missing any of
+them. Below is an example of an incomplete driver that implements just
+two of the API functions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;va_datalink.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Required for all plugins dynamically loaded by the VisionAppster Engine.</span>
+<span class="n">VA_IMPLEMENT_PLUGIN</span><span class="p">(</span><span class="s">&quot;my.example.driver&quot;</span><span class="p">,</span> <span class="s">&quot;1.0.0&quot;</span><span class="p">,</span> <span class="n">datalink_driver</span><span class="p">)</span>
+
+<span class="c1">// Gives the driver a unique name in the context of the component.</span>
+<span class="n">VA_REGISTER_DATALINK_DRIVER</span><span class="p">(</span><span class="s">&quot;MyDriver&quot;</span><span class="p">)</span>
+
+<span class="k">typedef</span> <span class="k">enum</span>
+<span class="p">{</span>
+  <span class="n">dev_handle</span><span class="p">,</span>
+  <span class="n">var_handle</span><span class="p">,</span>
+  <span class="n">list_handle</span>
+<span class="p">}</span> <span class="n">dummy_handle_type</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+  <span class="n">dummy_handle_type</span> <span class="n">type</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">dummy_device</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="o">*</span> <span class="nf">va_datalink_dev_create</span><span class="p">(</span><span class="k">const</span> <span class="n">va_string</span><span class="o">*</span> <span class="n">device_address</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">dummy_device</span><span class="o">*</span> <span class="n">dev</span> <span class="o">=</span> <span class="p">(</span><span class="n">dummy_device</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">dummy_device</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">dev</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">dev</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">=</span> <span class="n">dev_handle</span><span class="p">;</span>
+      <span class="n">va_string_to_utf8</span><span class="p">(</span><span class="n">device_address</span><span class="p">,</span> <span class="n">dev</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+      <span class="n">dev</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">[</span><span class="mi">255</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="k">return</span> <span class="n">dev</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int32_t</span> <span class="nf">va_datalink_handle_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">handle</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">handle</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="p">(</span><span class="n">dummy_handle_type</span><span class="o">*</span><span class="p">)</span><span class="n">handle</span> <span class="o">==</span> <span class="n">dev_handle</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Destroying device handle.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Rest of required functions here</span>
+</pre></div>
+</div>
+<p>The interface is defined in C, which makes it relatively safe to use
+with many different compilers. Using
+<a class="reference internal" href="../../../components/cross-compilation/"><span class="doc">va-cross</span></a> is however suggested. The
+driver needs to be compiled into a shared library and renamed so that it
+has a <code class="docutils literal notranslate"><span class="pre">datalink</span></code> filename suffix, for example <code class="docutils literal notranslate"><span class="pre">mydriver.datalink</span></code>.</p>
+<p>To install the driver, you have three options:</p>
+<ol class="arabic simple">
+<li><p>System-wide installation: copy the plugin to the
+<code class="docutils literal notranslate"><span class="pre">plugins/datalink/</span></code> directory under the VisionAppster installation
+directory</p></li>
+<li><p>User-scope installation: copy the plugin to the
+<code class="docutils literal notranslate"><span class="pre">VisionAppster/plugins/datalink/</span></code> directory under your home
+directory.</p></li>
+<li><p>Install from a component package: <a class="reference internal" href="../../../components/building/"><span class="doc">put the plugin into a component
+package</span></a> and
+<a class="reference internal" href="../../../components/installing/"><span class="doc">install</span></a>.</p></li>
+</ol>
+<p>In the last case, you must ensure that the component ID and version
+given as parameters to the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro match those of
+the component you build.</p>
+<p>If you are going to distribute your driver through the VisionAppster
+Store and want to make sure the driver cannot be loaded without a valid
+license, replace the <code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_PLUGIN</span></code> macro with
+<code class="docutils literal notranslate"><span class="pre">VA_IMPLEMENT_LICENSED_PLUGIN</span></code>. See
+<a class="reference internal" href="../reference/va_plugin.h/"><span class="doc">va_plugin.h</span></a> for details.</p>
+</div>
+<div class="section" id="using-the-driver">
+<h2>Using the driver<a class="headerlink" href="#using-the-driver" title="Permalink to this headline">🔗</a></h2>
+<p>When the driver has been successfully installed, all devices listed by
+it will be available to the VisionAppster Engine. In the Builder, you’ll
+see the detected devices in tools such as <span class="xref std std-doc">Output external
+data</span>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../tool/" class="btn btn-neutral float-right" title="Creating tools in C" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="C API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
