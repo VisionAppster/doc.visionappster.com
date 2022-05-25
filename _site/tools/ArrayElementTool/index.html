@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Std &mdash; VisionAppster  documentation</title>
+  <title>Array element &mdash; VisionAppster  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Submatrix" href="../SubmatrixTool/" />
-    <link rel="prev" title="Sort rows" href="../SortRowsTool/" /> 
+    <link rel="next" title="Array to CSV record conversion" href="../ToCsvTool/" />
+    <link rel="prev" title="Arithmetic" href="../ArithmeticTool/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -112,7 +112,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../LineLineAngleTool/">Angle between lines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ArithmeticTool/">Arithmetic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ArrayElementTool/">Array element</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Array element</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../ToCsvTool/">Array to CSV record conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AutoCropTool/">Automatic target location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AutoLocateTargetTool/">Automatic target location</a></li>
@@ -276,11 +280,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ShapeContextTool/">Shape context</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SimplifyPolylineTool/">Simplify polyline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SortRowsTool/">Sort rows</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Std</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../StdTool/">Std</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SubmatrixTool/">Submatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SubtractTool/">Subtract</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../SubtractImagesTool/">Subtract images</a></li>
@@ -362,7 +362,7 @@
         
           <li><a href="../">Built-in tools</a> &raquo;</li>
         
-      <li>Std</li>
+      <li>Array element</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -379,33 +379,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="std">
-<h1>Std<a class="headerlink" href="#std" title="Permalink to this headline">🔗</a></h1>
-<p>Calculates the standard deviation of the elements of a matrix
-or a tensor.</p>
+  <div class="section" id="array-element">
+<h1>Array element<a class="headerlink" href="#array-element" title="Permalink to this headline">🔗</a></h1>
+<p>Takes the nth element of an array.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: A matrix or a tensor.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dimension</span></code>: Specifies the dimension along which the standard
-deviation will be calculated. -1 means variance of all
-elements. For matrices,
-dimension 0 is rows (output will be 1-by-N) and 1 is columns
-(output will be N-by-1). For tensors, the specified dimension
-will be collapsed. For example, if the input is a 1×2×3×4
-tensor and <em>dimension</em> is 1, the output will be a 1×3×4 tensor.
-If the size of the specified dimension is one,
-the variance will be zero.
-If <em>dimension</em> is greater or equal to the number of dimensions
-in the input tensor or matrix, the output will be an empty
-tensor or matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: Index of element</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array</span></code>: The array to index.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: A double matrix or double tensor.
-If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">element</span></code>: The <em>n</em>th element of <em>array</em>.</p></li>
 </ul>
 </div>
 </div>
@@ -416,8 +403,8 @@ If <em>dimension</em> is -1, the output will be a scalar value.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../SubmatrixTool/" class="btn btn-neutral float-right" title="Submatrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../SortRowsTool/" class="btn btn-neutral float-left" title="Sort rows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ToCsvTool/" class="btn btn-neutral float-right" title="Array to CSV record conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../ArithmeticTool/" class="btn btn-neutral float-left" title="Arithmetic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
