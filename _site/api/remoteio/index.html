@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Remote I/O &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Tool APIs" href="../tool/" />
+    <link rel="prev" title="APIs" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
+
+        
+          <a href="../../">
+        
+
+        
+          
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
+          
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+              
+              
+                
+              
+              
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/">Built-in tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#data-types">Data types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Remote I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#message-format">Message format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connect">Connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#query-channel-info">Query channel info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-channel-value">Get channel value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-output-channel-value">Set output channel value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-monitored-inputs">Manage monitored inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authenticate-client">Authenticate client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disconnect">Disconnect</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-o-states">I/O states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-access">Command-line access</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tool/">Tool APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/">JavaScript client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/">Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+              
+            
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">APIs</a> &raquo;</li>
+        
+      <li>Remote I/O</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="remote-i-o">
+<h1>Remote I/O<a class="headerlink" href="#remote-i-o" title="Permalink to this headline">🔗</a></h1>
+<p>The VisionAppster Engine comes with an I/O driver that communicates with
+external I/O servers using a simple text-based protocol. The protocol
+described here is agnostic to the socket type being used. The I/O driver
+implementation (I/O protocol client) in the VisionAppster Engine
+currently supports local, TCP and SSL sockets. The I/O driver is used
+through <a class="reference internal" href="../../tools/ReadDigitalInputTool/"><span class="doc">ReadDigitalInputTool</span></a> and
+<a class="reference internal" href="../../tools/WriteDigitalOutputTool/"><span class="doc">WriteDigitalOutputTool</span></a>.</p>
+<p>An I/O server may or may not support multiple simultaneous connections.
+If multiple connections are not supported, the server refuses further
+connection attempts once one connection has been accepted.</p>
+<p>The protocol does not provide facilities for configuring I/O devices. It
+is assumed that I/O channel configuration is handled by the server as it
+sees fit.</p>
+<p>Depending on the configuration of the I/O device, a change in an I/O
+channel may be detected in different ways. For example, an I/O interrupt
+may be generated on the rising or falling edge of an input signal, or
+both. Alternatively, the I/O device may poll its inputs in regular
+intervals and detect level changes. The I/O protocol does not provide a
+way to configure such behavior; it merely specifies a way of listening
+to changes. It is the server’s task to implement change detection in a
+suitable manner.</p>
+<p>The VisionAppster SDK contains a reference implementation of an I/O
+server that supports UNIX domain sockets and TCP sockets. The source
+code and build instructions can be found in <code class="docutils literal notranslate"><span class="pre">va-ioserver/</span></code> under the
+VisionAppster SDK installation directory.</p>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">🔗</a></h2>
+<p>The I/O protocol uses the following commands:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
+<td><p>Query information about I/O channels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">&lt;channel&gt;</span></code></p></td>
+<td><p>Retrieve current value of a channel.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">O</span> <span class="pre">&lt;channel&gt;</span> <span class="pre">&lt;value&gt;</span></code></p></td>
+<td><p>Set value of an output channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&lt;channel&gt;</span></code></p></td>
+<td><p>Add a channel to monitored inputs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">&lt;channel&gt;</span></code></p></td>
+<td><p>Remove a channel from monitored inputs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">L</span></code></p></td>
+<td><p>Start listening to changes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>Stop listening to changes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">&lt;credentials&gt;</span></code></p></td>
+<td><p>Send credentials.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
+<td><p>Explicitly shut down connection.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="message-format">
+<h3>Message format<a class="headerlink" href="#message-format" title="Permalink to this headline">🔗</a></h3>
+<p>All messages are encoded as UTF-8. The ASCII subset is used for
+everything except human-readable error messages returned by the server,
+which basically means you can safely treat every byte as a character
+everywhere except in error messages. In error messages, the rest of the
+line following an error code is a UTF-8 -encoded string.</p>
+<p>Each command is terminated with a line feed character (ASCII <code class="docutils literal notranslate"><span class="pre">LF</span></code>, hex
+code <code class="docutils literal notranslate"><span class="pre">0A</span></code>, <code class="docutils literal notranslate"><span class="pre">'\n'</span></code>). The server replies with zero or more lines, each
+terminated by an <code class="docutils literal notranslate"><span class="pre">LF</span></code> character. The end of a message is indicated by
+an empty line.</p>
+<p>All numbers are non-negative base-10 integers, represented as text
+(ASCII characters <code class="docutils literal notranslate"><span class="pre">'0'</span></code>-<code class="docutils literal notranslate"><span class="pre">'9'</span></code>).</p>
+<p>The maximum length of a line, including the newline character is 1024
+bytes.</p>
+</div>
+<div class="section" id="connect">
+<h3>Connect<a class="headerlink" href="#connect" title="Permalink to this headline">🔗</a></h3>
+<p>A connection is established by opening a socket (UNIX domain socket, TCP
+socket or SSL socket) to a listening I/O server. When connected to, the
+server responds with a single line that contains an identification
+string “VAIO”, a space and an integer that specifies the protocol
+version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇐ VAIO 1
+  &lt;LF&gt;
+</pre></div>
+</div>
+<p>In this document, messages from the server are indicated by a
+left-pointing arrow (<code class="docutils literal notranslate"><span class="pre">⇐</span></code>) and messages sent by the client by a
+right-pointing arrow (<code class="docutils literal notranslate"><span class="pre">⇒</span></code>). All lines are terminated with an <code class="docutils literal notranslate"><span class="pre">LF</span></code>,
+which is not written out explicitly unless the line is empty.</p>
+<p>The server may require authentication. If this is the case, the initial
+response will be an error code 4 (see below). The client must then use
+the <code class="docutils literal notranslate"><span class="pre">C</span></code> command to authenticate itself.</p>
+</div>
+<div class="section" id="query-channel-info">
+<h3>Query channel info<a class="headerlink" href="#query-channel-info" title="Permalink to this headline">🔗</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Q</span></code> command returns information about all I/O channels, sorted
+according to the (zero-based) channel index. The format of each line of
+the reply depends on the type of the channel.</p>
+<ul class="simple">
+<li><p>Input: <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">&lt;max&gt;</span></code></p></li>
+<li><p>Output: <code class="docutils literal notranslate"><span class="pre">O</span> <span class="pre">&lt;max&gt;</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;max&gt;</span></code> parameter is a positive integer that specifies the maximum
+value a channel can take. An example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇒ Q
+⇐ I 1
+  I 1
+  O 1
+  O 1
+  I 15
+  O 65535
+  &lt;LF&gt;
+</pre></div>
+</div>
+<p>This device has two digital inputs (channels 0-1), two digital outputs
+(channels 2-3), one four-bit input (e.g. A/D input, channel 4) and a
+16-bit output (e.g. D/A output, channel 5).</p>
+<p>Note that an output channel with a maximum value larger than one can
+represent any analog-like outputs such as PWM (pulse width modulated)
+outputs. From the protocol’s perspective they work the same way.</p>
+</div>
+<div class="section" id="get-channel-value">
+<h3>Get channel value<a class="headerlink" href="#get-channel-value" title="Permalink to this headline">🔗</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">&lt;channel&gt;</span></code> command retrieves the current value of a specific
+input channel. The zero-based channel index is given as an argument. If
+<code class="docutils literal notranslate"><span class="pre">&lt;channel&gt;</span></code> is omitted, the server returns the current values of all
+input channels.</p>
+<p>Each response line contains a channel index and the current value.
+Depending on the device, it may be possible to read the value of an
+output channel. If the channel is not readable, the server responds with
+error code 2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇒ I 0
+⇐ 0 1
+  &lt;LF&gt;
+⇒ I
+⇐ 0 1
+  1 0
+  4 12
+  &lt;LF&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-output-channel-value">
+<h3>Set output channel value<a class="headerlink" href="#set-output-channel-value" title="Permalink to this headline">🔗</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">O</span> <span class="pre">&lt;channel&gt;</span> <span class="pre">&lt;value&gt;</span></code> command sets an output channel to the
+specified value. The server responds with an empty message. It is an
+error (error code 2) to set the value of an input channel. Exceeding the
+maximum value of a channel will also cause error 2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇒ O 0 1
+⇐ &lt;LF&gt;
+⇒ O 5 12345
+⇐ &lt;LF&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="manage-monitored-inputs">
+<h3>Manage monitored inputs<a class="headerlink" href="#manage-monitored-inputs" title="Permalink to this headline">🔗</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&lt;channel&gt;</span></code> command adds an input channel to the list of
+channels that are monitored for changes. If the channel is omitted, all
+input channels will be monitored. The server responds with an empty
+message. It is an error (code 2) to start monitoring an output channel.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">&lt;channel&gt;</span></code> command works the same way, but removes the given
+channel or all channels from monitored input channels. Removing a
+monitored input does not remove already queued change events; the next
+<code class="docutils literal notranslate"><span class="pre">L</span></code> command may still receive events that were queued before the <code class="docutils literal notranslate"><span class="pre">R</span></code>
+command.</p>
+<p>Changes in all monitored input channels will be queued up to an
+implementation-specific maximum number of items. Queued events will be
+sent out when the client starts listening to input events using the
+<code class="docutils literal notranslate"><span class="pre">L</span></code> command. The format is the same as that of the <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">&lt;channel&gt;</span></code>
+command: each line contains a channel index and the latest value.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">L</span></code> command is special in that it may not receive a response
+immediately and does not terminate automatically, but must be canceled
+with the <code class="docutils literal notranslate"><span class="pre">S</span></code> command. Sending any other command while listening, or
+sending the <code class="docutils literal notranslate"><span class="pre">S</span></code> command in other situations is an error (code 3).</p>
+<p>A typical communication sequence is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇒ A
+⇐ &lt;LF&gt;
+⇒ L
+⇐ 0 1
+  0 0
+  0 1
+  1 0
+⇒ S
+⇐ &lt;LF&gt;
+</pre></div>
+</div>
+<p>Note that the client may receive input events after the <code class="docutils literal notranslate"><span class="pre">S</span></code> command if
+the events are already in transmission when the <code class="docutils literal notranslate"><span class="pre">S</span></code> command is
+received by the server. This is possible:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇒ L
+⇒ S
+⇐ 0 1
+  0 0
+  0 1
+  1 0
+  &lt;LF&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="authenticate-client">
+<h3>Authenticate client<a class="headerlink" href="#authenticate-client" title="Permalink to this headline">🔗</a></h3>
+<p>Authentication may not be needed if the client and the server
+communicate through a local socket. If the communication happens over
+the network, authentication may be necessary. In this case the server
+responds immediately with error code 4 to require authentication.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">&lt;credentials&gt;</span></code> command is used to send authentication
+credentials to the server. If the server accepts the credentials, it
+responds with an empty message. Otherwise, it responds with error code 4
+to all commands. The <code class="docutils literal notranslate"><span class="pre">C</span></code> command must be the first command, and it
+will be rejected with error 3 if tried after it is accepted once.</p>
+<p>An illustrative conversation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇐ E 4 Authentication required
+⇒ C secret pasword
+⇐ E 4 Authentication required
+⇒ C secret password
+⇐ VAIO 1
+  &lt;LF&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="disconnect">
+<h3>Disconnect<a class="headerlink" href="#disconnect" title="Permalink to this headline">🔗</a></h3>
+<p>The easiest way to shut down a connection is to just close it on the
+client side. The <code class="docutils literal notranslate"><span class="pre">X</span></code> command provides a way to request the server to
+close the connection. On success, the server closes the connection and
+sends no response. This may be useful when manually interacting with a
+server. If the server requires authentication, <code class="docutils literal notranslate"><span class="pre">X</span></code> is the only command
+accepted before the <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">&lt;credentials&gt;</span></code> command.</p>
+</div>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">🔗</a></h2>
+<p>If a command causes an error on the server side, the server replies with
+an <code class="docutils literal notranslate"><span class="pre">E</span></code> followed by a space, an error code and optionally another space
+and a human-readable explanation of the error. The error message must</p>
+<ul class="simple">
+<li><p>be encoded in UTF-8.</p></li>
+<li><p>not exceed the maximum line length (counting “E”, error code and
+spaces).</p></li>
+<li><p>not contain linefeed characters.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⇒ S
+⇐ E 3 Not listening
+</pre></div>
+</div>
+<p>If the server runs out of output buffer space or is unable to queue more
+input events, it may choose to terminate the connection instead of
+sending an error message.</p>
+<p>Note that error responses are not terminated by an empty line.</p>
+<p><strong>Error codes</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Invalid command.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Invalid argument to command.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Command not accepted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Authentication required.</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>I/O device error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Non-categorized error.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="i-o-states">
+<h2>I/O states<a class="headerlink" href="#i-o-states" title="Permalink to this headline">🔗</a></h2>
+<p>It is common to wire digital I/O pins so that they are connected to the
+ground in the active state. Usually, the I/O driver also sees a zero in
+the I/O register in this case. It is important to notice that the
+protocol always treats “0” as the inactive state for all inputs and
+outputs. Thus, the driver may need to invert the I/O control register if
+the I/O lines are configured to an active low state.</p>
+</div>
+<div class="section" id="command-line-access">
+<h2>Command-line access<a class="headerlink" href="#command-line-access" title="Permalink to this headline">🔗</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">socat</span></code> program can be used to connect to and control an I/O
+server from the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Connect to a TCP (IPv4 or IPv6) socket
+$ socat - TCP:192.168.2.3:1234
+# Connect to a UNIX domain socket
+$ socat - UNIX-CONNECT:/run/va-ioserver.sock
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../tool/" class="btn btn-neutral float-right" title="Tool APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

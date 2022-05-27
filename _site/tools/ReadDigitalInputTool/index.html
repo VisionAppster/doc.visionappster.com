@@ -381,42 +381,54 @@
             
   <div class="section" id="read-digital-input">
 <h1>Read digital input<a class="headerlink" href="#read-digital-input" title="Permalink to this headline">🔗</a></h1>
-<p>A tool that reads data from a digital I/O device and pushes it to
-processing. A new output signal is generated either synchronously
-using a software trigger or asynchronously each time the state of
-an input channel changes.</p>
-<p>Depending on the configuration of the I/O device and its driver,
-the tool can output either binary values or integers. Binary values
-are used to indicate state change events such as low-to-high
-transitions of an input line. Integers can be used if the device
-has addressable hardware registers whose contents can be read as
-words.</p>
+<p>Reads the value of an input channel in a remote I/O device. If
+neither of the connectable inputs is connected, the tool emits the
+value of the specified <em>channel</em> whenever a change event is
+received from an I/O server. If an input is connected, the current
+value of the specified input channel is emitted whenever the tool
+is processed.</p>
+<p>The I/O subsystem shares connections to I/O servers. There will be
+only one connection to each server, identified by <em>socketType</em>,
+<em>serverAddress</em> and <em>port</em>. All tools with identical values will
+use the same socket connection. Consequences:</p>
+<ul class="simple">
+<li><p>It is usually fine for a server implementation to support a
+single connected client only. This is what the reference
+implementation in the SDK does.</p></li>
+<li><p>A connection may fail if a server supporting only one client is
+reached with a different identification triple. For example, if
+you use <code class="docutils literal notranslate"><span class="pre">localhost</span></code> as <em>serverName</em> in one tool and <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>
+in another, the I/O subsystem will try to establish two
+connections.</p></li>
+<li><p>The first tool to initiate a connection will supply the password.
+You may thus notice that a password-protected connection works
+without a password in another tool. You shouldn’t rely on this
+unless you can guarantee tool execution order.</p></li>
+</ul>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channel</span></code>: The zero-based index of the input channel whose state
-needs to be read. If this input is not connected, the <em>value</em>
-output will send a value each time the state of the channel
-changes.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">channels</span></code>: A table of the available input channels and their parameters.
-The <em>channel</em> input selects a row in this table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">socketType</span></code>: The type of the server socket to connect to. If
+set to <code class="docutils literal notranslate"><span class="pre">NoSocket</span></code>, no connection will be attempted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serverAddress</span></code>: The address of the server. If <em>socketType</em> is
+<code class="docutils literal notranslate"><span class="pre">LocalSocket</span></code>, <em>serverAddress</em> is the path to the socket, e.g
+<code class="docutils literal notranslate"><span class="pre">/run/va-ioserver.sock</span></code>. If <em>socketType</em> is <code class="docutils literal notranslate"><span class="pre">TcpSocket</span></code> or
+<code class="docutils literal notranslate"><span class="pre">SslSocket</span></code>, <em>serverAddress</em> is the internet host name of the
+server. <code class="docutils literal notranslate"><span class="pre">TcpSocket</span></code> also supports IP addresses (IPv4 and IPv6).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: The TCP port number on the server. Only applicable to
+TCP and SSL sockets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">password</span></code>: Server password. Depending on server configuration
+<em>password</em> may or may not be required.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channel</span></code>: The zero-based index of the output channel to read.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trigger</span></code>: A trigger input that accepts any object type. If
 <em>channel</em> is set to a fixed value, this input can be used to
 trigger a read operation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">deviceId</span></code>: The device ID of the I/O device. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-ids"><span class="std std-ref">device IDs</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">autoConfig</span></code>: A flag that enables and disables device
-auto-configuration. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-configuration"><span class="std std-ref">device configuration</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">parameterSet</span></code>: The name of a parameter set to apply to the
-selected device at start-up. See
-<a class="reference internal" href="../../engine/hardware-devices/#device-configuration"><span class="std std-ref">device configuration</span></a>.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: The new value of the channel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: The value received from the I/O device, commonly 0 or 1.</p></li>
 </ul>
 </div>
 </div>

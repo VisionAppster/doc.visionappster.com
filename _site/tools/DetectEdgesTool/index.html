@@ -384,7 +384,8 @@
 <p>Detects prominent edges in images. This tool uses the Canny
 filtering technique to detect edges:</p>
 <ol class="arabic simple">
-<li><p>The input image is smoothed with a Gaussian filter.</p></li>
+<li><p>The input image is smoothed with a Gaussian filter, if
+<em>smoothness</em> is non-zero.</p></li>
 <li><p>Sobel gradient filters are used to estimate local gradient.</p></li>
 <li><p>The gradient image is processed to contain only local maxima.</p></li>
 <li><p>Final edges are obtained with hysteresis thresholding: all
