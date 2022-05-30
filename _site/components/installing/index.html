@@ -110,8 +110,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../documentation/">Documentation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installing and uninstalling</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage-examples">Usage examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#licenses">Licenses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-from-the-visionappster-store">Installing from the VisionAppster Store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-other-packages">Installing other packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uninstalling">Uninstalling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-scopes">Installation scopes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#caveats">Caveats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raw-http-api">Raw HTTP API</a></li>
 </ul>
@@ -210,19 +212,76 @@ may want to set up an alias first:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="usage-examples">
-<h2>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">🔗</a></h2>
-<p>Install all components and/or licenses in a package file:</p>
+<div class="section" id="installing-from-the-visionappster-store">
+<h2>Installing from the VisionAppster Store<a class="headerlink" href="#installing-from-the-visionappster-store" title="Permalink to this headline">🔗</a></h2>
+<p>To install component packages from the <a class="reference external" href="https://store.visionappster.com">VisionAppster
+Store</a> you need to <a class="reference external" href="https://store.visionappster.com/account/create">create an
+account</a> first. You
+can then log in to the Store from the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg login
+</pre></div>
+</div>
+<p>This fetches an authorization token from VisionAppster’s server and
+saves it locally. If you are familiar with the <code class="docutils literal notranslate"><span class="pre">sudo</span></code> command, the
+authorization token works analogously: it is valid for a limited period
+of time only and will be automatically refreshed whenever you use it.
+You need to log in again after a period of inactivity. If you don’t
+explicitly log in or if the token expires, commands that require
+authorization will ask your login credentials. To explicitly log out,
+type <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">logout</span></code>.</p>
+<p>To install the newest version of a component from the store:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.example.component
+</pre></div>
+</div>
+<p>Install the newest version within a specific major version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.example.component/1
+</pre></div>
+</div>
+<p>Install a specific version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.example.component/1.2.3
+</pre></div>
+</div>
+<p>Install to system-scope service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install --system com.example.component
+</pre></div>
+</div>
+<p>Note that you can download and install all components that are not
+cloud-only. Unless the component is free, you will however not be able
+to run it without a valid license. To install your purchased licenses
+locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg license refresh
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-other-packages">
+<h2>Installing other packages<a class="headerlink" href="#installing-other-packages" title="Permalink to this headline">🔗</a></h2>
+<p>Install a downloaded package:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.example.component-1.2.3.vapkg
 </pre></div>
 </div>
-<p>Install external dependencies:</p>
+<p>Install Python modules:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install python:numpy python:opencv-python
 </pre></div>
 </div>
-<p>NOTE! You need to install the
-<a class="reference external" href="https://download.visionappster.com/packages/com.visionappster.extensions.python-3.8.6.vapkg">com.visionappster.extensions.python</a>
-component to enable Python support.</p>
+<p>NOTE! You need to install <a class="reference external" href="https://store.visionappster.com/components/python-extension">Python
+extension</a>
+first to enable Python module support:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.visionappster.extensions.python
+</pre></div>
+</div>
+<p>Install a component package to a remote computer running a VisionAppster
+Engine instance in the default port (2015):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install --remote <span class="m">192</span>.168.1.23 com.example.component-1.2.3.vapkg
+</pre></div>
+</div>
+<p>Install from VisionAppster Store to a remote computer using a
+non-standard port:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install --remote http://192.168.1.23:2016 com.example.component
+</pre></div>
+</div>
+</div>
+<div class="section" id="uninstalling">
+<h2>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this headline">🔗</a></h2>
 <p>Uninstall the only installed version of a component:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg uninstall com.example.component
 </pre></div>
@@ -231,29 +290,36 @@ component to enable Python support.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg uninstall com.example.component/1
 </pre></div>
 </div>
-<p>Uninstall an external component:</p>
+<p>Uninstall a Python module:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg uninstall python:opencv-python
 </pre></div>
 </div>
-<p>Install all components and/or licenses in a package file to a remote
-computer running an VisionAppster Engine instance:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install --remote <span class="m">192</span>.168.1.23 com.example.component-1.2.3.vapkg
+<p>Uninstall from a remote computer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg uninstall --remote <span class="m">192</span>.168.1.23 com.example.component
 </pre></div>
 </div>
 </div>
-<div class="section" id="licenses">
-<h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">🔗</a></h2>
-<p>To set up licenses you need the “Automatic license refreshing” API token
-from your VisionAppster Store account (<a class="reference external" href="https://store.visionappster.com/account/tokens">My account →
-Tokens</a>). To save it
-permanently, give the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg license config save --token <span class="nv">$TOKEN_ID</span>
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">$TOKEN_ID</span></code> with the hexadecimal string you find in your
-account. Once the token is set, the VisionAppster Engine will
-automatically update your licenses. Licenses can also be downloaded
-using the <code class="docutils literal notranslate"><span class="pre">va-pkg</span> <span class="pre">license</span> <span class="pre">refresh</span></code> command.</p>
+<div class="section" id="installation-scopes">
+<h2>Installation scopes<a class="headerlink" href="#installation-scopes" title="Permalink to this headline">🔗</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> lets one to install components in three different scopes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--local</span></code>: Install to user’s home directory. This is the default.
+On Linux, these components will be available in the Builder and in an
+Engine service that is run in the user scope. There are no user-scope
+services in Windows, so <code class="docutils literal notranslate"><span class="pre">--local</span></code> means the Builder only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--system</span></code>: Install to a system-wide component directory that is
+used by the VisionAppster Engine service. This works for system-scope
+services on both Linux and Windows. Installing to the system scope
+requires administrator (root) privileges. On Linux, use the <code class="docutils literal notranslate"><span class="pre">sudo</span></code>
+command. On Windows, run the command prompt as Administrator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--remote</span></code>: Install to a remote computer. The installation ends up
+in either local or system scope depending on who is listening to the
+target TCP port on the server. By default, the VisionAppster Engine
+service listens port 2015, and that is also what the <code class="docutils literal notranslate"><span class="pre">--remote</span></code>
+switch uses unless specified otherwise. Note that disabling remote
+management (e.g. by using <code class="docutils literal notranslate"><span class="pre">api_init.qml</span></code>) makes it impossible to
+install packages remotely.</p></li>
+</ul>
 </div>
 <div class="section" id="caveats">
 <h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">🔗</a></h2>

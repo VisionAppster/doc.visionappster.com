@@ -100,9 +100,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../#supported-platforms">Supported platforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../apps/">Apps</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#network-interface">Network interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ip-based-access-control">IP-based access control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cors">CORS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opc-ua">OPC UA</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../graph-executor/">Graph executor</a></li>
@@ -195,29 +198,73 @@
 <p>The VisionAppster Engine consists of a bunch of software modules that
 are available to all apps. The <code class="docutils literal notranslate"><span class="pre">va-engine</span></code> service that runs on the
 background is actually a <a class="reference internal" href="../apps/"><span class="doc">VisionAppster app</span></a> itself. It is
-started through <code class="docutils literal notranslate"><span class="pre">va-run</span></code> as any app could.</p>
+started through <code class="docutils literal notranslate"><span class="pre">va-run</span></code> as any app could. In Linux, the init system
+(usually systemd) runs <code class="docutils literal notranslate"><span class="pre">va-run</span></code> directly. In Windows, the service
+control manager communicates with a service wrapper,
+<code class="docutils literal notranslate"><span class="pre">va-engine-service.exe</span></code>.</p>
 <p>The app is called <code class="docutils literal notranslate"><span class="pre">init.qml</span></code> and stored in the <code class="docutils literal notranslate"><span class="pre">init</span></code> directory
 under the VisionAppster installation root. There is also an alternative
 app called <code class="docutils literal notranslate"><span class="pre">api-init.qml</span></code> that is intended for running a fixed set of
-apps and to publish their APIs. To configure the <code class="docutils literal notranslate"><span class="pre">va-engine</span></code> service,
-the easiest way is to modify the <code class="docutils literal notranslate"><span class="pre">init.qml</span></code> script.</p>
-<p>The location of the VisionAppster installation and thus the <code class="docutils literal notranslate"><span class="pre">init.qml</span></code>
-script varies depending on platform.</p>
-<ul class="simple">
-<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\VisionAppster\init</span></code></p></li>
-<li><p>Generic Linux: <code class="docutils literal notranslate"><span class="pre">/opt/visionappster/init</span></code></p></li>
-<li><p>Flatpak: Typing <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">info</span> <span class="pre">-l</span> <span class="pre">com.visionappster.Builder</span></code> will
-give you the root of the installed Flatpak. The init app can be found
-in <code class="docutils literal notranslate"><span class="pre">files/opt/visionappster/init</span></code> under the Flatpak root.</p></li>
-</ul>
+apps and to publish their APIs.</p>
 <p>Since the Engine lets one to install and run new components through the
 HTTP interface, it is extremely important to set up access control
 correctly. A failure in doing so will easily lead into a remote code
-execution vulnerability.</p>
+execution vulnerability. Therefore, prefer <code class="docutils literal notranslate"><span class="pre">api_init.qml</span></code> for
+production use as it does not expose remote management APIs.</p>
+<p>There are two ways the <code class="docutils literal notranslate"><span class="pre">va-engine</span></code> service can be configured: via
+command-line arguments or by modifying the <code class="docutils literal notranslate"><span class="pre">init.qml</span></code> or
+<code class="docutils literal notranslate"><span class="pre">api_init.qml</span></code> script. In command-line arguments, the first argument
+is always the path to the used init script. Additional supported
+arguments are documented in the init script. Operating systems differ in
+their ways of passing service start-up parameters.</p>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">🔗</a></h2>
+<p>In Linux, command-line arguments are given in a systemd unit file
+(<code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/va-engine.service</span></code>) using the <code class="docutils literal notranslate"><span class="pre">ExecStart</span></code>
+variable. For example, to use <code class="docutils literal notranslate"><span class="pre">api_init.qml</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rest of configuration omitted.</span>
+
+<span class="k">[Service]</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/opt/visionappster/bin/va-run /opt/visionappster/init/api_init.qml</span>
+</pre></div>
+</div>
+<p>If you need to edit the init scripts, they are placed in:</p>
+<ul class="simple">
+<li><p>Tarball installer: <code class="docutils literal notranslate"><span class="pre">/va-engine/overlay/opt/visionappster/init</span></code> by
+default</p></li>
+<li><p>Raspberry Pi and Docker: <code class="docutils literal notranslate"><span class="pre">/opt/visionappster/init</span></code></p></li>
+<li><p>Flatpak: Typing <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">info</span> <span class="pre">-l</span> <span class="pre">com.visionappster.Builder</span></code> will
+give you the root of the installed Flatpak. The init files are in
+<code class="docutils literal notranslate"><span class="pre">files/opt/visionappster/init</span></code> under the Flatpak root.</p></li>
+</ul>
+<p>Reload the new configuration and restart the service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl daemon-reload
+sudo systemctl restart va-engine
+</pre></div>
+</div>
+</div>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">🔗</a></h2>
+<p>In Windows, the service control manager reads service configuration from
+the registry. The easiest way to change start-up parameters is to use
+the <code class="docutils literal notranslate"><span class="pre">sc</span></code> service management tool to set the <code class="docutils literal notranslate"><span class="pre">binPath</span></code> variable. For
+example, to use <code class="docutils literal notranslate"><span class="pre">api_init.qml</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="n">config</span> <span class="s2">&quot;VisionAppster Engine&quot;</span> <span class="o">^</span>
+  <span class="n">binPath</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\VisionAppster</span><span class="se">\b</span><span class="s2">in</span><span class="se">\v</span><span class="s2">a-engine-service.exe ..\init</span><span class="se">\a</span><span class="s2">pi_init.qml&quot;</span>
+</pre></div>
+</div>
+<p>The init files are stored under the VisionAppster installation
+directory, usually <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\VisionAppster\init</span></code>. To apply the
+new configuration you need to restart the service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="n">stop</span> <span class="s2">&quot;VisionAppster Engine&quot;</span>
+<span class="n">sc</span> <span class="n">start</span> <span class="s2">&quot;VisionAppster Engine&quot;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="network-interface">
 <h2>Network interface<a class="headerlink" href="#network-interface" title="Permalink to this headline">🔗</a></h2>
 <p>The default behavior of the <code class="docutils literal notranslate"><span class="pre">init.qml</span></code> app is to bind the web server
-to the loopback interface only. This blocks out all external connection
+to the loopback interface only. This blocks all external connection
 attempts. <code class="docutils literal notranslate"><span class="pre">api-init.qml</span></code> binds to all available interfaces by default.</p>
 <p>The web server can be bound to a specific interface or to all available
 interfaces. For example:</p>
@@ -230,8 +277,21 @@ interfaces. For example:</p>
 </ul>
 <p>The port number (2015) could be anything else, but some client software
 may assume the standard port.</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Listen port 2015 on all IPv4 interfaces</span>
-<span class="nx">webServer</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s2">&quot;0.0.0.0:2015&quot;</span><span class="p">);</span>
+<p>Note that binding the server to a non-local interface makes it possible
+to access it from other computers. You may want to disable remote
+management (use <code class="docutils literal notranslate"><span class="pre">api_init.qml</span></code>) and/or use IP-based access control in
+this case.</p>
+<p>The web server’s network interface can be changed on the command line
+using the <code class="docutils literal notranslate"><span class="pre">webServer</span></code> variable. For example, to allow access from
+remote computers, bind the web server to port 2015 on all IPv4
+interfaces:</p>
+<p><strong>Linux</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExecStart</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">visionappster</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">va</span><span class="o">-</span><span class="n">run</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">visionappster</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">qml</span> <span class="n">webServer</span><span class="o">=</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">2015</span>
+</pre></div>
+</div>
+<p><strong>Windows</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="n">config</span> <span class="s2">&quot;VisionAppster Engine&quot;</span> <span class="o">^</span>
+  <span class="n">binPath</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\VisionAppster</span><span class="se">\b</span><span class="s2">in</span><span class="se">\v</span><span class="s2">a-engine-service.exe ..\init\init.qml webServer=0.0.0.0:2015&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -263,6 +323,7 @@ addresses and subnets. Examples:</p>
 <span class="nx">webServer</span><span class="p">.</span><span class="nx">denyFrom</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="c1">// Any IP address (v4 or v6)</span>
 </pre></div>
 </div>
+<p>IP-based access control can only be enabled by editing the init script.</p>
 </div>
 <div class="section" id="cors">
 <h2>CORS<a class="headerlink" href="#cors" title="Permalink to this headline">🔗</a></h2>
@@ -292,6 +353,25 @@ allowed to make CORS requests:</p>
   <span class="nx">corsEnabled</span><span class="o">:</span> <span class="kc">true</span>
   <span class="nx">corsOrigins</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;https://doc.visionappster.com&#39;</span><span class="p">,</span> <span class="s1">&#39;http://safe.site:8888&#39;</span><span class="p">]</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+<p>Do not enable CORS if you don’t fully understand the security
+consequences. If you do, consider adding IP-based access control.</p>
+<p>CORS can only be enabled by editing the init script.</p>
+</div>
+<div class="section" id="opc-ua">
+<h2>OPC UA<a class="headerlink" href="#opc-ua" title="Permalink to this headline">🔗</a></h2>
+<p>The built-in OPC UA server will not be started by default. To enable it,
+pass a network interface specification on the command line using the
+<code class="docutils literal notranslate"><span class="pre">opcUaServer</span></code> variable. To bind the OPC UA server to port 4015 on all
+IPv4 interfaces:</p>
+<p><strong>Linux</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExecStart</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">visionappster</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">va</span><span class="o">-</span><span class="n">run</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">visionappster</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">qml</span> <span class="n">opcUaServer</span><span class="o">=</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">4015</span>
+</pre></div>
+</div>
+<p><strong>Windows</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="n">config</span> <span class="s2">&quot;VisionAppster Engine&quot;</span> <span class="o">^</span>
+  <span class="n">binPath</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\VisionAppster</span><span class="se">\b</span><span class="s2">in</span><span class="se">\v</span><span class="s2">a-engine-service.exe ..\init\init.qml opcUaServer=0.0.0.0:4015&quot;</span>
 </pre></div>
 </div>
 </div>

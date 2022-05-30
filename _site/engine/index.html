@@ -192,6 +192,14 @@ apps. It provides <a class="reference internal" href="apps/"><span class="doc">p
 high-performance execution environment. The Engine and all running apps
 can be controlled using an <a class="reference internal" href="remote-object-system/"><span class="doc">HTTP-based RPC
 mechanism</span></a> through a built-in web server.</p>
+<p>The VisionAppster Builder is built on top of the Engine and exposes its
+<a class="reference external" href="http://localhost:2020/">management interface in port 2020</a> by
+default. If you have the Builder running, you can click the links below
+to see the APIs of the main Engine services.</p>
+<p>Desktop installers provide an option to install the Engine as a service.
+On Linux, the tarball and Docker installers provide a way to install the
+Engine without development tools. The service will bind to port 2015 by
+default.</p>
 <div class="section" id="main-elements">
 <h2>Main elements<a class="headerlink" href="#main-elements" title="Permalink to this headline">🔗</a></h2>
 <p>The main elements of VisionAppster Engine are:</p>
@@ -203,29 +211,32 @@ data flow graphs.</p>
 packages</span></a> (<code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> files). Provides
 facilities for installing, uninstalling and querying the database.
 The API of the component database is published at
-<a class="reference external" href="http://localhost:2015/componentdb/">/componentdb/</a> in the
+<a class="reference external" href="http://localhost:2020/componentdb/">/componentdb/</a> in the
 built-in web server. Uploaded <code class="docutils literal notranslate"><span class="pre">.vapkg</span></code> files are stored under
-<a class="reference external" href="http://localhost:2015/packages/">/packages/</a>.</p>
+<a class="reference external" href="http://localhost:2020/packages/">/packages/</a>.</p>
 </dd>
 <dt>License Database</dt><dd><p>Safely stores and updates licenses. Interacts with the platform’s
 security mechanisms to prevent unauthorized use of installed
 components. The API of the license database is published at
-<a class="reference external" href="http://localhost:2015/licensedb/">/licensedb/</a>.</p>
+<a class="reference external" href="http://localhost:2020/licensedb/">/licensedb/</a>.</p>
 </dd>
 <dt>App Manager</dt><dd><p>Starts and stops installed <a class="reference internal" href="apps/"><span class="doc">apps</span></a> and manages running
 processes. Its API is available at
-<a class="reference external" href="http://localhost:2015/manager/">/manager/</a>.</p>
+<a class="reference external" href="http://localhost:2020/manager/">/manager/</a>.</p>
 </dd>
-<dt>API Manager</dt><dd><p>Lets apps publish objects as remote or local services. Provides
-facilities for locating local and remote services. The APIs published
-by running apps are listed at
-<a class="reference external" href="http://localhost:2015/apis/">/apis/</a>.</p>
+<dt>API Manager</dt><dd><p>Lets apps publish their public APIs as <a class="reference internal" href="remote-object-system/"><span class="doc">remote
+objects</span></a>. The APIs published by running apps
+are listed at <a class="reference external" href="http://localhost:2020/apis/">/apis/</a>.</p>
 </dd>
 <dt>Driver Manager</dt><dd><p>Detects attached <a class="reference internal" href="hardware-devices/"><span class="doc">devices</span></a> such as cameras and
-I/O devices. Provides an interface for querying and accessing the
-devices. The Driver Manager itself has no public API, but found
+data link devices. Provides an interface for querying and accessing
+the devices. The Driver Manager itself has no public API, but found
 cameras are published at
-<a class="reference external" href="http://localhost:2015/cameras/">/cameras/</a>.</p>
+<a class="reference external" href="http://localhost:2020/cameras/">/cameras/</a>.</p>
+</dd>
+<dt>OPC UA server</dt><dd><p>Maps the public APIs of running apps from API Manager to OPC UA
+information model nodes. The OPC UA server makes it easy to integrate
+the Engine to industrial automation.</p>
 </dd>
 </dl>
 </div>
@@ -236,54 +247,34 @@ platforms and operating systems. The following table lists the
 officially supported hardware and operating system combinations.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 24%" />
-<col style="width: 16%" />
-<col style="width: 22%" />
-<col style="width: 16%" />
-<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 26%" />
+<col style="width: 18%" />
+<col style="width: 26%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p></p></td>
-<td><p><strong>x86</strong></p></td>
 <td><p><strong>x86-64</strong></p></td>
 <td><p><strong>ARM</strong></p></td>
 <td><p><strong>ARM-64</strong></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Linux</strong></p></td>
-<td><p>yes¹</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
-<td><p>yes²</p></td>
+<td><p>yes</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Windows</strong></p></td>
-<td><p>yes¹</p></td>
+<tr class="row-odd"><td><p><strong>Docker</strong></p></td>
 <td><p>yes</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Docker</strong></p></td>
-<td><p>no</p></td>
+<tr class="row-even"><td><p><strong>Windows</strong></p></td>
 <td><p>yes</p></td>
-<td><p>yes</p></td>
-<td><p>yes²</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Mac OS</strong></p></td>
-<td><p>no</p></td>
-<td><p>no³</p></td>
 <td><p>no</p></td>
 <td><p>no</p></td>
 </tr>
 </tbody>
 </table>
-<ol class="arabic simple">
-<li><p>Supported, but we are currently not building packages routinely.</p></li>
-<li><p>Supported, but no stable official builds available yet.</p></li>
-<li><p>Our software compiles and runs fine on Mac. Apple’s SDK licensing
-terms however prevent compiling Mac software on other platforms. This
-makes it impossible for Linux and Windows developers to build native
-extensions for Mac. Mac support would therefore be fundamentally
-crippled and break our cross-platform promise.</p></li>
-</ol>
 </div>
 </div>
 

@@ -200,10 +200,10 @@ configured in different ways. Perhaps the most typical example is the
 exposure time of a camera, which needs to be changed based on the
 product being inspected.</p>
 <p>VisionAppster Tools handle all hardware devices in a uniform way. The
-Application Engine maintains a device database that provides apps a way
-to store device-specific settings. The database is stored as a bunch of
-JSON files and a database index that maps <a class="reference external" href="#device-ids">device IDs</a>
-to settings.</p>
+VisionAppster Engine maintains a device database that provides apps a
+way to store device-specific settings. The database is stored as a bunch
+of JSON files and a database index that maps <a class="reference external" href="#device-ids">device
+IDs</a> to settings.</p>
 <p>If the <em>autoConfig</em> flag in a tool is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the database index will
 be used to find the settings for a hardware device automatically.
 Alternatively, the app developer can type in the name of a configuration
@@ -216,30 +216,27 @@ will be set to the driver.</p>
 </div>
 <div class="section" id="device-ids">
 <h2>Device IDs<a class="headerlink" href="#device-ids" title="Permalink to this headline">🔗</a></h2>
-<p>Cameras, digital I/O devices and data link devices are identified using
-device IDs. A device ID is composed of a driver ID, a colon and a device
-part that identifies the device using driver-specific syntax.</p>
+<p>Cameras and data link devices are identified using device IDs. A device
+ID is composed of a driver ID, a colon and a device part that identifies
+the device using driver-specific syntax.</p>
 <p>The driver ID is used to pick the correct driver for the device. For
 example, “webcam” would select a webcam driver. On Linux, the webcam
 driver identifies cameras with character strings such as
 “usb-video-index0”. Thus, a fully-qualified device ID could be something
 like “webcam:usb-video-index0”.</p>
-<p>Device IDs are system-dependent. If you save an application and later
-run it in another machine, the Application Engine requires you to check
-all device IDs in the app and to save them in the app’s settings. This
-is because it is rarely possible to use the same device ID on different
-computers. For example, the order of devices on a USB bus may be
-different, and the IP addresses of remote devices may change.</p>
+<p>Device IDs are often system-dependent. For example, the order of devices
+on a USB bus may be different, and the IP addresses of remote devices
+may change. If you save an application and later run it in another
+machine, it may not be able to run as such. If you know that a device ID
+needs to be changed before the app can run, you can right-click the
+<em>deviceID</em> parameter in the Builder and set its configurability to
+“required”. This way the Engine will require you to set the value and
+save it in the app’s settings before the app can be started.</p>
 <p>Device IDs can also be given as regular expressions. This is indicated
 by surrounding the ID with forward slashes. For example,
 “/^webcam:.*0$/” uses the first web camera whose id ends with “0”. The
 regular expression “/./” matches all devices and thus uses the very
 first detected device.</p>
-<p>If an application contains tools that have hardware-specific parameters
-and the values of those parameters aren’t regular expressions, the
-values must be set in the app’s settings before it can be started. This
-happens by clicking the app’s name on the front page of the Engine’s
-management web interface and selecting the appropriate values there.</p>
 </div>
 </div>
 

@@ -256,7 +256,7 @@ The default value may be changeable through a public API.</p>
 <dt>Required input parameter</dt><dd><p>An input parameter that has no default value and must be connected in
 the graph either to another tool or to an API function. Required
 input parameters are needed only if there is no logical default value
-or if generating generating such value is not feasible.</p>
+or if generating such value is not feasible.</p>
 </dd>
 <dt>Output parameter</dt><dd><p>A parameter that is produced by calling the underlying function with
 the current input parameters. Output parameters can work as inputs to
@@ -372,7 +372,7 @@ be written to or only read.</p>
 <dt>typeName</dt><dd><p>A <a class="reference external" href="#type-specifiers">type specifier</a> for the parameter.</p>
 </dd>
 <dt>doc</dt><dd><p>A text string containing documentation for the parameter. May contain
-HTML formatting.</p>
+markdown formatting.</p>
 </dd>
 <dt>enabled</dt><dd><p>A Boolean flag that indicates whether the parameter should be
 available or not. The user interface may hide or gray out parameters
@@ -387,10 +387,7 @@ read-write input parameters are stored.</p>
 corresponding parameter.</p>
 </dd>
 <dt>max</dt><dd><p>Maximum allowed value. The type must be the same as that of the
-corresponding parameter. Alternatively, <em>max</em> can be the text string
-“GRAY_MAX”. If the user works with images that have more than eight
-bits of depth, this value changes the maximum value according to the
-depth of the images.</p>
+corresponding parameter.</p>
 </dd>
 <dt>step</dt><dd><p>If the value can only take discrete values, this parameter specifies
 the step between successive values. Usually used with <em>min</em> and
@@ -412,14 +409,6 @@ for this meta-data is to provide a special meaning for <code class="docutils lit
 <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in a <code class="docutils literal notranslate"><span class="pre">double</span></code> type parameter. The format is the same as
 that of <em>choices</em>: each value of the array is an object with <em>name</em>
 and <em>value</em> keys.</p>
-</dd>
-<dt>systemDependent</dt><dd><p>If the tool cannot work without knowing something of the underlying
-system, it can provide fixed parameters that are marked
-system-dependent. When the user deploys an application containing
-system-dependent parameters, the VisionAppster runtime makes sure
-there is a value assigned to the parameter. Typically, these
-parameters are addresses of attached hardware the application
-communicates with. The value of <em>systemDependent</em> is a Boolean flag.</p>
 </dd>
 <dt>columnNames</dt><dd><p>An array of text strings that are shown in the column header of a
 matrix or table, replacing the auto-generated header. If
@@ -445,7 +434,7 @@ default. An <code class="docutils literal notranslate"><span class="pre">int32_t
 <dt>maxColumns</dt><dd><p>Maximum number of columns if <em>columnsEditable</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Unlimited
 by default. An <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>.</p>
 </dd>
-<dt>columnDefinitions</dt><dd><p>An array of object specifying meta-data for individual columns in a
+<dt>columnDefinitions</dt><dd><p>An array of objects specifying meta-data for individual columns in a
 table. See <a class="reference external" href="#structured-meta-data">structured meta-data below</a>.</p>
 </dd>
 <dt>defaultValue</dt><dd><p>The value used for newly created table or matrix cells when new rows
@@ -475,9 +464,9 @@ region or a line that can be draw on top of an image. Examples:</p>
 <ul class="simple">
 <li><p>Input parameter called <code class="docutils literal notranslate"><span class="pre">frame</span></code> specifies <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">frame</span></code>. A
 related input parameter called <code class="docutils literal notranslate"><span class="pre">size</span></code> specifies
-<code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">frame/region</span></code>. This tells
-makes the Builder aware that the size is related to the coordinate
-frame and that it can be edited using a “region” widget.</p></li>
+<code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">frame/region</span></code>. This makes
+the Builder aware that the size is related to the coordinate frame
+and that it can be edited using a “region” widget.</p></li>
 <li><p>There are two output parameters, <code class="docutils literal notranslate"><span class="pre">startPoint</span></code> and <code class="docutils literal notranslate"><span class="pre">endPoint</span></code>,
 both of which specify <code class="docutils literal notranslate"><span class="pre">typeName</span> <span class="pre">=</span> <span class="pre">point</span></code>. In addition,
 <code class="docutils literal notranslate"><span class="pre">endPoint</span></code> specifies <code class="docutils literal notranslate"><span class="pre">linkedTo</span> <span class="pre">=</span> <span class="pre">startPoint/line</span></code>, which tells
@@ -529,6 +518,19 @@ meta-data entry implies <code class="docutils literal notranslate"><span class="
 the value manually.</p>
 </dd>
 <dt>multiline</dt><dd><p>A multi-line string.</p>
+</dd>
+<dt>escaped</dt><dd><p>A string that may contain escaped control characters such as <code class="docutils literal notranslate"><span class="pre">\n</span></code>
+or <code class="docutils literal notranslate"><span class="pre">\t</span></code>.</p>
+</dd>
+<dt>filename</dt><dd><p>A string that is used as a file name. This lets the Builder to
+provide a file selection GUI. The type may optionally be followed by
+a MIME type or a file name extension that limits the choices given to
+the user. For example, <code class="docutils literal notranslate"><span class="pre">filename;image/*</span></code> will let the user to pick
+any image file. <code class="docutils literal notranslate"><span class="pre">filename;.txt</span></code> will let the user to pick a file
+name with a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> suffix.</p>
+</dd>
+<dt>directory</dt><dd><p>A string that is used as a directory name. This lets the Builder to
+provide a directory selection GUI.</p>
 </dd>
 <dt>frame</dt><dd><p>A 3D coordinate frame with translation (4-by-4 matrix).</p>
 </dd>
@@ -583,8 +585,8 @@ attach the debugger to the <code class="docutils literal notranslate"><span clas
 <p>The VisionAppster Engine service runs in the LOCALSERVICE account and
 administrator rights are required to debug your tool in an Engine
 running in it. So, launch your IDE with “Run as administrator” command
-and then attach the debugger to the <code class="docutils literal notranslate"><span class="pre">appenginesrv.exe</span></code> process. You
-may need to select option “Show processes from all users” to see the
+and then attach the debugger to the <code class="docutils literal notranslate"><span class="pre">va-engine-service.exe</span></code> process.
+You may need to select option “Show processes from all users” to see the
 service process.</p>
 </div>
 </div>

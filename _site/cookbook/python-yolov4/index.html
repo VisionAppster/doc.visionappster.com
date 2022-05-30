@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCv Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opencv-tools/">OpenCV Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python-superresolution/">Super-resolution with OpenCV and Python</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Yolo V4 object detection with OpenCV and Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
@@ -242,15 +242,16 @@ download the files and place them in
 <img alt="Downloaded files" src="../../_images/yolov4-1.png" />
 <p class="caption"><span class="caption-text">Downloaded files</span><a class="headerlink" href="#id1" title="Permalink to this image">🔗</a></p>
 </div>
-<p>Use the <a class="reference internal" href="../../components/installing/"><span class="doc">va-pkg command-line tool</span></a> to install
-the required NumPy and OpenCV packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install python:numpy python:opencv-python
+<p>Use the <a class="reference internal" href="../../components/installing/"><span class="doc">va-pkg command-line tool</span></a> to enable
+Python support and to install the required NumPy and OpenCV packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.visionappster.extensions.python
+va-pkg install python:numpy python:opencv-python
 </pre></div>
 </div>
 </div>
 <div class="section" id="python-code-walk-through">
 <h3>Python code walk-through<a class="headerlink" href="#python-code-walk-through" title="Permalink to this headline">🔗</a></h3>
-<p>Let us walk through <a class="reference download internal" download="" href="../../_downloads/2e215e414c157a3e78e89b592b355fb4/yolo_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">python</span> <span class="pre">code</span></code></a>.</p>
+<p>Let us walk through <a class="reference download internal" download="" href="../../_downloads/2e215e414c157a3e78e89b592b355fb4/yolo_toolplugin.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">Python</span> <span class="pre">code</span></code></a>.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visionappster</span> <span class="k">as</span> <span class="nn">va</span>
 <span class="kn">from</span> <span class="nn">visionappster.coordinates</span> <span class="kn">import</span> <span class="n">pixel_to_world</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

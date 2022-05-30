@@ -6,7 +6,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>OpenCv Tools &mdash; VisionAppster  documentation</title>
+  <title>OpenCV Tools &mdash; VisionAppster  documentation</title>
   
 
   
@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../image-classifier/">Image classifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../manual-calibration/">Manual Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../motion-detector/">Motion detector</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenCv Tools</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenCV Tools</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloads">Downloads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#detailed-description">Detailed description</a></li>
@@ -180,7 +180,7 @@
         
           <li><a href="../">Cookbook</a> &raquo;</li>
         
-      <li>OpenCv Tools</li>
+      <li>OpenCV Tools</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,12 +198,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="opencv-tools">
-<h1>OpenCv Tools<a class="headerlink" href="#opencv-tools" title="Permalink to this headline">🔗</a></h1>
+<h1>OpenCV Tools<a class="headerlink" href="#opencv-tools" title="Permalink to this headline">🔗</a></h1>
 <iframe class="youtube" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/VCTmg95-2BE?rel=0"></iframe><div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">🔗</a></h2>
 <p>This demonstration shows off some of the tools in the built-in OpenCV
 tool set. These tools have been implemented using the <a class="reference internal" href="../../api/c/tool/"><span class="doc">tool C
-API</span></a> and the <a class="reference internal" href="../../api/cpp/opencv/"><span class="doc">OpenCv integration
+API</span></a> and the <a class="reference internal" href="../../api/cpp/opencv/"><span class="doc">OpenCV integration
 API</span></a>. The full source code of these tools is
 available in the VisionAppster SDK that comes with the installer.</p>
 </div>
@@ -216,7 +216,7 @@ available in the VisionAppster SDK that comes with the installer.</p>
 <div class="section" id="detailed-description">
 <h2>Detailed description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">🔗</a></h2>
 <p>Let us walk through a simple application that uses both VisionAppster
-and OpenCv tools. The application segments blobs from input image,
+and OpenCV tools. The application segments blobs from input image,
 calculates the distance transform which describes the “closest
 territory” of each blob. Finally, it finds the convex hull of the
 centroids of the blobs, creating “a perimeter fence” that encircles the
@@ -231,7 +231,7 @@ binary image which has zero pixels (black) inside and ones (white)
 outside of the blobs.</p></li>
 <li><p>The binary image is passed to a tool which calls the
 <a class="reference external" href="https://docs.opencv.org/3.4/d7/d1b/group__imgproc__misc.html#ga8a0b7fdfcb7a13dde018988ba3a43042">distanceTransform</a>
-OpenCv function. <code class="docutils literal notranslate"><span class="pre">MaskSize</span></code> and <code class="docutils literal notranslate"><span class="pre">DistanceType</span></code> options can be
+OpenCV function. <code class="docutils literal notranslate"><span class="pre">MaskSize</span></code> and <code class="docutils literal notranslate"><span class="pre">DistanceType</span></code> options can be
 selected from drop-down lists.</p></li>
 <li><p><a class="reference internal" href="../../tools/ColorDistanceTool/"><span class="doc">Color Distance Tool</span></a> inverts the gray
 levels of the <code class="docutils literal notranslate"><span class="pre">Distance</span></code> output of the previous tool in order to
@@ -246,7 +246,7 @@ interest is <code class="docutils literal notranslate"><span class="pre">Centroi
 the blobs.</p></li>
 <li><p>The coordinates are passed to a tool which calls the
 <a class="reference external" href="https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga014b28e56cb8854c0de4a211cb2be656">convexHull</a>
-OpenCv function. It selects the centroids that are on the outer
+OpenCV function. It selects the centroids that are on the outer
 perimeters of the set of points. The perimeter points are listed
 either clockwise or counter-clockwise, depending on the value of the
 <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> flag.</p></li>

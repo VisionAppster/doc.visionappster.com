@@ -111,10 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#python-tool-plugins">Python tool plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#drivers">Drivers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#store-packages">Store packages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#signing">Signing</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#store-packages">Store packages</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cross-compilation/">Cross-compilation</a></li>
@@ -421,28 +418,39 @@ architecture, e.g. <code class="docutils literal notranslate"><span class="pre"
 <h2>Store packages<a class="headerlink" href="#store-packages" title="Permalink to this headline">🔗</a></h2>
 <p>If you want to distribute your component through VisionAppster Store or
 run an app in VisionAppster Cloud, you must register the component’s ID
-on the Store, give it a name and sign the app. Giving a name is easy.
-Just give this command in the directory where <code class="docutils literal notranslate"><span class="pre">component.json</span></code> is
-stored:</p>
+on the Store, give it a name and sign the app.</p>
+<p>To start, go to <a class="reference external" href="https://store.visionappster.com/account/components">My account → Components → New
+component</a> in the
+VisionAppster Store. Give the component a unique ID and a catchy name.
+You need to use the exact same ID and name when building the package.</p>
+<p>To give the name to your component being built, type this command in the
+directory where <code class="docutils literal notranslate"><span class="pre">component.json</span></code> is stored:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update --name <span class="s2">&quot;My cool component&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="signing">
-<h3>Signing<a class="headerlink" href="#signing" title="Permalink to this headline">🔗</a></h3>
+<p>By default, there will be a price for the component. If the component is
+going to be free (no license required), mark it such:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg update --free <span class="nb">true</span>
+</pre></div>
+</div>
 <p>If the package contains encrypted tool files or copy-protected native
-tool plugins, you’ll be unable to use them unless the package has a
-valid signature. A signature is also required for every component
-distributed through the VisionAppster Store.</p>
-<p>To sign a component you need to create a token in the Store’s web
-interface (<a class="reference external" href="https://store.visionappster.com/account/tokens">My Account → Tokens → New
-token</a>) and assign
-the token the “Sign component” permission. Then, copy the token ID to
-<code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command line (in the directory where <code class="docutils literal notranslate"><span class="pre">component.json</span></code> is
-stored):</p>
+plugins, you’ll be unable to use them unless the package has a valid
+signature. A signature is also required for every component distributed
+through the VisionAppster Store. To create a digital signature:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg sign
+</pre></div>
+</div>
+<p>If you are building components e.g. in a build server, using the login
+credentials for signing may not be the greatest idea ever. You can also
+create a token specifically for signing. Go to (<a class="reference external" href="https://store.visionappster.com/account/tokens">My account → Tokens →
+New token</a>) and
+assign the token the “Sign component” permission. Then, copy the token
+ID to <code class="docutils literal notranslate"><span class="pre">va-pkg</span></code> command line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg sign --token 0123456789abcdef0123456789abcdef
 </pre></div>
 </div>
-</div>
+<p>Once the package is built, you can upload it to the Store at <a class="reference external" href="https://store.visionappster.com/account/components">My account
+→ Components</a>.</p>
 </div>
 </div>
 
