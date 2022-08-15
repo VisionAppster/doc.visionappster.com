@@ -243,6 +243,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../OutputExternalDataTool/">Output external data</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Perspective transform</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../PixelCoordinatesToWorldTool/">Pixel coordinates to world</a></li>
@@ -416,8 +417,8 @@ world coordinate system of the <em>image</em> output will be aligned
 according to <em>points1</em>, but the pixels of the image will remain the
 same.</p>
 <p>If one needs an actual projected image in analysis, the <em>image</em>
-output of ReplaceCoordinateFrameTool can be connected to <a class="reference internal" href="../ProjectToVirtualViewTool/"><span class="doc">ProjectToVirtualViewTool</span></a>. If the <em>size</em> output from this tool is
-used as the <em>size</em> input to the ProjectToVirtualViewTool, the
+output of <a class="reference internal" href="../ReplaceCoordinateFrameTool/"><span class="doc">ReplaceCoordinateFrameTool</span></a> can be connected to <a class="reference internal" href="../ProjectToVirtualViewTool/"><span class="doc">ProjectToVirtualViewTool</span></a>. If the <em>size</em> output from this tool is
+used as the <em>size</em> input to the <a class="reference internal" href="../ProjectToVirtualViewTool/"><span class="doc">ProjectToVirtualViewTool</span></a>, the
 result contains just the specified area, projected to a rectangular
 image array.</p>
 <div class="section" id="inputs">
@@ -426,10 +427,11 @@ image array.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">points1</span></code>: Four 2D corner points in the first view. Usually,
 these are known world coordinates.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">points2</span></code>: The corresponding corner points in the second view.
-Usually, these are coordinates in the camera coordinate system.
-Outputs</p></li>
+Usually, these are coordinates in the camera coordinate system.</p></li>
 </ul>
-<hr class="docutils" />
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code>: A coordinate frame that maps <em>points1</em> to <em>points2</em> in
 projective geometry.</p></li>
