@@ -308,9 +308,9 @@
 
 <dl class="cpp var">
 <dt id="_CPPv4N8va_image7destroyE">
-<span id="_CPPv3N8va_image7destroyE"></span><span id="_CPPv2N8va_image7destroyE"></span><span class="target" id="*)"></span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">destroy</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8va_image7destroyE" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv3N8va_image7destroyE"></span><span id="_CPPv2N8va_image7destroyE"></span><span class="target" id="*)"></span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">destroy</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8va_image7destroyE" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Destructor function. </p>
-<p>Depending on how the image data was originally allocated, it also needs to be deallocated differently. If <em>destroy</em> is non-null, it will be used instead of shm_free() when deallocating a va_image. </p>
+<p>Depending on how the image’s pixel buffer was originally allocated, it also needs to be deallocated differently. If <em>destroy</em> is non-null, it will be used when deallocating <em>data</em>. If <em>destroy</em> is NULL, <em>data</em> is assumed to be either static or part of the same allocation as the image header and does not need to be separately deallocated. </p>
 </dd></dl>
 
 </div>
@@ -870,7 +870,7 @@
 <dl class="cpp function">
 <dt id="_CPPv420va_image_alloc_emptyv">
 <span id="_CPPv320va_image_alloc_emptyv"></span><span id="_CPPv220va_image_alloc_emptyv"></span><span id="va_image_alloc_empty"></span><span class="target" id="va_image_alloc_empty"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420va_image_alloc_emptyv" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Allocates space for a va_image from the shared heap (shm_alloc) and initializes the structure. </p>
+<dd><p>Allocates space for a va_image from the heap and initializes the structure. </p>
 <p>The returned image contains no data. </p>
 </dd></dl>
 
@@ -958,7 +958,7 @@
 <dt id="_CPPv419va_image_alloc_moreP8va_imagei">
 <span id="_CPPv319va_image_alloc_moreP8va_imagei"></span><span id="_CPPv219va_image_alloc_moreP8va_imagei"></span><span id="va_image_alloc_more__va_imageP.i"></span><span class="target" id="va_image_alloc_more"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_alloc_more</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <span class="pre">int</span> <em><span class="pre">rows</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419va_image_alloc_moreP8va_imagei" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Appends <em>rows</em> uninitialized rows to <em>source</em> and returns either <em>source</em> or a pointer to a newly allocated image with the same contents as <em>source</em>. </p>
-<p>If memory allocation fails or if <em>source</em> is compressed, returns NULL and leaves <em>source</em> untouched. </p>
+<p>If memory allocation fails or if <em>source</em> is compressed, returns NULL and leaves <em>source</em> untouched. NULL will also be returned if <em>source</em> is shared (its ref_count &gt; 1). </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -992,17 +992,36 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv413va_image_freeP8va_image">
-<span id="_CPPv313va_image_freeP8va_image"></span><span id="_CPPv213va_image_freeP8va_image"></span><span id="va_image_free__va_imageP"></span><span class="target" id="va_image_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413va_image_freeP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Releases the memory allocated by <em>img</em>. </p>
-<p>If there is a custom destructor function, it will be used. If not, shm_free() will be used to release <em>img</em>. Note that if you made img-&gt;data point to an external buffer, it will not be deallocated. </p>
+<dt id="_CPPv415va_image_detachP8va_image">
+<span id="_CPPv315va_image_detachP8va_image"></span><span id="_CPPv215va_image_detachP8va_image"></span><span id="va_image_detach__va_imageP"></span><span class="target" id="va_image_detach"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_detach</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_image_detachP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a copy of <em>img</em> that is exclusively owned by the caller. </p>
+<p>If <em>img</em> is not shared, returns <em>img</em>. Otherwise returns a deep copy (<a class="reference internal" href="#va_image_clone"><span class="std std-ref">va_image_clone</span></a>) and releases ownership of <em>img</em>. If a clone cannot be allocated, returns NULL and retains <em>img</em> as such. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv416va_image_destroyP8va_image">
-<span id="_CPPv316va_image_destroyP8va_image"></span><span id="_CPPv216va_image_destroyP8va_image"></span><span id="va_image_destroy__va_imageP"></span><span class="target" id="va_image_destroy"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_image_destroyP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Releases the memory allocated by img and img-&gt;data using shm_free(). </p>
-<p>This function can be used as a custom destructor if you allocated an external data buffer for image data using shm_malloc(). </p>
+<dt id="_CPPv422va_image_detach_headerP8va_image">
+<span id="_CPPv322va_image_detach_headerP8va_image"></span><span id="_CPPv222va_image_detach_headerP8va_image"></span><span id="va_image_detach_header__va_imageP"></span><span class="target" id="va_image_detach_header"></span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_image_detach_header</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422va_image_detach_headerP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a copy of <em>img</em> that is exclusively owned by the caller, but data shared with <em>img</em>. </p>
+<p>If <em>img</em> is not shared, returns <em>img</em>. Otherwise returns a copy of <em>img</em> (<dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_image_clone_header"><span class="std std-ref">va_image_clone_header</span></a>) that points to the same data as <em>img</em>, and releases ownership of <em>img</em>. This is useful if one only needs to make changes to header fields, but there is no need to create a deep copy of the data. If a new image cannot be allocated, returns NULL and retains <em>img</em> as such. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_image_shareP8va_image">
+<span id="_CPPv314va_image_shareP8va_image"></span><span id="_CPPv214va_image_shareP8va_image"></span><span id="va_image_share__va_imageP"></span><span class="target" id="va_image_share"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_share</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_image_shareP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Increases the reference count of <em>img</em> by one. </p>
+<p>To free the memory allocated by a shared image you need to call <a class="reference internal" href="#va_image_free"><span class="std std-ref">va_image_free()</span></a> as many times as the image has been shared. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv413va_image_freeP8va_image">
+<span id="_CPPv313va_image_freeP8va_image"></span><span id="_CPPv213va_image_freeP8va_image"></span><span id="va_image_free__va_imageP"></span><span class="target" id="va_image_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_image_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48va_image" title="va_image"><span class="pre">va_image</span></a> <span class="pre">*</span><em><span class="pre">img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413va_image_freeP8va_image" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Decreases the reference count of <em>img</em>. </p>
+<p>If the reference count reaches zero, releases the memory allocated by <em>img</em>. If <code class="docutils literal notranslate"><span class="pre">img-&gt;destroy</span></code> is non-null, it will be used to deallocate <code class="docutils literal notranslate"><span class="pre">img-&gt;data</span></code>. If <code class="docutils literal notranslate"><span class="pre">image-&gt;source</span></code> is non-null, it will be recursively freed.</p>
+<p>It is safe to call <a class="reference internal" href="#va_image_free"><span class="std std-ref">va_image_free()</span></a> with a NULL pointer. </p>
 </dd></dl>
 
 <dl class="cpp function">

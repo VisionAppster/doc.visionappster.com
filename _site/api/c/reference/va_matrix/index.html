@@ -325,7 +325,7 @@
 <dd><p>Changes the size of the memory block allocated for data in <em>matrix</em> to hold the specified number of <em>rows</em>. </p>
 <p>The semantics of this function are the same as the standard <code class="docutils literal notranslate"><span class="pre">realloc()</span></code> function: the implementation either increases or decreases the size of the allocated memory block and ensures that the contents (up to the minimum of the current and the new number of rows) remain the same.</p>
 <p>If <em>rows</em> is smaller than the current number of rows, the matrix will be truncated. Otherwise, the number of rows will be retained, but there will be empty, uninitialized space at the end.</p>
-<p>Returns the new location of the reallocated matrix and NULL on failure. If NULL is returned, the original matrix remains intact.</p>
+<p>Returns the new location of the reallocated matrix and NULL on failure. If NULL is returned, the original matrix remains intact. It is a failure to try reallocating a shared matrix. Note that this restriction affects all functions that may need to change the memory location of a previously allocated matrix.</p>
 <p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Allocate</span> <span class="n">an</span> <span class="n">uninitialized</span> <span class="mi">1</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="mi">4</span> <span class="n">matrix</span><span class="o">.</span>
 <span class="n">va_matrix</span><span class="o">*</span> <span class="n">mat</span> <span class="o">=</span> <span class="n">va_matrix_alloc</span><span class="p">(</span><span class="n">va_imatrix_type</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 <span class="o">//</span> <span class="n">Reserve</span> <span class="n">space</span> <span class="k">for</span> <span class="n">up</span> <span class="n">to</span> <span class="n">four</span> <span class="n">rows</span><span class="o">.</span> <span class="n">This</span> <span class="n">doesn</span><span class="s1">&#39;t change row count.</span>
@@ -363,7 +363,12 @@
   <span class="n">bmat</span> <span class="o">=</span> <span class="n">bmat2</span><span class="p">;</span>
 </pre></div>
 </div>
- </p>
+</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_matrix_realloc"><span class="std std-ref">va_matrix_realloc()</span></a> </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -380,7 +385,12 @@
   <span class="n">bmat</span> <span class="o">=</span> <span class="n">bmat2</span><span class="p">;</span>
 </pre></div>
 </div>
- </p>
+</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_matrix_realloc"><span class="std std-ref">va_matrix_realloc()</span></a> </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -411,7 +421,12 @@
 <span class="n">va_imatrix_remove_rows</span><span class="p">(</span><span class="n">imat</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
- </p>
+</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_matrix_realloc"><span class="std std-ref">va_matrix_realloc()</span></a> </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -427,7 +442,12 @@
   <span class="n">imat</span> <span class="o">=</span> <span class="n">imat2</span><span class="p">;</span>
 </pre></div>
 </div>
- </p>
+</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_matrix_realloc"><span class="std std-ref">va_matrix_realloc()</span></a> </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -444,7 +464,12 @@
   <span class="n">imat</span> <span class="o">=</span> <span class="n">imat2</span><span class="p">;</span>
 </pre></div>
 </div>
- </p>
+</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#va_matrix_realloc"><span class="std std-ref">va_matrix_realloc()</span></a> </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -476,10 +501,25 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt id="_CPPv415va_matrix_shareP9va_matrix">
+<span id="_CPPv315va_matrix_shareP9va_matrix"></span><span id="_CPPv215va_matrix_shareP9va_matrix"></span><span id="va_matrix_share__va_matrixP"></span><span class="target" id="va_matrix_share"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_matrix_share</span></code><span class="sig-paren">(</span><span class="pre">va_matrix</span> <span class="pre">*</span><em><span class="pre">matrix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_matrix_shareP9va_matrix" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Increases the reference count of <em>matrix</em> by one. </p>
+<p>To free the memory allocated by a shared matrix you need to call <a class="reference internal" href="#va_matrix_free"><span class="std std-ref">va_matrix_free()</span></a> as many times as the matrix has been shared. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416va_matrix_detachP9va_matrix">
+<span id="_CPPv316va_matrix_detachP9va_matrix"></span><span id="_CPPv216va_matrix_detachP9va_matrix"></span><span id="va_matrix_detach__va_matrixP"></span><span class="target" id="va_matrix_detach"></span><span class="pre">va_matrix</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_matrix_detach</span></code><span class="sig-paren">(</span><span class="pre">va_matrix</span> <span class="pre">*</span><em><span class="pre">matrix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_matrix_detachP9va_matrix" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a copy of <em>matrix</em> that is exclusively owned by the caller. </p>
+<p>If <em>matrix</em> is not shared, returns <em>matrix</em>. Otherwise returns a deep copy and releases ownership of <em>matrix</em>. If a clone cannot be allocated, returns NULL. </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt id="_CPPv414va_matrix_freePv">
 <span id="_CPPv314va_matrix_freePv"></span><span id="_CPPv214va_matrix_freePv"></span><span id="va_matrix_free__voidP"></span><span class="target" id="va_matrix_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_matrix_free</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">matrix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_matrix_freePv" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Deallocates a <em>matrix</em> previously returned by <a class="reference internal" href="#va_matrix_alloc"><span class="std std-ref">va_matrix_alloc</span></a>, <a class="reference internal" href="#va_matrix_calloc"><span class="std std-ref">va_matrix_calloc</span></a>, <a class="reference internal" href="#va_matrix_realloc"><span class="std std-ref">va_matrix_realloc</span></a> or any other function that may return a newly allocated or reallocated matrix. </p>
-<p>This function works the same for all matrix types, but type-specific versions are also available.</p>
+<dd><p>Decreses the reference count of <em>matrix</em> by one. </p>
+<p>If the reference count reaches zero, deallocates the memory reserved by <em>matrix</em>. This function works the same for all matrix types, but type-specific versions are also available.</p>
+<p>It is safe to call <a class="reference internal" href="#va_matrix_free"><span class="std std-ref">va_matrix_free()</span></a> with a NULL pointer.</p>
 <p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">va_dmatrix</span><span class="o">*</span> <span class="n">dmat</span> <span class="o">=</span> <span class="n">va_dmatrix_alloc</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="n">va_dmatrix_free</span><span class="p">(</span><span class="n">dmat</span><span class="p">);</span>
 <span class="o">//</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">equivalent</span><span class="p">:</span>

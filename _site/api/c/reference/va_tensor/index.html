@@ -258,9 +258,9 @@
 
 <dl class="cpp var">
 <dt id="_CPPv4N9va_tensor7destroyE">
-<span id="_CPPv3N9va_tensor7destroyE"></span><span id="_CPPv2N9va_tensor7destroyE"></span><span class="target" id="*)"></span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">destroy</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9va_tensor7destroyE" title="Permalink to this definition">🔗</a><br /></dt>
+<span id="_CPPv3N9va_tensor7destroyE"></span><span id="_CPPv2N9va_tensor7destroyE"></span><span class="target" id="*)"></span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">destroy</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9va_tensor7destroyE" title="Permalink to this definition">🔗</a><br /></dt>
 <dd><p>Destructor function. </p>
-<p>Depending on how the tensor was originally allocated, it also needs to be deallocated differently. If <em>destroy</em> is non-null, <a class="reference internal" href="#va_tensor_free"><span class="std std-ref">va_tensor_free()</span></a> will use it instead of <a class="reference internal" href="#va_tensor_destroy"><span class="std std-ref">va_tensor_destroy()</span></a>, which is the default. </p>
+<p>Depending on how the tensor’s data buffer was originally allocated, it also needs to be deallocated differently. If <em>destroy</em> is non-null, it will be used when deallocating <em>data</em>. If <em>destroy</em> is NULL, <em>data</em> is assumed to be either static or part of the same allocation as the tensor header and does not need to be separately deallocated. </p>
 </dd></dl>
 
 </div>
@@ -466,17 +466,32 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv414va_tensor_freeP9va_tensor">
-<span id="_CPPv314va_tensor_freeP9va_tensor"></span><span id="_CPPv214va_tensor_freeP9va_tensor"></span><span id="va_tensor_free__va_tensorP"></span><span class="target" id="va_tensor_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_tensor_freeP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Releases the memory allocated by <em>tensor</em>. </p>
-<p>If there is a custom destructor function, it will be used. If not, <a class="reference internal" href="#va_tensor_destroy"><span class="std std-ref">va_tensor_destroy()</span></a> will be called. </p>
+<dt id="_CPPv415va_tensor_shareP9va_tensor">
+<span id="_CPPv315va_tensor_shareP9va_tensor"></span><span id="_CPPv215va_tensor_shareP9va_tensor"></span><span id="va_tensor_share__va_tensorP"></span><span class="target" id="va_tensor_share"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_share</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415va_tensor_shareP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Increases the reference count of <em>tensor</em> by one. </p>
+<p>To free the memory allocated by a shared tensor you need to call <a class="reference internal" href="#va_tensor_free"><span class="std std-ref">va_tensor_free()</span></a> as many times as the tensor has been shared. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv417va_tensor_destroyP9va_tensor">
-<span id="_CPPv317va_tensor_destroyP9va_tensor"></span><span id="_CPPv217va_tensor_destroyP9va_tensor"></span><span id="va_tensor_destroy__va_tensorP"></span><span class="target" id="va_tensor_destroy"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_tensor_destroyP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
-<dd><p>Releases the memory allocated by <em>tensor</em> and <code class="docutils literal notranslate"><span class="pre">tensor-&gt;data</span></code> using shm_free(). </p>
-<p>This is the default destructor function that will be run if <code class="docutils literal notranslate"><span class="pre">tensor-&gt;destroy</span></code> is NULL. </p>
+<dt id="_CPPv416va_tensor_detachP9va_tensor">
+<span id="_CPPv316va_tensor_detachP9va_tensor"></span><span id="_CPPv216va_tensor_detachP9va_tensor"></span><span id="va_tensor_detach__va_tensorP"></span><span class="target" id="va_tensor_detach"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_detach</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416va_tensor_detachP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a copy of <em>tensor</em> that is exclusively owned by the caller. </p>
+<p>If <em>tensor</em> is not shared, returns <em>tensor</em>. Otherwise returns a deep copy (<a class="reference internal" href="#va_tensor_clone"><span class="std std-ref">va_tensor_clone</span></a>) and releases ownership of <em>tensor</em>. If a clone cannot be allocated, returns NULL and retains <em>tensor</em> as such. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414va_tensor_freeP9va_tensor">
+<span id="_CPPv314va_tensor_freeP9va_tensor"></span><span id="_CPPv214va_tensor_freeP9va_tensor"></span><span id="va_tensor_free__va_tensorP"></span><span class="target" id="va_tensor_free"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">va_tensor_free</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414va_tensor_freeP9va_tensor" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Decreases the reference count of <em>tensor</em>. </p>
+<p>If the count reaches zero, releases the memory allocated by <em>tensor</em>. If <code class="docutils literal notranslate"><span class="pre">tensor-&gt;destroy</span></code> is non-null, it will be used to deallocate <code class="docutils literal notranslate"><span class="pre">tensor-&gt;data</span></code>. If <code class="docutils literal notranslate"><span class="pre">tensor-&gt;source</span></code> is non-null, it will be recursively freed.</p>
+<p>It is safe to call <a class="reference internal" href="#va_tensor_free"><span class="std std-ref">va_tensor_free()</span></a> with a NULL pointer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv417va_tensor_reshapeP9va_tensoriPK7int64_t">
+<span id="_CPPv317va_tensor_reshapeP9va_tensoriPK7int64_t"></span><span id="_CPPv217va_tensor_reshapeP9va_tensoriPK7int64_t"></span><span id="va_tensor_reshape__va_tensorP.i.int64_tCP"></span><span class="target" id="va_tensor_reshape"></span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">va_tensor_reshape</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49va_tensor" title="va_tensor"><span class="pre">va_tensor</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em>, <span class="pre">int</span> <em><span class="pre">num_dimensions</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">int64_t</span> <span class="pre">*</span><em><span class="pre">dimensions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417va_tensor_reshapeP9va_tensoriPK7int64_t" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a shallow copy of <em>tensor</em> with new dimensions. </p>
+<p>The returned tensor is newly allocated and must be released with <a class="reference internal" href="#va_tensor_free"><span class="std std-ref">va_tensor_free()</span></a>, but its data points to the same data as <em>tensor</em>. The total number of tensor elements (all <em>dimensions</em> multiplied together) must not exceed that of <em>tensor</em>. If a new tensor cannot be allocated, returns NULL. </p>
 </dd></dl>
 
 <dl class="cpp function">
