@@ -181,12 +181,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindLineSegmentTool/">Find Line Segment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindPeaksTool/">Find peaks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindQrKeyPointsTool/">Find QR keypoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FindThresholdTool/">Find threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FitLinesTool/">Fit lines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FlipImageTool/">Flip image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../FrameToAnglesTool/">Frame to angles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GateTool/">Gate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GenerateGridTool/">Generate grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GenerateLinesTool/">Generate lines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GenerateQrCodeTool/">Generate QR code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GradientHistogramTool/">Gradient histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GrayLevelProfileTool/">Gray level profile</a></li>
@@ -194,6 +197,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../GreaterOrEqualTool/">Greater or equal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HeightProfileTool/">Height profile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HistogramTool/">Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HistogramGradientTool/">Histogram gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HomographyTool/">Homography</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HsvToRgbTool/">HSV to RGB</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../HuemapTool/">Huemap</a></li>
@@ -382,8 +386,8 @@
             
   <div class="section" id="caliper">
 <h1>Caliper<a class="headerlink" href="#caliper" title="Permalink to this headline">🔗</a></h1>
-<p>A compound tool that contains a Profile tool which is connected to
-a MeasureGapWidths tool.</p>
+<p>A compound tool that contains a <a class="reference internal" href="../GrayLevelProfileTool/"><span class="doc">GrayLevelProfileTool</span></a> and a
+<a class="reference internal" href="../MeasureGapWidthsTool/"><span class="doc">MeasureGapWidthsTool</span></a>.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">
@@ -416,11 +420,38 @@ threshold must be exceeded by this number before the pixel is
 considered an edge. Differential mode: Pixel at which the rate
 of change is local maximum minus hysteresis is set as an edge.
 Gaussian zero crossing mode: N/A</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maxGapCount</span></code>: maximum number of gaps to be detected</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maxGapCount</span></code>: Maximum number of gaps to be detected</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapType</span></code>: Types of gaps to detect. Either dark, bright or both.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filteredProfile</span></code>: Filtered vector which is matched against the
+threshold. In absolute mode contains smoothed input profile.
+In differential mode contains filtered differences. In zero
+crossing mode contains filtered 2nd order differences.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapStartLength</span></code>: Distance of the left edge of the gap from the
+beginning of the profile line in world coodinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapEndLength</span></code>: Distance of the right edge of the gap from the
+beginning of the profile line in world coodinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapWidth</span></code>: Width of the gap in world coordinates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapType</span></code>: Type of the gap. 0 = dark gap, 1 = light gap.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapMagnitude</span></code>: Magnitude of the filtered profile which
+exceeded the threshold for the left edge of this gap. The
+bigger the value, the sharper the edge is. Absolute mode:
+Maximum gray level in light gap and minimum gray level in dark
+gap. Differential mode: Maximum change in light gap (&gt;0) and
+minimum change in dark gap (&lt;0) at the left edge of the gap.
+Gaussian zero crossing mode: Difference between the two
+consecutive 2nd order differences with opposite signs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapStartPoint</span></code>: World coordinates of the left end of the gap
+on XY-plane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapCenterPoint</span></code>: World coordinates of the center of the gap on
+XY-plane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapEndPoint</span></code>: World coordinates of the right end of the gap on
+XY-plane</p></li>
+</ul>
 <div class="breathe-sectiondef docutils container">
 <dl class="cpp enum">
 <dt id="_CPPv4N11CaliperTool13AlgorithmTypeE">

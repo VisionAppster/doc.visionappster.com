@@ -235,6 +235,22 @@
 </div>
 </dd></dl>
 
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv428va_coordinate_frame_is_validPK10va_dmatrix">
+<span id="_CPPv328va_coordinate_frame_is_validPK10va_dmatrix"></span><span id="_CPPv228va_coordinate_frame_is_validPK10va_dmatrix"></span><span id="va_coordinate_frame_is_valid__va_dmatrixCP"></span><span class="target" id="va_coordinate_frame_is_valid"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_coordinate_frame_is_valid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">va_dmatrix</span> <span class="pre">*</span><em><span class="pre">matrix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428va_coordinate_frame_is_validPK10va_dmatrix" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Returns a non-zero value if <em>matrix</em> represents a valid coordinate frame and zero otherwise. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv431va_coordinate_frame_from_matrixPK10va_dmatrixP19va_coordinate_frame">
+<span id="_CPPv331va_coordinate_frame_from_matrixPK10va_dmatrixP19va_coordinate_frame"></span><span id="_CPPv231va_coordinate_frame_from_matrixPK10va_dmatrixP19va_coordinate_frame"></span><span id="va_coordinate_frame_from_matrix__va_dmatrixCP.va_coordinate_frameP"></span><span class="target" id="va_coordinate_frame_from_matrix"></span><span class="pre">int</span> <code class="sig-name descname"><span class="pre">va_coordinate_frame_from_matrix</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">va_dmatrix</span> <span class="pre">*</span><em><span class="pre">matrix</span></em>, <a class="reference internal" href="#_CPPv419va_coordinate_frame" title="va_coordinate_frame"><span class="pre">va_coordinate_frame</span></a> <span class="pre">*</span><em><span class="pre">frame</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431va_coordinate_frame_from_matrixPK10va_dmatrixP19va_coordinate_frame" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Converts a matrix representation of a coordinate frame into a <a class="reference internal" href="#va_coordinate_frame"><span class="std std-ref">va_coordinate_frame</span></a>. </p>
+<p>If <em>matrix</em> is not a valid frame, returns <code class="docutils literal notranslate"><span class="pre">VA_ERR_INVALID_PARAMETER</span></code>. Otherwise stores the coefficients to <em>frame</em> and returns <code class="docutils literal notranslate"><span class="pre">VA_SUCCESS</span></code>. </p>
+</dd></dl>
+
+</div>
 </div>
 
 
