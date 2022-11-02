@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Nearest neighbor classifier &mdash; VisionAppster  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/docsearch.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/v.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script defer="defer" src="../../_static/js/docsearch.min.js"></script>
+        <script defer="defer" src="../../_static/js/algolia.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Negate" href="../NegateTool/" />
+    <link rel="prev" title="Multiply matrices" href="../MultiplyMatricesTool/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <div data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search" >
+        
+
+        
+          <a href="../../">
+        
+
+        
+          
+          <img src="../../_static/visionappster.png" class="logo" alt="Logo">
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <nav class="wy-nav-side-inner">
+        <div class="wy-side-scroll">
+          
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+              
+              
+                
+              
+              
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../engine/">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builder/">Builder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Built-in tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#list-of-all-tools">List of all tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../AbsTool/">Abs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddTool/">Add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddImagesTool/">Add images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddNoiseTool/">Add noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AdjustCalibrationTool/">Adjust calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AdjustPointsToGradientTool/">Adjust points to gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AlignImagesTool/">Align images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobGeometryTool/">Analyze blob geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AnalyzeBlobStatisticsTool/">Analyze blob statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AnalyzeHistogramTool/">Analyze histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LineLineAngleTool/">Angle between lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ArithmeticTool/">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ArrayElementTool/">Array element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ToCsvTool/">Array to CSV record conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoCropTool/">Automatic target location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AutoLocateTargetTool/">Automatic target location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BalanceColorsTool/">Balance colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BarcodeDetectionMaskTool/">Barcode detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BarcodeProbabilityTool/">Barcode probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BeginBranchTool/">Begin branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BeginIterateTool/">Begin iterate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinPixelsTool/">Bin pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeTool/">Binarize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeAdaptivelyTool/">Binarize adaptively</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/">Binarize with limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinarizeWithLimitsTool/#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinaryFunctionTool/">Binary function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BinaryMorphologyTool/">Binary morphology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BlobBoundingBoxTool/">Blob bounding box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BooleanLogicTool/">Boolean logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BoundingBoxTool/">Bounding box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CalibrateCameraTool/">Calibrate camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CalibrateLinescanCameraTool/">Calibrate line-scan camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CalibrateManuallyTool/">Calibrate manually</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CaliperTool/">Caliper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CollapseArrayTool/">Collapse array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ColorDistanceTool/">Color distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ColorRatioTool/">Color ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CombineColorChannelsTool/">Combine color channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CompareTool/">Compare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ComplexConjugateTool/">Complex conjugate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CompressImageTool/">Compress image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ConvertColorsTool/">Convert colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ToStringTool/">Convert to string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ConvertTypeTool/">Convert type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CorrectGammaTool/">Correct gamma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CountTool/">Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CryptographicHashTool/">Cryptographic hash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DeserializeObjectTool/">Deserialize object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectBoundaryShapeTool/">Detect boundary shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectCirclesTool/">Detect circles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectCornersTool/">Detect corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectEdgesTool/">Detect edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectLbpTextureTool/">Detect LBP texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectLinesTool/">Detect lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectMotionTool/">Detect motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectShapesTool/">Detect shapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DetectionMaskTool/">Detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PointLineDistanceTool/">Distance between point and line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DivideTool/">Divide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../DrawEdgesTool/">Draw edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EndBranchTool/">End branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EndIterateTool/">End iterate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EqualTool/">Equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EqualizeHistogramTool/">Equalize histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../EstimateBackgroundColorTool/">Estimate background color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ExpandFrameTool/">Expand frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FileSystemWatcherTool/">File system watcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FillRegionTool/">Fill region</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FilterKeyPointsTool/">Filter key points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindBarcodeTool/">Find barcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindLineSegmentTool/">Find Line Segment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindMatrixCodeTool/">Find matrix code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindPeaksTool/">Find peaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindQrKeyPointsTool/">Find QR keypoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FindThresholdTool/">Find threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FitLinesTool/">Fit lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FlipImageTool/">Flip image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FrameToAnglesTool/">Frame to angles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GateTool/">Gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GenerateGridTool/">Generate grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GenerateLinesTool/">Generate lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GenerateQrCodeTool/">Generate QR code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GradientHistogramTool/">Gradient histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GrayLevelProfileTool/">Gray level profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GreaterTool/">Greater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GreaterOrEqualTool/">Greater or equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HeightProfileTool/">Height profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HistogramTool/">Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HistogramGradientTool/">Histogram gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HomographyTool/">Homography</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HsvToRgbTool/">HSV to RGB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../HuemapTool/">Huemap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../IdentityTool/">Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageCornersTool/">Image corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageInfoTool/">Image info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageSharpnessTool/">Image sharpness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageSource/">Image source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageToMatrixTool/">Image to matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ImageToTensorTool/">Image to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InvertColorsTool/">Invert colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InvertMatrixTool/">Invert matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../JavaScriptTool/">JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../JoinImagesTool/">Join images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../JoinMatricesTool/">Join matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../KeypointHistogramTool/">Keypoint histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LessTool/">Less</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LessOrEqualTool/">Less or equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LineLineIntersectionTool/">Line-line intersection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LinearFilterTool/">Linear filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ListDirectoryTool/">List directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LbpHistogramTool/">Local binary patterns histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LbpTransformTool/">Local binary patterns transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LogicalAndTool/">Logical AND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LogicalOrTool/">Logical OR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LogicalXorTool/">Logical XOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MapGrayLevelsTool/">Map gray levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MaskImageTool/">Mask image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchContoursTool/">Match contours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchKeyPointsTool/">Match key points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchRigid2DObjectTool/">Match rigid 2D object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchTexturesTool/">Match textures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatchingCompoundTool/">Matching compound</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixcodeDetectionMaskTool/">Matrix code detection mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixcodeProbabilityTool/">Matrix code probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixInfoTool/">Matrix info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixToImageTool/">Matrix to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MatrixToTensorTool/">Matrix to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MaxTool/">Max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeanTool/">Mean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureDwellTimeTool/">Measure dwell time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureGapWidthsTool/">Measure gap widths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MeasureSpeedTool/">Measure speed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MedianFilterTool/">Median filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MinTool/">Min</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MonochromatizeImageTool/">Monochromatize image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MultiplyTool/">Multiply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../MultiplyMatricesTool/">Multiply matrices</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Nearest neighbor classifier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../NegateTool/">Negate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NormalizeHistogramTool/">Normalize histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NormalizeMeanGrayLevelTool/">Normalize mean gray level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NotEqualTool/">Not equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../OutputExternalDataTool/">Output external data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PerspectiveTransformTool/">Perspective transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PixelCoordinatesToWorldTool/">Pixel coordinates to world</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PositionCameraTool/">Position camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PositionLinescanCameraTool/">Position line-scan camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PostprocessBoundaryTool/">Postprocess boundary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PowerTool/">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProcessYoloResultTool/">Process YOLO results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProductTool/">Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProfileToImageTool/">Profile to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ProjectToVirtualViewTool/">Project to virtual view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../PruneMatchesTool/">Prune matches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ToArrayTool/">Put objects in array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../QuantizeNonUniformlyTool/">Quantize non-uniformly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadBarcodeTool/">Read barcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadBarcodeLineTool/">Read barcode along a line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadDigitalInputTool/">Read digital input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadImageFileTool/">Read image file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadMatrixCodeTool/">Read matrix code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadVideoFileTool/">Read video file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReadFileTool/">ReadFileTool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RegionCornersTool/">Region corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReplaceCoordinateFrameTool/">Replace coordinate frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ReshapeTensorTool/">Reshape tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RgbToHsvTool/">RGB to HSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RotateImageTool/">Rotate image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../RunOnnxModelTool/">Run ONNX model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SampleColorsTool/">Sample colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SaveImageTool/">Save image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ScaleImageTool/">Scale image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SeparateColorChannelsTool/">Separate color channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SerializeInputsTool/">Serialize inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SerializeObjectTool/">Serialize object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SetColorChannelTool/">Set color channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SetIntensityRangeTool/">Set intensity range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ShapeContextTool/">Shape context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SimplifyPolylineTool/">Simplify polyline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SortRowsTool/">Sort rows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../StdTool/">Std</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SubmatrixTool/">Submatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SubtractTool/">Subtract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SubtractImagesTool/">Subtract images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SumTool/">Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SynchronizeInputsTool/">Synchronize inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorInfoTool/">Tensor info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorToClassificationTool/">Tensor to classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorToImageTool/">Tensor to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TensorToMatrixTool/">Tensor to matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TimerTool/">Timer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TrackMovingObjectsTool/">Track moving objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TransformCoordinatesTool/">Transform coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TranslateAndRotateFrameTool/">Translate and rotate frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TransposeMatrixTool/">Transpose matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../UnaryFunctionTool/">Unary function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../UnwarpCylinderTool/">Unwarp cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../VarianceTool/">Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../VectorToImageTool/">Vector to image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WorldCoordinatesToPixelsTool/">World coordinates to pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WriteDigitalOutputTool/">Write digital output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WriteFileTool/">Write file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WriteLogTool/">Write log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../WriteToDatabaseTool/">Write to database</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cameras/">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook/">Cookbook</a></li>
+</ul>
+
+              
+            
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">VisionAppster</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../">Built-in tools</a> &raquo;</li>
+        
+      <li>Nearest neighbor classifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nearest-neighbor-classifier">
+<h1>Nearest neighbor classifier<a class="headerlink" href="#nearest-neighbor-classifier" title="Permalink to this headline">🔗</a></h1>
+<p>Implements the (k) nearest neighbors classification algorithm. The
+algorithm compares a query vector to a fixed set of model vectors
+and returns the class label of the model vector that is closest to
+the query. If <em>k</em> is set to a value greater than one, the class
+labels of the <em>k</em> nearest model vectors will be found. The label
+with the largest number of occurrences will be selected as the
+winner.</p>
+<div class="section" id="inputs">
+<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">queryVector</span></code>: A 1-by-N matrix representing a vector to
+classify.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modelVectors</span></code>: A M-by-N matrix that contains M N-dimensional
+model vectors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">classLabels</span></code>: A M-by-1 matrix that contains a class label for
+each model vector. If <em>classLabels</em> is an empty matrix, the
+index of the model vector will be used as the class label. If
+<em>k</em> is larger than 1, <em>classLabels</em> must be set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code>: The number of closest model vectors to consider.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distanceMeasure</span></code>: The measure according to which the closest
+model vector is found.</p></li>
+</ul>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">🔗</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">classLabel</span></code>: The label of the model vector closest to <em>input</em>
+(<em>k</em> = 1) or the label with the most occurrences within <em>k</em>
+closest vectors (<em>k</em> &gt; 1).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modelIndex</span></code>: The index of the closest model vector. If <em>k</em> is
+greater than one, this will be the index of the closest model
+vector with a winning class label.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: The distance to model vector at <em>modelIndex</em>.</p></li>
+</ul>
+<div class="breathe-sectiondef docutils container">
+<dl class="cpp enum">
+<dt id="_CPPv4N29NearestNeighborClassifierTool15DistanceMeasureE">
+<span id="_CPPv3N29NearestNeighborClassifierTool15DistanceMeasureE"></span><span id="_CPPv2N29NearestNeighborClassifierTool15DistanceMeasureE"></span><span class="target" id="DistanceMeasure"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">DistanceMeasure</span></code><a class="headerlink" href="#_CPPv4N29NearestNeighborClassifierTool15DistanceMeasureE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>Supported distance measures. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N29NearestNeighborClassifierTool15DistanceMeasure9EuclideanE">
+<span id="_CPPv3N29NearestNeighborClassifierTool15DistanceMeasure9EuclideanE"></span><span id="_CPPv2N29NearestNeighborClassifierTool15DistanceMeasure9EuclideanE"></span><span class="target" id="DistanceMeasure::Euclidean"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">Euclidean</span></code><a class="headerlink" href="#_CPPv4N29NearestNeighborClassifierTool15DistanceMeasure9EuclideanE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The inputs are considered points in a Cartesian coordinate system. </p>
+<p>The distance between them is calculated using the Pythagorean theorem. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N29NearestNeighborClassifierTool15DistanceMeasure21HistogramIntersectionE">
+<span id="_CPPv3N29NearestNeighborClassifierTool15DistanceMeasure21HistogramIntersectionE"></span><span id="_CPPv2N29NearestNeighborClassifierTool15DistanceMeasure21HistogramIntersectionE"></span><span class="target" id="DistanceMeasure::HistogramIntersection"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">HistogramIntersection</span></code><a class="headerlink" href="#_CPPv4N29NearestNeighborClassifierTool15DistanceMeasure21HistogramIntersectionE" title="Permalink to this definition">🔗</a><br /></dt>
+<dd><p>The inputs are considered statistical distributions. </p>
+<p>The distance between them is calculated as the (negated) intersection between two distributions. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../NegateTool/" class="btn btn-neutral float-right" title="Negate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../MultiplyMatricesTool/" class="btn btn-neutral float-left" title="Multiply matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, VisionAppster.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-129514554-1', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
