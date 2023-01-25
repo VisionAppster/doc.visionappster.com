@@ -335,35 +335,16 @@ va-cross --arch<span class="o">=</span>linux-arm_32 <span class="nb">echo</span>
 <p>The Docker images come with autotools, GNU make, CMake and Ninja, gcc,
 g++ and all standard build utilities. There is a caveat though: the
 version numbers of these tools are not equal in all images. You must
-prepare for the oldest version, listed in the following table:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Command</p></th>
-<th class="head"><p>Version</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>gcc/g++</p></td>
-<td><p>4.9.4</p></td>
-</tr>
-<tr class="row-odd"><td><p>make</p></td>
-<td><p>4.1</p></td>
-</tr>
-<tr class="row-even"><td><p>cmake</p></td>
-<td><p>3.13.2</p></td>
-</tr>
-<tr class="row-odd"><td><p>ninja</p></td>
-<td><p>1.7.2</p></td>
-</tr>
-</tbody>
-</table>
-<p>Currently, the ARM images contain an old version of gcc. The practical
-consequence of this is that <strong>you cannot use C++17 features</strong> in your
-native code yet. We are working on this issue.</p>
+prepare for the oldest version. The versions currently being used are:</p>
+<p>      <code class="docutils literal notranslate"><span class="pre">linux-x86_64</span></code> <code class="docutils literal notranslate"><span class="pre">linux-arm_32</span></code> <code class="docutils literal notranslate"><span class="pre">linux-arm_64</span></code> <code class="docutils literal notranslate"><span class="pre">windows-x86_64</span></code>
+======= ================ ================ ================
+==================
+gcc/g++ 10.2.1           8.5.0            8.5.0            11.2.0
+make    4.3              4.3              4.3              4.3
+cmake   3.24.2           3.24.2           3.24.2           3.20.1
+ninja   1.11.0           1.11.0           1.11.0           1.11.0
+======= ================ ================ ================
+==================</p>
 <p>In the build environment, the following variables are always set:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">VA_ARCH</span></code> - Architecture identifier, e.g. “linux-x86_64”. Matches

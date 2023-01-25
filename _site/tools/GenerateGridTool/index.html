@@ -150,7 +150,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CryptographicHashTool/">Cryptographic hash</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DeserializeObjectTool/">Deserialize object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
@@ -209,6 +208,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ImageSource/">Image source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToMatrixTool/">Image to matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToTensorTool/">Image to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Input external data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InvertColorsTool/">Invert colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InvertMatrixTool/">Invert matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../JavaScriptTool/">JavaScript</a></li>
@@ -396,11 +396,12 @@
 image. With <a class="reference internal" href="../BeginIterateTool/"><span class="doc">an iteration</span></a> this tool can be used
 to apply an operation to sub-images.</p>
 <p>To split an input image into fixed-size pieces, iterated grid
-corners can be used as an input to :doc:<code class="docutils literal notranslate"><span class="pre">pixel-to-world</span> <span class="pre">coordinate</span>
-<span class="pre">transform</span> <span class="pre">&lt;PixelCoordinatesToWorldTool&gt;</span></code> followed by
-<a class="reference internal" href="../CropImageTool/"><span class="doc">cropping</span></a>. To apply an operation to sub-images
-without cropping one can connect the iterated grid corners as the
-<em>frame</em> input for many tools such as <a class="reference internal" href="../HistogramTool/"><span class="doc">histogram</span></a>.</p>
+corners can be used as an input to
+<a class="reference internal" href="../PixelCoordinatesToWorldTool/"><span class="doc">pixel-to-world coordinate transform</span></a>
+followed by <a class="reference internal" href="../CropImageTool/"><span class="doc">cropping</span></a>. To apply an operation to
+sub-images without cropping one can connect the iterated grid
+corners as the <em>frame</em> input for many tools such as
+<a class="reference internal" href="../HistogramTool/"><span class="doc">histogram</span></a>.</p>
 <div class="section" id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">🔗</a></h2>
 <ul class="simple">

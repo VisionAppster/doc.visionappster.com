@@ -250,9 +250,12 @@ module itself is stored in, so you must copy the data files to
 <p>Use the <a class="reference internal" href="../../components/installing/"><span class="doc">va-pkg command-line tool</span></a> to enable
 Python support and to install the required NumPy and OpenCV packages:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>va-pkg install com.visionappster.extensions.python
-va-pkg install python:numpy python:opencv-python python:opencv-contrib-python
+va-pkg install python:numpy python:opencv-contrib-python
 </pre></div>
 </div>
+<p><strong>NOTE</strong>: Make sure not to install <code class="docutils literal notranslate"><span class="pre">python:opencv-python</span></code> as
+<code class="docutils literal notranslate"><span class="pre">opencv-contrib-python</span></code> already contains OpenCV and the conflict isn’t
+handled well by Python’s package system.</p>
 </div>
 <div class="section" id="python-code-walk-through">
 <h3>Python code walk-through<a class="headerlink" href="#python-code-walk-through" title="Permalink to this headline">🔗</a></h3>

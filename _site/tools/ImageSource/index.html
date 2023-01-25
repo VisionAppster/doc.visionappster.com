@@ -150,7 +150,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CryptographicHashTool/">Cryptographic hash</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DeserializeObjectTool/">Deserialize object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
@@ -209,6 +208,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToMatrixTool/">Image to matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToTensorTool/">Image to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Input external data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InvertColorsTool/">Invert colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InvertMatrixTool/">Invert matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../JavaScriptTool/">JavaScript</a></li>
@@ -462,7 +462,11 @@ zero makes the tool to wait forever.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">autoDecode</span></code>: If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, the tool will emit images in
 the raw encoded color format such as Bayer or YUV provided by
 the camera driver. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the images are always
-automatically decoded to RGB before emitting.</p></li>
+automatically decoded to RGB before emitting. Note that
+auto-decoding happens in a single thread and may become a
+bottleneck if images are captured at a high speed. In
+high-speed applications, it is advisable to set this flag to
+<code class="docutils literal notranslate"><span class="pre">false</span></code> and use a separate <a class="reference internal" href="../ConvertColorsTool/"><span class="doc">ConvertColorsTool</span></a> for decoding.</p></li>
 </ul>
 </div>
 <div class="section" id="outputs">

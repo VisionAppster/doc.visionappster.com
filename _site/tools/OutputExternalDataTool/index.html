@@ -150,7 +150,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../CountLineCrossingsTool/">Count line crossings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CropImageTool/">Crop image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CryptographicHashTool/">Cryptographic hash</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Data Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DeserializeObjectTool/">Deserialize object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBlobsTool/">Detect blobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../DetectBoundariesTool/">Detect boundaries</a></li>
@@ -205,6 +204,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ImageSource/">Image source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToMatrixTool/">Image to matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ImageToTensorTool/">Image to tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../InputExternalDataTool/">Input external data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InvertColorsTool/">Invert colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../InvertMatrixTool/">Invert matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../JavaScriptTool/">JavaScript</a></li>
@@ -391,10 +391,10 @@
             
   <div class="section" id="output-external-data">
 <h1>Output external data<a class="headerlink" href="#output-external-data" title="Permalink to this headline">🔗</a></h1>
-<p>Writes data to a data link device. This tool requires a :doc:<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">link</span>
-<span class="pre">driver</span> <span class="pre">&lt;/api/c/datalink&gt;</span></code> that works in master mode. It writes the
-values of all defined parameters to a slave device on each
-processing round.</p>
+<p>Writes data to a data link device. This tool requires a
+<a class="reference internal" href="../../api/c/datalink/"><span class="doc">data link device driver</span></a> that works in master
+mode. It writes the values of all defined parameters to a slave
+device on each processing round.</p>
 <p>If the device driver supports batch writes, all defined variables
 will be written atomically. This is a requirement for SQL database
 drivers, for example (all columns of a table row are written
