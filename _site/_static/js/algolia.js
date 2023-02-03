@@ -1,7 +1,7 @@
 docsearch({
   appId: 'AOWZ909P6D',
   apiKey: '57c6eeb255d542f3ae88b288ea12928e',
-  indexName: 'doc-3-0-0',
+  indexName: 'doc-3-1-0',
   // Replace inputSelector with a CSS selector
   // matching your search input
   inputSelector: '#rtd-search-form input[type=text]',
